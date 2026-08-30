@@ -1,0 +1,8 @@
+master_seed: 260831
+seed_pipeline: 260832
+seed_credit: 260833
+seed_site: 260834
+seed_load: 260835
+seed_energy_uncertainty: 260836
+seed_hidden_truth: 260837
+public_model_must_not_depend_on_hidden_truth: true

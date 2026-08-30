@@ -1,0 +1,23 @@
+sheet_no,sheet_name,primary_purpose
+00,00_Control_ModelMap,"Version, scenario, release and stale-output flags"
+01,01_Assumptions,Central assumptions and IDs
+02,02_Evidence_Regulatory,Source/regulatory/tariff/tax versions
+03,03_Project_Pipeline,20 opportunities and hard gates
+04,04_Offtakers_Credit_Site,"Credit, parent and site continuity"
+05,05_Solar_Energy,"Resource, loss tree and P50/P90"
+06,06_Load_PPA,"Hourly load match, tariff value, PPA frontier"
+07,07_CAPEX_Construction,"CAPEX, sources/uses, construction and IDC"
+08,08_OPEX,O&M and replacement costs
+09,09_Tax_VAT_WC,"Tax, depreciation, VAT, AR/AP"
+10,10_Project_CF_CFADS,Cash flow and CFADS
+11,11_Debt_Terms,Facility terms
+12,12_Debt_Sculpting,Backward sizing and forward schedule
+13,13_Reserves_Waterfall,DSRA/reserve/waterfall
+14,14_Coverage,DSCR/LLCR/PLCR
+15,15_Returns_Discount,Returns and rate register
+16,16_FX_Financing,VND/USD and FX paths
+17,17_Scenarios_Sensitivity,Downside and reverse stress
+18,18_Portfolio,Standalone/pooled/allocation
+19,19_IC_Bankability,Sponsor/lender decision
+20,20_External_Validation,Benchmarks/exceptions
+21,21_QA_Audit,Tests/release readiness

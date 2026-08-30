@@ -1,0 +1,6 @@
+rule_id,jurisdiction,regulation_name,regulation_number,issuer,publication_date,legal_effective_from,billing_effective_from,business_model_archetype,project_applicability,financial_model_implication,required_model_switch,source_id,recheck_before_release,status,review_note
+RULE-243,Viet Nam,Decree 243/2026/ND-CP,243/2026/ND-CP,Government,2026-06-26,2026-06-26,,all C&I rooftop,Legal mapping required,direct_sale_or_self_consumption,SRC-REG-243,TRUE,LOCKED,
+RULE-TAR-963,Viet Nam,Decision 963/QD-BCT,963/QD-BCT,MOIT,2026-04-22,2026-04-22,,industrial_C&I,Legal schedule separate from billed schedule,billing_status,SRC-TAR-963,TRUE,WATCH,Recheck before IC/release
+RULE-TAX-067,Viet Nam,CIT Law 67/2025/QH15,67/2025/QH15,National Assembly,2025-06-14,2026-10-01,,all SPV,No automatic incentive,tax_rule_version,SRC-TAX-067,TRUE,LOCKED,
+RULE-TAX-320,Viet Nam,Decree 320/2025/ND-CP,320/2025/ND-CP,Government,2025-12-15,2025-12-15,,all SPV,Cash tax/loss carryforward,tax_rule_version,SRC-TAX-320,TRUE,LOCKED,
+RULE-FX-008,Viet Nam,Circular 08/2023/TT-NHNN,08/2023/TT-NHNN,State Bank,2023-08-15,2023-08-15,,foreign borrowing,Legal review required,foreign_borrowing_eligibility,SRC-FX-008,TRUE,LOCKED,

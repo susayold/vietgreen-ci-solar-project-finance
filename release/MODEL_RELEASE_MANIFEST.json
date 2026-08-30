@@ -1,0 +1,21 @@
+{
+  "project": "VietGreen_CI_Solar_Project_Finance",
+  "release_version": "1.0.0",
+  "release_status": "candidate",
+  "model_date": "2026-08-31",
+  "research_freeze_date": "2026-08-31",
+  "git_commit": "pending_remote_commit",
+  "master_seed": 260831,
+  "source_register_version": "SR-1.0-candidate",
+  "regulatory_freeze_date": "2026-08-31",
+  "tariff_version": "TAR-TOU-CURRENT",
+  "tax_version": "RULE-TAX-067/RULE-TAX-320/RULE-TAX-141/RULE-TAX-020",
+  "scenario_config_sha256": "computed_by_remote_workflow",
+  "model_config_sha256": "computed_by_remote_workflow",
+  "backend_artifacts_manifest_sha256": "computed_by_remote_workflow",
+  "qa_result": "PASS_WITH_LIMITATIONS",
+  "external_validation_result": "PASS_WITH_EXPLAINED_EXCEPTIONS",
+  "reviewer_status": "INTERNAL_REVIEW_PENDING",
+  "recruiter_ready": false,
+  "limitation": "Native Excel workbook binary and final independent review are not release-locked."
+}

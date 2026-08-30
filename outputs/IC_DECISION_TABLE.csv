@@ -1,0 +1,21 @@
+project_id,sponsor_status,lender_status,binding_issue,recommended_action,condition_1,condition_2,condition_3,final_classification
+VG-001,FAIL,FAIL,legal/credit/coverage,RENEGOTIATE,,,,RENEGOTIATE
+VG-002,FAIL,FAIL,legal/credit/coverage,RENEGOTIATE,,,,RENEGOTIATE
+VG-003,FAIL,FAIL,legal/credit/coverage,RENEGOTIATE,,,,RENEGOTIATE
+VG-004,FAIL,CONDITIONAL,legal/credit/coverage,RENEGOTIATE,complete structural/site diligence,,,RENEGOTIATE
+VG-005,FAIL,FAIL,legal/credit/coverage,RENEGOTIATE,,,,RENEGOTIATE
+VG-006,FAIL,FAIL,legal/credit/coverage,RENEGOTIATE,,,,RENEGOTIATE
+VG-007,FAIL,FAIL,site_continuity,RENEGOTIATE,,,,RENEGOTIATE
+VG-008,FAIL,CONDITIONAL,legal/credit/coverage,RENEGOTIATE,complete structural/site diligence,,,RENEGOTIATE
+VG-009,FAIL,FAIL,legal/credit/coverage,RENEGOTIATE,,,legal applicability review,RENEGOTIATE
+VG-010,FAIL,FAIL,legal/credit/coverage,RENEGOTIATE,,,,RENEGOTIATE
+VG-011,FAIL,FAIL,legal/credit/coverage,RENEGOTIATE,,,,RENEGOTIATE
+VG-012,FAIL,FAIL,legal/credit/coverage,RENEGOTIATE,,,,RENEGOTIATE
+VG-013,FAIL,FAIL,legal/credit/coverage,RENEGOTIATE,,,,RENEGOTIATE
+VG-014,FAIL,FAIL,legal/credit/coverage,RENEGOTIATE,,,,RENEGOTIATE
+VG-015,FAIL,FAIL,legal/credit/coverage,RENEGOTIATE,,,,RENEGOTIATE
+VG-016,FAIL,CONDITIONAL,legal/credit/coverage,RENEGOTIATE,complete structural/site diligence,,,RENEGOTIATE
+VG-017,FAIL,FAIL,legal/credit/coverage,RENEGOTIATE,,,,RENEGOTIATE
+VG-018,FAIL,CONDITIONAL,legal/credit/coverage,RENEGOTIATE,,enhance payment security,,RENEGOTIATE
+VG-019,FAIL,FAIL,legal/credit/coverage,RENEGOTIATE,,,,RENEGOTIATE
+VG-020,FAIL,CONDITIONAL,legal/credit/coverage,RENEGOTIATE,,enhance payment security,legal applicability review,RENEGOTIATE

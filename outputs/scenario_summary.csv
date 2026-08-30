@@ -1,0 +1,14 @@
+scenario_id,cfads_factor,portfolio_cfads_bvnd,portfolio_dscr,mechanism_note
+BASE_SPONSOR,1,0,0,none
+P90_ENERGY,0.9,0,0,defined mechanism only
+CAPEX_OVERRUN,0.95,0,0,defined mechanism only
+COD_DELAY,0.94,0,0,defined mechanism only
+INTEREST_RATE_SHOCK,0.92,0,0,defined mechanism only
+FX_CRAWL,1,0,0,defined mechanism only
+FX_ONE_OFF,1,0,0,defined mechanism only
+DSO_DELAY,0.98,0,0,defined mechanism only
+OFFTAKER_PARTIAL_NONPAYMENT,0.9,0,0,defined mechanism only
+OFFTAKER_DEFAULT_TERMINATION,0.84,0,0,defined mechanism only
+SITE_CONTINUITY_EVENT,0.88,0,0,defined mechanism only
+COMBINED_DOWNSIDE,0.68,0,0,defined mechanism only
+PORTFOLIO_COMMON_FACTOR_DOWNSIDE,0.78,0,0,defined mechanism only

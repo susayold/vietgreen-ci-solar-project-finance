@@ -1,0 +1,21 @@
+offtaker_id,offtaker_name_simulated,parent_group_id,industry,annual_load_kwh,daytime_load_share,credit_grade_internal,credit_data_quality,customer_class,voltage_level
+OF-001,Simulated Electronics Offtaker 001,PG-01,Electronics,15000000,0.75,A,MEDIUM,industrial_C&I,medium_voltage
+OF-002,Simulated Electronics Offtaker 002,PG-01,Electronics,17000000,0.82,A,MEDIUM,industrial_C&I,medium_voltage
+OF-003,Simulated Logistics Offtaker 003,PG-02,Logistics,19000000,0.78,B,MEDIUM,industrial_C&I,medium_voltage
+OF-004,Simulated Materials Offtaker 004,PG-03,Materials,30000000,0.68,A,MEDIUM,industrial_C&I,medium_voltage
+OF-005,Simulated Food & Beverage Offtaker 005,PG-04,Food & Beverage,16000000,0.88,A,MEDIUM,industrial_C&I,medium_voltage
+OF-006,Simulated Textile Offtaker 006,PG-05,Textile,25000000,0.76,D,LOW,industrial_C&I,medium_voltage
+OF-007,Simulated Packaging Offtaker 007,PG-06,Packaging,18000000,0.8,B,MEDIUM,industrial_C&I,medium_voltage
+OF-008,Simulated Hospitality Offtaker 008,PG-07,Hospitality,21000000,0.7,B,MEDIUM,industrial_C&I,medium_voltage
+OF-009,Simulated Automotive Offtaker 009,PG-08,Automotive,27000000,0.74,A,MEDIUM,industrial_C&I,medium_voltage
+OF-010,Simulated Pharma Offtaker 010,PG-09,Pharma,22000000,0.84,A,MEDIUM,industrial_C&I,medium_voltage
+OF-011,Simulated Plastics Offtaker 011,PG-10,Plastics,12000000,0.86,B,MEDIUM,industrial_C&I,medium_voltage
+OF-012,Simulated Food & Beverage Offtaker 012,PG-04,Food & Beverage,15000000,0.8,B,MEDIUM,industrial_C&I,medium_voltage
+OF-013,Simulated Agribusiness Offtaker 013,PG-11,Agribusiness,13000000,0.79,B,MEDIUM,industrial_C&I,medium_voltage
+OF-014,Simulated Chemicals Offtaker 014,PG-12,Chemicals,26000000,0.77,A,MEDIUM,industrial_C&I,medium_voltage
+OF-015,Simulated Electronics Offtaker 015,PG-01,Electronics,14500000,0.78,B,MEDIUM,industrial_C&I,medium_voltage
+OF-016,Simulated Rubber Offtaker 016,PG-13,Rubber,14000000,0.74,B,MEDIUM,industrial_C&I,medium_voltage
+OF-017,Simulated Steel Offtaker 017,PG-14,Steel,23000000,0.72,B,MEDIUM,industrial_C&I,medium_voltage
+OF-018,Simulated Machinery Offtaker 018,PG-15,Machinery,15500000,0.77,C,MEDIUM,industrial_C&I,medium_voltage
+OF-019,Simulated Retail Offtaker 019,PG-16,Retail,20000000,0.73,B,MEDIUM,industrial_C&I,medium_voltage
+OF-020,Simulated Food & Beverage Offtaker 020,PG-17,Food & Beverage,18000000,0.78,C,MEDIUM,industrial_C&I,medium_voltage

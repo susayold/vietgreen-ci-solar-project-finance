@@ -1,0 +1,8 @@
+test_id,module,scenario_id,test_type,expected,actual,tolerance,status,severity,notes
+QA-001,pipeline,BASE_SPONSOR,hard_gate_before_score,failed gate cannot be rescued,verified,N/A,PASS,BLOCKER,
+QA-002,energy,BASE_SPONSOR,p90_le_p50,P90 <= P50,verified,N/A,PASS,BLOCKER,PVOUT not multiplied by generic PR
+QA-003,cash_flow,BASE_SPONSOR,sources_equals_uses,reconcile,pending remote workflow,1 VND,PENDING,BLOCKER,
+QA-004,debt,BASE_SPONSOR,debt_closes_zero,zero at maturity,pending remote workflow,1 VND,PENDING,BLOCKER,
+QA-005,portfolio,BASE_SPONSOR,aggregate_dscr,sum CFADS/sum debt service,verified,N/A,PASS,MAJOR,
+QA-006,fx,FX_CRAWL,period_translation,period-by-period,verified,N/A,PASS,MAJOR,Stress path not forecast
+QA-007,release,BASE_SPONSOR,claim_gate,no lender-grade claim,verified,N/A,PASS,MAJOR,

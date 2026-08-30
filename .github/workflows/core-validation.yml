@@ -1,0 +1,25 @@
+name: core-validation
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run remote model
+        run: python analytics/run_core_model.py
+      - name: Run tests
+        run: python -m unittest discover -s tests -v
+      - name: Upload remote outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: vietgreen-core-outputs
+          path: |
+            outputs/
+            validation/
+            release/

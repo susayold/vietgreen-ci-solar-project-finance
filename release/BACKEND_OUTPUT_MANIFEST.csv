@@ -1,0 +1,5 @@
+artifact_id,file_path,artifact_type,grain,schema_version,model_version,scenario_version,input_version,row_count,column_count,sha256,random_seed,generated_at_utc,git_commit,producer_script,producer_script_sha256,status,notes
+ART-ENERGY,outputs/energy_p50_p90.csv,csv,project,1.0,1.0.0,SCN-1.0,INPUT-1.0,20,12,computed_by_remote_workflow,260831,remote_workflow,pending,analytics/run_core_model.py,computed_by_remote_workflow,CANDIDATE,
+ART-LOAD,outputs/load_matching_summary.csv,csv,project,1.0,1.0.0,SCN-1.0,INPUT-1.0,20,12,computed_by_remote_workflow,260831,remote_workflow,pending,analytics/run_core_model.py,computed_by_remote_workflow,CANDIDATE,
+ART-PORTFOLIO,outputs/portfolio_selection.csv,csv,project,1.0,1.0.0,SCN-1.0,INPUT-1.0,20,13,computed_by_remote_workflow,260831,remote_workflow,pending,analytics/run_core_model.py,computed_by_remote_workflow,CANDIDATE,
+ART-QA,validation/QA_RESULTS.csv,csv,test,1.0,1.0.0,SCN-1.0,INPUT-1.0,7,10,computed_by_remote_workflow,260831,remote_workflow,pending,analytics/run_core_model.py,computed_by_remote_workflow,CANDIDATE,

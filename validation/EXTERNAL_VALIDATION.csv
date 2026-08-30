@@ -1,0 +1,5 @@
+validation_id,project_or_portfolio,metric,model_output,unit,benchmark_reference,benchmark_id,comparability_grade,status,exception_rationale
+VAL-001,Portfolio,PVOUT specific yield,1393,kWh/kWp,1100-1650,BM-PVOUT,MEDIUM,PASS,Screening sanity range
+VAL-002,Portfolio,Annual degradation,0.5,%/year,0.3-0.8,BM-DEG,MEDIUM,PASS,Comparator only
+VAL-003,Portfolio,CAPEX,850,USD/kWp,IRENA utility-scale 691,BM-UTILITY-CAPEX,LOW,EXPLAIN,C&I rooftop assumption; local evidence pending
+VAL-004,Portfolio,Portfolio structure,multi-site SPV,N/A_CONTEXT,ADB/FMO precedents,BM-ADB-SCALE,N/A_CONTEXT,N/A-CONTEXT,Structure/scale proof only

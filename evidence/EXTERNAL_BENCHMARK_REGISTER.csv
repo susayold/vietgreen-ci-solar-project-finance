@@ -1,0 +1,7 @@
+benchmark_id,metric,low,central,high,unit,currency,base_year,geography,technology_segment,source_id,comparability_grade,benchmark_role,allowed_use,prohibited_use
+BM-PVOUT,PVOUT,1100,1350,1650,kWh/kWp,N/A,2007-2025,Viet Nam,C&I rooftop,SRC-SOLAR-GSA,MEDIUM,SANITY_BENCHMARK,Screening anchor,No extra PR
+BM-DEG,Annual degradation,0.3,0.5,0.8,%/year,N/A,2024,Global,commercial PV,SRC-SOLAR-NREL,MEDIUM,COMPARATOR_ONLY,Range context,No Vietnam guarantee
+BM-SOILING,Soiling loss,0.04,0.055,0.07,%,N/A,2024,Global,PV systems,SRC-SOIL-IEA,LOW,SANITY_BENCHMARK,Mechanism/range,No universal default
+BM-UTILITY-CAPEX,Utility PV installed cost,691,691,691,USD/kW,USD,2024,Global,utility PV,SRC-IRENA-2024,LOW,SANITY_BENCHMARK,Context,Not rooftop quote
+BM-ADB-SCALE,Financed rooftop precedent,29.77,32.3,45,MWp/systems,N/A,2023,Viet Nam,C&I rooftop,SRC-ADB-56245,N/A_CONTEXT,N/A-CONTEXT,Structure proof,No leverage inference
+BM-FMO,FMO GreenYellow debt,4.49,4.49,4.49,USDm,USD,2023,Viet Nam,C&I rooftop,SRC-FMO-62172,N/A_CONTEXT,N/A-CONTEXT,Context,No term calibration

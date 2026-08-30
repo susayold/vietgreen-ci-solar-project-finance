@@ -1,0 +1,21 @@
+project_id,eligible_shortlist,selected_flag,capacity_mwp,standalone_debt_bvnd,standalone_equity_bvnd,equity_npv_bvnd,value_density,standalone_min_dscr,selection_reason,parent_group_id,industry,region
+VG-001,false,false,1.4,11.233,18.517,-13.508,-0.7295,1.476,not_selected,PG-01,Electronics,North
+VG-002,false,false,1.5,12.77,19.105,-13.411,-0.702,1.476,not_selected,PG-01,Electronics,North
+VG-003,false,false,1.1,9.056,14.319,-10.282,-0.718,1.476,not_selected,PG-02,Logistics,North
+VG-004,false,false,1.45,10.939,19.873,-14.996,-0.7546,1.476,not_selected,PG-03,Materials,North
+VG-005,false,false,1.2,12.456,13.044,-7.491,-0.5742,1.476,not_selected,PG-04,Food & Beverage,Central
+VG-006,false,false,1.2,11.3,14.2,-9.161,-0.6452,1.476,not_selected,PG-05,Textile,Central
+VG-007,false,false,1.3,12.654,14.971,-9.328,-0.6231,1.476,not_selected,PG-06,Packaging,Central
+VG-008,false,false,1.3,9.748,17.877,-13.53,-0.7569,1.476,not_selected,PG-07,Hospitality,South
+VG-009,false,false,1.3,11.704,15.921,-10.703,-0.6722,1.476,not_selected,PG-08,Automotive,South
+VG-010,false,false,1.3,12.707,14.918,-9.252,-0.6202,1.476,not_selected,PG-09,Pharma,South
+VG-011,false,false,1.2,11.918,13.582,-8.268,-0.6087,1.476,not_selected,PG-10,Plastics,South
+VG-012,false,false,1.15,10.883,13.555,-8.702,-0.642,1.476,not_selected,PG-04,Food & Beverage,South
+VG-013,false,false,1.05,9.855,12.457,-8.063,-0.6473,1.476,not_selected,PG-11,Agribusiness,South
+VG-014,false,false,1.25,11.54,15.023,-9.877,-0.6575,1.476,not_selected,PG-12,Chemicals,South
+VG-015,false,false,1.2,11.171,14.329,-9.349,-0.6524,1.476,not_selected,PG-01,Electronics,South
+VG-016,false,false,1,9.003,12.247,-8.233,-0.6722,1.476,not_selected,PG-13,Rubber,South
+VG-017,false,false,1.2,9.38,16.12,-11.937,-0.7405,1.476,not_selected,PG-14,Steel,North
+VG-018,false,false,1.15,9.387,15.051,-10.865,-0.7219,1.476,not_selected,PG-15,Machinery,North
+VG-019,false,false,1.05,7.139,15.173,-11.99,-0.7902,1.476,not_selected,PG-16,Retail,North
+VG-020,false,false,1.05,9.774,12.538,-8.18,-0.6524,1.476,not_selected,PG-17,Food & Beverage,South

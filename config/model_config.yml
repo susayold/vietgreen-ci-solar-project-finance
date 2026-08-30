@@ -1,0 +1,12 @@
+model_version: 1.0.0-candidate
+model_date: 2026-08-31
+currency: VND
+fx_base_vnd_per_usd: 25000
+sizing_dscr: 1.30
+sculpting_dscr: 1.30
+minimum_covenant_dscr: 1.20
+lockup_dscr: 1.25
+llcr_floor: 1.35
+leverage_cap: 0.65
+debt_tenor_years: 10
+ppa_tenor_years: 15
