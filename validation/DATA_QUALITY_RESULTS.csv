@@ -1,0 +1,13 @@
+check_id,domain,check_type,expected,actual,status,severity,impact
+DQ-001,pipeline,row_count,20,20,PASS,CRITICAL,Pipeline completeness
+DQ-002,pipeline,primary_key_unique,unique project_id,True,PASS,CRITICAL,Prevents duplicate projects
+DQ-003,offtaker,foreign_key_coverage,all project IDs,True,PASS,MEDIUM,Prevents missing offtaker joins
+DQ-004,site,foreign_key_coverage,all site IDs,True,PASS,MEDIUM,Prevents missing site-risk joins
+DQ-005,PPA,foreign_key_coverage,all project IDs,True,PASS,MEDIUM,Prevents missing contract terms
+DQ-006,CAPEX,row_count_and_key,120 rows / 6 per project,120 rows,PASS,MEDIUM,CAPEX aggregation grain
+DQ-007,debt,foreign_key_coverage,all project IDs,True,PASS,MEDIUM,Prevents missing financing terms
+DQ-008,solar,foreign_key_coverage,all project IDs,True,PASS,MEDIUM,Prevents missing resource joins
+DQ-009,source,source_id_coverage,all referenced source IDs,True,PASS,MEDIUM,Evidence traceability
+DQ-010,assumption,assumption_id_coverage,all referenced assumption IDs,True,PASS,MEDIUM,Assumption traceability
+DQ-011,cross_table,field_reconciliation,zero mismatches,0,PASS,CRITICAL,Model joins must agree across source tables
+DQ-012,domain,range_validation,valid ratios and capacity,0,PASS,HIGH,Prevents invalid model inputs
