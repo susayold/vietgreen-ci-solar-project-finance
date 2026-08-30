@@ -12,7 +12,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Run remote model
-        run: python analytics/run_core_model.py
+        run: python -m analytics.run_core_model
       - name: Run tests
         run: python -m unittest discover -s tests -v
       - name: Upload remote outputs
