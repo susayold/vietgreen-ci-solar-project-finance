@@ -4,7 +4,7 @@
   "release_status": "candidate",
   "model_date": "2026-08-31",
   "research_freeze_date": "2026-08-31",
-  "git_commit": "pending_remote_commit",
+  "git_commit": "0512d4c4456edcf9177ff37374c6367048a1fac9",
   "master_seed": 260831,
   "source_register_version": "SR-1.0-candidate",
   "regulatory_freeze_date": "2026-08-31",

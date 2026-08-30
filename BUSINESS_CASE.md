@@ -1,11 +1,9 @@
 # BUSINESS_CASE
 
-Fictional sponsor: VietGreen Distributed Energy JSC.
+VietGreen Distributed Energy JSC is a fictitious sponsor used for an educational Vietnam C&I solar project-finance case. The model is synthetic and demonstrates an IC and lender workflow.
 
-Decision chain: Evidence → Screen → Validate Energy → Match Load → Price PPA → Build CFADS → Size Debt → Stress → Pool → Allocate Equity → Decide → Validate → Release.
+The remote screening contains 20 projects, 12 hard-gate eligible projects, and a 9-project candidate allocation under a 150 BVND equity budget. The candidate pool is 11.1 MWp with 87.18547 BVND provisional pooled debt and 1.476303x pooled DSCR.
 
-Investment questions: gate eligibility; P50/P90 and self-consumed value; customer/sponsor/lender PPA boundaries; CAPEX/OPEX/tax/WC/CFADS; debt capacity and sculpting; FX; pooled debt; scarce-equity allocation; sponsor/lender divergence.
+The base sponsor NPV is -109.81579 BVND under the stated synthetic CAPEX, PPA, tax and discount assumptions. Therefore the recommended class is INVEST_WITH_CONDITIONS only, with PPA repricing / CAPEX reduction as explicit conditions. This is not a claim that any real project is investable.
 
-Decision classes: INVEST, INVEST_WITH_CONDITIONS, RENEGOTIATE, REJECT.
-
-All project-specific terms are simulated/assumption unless directly evidenced.
+All source material, assumptions and regulatory items must be refreshed before use in a real transaction.
