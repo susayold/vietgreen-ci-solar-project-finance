@@ -1,5 +1,5 @@
 # TERMINAL_TREATMENT
 
-Every project selects transfer, remove/restore, renew or uncontracted-tail branch. Base uses zero residual operating value when renewal/site-right evidence is weak.
+Base case terminal value is zero. No residual asset value, merchant tail, refinancing proceeds or sale proceeds are inserted to rescue returns.
 
-Debt capacity cannot rely on unsupported tail cash flow.
+The model keeps contract tenor, asset life, debt tenor and removal/transfer/renewal branches distinct. Any future renewal or residual value must be introduced as an explicit scenario with a source or assumption ID, separate sensitivity, tax treatment and lender review.
