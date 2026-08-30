@@ -15,7 +15,10 @@ def unique(rows, key):
 def coverage(child_rows, child_key, parent_ids):
     return set(row.get(child_key, "") for row in child_rows) == set(parent_ids)
 
-def add(results, check_id, domain, check_type, expected, actual, status, severity, impact):
+def add(results, check_id, domain, check_type, expected, actual, status, severity, impact=None):
+    if impact is None:
+        impact = severity
+        severity = "MEDIUM"
     results.append({
         "check_id": check_id,
         "domain": domain,
