@@ -2,7 +2,7 @@
 
 ## Purpose
 
-The workbook is the decision interface for the Vietnam C&I solar portfolio case. It is a 22-sheet structure; the public GitHub repository stores the sheet map, synthetic inputs, Python engine, generated outputs and release metadata. A native workbook binary remains a separate release gate and must be generated and hash-locked on a remote runner.
+The workbook is the decision interface for the Vietnam C&I solar portfolio case. It is a 22-sheet structure; the public GitHub repository stores the sheet map, synthetic inputs, Python engine, generated outputs and release metadata. A candidate native workbook binary is committed at `model/vietgreen_core_model.xlsx` and recorded in the release manifest by Git blob SHA and byte size. The Python engine and committed CSV outputs remain the calculation source of truth.
 
 ## Sheet contract
 
@@ -44,4 +44,4 @@ The workbook is the decision interface for the Vietnam C&I solar portfolio case.
 
 ## Release controls
 
-A release cannot be called recruiter-ready while any required source recheck, independent review, native-workbook hash, hidden-truth reconciliation, or blocker QA is unresolved.
+A release cannot be called recruiter-ready while any required source recheck, independent review, live regulatory/billing refresh, hidden-truth reconciliation, or blocker QA is unresolved. The current candidate's native workbook artifact is locked in the release manifest; it is not a substitute for independent review or diligence.
