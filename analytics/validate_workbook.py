@@ -121,7 +121,7 @@ def run() -> dict[str, int]:
                     impact="Ensures the workbook has the core OOXML package topology.",
                 )
 
-                workbook_root = ET.fromstring(z.read("xl/workbook.xml"))
+                workbook_root = ET.fromstring(zf.read("xl/workbook.xml"))
                 sheet_nodes = workbook_root.findall("main:sheets/main:sheet", NS)
                 sheet_names = [node.attrib.get("name", "") for node in sheet_nodes]
                 add(
@@ -147,7 +147,7 @@ def run() -> dict[str, int]:
                     parseable = False
                     if present:
                         try:
-                            root = ET.fromstring(z.read(member))
+                            root = ET.fromstring(zf.read(member))
                             parseable = root.tag.endswith("worksheet")
                         except ET.ParseError:
                             parseable = False
@@ -160,7 +160,7 @@ def run() -> dict[str, int]:
                         impact="Validates each sheet XML member.",
                     )
 
-                control_xml = z.read("xl/worksheets/sheet1.xml").decode(
+                control_xml = zf.read("xl/worksheets/sheet1.xml").decode(
                     "utf-8", errors="replace"
                 )
                 for check_id, token, impact in [

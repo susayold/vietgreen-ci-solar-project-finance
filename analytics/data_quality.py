@@ -126,6 +126,19 @@ def run(root=BASE_DIR):
     add(results, "DQ-012", "domain", "range_validation", "valid ratios and capacity",
         str(len(invalid)), "PASS" if not invalid else "FAIL", "HIGH", "Prevents invalid model inputs")
 
+    ppa_price_mismatch = []
+    for row in master:
+        ppa = ppa_by.get(row["project_id"], {})
+        try:
+            if abs(float(ppa.get("ppa_price_base_vnd_kwh", 0)) - float(row["ppa_price_vnd_kwh"])) > 1e-6:
+                ppa_price_mismatch.append(row["project_id"])
+        except (TypeError, ValueError):
+            ppa_price_mismatch.append(row["project_id"])
+    add(results, "DQ-013", "cross_table", "ppa_price_reconciliation",
+        "project master equals PPA terms", str(len(ppa_price_mismatch)),
+        "PASS" if not ppa_price_mismatch else "FAIL", "HIGH",
+        "PPA source lineage")
+
     out = root / "validation/DATA_QUALITY_RESULTS.csv"
     out.parent.mkdir(parents=True, exist_ok=True)
     fields = ["check_id", "domain", "check_type", "expected", "actual", "status", "severity", "impact"]
