@@ -108,6 +108,8 @@ def run(root=BASE_DIR):
             mismatch.append(row["project_id"] + ":site")
         if float(ppa.get("ppa_tenor_years", 0)) != float(row["ppa_tenor_years"]):
             mismatch.append(row["project_id"] + ":tenor")
+        if abs(float(ppa.get("ppa_price_base_vnd_kwh", 0)) - float(row["ppa_price_vnd_kwh"])) > 1e-6:
+            mismatch.append(row["project_id"] + ":ppa_price")
         if resource.get("region") != row["region"]:
             mismatch.append(row["project_id"] + ":resource_region")
     add(results, "DQ-011", "cross_table", "field_reconciliation", "zero mismatches",
