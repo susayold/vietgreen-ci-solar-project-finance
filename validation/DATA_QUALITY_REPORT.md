@@ -2,8 +2,8 @@
 
 Remote-only quality checks for the synthetic pipeline. Grain is one row per project except CAPEX, which is six components per project.
 
-- Checks run: 12
-- Passed: 12
+- Checks run: 13
+- Passed: 13
 - Failed: 0
 - Data class: synthetic / simulated; no real customer data.
 - Freshness: source-register dates and regulatory/tariff recheck flags govern release; no local snapshot is used.
