@@ -33,7 +33,7 @@ def compute(row, ppa_term, capex_total, solar_resource):
     uncertainty = num(row, "uncertainty_pct")
     pvout = num(solar_resource, "pvout_kwh_kwp")
     if solar_resource["region"] != row["region"]:
-        raise ValueError(f"Solar-resource region mismatch for {row["project_id"]}")
+        raise ValueError("Solar-resource region mismatch for " + row["project_id"])
 
     p50, p90 = p50_p90(cap, pvout, uncertainty)
     self_ratio = min(0.96, 0.52 + day * 0.45)
