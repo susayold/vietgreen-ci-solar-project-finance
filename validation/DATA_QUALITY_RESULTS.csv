@@ -11,3 +11,4 @@ DQ-009,source,source_id_coverage,all referenced source IDs,True,PASS,MEDIUM,Evid
 DQ-010,assumption,assumption_id_coverage,all referenced assumption IDs,True,PASS,MEDIUM,Assumption traceability
 DQ-011,cross_table,field_reconciliation,zero mismatches,0,PASS,CRITICAL,Model joins must agree across source tables
 DQ-012,domain,range_validation,valid ratios and capacity,0,PASS,HIGH,Prevents invalid model inputs
+DQ-013,cross_table,ppa_price_reconciliation,project master equals PPA terms,0,PASS,HIGH,PPA source lineage
