@@ -13,10 +13,10 @@
 
 ## Remote artifact run
 
-Workflow: https://github.com/susayold/vietgreen-ci-solar-project-finance/actions/runs/33341642090
+Workflow: https://github.com/susayold/vietgreen-ci-solar-project-finance/actions/runs/33341701878
 
 Artifact: vietgreen-core-outputs; digest:
-sha256:d01f08b3d9ff454f39c7bf1acb71b579807f7aafe80e7ffe33da1e3872f6c773
+sha256:45bc4ba68e09b51336227e00eff3b860b02a40f846ada8d9033b5ee97b9e067c
 
 ## Private / excluded
 
