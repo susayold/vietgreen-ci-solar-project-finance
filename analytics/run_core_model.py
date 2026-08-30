@@ -26,23 +26,24 @@ def read_csv(path):
 def num(row, key):
     return float(row[key])
 
-def compute(row):
+def compute(row, ppa_term, capex_total, solar_resource):
     cap = num(row, "proposed_capacity_kwp")
     load = num(row, "annual_load_kwh")
     day = num(row, "daytime_load_share")
     uncertainty = num(row, "uncertainty_pct")
-    pvout = PVOUT[row["region"]]
+    pvout = num(solar_resource, "pvout_kwh_kwp")
+    if solar_resource["region"] != row["region"]:
+        raise ValueError(f"Solar-resource region mismatch for {row["project_id"]}")
 
     p50, p90 = p50_p90(cap, pvout, uncertainty)
     self_ratio = min(0.96, 0.52 + day * 0.45)
     self_kwh = p50 * self_ratio
 
     tariff = 1450 + day * 1450
-    price_factor = 0.82 if day >= 0.75 else 0.90
-    ppa_price = tariff * price_factor
+    ppa_price = num(ppa_term, "ppa_price_base_vnd_kwh")
     customer_ceiling = tariff * 0.86
 
-    capex = cap * 850 * 25000
+    capex = capex_total
     opex = cap * 15 * 25000
     revenue = self_kwh * ppa_price
     tax = max(0.0, (revenue - opex) * 0.20)
@@ -61,7 +62,7 @@ def compute(row):
     sponsor_floor = ppa_price * 0.94
     lender_floor = ppa_price * (0.96 if min_dscr >= 1.20 else 1.08)
     ppa_gate = "PASS" if customer_ceiling >= max(sponsor_floor, lender_floor) else "RENEGOTIATE"
-    finance_gate = "PASS" if min_dscr >= 1.20 and num(row, "ppa_tenor_years") >= 10 else "FAIL"
+    finance_gate = "PASS" if min_dscr >= 1.20 and num(ppa_term, "ppa_tenor_years") >= 10 else "FAIL"
     regulatory_gate = "HOLD_FOR_LEGAL_REVIEW" if "DPPA" in row["business_model_archetype"] else "PASS"
     technical_gate = "HOLD" if row["technical_status"] == "HOLD" else "PASS"
     credit_site_gate = "FAIL" if row["credit_grade"] == "D" else ("CONDITION" if row["site_continuity_grade"] == "D" else "PASS")
@@ -123,7 +124,24 @@ def write_csv(path, rows, fields):
 
 def run(root=BASE_DIR):
     raw = read_csv(root / "data/synthetic/project_master.csv")
-    projects = [compute(row) for row in raw]
+    ppa_rows = read_csv(root / "data/synthetic/ppa_terms.csv")
+    capex_rows = read_csv(root / "data/synthetic/capex.csv")
+    solar_rows = read_csv(root / "data/synthetic/solar_resource.csv")
+    ppa_by_id = {row["project_id"]: row for row in ppa_rows}
+    solar_by_id = {row["project_id"]: row for row in solar_rows}
+    capex_by_id = {}
+    for row in capex_rows:
+        capex_by_id[row["project_id"]] = capex_by_id.get(row["project_id"], 0.0) + num(row, "amount_local")
+    if set(ppa_by_id) != {row["project_id"] for row in raw}:
+        raise ValueError("PPA input coverage does not match 20-project pipeline")
+    if set(solar_by_id) != {row["project_id"] for row in raw}:
+        raise ValueError("Solar-resource input coverage does not match 20-project pipeline")
+    if set(capex_by_id) != {row["project_id"] for row in raw}:
+        raise ValueError("CAPEX input coverage does not match 20-project pipeline")
+    projects = [
+        compute(row, ppa_by_id[row["project_id"]], capex_by_id[row["project_id"]], solar_by_id[row["project_id"]])
+        for row in raw
+    ]
     assert_project_invariants(projects)
 
     selected, equity_used = select_by_value_density(projects, 150e9)
