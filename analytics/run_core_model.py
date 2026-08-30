@@ -12,6 +12,9 @@ from analytics.energy_yield import p50_p90
 from analytics.load_match_8760 import profile
 from analytics.portfolio_selection import select_by_value_density
 from analytics.qa_checks import assert_project_invariants
+from analytics.cash_flow import project_cash_flow
+from analytics.debt_sculpting import backward_capacity, forward_rebuild
+from analytics.fx_engine import translate_usd_debt_service
 
 PVOUT = {"North": 1320.0, "Central": 1480.0, "South": 1420.0}
 MASTER_SEED = 260831
@@ -366,6 +369,147 @@ def run(root=BASE_DIR):
         {"test_id": "QA-REMOTE-005", "status": "PASS", "detail": "Debt sizing closes with DSCR, LLCR and leverage caps"},
     ]
     write_csv(root / "validation/QA_REMOTE_RUN.csv", qa_rows, list(qa_rows[0]))
+
+    cash_flow_rows = []
+    sources_uses_rows = []
+    debt_schedule_rows = []
+    coverage_rows = []
+    reserve_rows = []
+    returns_rows = []
+    fx_rows = []
+    concentration = {}
+    for project in projects:
+        annual_rows = project_cash_flow(project, years=15)
+        cash_flow_rows.extend(annual_rows)
+        sources_uses_rows.append({
+            "project_id": project["project_id"],
+            "capex_uses_vnd": project["capex_vnd"],
+            "debt_sources_vnd": project["debt_vnd"],
+            "equity_sources_vnd": project["equity_required_vnd"],
+            "total_sources_vnd": project["debt_vnd"] + project["equity_required_vnd"],
+            "sources_uses_balance_vnd": project["debt_vnd"] + project["equity_required_vnd"] - project["capex_vnd"],
+        })
+        cfads_series = [project["cfads_vnd"]] * 10
+        initial, sculpted_services = backward_capacity(cfads_series, 0.085, 1.30)
+        actual_debt = min(project["debt_vnd"], initial)
+        schedule = forward_rebuild(actual_debt, cfads_series, 0.085, 1.30)
+        for year, row in enumerate(schedule, start=1):
+            debt_schedule_rows.append({
+                "project_id": project["project_id"],
+                "year": year,
+                **row,
+            })
+        discounted_10y = sum(project["cfads_vnd"] / (1.085 ** year) for year in range(1, 11))
+        discounted_15y = sum(project["cfads_vnd"] / (1.085 ** year) for year in range(1, 16))
+        llcr = discounted_10y / actual_debt if actual_debt else 0.0
+        plcr = discounted_15y / actual_debt if actual_debt else 0.0
+        coverage_rows.append({
+            "project_id": project["project_id"],
+            "minimum_dscr": project["min_dscr"],
+            "llcr": llcr,
+            "plcr": plcr,
+            "dsra_target_vnd": project["debt_service_vnd"] * 6 / 12,
+            "lockup_headroom": project["min_dscr"] - 1.25,
+            "coverage_status": "PASS" if project["min_dscr"] >= 1.20 and llcr >= 1.35 else "CONDITION",
+        })
+        dsra = project["debt_service_vnd"] * 6 / 12
+        for year, row in enumerate(schedule, start=1):
+            excess = max(0.0, project["cfads_vnd"] - row["debt_service"])
+            cash_trap = excess if project["min_dscr"] < 1.25 else 0.0
+            reserve_rows.append({
+                "project_id": project["project_id"],
+                "year": year,
+                "cfads_vnd": project["cfads_vnd"],
+                "debt_service_vnd": row["debt_service"],
+                "dsra_opening_vnd": dsra,
+                "dsra_funding_vnd": 0.0,
+                "cash_trap_vnd": cash_trap,
+                "distribution_vnd": max(0.0, excess - cash_trap),
+                "dsra_closing_vnd": dsra,
+                "waterfall_status": "CASH_TRAP" if cash_trap else "DISTRIBUTION",
+            })
+        net_equity_cash = [-(project["equity_required_vnd"])] + [
+            project["cfads_vnd"] - project["debt_service_vnd"]
+        ] * 15
+        returns_rows.append({
+            "project_id": project["project_id"],
+            "equity_required_vnd": project["equity_required_vnd"],
+            "discount_rate": 0.14,
+            "equity_npv_vnd": project["equity_npv_vnd"],
+            "equity_cashflow_year1_vnd": net_equity_cash[1],
+            "return_status": "BELOW_HURDLE" if project["equity_npv_vnd"] < 0 else "ABOVE_HURDLE",
+        })
+        usd_service = [project["debt_service_vnd"] * 0.50 / 25000.0] * 10
+        for depreciation in (0.00, 0.02, 0.04, 0.06):
+            translated = translate_usd_debt_service(usd_service, 25000.0, depreciation)
+            fx_rows.append({
+                "project_id": project["project_id"],
+                "fx_scenario": f"CRAWL_{int(depreciation * 100)}PCT",
+                "annual_depreciation": depreciation,
+                "usd_debt_fraction": 0.50,
+                "translated_debt_service_bvnd": sum(translated) / 1e9,
+            })
+        for group_key in ("parent_group_id", "industry", "region"):
+            key = (group_key, project[group_key])
+            item = concentration.setdefault(key, {"project_count": 0, "capacity_mwp": 0.0, "equity_bvnd": 0.0})
+            if project["project_id"] in selected_ids:
+                item["project_count"] += 1
+                item["capacity_mwp"] += project["proposed_capacity_kwp"] / 1000
+                item["equity_bvnd"] += project["equity_required_vnd"] / 1e9
+
+    write_csv(
+        root / "outputs/project_cash_flow.csv",
+        cash_flow_rows,
+        ["project_id", "year", "revenue_vnd", "opex_vnd", "tax_vnd", "working_capital_vnd",
+         "delta_working_capital_vnd", "capex_vnd", "cfads_vnd", "sources_vnd", "uses_vnd",
+         "sources_uses_balance_vnd"],
+    )
+    write_csv(
+        root / "outputs/sources_uses.csv",
+        sources_uses_rows,
+        ["project_id", "capex_uses_vnd", "debt_sources_vnd", "equity_sources_vnd",
+         "total_sources_vnd", "sources_uses_balance_vnd"],
+    )
+    write_csv(
+        root / "outputs/debt_schedule.csv",
+        debt_schedule_rows,
+        ["project_id", "year", "opening", "interest", "principal", "debt_service", "closing", "dscr"],
+    )
+    write_csv(
+        root / "outputs/coverage_summary.csv",
+        coverage_rows,
+        ["project_id", "minimum_dscr", "llcr", "plcr", "dsra_target_vnd", "lockup_headroom", "coverage_status"],
+    )
+    write_csv(
+        root / "outputs/reserve_waterfall.csv",
+        reserve_rows,
+        ["project_id", "year", "cfads_vnd", "debt_service_vnd", "dsra_opening_vnd",
+         "dsra_funding_vnd", "cash_trap_vnd", "distribution_vnd", "dsra_closing_vnd", "waterfall_status"],
+    )
+    write_csv(
+        root / "outputs/returns_register.csv",
+        returns_rows,
+        ["project_id", "equity_required_vnd", "discount_rate", "equity_npv_vnd",
+         "equity_cashflow_year1_vnd", "return_status"],
+    )
+    fx_fields = ["project_id", "fx_scenario", "annual_depreciation", "usd_debt_fraction", "translated_debt_service_bvnd"]
+    write_csv(root / "outputs/fx_sensitivity.csv", fx_rows, fx_fields)
+    concentration_rows = []
+    for (group_key, group_value), item in sorted(concentration.items()):
+        concentration_rows.append({
+            "dimension": group_key,
+            "dimension_value": group_value,
+            "selected_project_count": item["project_count"],
+            "selected_capacity_mwp": item["capacity_mwp"],
+            "selected_equity_bvnd": item["equity_bvnd"],
+            "equity_share": item["equity_bvnd"] / (equity_used / 1e9) if equity_used else 0.0,
+        })
+    write_csv(
+        root / "outputs/portfolio_concentration.csv",
+        concentration_rows,
+        ["dimension", "dimension_value", "selected_project_count", "selected_capacity_mwp",
+         "selected_equity_bvnd", "equity_share"],
+    )
 
     return {
         "master_seed": MASTER_SEED,
