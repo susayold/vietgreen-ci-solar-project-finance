@@ -13,6 +13,8 @@ jobs:
           python-version: '3.12'
       - name: Run data quality
         run: python -m analytics.data_quality
+      - name: Validate native workbook
+        run: python -m analytics.validate_workbook
       - name: Run remote model
         run: python -m analytics.run_core_model
       - name: Run tests
