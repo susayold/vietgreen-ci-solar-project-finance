@@ -1,6 +1,6 @@
 # LENDER CREDIT MEMO — CANDIDATE
 
-Candidate: 9 selected projects / 11.1 MWp; provisional pooled debt 87.18547 BVND; pooled DSCR 1.476303x.
+Candidate: 8 selected projects / 9.9 MWp; provisional pooled debt 67.403216 BVND; pooled DSCR 1.476303x.
 
 Public ADB/FMO/responsAbility precedents support structure plausibility only; they do not prove VietGreen leverage, DSCR, spread, tenor or covenants.
 

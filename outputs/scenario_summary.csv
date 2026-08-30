@@ -1,14 +1,14 @@
 scenario_id,cfads_factor,portfolio_cfads_bvnd,portfolio_dscr,mechanism_note
-BASE_SPONSOR,1,19.616731,1.476303,base case
-P90_ENERGY,0.9,17.655058,1.328673,P90 energy haircut
-CAPEX_OVERRUN,0.95,18.635894,1.402488,debt sizing / equity pressure diagnostic
-COD_DELAY,0.94,18.439727,1.387725,delayed first-year CFADS diagnostic
-INTEREST_RATE_SHOCK,0.92,18.047392,1.358199,higher debt-service diagnostic
-FX_CRAWL,1,19.616731,1.476303,USD debt translated period-by-period
-FX_ONE_OFF,1,19.616731,1.476303,one-off translation shock
-DSO_DELAY,0.98,19.224396,1.446777,working-capital drag
-OFFTAKER_PARTIAL_NONPAYMENT,0.9,17.655058,1.328673,one-off partial non-payment
-OFFTAKER_DEFAULT_TERMINATION,0.84,16.478054,1.240095,termination / replacement diagnostic
-SITE_CONTINUITY_EVENT,0.88,17.262723,1.299147,site continuity haircut
-COMBINED_DOWNSIDE,0.68,13.339377,1.003886,combined downside diagnostic
-PORTFOLIO_COMMON_FACTOR_DOWNSIDE,0.78,15.30105,1.151517,common-factor concentration diagnostic
+BASE_SPONSOR,1,15.165724,1.476303,base case
+P90_ENERGY,0.9,13.649151,1.328673,P90 energy haircut
+CAPEX_OVERRUN,0.95,14.407437,1.402488,debt sizing / equity pressure diagnostic
+COD_DELAY,0.94,14.25578,1.387725,delayed first-year CFADS diagnostic
+INTEREST_RATE_SHOCK,0.92,13.952466,1.358199,higher debt-service diagnostic
+FX_CRAWL,1,15.165724,1.476303,USD debt translated period-by-period
+FX_ONE_OFF,1,15.165724,1.476303,one-off translation shock
+DSO_DELAY,0.98,14.862409,1.446777,working-capital drag
+OFFTAKER_PARTIAL_NONPAYMENT,0.9,13.649151,1.328673,one-off partial non-payment
+OFFTAKER_DEFAULT_TERMINATION,0.84,12.739208,1.240095,termination / replacement diagnostic
+SITE_CONTINUITY_EVENT,0.88,13.345837,1.299147,site continuity haircut
+COMBINED_DOWNSIDE,0.68,10.312692,1.003886,combined downside diagnostic
+PORTFOLIO_COMMON_FACTOR_DOWNSIDE,0.78,11.829264,1.151517,common-factor concentration diagnostic

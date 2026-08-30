@@ -1,8 +1,8 @@
 # INVESTMENT COMMITTEE MEMO — CANDIDATE
 
-Candidate portfolio: 9 projects / 11.1 MWp; pooled debt 87.18547 BVND; pooled DSCR 1.476303x; equity used 148.68953 BVND.
+Candidate portfolio: 8 projects / 9.9 MWp; pooled debt 67.403216 BVND; pooled DSCR 1.476303x; equity used 142.971784 BVND.
 
-Recommendation: INVEST_WITH_CONDITIONS. The shortlist passes screening hard gates, but the base sponsor NPV is -109.81579 BVND; close requires PPA repricing, CAPEX reduction, or another documented value lever that clears the equity hurdle.
+Recommendation: INVEST_WITH_CONDITIONS. The shortlist passes screening hard gates, but the base sponsor NPV is -112.918438 BVND; close requires PPA repricing, CAPEX reduction, or another documented value lever that clears the equity hurdle.
 
 Conditions:
 1. Complete live legal, billing, tax, site, insurance and PPA diligence.
