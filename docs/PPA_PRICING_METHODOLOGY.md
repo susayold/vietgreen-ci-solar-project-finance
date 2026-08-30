@@ -1,5 +1,12 @@
 # PPA_PRICING_METHODOLOGY
 
-Customer Ceiling preserves customer savings; Sponsor Floor clears Equity NPV/hurdle; Lender Floor clears coverage, LLCR, contract tail and security assumptions.
+The PPA screen is a three-sided frontier, not a single tariff comparison.
 
-Negotiation zone = max(Sponsor Floor, Lender Floor) ≤ PPA price ≤ Customer Ceiling. Solver outputs convergence and binding condition.
+For each project:
+
+- customer ceiling = maximum acceptable price from avoided-cost and billing assumptions;
+- sponsor floor = minimum price under the sponsor-side commercial screen;
+- lender floor = minimum price under debt-service/credit protections;
+- feasible negotiation interval = [max(sponsor floor, lender floor), customer ceiling].
+
+If the lower bound exceeds the upper bound, the project is RENEGOTIATE even if its technical profile is attractive. Legal applicability and billed tariff status are separate switches; a legal effective date is not silently treated as a billing schedule.
