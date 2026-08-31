@@ -5,11 +5,11 @@ Date: 2026-08-31
 Source register: SR-1.13-utility-implementation-readiness (latest live source: SRC-REFRESH-EVN-20260831; corroborating EVNSPC notice SRC-REFRESH-EVNSPC-20260715, pricing portal SRC-REFRESH-EVNSPC-PRICING-20260831, meter-training notice SRC-REFRESH-EVNSPC-TRAINING-20260527 and IT readiness note SRC-REFRESH-EVNSPC-IT-20260525; latest tax watch: SRC-REFRESH-TAX-20260831)
 Repository: https://github.com/susayold/vietgreen-ci-solar-project-finance
 Workflow source commit: b7ac7ab507487d4ba021064c8cdeadb29fcefc44
-Workbook/remote-output refresh commit: d4e4e2f1e5981509ecc53c5fec4d1db00faaf4c8
-Workflow run: 33362871604
-Workflow job: 99397534044
-Artifact: vietgreen-core-outputs, ID 9747272913
-Artifact digest: sha256:d98e61282a9fbc564bc5078a805d64009ef1f2906a288cb3ec541f4704db93d6
+Workbook/remote-output refresh commit: 02b3fc9bc9c39728b5796db34184ddd7778e5edb
+Workflow run: 33367160495
+Workflow job: 99410087552
+Artifact: vietgreen-core-outputs, ID 9748676847
+Artifact digest: sha256:3f1f7c193192ca4bd652a131e453e9bd7cd996592f0f2343b081664618fdba70
 
 ## Gate summary
 
@@ -20,14 +20,14 @@ Artifact digest: sha256:d98e61282a9fbc564bc5078a805d64009ef1f2906a288cb3ec541f47
 - Automated tests: 7 passed.
 - Release controls: 13 mechanical PASS, 1 candidate WARN for post-run manifest linkage.
 - External validation: 9 registered rows; tax amendment watch added without changing effective model inputs.
-- Native workbook: 22 sheets, 116807 bytes; blob c45b996de6cc364062966638da73666629179638.
+- Native workbook: 22 sheets, 117493 bytes; SHA-256 9e72588fd7a084282befa74dd0f97036f15e1f306aac6080fc86fdd75f605c5f; blob c0d2e2dadf3720a35b9101205efdec108425bec5.
 - Construction schedule: 240 rows; capitalised IDC proxy rate 8.5%; sources and uses reconciled.
 - Portfolio: 11 selected projects, 13.10 MWp, pooled DSCR 1.300x, sponsor NPV -66.202345 BVND.
 - Remote 8,760 streams: four artifact-only streams, each 175,200 rows: Parquet load/solar plus deterministic CSV.GZ compatibility streams; index validation PASS.
 - Remote index SHA-256: d5f0e3822b126239c85756feda029fc40c793aa28f707cec0fd40b081e338cc0.
-- File-level reproducibility: push run 33362871604 and same-head workflow_dispatch run 33362978966 / job 99397849553 were compared by remote comparator run 33363289510 / job 99398752408; the index, native workbook bytes and all four hourly stream bytes matched (6/6 compared files).
+- File-level reproducibility: push run 33367160495 and same-head workflow_dispatch run 33367239508 / job 99410324360 were compared by remote comparator run 33367293807 / job 99410490341; baseline artifact 9748676847 and repeat artifact 9748704397 matched the index, native workbook bytes and all four hourly stream bytes (6/6 compared files).
 - Master Plan V3 DoD audit: 65 rows, 62 PASS, 2 PARTIAL and 1 PENDING; workflow 33366770050 / job 99408939518 passed all evidence-path and status-consistency checks; CSV SHA-256 ce48a0fa0ca91f68538d35d09829ffaebb4367cca62918023196ede422b0153f, blob 063a51a4950b3be8fce07499aa06acb8477c3d0b.
-- Reproducibility comparator metadata: artifact 9747403047, digest sha256:6ac16bc4879ef269180cee5032d177a57b05a372dd8bcc69cc45c7adc99bf0a3; CSV SHA-256 eb571d45c45d54babb7e7dc23373d9ce35cec6fdcc2155420bca7546d42f79c0, blob e9885d5a33d94f5fc8169d1121a036e135e68ba8, 1,389 bytes; raw artifact contents were not stored.
+- Reproducibility comparator metadata: artifact 9748718166, digest sha256:5b445b9ad1b8b292edf19197ca25b7a7ecf7c4204d9d788baaed21afca483b3e; CSV SHA-256 28b02df8bfa8516586597a374ac11fe02907056f3f787de34675683ab7a9b8df, blob 987e1605aecdd89525e76a9e29737401e9aa882c, 1,389 bytes; raw artifact contents were not stored.
 - Tariff: WATCH pending billed implementation confirmation.
 - Tax: WATCH for the official 2026-08-28 draft amendment; current registered tax rules remain unchanged in the model.
 - Release status: candidate.

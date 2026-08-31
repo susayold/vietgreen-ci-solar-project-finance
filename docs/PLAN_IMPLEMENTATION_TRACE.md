@@ -48,7 +48,7 @@ Status: PASS WITH NEGATIVE BASE SPONSOR NPV; recommendation is conditional and t
 
 ## H. Validation and release
 
-Latest core remote run: 33362871604 / job 99397534044; latest source-refresh run: 33366510106 / job 99408166781; 20/20 DQ; 20/20 dynamic remote QA; 31/31 workbook checks; 7/7 tests; 13/13 mechanical release controls plus 1 candidate-manifest warning; 240 construction schedule rows; 9 external-validation rows; 16 official URLs returned 13 PASS and 3 non-blocking WARNs; four remote 8,760 streams (Parquet plus deterministic CSV.GZ compatibility) remain artifact-only with local_storage NONE.
+Latest core remote run: 33367160495 / job 99410087552; latest source-refresh run: 33366510106 / job 99408166781; 20/20 DQ; 20/20 dynamic remote QA; 31/31 workbook checks; 7/7 tests; 13/13 mechanical release controls plus 1 candidate-manifest warning; 240 construction schedule rows; 9 external-validation rows; 16 official URLs returned 13 PASS and 3 non-blocking WARNs; four remote 8,760 streams (Parquet plus deterministic CSV.GZ compatibility) remain artifact-only with local_storage NONE.
 
 ## I. Recruiter-facing communication
 
@@ -70,8 +70,8 @@ Independent final model review; billed tariff confirmation; transaction-specific
 
 Release 1.2.0 remains candidate with PASS_WITH_LIMITATIONS. recruiter_ready remains false until the external gates are closed.
 
-Reproducibility control: remote push run 33362871604 and same-head workflow_dispatch run 33362978966 / job 99397849553 both succeeded and produced identical native workbook SHA-256 e01406f644ab6a9d810ca6dd5c31d240ec2ed99ff7f73e593d0f756cae2ff03a; comparator run 33363289510 / job 99398752408 compared the index, native workbook and all four hourly streams with 6/6 matches; comparison metadata artifact 9747403047 was recorded without raw artifact contents; reproducibility_check_status=PASS.
+Reproducibility control: remote push run 33367160495 and same-head workflow_dispatch run 33367239508 / job 99410324360 both succeeded and produced identical native workbook SHA-256 9e72588fd7a084282befa74dd0f97036f15e1f306aac6080fc86fdd75f605c5f; comparator run 33367293807 / job 99410490341 compared the index, native workbook and all four hourly streams with 6/6 matches; comparison metadata artifact 9748718166 was recorded without raw artifact contents; reproducibility_check_status=PASS.
 
 ## L. Final remote output refresh
 
-A final push-triggered core rebuild is queued after the SR-1.13 evidence registration so the repository workbook and output hashes are regenerated against the current remote source of truth.
+The final push-triggered core rebuild completed in workflow 33367160495 / job 99410087552; the repository workbook is now regenerated against SR-1.13 with SHA-256 9e72588fd7a084282befa74dd0f97036f15e1f306aac6080fc86fdd75f605c5f and 117493 bytes. Same-head run 33367239508 / job 99410324360 and comparator 33367293807 / job 99410490341 matched 6/6 files.

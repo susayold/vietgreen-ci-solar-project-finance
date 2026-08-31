@@ -35,14 +35,14 @@ This is a reviewable candidate, not a lender approval, bankable P90 case, legal 
 
 ## Latest remote verification
 
-- Workflow run: https://github.com/susayold/vietgreen-ci-solar-project-finance/actions/runs/33362871604
-- Workflow job: 99397534044.
+- Workflow run: https://github.com/susayold/vietgreen-ci-solar-project-finance/actions/runs/33367160495
+- Workflow job: 99410087552.
 - Workflow source commit: b7ac7ab507487d4ba021064c8cdeadb29fcefc44.
-- Workbook refresh commit: d4e4e2f1e5981509ecc53c5fec4d1db00faaf4c8.
-- Artifact: vietgreen-core-outputs, ID 9747272913.
-- Artifact digest: sha256:d98e61282a9fbc564bc5078a805d64009ef1f2906a288cb3ec541f4704db93d6.
-- Native workbook: 22 sheets, 116807 bytes; SHA-256 e01406f644ab6a9d810ca6dd5c31d240ec2ed99ff7f73e593d0f756cae2ff03a; GitHub blob c45b996de6cc364062966638da73666629179638.
-- Same-head reproducibility run: 33362978966 / job 99397849553; remote comparator: 33363289510 / job 99398752408; 6/6 file hashes matched, with raw artifact contents not stored.
+- Workbook refresh commit: 02b3fc9bc9c39728b5796db34184ddd7778e5edb.
+- Artifact: vietgreen-core-outputs, ID 9748676847.
+- Artifact digest: sha256:3f1f7c193192ca4bd652a131e453e9bd7cd996592f0f2343b081664618fdba70.
+- Native workbook: 22 sheets, 117493 bytes; SHA-256 9e72588fd7a084282befa74dd0f97036f15e1f306aac6080fc86fdd75f605c5f; GitHub blob c0d2e2dadf3720a35b9101205efdec108425bec5.
+- Same-head reproducibility run: 33367239508 / job 99410324360; remote comparator: 33367293807 / job 99410490341; 6/6 file hashes matched, with raw artifact contents not stored.
 
 ## Reproducibility and storage
 

@@ -12,12 +12,12 @@ The project data-room is represented by the repository, the workflow artifact an
 
 - Release candidate: 1.2.0.
 - Workflow source commit: b7ac7ab507487d4ba021064c8cdeadb29fcefc44.
-- Workbook refresh commit: d4e4e2f1e5981509ecc53c5fec4d1db00faaf4c8.
-- Workflow run: 33362871604.
-- Workflow job: 99397534044.
-- Artifact: vietgreen-core-outputs, ID 9747272913.
-- Artifact digest: sha256:d98e61282a9fbc564bc5078a805d64009ef1f2906a288cb3ec541f4704db93d6.
-- Native workbook: 22 sheets, 116807 bytes, SHA-256 e01406f644ab6a9d810ca6dd5c31d240ec2ed99ff7f73e593d0f756cae2ff03a; current blob is recorded in release/MODEL_RELEASE_MANIFEST.json.
+- Workbook refresh commit: 02b3fc9bc9c39728b5796db34184ddd7778e5edb.
+- Workflow run: 33367160495.
+- Workflow job: 99410087552.
+- Artifact: vietgreen-core-outputs, ID 9748676847.
+- Artifact digest: sha256:3f1f7c193192ca4bd652a131e453e9bd7cd996592f0f2343b081664618fdba70.
+- Native workbook: 22 sheets, 117493 bytes, SHA-256 9e72588fd7a084282befa74dd0f97036f15e1f306aac6080fc86fdd75f605c5f; current blob is recorded in release/MODEL_RELEASE_MANIFEST.json.
 - Data quality: 20 checks, 0 failures.
 - Dynamic remote QA: 20 checks, 0 failures.
 - Workbook validation: 31 checks, 0 failures.
@@ -28,7 +28,7 @@ The project data-room is represented by the repository, the workflow artifact an
 - Official source refresh: `.github/workflows/source-refresh.yml` crawls 16 controlled public URLs remotely and commits metadata only to `evidence/REMOTE_SOURCE_LIVE_CHECK.csv`. Latest run 33366510106 / job 99408166781: 13 PASS / 3 non-blocking WARNs (MOIT runner network-unreachable on two pages; NREL DNS); artifact 9748486524, digest sha256:bbafe54b9991fb90b74ce39ca089c6b937855660411c3cfe859da506bff327aa; raw snapshots FALSE.
 - Locked input hashes: PASS.
 - Remote 8,760 artifact streams: 175,200 rows each in plan-specified Parquet plus CSV.GZ compatibility format; local_storage NONE.
-- Same-head remote comparator: 33363289510 / job 99398752408; 6/6 target files matched, comparison metadata artifact 9747403047, raw artifact contents not stored.
+- Same-head remote comparator: 33367293807 / job 99410490341; 6/6 target files matched, baseline artifact 9748676847 and repeat artifact 9748704397; comparison metadata artifact 9748718166, raw artifact contents not stored.
 - Full Master Plan V3 DoD audit: 65 rows, 62 PASS, 2 PARTIAL and 1 PENDING; workflow 33366770050 / job 99408939518 passed all 190 evidence-path checks. See validation/PLAN_DOD_AUDIT.csv.
 
 ## Candidate economics

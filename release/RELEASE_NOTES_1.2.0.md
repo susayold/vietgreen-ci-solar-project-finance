@@ -23,16 +23,16 @@ Date: 2026-08-31
 
 - Regulatory refresh: EVN Bulletin No. 16/2026 and Decree 278/2026/ND-CP were registered as current official references; billed implementation remains WATCH.
 
-- Workflow run 33362871604 / job 99397534044.
+- Workflow run 33367160495 / job 99410087552; artifact 9748676847, digest sha256:3f1f7c193192ca4bd652a131e453e9bd7cd996592f0f2343b081664618fdba70.
 - 20/20 data-quality checks; 20/20 dynamic remote QA checks.
 - 31/31 workbook checks; 7/7 automated tests.
 - 13/13 mechanical release controls pass; 1 candidate-manifest warning.
 - 9 external-validation rows registered; 16 official source URLs live-checked remotely with raw snapshots disabled.
-- Artifact vietgreen-core-outputs, ID 9747272913, digest sha256:d98e61282a9fbc564bc5078a805d64009ef1f2906a288cb3ec541f4704db93d6.
-- Independent same-head workflow_dispatch run 33362978966 / job 99397849553 succeeded.
-- Remote comparator run 33363289510 / job 99398752408 downloaded both core artifacts in memory and matched the native workbook, 8760 index and all four hourly streams (6/6); comparison metadata artifact 9747403047 was stored without raw artifact contents.
+- Artifact vietgreen-core-outputs, ID 9748676847, digest sha256:3f1f7c193192ca4bd652a131e453e9bd7cd996592f0f2343b081664618fdba70; native workbook SHA-256 9e72588fd7a084282befa74dd0f97036f15e1f306aac6080fc86fdd75f605c5f, 117493 bytes.
+- Independent same-head workflow_dispatch run 33367239508 / job 99410324360 succeeded; artifact 9748704397, digest sha256:714cba930edeb46a34dd780f3b372855e2b39eab646f8328757da6c74dbf8d24.
+- Remote comparator run 33367293807 / job 99410490341 downloaded both core artifacts in memory and matched the native workbook, 8760 index and all four hourly streams (6/6); comparison metadata artifact 9748718166 was stored without raw artifact contents.
 
-- Comparator metadata: SHA-256 eb571d45c45d54babb7e7dc23373d9ce35cec6fdcc2155420bca7546d42f79c0, 1,389 bytes, GitHub blob e9885d5a33d94f5fc8169d1121a036e135e68ba8; raw_artifact_contents_stored=FALSE.
+- Comparator metadata: SHA-256 28b02df8bfa8516586597a374ac11fe02907056f3f787de34675683ab7a9b8df, 1,389 bytes, GitHub blob 987e1605aecdd89525e76a9e29737401e9aa882c; raw_artifact_contents_stored=FALSE.
 
 - Full DoD audit workflow 33366770050 / job 99408939518 passed 65/65 rows and 190/190 evidence-path checks: 62 PASS, 2 PARTIAL and 1 PENDING.
 
