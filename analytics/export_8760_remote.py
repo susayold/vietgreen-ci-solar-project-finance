@@ -9,6 +9,7 @@ from __future__ import annotations
 import csv
 import gzip
 import hashlib
+import io
 from pathlib import Path
 
 import pyarrow as pa
@@ -28,11 +29,18 @@ def projects():
 
 
 def write_profile(path, records, fields):
+    """Write a byte-reproducible gzip CSV stream to the ephemeral runner."""
     path.parent.mkdir(parents=True, exist_ok=True)
-    with gzip.open(path, "wt", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fields)
-        writer.writeheader()
-        writer.writerows(records)
+    with path.open("wb") as raw_handle:
+        with gzip.GzipFile(
+            fileobj=raw_handle, mode="wb", filename="", mtime=0
+        ) as compressed:
+            with io.TextIOWrapper(
+                compressed, newline="", encoding="utf-8"
+            ) as handle:
+                writer = csv.DictWriter(handle, fieldnames=fields)
+                writer.writeheader()
+                writer.writerows(records)
 
 
 def write_parquet(path, records):
