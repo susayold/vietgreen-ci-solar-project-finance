@@ -16,6 +16,7 @@ Date: 2026-08-31
 - Added Decree 278/2026/ND-CP as a locked legal dependency in the tariff/billing chain; it does not by itself prove invoice cutover.
 - Added a metadata-only fingerprint of the user-provided Master Plan V3; no raw plan copy was stored by the agent.
 - Added a fail-closed remote external-gate submission schema and GitHub Actions validator; no submission is present yet.
+- Enabled a weekly Monday 02:00 UTC metadata-only official-source recheck with no raw snapshot storage.
 - External-gate validator run 33370201444 / job 99419321412 passed with 8 gate rows and 0 submissions; all eight gates remain OPEN.
 
 ## Verified

@@ -52,8 +52,8 @@
   "external_validation_rows": 9,
   "latest_benchmark_refresh_source_id": "SRC-IRENA-2025",
   "git_commit": "02b3fc9bc9c39728b5796db34184ddd7778e5edb",
-  "release_metadata_parent_commit": "555f87370dc4814f6aacf4e0c4d3f761c9c28d0f",
-  "release_timestamp_utc": "2026-08-31T07:55:00Z",
+  "release_metadata_parent_commit": "bfc8d40ec1f7d3619ec8fc6ac4d3594808845c9e",
+  "release_timestamp_utc": "2026-08-31T07:54:00Z",
   "excel_file": {
     "path": "model/vietgreen_core_model.xlsx",
     "sha256": "9e72588fd7a084282befa74dd0f97036f15e1f306aac6080fc86fdd75f605c5f",
@@ -156,5 +156,7 @@
   "external_gate_validation_workflow": ".github/workflows/external-gate-validation.yml",
   "external_gate_validation_status": "PASS_EMPTY_SUBMISSIONS",
   "external_gate_validation_run_id": 33370201444,
-  "external_gate_validation_job_id": 99419321412
+  "external_gate_validation_job_id": 99419321412,
+  "source_refresh_schedule": "0 2 * * 1 (UTC)",
+  "source_refresh_schedule_status": "ACTIVE"
 }
