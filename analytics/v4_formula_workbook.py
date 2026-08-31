@@ -11,7 +11,7 @@ import html
 import zipfile
 from pathlib import Path
 
-from analytics.v4_phase1_engine import ARCHETYPES, ROOT, num, project_ledger, read_csv
+from analytics.v4_phase1_engine import ARCHETYPES, EQUITY_RATE, PROJECT_RATE, ROOT, num, project_ledger, read_csv
 
 OUT = ROOT / "model" / "vietgreen_v4_formula_model.xlsx"
 NS_MAIN = "http://schemas.openxmlformats.org/spreadsheetml/2006/main"
@@ -35,13 +35,14 @@ def cell_xml(ref, value=None, formula=None, style=0):
     if style:
         attributes += ' s="%d"' % style
     if formula is not None:
+        formula_text = formula[1:] if str(formula).startswith("=") else str(formula)
         if isinstance(value, bool):
             cached = "1" if value else "0"
         elif value is None:
             cached = "0"
         else:
             cached = str(value)
-        return '<c%s><f>%s</f><v>%s</v></c>' % (attributes, esc(formula), esc(cached))
+        return '<c%s><f>%s</f><v>%s</v></c>' % (attributes, esc(formula_text), esc(cached))
     if value is None:
         return '<c%s><v></v></c>' % attributes
     if isinstance(value, bool):
