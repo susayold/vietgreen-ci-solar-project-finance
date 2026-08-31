@@ -12,7 +12,7 @@ The project data-room is represented by the repository, the workflow artifact an
 
 - Release candidate: 1.2.0.
 - Workflow source commit: c9d7e9712c2b6f868a4eaf042204257a8a2965a8.
-- Workbook refresh commit: 2abe6a965380390f041955fdde05977345e310f4.
+- Workbook refresh commit: 669e33324c162955981314d31a8e3b40937aeff9.
 - Workflow run: 33356405815.
 - Workflow job: 99379325568.
 - Artifact: vietgreen-core-outputs, ID 9745267596.
