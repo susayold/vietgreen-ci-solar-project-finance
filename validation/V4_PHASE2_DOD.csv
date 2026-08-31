@@ -1,0 +1,7 @@
+dod_id,requirement,status,metric,evidence_path
+V4-G2-01,"VND, unhedged USD and hedged USD funding cases include initial equity",PASS,63 funding rows,outputs/fx_funding_comparison_v4.csv
+V4-G2-02,Primary and secondary FX break-even outputs exist,PASS,20 project rows,outputs/fx_break_even_v4.csv
+V4-G2-03,Exposure-based parent/industry/region/debt constraints are explicit,PASS,20 optimizer rows,outputs/portfolio_exposure_v4.csv
+V4-G2-04,Standalone versus pooled financing is reconciled,PASS,1 pooled summary row(s),outputs/pooling_comparison_v4.csv
+V4-G3-01,Sponsor NPV/IRR and DSCR are present in Phase 2 scenario rows,PASS,7 scenario rows,outputs/scenario_summary_v4_phase2.csv
+V4-G3-02,Positive-NPV selection remains enforced after exposure optimization,PASS,selected_negative_npv_rows=0,outputs/portfolio_exposure_v4.csv

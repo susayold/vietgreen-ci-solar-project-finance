@@ -1,0 +1,8 @@
+qa_id,requirement,status,metric,evidence_path
+FX-001,Zero-depreciation USD case includes initial equity and reconciles to its VND-equivalent target,FAIL,0/20,outputs/fx_break_even_v4.csv
+FX-002,VND reference case is independent of FX translation,PASS,reference is VND-denominated,outputs/project_returns_v4.csv
+FX-003,Primary break-even equality is solved and labelled when bracketed,PASS,20/20 primary roots,outputs/fx_break_even_v4.csv
+FX-004,More unhedged depreciation cannot improve USD Equity NPV,PASS,20/20 monotonic rows,outputs/fx_break_even_v4.csv
+FX-005,More unhedged depreciation cannot improve USD DSCR,PASS,20/20 monotonic rows,outputs/fx_break_even_v4.csv
+FX-006,Hedge changes FX sensitivity and records an explicit fee,PARTIAL,fee=1.50%,outputs/fx_funding_comparison_v4.csv
+FX-007,"USD debt fraction switch is exercised at 0%, 50% and 100%",PASS,fractions=0/50/100,outputs/fx_funding_comparison_v4.csv
