@@ -48,6 +48,7 @@ def fetch(row: dict[str, str]) -> dict[str, str]:
         status = ""
         content_type = ""
         final_url = row["url"]
+        truncated = False
         try:
             request = Request(
                 row["url"],
