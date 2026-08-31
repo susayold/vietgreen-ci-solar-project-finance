@@ -13,10 +13,10 @@ The current workbook contains 22 sheets covering cover, assumptions, regulatory/
 ## Integrity controls
 
 - Release candidate: 1.2.0.
-- Workflow run: 33355268974 / job 99376083185.
-- Workflow source commit: 95af3267ebfc615e194323f1fa503c2d13bad5bb.
-- Workbook refresh commit: 2abe6a965380390f041955fdde05977345e310f4.
-- Artifact digest: sha256:1539f7410e98dc8a1c5493f5e898b9eacb6e6fac2fae7566e0457441683ccf8b.
+- Workflow run: 33356405815 / job 99379325568.
+- Workflow source commit: c9d7e9712c2b6f868a4eaf042204257a8a2965a8.
+- Workbook refresh commit: 669e33324c162955981314d31a8e3b40937aeff9.
+- Artifact digest: sha256:b98a6c21209a644dfd0a32509d5ee008b928e409fdae825873e053366a319b53.
 - Workbook validation: 31 checks, 0 failures.
 - Workbook blob: c160cb5b630f653c68343381a8d0d514faa54b02.
 - Workbook size: 116230 bytes.
