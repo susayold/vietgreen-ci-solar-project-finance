@@ -9,12 +9,12 @@ The project data-room is represented by the repository, the workflow artifact an
 ## Latest release evidence
 
 - Release candidate: 1.2.0.
-- Workflow source commit: 09a8798d1a11da3ef378fa3989ff5f4085409b40.
-- Workbook refresh commit: 5324dbfbc7ec089e8f0b4a277325fa5fda910528.
-- Workflow run: 33352584933.
-- Workflow job: 99368667146.
-- Artifact: vietgreen-core-outputs, ID 9744107232.
-- Artifact digest: sha256:214ce6e232e3b8423c39a1a1632b844501181a091f844005074c4309d2657ac1.
+- Workflow source commit: 95af3267ebfc615e194323f1fa503c2d13bad5bb.
+- Workbook refresh commit: 1139ba3424d54d0387d24499dd18284e8f79ed72.
+- Workflow run: 33353141725.
+- Workflow job: 99370175281.
+- Artifact: vietgreen-core-outputs, ID 9744264357.
+- Artifact digest: sha256:18227bd8b766ac664becc7f706849d5382fe4f71ef6d6b97fe9ce303ea136ca8.
 - Native workbook: 22 sheets; current blob is recorded in release/MODEL_RELEASE_MANIFEST.json.
 - Data quality: 20 checks, 0 failures.
 - Dynamic remote QA: 20 checks, 0 failures.

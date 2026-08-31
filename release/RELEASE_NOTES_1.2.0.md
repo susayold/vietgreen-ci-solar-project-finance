@@ -14,11 +14,11 @@ Date: 2026-08-31
 
 ## Verified
 
-- Workflow run 33352584933 / job 99368667146.
+- Workflow run 33353141725 / job 99370175281.
 - 20/20 data-quality checks; 20/20 dynamic remote QA checks.
 - 31/31 workbook checks; 7/7 automated tests.
 - 13/13 mechanical release controls pass; 1 candidate-manifest warning.
-- Artifact vietgreen-core-outputs, ID 9744107232, digest sha256:214ce6e232e3b8423c39a1a1632b844501181a091f844005074c4309d2657ac1.
+- Artifact vietgreen-core-outputs, ID 9744264357, digest sha256:18227bd8b766ac664becc7f706849d5382fe4f71ef6d6b97fe9ce303ea136ca8.
 
 ## Economics
 

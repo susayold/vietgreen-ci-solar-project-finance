@@ -7,4 +7,4 @@ This static landing page is an aggregate-only communication layer for release ca
 - Control record: [Google Drive execution-control document](https://docs.google.com/document/d/1koSgbc1Akic6cVDFD1svmuVN9gSq8qSGUw2obfHYN80/edit)
 - Release status: candidate / PASS_WITH_LIMITATIONS
 - No raw 8,760 streams, hidden truth, credentials, personal information or project-sensitive data is embedded in the page.
-- Metrics are synchronized to workflow run 33352584933 and artifact digest sha256:214ce6e232e3b8423c39a1a1632b844501181a091f844005074c4309d2657ac1.
+- Metrics are synchronized to workflow run 33353141725 and artifact digest sha256:18227bd8b766ac664becc7f706849d5382fe4f71ef6d6b97fe9ce303ea136ca8.
