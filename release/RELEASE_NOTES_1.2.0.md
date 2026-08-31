@@ -35,3 +35,6 @@ The IDC-inclusive run selects 11 projects at 13.10 MWp, with 138.143294 BVND equ
 ## Release boundary
 
 Status remains candidate / PASS_WITH_LIMITATIONS. Billed tariff implementation, tax counsel/recheck, transaction-specific legal/foreign-borrowing review, independent model review, lender/technical/site diligence, bankable P90, executed PPA and security evidence remain open.
+
+
+Pages deployment: 33360824385 / job 99391696231; aggregate-only boundary check PASS.
