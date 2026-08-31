@@ -18,6 +18,8 @@ Implemented: 20 in-memory 8,760 load/solar profiles, P50/P90 flow-through, P90 <
 
 Status: PASS for synthetic mechanics; external PPA, site, technical-yield and billed-tariff evidence remain open.
 
+Remote-format note: the plan names Parquet for hourly deliverables, but the remote-only implementation publishes compressed CSV.GZ streams in the GitHub Actions artifact with an explicit schema/index. No hourly stream is committed to the public repository or desktop workspace.
+
 ## D. CAPEX, construction, tax, VAT, WC and terminal
 
 Implemented: six-category bottom-up CAPEX; 12-month construction spend curve; monthly gross/net/VAT/IDC schedule; capitalised IDC proxy at 8.5%; reconciled total uses and depreciable basis; tax/loss-carryforward proxy; DSO working capital; major maintenance; zero-terminal branch; explicit year-zero full-equity no-debt pass.
