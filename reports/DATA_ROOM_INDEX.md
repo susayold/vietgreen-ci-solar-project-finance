@@ -29,7 +29,7 @@ The project data-room is represented by the repository, the workflow artifact an
 - Locked input hashes: PASS.
 - Remote 8,760 artifact streams: 175,200 rows each in plan-specified Parquet plus CSV.GZ compatibility format; local_storage NONE.
 - Same-head remote comparator: 33363289510 / job 99398752408; 6/6 target files matched, comparison metadata artifact 9747403047, raw artifact contents not stored.
-- Full Master Plan V3 DoD audit: 65 rows, 62 PASS, 2 PARTIAL and 1 PENDING; workflow 33365390343 / job 99404866127 passed all 190 evidence-path checks. See validation/PLAN_DOD_AUDIT.csv.
+- Full Master Plan V3 DoD audit: 65 rows, 62 PASS, 2 PARTIAL and 1 PENDING; workflow 33366088337 / job 99406928185 passed all 190 evidence-path checks. See validation/PLAN_DOD_AUDIT.csv.
 
 ## Candidate economics
 

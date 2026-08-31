@@ -34,7 +34,7 @@ Date: 2026-08-31
 
 - Comparator metadata: SHA-256 eb571d45c45d54babb7e7dc23373d9ce35cec6fdcc2155420bca7546d42f79c0, 1,389 bytes, GitHub blob e9885d5a33d94f5fc8169d1121a036e135e68ba8; raw_artifact_contents_stored=FALSE.
 
-- Full DoD audit workflow 33365390343 / job 99404866127 passed 65/65 rows and 190/190 evidence-path checks: 62 PASS, 2 PARTIAL and 1 PENDING.
+- Full DoD audit workflow 33366088337 / job 99406928185 passed 65/65 rows and 190/190 evidence-path checks: 62 PASS, 2 PARTIAL and 1 PENDING.
 
 ## Economics
 
