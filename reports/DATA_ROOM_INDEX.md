@@ -8,15 +8,15 @@ The project data-room is represented by the repository, the workflow artifact an
 
 ## Latest release evidence
 
-- Source register: SR-1.7-tax-draft-watch; latest live evidence row: SRC-REFRESH-EVN-20260831.
+- Source register: SR-1.8-tax-tariff-watch; latest live evidence row: SRC-REFRESH-EVN-20260831.
 
 - Release candidate: 1.2.0.
-- Workflow source commit: 5e3e3f4801bb4abfad4ca1b7b569c5c58efcdead.
+- Workflow source commit: 65211674fa79047cb5862798677a11ad8f0a8333.
 - Workbook refresh commit: d50f918d4a4756a78d4e82ae786136cbf3d38ec7.
-- Workflow run: 33358923808.
-- Workflow job: 99386362961.
-- Artifact: vietgreen-core-outputs, ID 9746043440.
-- Artifact digest: sha256:5148efc5e4b6461db83736221a500bc926a2764c176e85851c5217283c5d1784.
+- Workflow run: 33359778838.
+- Workflow job: 99388771448.
+- Artifact: vietgreen-core-outputs, ID 9746298888.
+- Artifact digest: sha256:87e1c95bb9924b943458f31c8ea8ffb7e79df20fbc1a702d9d0cfdf8963c9fde.
 - Native workbook: 22 sheets; current blob is recorded in release/MODEL_RELEASE_MANIFEST.json.
 - Data quality: 20 checks, 0 failures.
 - Dynamic remote QA: 20 checks, 0 failures.

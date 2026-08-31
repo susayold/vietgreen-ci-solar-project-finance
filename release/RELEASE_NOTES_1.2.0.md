@@ -16,13 +16,13 @@ Date: 2026-08-31
 
 ## Verified
 
-- Workflow run 33358923808 / job 99386362961.
+- Workflow run 33359778838 / job 99388771448.
 - 20/20 data-quality checks; 20/20 dynamic remote QA checks.
 - 31/31 workbook checks; 7/7 automated tests.
 - 13/13 mechanical release controls pass; 1 candidate-manifest warning.
 - 9 external-validation rows registered.
-- Artifact vietgreen-core-outputs, ID 9746043440, digest sha256:5148efc5e4b6461db83736221a500bc926a2764c176e85851c5217283c5d1784.
-- Independent workflow_dispatch run 33358955525 / job 99386452901 succeeded.
+- Artifact vietgreen-core-outputs, ID 9746298888, digest sha256:87e1c95bb9924b943458f31c8ea8ffb7e79df20fbc1a702d9d0cfdf8963c9fde.
+- Independent workflow_dispatch run 33359813867 / job 99388866204 succeeded.
 - Byte-level comparison matched the index and all four hourly streams; native workbook SHA-256 remained identical.
 
 ## Economics
