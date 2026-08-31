@@ -48,10 +48,16 @@ Status: PASS WITH NEGATIVE BASE SPONSOR NPV; recommendation is conditional and t
 
 Latest remote run: 33353141725; 20/20 DQ; 20/20 dynamic remote QA; 31/31 workbook checks; 7/7 tests; 13/13 mechanical release controls plus 1 candidate-manifest warning; 240 construction schedule rows; remote 8,760 streams remain artifact-only with local_storage NONE.
 
-## I. Open gates
+## I. Recruiter-facing communication
+
+Implemented: aggregate-only recruiter-facing landing page and workbook model preview under `website/`, linked from README; only frozen aggregate metrics and remote links are shown.
+
+Status: PASS for communication scope; no raw 8,760 streams, hidden truth, credentials or project-sensitive data are embedded.
+
+## J. Open gates
 
 Independent final model review; billed tariff confirmation; transaction-specific tax and foreign-borrowing advice; lender/legal/technical/site diligence; bankable P90; executed PPA; security, insurance, reserve and hedge evidence; sponsor hurdle resolution.
 
-## J. Release classification
+## K. Release classification
 
 Release 1.2.0 remains candidate with PASS_WITH_LIMITATIONS. recruiter_ready remains false until the external gates are closed.
