@@ -21,7 +21,7 @@ The user request controls the operating boundary: create one new Drive file, cre
 - Pooled feedback: converged in 2 iterations.
 - 8,760 engine: executed in memory for every project, with P50 and P90 profiles.
 - Hourly backend: plan-specified Parquet plus CSV.GZ compatibility streams, remote artifact-only; local_storage is NONE.
-- Quality gates: 20/20 data-quality checks; 31/31 workbook structural checks; 20/20 dynamic remote QA checks; 5/5 hidden-truth classifications; 7 automated tests; 13/13 mechanical release controls pass, with 1 candidate-manifest warning.
+- Quality gates: 20/20 data-quality checks; 31/31 workbook structural checks; 20/20 dynamic remote QA checks; 5/5 hidden-truth classifications; 7 automated tests; 13/13 mechanical release controls pass, with 1 candidate-manifest warning; official-source live check 9/11 PASS and 2 non-blocking WARNs.
 
 ## What is implemented
 
@@ -60,6 +60,7 @@ Key links:
 - [Backend artifact manifest](release/BACKEND_OUTPUT_MANIFEST.csv)
 - [Plan implementation trace](docs/PLAN_IMPLEMENTATION_TRACE.md)
 - [Final DOD status matrix](validation/FINAL_DOD_STATUS_MATRIX.csv)
+- [Full Master Plan V3 DoD audit (65 rows; 62 PASS, 2 PARTIAL, 1 PENDING)](validation/PLAN_DOD_AUDIT.csv)
 - [Remote source-fetch log](evidence/REMOTE_SOURCE_FETCH_LOG_2026-08-31.csv)
 - [Data-room index](reports/DATA_ROOM_INDEX.md)
 - [IC decision table](outputs/IC_DECISION_TABLE.csv)

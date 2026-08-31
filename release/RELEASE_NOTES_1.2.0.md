@@ -10,7 +10,7 @@ Date: 2026-08-31
 - Explicit CAPEX/VAT/IDC reconciliation and year-zero no-debt check.
 - PPA negotiation-zone helper with explicit RENEGOTIATE_OR_REJECT action for empty zones, covered by a boundary test.
 - Pairwise-swap improvement pass after hard-gated value-density selection.
-- Remote source-fetch log, DOD status matrix, boundary tests, EVN billing-status refresh and recruiter-safe package.
+- Remote source-fetch log, DOD status matrix, full 65-row DoD audit, boundary tests, EVN billing-status refresh and recruiter-safe package.
 - Plan-specified Parquet hourly streams plus deterministic CSV.GZ compatibility streams in the remote-only GitHub Actions artifact.
 - Tax amendment watch for the official 2026-08-28 draft affecting Decree 320/2025; no effective model tax input was changed.
 - Added Decree 278/2026/ND-CP as a locked legal dependency in the tariff/billing chain; it does not by itself prove invoice cutover.
@@ -33,6 +33,8 @@ Date: 2026-08-31
 - Remote comparator run 33363289510 / job 99398752408 downloaded both core artifacts in memory and matched the native workbook, 8760 index and all four hourly streams (6/6); comparison metadata artifact 9747403047 was stored without raw artifact contents.
 
 - Comparator metadata: SHA-256 eb571d45c45d54babb7e7dc23373d9ce35cec6fdcc2155420bca7546d42f79c0, 1,389 bytes, GitHub blob e9885d5a33d94f5fc8169d1121a036e135e68ba8; raw_artifact_contents_stored=FALSE.
+
+- Full DoD audit workflow 33364273193 / job 99401598762 passed 65/65 rows and 190/190 evidence-path checks: 62 PASS, 2 PARTIAL and 1 PENDING.
 
 ## Economics
 
