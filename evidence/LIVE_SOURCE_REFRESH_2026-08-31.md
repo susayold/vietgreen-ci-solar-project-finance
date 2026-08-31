@@ -11,6 +11,8 @@ Remote evidence note for the candidate release. Raw snapshots are intentionally 
 - **SRC-REFRESH-EVN-20260831 — Electricity Authority/EVN notice:** the 24 April 2026 notice ties application to the Circular 60 / average-retail-price-adjustment condition and requests meter and operational preparation.
 - **SRC-REFRESH-EVN-20260730 — EVN explainer:** the 30 July 2026 article describes the revised windows and mandatory TOU customer scope, while stating that the adjustment does not change the electricity price; it does not establish a billed invoice cutover date.
 - **SRC-REFRESH-EVN-963-20260423 — EVN republication:** the 23 April 2026 EVN page confirms the Decision 963 legal windows and EVN implementation role; it does not establish an invoice cutover date.
+- **SRC-REFRESH-EVNSPC-20260715 — EVNSPC customer notice:** the customer-service page states the new use-of-electricity time frame from 22 April 2026, including the revised peak/off-peak periods; it is utility corroboration, not a customer-specific invoice record.
+- **SRC-REFRESH-EVNSPC-PRICING-20260831 — EVNSPC pricing portal:** the official portal labels the tariff information as applying from 22 April 2026 and lists Decision 963/Circular 60 references; it does not identify the project account or invoice cutover.
 - **SRC-REFRESH-MOIT-20260709 — MOIT Q2 briefing:** the 09 July 2026 briefing is retained as the contemporaneous statement that Decision 963 had not yet been applied in practice.
 - **SRC-REFRESH-TAX-20260831 — Government Portal tax draft:** the 28 August 2026 draft amendment to Decree 320/2025 remains consultation material and is not treated as effective tax law.
 
@@ -29,20 +31,22 @@ The model keeps LEGAL_EFFECTIVE_NOT_BILLED, CURRENT_BILLED_REFERENCE, and SIMULA
 - EVN Bulletin No. 16/2026: https://www.evn.com.vn/userfile/User/tcdl/files/2026/4/BanTinEVNSo162026-20260428150748448.pdf
 - EVN explainer: https://www.evn.com.vn/d/vi-VN/news/Dieu-chinh-khung-gio-cao-diem-Doanh-nghiep-duoc-loi-gi-60-3557-509124
 - Tax draft: https://vanban.chinhphu.vn/du-thao-vbqppl/du-thao-nghi-dinh-sua-doi-bo-sung-mot-so-dieu-cua-nghi-dinh-so-320-2025-nd-cp-ngay-15-thang-12-n-7915
+- EVNSPC customer notice: https://cskh.evnspc.vn/TinTuc/TinTucChiTiet?LoaiTinBai=ALL&MaTinBai=2987
+- EVNSPC pricing portal: https://cskh.evnspc.vn/TraCuu/ThongTinGiaDien
 
 Retrieval date: 2026-08-31
-Source rows: SRC-TAR-963, SRC-TAR-60, SRC-TAR-278, SRC-REFRESH-EVN-20260831, SRC-REFRESH-MOIT-20260709, SRC-REFRESH-MOIT-20260611, SRC-REFRESH-EVN-20260730, SRC-REFRESH-EVN-BULLETIN-20260831, SRC-REFRESH-TAX-20260831
+Source rows: SRC-TAR-963, SRC-TAR-60, SRC-TAR-278, SRC-REFRESH-EVN-20260831, SRC-REFRESH-EVN-BULLETIN-20260831, SRC-REFRESH-EVN-20260730, SRC-REFRESH-MOIT-20260709, SRC-REFRESH-TAX-20260831, SRC-SOLAR-GSA, SRC-SOLAR-NREL, SRC-REFRESH-EVN-963-20260423, SRC-REFRESH-MOIT-20260611, SRC-REFRESH-EVNSPC-20260715, SRC-REFRESH-EVNSPC-PRICING-20260831
 
 ## Remote live-check provenance
 
-- Workflow: 33364978503; job: 99403637315; metadata commit: b362990222c1094cdaca1fd27727cb6cd7c9e1dd; artifact: 9747970647; artifact digest: sha256:ac5be014c1e70ac410644d15de925add5c6e73a9e295f0447e7c4c71999ab44f.
-- Live-check file: evidence/REMOTE_SOURCE_LIVE_CHECK.csv; GitHub blob 5147275bf286ac594bf31beb694faaafe1c5880c; SHA-256 d5ee76a9ad4db76ae2ab0c242876356ffc1840613e10e9fcd037d1be5420ebaa; 12 rows; 10 PASS and 2 non-blocking WARNs.
-- The NREL comparator endpoint returned a DNS warning on the runner. This is preserved as WARN and is not treated as evidence that the source is unavailable or that the model can claim certification.
-- All 11 rows record raw_snapshot_stored=FALSE and storage_boundary=REMOTE_RUNNER_EPHEMERAL.
+- Workflow: 33365784183; job: 99406036492; metadata commit: 74f4768de26352b35c1813f14fa7c1327c4a3e20; artifact: 9748250436; artifact digest: sha256:096256db116cdb03ea40f21c75d5b2d908ad5812910e755ba3c33f4a77c133fd.
+- Live-check file: evidence/REMOTE_SOURCE_LIVE_CHECK.csv; GitHub blob ca0f2b7b29c2ff6315b08510fdf18235190345ff; SHA-256 9d9c33c14b56ef714a3c8d4ed9588d62cbf7648027cec17c10c4ee086ee25a36; 14 rows; 12 PASS and 2 non-blocking WARNs.
+- The MOIT runner network-unreachable and NREL DNS warnings are preserved as WARNs and are not treated as evidence that either source is unavailable or that the model can claim certification.
+- All 14 rows record raw_snapshot_stored=FALSE and storage_boundary=REMOTE_RUNNER_EPHEMERAL.
 
-- Latest live-check result: 12 rows; 10 PASS and 2 non-blocking WARNs (MOIT runner network-unreachable; NREL DNS). Warnings are retained for recheck and do not alter model inputs.
+- Latest live-check result: 14 rows; 12 PASS and 2 non-blocking WARNs (MOIT runner network-unreachable; NREL DNS). Warnings are retained for recheck and do not alter model inputs.
 
-## Core validation after SR-1.10 evidence refresh
+## Core validation lineage after core model refresh
 
 - Push workflow 33362871604 / job 99397534044 completed successfully after the EVN corroboration was added; artifact 9747272913, digest sha256:d98e61282a9fbc564bc5078a805d64009ef1f2906a288cb3ec541f4704db93d6.
 - Remote checks remained green: 20/20 data quality, 20/20 dynamic QA, 31/31 workbook checks, 7/7 tests and 13 PASS plus 1 intentional candidate WARN in release controls.

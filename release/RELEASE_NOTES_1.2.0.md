@@ -10,16 +10,16 @@ Date: 2026-08-31
 - Explicit CAPEX/VAT/IDC reconciliation and year-zero no-debt check.
 - PPA negotiation-zone helper with explicit RENEGOTIATE_OR_REJECT action for empty zones, covered by a boundary test.
 - Pairwise-swap improvement pass after hard-gated value-density selection.
-- Remote source-fetch log, SR-1.11 DOD status matrix, full 65-row DoD audit, boundary tests, EVN billing-status refresh and recruiter-safe package.
+- Remote source-fetch log, SR-1.12 DOD status matrix, full 65-row DoD audit, boundary tests, EVN and EVNSPC billing-status refresh and recruiter-safe package.
 - Plan-specified Parquet hourly streams plus deterministic CSV.GZ compatibility streams in the remote-only GitHub Actions artifact.
 - Tax amendment watch for the official 2026-08-28 draft affecting Decree 320/2025; no effective model tax input was changed.
 - Added Decree 278/2026/ND-CP as a locked legal dependency in the tariff/billing chain; it does not by itself prove invoice cutover.
 
 ## Verified
 
-- Source register advanced to SR-1.11 with an EVN republication of Decision 963; the refresh remains corroborative and does not close the billed-tariff gate.
+- Source register advanced to SR-1.12 with EVNSPC customer-facing billing-period and pricing-portal corroboration; the refresh remains corroborative and does not close the billed-tariff gate.
 
-- Metadata-only official-source crawl 33364978503 / job 99403637315 checked 12 controlled URLs: 10 PASS, 2 non-blocking warnings (MOIT runner network-unreachable; NREL DNS); no raw source snapshot was stored. Artifact 9747970647, digest sha256:ac5be014c1e70ac410644d15de925add5c6e73a9e295f0447e7c4c71999ab44f. The additional MOIT 11 June 2026 briefing corroborates the billing-status watch.
+- Metadata-only official-source crawl 33365784183 / job 99406036492 checked 14 controlled URLs: 12 PASS, 2 non-blocking warnings (MOIT runner network-unreachable; NREL DNS); no raw source snapshot was stored. Artifact 9748250436, digest sha256:096256db116cdb03ea40f21c75d5b2d908ad5812910e755ba3c33f4a77c133fd. The additional MOIT 11 June 2026 briefing and two EVNSPC pages corroborate the billing-status watch.
 
 - Regulatory refresh: EVN Bulletin No. 16/2026 and Decree 278/2026/ND-CP were registered as current official references; billed implementation remains WATCH.
 
@@ -27,7 +27,7 @@ Date: 2026-08-31
 - 20/20 data-quality checks; 20/20 dynamic remote QA checks.
 - 31/31 workbook checks; 7/7 automated tests.
 - 13/13 mechanical release controls pass; 1 candidate-manifest warning.
-- 9 external-validation rows registered; 11 official source URLs live-checked remotely with raw snapshots disabled.
+- 9 external-validation rows registered; 14 official source URLs live-checked remotely with raw snapshots disabled.
 - Artifact vietgreen-core-outputs, ID 9747272913, digest sha256:d98e61282a9fbc564bc5078a805d64009ef1f2906a288cb3ec541f4704db93d6.
 - Independent same-head workflow_dispatch run 33362978966 / job 99397849553 succeeded.
 - Remote comparator run 33363289510 / job 99398752408 downloaded both core artifacts in memory and matched the native workbook, 8760 index and all four hourly streams (6/6); comparison metadata artifact 9747403047 was stored without raw artifact contents.

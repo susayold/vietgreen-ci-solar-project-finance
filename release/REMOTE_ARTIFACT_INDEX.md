@@ -2,7 +2,7 @@
 
 Release candidate: 1.2.0
 Date: 2026-08-31
-Source register: SR-1.11-billing-status-corroboration (latest live source: SRC-REFRESH-EVN-20260831; corroborating EVN Decision 963 page SRC-REFRESH-EVN-963-20260423; latest tax watch: SRC-REFRESH-TAX-20260831)
+Source register: SR-1.12-utility-billing-corroboration (latest live source: SRC-REFRESH-EVN-20260831; corroborating EVNSPC notice SRC-REFRESH-EVNSPC-20260715 and pricing portal SRC-REFRESH-EVNSPC-PRICING-20260831; latest tax watch: SRC-REFRESH-TAX-20260831)
 Repository: https://github.com/susayold/vietgreen-ci-solar-project-finance
 Workflow source commit: b7ac7ab507487d4ba021064c8cdeadb29fcefc44
 Workbook/remote-output refresh commit: d4e4e2f1e5981509ecc53c5fec4d1db00faaf4c8
@@ -45,5 +45,5 @@ Live recruiter site (aggregate-only): https://susayold.github.io/vietgreen-ci-so
 
 ## Official source live check
 
-- Remote metadata-only crawl: workflow 33364978503 / job 99403637315; artifact official-source-live-check ID 9747970647, digest sha256:ac5be014c1e70ac410644d15de925add5c6e73a9e295f0447e7c4c71999ab44f.
-- 11 controlled official URLs were checked in memory: 9 PASS and 1 non-blocking WARN for the NREL comparator endpoint DNS; raw_snapshot_stored=FALSE for every row. Live-check SHA-256: f991a4a071a52432b8486e0800dc79d7750c311c120b7c4b615b4f0ba80267fd.
+- Remote metadata-only crawl: workflow 33365784183 / job 99406036492; artifact official-source-live-check ID 9748250436, digest sha256:096256db116cdb03ea40f21c75d5b2d908ad5812910e755ba3c33f4a77c133fd.
+- 14 controlled official URLs were checked in memory: 12 PASS and 2 non-blocking WARNs (MOIT runner network-unreachable; NREL DNS); raw_snapshot_stored=FALSE for every row. Live-check SHA-256: 9d9c33c14b56ef714a3c8d4ed9588d62cbf7648027cec17c10c4ee086ee25a36; GitHub blob ca0f2b7b29c2ff6315b08510fdf18235190345ff; 6,015 bytes.

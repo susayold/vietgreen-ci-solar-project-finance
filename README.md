@@ -21,7 +21,7 @@ The user request controls the operating boundary: create one new Drive file, cre
 - Pooled feedback: converged in 2 iterations.
 - 8,760 engine: executed in memory for every project, with P50 and P90 profiles.
 - Hourly backend: plan-specified Parquet plus CSV.GZ compatibility streams, remote artifact-only; local_storage is NONE.
-- Quality gates: 20/20 data-quality checks; 31/31 workbook structural checks; 20/20 dynamic remote QA checks; 5/5 hidden-truth classifications; 7 automated tests; 13/13 mechanical release controls pass, with 1 candidate-manifest warning; official-source live check 10/12 PASS and 2 non-blocking WARNs.
+- Quality gates: 20/20 data-quality checks; 31/31 workbook structural checks; 20/20 dynamic remote QA checks; 5/5 hidden-truth classifications; 7 automated tests; 13/13 mechanical release controls pass, with 1 candidate-manifest warning; official-source live check 12/14 PASS and 2 non-blocking WARNs.
 
 ## What is implemented
 
