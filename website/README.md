@@ -11,4 +11,4 @@ This static landing page is an aggregate-only communication layer for release ca
 - Metrics are synchronized to workflow run 33355268974 and artifact digest sha256:1539f7410e98dc8a1c5493f5e898b9eacb6e6fac2fae7566e0457441683ccf8b.
 
 Live deployment: https://susayold.github.io/vietgreen-ci-solar-project-finance/
-Deployment workflow: https://github.com/susayold/vietgreen-ci-solar-project-finance/actions/runs/33354984280
+Deployment workflow: https://github.com/susayold/vietgreen-ci-solar-project-finance/actions/runs/33355591959

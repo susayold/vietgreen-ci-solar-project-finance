@@ -56,7 +56,7 @@ Implemented: aggregate-only recruiter-facing landing page and workbook model pre
 
 Status: PASS for communication scope; no raw 8,760 streams, hidden truth, credentials or project-sensitive data are embedded.
 
-Live deployment verified at https://susayold.github.io/vietgreen-ci-solar-project-finance/ via Pages workflow 33354984280 / job 99375460077; website boundary check PASS.
+Live deployment verified at https://susayold.github.io/vietgreen-ci-solar-project-finance/ via Pages workflow 33355591959 / job 99377009673; website boundary check PASS.
 
 ## J. Open gates
 
