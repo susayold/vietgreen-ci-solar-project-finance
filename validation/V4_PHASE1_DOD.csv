@@ -1,0 +1,8 @@
+dod_id,requirement,status,metric,evidence_path
+V4-G1-01,10 predeclared load archetypes are versioned and used,PASS,10,data/synthetic/load_archetypes.csv
+V4-G1-02,"Every project profile has exactly 8,760 hourly observations",PASS,20/20,outputs/load_matching_v4.csv
+V4-G1-03,Component uncertainty produces ordered P50/P90/P99,PASS,20/20,outputs/energy_p50_p90_p99.csv
+V4-G1-04,PPA floors/ceiling use deterministic bisection with residual evidence,PASS,40 full three-sided roots; interval target 48 iterations,outputs/ppa_solver_frontier_v4.csv
+V4-G1-05,Project and Equity IRR/NPV are output from explicit cash flows,PASS,40,outputs/project_returns_v4.csv
+V4-G1-06,Portfolio selection has a positive Equity NPV gate and valid empty solution,PASS,selected_negative_npv_rows=0,outputs/portfolio_current_negotiated_v4.csv
+V4-G1-07,Remote output excludes raw hourly project data,PASS,aggregate-only output set,docs/V4_PHASE1_IMPLEMENTATION_NOTE.md
