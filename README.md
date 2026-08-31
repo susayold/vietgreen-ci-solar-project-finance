@@ -33,12 +33,12 @@ This is a reviewable candidate, not a lender approval, bankable P90 case, legal 
 
 ## Latest remote verification
 
-- Workflow run: https://github.com/susayold/vietgreen-ci-solar-project-finance/actions/runs/33353141725
-- Workflow job: 99370175281.
+- Workflow run: https://github.com/susayold/vietgreen-ci-solar-project-finance/actions/runs/33354033001
+- Workflow job: 99372662335.
 - Workflow source commit: 95af3267ebfc615e194323f1fa503c2d13bad5bb.
-- Workbook refresh commit: 1139ba3424d54d0387d24499dd18284e8f79ed72.
-- Artifact: vietgreen-core-outputs, ID 9744264357.
-- Artifact digest: sha256:18227bd8b766ac664becc7f706849d5382fe4f71ef6d6b97fe9ce303ea136ca8.
+- Workbook refresh commit: bc5d8207814cb43b645199b0b4d23921bc3606aa.
+- Artifact: vietgreen-core-outputs, ID 9744543908.
+- Artifact digest: sha256:c7a9ddd43d97a414603e5ba693fc0559208857e86ca7996ae6786850980bde9d.
 - Native workbook blob: see release/MODEL_RELEASE_MANIFEST.json.
 
 ## Reproducibility and storage

@@ -6,6 +6,8 @@ Implemented: material inputs carry source/assumption IDs through the lineage mat
 
 Status: PASS WITH BILLING WATCH. Decision 963 legal windows are mapped, but billed implementation and final transaction applicability remain external gates.
 
+Latest benchmark refresh: IRENA 2025 official utility-scale solar PV cost context was added to the external benchmark register; it is comparator-only and does not set the C&I rooftop tariff or CAPEX.
+
 ## B. Synthetic data, hidden truth and reproducibility
 
 Implemented: locked master seed 260831; hashes for all synthetic inputs including the 240-row construction curve; deterministic generation; cross-field DQ; hidden-truth cases isolated to aggregate labels; no customer data or raw hidden truth in the public repository.
@@ -46,7 +48,7 @@ Status: PASS WITH NEGATIVE BASE SPONSOR NPV; recommendation is conditional and t
 
 ## H. Validation and release
 
-Latest remote run: 33353141725; 20/20 DQ; 20/20 dynamic remote QA; 31/31 workbook checks; 7/7 tests; 13/13 mechanical release controls plus 1 candidate-manifest warning; 240 construction schedule rows; remote 8,760 streams remain artifact-only with local_storage NONE.
+Latest remote run: 33354033001; 20/20 DQ; 20/20 dynamic remote QA; 31/31 workbook checks; 7/7 tests; 13/13 mechanical release controls plus 1 candidate-manifest warning; 240 construction schedule rows; remote 8,760 streams remain artifact-only with local_storage NONE.
 
 ## I. Recruiter-facing communication
 
