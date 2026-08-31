@@ -8,15 +8,15 @@ The project data-room is represented by the repository, the workflow artifact an
 
 ## Latest release evidence
 
-- Source register: SR-1.6-live-benchmark-refresh; latest live evidence row: SRC-REFRESH-EVN-20260831.
+- Source register: SR-1.7-tax-draft-watch; latest live evidence row: SRC-REFRESH-EVN-20260831.
 
 - Release candidate: 1.2.0.
-- Workflow source commit: c9d7e9712c2b6f868a4eaf042204257a8a2965a8.
-- Workbook refresh commit: 669e33324c162955981314d31a8e3b40937aeff9.
-- Workflow run: 33356405815.
-- Workflow job: 99379325568.
-- Artifact: vietgreen-core-outputs, ID 9745267596.
-- Artifact digest: sha256:b98a6c21209a644dfd0a32509d5ee008b928e409fdae825873e053366a319b53.
+- Workflow source commit: d1f2df2b38c9c3ca183ddcc257bcf9f3914f7def.
+- Workbook refresh commit: d50f918d4a4756a78d4e82ae786136cbf3d38ec7.
+- Workflow run: 33357532792.
+- Workflow job: 99382430451.
+- Artifact: vietgreen-core-outputs, ID 9745604013.
+- Artifact digest: sha256:4a3d6d0953d5265370012bb8936ccfedfd8d09f6a8f9f9954d270bd6729726c2.
 - Native workbook: 22 sheets; current blob is recorded in release/MODEL_RELEASE_MANIFEST.json.
 - Data quality: 20 checks, 0 failures.
 - Dynamic remote QA: 20 checks, 0 failures.
@@ -36,6 +36,7 @@ The project data-room is represented by the repository, the workflow artifact an
 - Pooled DSCR: 1.30x.
 - Base sponsor NPV: -66.202345 BVND.
 - Tariff: WATCH pending billed implementation confirmation.
+- Tax: current registered rules retained; 2026-08-28 draft amendment is WATCH-only and not treated as effective law.
 - CAPEX: six-category bottom-up base plus 12-month synthetic construction curve and 8.5% capitalised IDC proxy.
 
 ## Evidence map

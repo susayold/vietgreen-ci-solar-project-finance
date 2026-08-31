@@ -17,6 +17,7 @@ The user request controls the operating boundary: create one new Drive file, cre
 - Pooled DSCR: 1.300000x.
 - Base sponsor NPV: -66.202345 BVND.
 - Tariff status: WATCH. Decision 963 legal time windows are mapped separately from the current billed reference; numeric avoided-tariff components remain simulated/model-only.
+- Tax status: WATCH for the 2026-08-28 draft amendment to Decree 320/2025; no model-tax change was applied.
 - Pooled feedback: converged in 2 iterations.
 - 8,760 engine: executed in memory for every project, with P50 and P90 profiles.
 - Hourly backend: plan-specified Parquet plus CSV.GZ compatibility streams, remote artifact-only; local_storage is NONE.
@@ -34,12 +35,12 @@ This is a reviewable candidate, not a lender approval, bankable P90 case, legal 
 
 ## Latest remote verification
 
-- Workflow run: https://github.com/susayold/vietgreen-ci-solar-project-finance/actions/runs/33356405815
-- Workflow job: 99379325568.
-- Workflow source commit: c9d7e9712c2b6f868a4eaf042204257a8a2965a8.
-- Workbook refresh commit: 669e33324c162955981314d31a8e3b40937aeff9.
-- Artifact: vietgreen-core-outputs, ID 9745267596.
-- Artifact digest: sha256:b98a6c21209a644dfd0a32509d5ee008b928e409fdae825873e053366a319b53.
+- Workflow run: https://github.com/susayold/vietgreen-ci-solar-project-finance/actions/runs/33357532792
+- Workflow job: 99382430451.
+- Workflow source commit: d1f2df2b38c9c3ca183ddcc257bcf9f3914f7def.
+- Workbook refresh commit: d50f918d4a4756a78d4e82ae786136cbf3d38ec7.
+- Artifact: vietgreen-core-outputs, ID 9745604013.
+- Artifact digest: sha256:4a3d6d0953d5265370012bb8936ccfedfd8d09f6a8f9f9954d270bd6729726c2.
 - Native workbook blob: see release/MODEL_RELEASE_MANIFEST.json.
 
 ## Reproducibility and storage

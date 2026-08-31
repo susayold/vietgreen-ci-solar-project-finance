@@ -4,7 +4,7 @@
 
 Implemented: material inputs carry source/assumption IDs through the lineage matrix; legal tariff windows, current billed references and model-only price components are separate; tax and foreign-borrowing rules are registered with effective dates and recheck flags; the remote source-fetch log records the 2026-08-31 refresh without storing raw snapshots locally.
 
-Status: PASS WITH BILLING WATCH. Decision 963 legal windows are mapped, but billed implementation and final transaction applicability remain external gates.
+Status: PASS WITH BILLING/TAX WATCH. Decision 963 legal windows are mapped, but billed implementation and final transaction applicability remain external gates; the 2026-08-28 draft amendment to Decree 320/2025 is monitored without changing effective tax inputs.
 
 Latest benchmark refresh: IRENA 2025 official utility-scale solar PV cost context was added to the external benchmark register; it is comparator-only and does not set the C&I rooftop tariff or CAPEX.
 
@@ -48,7 +48,7 @@ Status: PASS WITH NEGATIVE BASE SPONSOR NPV; recommendation is conditional and t
 
 ## H. Validation and release
 
-Latest remote run: 33356405815 / job 99379325568; 20/20 DQ; 20/20 dynamic remote QA; 31/31 workbook checks; 7/7 tests; 13/13 mechanical release controls plus 1 candidate-manifest warning; 240 construction schedule rows; four remote 8,760 streams (Parquet plus CSV.GZ compatibility) remain artifact-only with local_storage NONE.
+Latest remote run: 33357532792 / job 99382430451; 20/20 DQ; 20/20 dynamic remote QA; 31/31 workbook checks; 7/7 tests; 13/13 mechanical release controls plus 1 candidate-manifest warning; 240 construction schedule rows; 9 external-validation rows; four remote 8,760 streams (Parquet plus deterministic CSV.GZ compatibility) remain artifact-only with local_storage NONE.
 
 ## I. Recruiter-facing communication
 
@@ -66,4 +66,4 @@ Independent final model review; billed tariff confirmation; transaction-specific
 
 Release 1.2.0 remains candidate with PASS_WITH_LIMITATIONS. recruiter_ready remains false until the external gates are closed.
 
-Reproducibility control: remote push run 33356405815 and independent workflow_dispatch run 33356485956 / job 99379546146 both succeeded and produced identical native workbook SHA-256 03a78fd294212b8a771b0eee35fd2010f77975de59037044e4b120a86e6fffdd; hourly streams remain artifact-only; reproducibility_check_status=PASS.
+Reproducibility control: remote push run 33357532792 and independent workflow_dispatch run 33357590462 / job 99382592753 both succeeded and produced identical native workbook SHA-256 03a78fd294212b8a771b0eee35fd2010f77975de59037044e4b120a86e6fffdd; byte-level comparison of the index plus all four hourly streams matched; reproducibility_check_status=PASS.
