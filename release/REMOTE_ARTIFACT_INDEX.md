@@ -3,22 +3,24 @@
 Release candidate: 1.2.0
 Date: 2026-08-31
 Repository: https://github.com/susayold/vietgreen-ci-solar-project-finance
-Workflow source commit: 09b91dfcccaa12259df0b5ac87a1fd612f73ba13
-Workbook refresh commit: 67d341a728cfd6863a89128f2c79a2892715c946
-Workflow run: 33346497581
-Workflow job: 99351523243
-Artifact: vietgreen-core-outputs, ID 9742154404
-Artifact digest: sha256:3fd6cb3507a5bf90241495fca332bb50dc7cfcf67fd37b31a38ae183f93580ef
+Workflow source commit: 6a82d46dbba57288f38538c9ed94f2a1e985afe4
+Workbook refresh commit: a6b6b714e2e86c2002002dcce1316bdfcb61011b
+Workflow run: 33349715239
+Workflow job: 99360547174
+Artifact: vietgreen-core-outputs, ID 9743177276
+Artifact digest: sha256:0240d888a49d77469a517e665bc28e76b832735efec7b356782a86853b869b71
 
 ## Gate summary
 
-- Data-quality: 18 checks, 0 failures.
-- Dynamic remote QA: 18 checks, 0 failures.
+- Data-quality: 20 checks, 0 failures.
+- Dynamic remote QA: 20 checks, 0 failures.
 - Workbook: 31 checks, 0 failures.
 - Hidden truth: 5 cases, 5 matches, 0 false negatives.
 - Automated tests: 5 passed.
-- Release controls: 12 mechanical PASS, 1 candidate WARN for post-run manifest linkage.
-- Native workbook: 22 sheets, 106636 bytes; blob 2af6371982c35eb117f50dff344dcc0cfae8108f.
+- Release controls: 13 mechanical PASS, 1 candidate WARN for post-run manifest linkage.
+- Native workbook: 22 sheets, 115983 bytes; blob 1e5d94f14c90f7f0eed5b0a9b0636a7a9237a0d6.
+- Construction schedule: 240 rows; capitalised IDC proxy rate 8.5%; sources and uses reconciled.
+- Portfolio: 11 selected projects, 13.10 MWp, pooled DSCR 1.300x, sponsor NPV -66.202345 BVND.
 - Remote 8,760 streams: load 175,200 rows and solar/self-consumption 175,200 rows; index validation PASS.
 - Tariff: WATCH pending billed implementation confirmation.
 - Release status: candidate.
