@@ -43,7 +43,8 @@
   "pooled_debt_bvnd": 152.457008,
   "pooled_dscr": 1.3,
   "base_sponsor_npv_bvnd": -66.202345,
-  "native_workbook_blob_sha": "1af2769e33ef39f146d6ef8edc6319b113b0d516",
+  "native_workbook_blob_sha": "1e5d94f14c90f7f0eed5b0a9b0636a7a9237a0d6",
   "native_workbook_size_bytes": 115983,
-  "limitation": "Decision 963 time windows are legally effective, but billed tariff implementation remains to be confirmed through the Circular 60 and EVN implementation chain; capitalised IDC and the construction curve are synthetic proxies; independent final review and lender/legal/tax/technical/site diligence remain outstanding."
+  "limitation": "Decision 963 time windows are legally effective, but billed tariff implementation remains to be confirmed through the Circular 60 and EVN implementation chain; capitalised IDC and the construction curve are synthetic proxies; independent final review and lender/legal/tax/technical/site diligence remain outstanding.",
+  "backend_manifest_reconciled": true
 }
