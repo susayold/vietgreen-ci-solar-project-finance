@@ -1,0 +1,59 @@
+name: remote-reproducibility-check
+
+on:
+  workflow_dispatch:
+    inputs:
+      baseline_artifact_id:
+        description: "Successful baseline core artifact ID"
+        required: true
+        type: string
+      repeat_artifact_id:
+        description: "Successful same-head repeat core artifact ID"
+        required: true
+        type: string
+
+permissions:
+  actions: read
+  contents: write
+
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout remote source of truth
+        uses: actions/checkout@v4
+      - name: Compare artifact file hashes in memory
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          BASELINE_ARTIFACT_ID: ${{ inputs.baseline_artifact_id }}
+          REPEAT_ARTIFACT_ID: ${{ inputs.repeat_artifact_id }}
+        run: python -m analytics.compare_remote_artifacts
+      - name: Validate comparison metadata
+        run: |
+          git diff --check
+          python - <<'PY'
+          import csv
+          from pathlib import Path
+          p=Path("validation/REPRODUCIBILITY_COMPARISON.csv")
+          rows=list(csv.DictReader(p.open(encoding="utf-8", newline="")))
+          assert len(rows) == 6
+          assert all(row["match"] == "TRUE" for row in rows)
+          assert all(row["raw_artifact_contents_stored"] == "FALSE" for row in rows)
+          print({"files":len(rows),"matches":sum(row["match"]=="TRUE" for row in rows)})
+          PY
+      - name: Upload comparison metadata
+        uses: actions/upload-artifact@v4
+        with:
+          name: remote-reproducibility-comparison
+          path: validation/REPRODUCIBILITY_COMPARISON.csv
+      - name: Commit comparison metadata only
+        run: |
+          git config user.name "vietgreen-actions"
+          git config user.email "actions@users.noreply.github.com"
+          git add validation/REPRODUCIBILITY_COMPARISON.csv
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m "chore: record remote artifact reproducibility comparison [skip ci]"
+          git push origin HEAD:main
