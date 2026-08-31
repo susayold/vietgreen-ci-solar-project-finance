@@ -9,6 +9,7 @@ Remote evidence note for the candidate release. Raw snapshots are intentionally 
 - **SRC-REFRESH-EVN-BULLETIN-20260831 — EVN Bulletin No. 16/2026:** EVN states the Decision 963 time windows apply with the next relevant average retail-price adjustment and records preparation activity; it does not state an invoice cutover date.
 - **SRC-REFRESH-EVN-20260831 — Electricity Authority/EVN notice:** the 24 April 2026 notice ties application to the Circular 60 / average-retail-price-adjustment condition and requests meter and operational preparation.
 - **SRC-REFRESH-EVN-20260730 — EVN explainer:** the 30 July 2026 article describes the revised windows and mandatory TOU customer scope, while stating that the adjustment does not change the electricity price; it does not establish a billed invoice cutover date.
+- **SRC-REFRESH-EVN-963-20260423 — EVN republication:** the 23 April 2026 EVN page confirms the Decision 963 legal windows and EVN implementation role; it does not establish an invoice cutover date.
 - **SRC-REFRESH-MOIT-20260709 — MOIT Q2 briefing:** the 09 July 2026 briefing is retained as the contemporaneous statement that Decision 963 had not yet been applied in practice.
 - **SRC-REFRESH-TAX-20260831 — Government Portal tax draft:** the 28 August 2026 draft amendment to Decree 320/2025 remains consultation material and is not treated as effective tax law.
 
