@@ -1,21 +1,21 @@
 project_id,sponsor_status,lender_status,binding_issue,recommended_action,condition_1,condition_2,condition_3,final_classification
-VG-001,CONDITIONAL,PASS,equity_hurdle,INVEST_WITH_CONDITIONS,reprice_or_reduce_capex_to_clear_equity_hurdle,,finalize_bankable_PPA_and_security_package,INVEST_WITH_CONDITIONS
-VG-002,CONDITIONAL,PASS,equity_hurdle,INVEST_WITH_CONDITIONS,reprice_or_reduce_capex_to_clear_equity_hurdle,,finalize_bankable_PPA_and_security_package,INVEST_WITH_CONDITIONS
-VG-003,CONDITIONAL,PASS,equity_hurdle,INVEST_WITH_CONDITIONS,reprice_or_reduce_capex_to_clear_equity_hurdle,,finalize_bankable_PPA_and_security_package,INVEST_WITH_CONDITIONS
-VG-004,FAIL,CONDITIONAL,ppa_frontier,RENEGOTIATE,resolve_binding_hard_gate,refresh_documentary_diligence,re-run_P90_debt_portfolio_QA,RENEGOTIATE
-VG-005,CONDITIONAL,PASS,equity_hurdle,INVEST_WITH_CONDITIONS,reprice_or_reduce_capex_to_clear_equity_hurdle,,finalize_bankable_PPA_and_security_package,INVEST_WITH_CONDITIONS
-VG-006,FAIL,FAIL,credit_site_continuity,REJECT,resolve_binding_hard_gate,refresh_documentary_diligence,re-run_P90_debt_portfolio_QA,REJECT
-VG-007,CONDITIONAL,CONDITIONAL,equity_hurdle,INVEST_WITH_CONDITIONS,reprice_or_reduce_capex_to_clear_equity_hurdle,complete_site_continuity_diligence,finalize_bankable_PPA_and_security_package,INVEST_WITH_CONDITIONS
-VG-008,FAIL,CONDITIONAL,ppa_frontier,RENEGOTIATE,resolve_binding_hard_gate,refresh_documentary_diligence,re-run_P90_debt_portfolio_QA,RENEGOTIATE
-VG-009,FAIL,CONDITIONAL,legal_applicability/ppa_frontier,RENEGOTIATE,resolve_binding_hard_gate,refresh_documentary_diligence,re-run_P90_debt_portfolio_QA,RENEGOTIATE
-VG-010,CONDITIONAL,PASS,equity_hurdle,INVEST_WITH_CONDITIONS,reprice_or_reduce_capex_to_clear_equity_hurdle,,finalize_bankable_PPA_and_security_package,INVEST_WITH_CONDITIONS
-VG-011,CONDITIONAL,PASS,equity_hurdle,INVEST_WITH_CONDITIONS,reprice_or_reduce_capex_to_clear_equity_hurdle,,finalize_bankable_PPA_and_security_package,INVEST_WITH_CONDITIONS
-VG-012,CONDITIONAL,PASS,equity_hurdle,INVEST_WITH_CONDITIONS,reprice_or_reduce_capex_to_clear_equity_hurdle,,finalize_bankable_PPA_and_security_package,INVEST_WITH_CONDITIONS
-VG-013,CONDITIONAL,PASS,equity_hurdle,INVEST_WITH_CONDITIONS,reprice_or_reduce_capex_to_clear_equity_hurdle,,finalize_bankable_PPA_and_security_package,INVEST_WITH_CONDITIONS
-VG-014,CONDITIONAL,PASS,equity_hurdle,INVEST_WITH_CONDITIONS,reprice_or_reduce_capex_to_clear_equity_hurdle,,finalize_bankable_PPA_and_security_package,INVEST_WITH_CONDITIONS
-VG-015,CONDITIONAL,PASS,equity_hurdle,INVEST_WITH_CONDITIONS,reprice_or_reduce_capex_to_clear_equity_hurdle,,finalize_bankable_PPA_and_security_package,INVEST_WITH_CONDITIONS
-VG-016,FAIL,CONDITIONAL,ppa_frontier/tenor_or_dscr,RENEGOTIATE,resolve_binding_hard_gate,refresh_documentary_diligence,re-run_P90_debt_portfolio_QA,RENEGOTIATE
-VG-017,FAIL,CONDITIONAL,technical_due_diligence/ppa_frontier,RENEGOTIATE,resolve_binding_hard_gate,refresh_documentary_diligence,re-run_P90_debt_portfolio_QA,RENEGOTIATE
-VG-018,CONDITIONAL,PASS,equity_hurdle,INVEST_WITH_CONDITIONS,reprice_or_reduce_capex_to_clear_equity_hurdle,,finalize_bankable_PPA_and_security_package,INVEST_WITH_CONDITIONS
-VG-019,FAIL,CONDITIONAL,ppa_frontier,RENEGOTIATE,resolve_binding_hard_gate,refresh_documentary_diligence,re-run_P90_debt_portfolio_QA,RENEGOTIATE
-VG-020,CONDITIONAL,CONDITIONAL,legal_applicability,RENEGOTIATE,resolve_binding_hard_gate,refresh_documentary_diligence,re-run_P90_debt_portfolio_QA,RENEGOTIATE
+VG-001,CONDITIONAL,PASS,billed_tariff_confirmation,INVEST_WITH_CONDITIONS,confirm billed tariff and final legal applicability,complete lender/legal/technical/site diligence,"re-run P90, debt and portfolio QA",INVEST_WITH_CONDITIONS
+VG-002,CONDITIONAL,PASS,billed_tariff_confirmation,INVEST_WITH_CONDITIONS,confirm billed tariff and final legal applicability,complete lender/legal/technical/site diligence,"re-run P90, debt and portfolio QA",INVEST_WITH_CONDITIONS
+VG-003,CONDITIONAL,PASS,billed_tariff_confirmation,INVEST_WITH_CONDITIONS,confirm billed tariff and final legal applicability,complete lender/legal/technical/site diligence,"re-run P90, debt and portfolio QA",INVEST_WITH_CONDITIONS
+VG-004,FAIL,FAIL,ppa_frontier|billed_tariff_confirmation,RENEGOTIATE,confirm billed tariff and final legal applicability,complete lender/legal/technical/site diligence,"re-run P90, debt and portfolio QA",RENEGOTIATE
+VG-005,CONDITIONAL,PASS,billed_tariff_confirmation,INVEST_WITH_CONDITIONS,confirm billed tariff and final legal applicability,complete lender/legal/technical/site diligence,"re-run P90, debt and portfolio QA",INVEST_WITH_CONDITIONS
+VG-006,FAIL,FAIL,credit_site_continuity|billed_tariff_confirmation,REJECT,confirm billed tariff and final legal applicability,complete lender/legal/technical/site diligence,"re-run P90, debt and portfolio QA",REJECT
+VG-007,CONDITIONAL,CONDITIONAL,credit_site_continuity|billed_tariff_confirmation,INVEST_WITH_CONDITIONS,confirm billed tariff and final legal applicability,complete lender/legal/technical/site diligence,"re-run P90, debt and portfolio QA",INVEST_WITH_CONDITIONS
+VG-008,FAIL,FAIL,ppa_frontier|billed_tariff_confirmation,RENEGOTIATE,confirm billed tariff and final legal applicability,complete lender/legal/technical/site diligence,"re-run P90, debt and portfolio QA",RENEGOTIATE
+VG-009,FAIL,FAIL,legal_applicability|ppa_frontier|billed_tariff_confirmation,RENEGOTIATE,confirm billed tariff and final legal applicability,complete lender/legal/technical/site diligence,"re-run P90, debt and portfolio QA",RENEGOTIATE
+VG-010,CONDITIONAL,PASS,billed_tariff_confirmation,INVEST_WITH_CONDITIONS,confirm billed tariff and final legal applicability,complete lender/legal/technical/site diligence,"re-run P90, debt and portfolio QA",INVEST_WITH_CONDITIONS
+VG-011,CONDITIONAL,PASS,billed_tariff_confirmation,INVEST_WITH_CONDITIONS,confirm billed tariff and final legal applicability,complete lender/legal/technical/site diligence,"re-run P90, debt and portfolio QA",INVEST_WITH_CONDITIONS
+VG-012,CONDITIONAL,PASS,billed_tariff_confirmation,INVEST_WITH_CONDITIONS,confirm billed tariff and final legal applicability,complete lender/legal/technical/site diligence,"re-run P90, debt and portfolio QA",INVEST_WITH_CONDITIONS
+VG-013,CONDITIONAL,PASS,billed_tariff_confirmation,INVEST_WITH_CONDITIONS,confirm billed tariff and final legal applicability,complete lender/legal/technical/site diligence,"re-run P90, debt and portfolio QA",INVEST_WITH_CONDITIONS
+VG-014,CONDITIONAL,PASS,billed_tariff_confirmation,INVEST_WITH_CONDITIONS,confirm billed tariff and final legal applicability,complete lender/legal/technical/site diligence,"re-run P90, debt and portfolio QA",INVEST_WITH_CONDITIONS
+VG-015,CONDITIONAL,PASS,billed_tariff_confirmation,INVEST_WITH_CONDITIONS,confirm billed tariff and final legal applicability,complete lender/legal/technical/site diligence,"re-run P90, debt and portfolio QA",INVEST_WITH_CONDITIONS
+VG-016,FAIL,FAIL,ppa_frontier|tenor_or_dscr|billed_tariff_confirmation,RENEGOTIATE,confirm billed tariff and final legal applicability,complete lender/legal/technical/site diligence,"re-run P90, debt and portfolio QA",RENEGOTIATE
+VG-017,FAIL,FAIL,technical_due_diligence|ppa_frontier|billed_tariff_confirmation,RENEGOTIATE,confirm billed tariff and final legal applicability,complete lender/legal/technical/site diligence,"re-run P90, debt and portfolio QA",RENEGOTIATE
+VG-018,CONDITIONAL,PASS,billed_tariff_confirmation,INVEST_WITH_CONDITIONS,confirm billed tariff and final legal applicability,complete lender/legal/technical/site diligence,"re-run P90, debt and portfolio QA",INVEST_WITH_CONDITIONS
+VG-019,FAIL,FAIL,ppa_frontier|billed_tariff_confirmation,RENEGOTIATE,confirm billed tariff and final legal applicability,complete lender/legal/technical/site diligence,"re-run P90, debt and portfolio QA",RENEGOTIATE
+VG-020,FAIL,FAIL,legal_applicability|billed_tariff_confirmation,RENEGOTIATE,confirm billed tariff and final legal applicability,complete lender/legal/technical/site diligence,"re-run P90, debt and portfolio QA",RENEGOTIATE
