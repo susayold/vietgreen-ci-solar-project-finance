@@ -19,7 +19,7 @@ Date: 2026-08-31
 
 - Source register advanced to SR-1.10 with an EVN republication of Decision 963; the refresh remains corroborative and does not close the billed-tariff gate.
 
-- Metadata-only official-source crawl 33362227008 / job 99395656762 checked 11 controlled URLs: 9 PASS, 2 non-blocking warnings (MOIT runner network-unreachable; NREL DNS); no raw source snapshot was stored.
+- Metadata-only official-source crawl 33364458824 / job 99402147432 checked 11 controlled URLs: 9 PASS, 2 non-blocking warnings (MOIT runner network-unreachable; NREL DNS); no raw source snapshot was stored. Artifact 9747800648, digest sha256:066e5195af422ea64180a3406e9cb9c41ec2257888bd806d13d47ab110045ffb.
 
 - Regulatory refresh: EVN Bulletin No. 16/2026 and Decree 278/2026/ND-CP were registered as current official references; billed implementation remains WATCH.
 

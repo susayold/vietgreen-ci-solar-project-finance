@@ -25,7 +25,7 @@ The project data-room is represented by the repository, the workflow artifact an
 - Automated tests: 7 passed.
 - Mechanical release controls: 13 PASS, 1 WARN.
 - External gate tracker: 8 open transaction/evidence gates; no gate is closed by synthetic data alone.
-- Official source refresh: `.github/workflows/source-refresh.yml` crawls the controlled public URLs remotely and commits metadata only to `evidence/REMOTE_SOURCE_LIVE_CHECK.csv`. Latest run 33362227008: 9 PASS / 2 non-blocking WARNs (MOIT runner network-unreachable; NREL DNS); raw snapshots FALSE.
+- Official source refresh: `.github/workflows/source-refresh.yml` crawls the controlled public URLs remotely and commits metadata only to `evidence/REMOTE_SOURCE_LIVE_CHECK.csv`. Latest run 33364458824 / job 99402147432: 9 PASS / 2 non-blocking WARNs (MOIT runner network-unreachable; NREL DNS); artifact 9747800648; raw snapshots FALSE.
 - Locked input hashes: PASS.
 - Remote 8,760 artifact streams: 175,200 rows each in plan-specified Parquet plus CSV.GZ compatibility format; local_storage NONE.
 - Same-head remote comparator: 33363289510 / job 99398752408; 6/6 target files matched, comparison metadata artifact 9747403047, raw artifact contents not stored.

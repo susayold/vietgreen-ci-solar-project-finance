@@ -34,8 +34,8 @@ Source rows: SRC-TAR-963, SRC-TAR-60, SRC-TAR-278, SRC-REFRESH-EVN-20260831, SRC
 
 ## Remote live-check provenance
 
-- Workflow: 33362227008; job: 99395656762; artifact: 9747079173; artifact digest: sha256:736250385f4b4cd684fc7abd1b187cf80f0d2d1a1acd48520816b7bb295e2ee5.
-- Live-check file: evidence/REMOTE_SOURCE_LIVE_CHECK.csv; SHA-256 f991a4a071a52432b8486e0800dc79d7750c311c120b7c4b615b4f0ba80267fd; 11 rows; 9 PASS and 2 non-blocking WARNs.
+- Workflow: 33364458824; job: 99402147432; metadata commit: 154404b2361f124886f8f8181a5ecbbd4ae1c80f; artifact: 9747800648; artifact digest: sha256:066e5195af422ea64180a3406e9cb9c41ec2257888bd806d13d47ab110045ffb.
+- Live-check file: evidence/REMOTE_SOURCE_LIVE_CHECK.csv; GitHub blob 280e12f9728a202276513e31374f0ff745c21cee; SHA-256 55405d06f77c95ea20843aa3fa300e586662e11988695c1cea1f776314495140; 11 rows; 9 PASS and 2 non-blocking WARNs.
 - The NREL comparator endpoint returned a DNS warning on the runner. This is preserved as WARN and is not treated as evidence that the source is unavailable or that the model can claim certification.
 - All 11 rows record raw_snapshot_stored=FALSE and storage_boundary=REMOTE_RUNNER_EPHEMERAL.
 
