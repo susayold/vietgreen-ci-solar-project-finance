@@ -15,3 +15,11 @@ SRC-REFRESH-EVNSPC-20260715,https://cskh.evnspc.vn/TinTuc/TinTucChiTiet?LoaiTinB
 SRC-REFRESH-EVNSPC-PRICING-20260831,https://cskh.evnspc.vn/TraCuu/ThongTinGiaDien,official_utility_pricing_portal,EVNSPC current TOU pricing-page corroboration
 SRC-REFRESH-EVNSPC-TRAINING-20260527,https://evnspc.vn/bai-viet/ARTICLE26050302/evnspc-tap-huan-cai-dat-thay-doi-khung-gio-cao-diem-thap-diem-binh-thuong-cua-cong-to,official_utility_implementation_preparation,EVNSPC meter reprogramming and implementation preparation
 SRC-REFRESH-EVNSPC-IT-20260525,https://it.evnspc.vn/CMS_Article/ArticleByID?ArticleID=F02WEB-202605-0000000000007,official_utility_it_notice,EVNSPC system readiness and invoice-testing context
+SRC-REG-243,https://vanban.chinhphu.vn/?classid=1&docid=218605&pageid=27160,official_regulation,Decree 243/2026/ND-CP renewable/direct-electricity-trading lineage
+SRC-TAX-067,https://vanban.chinhphu.vn/?docid=214607&pageid=27160,official_tax_law,Law 67/2025/QH15 effective tax framework
+SRC-TAX-320,https://vanban.chinhphu.vn/?classid=0&docid=216219&pageid=27160,official_tax_regulation,Decree 320/2025/ND-CP cash tax and loss carryforward
+SRC-TAX-141,https://vanban.chinhphu.vn/?classid=0&docid=217960&pageid=27160,official_tax_amendment,Decree 141/2026/ND-CP tax amendment
+SRC-TAX-020,https://vanban.chinhphu.vn/?docid=217191&pageid=27160,official_tax_guidance,Circular 20/2026/TT-BTC tax guidance
+SRC-FX-008,https://vanban.chinhphu.vn/?docid=208258&pageid=27160,official_foreign_borrowing,Circular 08/2023/TT-NHNN foreign borrowing
+SRC-FX-019,https://vanban.chinhphu.vn/?classid=1&docid=210566&pageid=27160,official_foreign_borrowing_amendment,Circular 19/2024/TT-NHNN foreign borrowing amendment
+SRC-IRENA-2024,https://www.irena.org/Digital-Report/Renewable-Power-Generation-Costs-in-2024,official_cost_benchmark,IRENA 2024 utility-scale cost comparator
