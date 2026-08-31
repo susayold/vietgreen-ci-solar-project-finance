@@ -4,12 +4,12 @@ Release candidate: 1.2.0
 Date: 2026-08-31
 Source register: SR-1.10-tax-tariff-watch (latest live source: SRC-REFRESH-EVN-20260831; corroborating EVN Decision 963 page SRC-REFRESH-EVN-963-20260423; latest tax watch: SRC-REFRESH-TAX-20260831)
 Repository: https://github.com/susayold/vietgreen-ci-solar-project-finance
-Workflow source commit: d2fd8835bb0591bc850a90b13cb37f3b5ec2310b
-Workbook/remote-output refresh commit: d2fd8835bb0591bc850a90b13cb37f3b5ec2310b
-Workflow run: 33360401233
-Workflow job: 99390501627
-Artifact: vietgreen-core-outputs, ID 9746487203
-Artifact digest: sha256:3396dce1eee9420c8c16532c30e38d7be33d4fbdf0c8da4e317af75b6a4b6f2b
+Workflow source commit: b7ac7ab507487d4ba021064c8cdeadb29fcefc44
+Workbook/remote-output refresh commit: b7ac7ab507487d4ba021064c8cdeadb29fcefc44
+Workflow run: 33362871604
+Workflow job: 99397534044
+Artifact: vietgreen-core-outputs, ID 9747272913
+Artifact digest: sha256:d98e61282a9fbc564bc5078a805d64009ef1f2906a288cb3ec541f4704db93d6
 
 ## Gate summary
 
@@ -20,12 +20,13 @@ Artifact digest: sha256:3396dce1eee9420c8c16532c30e38d7be33d4fbdf0c8da4e317af75b
 - Automated tests: 7 passed.
 - Release controls: 13 mechanical PASS, 1 candidate WARN for post-run manifest linkage.
 - External validation: 9 registered rows; tax amendment watch added without changing effective model inputs.
-- Native workbook: 22 sheets, 116798 bytes; blob 4021117f54806736cad5d213ad307a7e31738550.
+- Native workbook: 22 sheets, 116807 bytes; blob c45b996de6cc364062966638da73666629179638.
 - Construction schedule: 240 rows; capitalised IDC proxy rate 8.5%; sources and uses reconciled.
 - Portfolio: 11 selected projects, 13.10 MWp, pooled DSCR 1.300x, sponsor NPV -66.202345 BVND.
 - Remote 8,760 streams: four artifact-only streams, each 175,200 rows: Parquet load/solar plus deterministic CSV.GZ compatibility streams; index validation PASS.
 - Remote index SHA-256: d5f0e3822b126239c85756feda029fc40c793aa28f707cec0fd40b081e338cc0.
-- File-level reproducibility: push run 33360401233 and independent workflow_dispatch run 33360504910 / job 99390787043 matched the index, native workbook bytes and all four hourly stream bytes (6/6 compared files).
+- File-level reproducibility: push run 33362871604 and same-head workflow_dispatch run 33362978966 / job 99397849553 were compared by remote comparator run 33363289510 / job 99398752408; the index, native workbook bytes and all four hourly stream bytes matched (6/6 compared files).
+- Reproducibility comparator metadata: artifact 9747403047, digest sha256:6ac16bc4879ef269180cee5032d177a57b05a372dd8bcc69cc45c7adc99bf0a3; CSV SHA-256 eb571d45c45d54babb7e7dc23373d9ce35cec6fdcc2155420bca7546d42f79c0, blob e9885d5a33d94f5fc8169d1121a036e135e68ba8, 1,389 bytes; raw artifact contents were not stored.
 - Tariff: WATCH pending billed implementation confirmation.
 - Tax: WATCH for the official 2026-08-28 draft amendment; current registered tax rules remain unchanged in the model.
 - Release status: candidate.

@@ -48,7 +48,7 @@ Status: PASS WITH NEGATIVE BASE SPONSOR NPV; recommendation is conditional and t
 
 ## H. Validation and release
 
-Latest core remote run: 33360401233 / job 99390501627; latest source-refresh run: 33362227008 / job 99395656762; 20/20 DQ; 20/20 dynamic remote QA; 31/31 workbook checks; 7/7 tests; 13/13 mechanical release controls plus 1 candidate-manifest warning; 240 construction schedule rows; 9 external-validation rows; four remote 8,760 streams (Parquet plus deterministic CSV.GZ compatibility) remain artifact-only with local_storage NONE.
+Latest core remote run: 33362871604 / job 99397534044; latest source-refresh run: 33362227008 / job 99395656762; 20/20 DQ; 20/20 dynamic remote QA; 31/31 workbook checks; 7/7 tests; 13/13 mechanical release controls plus 1 candidate-manifest warning; 240 construction schedule rows; 9 external-validation rows; four remote 8,760 streams (Parquet plus deterministic CSV.GZ compatibility) remain artifact-only with local_storage NONE.
 
 ## I. Recruiter-facing communication
 
@@ -66,4 +66,4 @@ Independent final model review; billed tariff confirmation; transaction-specific
 
 Release 1.2.0 remains candidate with PASS_WITH_LIMITATIONS. recruiter_ready remains false until the external gates are closed.
 
-Reproducibility control: remote push run 33360401233 and independent workflow_dispatch run 33360504910 / job 99390787043 both succeeded and produced identical native workbook SHA-256 aa9dd69c2333580ad879336a4e18f7d2473d3bdfbccf8b882007836f2cf31785; byte-level comparison of the index plus all four hourly streams matched; reproducibility_check_status=PASS.
+Reproducibility control: remote push run 33360401233 and independent workflow_dispatch run 33362978966 / job 99397849553 both succeeded and produced identical native workbook SHA-256 e01406f644ab6a9d810ca6dd5c31d240ec2ed99ff7f73e593d0f756cae2ff03a; byte-level comparison of the index plus all four hourly streams matched; reproducibility_check_status=PASS.

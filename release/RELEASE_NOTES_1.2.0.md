@@ -19,18 +19,20 @@ Date: 2026-08-31
 
 - Source register advanced to SR-1.10 with an EVN republication of Decision 963; the refresh remains corroborative and does not close the billed-tariff gate.
 
-- Metadata-only official-source crawl 33362227008 / job 99395656762 checked 10 controlled URLs: 9 PASS, 1 non-blocking NREL DNS warning; no raw source snapshot was stored.
+- Metadata-only official-source crawl 33362227008 / job 99395656762 checked 11 controlled URLs: 9 PASS, 2 non-blocking warnings (MOIT runner network-unreachable; NREL DNS); no raw source snapshot was stored.
 
 - Regulatory refresh: EVN Bulletin No. 16/2026 and Decree 278/2026/ND-CP were registered as current official references; billed implementation remains WATCH.
 
-- Workflow run 33360401233 / job 99390501627.
+- Workflow run 33362871604 / job 99397534044.
 - 20/20 data-quality checks; 20/20 dynamic remote QA checks.
 - 31/31 workbook checks; 7/7 automated tests.
 - 13/13 mechanical release controls pass; 1 candidate-manifest warning.
 - 9 external-validation rows registered; 11 official source URLs live-checked remotely with raw snapshots disabled.
-- Artifact vietgreen-core-outputs, ID 9746487203, digest sha256:3396dce1eee9420c8c16532c30e38d7be33d4fbdf0c8da4e317af75b6a4b6f2b.
-- Independent workflow_dispatch run 33360504910 / job 99390787043 succeeded.
-- Byte-level comparison matched the index and all four hourly streams; native workbook SHA-256 remained identical.
+- Artifact vietgreen-core-outputs, ID 9747272913, digest sha256:d98e61282a9fbc564bc5078a805d64009ef1f2906a288cb3ec541f4704db93d6.
+- Independent same-head workflow_dispatch run 33362978966 / job 99397849553 succeeded.
+- Remote comparator run 33363289510 / job 99398752408 downloaded both core artifacts in memory and matched the native workbook, 8760 index and all four hourly streams (6/6); comparison metadata artifact 9747403047 was stored without raw artifact contents.
+
+- Comparator metadata: SHA-256 eb571d45c45d54babb7e7dc23373d9ce35cec6fdcc2155420bca7546d42f79c0, 1,389 bytes, GitHub blob e9885d5a33d94f5fc8169d1121a036e135e68ba8; raw_artifact_contents_stored=FALSE.
 
 ## Economics
 
