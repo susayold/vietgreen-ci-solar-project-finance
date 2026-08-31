@@ -1,3 +1,3 @@
 path,row_count,sha256,storage,local_storage
-remote_derived/load_8760.csv.gz,175200,3694eaf0458c23395a7303e60d7cbd7786dc7787c76e86b367ecfa688f8a1e1a,GitHub Actions artifact,NONE
-remote_derived/solar_8760.csv.gz,175200,2de44658a79aa17c459b2d8e2afa97aa34b1474f4eb8fce7026cb997fc1259a8,GitHub Actions artifact,NONE
+remote_derived/load_8760.csv.gz,175200,78da9582c54b1001157e633e890c7a8670883565e2d88db4039deb9820d87dde,GitHub Actions artifact,NONE
+remote_derived/solar_8760.csv.gz,175200,ccc25e7439185bb7540048f86f71b81d8da0cf81e041f9e2935b800affd685f7,GitHub Actions artifact,NONE
