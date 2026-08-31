@@ -28,3 +28,9 @@ retrieval date, and transformation destinations are recorded instead.
 
 Retrieval date: 2026-08-31
 Source rows: SRC-TAR-963, SRC-TAR-60, SRC-REFRESH-EVN-20260831, SRC-REFRESH-MOIT-20260709
+
+- EVN public explainer dated 30 July 2026 describes the new Decision 963 windows and the customer scope for TOU, but does not provide an invoice cutover/effective billing date; billing_status remains WATCH.
+
+- Latest EVN explainer: https://www.evn.com.vn/d/vi-VN/news/Dieu-chinh-khung-gio-cao-diem-Doanh-nghiep-duoc-loi-gi-60-3557-509124
+
+Latest refresh source row: SRC-REFRESH-EVN-20260730
