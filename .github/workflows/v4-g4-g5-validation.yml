@@ -1,0 +1,53 @@
+name: v4-g4-g5-validation
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  v4_g4_g5:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Build formula-driven V4 workbook
+        run: python -m analytics.v4_formula_workbook
+      - name: Install remote recalculation engine when unavailable
+        run: |
+          if ! command -v libreoffice >/dev/null 2>&1; then
+            sudo apt-get update -qq
+            sudo apt-get install -y -qq libreoffice-calc
+          fi
+      - name: Recalculate workbook on remote runner
+        run: |
+          mkdir -p /tmp/v4-recalc
+          libreoffice --headless --convert-to ods --outdir /tmp/v4-recalc model/vietgreen_v4_formula_model.xlsx >/dev/null
+          libreoffice --headless --convert-to xlsx --outdir /tmp/v4-recalc /tmp/v4-recalc/vietgreen_v4_formula_model.ods >/dev/null
+          test -f /tmp/v4-recalc/vietgreen_v4_formula_model.xlsx
+          cp /tmp/v4-recalc/vietgreen_v4_formula_model.xlsx model/vietgreen_v4_formula_model.xlsx
+      - name: Run independent Python reconciliation and formula QA
+        run: python -m analytics.v4_excel_reconciliation
+      - name: Commit V4 G4/G5 evidence
+        run: |
+          git config user.name "vietgreen-actions"
+          git config user.email "actions@users.noreply.github.com"
+          git add model/vietgreen_v4_formula_model.xlsx validation/EXCEL_FORMULA_QA.csv validation/EXCEL_PYTHON_RECONCILIATION.csv validation/V4_G4_G5_DOD.csv validation/V4_G4_G5_RED_TEAM_REPORT.md
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m "feat: add V4 formula workbook and Python reconciliation [skip ci]"
+          git push origin HEAD:main
+      - name: Upload V4 G4/G5 evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: vietgreen-v4-g4-g5-evidence
+          path: |
+            model/vietgreen_v4_formula_model.xlsx
+            validation/EXCEL_FORMULA_QA.csv
+            validation/EXCEL_PYTHON_RECONCILIATION.csv
+            validation/V4_G4_G5_DOD.csv
+            validation/V4_G4_G5_RED_TEAM_REPORT.md
