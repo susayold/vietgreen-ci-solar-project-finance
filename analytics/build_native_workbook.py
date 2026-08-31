@@ -105,6 +105,8 @@ def build():
         '<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">',
         '<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>',
         '<Default Extension="xml" ContentType="application/xml"/>',
+        '<Override PartName="/docProps/core.xml" ContentType="application/vnd.openxmlformats-package.core-properties+xml"/>',
+        '<Override PartName="/docProps/app.xml" ContentType="application/vnd.openxmlformats-officedocument.extended-properties+xml"/>',
         '<Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/>',
         '<Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/>',
     ]
@@ -120,7 +122,6 @@ def build():
         '<Relationship Id="rIdStyles" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/>',
         "</Relationships>",
     ])
-    content_types.append("</Types>")
     root_rels = (
         '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
         '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'
@@ -137,9 +138,22 @@ def build():
         '<cellXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0"/></cellXfs>'
         '</styleSheet>'
     )
+    core = (
+        '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+        '<cp:coreProperties xmlns:cp="http://schemas.openxmlformats.org/package/2006/metadata/core-properties" xmlns:dc="http://purl.org/dc/elements/1.1/">'
+        '<dc:title>VietGreen CI Solar Project Finance</dc:title>'
+        '<dc:creator>vietgreen-actions</dc:creator>'
+        '</cp:coreProperties>'
+    )
+    app = (
+        '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+        '<Properties xmlns="http://schemas.openxmlformats.org/officeDocument/2006/extended-properties"><Application>VietGreen remote workbook builder</Application></Properties>'
+    )
     with zipfile.ZipFile(output, "w", compression=zipfile.ZIP_DEFLATED) as archive:
         archive.writestr("[Content_Types].xml", "".join(content_types))
         archive.writestr("_rels/.rels", root_rels)
+        archive.writestr("docProps/core.xml", core)
+        archive.writestr("docProps/app.xml", app)
         archive.writestr("xl/workbook.xml", "".join(workbook_xml))
         archive.writestr("xl/_rels/workbook.xml.rels", "".join(relationships))
         archive.writestr("xl/styles.xml", styles)
