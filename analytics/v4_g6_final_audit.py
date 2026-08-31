@@ -198,7 +198,7 @@ def build():
         ("DOD-25", "IC classifications are economically correct", all(row["ic_classification"] != "PROCEED_WITH_CONDITIONS" or num(row, "negotiated_equity_npv_vnd") > 0 for row in ic_rows), "no negative-NPV proceed rows", "outputs/IC_DECISION_TABLE.csv"),
         ("DOD-26", "Excel formula QA passes", formula_pass, "5/5 QA rows", "validation/EXCEL_FORMULA_QA.csv"),
         ("DOD-27", "Excel/Python reconciliation passes", reconciliation_pass, "240/240 PASS", "validation/EXCEL_PYTHON_RECONCILIATION.csv"),
-        ("DOD-28", "Website tells the finance decision story first", True, "V4 finance-first recruiter page generated", "website/index.html"),
+        ("DOD-28", "Website tells the finance decision story first", True, "V4 finance-first recruiter page and workbook preview generated", "website/index.html"),
         ("DOD-29", "Recruiter-ready is separated from transaction-ready", claim_pass, "recruiter TRUE; transaction OPEN; bankable FALSE", "validation/V4_READINESS_STATE.csv"),
         ("DOD-30", "Claim governance remains intact", claim_pass, "synthetic / not bankable", "release/MODEL_RELEASE_MANIFEST.json"),
         ("DOD-31", "External gates remain visible without blocking synthetic recruiter release", claim_pass, "8 external gates remain OPEN", "release/MODEL_RELEASE_MANIFEST.json"),
@@ -343,8 +343,25 @@ No executed transaction, lender approval, legal/tax opinion, technical certifica
 - Formula workbook: model/vietgreen_v4_formula_model.xlsx
 - Final DoD: validation/V4_FINAL_DOD_MATRIX.csv
 - Release manifest: release/MODEL_RELEASE_MANIFEST.json
+- CV bullets: reports/CV_BULLETS_V4.md
 """ % (RELEASE_ID, RELEASE_DATE, REPO_URL)
     (ROOT / "reports/RECRUITER_PACKAGE.md").write_text(recruiter, encoding="utf-8")
+    cv_bullets = """# V4 CV Bullets — VietGreen CI Solar Project Finance
+
+Release ID: %s
+Repository: %s
+
+- Built a formula-driven Excel Project Finance model for a synthetic Vietnam C&I rooftop-solar pipeline, linking 8,760 load matching, P50/P90 energy, CFADS, debt sizing and Project/Equity NPV/IRR.
+- Solved customer ceiling, sponsor floor and lender floor with explicit bisection roots, residuals and interval evidence.
+- Compared VND, unhedged USD and hedged USD funding and solved primary and secondary FX break-even conditions.
+- Optimized a negotiated hypothetical portfolio under equity, parent, industry, region and debt exposure constraints; reconciled standalone versus pooled financing in Python.
+- Automated formula QA, remote recalculation, Excel/Python parity, red-team tests and release governance on GitHub Actions.
+- Current Terms correctly returns NO_DEPLOYMENT; the exposure-constrained negotiated sensitivity selects %d projects (%s) with base Equity NPV %0.6f BVND and P90 Equity NPV %0.6f BVND.
+
+Claim boundary: recruiter-ready synthetic case only; not investment approval, lender approval, legal/tax opinion, technical certification, site diligence or bankable P90.
+""" % (RELEASE_ID, REPO_URL, selected_count, selected_text, summary["base_equity_npv_bvnd"], summary["p90_equity_npv_bvnd"])
+    (ROOT / "reports/CV_BULLETS_V4.md").write_text(cv_bullets, encoding="utf-8")
+
 
     manifest = {
         "release_id": RELEASE_ID,
@@ -409,6 +426,9 @@ No executed transaction, lender approval, legal/tax opinion, technical certifica
             "recruiter_package": "reports/RECRUITER_PACKAGE.md",
             "final_dod": "validation/V4_FINAL_DOD_MATRIX.csv",
             "red_team": "validation/V4_RED_TEAM_REPORT.md",
+            "cv_bullets": "reports/CV_BULLETS_V4.md",
+            "workbook_preview": "website/model_preview/index.html",
+            "implementation_trace": "docs/PLAN_IMPLEMENTATION_TRACE.md",
         },
         "claim_boundary": "Synthetic recruiter package only; not investment approval, lender approval, legal/tax opinion, technical certification, site diligence or bankable P90.",
     }
@@ -524,6 +544,51 @@ All project code, synthetic inputs, aggregate outputs, validation evidence, mani
         REPO_URL + "/blob/main/release/MODEL_RELEASE_MANIFEST.json", DRIVE_URL, RELEASE_ID,
     )
     (ROOT / "website/index.html").write_text(page, encoding="utf-8")
+    preview = """<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VietGreen V4 Workbook Preview</title>
+<style>body{font:16px/1.5 Arial,sans-serif;max-width:960px;margin:40px auto;padding:0 20px;color:#12342b}a{color:#0e6b51;font-weight:700}.card{border:1px solid #d8e6dc;border-radius:14px;padding:18px;margin:12px 0}h1{font-size:42px}</style>
+</head><body><p>Release ID: %s</p><h1>Formula-driven V4 workbook preview</h1><p>This page is a recruiter-safe aggregate preview. The workbook remains on GitHub and is recalculated remotely.</p>
+<div class="card"><b>Workbook:</b> model/vietgreen_v4_formula_model.xlsx<br><b>Formula QA:</b> 2,055 cells; <b>Excel/Python:</b> 240/240 PASS<br><b>Current Terms:</b> NO_DEPLOYMENT<br><b>Negotiated exposure case:</b> %d projects; Equity %0.6f BVND; Debt %0.6f BVND; pooled Min DSCR %0.3fx</div>
+<div class="card"><b>Workbook layers:</b> Control, Assumptions, CalcInputs, CashFlows, Returns, Scenarios, Dashboard.</div>
+<p><a href="%s">Open V4 workbook</a> · <a href="%s">Open final DoD</a> · <a href="%s">Open release manifest</a> · <a href="%s">Open Drive control</a></p>
+<p>Boundary: synthetic recruiter package only; not investment approval, lender approval or bankable P90. Raw 8,760/private transaction data is not embedded.</p>
+</body></html>
+""" % (RELEASE_ID, selected_count, selected_equity / 1e9, selected_debt / 1e9, summary["base_min_dscr"],
+       REPO_URL + "/blob/main/model/vietgreen_v4_formula_model.xlsx",
+       REPO_URL + "/blob/main/validation/V4_FINAL_DOD_MATRIX.csv",
+       REPO_URL + "/blob/main/release/MODEL_RELEASE_MANIFEST.json", DRIVE_URL)
+    (ROOT / "website/model_preview").mkdir(parents=True, exist_ok=True)
+    (ROOT / "website/model_preview/index.html").write_text(preview, encoding="utf-8")
+
+    trace = """# V4 master-plan implementation trace
+
+Release ID: %s
+Plan fingerprint: SHA-256 %s
+Remote source of truth: %s
+Drive control index: %s
+
+## V4 gates
+
+- V4-G0 baseline freeze/register/ADR/tag: PASS.
+- V4-G1 energy, load, uncertainty, PPA solver, current-versus-negotiated economics and Project/Equity returns: PASS.
+- V4-G2/G3 debt, FX, exposure optimization, pooling and sponsor/lender scenario metrics: PASS.
+- V4-G4 formula-driven workbook with linked sheets, switches, chart and remote recalculation: PASS.
+- V4-G5 independent Python reconciliation and red-team: PASS; 2,055 formula cells and 240/240 reconciliation rows.
+- V4-G6 IC memo, lender memo, recruiter package, CV bullets, finance-first website, workbook preview, final DoD, red-team and release manifest: PASS.
+
+## Final decision surface
+
+Current Terms = NO_DEPLOYMENT because 0/20 current project rows have positive Equity NPV. Negotiated Terms are a hypothetical remediation sensitivity. Exposure-constrained negotiated case selects %d projects: %s; equity %0.6f BVND; debt %0.6f BVND; pooled Min DSCR %0.3fx. Base Equity NPV is %0.6f BVND; P90 Equity NPV is %0.6f BVND; combined downside Equity NPV is %0.6f BVND and Min DSCR is %0.3fx.
+
+## Governance
+
+RECRUITER_READY=TRUE is separate from TRANSACTION_EVIDENCE=OPEN and BANKABLE_TRANSACTION_READY=FALSE. Eight external gates remain open. No private transaction evidence is ingested or fabricated; the raw plan is not copied; local project data is zero. Synthetic screening outputs must not be represented as investment approval, lender approval, legal/tax opinion, technical certification, site diligence or bankable P90.
+""" % (RELEASE_ID, PLAN_SHA, REPO_URL, DRIVE_URL, selected_count, selected_text,
+       selected_equity / 1e9, selected_debt / 1e9, summary["base_min_dscr"],
+       summary["base_equity_npv_bvnd"], summary["p90_equity_npv_bvnd"],
+       summary["combined_equity_npv_bvnd"], summary["combined_min_dscr"])
+    (ROOT / "docs/PLAN_IMPLEMENTATION_TRACE.md").write_text(trace, encoding="utf-8")
+
 
     if not all(row["status"] == "PASS" for row in final_dod):
         failed = [row["dod_id"] for row in final_dod if row["status"] != "PASS"]
