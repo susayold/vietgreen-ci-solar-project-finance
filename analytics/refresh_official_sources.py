@@ -17,7 +17,7 @@ ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "evidence" / "SOURCE_REFRESH_MANIFEST.csv"
 REGISTER = ROOT / "evidence" / "SOURCE_REGISTER.csv"
 OUTPUT = ROOT / "evidence" / "REMOTE_SOURCE_LIVE_CHECK.csv"
-MAX_BYTES = 12_000_000
+MAX_BYTES = 20_000_000
 MAX_ATTEMPTS = 3
 RETRY_BACKOFF_SECONDS = 2
 RETRYABLE_HTTP_CODES = {408, 425, 429, 500, 502, 503, 504}
@@ -64,12 +64,13 @@ def fetch(row: dict[str, str]) -> dict[str, str]:
                     bytes_read += len(chunk)
                     digest.update(chunk)
                     if bytes_read > MAX_BYTES:
+                        truncated = True
                         note = (
                             f"response exceeded {MAX_BYTES} bytes; "
                             "hash is truncated at the safety cap"
                         )
                         break
-                fetch_status = "PASS" if status.startswith("2") else "WARN"
+                fetch_status = "PASS" if status.startswith("2") and not truncated else "WARN"
                 if not note:
                     note = "response body hashed in memory; raw snapshot not stored"
                 break
