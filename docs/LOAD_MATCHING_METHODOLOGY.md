@@ -2,15 +2,27 @@
 
 ## Population and grain
 
-The model keeps a 20-project screening population. It runs a deterministic 8,760 profile only for projects that pass hard gates and enter the shortlist. Screening-only rows retain annual approximations and are not presented as hourly diligence.
+The model keeps a 20-project screening population and runs deterministic 8,760
+profiles for every project in memory on the GitHub Actions runner. Final
+decision outputs are controlled CSV summaries. Full derived hourly vectors are
+exported only to remote workflow artifacts:
+remote_derived/load_8760.csv.gz and remote_derived/solar_8760.csv.gz.
+No project data is written to the desktop workspace.
 
 ## Deterministic profile
 
-The remote engine creates a synthetic hourly load shape and solar shape, then scales them to the project annual load and P50 solar output. For each hour:
-
+The synthetic hourly load and solar shapes are scaled to annual load and P50/P90
+solar output. daytime_load_share changes the daytime/night load shape and is
+reconciled to the annual load. For every one-hour interval:
 - self-consumed energy = min(load, solar)
-- excess energy = max(solar − load, 0)
-- grid purchase and export treatment are kept separate
-- hourly reconciliation must equal annual load and annual solar within tolerance
+- excess energy = max(solar - load, 0)
+- grid purchase and export treatment are separate
+- hourly totals reconcile to annual inputs
 
-The output records scope, self-consumption, solar share of load, avoided grid cost, aggregation-bias diagnostics and a profile hash/reference. No generic PR is layered on top of source PVOUT.
+## Tariff mapping
+
+Decision 963 legal periods and the current billed reference are mapped to every
+hour using interval midpoints, making 17:30 and 22:30 reproducible. Schedule
+hash and period counts are carried into outputs. Numeric tariff components remain
+SIMULATED_MODEL_INPUT and are never presented as a billed tariff. Billing stays
+WATCH. No generic PR is layered on source PVOUT.

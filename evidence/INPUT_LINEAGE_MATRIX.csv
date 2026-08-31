@@ -1,0 +1,21 @@
+lineage_id,model_parameter,model_location,unit,source_or_assumption_id,classification,source_register_status,recheck_before_release,transformation,downstream_use
+LIN-001,PVOUT,data/synthetic/solar_resource.csv,p50 kWh/kWp,SRC-SOLAR-GSA,observed_model_input,REVIEWED,TRUE,regional lookup with no extra generic PR,energy_p50_p90 and 8760 profiles
+LIN-002,energy uncertainty,data/synthetic/project_master.csv,decimal,ASM-ENERGY-UNCERTAINTY,simulated_input,LOCKED,TRUE,p90 = p50 x (1 - 1.2816 x uncertainty),energy and downside
+LIN-003,capacity,data/synthetic/project_master.csv,kWp,PROJECT_MASTER_SYNTHETIC,simulated_input,LOCKED,TRUE,proposed <= feasible hard gate,capex energy finance
+LIN-004,annual load,data/synthetic/project_master.csv,kWh/year,OFFTAKER_SYNTHETIC,simulated_input,LOCKED,TRUE,scaled 8760 load shape,load matching CFADS
+LIN-005,daytime load share,data/synthetic/project_master.csv,ratio,OFFTAKER_SYNTHETIC,simulated_input,LOCKED,TRUE,daytime/night shape scaling,load and model-only tariff blend
+LIN-006,legal time windows,evidence/TARIFF_MASTER.csv,local interval,SRC-TAR-963,observed_regulatory_input,WATCH,TRUE,Decision 963 midpoint mapping,tariff and billing watch
+LIN-007,current billed reference,evidence/TARIFF_MASTER.csv,local interval,SRC-REFRESH-MOIT-20260709,observed_status_reference,WATCH,TRUE,MOIT Q2 2026 reference,implementation watch
+LIN-008,model-only base tariff,evidence/TARIFF_MASTER.csv,VND/kWh,ASM-TARIFF-BASE,simulated_model_input,LOCKED,TRUE,registered blend only; not billed,avoided cost frontier
+LIN-009,model-only daytime premium,evidence/TARIFF_MASTER.csv,VND/kWh,ASM-TARIFF-DAY-PREMIUM,simulated_model_input,LOCKED,TRUE,weighted by mapped daytime self-consumption,avoided cost frontier
+LIN-010,PPA tenor/data price,data/synthetic/ppa_terms.csv,years and VND/kWh,ASM-PPA-TENOR,simulated_input,LOCKED,TRUE,contract row join,CFADS and frontier
+LIN-011,CAPEX,data/synthetic/capex.csv,VND,ASM-CAPEX,assumption,LOCKED,TRUE,bottom-up six-category aggregation,uses and debt
+LIN-012,OPEX,analytics/run_core_model.py,VND/year,ASM-OPEX,assumption,LOCKED,TRUE,capacity x USD/kW-year x FX,CFADS
+LIN-013,tax,analytics/cash_flow.py,decimal,SRC-TAX-067,observed_rule_proxy,LOCKED,TRUE,loss carryforward proxy and cash tax,CFADS
+LIN-014,VAT and working capital,analytics/cash_flow.py,decimal and days,ASM-VAT|ASM-DSO,assumption,LOCKED,TRUE,VAT split and receivables schedule,CFADS
+LIN-015,degradation,analytics/cash_flow.py,decimal/year,ASM-DEG,assumption,LOCKED,TRUE,year-on-year decline,CFADS
+LIN-016,discount rates,evidence/DISCOUNT_RATE_REGISTER.csv,decimal,ASM-DISC-PROJECT|ASM-DISC-EQUITY|ASM-DISC-LLCR|ASM-DISC-PLCR,assumption,LOCKED,TRUE,registered discounting,returns and debt
+LIN-017,debt terms,data/synthetic/debt_terms.csv,rate/DSCR/tenor,FACILITY_TERMS_SYNTHETIC,simulated_input,LOCKED,TRUE,backward sizing and forward rebuild,debt and reserves
+LIN-018,foreign borrowing rules,evidence/REGULATORY_REGISTER.csv,legal applicability,SRC-FX-008|SRC-FX-019,observed_regulatory_input,LOCKED,TRUE,amendment-aware checklist,FX and financing
+LIN-019,terminal branch,analytics/cash_flow.py,VND,TERMINAL-ZERO,model_control,LOCKED,TRUE,zero residual no sale,returns and reserves
+LIN-020,hidden truth,analytics/hidden_truth_validation.py,aggregate-only,SEED-260837,private_test_control,ISOLATED,TRUE,never passed into public model,firewall validation
