@@ -5,7 +5,7 @@ Date: 2026-08-31
 Source register: SR-1.10-tax-tariff-watch (latest live source: SRC-REFRESH-EVN-20260831; corroborating EVN Decision 963 page SRC-REFRESH-EVN-963-20260423; latest tax watch: SRC-REFRESH-TAX-20260831)
 Repository: https://github.com/susayold/vietgreen-ci-solar-project-finance
 Workflow source commit: b7ac7ab507487d4ba021064c8cdeadb29fcefc44
-Workbook/remote-output refresh commit: b7ac7ab507487d4ba021064c8cdeadb29fcefc44
+Workbook/remote-output refresh commit: d4e4e2f1e5981509ecc53c5fec4d1db00faaf4c8
 Workflow run: 33362871604
 Workflow job: 99397534044
 Artifact: vietgreen-core-outputs, ID 9747272913
