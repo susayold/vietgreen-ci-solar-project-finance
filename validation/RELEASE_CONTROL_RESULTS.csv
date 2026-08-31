@@ -6,7 +6,7 @@ REL-004,PASS,final_8760,hourly output scope explicit
 REL-005,PASS,P90<=P50,uncertainty monotonicity
 REL-006,PASS,PVOUT double-count check,no generic PR layered on PVOUT
 REL-007,PASS,WATCH,legal schedule versus billed implementation
-REL-008,PASS,17 referenced / 17 registered,tariff/regulatory lineage resolves
+REL-008,PASS,22 referenced / 22 registered,tariff/regulatory lineage resolves
 REL-009,PASS,master derived fields reconcile,screening and final ratio tie
 REL-010,PASS,DQ 20/20,no DQ failures
 REL-011,PASS,QA 20/20,no remote QA failures
