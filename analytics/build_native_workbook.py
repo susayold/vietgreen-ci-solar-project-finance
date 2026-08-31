@@ -88,6 +88,14 @@ def build_control_rows():
     ]
 
 
+def write_deterministic_entry(archive, name, payload):
+    """Write OOXML entries with fixed ZIP metadata for reproducible workbook bytes."""
+    info = zipfile.ZipInfo(name, date_time=(2020, 1, 1, 0, 0, 0))
+    info.compress_type = zipfile.ZIP_DEFLATED
+    info.create_system = 3
+    archive.writestr(info, payload)
+
+
 def build():
     output = ROOT / "model" / "vietgreen_core_model.xlsx"
     output.parent.mkdir(parents=True, exist_ok=True)
@@ -150,15 +158,15 @@ def build():
         '<Properties xmlns="http://schemas.openxmlformats.org/officeDocument/2006/extended-properties"><Application>VietGreen remote workbook builder</Application></Properties>'
     )
     with zipfile.ZipFile(output, "w", compression=zipfile.ZIP_DEFLATED) as archive:
-        archive.writestr("[Content_Types].xml", "".join(content_types))
-        archive.writestr("_rels/.rels", root_rels)
-        archive.writestr("docProps/core.xml", core)
-        archive.writestr("docProps/app.xml", app)
-        archive.writestr("xl/workbook.xml", "".join(workbook_xml))
-        archive.writestr("xl/_rels/workbook.xml.rels", "".join(relationships))
-        archive.writestr("xl/styles.xml", styles)
+        write_deterministic_entry(archive, "[Content_Types].xml", "".join(content_types))
+        write_deterministic_entry(archive, "_rels/.rels", root_rels)
+        write_deterministic_entry(archive, "docProps/core.xml", core)
+        write_deterministic_entry(archive, "docProps/app.xml", app)
+        write_deterministic_entry(archive, "xl/workbook.xml", "".join(workbook_xml))
+        write_deterministic_entry(archive, "xl/_rels/workbook.xml.rels", "".join(relationships))
+        write_deterministic_entry(archive, "xl/styles.xml", styles)
         for index, xml in sheet_payloads.items():
-            archive.writestr("xl/worksheets/sheet%d.xml" % index, xml)
+            write_deterministic_entry(archive, "xl/worksheets/sheet%d.xml" % index, xml)
     print(json.dumps({"path": str(output), "sheets": len(SHEETS), "bytes": output.stat().st_size}, sort_keys=True))
 
 
