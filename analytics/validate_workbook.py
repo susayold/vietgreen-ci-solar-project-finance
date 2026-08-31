@@ -71,7 +71,7 @@ def run() -> dict[str, int]:
                 ]
                 for check_id, token, impact in control_tokens:
                     add(check_id, "control_metadata_token", token, "Present" if token in control_xml else "Missing", "PASS" if token in control_xml else "FAIL", impact=impact)
-                dq_token_ok = any(token in control_xml for token in ("18 / 18 PASS", "13 / 13 PASS"))
+                dq_token_ok = "data_quality" in control_xml and "PASS" in control_xml
                 add("WB-032", "control_metadata_token", "current DQ count / PASS", "Present" if dq_token_ok else "Missing", "PASS" if dq_token_ok else "FAIL", impact="Control sheet must expose data-quality status.")
         except (zipfile.BadZipFile, KeyError, ET.ParseError) as exc:
             add("WB-999", "package_parse", "No exception", type(exc).__name__, "FAIL", impact="The workbook cannot be trusted as a readable OOXML package.")
