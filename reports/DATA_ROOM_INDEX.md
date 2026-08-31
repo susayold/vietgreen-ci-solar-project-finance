@@ -9,37 +9,40 @@ The project data-room is represented by the repository, the workflow artifact an
 ## Latest release evidence
 
 - Release candidate: 1.2.0.
-- Workflow source commit: 09b91dfcccaa12259df0b5ac87a1fd612f73ba13.
-- Workbook refresh commit: 67d341a728cfd6863a89128f2c79a2892715c946.
-- Workflow run: 33346497581.
-- Workflow job: 99351523243.
-- Artifact: vietgreen-core-outputs, ID 9742154404.
-- Artifact digest: sha256:3fd6cb3507a5bf90241495fca332bb50dc7cfcf67fd37b31a38ae183f93580ef.
-- Native workbook: 22 sheets; current blob 2af6371982c35eb117f50dff344dcc0cfae8108f; 106636 bytes.
-- Data quality: 18 checks, 0 failures.
-- Dynamic remote QA: 18 checks, 0 failures.
+- Workflow source commit: 6a82d46dbba57288f38538c9ed94f2a1e985afe4.
+- Workbook refresh commit: a6b6b714e2e86c2002002dcce1316bdfcb61011b.
+- Workflow run: 33349715239.
+- Workflow job: 99360547174.
+- Artifact: vietgreen-core-outputs, ID 9743177276.
+- Artifact digest: sha256:0240d888a49d77469a517e665bc28e76b832735efec7b356782a86853b869b71.
+- Native workbook: 22 sheets; current blob is recorded in release/MODEL_RELEASE_MANIFEST.json.
+- Data quality: 20 checks, 0 failures.
+- Dynamic remote QA: 20 checks, 0 failures.
 - Workbook validation: 31 checks, 0 failures.
 - Hidden truth: 5 cases, 5 classification matches, 0 false negatives.
 - Automated tests: 5 passed.
+- Mechanical release controls: 13 PASS, 1 WARN.
 - Locked input hashes: PASS.
 - Remote 8,760 artifact streams: 175,200 rows each; local_storage NONE.
 
 ## Candidate economics
 
-- 20 synthetic projects evaluated; 15 eligibility-pass; 12 selected.
-- Selected capacity: 14.95 MWp.
-- Equity used: 145.275160 BVND.
-- Endogenous pooled debt: 172.412340 BVND.
+- 20 synthetic projects evaluated; 15 eligibility-pass; 11 selected after IDC-inclusive uses.
+- Selected capacity: 13.10 MWp.
+- Equity used: 138.143294 BVND.
+- Endogenous pooled debt: 152.457008 BVND.
 - Pooled DSCR: 1.30x.
-- Base sponsor NPV: -63.922321 BVND.
+- Base sponsor NPV: -66.202345 BVND.
 - Tariff: WATCH pending billed implementation confirmation.
+- CAPEX: six-category bottom-up base plus 12-month synthetic construction curve and 8.5% capitalised IDC proxy.
 
 ## Evidence map
 
-- evidence/: synthetic source, assumption, tariff, regulatory, discount-rate, input-lineage and live-refresh registers.
-- outputs/: energy, load, PPA, debt, cash-flow, reserve, returns, FX, scenarios, selection, concentration and IC outputs.
-- validation/: data-quality, hidden-truth, remote QA, release-control, 8,760-index and workbook-validation outputs.
+- evidence/: source, assumption, tariff, regulatory, discount-rate, input-lineage and source-fetch registers.
+- data/synthetic/: locked synthetic project, offtaker, solar, PPA, debt, CAPEX and construction inputs.
+- outputs/: energy, load, PPA, CAPEX/IDC, debt, cash-flow, reserve, returns, FX, scenarios, selection, concentration and IC outputs.
+- validation/: data-quality, hidden-truth, remote QA, release-control, 8,760-index, DOD matrix and workbook-validation outputs.
 - model/: native workbook and workbook specification.
 - docs/: methodology and plan trace.
-- release/: remote artifact and release manifests.
-- reports/: IC, lender, financing and data-room memos.
+- release/: remote artifact, backend and release manifests/notes.
+- reports/: IC, lender, financing, recruiter and data-room memos.
