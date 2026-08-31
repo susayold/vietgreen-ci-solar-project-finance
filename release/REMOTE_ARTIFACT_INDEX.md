@@ -34,3 +34,8 @@ Artifact digest: sha256:3396dce1eee9420c8c16532c30e38d7be33d4fbdf0c8da4e317af75b
 The artifact is remote-only and contains synthetic inputs, aggregate validation, controlled outputs and review streams. It excludes credentials and private hidden raw truth. Hourly streams are available through the workflow artifact, not the desktop workspace.
 
 Live recruiter site (aggregate-only): https://susayold.github.io/vietgreen-ci-solar-project-finance/
+
+## Official source live check
+
+- Remote metadata-only crawl: workflow 33361780986 / job 99394389541; artifact official-source-live-check ID 9746924931, digest sha256:95aa484f7a2ac8db0cc1679ad865f8ffe64eb50cb1e3355eb7307f73cd48f00e.
+- 10 controlled official URLs were checked in memory: 9 PASS and 1 non-blocking WARN for the NREL comparator endpoint DNS; raw_snapshot_stored=FALSE for every row. Live-check SHA-256: 749c4ebf52ef3e640c7973d9d470f991c80fdf3e1acb80d3f993f0cda97c0701.

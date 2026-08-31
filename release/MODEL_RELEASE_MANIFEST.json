@@ -52,7 +52,7 @@
   "external_validation_rows": 9,
   "latest_benchmark_refresh_source_id": "SRC-IRENA-2025",
   "git_commit": "d2fd8835bb0591bc850a90b13cb37f3b5ec2310b",
-  "release_metadata_parent_commit": "65e9cba37120593148b9f529709a542012e7e68a",
+  "release_metadata_parent_commit": "b1cda6f0b15f052252a07c53d709451971f1f10b",
   "release_timestamp_utc": "2026-08-31T05:23:59Z",
   "excel_file": {
     "path": "model/vietgreen_core_model.xlsx",
@@ -100,5 +100,20 @@
   "open_external_gate_count": 8,
   "source_refresh_manifest_path": "evidence/SOURCE_REFRESH_MANIFEST.csv",
   "source_live_check_path": "evidence/REMOTE_SOURCE_LIVE_CHECK.csv",
-  "source_refresh_workflow": ".github/workflows/source-refresh.yml"
+  "source_refresh_workflow": ".github/workflows/source-refresh.yml",
+  "source_refresh_workflow_run_id": 33361780986,
+  "source_refresh_workflow_job_id": 99394389541,
+  "source_refresh_artifact_id": 9746924931,
+  "source_refresh_artifact_digest": "sha256:95aa484f7a2ac8db0cc1679ad865f8ffe64eb50cb1e3355eb7307f73cd48f00e",
+  "source_refresh_artifact_size_bytes": 1543,
+  "source_live_check_commit": "b1cda6f0b15f052252a07c53d709451971f1f10b",
+  "source_live_check_blob_sha": "81c5dda4dfe239b998b60b9f8fcda9b0e38a54c7",
+  "source_live_check_sha256": "749c4ebf52ef3e640c7973d9d470f991c80fdf3e1acb80d3f993f0cda97c0701",
+  "source_live_check_size_bytes": 4386,
+  "source_live_check_rows": 10,
+  "source_live_check_pass_count": 9,
+  "source_live_check_warn_count": 1,
+  "source_live_check_status": "PASS_WITH_NONBLOCKING_WARNING",
+  "source_live_check_raw_snapshot_stored": false,
+  "source_live_check_warning": "SRC-SOLAR-NREL returned a DNS resolution warning on the remote runner; source is retained as an official comparator and must be rechecked before relying on it."
 }

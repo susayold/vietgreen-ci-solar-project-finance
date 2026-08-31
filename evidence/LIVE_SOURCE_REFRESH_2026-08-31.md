@@ -30,3 +30,10 @@ The model keeps LEGAL_EFFECTIVE_NOT_BILLED, CURRENT_BILLED_REFERENCE, and SIMULA
 
 Retrieval date: 2026-08-31
 Source rows: SRC-TAR-963, SRC-TAR-60, SRC-TAR-278, SRC-REFRESH-EVN-20260831, SRC-REFRESH-MOIT-20260709, SRC-REFRESH-EVN-20260730, SRC-REFRESH-EVN-BULLETIN-20260831, SRC-REFRESH-TAX-20260831
+
+## Remote live-check provenance
+
+- Workflow: 33361780986; job: 99394389541; artifact: 9746924931; artifact digest: sha256:95aa484f7a2ac8db0cc1679ad865f8ffe64eb50cb1e3355eb7307f73cd48f00e.
+- Live-check file: evidence/REMOTE_SOURCE_LIVE_CHECK.csv; SHA-256 749c4ebf52ef3e640c7973d9d470f991c80fdf3e1acb80d3f993f0cda97c0701; 10 rows; 9 PASS and 1 non-blocking WARN.
+- The NREL comparator endpoint returned a DNS warning on the runner. This is preserved as WARN and is not treated as evidence that the source is unavailable or that the model can claim certification.
+- All 10 rows record raw_snapshot_stored=FALSE and storage_boundary=REMOTE_RUNNER_EPHEMERAL.

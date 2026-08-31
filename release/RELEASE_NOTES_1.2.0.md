@@ -17,6 +17,8 @@ Date: 2026-08-31
 
 ## Verified
 
+- Metadata-only official-source crawl 33361780986 / job 99394389541 checked 10 controlled URLs: 9 PASS, 1 non-blocking NREL DNS warning; no raw source snapshot was stored.
+
 - Regulatory refresh: EVN Bulletin No. 16/2026 and Decree 278/2026/ND-CP were registered as current official references; billed implementation remains WATCH.
 
 - Workflow run 33360401233 / job 99390501627.
