@@ -28,3 +28,5 @@ Artifact digest: sha256:c7a9ddd43d97a414603e5ba693fc0559208857e86ca7996ae6786850
 - recruiter_ready: false.
 
 The artifact is remote-only and contains synthetic inputs, aggregate validation, controlled outputs and review streams. It excludes credentials and private hidden raw truth. The compressed hourly streams are available through the workflow artifact, not the desktop workspace.
+
+Live recruiter site (aggregate-only): https://susayold.github.io/vietgreen-ci-solar-project-finance/

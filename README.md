@@ -51,6 +51,7 @@ This is a reviewable candidate, not a lender approval, bankable P90 case, legal 
 Key links:
 
 - [Recruiter-facing site](website/index.html)
+- [Live recruiter site](https://susayold.github.io/vietgreen-ci-solar-project-finance/)
 - [Native workbook](model/vietgreen_core_model.xlsx)
 - [Release manifest](release/MODEL_RELEASE_MANIFEST.json)
 - [Backend artifact manifest](release/BACKEND_OUTPUT_MANIFEST.csv)

@@ -24,3 +24,5 @@ A remote-only, source-backed candidate project-finance model for a synthetic Vie
 ## Claim boundary
 
 This package demonstrates model-building, evidence lineage, reproducibility and QA discipline. It does not claim lender approval, bank-certified terms, bankable P90, legal/tax/technical certification or a completed commercial transaction. recruiter_ready remains false pending external gates.
+
+Live recruiter site (aggregate-only): https://susayold.github.io/vietgreen-ci-solar-project-finance/

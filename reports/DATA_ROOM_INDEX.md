@@ -49,3 +49,5 @@ The project data-room is represented by the repository, the workflow artifact an
 - release/: remote artifact, backend and release manifests/notes.
 - reports/: IC, lender, financing, recruiter and data-room memos.
 - website/: aggregate-only recruiter-facing landing page.
+
+Live recruiter site (aggregate-only): https://susayold.github.io/vietgreen-ci-solar-project-finance/

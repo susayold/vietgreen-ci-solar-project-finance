@@ -69,5 +69,11 @@
     "config/synthetic_seed.yml": "14bb5b1ba9f3f5c76efcd2e0ba3cad7eb3d256a500d1c773df3663bf9163d52f",
     "config/validation_config.yml": "06c519211abe95e13c4ddfc76c40af654c1c36795ac3e431e8e689efad3bdeff",
     "requirements-lock.txt": "8528c88b4b612e2c8cff30f12790a5ad88e00c0561158af1f2f185232e8b14d5"
-  }
+  },
+  "recruiter_site_url": "https://susayold.github.io/vietgreen-ci-solar-project-finance/",
+  "recruiter_site_status": "DEPLOYED_AGGREGATE_ONLY",
+  "pages_workflow_run_id": 33354984280,
+  "pages_workflow_job_id": 99375460077,
+  "pages_deploy_commit": "4ebb2b037bb828ccb19e206e33af9b389555b656",
+  "website_boundary_check": "PASS"
 }
