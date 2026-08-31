@@ -2,7 +2,7 @@ check_id,category,status,evidence,limitation
 DQ-001,data_quality,PASS,20 of 20 checks passed,Internal synthetic lineage and cross-field checks only
 WB-001,workbook,PASS,31 of 31 checks passed,Structural workbook validation only
 HT-001,hidden_truth,PASS,5 of 5 cases matched; 0 false negatives,Aggregate-only test cases; raw truth withheld
-TEST-001,automated_tests,PASS,5 of 5 tests passed,Test suite is not independent model assurance
+TEST-001,automated_tests,PASS,7 of 7 tests passed,Test suite is not independent model assurance
 QA-001,energy,PASS,8760 hashes and P90 monotonicity,Profiles are synthetic
 QA-002,cash_flow,PASS,Sources and uses and terminal checks passed,Tax/accounting proxy not certified
 QA-003,debt,PASS,Debt close and pooled feedback convergence,Not lender-approved terms

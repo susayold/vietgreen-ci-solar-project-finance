@@ -8,17 +8,17 @@ Date: 2026-08-31
 - Monthly construction gross/net/VAT and capitalised IDC schedule.
 - IDC-inclusive total uses and depreciable basis in project cash flow.
 - Explicit CAPEX/VAT/IDC reconciliation and year-zero no-debt check.
-- PPA negotiation-zone helper with explicit RENEGOTIATE_OR_REJECT action for empty zones.
+- PPA negotiation-zone helper with explicit RENEGOTIATE_OR_REJECT action for empty zones, covered by a boundary test.
 - Pairwise-swap improvement pass after hard-gated value-density selection.
-- Remote source-fetch log, DOD status matrix and recruiter-safe package.
+- Remote source-fetch log, DOD status matrix, boundary tests and recruiter-safe package.
 
 ## Verified
 
-- Workflow run 33349715239 / job 99360547174.
+- Workflow run 33352584933 / job 99368667146.
 - 20/20 data-quality checks; 20/20 dynamic remote QA checks.
-- 31/31 workbook checks; 5/5 automated tests.
+- 31/31 workbook checks; 7/7 automated tests.
 - 13/13 mechanical release controls pass; 1 candidate-manifest warning.
-- Artifact vietgreen-core-outputs, ID 9743177276, digest sha256:0240d888a49d77469a517e665bc28e76b832735efec7b356782a86853b869b71.
+- Artifact vietgreen-core-outputs, ID 9744107232, digest sha256:214ce6e232e3b8423c39a1a1632b844501181a091f844005074c4309d2657ac1.
 
 ## Economics
 

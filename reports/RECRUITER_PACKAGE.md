@@ -19,7 +19,7 @@ A remote-only, source-backed candidate project-finance model for a synthetic Vie
 - Endogenous pooled debt: 152.457008 BVND.
 - Base pooled DSCR: 1.30x; P90 DSCR: 1.1588x.
 - Base sponsor NPV: -66.202345 BVND; recommendation remains conditional.
-- Latest verified workflow: https://github.com/susayold/vietgreen-ci-solar-project-finance/actions/runs/33349715239.
+- Latest verified workflow: https://github.com/susayold/vietgreen-ci-solar-project-finance/actions/runs/33352584933.
 
 ## Claim boundary
 

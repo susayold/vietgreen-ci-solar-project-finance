@@ -14,8 +14,8 @@ The current workbook contains 22 sheets covering cover, assumptions, regulatory/
 
 - Release candidate: 1.2.0.
 - Workflow run: 33349715239 / job 99360547174.
-- Workflow source commit: 6a82d46dbba57288f38538c9ed94f2a1e985afe4.
-- Workbook refresh commit: a6b6b714e2e86c2002002dcce1316bdfcb61011b.
+- Workflow source commit: 09a8798d1a11da3ef378fa3989ff5f4085409b40.
+- Workbook refresh commit: 5324dbfbc7ec089e8f0b4a277325fa5fda910528.
 - Artifact digest: sha256:0240d888a49d77469a517e665bc28e76b832735efec7b356782a86853b869b71.
 - Workbook validation: 31 checks, 0 failures.
 - Workbook blob: 1e5d94f14c90f7f0eed5b0a9b0636a7a9237a0d6.

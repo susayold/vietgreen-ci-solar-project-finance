@@ -19,7 +19,7 @@ The user request controls the operating boundary: create one new Drive file, cre
 - Tariff status: WATCH. Decision 963 legal time windows are mapped separately from the current billed reference; numeric avoided-tariff components remain simulated/model-only.
 - Pooled feedback: converged in 2 iterations.
 - 8,760 engine: executed in memory for every project, with P50 and P90 profiles.
-- Quality gates: 20/20 data-quality checks; 31/31 workbook structural checks; 20/20 dynamic remote QA checks; 5/5 hidden-truth classifications; 5 automated tests; 13/13 mechanical release controls pass, with 1 candidate-manifest warning.
+- Quality gates: 20/20 data-quality checks; 31/31 workbook structural checks; 20/20 dynamic remote QA checks; 5/5 hidden-truth classifications; 7 automated tests; 13/13 mechanical release controls pass, with 1 candidate-manifest warning.
 
 ## What is implemented
 
@@ -33,12 +33,12 @@ This is a reviewable candidate, not a lender approval, bankable P90 case, legal 
 
 ## Latest remote verification
 
-- Workflow run: https://github.com/susayold/vietgreen-ci-solar-project-finance/actions/runs/33349715239
-- Workflow job: 99360547174.
-- Workflow source commit: 6a82d46dbba57288f38538c9ed94f2a1e985afe4.
-- Workbook refresh commit: a6b6b714e2e86c2002002dcce1316bdfcb61011b.
-- Artifact: vietgreen-core-outputs, ID 9743177276.
-- Artifact digest: sha256:0240d888a49d77469a517e665bc28e76b832735efec7b356782a86853b869b71.
+- Workflow run: https://github.com/susayold/vietgreen-ci-solar-project-finance/actions/runs/33352584933
+- Workflow job: 99368667146.
+- Workflow source commit: 09a8798d1a11da3ef378fa3989ff5f4085409b40.
+- Workbook refresh commit: 5324dbfbc7ec089e8f0b4a277325fa5fda910528.
+- Artifact: vietgreen-core-outputs, ID 9744107232.
+- Artifact digest: sha256:214ce6e232e3b8423c39a1a1632b844501181a091f844005074c4309d2657ac1.
 - Native workbook blob: see release/MODEL_RELEASE_MANIFEST.json.
 
 ## Reproducibility and storage
