@@ -20,7 +20,7 @@ Implemented: 20 in-memory 8,760 load/solar profiles, P50/P90 flow-through, P90 <
 
 Status: PASS for synthetic mechanics; external PPA, site, technical-yield and billed-tariff evidence remain open.
 
-Remote-format note: the plan names Parquet for hourly deliverables, but the remote-only implementation publishes compressed CSV.GZ streams in the GitHub Actions artifact with an explicit schema/index. No hourly stream is committed to the public repository or desktop workspace.
+Remote-format note: the plan names Parquet for hourly deliverables; the remote-only implementation publishes Parquet streams plus deterministic CSV.GZ compatibility streams in the GitHub Actions artifact with an explicit schema/index. No hourly stream is retained in the desktop workspace.
 
 ## D. CAPEX, construction, tax, VAT, WC and terminal
 
@@ -48,7 +48,7 @@ Status: PASS WITH NEGATIVE BASE SPONSOR NPV; recommendation is conditional and t
 
 ## H. Validation and release
 
-Latest remote run: 33357532792 / job 99382430451; 20/20 DQ; 20/20 dynamic remote QA; 31/31 workbook checks; 7/7 tests; 13/13 mechanical release controls plus 1 candidate-manifest warning; 240 construction schedule rows; 9 external-validation rows; four remote 8,760 streams (Parquet plus deterministic CSV.GZ compatibility) remain artifact-only with local_storage NONE.
+Latest remote run: 33357877259 / job 99383381558; 20/20 DQ; 20/20 dynamic remote QA; 31/31 workbook checks; 7/7 tests; 13/13 mechanical release controls plus 1 candidate-manifest warning; 240 construction schedule rows; 9 external-validation rows; four remote 8,760 streams (Parquet plus deterministic CSV.GZ compatibility) remain artifact-only with local_storage NONE.
 
 ## I. Recruiter-facing communication
 
@@ -66,4 +66,4 @@ Independent final model review; billed tariff confirmation; transaction-specific
 
 Release 1.2.0 remains candidate with PASS_WITH_LIMITATIONS. recruiter_ready remains false until the external gates are closed.
 
-Reproducibility control: remote push run 33357532792 and independent workflow_dispatch run 33357590462 / job 99382592753 both succeeded and produced identical native workbook SHA-256 03a78fd294212b8a771b0eee35fd2010f77975de59037044e4b120a86e6fffdd; byte-level comparison of the index plus all four hourly streams matched; reproducibility_check_status=PASS.
+Reproducibility control: remote push run 33357877259 and independent workflow_dispatch run 33357990799 / job 99383699191 both succeeded and produced identical native workbook SHA-256 03a78fd294212b8a771b0eee35fd2010f77975de59037044e4b120a86e6fffdd; byte-level comparison of the index plus all four hourly streams matched; reproducibility_check_status=PASS.
