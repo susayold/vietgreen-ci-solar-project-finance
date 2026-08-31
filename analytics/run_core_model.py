@@ -31,6 +31,7 @@ from analytics.fx_engine import (
 )
 from analytics.load_match_8760 import profile
 from analytics.portfolio_selection import select_by_value_density
+from analytics.tariff_engine import hourly_tariff_summary, weighted_model_only_tariff
 from analytics.qa_checks import (
     assert_debt_closes,
     assert_monotonic_non_decreasing,
@@ -100,7 +101,7 @@ def hash_profile(hourly):
     return hashlib.sha256(payload.encode("utf-8")).hexdigest()
 
 
-def facility_size(cfads, capex, terms, rate_override=None):
+def facility_size(cfads, capex, terms, rate_override=None, llcr_rate_override=None, plcr_rate_override=None):
     tenor = int(num(terms, "debt_tenor_years", 10))
     rate = float(rate_override if rate_override is not None else num(terms, "all_in_rate", 0.085))
     sizing_dscr = num(terms, "sizing_dscr", 1.30)
@@ -108,8 +109,8 @@ def facility_size(cfads, capex, terms, rate_override=None):
     llcr_floor = num(terms, "llcr_floor", 1.35)
     plcr_floor = num(terms, "plcr_floor", 1.25)
     leverage_cap = num(terms, "leverage_cap", 0.65)
-    llcr_rate = 0.085
-    plcr_rate = 0.085
+    llcr_rate = float(llcr_rate_override if llcr_rate_override is not None else rate)
+    plcr_rate = float(plcr_rate_override if plcr_rate_override is not None else rate)
     maturity_cfads = list(cfads[:tenor])
     dscr_cap, _ = backward_capacity(maturity_cfads, rate, sizing_dscr)
     llcr_cap = discounted_value(maturity_cfads, llcr_rate) / llcr_floor if llcr_floor else 0.0
@@ -149,9 +150,12 @@ def build_project(row, ppa_term, capex_total, solar_resource, assumptions, tarif
     hourly_p90 = profile(load, p90, daytime_share)
     self_kwh = sum(hourly_p50["self_consumed"])
     self_kwh_p90 = sum(hourly_p90["self_consumed"])
-    tariff = (
-        tariff_control(tariffs, assumptions)["simulated_base_vnd_kwh"]
-        + daytime_share * tariff_control(tariffs, assumptions)["simulated_day_premium_vnd_kwh"]
+    tariff_info = tariff_control(tariffs, assumptions)
+    tariff_details = hourly_tariff_summary(hourly_p50["solar"], hourly_p50["self_consumed"])
+    tariff = weighted_model_only_tariff(
+        tariff_info["simulated_base_vnd_kwh"],
+        tariff_info["simulated_day_premium_vnd_kwh"],
+        tariff_details,
     )
     ppa_price = num(ppa_term, "ppa_price_base_vnd_kwh")
     ppa_tenor = int(num(ppa_term, "ppa_tenor_years", 15))
@@ -169,14 +173,24 @@ def build_project(row, ppa_term, capex_total, solar_resource, assumptions, tarif
         "self_consumption_kwh": self_kwh,
         "self_consumption_kwh_p90": self_kwh_p90,
         "weighted_avoided_tariff_vnd_kwh": tariff,
+        "tariff_schedule_hash": tariff_details["tariff_schedule_hash"],
+        "tariff_schedule_status": tariff_details["tariff_schedule_status"],
+        "current_billed_schedule_status": tariff_details["current_billed_schedule_status"],
+        "billing_rate_status": tariff_details["billing_rate_status"],
+        "legal_period_counts": json.dumps({
+            "peak": tariff_details["legal_peak_hours"],
+            "normal": tariff_details["legal_normal_hours"],
+            "low": tariff_details["legal_low_hours"],
+        }, sort_keys=True),
         "ppa_price_vnd_kwh": ppa_price,
         "ppa_tenor_years": ppa_tenor,
         "capex_vnd": float(capex_total),
         "opex_vnd": capacity * assumption_value(assumptions, "ASM-OPEX", 15.0) * assumption_value(assumptions, "ASM-FX-BASE", 25000.0),
-        "tariff_version": tariff_control(tariffs, assumptions)["tariff_version"],
-        "billing_status": tariff_control(tariffs, assumptions)["billing_status"],
+        "tariff_version": tariff_info["tariff_version"],
+        "billing_status": tariff_info["billing_status"],
         "_hourly_profile_hash": hash_profile(hourly_p50),
         "_hourly_p90_profile_hash": hash_profile(hourly_p90),
+        "_tariff_details": tariff_details,
         "_hourly_p50": hourly_p50,
         "_hourly_p90": hourly_p90,
     }
@@ -203,7 +217,13 @@ def build_project(row, ppa_term, capex_total, solar_resource, assumptions, tarif
     )
     cfads = [num(item, "cfads_vnd") for item in annual_rows[1:]]
     p90_cfads = [num(item, "cfads_vnd") for item in p90_rows[1:]]
-    facility = facility_size(cfads, capex_total, terms)
+    facility = facility_size(
+        cfads,
+        capex_total,
+        terms,
+        llcr_rate_override=num(rates.get("LLCR_DISC_VND", {}), "value", 0.085),
+        plcr_rate_override=num(rates.get("PLCR_DISC_VND", {}), "value", 0.085),
+    )
     service = [num(item, "debt_service") for item in facility["schedule"]]
     debt = facility["debt"]
     min_dscr = coverage_ratio(cfads[:facility["tenor"]], service)
@@ -274,16 +294,25 @@ def build_project(row, ppa_term, capex_total, solar_resource, assumptions, tarif
         "_vat_rate": vat_rate,
         "_maintenance_rate": maintenance_rate,
         "_equity_rate": equity_rate,
+        "_llcr_rate": num(rates.get("LLCR_DISC_VND", {}), "value", 0.085),
+        "_plcr_rate": num(rates.get("PLCR_DISC_VND", {}), "value", 0.085),
     }
 
 
-def pooled_facility(selected, terms, capex_factor=1.0, rate_override=None):
+def pooled_facility(selected, terms, capex_factor=1.0, rate_override=None, rates=None):
     cfads = [
         sum(project["_annual_cfads"][year] for project in selected)
         for year in range(YEARS)
     ]
     capex = sum(project["capex_vnd"] for project in selected) * capex_factor
-    facility = facility_size(cfads, capex, terms, rate_override=rate_override)
+    facility = facility_size(
+        cfads,
+        capex,
+        terms,
+        rate_override=rate_override,
+        llcr_rate_override=num((rates or {}).get("LLCR_DISC_VND", {}), "value", 0.085),
+        plcr_rate_override=num((rates or {}).get("PLCR_DISC_VND", {}), "value", 0.085),
+    )
     return {**facility, "cfads": cfads, "capex": capex}
 
 
@@ -328,13 +357,19 @@ def scenario_rows(selected, pool, terms, assumptions, rates):
             service.append(0.0)
         active = [(cash, ds) for cash, ds in zip(cfads, service) if ds > 1e-8]
         dscr = min((cash / ds for cash, ds in active), default=0.0)
-        return sum(cfads), dscr, sum(service)
+        return (
+            sum(cfads),
+            dscr,
+            sum(service),
+            min(cfads) if cfads else 0.0,
+            min((cash / ds for cash, ds in active), default=0.0),
+        )
 
     scenarios = []
     definitions = [
         ("BASE_SPONSOR", base_inputs, base_cfads, base_service, "base P50 economics"),
         ("P90_ENERGY", {**base_inputs, "energy_case": "P90"}, [sum(project["_p90_annual_cfads"][year] for project in selected) for year in range(YEARS)], base_service, "8,760 profile recomputed with P90 generation"),
-        ("CAPEX_OVERRUN", {**base_inputs, "capex_factor": 1.15}, base_cfads, [num(item, "debt_service") for item in pooled_facility(selected, terms, capex_factor=1.15)["schedule"]] + [0.0] * (YEARS - len(pool["schedule"])), "15% CAPEX overrun; facility re-sized against the same CFADS"),
+        ("CAPEX_OVERRUN", {**base_inputs, "capex_factor": 1.15}, base_cfads, [num(item, "debt_service") for item in pooled_facility(selected, terms, capex_factor=1.15, rates=rates)["schedule"]] + [0.0] * (YEARS - len(pool["schedule"])), "15% CAPEX overrun; facility re-sized against the same CFADS"),
         ("COD_DELAY", {**base_inputs, "cod_delay_years": 1}, [0.0] + base_cfads[:-1], base_service, "one-year COD delay shifts CFADS one period"),
         ("INTEREST_RATE_SHOCK", {**base_inputs, "interest_rate": 0.11}, base_cfads, [num(item, "debt_service") for item in forward_rebuild(pool["debt"], base_cfads[:pool["tenor"]], 0.11, num(terms, "sculpting_dscr", 1.30))] + [0.0] * (YEARS - pool["tenor"]), "rate shock holds debt and rebuilds service"),
         ("FX_CRAWL", {**base_inputs, "fx_depreciation": 0.04}, base_cfads, None, "4% annual VND depreciation translates USD debt service by period"),
@@ -352,7 +387,7 @@ def scenario_rows(selected, pool, terms, assumptions, rates):
             dep = inputs["fx_depreciation"]
             translated = translate_usd_debt_service(usd, assumption_value(assumptions, "ASM-FX-BASE", 25000.0), dep)
             service = [base_service[index] * 0.50 + translated[index] for index in range(pool["tenor"])] + [0.0] * (YEARS - pool["tenor"])
-        total_cfads, dscr, total_service = metrics(cfads, service)
+        total_cfads, dscr, total_service, minimum_annual_cfads, minimum_annual_dscr = metrics(cfads, service)
         scenarios.append({
             "scenario_id": scenario_id,
             "energy_case": inputs["energy_case"],
@@ -368,6 +403,8 @@ def scenario_rows(selected, pool, terms, assumptions, rates):
             "portfolio_cfads_bvnd": total_cfads / 1e9,
             "portfolio_dscr": dscr,
             "debt_service_bvnd": total_service / 1e9,
+            "minimum_annual_cfads_bvnd": minimum_annual_cfads / 1e9,
+            "minimum_annual_dscr": minimum_annual_dscr,
             "terminal_branch": "ZERO_RESIDUAL_NO_SALE",
             "mechanism_note": note,
             "scenario_isolation_status": "PASS" if scenario_isolation(base_inputs, inputs) or scenario_id == "BASE_SPONSOR" else "FAIL",
@@ -412,7 +449,11 @@ def run(root=BASE_DIR):
     feedback_history = []
     pool = None
     for iteration in range(1, 6):
-        pool = pooled_facility(selected, terms_by[selected[0]["project_id"]] if selected else debt_rows[0])
+        pool = pooled_facility(
+            selected,
+            terms_by[selected[0]["project_id"]] if selected else debt_rows[0],
+            rates=rates,
+        )
         ids = tuple(project["project_id"] for project in selected)
         feedback_history.append({"iteration": iteration, "selected_ids": "|".join(ids), "pooled_debt_vnd": pool["debt"]})
         if ids == previous_ids:
@@ -461,6 +502,8 @@ def run(root=BASE_DIR):
             "hourly_profile_hash": project["_hourly_profile_hash"],
             "tariff_version": tariff_info["tariff_version"],
             "billing_status": tariff_info["billing_status"],
+            "tariff_schedule_hash": project["tariff_schedule_hash"],
+            "tariff_schedule_status": project["tariff_schedule_status"],
         })
         hourly = project["_hourly_p50"]
         self_kwh = sum(hourly["self_consumed"])
@@ -479,6 +522,13 @@ def run(root=BASE_DIR):
             "aggregation_bias": 0.061 if project["project_id"] == "VG-019" else 0.012,
             "hourly_profile_hash": project["_hourly_profile_hash"],
             "pvout_double_count_check": "PASS",
+            "legal_peak_hours": project["_tariff_details"]["legal_peak_hours"],
+            "legal_normal_hours": project["_tariff_details"]["legal_normal_hours"],
+            "legal_low_hours": project["_tariff_details"]["legal_low_hours"],
+            "current_billed_peak_reference_hours": project["_tariff_details"]["current_billed_peak_reference_hours"],
+            "tariff_schedule_hash": project["_tariff_details"]["tariff_schedule_hash"],
+            "tariff_schedule_status": project["_tariff_details"]["tariff_schedule_status"],
+            "billing_rate_status": project["_tariff_details"]["billing_rate_status"],
         })
         lower = max(project["sponsor_floor_vnd_kwh"], project["lender_floor_vnd_kwh"])
         upper = project["customer_ceiling_vnd_kwh"]
@@ -545,8 +595,8 @@ def run(root=BASE_DIR):
             item = schedule[year - 1]
             debt_schedule_rows.append({"project_id": project["project_id"], "year": year, **item})
         actual_debt = project["debt_vnd"]
-        llcr = discounted_value(project["_annual_cfads"][:facility["tenor"]], 0.085) / actual_debt if actual_debt else 0.0
-        plcr = discounted_value(project["_annual_cfads"], 0.085) / actual_debt if actual_debt else 0.0
+        llcr = discounted_value(project["_annual_cfads"][:facility["tenor"]], project["_llcr_rate"]) / actual_debt if actual_debt else 0.0
+        plcr = discounted_value(project["_annual_cfads"], project["_plcr_rate"]) / actual_debt if actual_debt else 0.0
         dsra_target = project["debt_service_vnd"] * num(project["_terms"], "dsra_months", 6) / 12.0
         coverage_rows.append({
             "project_id": project["project_id"],
@@ -556,8 +606,8 @@ def run(root=BASE_DIR):
             "dsra_target_vnd": dsra_target,
             "lockup_headroom": project["min_dscr"] - num(project["_terms"], "lockup_dscr", 1.25),
             "four_dscr_concepts": "sizing|sculpting|covenant|lockup",
-            "llcr_discount_rate": 0.085,
-            "plcr_discount_rate": 0.085,
+            "llcr_discount_rate": project["_llcr_rate"],
+            "plcr_discount_rate": project["_plcr_rate"],
             "coverage_status": "PASS" if project["min_dscr"] >= num(project["_terms"], "minimum_covenant_dscr", 1.20) and llcr >= num(project["_terms"], "llcr_floor", 1.35) else "CONDITION",
         })
         reserve = 0.0
@@ -662,6 +712,11 @@ def run(root=BASE_DIR):
     qa_rows.append({"test_id": "QA-REMOTE-011", "status": "PASS" if all(row["terminal_value_vnd"] == 0.0 for row in reserve_rows + returns_rows + portfolio_cfads_rows) else "FAIL", "actual": "zero terminal value", "detail": "Terminal branch is visible and conservative"})
     qa_rows.append({"test_id": "QA-REMOTE-012", "status": "PASS" if pool["debt"] <= sum(project["capex_vnd"] for project in selected) else "FAIL", "actual": "pooled debt <= selected CAPEX", "detail": "Pooled debt has an explicit borrowing-base cap"})
     qa_rows.append({"test_id": "QA-REMOTE-013", "status": "PASS" if tariff_info["billing_status"] == "WATCH" else "FAIL", "actual": tariff_info["billing_status"], "detail": "Legal tariff schedule is not treated as billed implementation"})
+    qa_rows.append({"test_id": "QA-REMOTE-014", "status": "PASS" if all(project["_tariff_details"]["hour_count"] == 8760 for project in projects) else "FAIL", "actual": "20 x 8760 tariff mappings", "detail": "Every local-standard hour maps to one legal/reference period"})
+    qa_rows.append({"test_id": "QA-REMOTE-015", "status": "PASS" if all(abs(project["_hourly_p50"]["load_sum"] - project["annual_load_kwh"]) < 1e-6 and abs(project["_hourly_p50"]["solar_sum"] - project["p50_y1_kwh"]) < 1e-6 for project in projects) else "FAIL", "actual": "hourly P50 load/solar reconciles", "detail": "8,760 load and solar vectors tie to annual inputs"})
+    qa_rows.append({"test_id": "QA-REMOTE-016", "status": "PASS" if all(project["tariff_schedule_status"] == "PASS" for project in projects) else "FAIL", "actual": "Decision 963 schedule validation PASS", "detail": "Half-hour boundaries are represented by one-hour interval midpoints"})
+    qa_rows.append({"test_id": "QA-REMOTE-017", "status": "PASS" if all(project["_llcr_rate"] == num(rates.get("LLCR_DISC_VND", {}), "value", 0.085) and project["_plcr_rate"] == num(rates.get("PLCR_DISC_VND", {}), "value", 0.085) for project in projects) else "FAIL", "actual": "registered LLCR/PLCR rates", "detail": "Coverage discount rates come from the discount-rate register"})
+    qa_rows.append({"test_id": "QA-REMOTE-018", "status": "PASS" if base_scenario["minimum_annual_cfads_bvnd"] >= dso_scenario["minimum_annual_cfads_bvnd"] else "FAIL", "actual": "DSO minimum annual CFADS <= base", "detail": "Working-capital timing downside is tested at annual grain"})
 
     ic_rows = []
     for project in projects:

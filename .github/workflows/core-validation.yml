@@ -16,10 +16,16 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Validate locked synthetic pipeline inputs
+        run: python -m analytics.generate_pipeline
+      - name: Verify or create locked input hashes
+        run: python -m analytics.reproducibility
       - name: Run data quality
         run: python -m analytics.data_quality
       - name: Run remote core model
         run: python -m analytics.run_core_model
+      - name: Export derived 8,760 profiles to remote artifact
+        run: python -m analytics.export_8760_remote
       - name: Run hidden-truth firewall
         run: python -m analytics.hidden_truth_validation
       - name: Build native workbook
@@ -28,16 +34,18 @@ jobs:
         run: python -m analytics.validate_workbook
       - name: Run tests
         run: python -m unittest discover -s tests -v
-      - name: Commit refreshed native workbook to GitHub
+      - name: Run release-control checks
+        run: python -m analytics.release_controls
+      - name: Commit refreshed remote outputs to GitHub
         if: github.event_name == 'push' && !contains(github.event.head_commit.message, '[skip ci]')
         run: |
           git config user.name "vietgreen-actions"
           git config user.email "actions@users.noreply.github.com"
-          git add model/vietgreen_core_model.xlsx outputs/ validation/
+          git add model/vietgreen_core_model.xlsx outputs/ validation/ config/
           if git diff --cached --quiet; then
             exit 0
           fi
-          git commit -m "chore: refresh native workbook [skip ci]"
+          git commit -m "chore: refresh remote outputs and locked hashes [skip ci]"
           git push origin HEAD:main
       - name: Upload remote outputs
         uses: actions/upload-artifact@v4
@@ -48,3 +56,4 @@ jobs:
             outputs/
             validation/
             release/
+            remote_derived/
