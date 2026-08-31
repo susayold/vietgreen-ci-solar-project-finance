@@ -1,0 +1,6 @@
+qa_id,requirement,status,metric,evidence_path
+EXCEL-01,"Formula cells are present across CashFlows, Returns, Scenario and Dashboard",PASS,2055,model/vietgreen_v4_formula_model.xlsx
+EXCEL-02,No formula error values remain after remote recalculation,PASS,0,model/vietgreen_v4_formula_model.xlsx
+EXCEL-03,Remote recalculation leaves cached values for every formula cell,PASS,missing_formula_cache=0,model/vietgreen_v4_formula_model.xlsx
+EXCEL-04,Case and scenario switches are linked into formulas,PASS,Assumptions!B6/B7 linked,model/vietgreen_v4_formula_model.xlsx
+EXCEL-05,Key Equity NPV chart is populated in OOXML,PASS,xl/charts/chart1.xml,model/vietgreen_v4_formula_model.xlsx

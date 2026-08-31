@@ -1,0 +1,7 @@
+dod_id,requirement,status,metric,evidence_path
+DOD-01,"Excel is formula-driven, not static CSV export",PASS,2055,validation/EXCEL_FORMULA_QA.csv
+DOD-02,Python independently validates Excel,PASS,240/240 reconciliation rows,validation/EXCEL_PYTHON_RECONCILIATION.csv
+DOD-03,Workbook recalculated remotely without formula errors,PASS,errors=0; missing_formula_cache=0,validation/EXCEL_FORMULA_QA.csv
+DOD-04,Scenario and project switches function,PASS,Assumptions!B6/B7 linked,model/vietgreen_v4_formula_model.xlsx
+DOD-05,Chart is present and aggregate-only,PASS,xl/charts/chart1.xml,model/vietgreen_v4_formula_model.xlsx
+DOD-06,Remote-only project-data boundary remains intact,PASS,no raw hourly/private evidence in workbook,docs/V4_PHASE1_IMPLEMENTATION_NOTE.md
