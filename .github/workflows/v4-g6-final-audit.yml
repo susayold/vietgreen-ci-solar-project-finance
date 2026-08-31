@@ -1,0 +1,56 @@
+name: v4-g6-final-audit
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  v4_g6:
+    runs-on: ubuntu-latest
+    env:
+      V4_G4_G5_RUN_ID: "33415906096"
+      V4_G4_G5_JOB_ID: "99566360049"
+      V4_G4_G5_COMMIT: "e20917d0f7777334da3ba8e2d0fb17c62c0b3a42"
+      V4_G4_G5_ARTIFACT_ID: "9767005910"
+      V4_G4_G5_ARTIFACT_DIGEST: "sha256:ce866bc2bd5906f57b8c8d70b9c503d803eb9a66570e41fd526a3d28923cb8c6"
+      V4_PHASE2_RUN_ID: "33416323104"
+      V4_PHASE2_JOB_ID: "99567717422"
+      V4_PHASE2_ARTIFACT_ID: "9767143995"
+      V4_PHASE2_ARTIFACT_DIGEST: "sha256:b1681b8fb9bee8135bc52b1f79ea2fa99fa6ba0956098b8f614b4975c7551b73"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+      - name: Build V4-G6 recruiter and decision package
+        run: python -m analytics.v4_g6_final_audit
+      - name: Same-head deterministic double-build
+        run: |
+          mkdir -p /tmp/v4-g6-hash
+          find outputs/IC_DECISION_TABLE.csv reports/INVESTMENT_COMMITTEE_MEMO.md reports/LENDER_CREDIT_MEMO.md reports/RECRUITER_PACKAGE.md validation/V4_FINAL_DOD_MATRIX.csv validation/V4_RED_TEAM_REPORT.md release/MODEL_RELEASE_MANIFEST.json README.md website/index.html -type f -print0 | sort -z | xargs -0 sha256sum > /tmp/v4-g6-hash/first.sha256
+          python -m analytics.v4_g6_final_audit
+          find outputs/IC_DECISION_TABLE.csv reports/INVESTMENT_COMMITTEE_MEMO.md reports/LENDER_CREDIT_MEMO.md reports/RECRUITER_PACKAGE.md validation/V4_FINAL_DOD_MATRIX.csv validation/V4_RED_TEAM_REPORT.md release/MODEL_RELEASE_MANIFEST.json README.md website/index.html -type f -print0 | sort -z | xargs -0 sha256sum > /tmp/v4-g6-hash/second.sha256
+          diff -u /tmp/v4-g6-hash/first.sha256 /tmp/v4-g6-hash/second.sha256
+      - name: Commit V4-G6 final package
+        run: |
+          git config user.name "vietgreen-actions"
+          git config user.email "actions@users.noreply.github.com"
+          git add README.md website/index.html outputs/IC_DECISION_TABLE.csv reports/INVESTMENT_COMMITTEE_MEMO.md reports/LENDER_CREDIT_MEMO.md reports/RECRUITER_PACKAGE.md release/MODEL_RELEASE_MANIFEST.json validation/V4_FINAL_DOD_MATRIX.csv validation/V4_RED_TEAM_REPORT.md
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "feat: publish V4 G6 recruiter-ready decision package [skip ci]"
+          git push origin HEAD:main
+      - name: Upload V4-G6 evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: vietgreen-v4-g6-final-evidence
+          path: |
+            outputs/IC_DECISION_TABLE.csv
+            reports/INVESTMENT_COMMITTEE_MEMO.md
+            reports/LENDER_CREDIT_MEMO.md
+            reports/RECRUITER_PACKAGE.md
+            validation/V4_FINAL_DOD_MATRIX.csv
+            validation/V4_RED_TEAM_REPORT.md
+            release/MODEL_RELEASE_MANIFEST.json
+            README.md
+            website/index.html
+          if-no-files-found: error
