@@ -8,6 +8,8 @@ The project data-room is represented by the repository, the workflow artifact an
 
 ## Latest release evidence
 
+- Source register: SR-1.5-live-evn-refresh; latest live evidence row: SRC-REFRESH-EVN-20260730.
+
 - Release candidate: 1.2.0.
 - Workflow source commit: 95af3267ebfc615e194323f1fa503c2d13bad5bb.
 - Workbook refresh commit: 1139ba3424d54d0387d24499dd18284e8f79ed72.
