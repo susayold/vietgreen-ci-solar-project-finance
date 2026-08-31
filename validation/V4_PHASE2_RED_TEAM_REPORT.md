@@ -16,4 +16,4 @@
 ## Gate interpretation
 
 - Phase 2 is synthetic screening evidence only.
-- External transaction evidence, legal billing, lender confirmation, tax/site diligence, bankability and recruiter readiness remain open/false.
+- External transaction evidence, legal billing, lender confirmation, tax/site diligence and bankability remain open/false; recruiter readiness is intentionally separate and can be TRUE for the synthetic recruiter package.

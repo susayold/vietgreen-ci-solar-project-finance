@@ -3,4 +3,4 @@ MECHANICS_SYNTHETIC,PASS,V4_PHASE1_DOD.csv and V4_PHASE2_DOD.csv,synthetic mecha
 DEBT_FX_PORTFOLIO,PASS,FX_QA.csv; portfolio_exposure_v4.csv; pooling_comparison_v4.csv,screening analysis only,external transaction evidence
 TRANSACTION_EVIDENCE,OPEN,no private transaction files ingested,no transaction claim,controlled redacted evidence intake
 BANKABLE_TRANSACTION_READY,FALSE,external gates remain open,not bankable,close all mandatory external gates
-RECRUITER_READY,FALSE,bankability and external evidence not closed,not recruiter-ready,finish V4-G4 to V4-G6 and external gate validation
+RECRUITER_READY,TRUE,V4-G4/G5 formula/reconciliation QA and V4-G6 recruiter materials are complete; external evidence remains open,recruiter-ready synthetic case; not transaction approval,keep external gates visible and close them only with controlled evidence
