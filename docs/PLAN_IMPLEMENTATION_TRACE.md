@@ -66,4 +66,4 @@ Independent final model review; billed tariff confirmation; transaction-specific
 
 Release 1.2.0 remains candidate with PASS_WITH_LIMITATIONS. recruiter_ready remains false until the external gates are closed.
 
-Reproducibility control: consecutive remote runs 33355268974 and 33355324014 produced identical native workbook SHA-256 03a78fd294212b8a771b0eee35fd2010f77975de59037044e4b120a86e6fffdd; eproducibility_check_status=PASS.
+Reproducibility control: remote push run 33356405815 and independent workflow_dispatch run 33356485956 / job 99379546146 both succeeded and produced identical native workbook SHA-256 03a78fd294212b8a771b0eee35fd2010f77975de59037044e4b120a86e6fffdd; hourly streams remain artifact-only; reproducibility_check_status=PASS.
