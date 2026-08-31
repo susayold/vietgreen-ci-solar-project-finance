@@ -1,39 +1,20 @@
 # LIVE_SOURCE_REFRESH_2026-08-31
 
-Remote evidence note for the candidate release. Raw snapshots are intentionally
-not stored on the desktop or in this public repository; URLs, classifications,
-retrieval date, and transformation destinations are recorded instead.
+Remote evidence note for the candidate release. Raw snapshots are intentionally not stored on the desktop or in this public repository; only URLs, classifications, retrieval date, and transformation destinations are recorded.
 
-## Tariff and billing
+## Fresh official retrieval
 
-## Tariff corroboration
+- **SRC-TAR-278 — Decree 278/2026/ND-CP:** the Government Portal records the decree as issued and effective on 09 July 2026. It amends the mechanism and timing for average retail electricity-price adjustment. It is a legal dependency for the tariff chain, not invoice-cutover evidence.
+- **SRC-TAR-60 — Circular 60/2025/TT-BCT:** the Government Portal records the electricity-pricing implementation circular as issued and effective on 02 December 2025.
+- **SRC-REFRESH-EVN-BULLETIN-20260831 — EVN Bulletin No. 16/2026:** EVN states the Decision 963 time windows apply with the next relevant average retail-price adjustment and records preparation activity; it does not state an invoice cutover date.
+- **SRC-REFRESH-EVN-20260831 — Electricity Authority/EVN notice:** the 24 April 2026 notice ties application to the Circular 60 / average-retail-price-adjustment condition and requests meter and operational preparation.
+- **SRC-REFRESH-EVN-20260730 — EVN explainer:** the 30 July 2026 article describes the revised windows and mandatory TOU customer scope, while stating that the adjustment does not change the electricity price; it does not establish a billed invoice cutover date.
+- **SRC-REFRESH-MOIT-20260709 — MOIT Q2 briefing:** the 09 July 2026 briefing is retained as the contemporaneous statement that Decision 963 had not yet been applied in practice.
+- **SRC-REFRESH-TAX-20260831 — Government Portal tax draft:** the 28 August 2026 draft amendment to Decree 320/2025 remains consultation material and is not treated as effective tax law.
 
-- EVN Bulletin No. 16/2026 states the new Decision 963 windows apply with the next relevant average retail-price adjustment and records EVN preparation activity.
-- It does not establish an invoice cutover date; billing_status remains WATCH.
+## Claim boundary
 
-## Billing-chain legal dependency
-
-- Decree 278/2026/ND-CP was issued and became effective on 09 July 2026; it governs the mechanism and timing for average retail electricity-price adjustments.
-- It is a legal dependency in the Decision 963/Circular 60 implementation chain, but it does not establish an invoice cutover date; billing_status remains WATCH.
-
-## Tax watch
-
-- The official Government Portal published a draft amendment to Decree 320/2025 on 28 August 2026.
-- The draft is recorded as WATCH only; no effective tax input or tax version in the candidate model was changed.
-- Recheck with Vietnam tax counsel before any bankable or recruiter-ready release.
-
-
-- Decision 963/QD-BCT was issued by MOIT on 22 April 2026. The engine uses low
-  00:00-06:00 every day, peak 17:30-22:30 Monday-Saturday, and normal hours
-  otherwise, including Sunday 06:00-24:00.
-- MOIT's 9 July 2026 Q2 briefing states that Decision 963 had not yet been
-  applied in practice and that the current peak reference remained 09:30-11:30
-  and 17:00-20:00.
-- EVN/Electricity Authority's 24 April 2026 notice links implementation to the
-  retail-price-adjustment/Circular 60 chain.
-- The model keeps LEGAL_EFFECTIVE_NOT_BILLED, CURRENT_BILLED_REFERENCE, and
-  SIMULATED_MODEL_INPUT as separate statuses. billing_status=WATCH remains a
-  hard release limitation.
+The model keeps LEGAL_EFFECTIVE_NOT_BILLED, CURRENT_BILLED_REFERENCE, and SIMULATED_MODEL_INPUT as separate statuses. billing_status=WATCH remains a hard release limitation until a directly applicable utility/EVN billing record or authoritative implementation notice shows the invoice effective date.
 
 ## Official URLs
 
@@ -41,15 +22,11 @@ retrieval date, and transformation destinations are recorded instead.
 - Decision 963 PDF: https://moit.gov.vn/upload/2005517/20260423/1_QD-BCT_2026_963_30f7a.pdf
 - MOIT Q2 briefing: https://moit.gov.vn/tin-tuc/bo-cong-thuong-hop-bao-thuong-ky-quy-ii-2026.html
 - Circular 60: https://vanban.chinhphu.vn/?classid=1&docid=216125&pageid=27160&typegroupid=6
-- EVN notice: https://evn.com.vn/d/vi-VN/news-d/Cuc-Dien-luc-thong-tin-ve-thoi-gian-ap-dung-khung-gio-cao-diem-thap-diem-va-gio-binh-thuong-cua-he-thong-dien-quoc-gia-60-2025-507824
-- EVN Bulletin No. 16/2026: https://www.evn.com.vn/userfile/User/tcdl/files/2026/4/BanTinEVNSo162026-20260428150748448.pdf
 - Decree 278/2026/NĐ-CP: https://vanban.chinhphu.vn/?classid=1&docid=218849&pageid=27160&typegroupid=4
+- Electricity Authority / EVN notice: https://evn.com.vn/d/vi-VN/news-d/Cuc-Dien-luc-thong-tin-ve-thoi-gian-ap-dung-khung-gio-cao-diem-thap-diem-va-gio-binh-thuong-cua-he-thong-dien-quoc-gia-60-2025-507824
+- EVN Bulletin No. 16/2026: https://www.evn.com.vn/userfile/User/tcdl/files/2026/4/BanTinEVNSo162026-20260428150748448.pdf
+- EVN explainer: https://www.evn.com.vn/d/vi-VN/news/Dieu-chinh-khung-gio-cao-diem-Doanh-nghiep-duoc-loi-gi-60-3557-509124
+- Tax draft: https://vanban.chinhphu.vn/du-thao-vbqppl/du-thao-nghi-dinh-sua-doi-bo-sung-mot-so-dieu-cua-nghi-dinh-so-320-2025-nd-cp-ngay-15-thang-12-n-7915
 
 Retrieval date: 2026-08-31
-Source rows: SRC-TAR-963, SRC-TAR-60, SRC-TAR-278, SRC-REFRESH-EVN-20260831, SRC-REFRESH-MOIT-20260709, SRC-REFRESH-EVN-BULLETIN-20260831, SRC-REFRESH-TAX-20260831
-
-- EVN public explainer dated 30 July 2026 describes the new Decision 963 windows and the customer scope for TOU, but does not provide an invoice cutover/effective billing date; billing_status remains WATCH.
-
-- Latest EVN explainer: https://www.evn.com.vn/d/vi-VN/news/Dieu-chinh-khung-gio-cao-diem-Doanh-nghiep-duoc-loi-gi-60-3557-509124
-
-Latest refresh source rows: SRC-REFRESH-EVN-20260730; EVN bulletin corroboration SRC-REFRESH-EVN-BULLETIN-20260831; tax watch SRC-REFRESH-TAX-20260831
+Source rows: SRC-TAR-963, SRC-TAR-60, SRC-TAR-278, SRC-REFRESH-EVN-20260831, SRC-REFRESH-MOIT-20260709, SRC-REFRESH-EVN-20260730, SRC-REFRESH-EVN-BULLETIN-20260831, SRC-REFRESH-TAX-20260831

@@ -60,7 +60,7 @@ Live deployment verified at https://susayold.github.io/vietgreen-ci-solar-projec
 
 ## J. Open gates
 
-Independent final model review; billed tariff confirmation; transaction-specific tax and foreign-borrowing advice; lender/legal/technical/site diligence; bankable P90; executed PPA; security, insurance, reserve and hedge evidence; sponsor hurdle resolution.
+Independent final model review; billed tariff confirmation; transaction-specific tax and foreign-borrowing advice; lender/legal/technical/site diligence; bankable P90; executed PPA; security, insurance, reserve and hedge evidence; sponsor hurdle resolution. These are tracked in validation/OPEN_EXTERNAL_GATES.csv; no synthetic or public comparator evidence closes them.
 
 ## K. Release classification
 

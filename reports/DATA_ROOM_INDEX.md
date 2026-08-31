@@ -24,6 +24,7 @@ The project data-room is represented by the repository, the workflow artifact an
 - Hidden truth: 5 cases, 5 classification matches, 0 false negatives.
 - Automated tests: 7 passed.
 - Mechanical release controls: 13 PASS, 1 WARN.
+- External gate tracker: 8 open transaction/evidence gates; no gate is closed by synthetic data alone.
 - Locked input hashes: PASS.
 - Remote 8,760 artifact streams: 175,200 rows each in plan-specified Parquet plus CSV.GZ compatibility format; local_storage NONE.
 
@@ -44,7 +45,7 @@ The project data-room is represented by the repository, the workflow artifact an
 - evidence/: source, assumption, tariff, regulatory, discount-rate, input-lineage and source-fetch registers.
 - data/synthetic/: locked synthetic project, offtaker, solar, PPA, debt, CAPEX and construction inputs.
 - outputs/: energy, load, PPA, CAPEX/IDC, debt, cash-flow, reserve, returns, FX, scenarios, selection, concentration and IC outputs.
-- validation/: data-quality, hidden-truth, remote QA, release-control, 8,760-index, DOD matrix and workbook-validation outputs.
+- validation/: data-quality, hidden-truth, remote QA, release-control, 8,760-index, DOD matrix, workbook-validation outputs and the external-gate tracker.
 - model/: native workbook and workbook specification.
 - docs/: methodology and plan trace.
 - release/: remote artifact, backend and release manifests/notes.
