@@ -40,3 +40,9 @@ Source rows: SRC-TAR-963, SRC-TAR-60, SRC-TAR-278, SRC-REFRESH-EVN-20260831, SRC
 - All 11 rows record raw_snapshot_stored=FALSE and storage_boundary=REMOTE_RUNNER_EPHEMERAL.
 
 - Latest live-check result: 11 rows; 9 PASS and 2 non-blocking WARNs (MOIT runner network-unreachable; NREL DNS). Warnings are retained for recheck and do not alter model inputs.
+
+## Core validation after SR-1.10 evidence refresh
+
+- Workflow 33362424552 / job 99396238294 completed successfully after the EVN corroboration was added.
+- Remote checks remained green: 20/20 data quality, 20/20 dynamic QA, 31/31 workbook checks, 7/7 tests and 13 PASS plus 1 intentional candidate WARN in release controls.
+- The rebuilt native workbook was 22 sheets, 116807 bytes, SHA-256 e01406f644ab6a9d810ca6dd5c31d240ec2ed99ff7f73e593d0f756cae2ff03a. This workflow_dispatch run produced an immutable artifact; the subsequent push refresh is required to commit the refreshed workbook/output to the GitHub source of truth.
