@@ -6,6 +6,11 @@ retrieval date, and transformation destinations are recorded instead.
 
 ## Tariff and billing
 
+## Tariff corroboration
+
+- EVN Bulletin No. 16/2026 states the new Decision 963 windows apply with the next relevant average retail-price adjustment and records EVN preparation activity.
+- It does not establish an invoice cutover date; billing_status remains WATCH.
+
 ## Tax watch
 
 - The official Government Portal published a draft amendment to Decree 320/2025 on 28 August 2026.
@@ -32,12 +37,13 @@ retrieval date, and transformation destinations are recorded instead.
 - MOIT Q2 briefing: https://moit.gov.vn/tin-tuc/bo-cong-thuong-hop-bao-thuong-ky-quy-ii-2026.html
 - Circular 60: https://vanban.chinhphu.vn/?classid=1&docid=216125&pageid=27160&typegroupid=6
 - EVN notice: https://evn.com.vn/d/vi-VN/news-d/Cuc-Dien-luc-thong-tin-ve-thoi-gian-ap-dung-khung-gio-cao-diem-thap-diem-va-gio-binh-thuong-cua-he-thong-dien-quoc-gia-60-2025-507824
+- EVN Bulletin No. 16/2026: https://www.evn.com.vn/userfile/User/tcdl/files/2026/4/BanTinEVNSo162026-20260428150748448.pdf
 
 Retrieval date: 2026-08-31
-Source rows: SRC-TAR-963, SRC-TAR-60, SRC-REFRESH-EVN-20260831, SRC-REFRESH-MOIT-20260709, SRC-REFRESH-TAX-20260831
+Source rows: SRC-TAR-963, SRC-TAR-60, SRC-REFRESH-EVN-20260831, SRC-REFRESH-MOIT-20260709, SRC-REFRESH-EVN-BULLETIN-20260831, SRC-REFRESH-TAX-20260831
 
 - EVN public explainer dated 30 July 2026 describes the new Decision 963 windows and the customer scope for TOU, but does not provide an invoice cutover/effective billing date; billing_status remains WATCH.
 
 - Latest EVN explainer: https://www.evn.com.vn/d/vi-VN/news/Dieu-chinh-khung-gio-cao-diem-Doanh-nghiep-duoc-loi-gi-60-3557-509124
 
-Latest refresh source rows: SRC-REFRESH-EVN-20260730; tax watch SRC-REFRESH-TAX-20260831
+Latest refresh source rows: SRC-REFRESH-EVN-20260730; EVN bulletin corroboration SRC-REFRESH-EVN-BULLETIN-20260831; tax watch SRC-REFRESH-TAX-20260831
