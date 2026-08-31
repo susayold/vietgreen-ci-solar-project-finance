@@ -2,6 +2,7 @@
 
 Release candidate: 1.2.0
 Date: 2026-08-31
+Source register: SR-1.5-live-evn-refresh (latest live source: SRC-REFRESH-EVN-20260730)
 Repository: https://github.com/susayold/vietgreen-ci-solar-project-finance
 Workflow source commit: 95af3267ebfc615e194323f1fa503c2d13bad5bb
 Workbook refresh commit: 1139ba3424d54d0387d24499dd18284e8f79ed72
