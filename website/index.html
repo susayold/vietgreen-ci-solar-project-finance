@@ -1,19 +1,47 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>VietGreen V4 Project Finance</title>
-<style>
-:root{--ink:#12342b;--muted:#60756e;--mint:#e5f3e9;--line:#d8e6dc;--bg:#f6faf7;--amber:#a86b00;--red:#b23b32}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Arial,sans-serif}.wrap{max-width:1120px;margin:auto;padding:0 24px}header{border-bottom:1px solid var(--line);background:#fff}nav{display:flex;justify-content:space-between;padding:20px 0;font-weight:800}.brand{letter-spacing:.08em}.nav a{margin-left:18px;color:var(--ink);text-decoration:none}.hero{display:grid;grid-template-columns:1.4fr .8fr;gap:30px;padding:74px 0 42px}.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:var(--muted);font-weight:800}.hero h1{font-size:56px;line-height:1.02;letter-spacing:-.05em;margin:15px 0}.hero p{font-size:20px;color:var(--muted);max-width:690px}.stamp{background:var(--ink);color:#fff;border-radius:22px;padding:28px;align-self:start}.stamp small{text-transform:uppercase;letter-spacing:.15em;color:#bfe2c7}.stamp strong{display:block;font-size:30px;margin:10px 0}.stamp span{color:#d9eee0}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:18px 0 44px}.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px}.card small{display:block;color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:.08em}.metric{font-size:24px;font-weight:850;margin-top:8px}.negative{color:var(--red)}.warn{color:var(--amber)}h2{font-size:32px;letter-spacing:-.03em;margin:45px 0 8px}.sub{color:var(--muted)}.decision{display:grid;grid-template-columns:1fr 1fr;gap:16px}.pill{display:inline-block;background:var(--mint);padding:7px 12px;border-radius:99px;font-weight:800;margin:4px}.action{border-left:5px solid var(--amber)}table{border-collapse:collapse;width:100%;background:#fff}.checks td,.checks th{border-bottom:1px solid var(--line);padding:10px;text-align:left}.pass{color:#18733d;font-weight:800}footer{padding:40px 0 65px;color:var(--muted)}@media(max-width:800px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.decision{grid-template-columns:1fr}.nav{display:none}}@media(max-width:500px){.grid{grid-template-columns:1fr}.hero h1{font-size:44px}}
-</style></head>
-<body><header><div class="wrap"><nav><div class="brand">VIETGREEN / V4 PROJECT FINANCE</div><div class="nav"><a href="#economics">Economics</a><a href="#gates">Gates</a><a href="#trace">Trace</a></div></nav></div></header>
-<main class="wrap">
-<section class="hero"><div><div class="eyebrow">V4-FINAL-2026-08-31 · 2026-08-31</div><h1>Make the investment decision visible.</h1><p>A formula-driven, independently reconciled screening model for a synthetic Vietnam C&I rooftop-solar portfolio. The decision surface connects 8,760 load matching to PPA thresholds, CFADS, debt, FX and portfolio exposure.</p></div><div class="stamp"><small>Current Terms</small><strong>NO DEPLOYMENT</strong><span>All 20 Current Terms rows have negative Equity NPV. Reprice, reduce CAPEX, improve structure or reject.</span></div></section>
-<section id="economics"><h2>Negotiated exposure-constrained case</h2><p class="sub">Negotiated terms are hypothetical remediation inputs, not executed terms.</p><div class="grid"><div class="card"><small>Selected projects</small><div class="metric">4</div></div><div class="card"><small>Selected equity</small><div class="metric">30.124825 BVND</div></div><div class="card"><small>Selected debt</small><div class="metric">55.946104 BVND</div></div><div class="card"><small>Pooled Min DSCR</small><div class="metric">1.300x</div></div><div class="card"><small>Base Project NPV</small><div class="metric">5.262393 BVND</div></div><div class="card"><small>Base Equity NPV</small><div class="metric">5.942277 BVND</div></div><div class="card"><small>P90 Equity NPV</small><div class="metric negative">-1.177896 BVND</div></div><div class="card"><small>Combined downside</small><div class="metric negative">-38.814456 BVND</div></div></div><div class="card"><b>Selected IDs:</b> VG-005, VG-010, VG-011, VG-012</div></section>
-<section><h2>Decision chain</h2><p class="sub"><span class="pill">P50 / P90 / P99</span><span class="pill">8,760 load match</span><span class="pill">PPA solver</span><span class="pill">CFADS</span><span class="pill">DSCR / LLCR / PLCR</span><span class="pill">VND / USD / hedge</span><span class="pill">Exposure optimizer</span><span class="pill">IC / lender view</span></p></section>
-<section id="gates"><h2>Automated gates</h2><p class="sub">The mechanics are recruiter-ready; transaction evidence is still open.</p><table class="checks"><tr><th>Gate</th><th>Result</th><th>Evidence</th></tr><tr><td>V4-G0 to G3</td><td class="pass">PASS</td><td>freeze, economics, debt, FX, optimizer</td></tr><tr><td>V4-G4</td><td class="pass">PASS</td><td>2,055 formula cells; switches; chart</td></tr><tr><td>V4-G5</td><td class="pass">PASS</td><td>240/240 Excel/Python reconciliation</td></tr><tr><td>V4-G6</td><td class="pass">PASS</td><td>IC/lender/CV/site/manifest package</td></tr><tr><td>Transaction evidence</td><td class="warn">OPEN</td><td>8 external gates; no private files ingested</td></tr></table></section>
-<section><h2>Stress lens</h2><div class="decision"><div class="card action"><b>P90 Equity NPV:</b> -1.177896 BVND<br><b>CAPEX overrun Equity NPV:</b> -3.179160 BVND<br><b>COD delay Min DSCR:</b> 0.000x<br><b>Combined downside Min DSCR:</b> 0.000x</div><div class="card"><b>Claim boundary</b><p>Recruiter-ready synthetic case only. Not investment approval, lender approval, legal/tax opinion, technical certification, site diligence or bankable P90.</p></div></div></section>
-<section id="trace"><h2>Traceability</h2><p class="sub"><a href="https://github.com/susayold/vietgreen-ci-solar-project-finance">GitHub repository</a> · <a href="https://github.com/susayold/vietgreen-ci-solar-project-finance/blob/main/model/vietgreen_v4_formula_model.xlsx">V4 workbook</a> · <a href="https://github.com/susayold/vietgreen-ci-solar-project-finance/blob/main/outputs/IC_DECISION_TABLE.csv">IC decision table</a> · <a href="https://github.com/susayold/vietgreen-ci-solar-project-finance/blob/main/validation/V4_FINAL_DOD_MATRIX.csv">Final DoD</a> · <a href="https://github.com/susayold/vietgreen-ci-solar-project-finance/blob/main/release/MODEL_RELEASE_MANIFEST.json">Release manifest</a> · <a href="https://docs.google.com/document/d/1koSgbc1Akic6cVDFD1svmuVN9gSq8qSGUw2obfHYN80/edit">Drive control document</a></p></section>
-</main><footer><div class="wrap">Release V4-FINAL-2026-08-31 · Remote-only GitHub/Drive storage · local project data = 0</div></footer>
-</body></html>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#003d2b">
+  <meta name="description" content="VietGreen C&I Solar Project Finance — recruiter-facing V4 investment memo and screening model.">
+  <meta property="og:title" content="VietGreen C&I Solar Project Finance">
+  <meta property="og:description" content="A formula-driven investment decision surface connecting energy yield, PPA, debt, portfolio and downside evidence.">
+  <title>VietGreen · C&I Solar Project Finance</title>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#app">Skip to content</a>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="#/" aria-label="VietGreen overview">
+        <span class="brand-mark" aria-hidden="true">✺</span>
+        <span><b>VietGreen</b><small>C&amp;I Solar Project Finance</small></span>
+      </a>
+      <nav class="main-nav" aria-label="Primary navigation">
+        <a data-nav="overview" href="#/">Overview</a>
+        <a data-nav="case" href="#/case">Case</a>
+        <a data-nav="economics" href="#/economics">Economics &amp; PPA</a>
+        <a data-nav="debt" href="#/debt">Debt</a>
+        <a data-nav="portfolio" href="#/portfolio">Portfolio</a>
+        <a data-nav="risk" href="#/risk">Risk</a>
+        <a data-nav="model" href="#/model">Model</a>
+        <a data-nav="evidence" href="#/evidence">Evidence</a>
+      </nav>
+      <a class="button button-primary nav-cta" href="#/model">Open model <span aria-hidden="true">↗</span></a>
+      <button class="mobile-menu" type="button" aria-label="Open navigation" aria-expanded="false">☰</button>
+    </header>
+    <main id="app" tabindex="-1" aria-live="polite"></main>
+    <footer class="footer">
+      <div class="footer-main">
+        <div><div class="footer-brand">VietGreen <span>· V4</span></div><p>Recruiter-facing C&amp;I solar project finance study.</p></div>
+        <div><strong>Claim boundary</strong><p>Synthetic model output only. Not investment approval, lender approval, legal/tax opinion, technical certification, site diligence or bankable P90.</p></div>
+        <div><strong>Data status</strong><p><span class="status-dot status-dot-amber"></span> Transaction evidence <b>OPEN</b> · Bankable transaction <b>FALSE</b></p></div>
+      </div>
+      <div class="footer-meta"><span id="footer-release">Release loading…</span><span>Amounts in BVND unless otherwise stated</span><a href="https://github.com/susayold/vietgreen-ci-solar-project-finance" target="_blank" rel="noopener">View repository ↗</a></div>
+    </footer>
+  </div>
+  <script src="app.js" type="module"></script>
+</body>
+</html>

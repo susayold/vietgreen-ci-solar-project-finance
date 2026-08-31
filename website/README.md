@@ -1,14 +1,26 @@
-# Recruiter-facing site
+# VietGreen recruiter-facing website
 
-This static landing page is an aggregate-only communication layer for release candidate 1.2.0.
+This is the V4 recruiter communication layer for the VietGreen C&I solar project-finance study. It follows the supplied website build plan: dark forest-green narrative shell, white analytical panels, finance-first navigation and an explicit evidence boundary.
 
-- Source: [index.html](index.html)
-- Workbook model preview: [model_preview/index.html](model_preview/index.html)
-- Model source of truth: [GitHub repository](https://github.com/susayold/vietgreen-ci-solar-project-finance)
-- Control record: [Google Drive execution-control document](https://docs.google.com/document/d/1koSgbc1Akic6cVDFD1svmuVN9gSq8qSGUw2obfHYN80/edit)
-- Release status: candidate / PASS_WITH_LIMITATIONS
-- No raw 8,760 streams, hidden truth, credentials, personal information or project-sensitive data is embedded in the page.
-- Metrics are synchronized to workflow run 33360401233 and artifact digest sha256:3396dce1eee9420c8c16532c30e38d7be33d4fbdf0c8da4e317af75b6a4b6f2b. Hourly Parquet and CSV.GZ streams remain remote artifact-only. Tariff-chain legal references include EVN Bulletin No. 16/2026 and Decree 278/2026/ND-CP; billed invoice cutover remains WATCH.
+## Data contract
 
-Live deployment: https://susayold.github.io/vietgreen-ci-solar-project-finance/
-Deployment workflow: https://github.com/susayold/vietgreen-ci-solar-project-finance/actions/runs/33358568134
+`website/data/*.json` is generated from authoritative release artifacts — portfolio exposure, current/negotiated returns, phase-2 scenarios, debt sizing, load matching, FX, QA and the release manifest. Do not edit the generated JSON by hand.
+
+```text
+python scripts/build_website_data.py
+python scripts/validate_website_data.py
+python scripts/check_stale_v3_claims.py
+```
+
+The public payload contains aggregate model outputs only. Raw hourly streams and private transaction evidence are intentionally not embedded. The model is synthetic and recruiter-ready; transaction evidence is `OPEN` and bankable transaction readiness is `FALSE`.
+
+## Routes
+
+`#/` Overview · `#/case` Investment case · `#/economics` Economics & PPA · `#/debt` Debt · `#/portfolio` Portfolio · `#/risk` Risk · `#/model` Model · `#/evidence` Evidence.
+
+## Source and deployment
+
+- Source of truth: [VietGreen GitHub repository](https://github.com/susayold/vietgreen-ci-solar-project-finance)
+- Live GitHub Pages site: [susayold.github.io/vietgreen-ci-solar-project-finance](https://susayold.github.io/vietgreen-ci-solar-project-finance/)
+- Workbook preview: [model_preview/index.html](model_preview/index.html)
+- The `recruiter-pages` workflow rebuilds and validates the data contract on every release-output or website change before publishing Pages.

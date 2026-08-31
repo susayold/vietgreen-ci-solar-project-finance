@@ -1,0 +1,19 @@
+{
+  "site": "VietGreen C&I Solar Project Finance",
+  "releaseId": "V4-FINAL-2026-08-31",
+  "siteVersion": "1.0.0-recruiter-memo",
+  "dataSource": "scripts/build_website_data.py",
+  "routes": 8,
+  "selectedProjectIds": ["VG-005", "VG-010", "VG-011", "VG-012"],
+  "currentTermsDecision": "NO_DEPLOYMENT",
+  "transactionEvidenceStatus": "OPEN",
+  "bankableTransactionReady": false,
+  "validation": {
+    "dataContract": "PASS",
+    "staleV3Blocker": "PASS",
+    "formulaQa": "2055 cells / 0 errors",
+    "excelPythonReconciliation": "240 / 240 PASS",
+    "finalDoD": "35 / 35 PASS"
+  },
+  "claimBoundary": "Synthetic recruiter package only; not investment approval, lender approval, legal/tax opinion, technical certification, site diligence or bankable P90."
+}

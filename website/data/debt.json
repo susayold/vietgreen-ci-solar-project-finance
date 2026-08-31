@@ -1,0 +1,262 @@
+{
+  "page": "debt",
+  "title": "Debt & credit: size to cash flow, protect coverage.",
+  "subtitle": "Debt capacity is bounded by DSCR, LLCR, PLCR and leverage; the binding constraint and reserve mechanics stay visible.",
+  "shared": {
+    "releaseId": "V4-FINAL-2026-08-31",
+    "releaseVersion": "4.0.0-recruiter-candidate",
+    "asOfDate": "2026-08-31",
+    "modelVersion": "V4.0.0",
+    "masterSeed": 260831,
+    "projectsScreened": 20,
+    "currentPositiveEquityNPV": 0,
+    "negotiatedPositiveEquityNPV": 19,
+    "negotiatedEmptyZone": 1,
+    "selectedProjects": 4,
+    "selectedProjectIds": [
+      "VG-005",
+      "VG-010",
+      "VG-011",
+      "VG-012"
+    ],
+    "selectedEquityBVND": 30.124825,
+    "selectedDebtBVND": 55.946104,
+    "selectedCFADSBVND": 12.003384,
+    "baseSizingDSCR": 1.3,
+    "currentDecision": "NO_DEPLOYMENT",
+    "recruiterReady": true,
+    "transactionEvidenceStatus": "OPEN",
+    "bankableTransactionReady": false,
+    "externalGateCountOpen": 8,
+    "claimBoundary": "Synthetic recruiter package only; not investment approval, lender approval, legal/tax opinion, technical certification, site diligence or bankable P90.",
+    "evidenceClass": "SYNTHETIC_RECRUITER_OUTPUT"
+  },
+  "defaultProjectId": "VG-005",
+  "headline": {
+    "totalDebtBVND": 55.94610395833334,
+    "baseDSCR": 1.3,
+    "covenantHeadroom": 0.05,
+    "fxBenefit": "Scenario-tested"
+  },
+  "waterfall": [
+    {
+      "label": "Revenue",
+      "valueBVND": 3.969928
+    },
+    {
+      "label": "Operating cost",
+      "valueBVND": -0.45
+    },
+    {
+      "label": "Tax",
+      "valueBVND": -0.379963
+    },
+    {
+      "label": "Working capital",
+      "valueBVND": -0.326295
+    },
+    {
+      "label": "CFADS",
+      "valueBVND": 2.81367
+    },
+    {
+      "label": "Debt service",
+      "valueBVND": -2.164361
+    },
+    {
+      "label": "Equity cash flow",
+      "valueBVND": 0.649308
+    }
+  ],
+  "capacity": {
+    "dscr_cap_debt_vnd": 15.667596,
+    "llcr_cap_debt_vnd": 15.087314,
+    "plcr_cap_debt_vnd": 20.886103,
+    "leverage_cap_debt_vnd": 17.302919,
+    "actual_initial_debt_vnd": 15.087314,
+    "binding": "LLCR",
+    "circularity": "CLOSED_FORM_CFADS_VECTOR"
+  },
+  "coverage": {
+    "minimumDSCR": 1.3,
+    "LLCR": 1.35,
+    "PLCR": 1.73,
+    "targetDSCR": 1.2,
+    "targetLLCR": 1.15,
+    "targetPLCR": 1.1
+  },
+  "schedule": [
+    {
+      "year": 1,
+      "cfadsBVND": 2.81367,
+      "debtServiceBVND": 2.164361,
+      "closingBVND": 14.205375,
+      "dscr": 1.3
+    },
+    {
+      "year": 2,
+      "cfadsBVND": 3.146871,
+      "debtServiceBVND": 2.42067,
+      "closingBVND": 12.992161,
+      "dscr": 1.3
+    },
+    {
+      "year": 3,
+      "cfadsBVND": 3.155318,
+      "debtServiceBVND": 2.427167,
+      "closingBVND": 11.669328,
+      "dscr": 1.3
+    },
+    {
+      "year": 4,
+      "cfadsBVND": 3.163696,
+      "debtServiceBVND": 2.433612,
+      "closingBVND": 10.227608,
+      "dscr": 1.3
+    },
+    {
+      "year": 5,
+      "cfadsBVND": 3.050494,
+      "debtServiceBVND": 2.346534,
+      "closingBVND": 8.750421,
+      "dscr": 1.3
+    },
+    {
+      "year": 6,
+      "cfadsBVND": 3.180235,
+      "debtServiceBVND": 2.446335,
+      "closingBVND": 7.047872,
+      "dscr": 1.3
+    },
+    {
+      "year": 7,
+      "cfadsBVND": 3.188392,
+      "debtServiceBVND": 2.452609,
+      "closingBVND": 5.194332,
+      "dscr": 1.3
+    },
+    {
+      "year": 8,
+      "cfadsBVND": 3.196469,
+      "debtServiceBVND": 2.458822,
+      "closingBVND": 3.177028,
+      "dscr": 1.3
+    },
+    {
+      "year": 9,
+      "cfadsBVND": 3.204464,
+      "debtServiceBVND": 2.464972,
+      "closingBVND": 0.982104,
+      "dscr": 1.3
+    },
+    {
+      "year": 10,
+      "cfadsBVND": 3.090866,
+      "debtServiceBVND": 1.065582,
+      "closingBVND": 0.0,
+      "dscr": 2.9
+    }
+  ],
+  "reserve": [
+    {
+      "year": 1,
+      "dsraBVND": 1.082181,
+      "distributionBVND": 0.649308
+    },
+    {
+      "year": 2,
+      "dsraBVND": 1.082181,
+      "distributionBVND": 0.726201
+    },
+    {
+      "year": 3,
+      "dsraBVND": 1.082181,
+      "distributionBVND": 0.72815
+    },
+    {
+      "year": 4,
+      "dsraBVND": 1.082181,
+      "distributionBVND": 0.730084
+    },
+    {
+      "year": 5,
+      "dsraBVND": 1.082181,
+      "distributionBVND": 0.70396
+    },
+    {
+      "year": 6,
+      "dsraBVND": 1.082181,
+      "distributionBVND": 0.7339
+    },
+    {
+      "year": 7,
+      "dsraBVND": 1.082181,
+      "distributionBVND": 0.735783
+    },
+    {
+      "year": 8,
+      "dsraBVND": 1.082181,
+      "distributionBVND": 0.737647
+    },
+    {
+      "year": 9,
+      "dsraBVND": 1.082181,
+      "distributionBVND": 0.739492
+    },
+    {
+      "year": 10,
+      "dsraBVND": 1.082181,
+      "distributionBVND": 2.025283
+    },
+    {
+      "year": 11,
+      "dsraBVND": 1.082181,
+      "distributionBVND": 3.220196
+    },
+    {
+      "year": 12,
+      "dsraBVND": 1.082181,
+      "distributionBVND": 3.227928
+    },
+    {
+      "year": 13,
+      "dsraBVND": 1.082181,
+      "distributionBVND": 3.235566
+    },
+    {
+      "year": 14,
+      "dsraBVND": 1.082181,
+      "distributionBVND": 3.243106
+    },
+    {
+      "year": 15,
+      "dsraBVND": 0.0,
+      "distributionBVND": 3.600197
+    }
+  ],
+  "fx": [
+    {
+      "label": "VND only",
+      "equityNPVBVND": 1.989347,
+      "dscr": 1.3
+    },
+    {
+      "label": "USD unhedged",
+      "equityNPVBVND": 2.618253,
+      "dscr": 1.3
+    },
+    {
+      "label": "USD hedged",
+      "equityNPVBVND": 2.618253,
+      "dscr": 1.28
+    }
+  ],
+  "sources": [
+    "outputs/debt_sizing.csv",
+    "outputs/debt_schedule.csv",
+    "outputs/coverage_summary.csv",
+    "outputs/reserve_waterfall.csv",
+    "outputs/fx_funding_comparison_v4.csv"
+  ],
+  "evidenceClass": "HYPOTHETICAL_NEGOTIATED_MODEL_OUTPUT"
+}

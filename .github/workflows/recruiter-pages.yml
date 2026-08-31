@@ -5,6 +5,12 @@ on:
     branches: [main]
     paths:
       - "website/**"
+      - "scripts/build_website_data.py"
+      - "scripts/validate_website_data.py"
+      - "scripts/check_stale_v3_claims.py"
+      - "outputs/**"
+      - "release/MODEL_RELEASE_MANIFEST.json"
+      - "validation/**"
       - ".github/workflows/recruiter-pages.yml"
   workflow_dispatch:
 
@@ -26,6 +32,20 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build website data contract
+        run: python scripts/build_website_data.py
+
+      - name: Validate website data contract
+        run: python scripts/validate_website_data.py
+
+      - name: Block stale V3 claims
+        run: python scripts/check_stale_v3_claims.py
 
       - name: Verify aggregate-only website boundary
         shell: bash

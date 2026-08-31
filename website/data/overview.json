@@ -1,0 +1,120 @@
+{
+  "page": "overview",
+  "title": "20 solar projects. Current terms destroy equity value.",
+  "subtitle": "Formula-driven C&I rooftop solar screening from energy yield to PPA, debt capacity, portfolio construction and downside readiness.",
+  "shared": {
+    "releaseId": "V4-FINAL-2026-08-31",
+    "releaseVersion": "4.0.0-recruiter-candidate",
+    "asOfDate": "2026-08-31",
+    "modelVersion": "V4.0.0",
+    "masterSeed": 260831,
+    "projectsScreened": 20,
+    "currentPositiveEquityNPV": 0,
+    "negotiatedPositiveEquityNPV": 19,
+    "negotiatedEmptyZone": 1,
+    "selectedProjects": 4,
+    "selectedProjectIds": [
+      "VG-005",
+      "VG-010",
+      "VG-011",
+      "VG-012"
+    ],
+    "selectedEquityBVND": 30.124825,
+    "selectedDebtBVND": 55.946104,
+    "selectedCFADSBVND": 12.003384,
+    "baseSizingDSCR": 1.3,
+    "currentDecision": "NO_DEPLOYMENT",
+    "recruiterReady": true,
+    "transactionEvidenceStatus": "OPEN",
+    "bankableTransactionReady": false,
+    "externalGateCountOpen": 8,
+    "claimBoundary": "Synthetic recruiter package only; not investment approval, lender approval, legal/tax opinion, technical certification, site diligence or bankable P90.",
+    "evidenceClass": "SYNTHETIC_RECRUITER_OUTPUT"
+  },
+  "decision": {
+    "current": "NO_DEPLOYMENT",
+    "reason": "0 / 20 Current Terms rows have positive Equity NPV and the current PPA frontier is empty.",
+    "nextMove": "Reprice the PPA, reduce CAPEX, resize debt and close the external evidence gates before any deployment recommendation."
+  },
+  "remediation": [
+    {
+      "step": "01",
+      "label": "Current terms",
+      "value": "0 / 20 positive Equity NPV",
+      "tone": "negative"
+    },
+    {
+      "step": "02",
+      "label": "Commercial / financing remediation",
+      "value": "PPA + CAPEX + debt sizing",
+      "tone": "warning"
+    },
+    {
+      "step": "03",
+      "label": "Negotiated hypothetical case",
+      "value": "19 / 20 positive Equity NPV",
+      "tone": "positive"
+    },
+    {
+      "step": "04",
+      "label": "Exposure-constrained portfolio",
+      "value": "4 projects selected",
+      "tone": "positive"
+    }
+  ],
+  "scenarioSummary": [
+    {
+      "label": "Base sponsor",
+      "projectNPV": 5.262393,
+      "equityNPV": 5.942277,
+      "dscr": 1.3,
+      "status": "PASS"
+    },
+    {
+      "label": "P90 energy",
+      "projectNPV": -3.729685,
+      "equityNPV": -1.177896,
+      "dscr": 1.3,
+      "status": "PASS"
+    },
+    {
+      "label": "Combined downside",
+      "projectNPV": -35.95699,
+      "equityNPV": -38.814456,
+      "dscr": 0.0,
+      "status": "FAIL_DSCR"
+    }
+  ],
+  "built": [
+    {
+      "title": "8,760 load mapping",
+      "text": "Annual load and P50/P90 energy yield are reconciled from the release outputs."
+    },
+    {
+      "title": "PPA frontier",
+      "text": "Customer ceiling, sponsor floor and lender floor define a three-sided negotiation zone."
+    },
+    {
+      "title": "Finance & debt sizing",
+      "text": "CFADS, LLCR, PLCR, leverage and DSCR constraints are visible at project and portfolio level."
+    },
+    {
+      "title": "FX & downside",
+      "text": "VND/USD funding cases and downside scenarios expose return and coverage fragility."
+    },
+    {
+      "title": "Portfolio optimizer",
+      "text": "Four selected projects satisfy the released exposure-constrained screening case."
+    },
+    {
+      "title": "Governance layer",
+      "text": "Formula QA, 240/240 reconciliation, DoD and external evidence gates are linked."
+    }
+  ],
+  "sources": [
+    "release/MODEL_RELEASE_MANIFEST.json",
+    "outputs/scenario_summary_v4_phase2.csv",
+    "outputs/portfolio_exposure_v4.csv"
+  ],
+  "evidenceClass": "SYNTHETIC_RECRUITER_OUTPUT"
+}
