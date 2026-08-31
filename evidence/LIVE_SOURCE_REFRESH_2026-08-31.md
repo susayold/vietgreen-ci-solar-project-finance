@@ -37,6 +37,9 @@ The model keeps LEGAL_EFFECTIVE_NOT_BILLED, CURRENT_BILLED_REFERENCE, and SIMULA
 
 ## Official URLs
 
+- NREL ATB 2024 report alternate: https://www.nrel.gov/docs/fy24osti/89960.pdf
+- IRENA 2024 publication alternate: https://www.irena.org/Publications/2025/Jun/Renewable-Power-Generation-Costs-in-2024
+
 - Decision 963: https://moit.gov.vn/van-ban-phap-luat/quyet-dinh-ve-khung-gio-cao-diem-thap-diem-va-gio-binh-thuong-cua-he-thong-dien-quoc-gia.html
 - Decision 963 PDF: https://moit.gov.vn/upload/2005517/20260423/1_QD-BCT_2026_963_30f7a.pdf
 - MOIT Q2 briefing: https://moit.gov.vn/tin-tuc/bo-cong-thuong-hop-bao-thuong-ky-quy-ii-2026.html
@@ -57,11 +60,11 @@ Source rows: SRC-TAR-963, SRC-TAR-60, SRC-TAR-278, SRC-REFRESH-EVN-20260831, SRC
 ## Remote live-check provenance
 
 - Workflow: 33371147810; job: 99422352549; metadata commit: 53f39020d6dfef5467768c81e18ddb19c76e9582; artifact: 9750130974; artifact digest: sha256:24d20a3bf9ee66f5eb94af620a40c3cc1352856ea97dcc413af02b4304d5b972.
-- Live-check file: evidence/REMOTE_SOURCE_LIVE_CHECK.csv; GitHub blob 9a7f78b57e20ebe35502308412f2b0f536fb37fc; SHA-256 81145632b8e45ba53808ba06aa305d7434ef14f3e44ca21141c7c056d0676236; 24 rows; 20 PASS and 6 non-blocking WARNs.
+- Live-check file: evidence/REMOTE_SOURCE_LIVE_CHECK.csv; GitHub blob 9a7f78b57e20ebe35502308412f2b0f536fb37fc; SHA-256 81145632b8e45ba53808ba06aa305d7434ef14f3e44ca21141c7c056d0676236; 26 rows; 20 PASS and 6 non-blocking WARNs.
 - The two MOIT runner network-unreachable, NREL DNS and IRENA HTTP 403 warnings are preserved as WARNs and are not treated as evidence that a source is unavailable or that the model can claim certification.
-- All 24 rows record raw_snapshot_stored=FALSE and storage_boundary=REMOTE_RUNNER_EPHEMERAL.
+- All 26 rows record raw_snapshot_stored=FALSE and storage_boundary=REMOTE_RUNNER_EPHEMERAL.
 
-- Latest live-check result: 24 rows; 20 PASS and 6 non-blocking WARNs (MOIT runner network-unreachable on two pages; NREL DNS; IRENA HTTP 403). Warnings are retained for recheck and do not alter model inputs.
+- Latest live-check result: 26 rows; 20 PASS and 6 non-blocking WARNs (MOIT runner network-unreachable on two pages; NREL DNS; IRENA HTTP 403). Warnings are retained for recheck and do not alter model inputs.
 
 ## Core validation lineage after core model refresh
 

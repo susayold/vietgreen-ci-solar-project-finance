@@ -10,7 +10,7 @@ Date: 2026-08-31
 - Explicit CAPEX/VAT/IDC reconciliation and year-zero no-debt check.
 - PPA negotiation-zone helper with explicit RENEGOTIATE_OR_REJECT action for empty zones, covered by a boundary test.
 - Pairwise-swap improvement pass after hard-gated value-density selection.
-- Remote source-fetch log, SR-1.14 DOD status matrix, full 65-row DoD audit, boundary tests, EVN and EVNSPC implementation-readiness refresh and recruiter-safe package.
+- Remote source-fetch log, SR-1.15 DOD status matrix, full 65-row DoD audit, boundary tests, EVN and EVNSPC implementation-readiness refresh and recruiter-safe package.
 - Plan-specified Parquet hourly streams plus deterministic CSV.GZ compatibility streams in the remote-only GitHub Actions artifact.
 - Tax amendment watch for the official 2026-08-28 draft affecting Decree 320/2025; no effective model tax input was changed.
 - Added Decree 278/2026/ND-CP as a locked legal dependency in the tariff/billing chain; it does not by itself prove invoice cutover.
@@ -21,9 +21,9 @@ Date: 2026-08-31
 
 ## Verified
 
-- Source register advanced to SR-1.14 with EVNSPC customer-facing, meter-training and IT-readiness corroboration plus official tax/FX/benchmark rechecks; the refresh remains corroborative and does not close the billed-tariff gate.
+- Source register advanced to SR-1.15 with EVNSPC customer-facing, meter-training and IT-readiness corroboration plus official tax/FX/benchmark rechecks and alternate NREL/IRENA comparator URLs; the refresh remains corroborative and does not close the billed-tariff gate.
 
-- Metadata-only official-source crawl 33371147810 / job 99422352549 checked 24 controlled URLs: 20 PASS, 6 non-blocking warnings (two MOIT runner network-unreachable pages, NREL DNS and IRENA HTTP 403); no raw source snapshot was stored. Artifact 9750130974, digest sha256:24d20a3bf9ee66f5eb94af620a40c3cc1352856ea97dcc413af02b4304d5b972. The MOIT briefing and four EVNSPC pages corroborate the billing-status watch.
+- Metadata-only official-source crawl 33371147810 / job 99422352549 checked 26 controlled URLs: 20 PASS, 6 non-blocking warnings (two MOIT runner network-unreachable pages, original/alternate NREL DNS and original/alternate IRENA HTTP 403); no raw source snapshot was stored. Artifact 9750130974, digest sha256:24d20a3bf9ee66f5eb94af620a40c3cc1352856ea97dcc413af02b4304d5b972. The MOIT briefing and four EVNSPC pages corroborate the billing-status watch.
 
 - Regulatory refresh: EVN Bulletin No. 16/2026 and Decree 278/2026/ND-CP were registered as current official references; billed implementation remains WATCH.
 

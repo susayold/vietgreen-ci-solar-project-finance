@@ -50,7 +50,7 @@ Status: PASS WITH NEGATIVE BASE SPONSOR NPV; recommendation is conditional and t
 
 ## H. Validation and release
 
-Latest core remote run: 33367160495 / job 99410087552; latest source-refresh run: 33371147810 / job 99422352549; 20/20 DQ; 20/20 dynamic remote QA; 31/31 workbook checks; 7/7 tests; 13/13 mechanical release controls plus 1 candidate-manifest warning; 240 construction schedule rows; 9 external-validation rows; 24 official URLs returned 20 PASS and 6 non-blocking WARNs; four remote 8,760 streams (Parquet plus deterministic CSV.GZ compatibility) remain artifact-only with local_storage NONE.
+Latest core remote run: 33367160495 / job 99410087552; latest source-refresh run: 33371147810 / job 99422352549; 20/20 DQ; 20/20 dynamic remote QA; 31/31 workbook checks; 7/7 tests; 13/13 mechanical release controls plus 1 candidate-manifest warning; 240 construction schedule rows; 9 external-validation rows; 26 official URLs returned 20 PASS and 6 non-blocking WARNs; four remote 8,760 streams (Parquet plus deterministic CSV.GZ compatibility) remain artifact-only with local_storage NONE.
 
 ## I. Recruiter-facing communication
 
@@ -81,4 +81,4 @@ Reproducibility control: remote push run 33367160495 and same-head workflow_disp
 
 ## M. Final remote output refresh
 
-The final push-triggered core rebuild completed in workflow 33367160495 / job 99410087552; the repository workbook is now regenerated against SR-1.14 with SHA-256 9e72588fd7a084282befa74dd0f97036f15e1f306aac6080fc86fdd75f605c5f and 117493 bytes. Same-head run 33367239508 / job 99410324360 and comparator 33367293807 / job 99410490341 matched 6/6 files.
+The final push-triggered core rebuild completed in workflow 33367160495 / job 99410087552; the repository workbook is regenerated against the SR-1.14 model-input set. SR-1.15 adds comparator-only source URLs and does not change model inputs. Workbook SHA-256 is 9e72588fd7a084282befa74dd0f97036f15e1f306aac6080fc86fdd75f605c5f and size is 117493 bytes. Same-head run 33367239508 / job 99410324360 and comparator 33367293807 / job 99410490341 matched 6/6 files.

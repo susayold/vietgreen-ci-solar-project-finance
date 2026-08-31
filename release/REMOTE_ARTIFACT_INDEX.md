@@ -46,4 +46,4 @@ Live recruiter site (aggregate-only): https://susayold.github.io/vietgreen-ci-so
 ## Official source live check
 
 - Remote metadata-only crawl: workflow 33371147810 / job 99422352549; artifact official-source-live-check ID 9750130974, digest sha256:24d20a3bf9ee66f5eb94af620a40c3cc1352856ea97dcc413af02b4304d5b972.
-- 24 controlled official URLs were checked in memory: 20 PASS and 6 non-blocking WARNs (two MOIT runner network-unreachable pages, NREL DNS and IRENA HTTP 403); raw_snapshot_stored=FALSE for every row. Live-check SHA-256: 81145632b8e45ba53808ba06aa305d7434ef14f3e44ca21141c7c056d0676236; GitHub blob 9a7f78b57e20ebe35502308412f2b0f536fb37fc; 9,561 bytes.
+- 26 controlled official URLs were checked in memory: 20 PASS and 6 non-blocking WARNs (two MOIT runner network-unreachable pages; original and alternate NREL DNS; original and alternate IRENA HTTP 403); raw_snapshot_stored=FALSE for every row. Live-check SHA-256: 81145632b8e45ba53808ba06aa305d7434ef14f3e44ca21141c7c056d0676236; GitHub blob 9a7f78b57e20ebe35502308412f2b0f536fb37fc; 10,161 bytes.
