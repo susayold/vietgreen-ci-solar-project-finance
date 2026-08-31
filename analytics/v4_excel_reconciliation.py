@@ -176,6 +176,21 @@ def build():
         "This is a formula/reconciliation gate for synthetic screening only. It does not close external transaction evidence, bankability, lender approval or recruiter readiness.",
     ]
     (ROOT / "validation/V4_G4_G5_RED_TEAM_REPORT.md").write_text("\n".join(report) + "\n", encoding="utf-8")
+    failed_qa = [row for row in qa_rows if row["status"] == "FAIL"]
+    failed_dod = [row for row in dod_rows if row["status"] == "FAIL"]
+    failed_reconciliation = [row for row in reconciliation if row["status"] == "FAIL"]
+    print("V4 G4/G5 diagnostics: formula_cells=%d; formula_errors=%s; reconciliation=%d/%d; failed_reconciliation=%s; failed_qa=%s; failed_dod=%s; calc_mode_pass=%s; switches_pass=%s; chart_pass=%s" % (
+        formula_cells,
+        formula_errors[:10],
+        sum(row["status"] == "PASS" for row in reconciliation),
+        len(reconciliation),
+        failed_reconciliation[:10],
+        failed_qa,
+        failed_dod,
+        calc_mode_pass,
+        switches_pass,
+        chart_pass,
+    ))
     if any(row["status"] == "FAIL" for row in qa_rows + dod_rows) or not all_reconciled:
         raise SystemExit("V4 G4/G5 workbook QA failed")
     print("V4 G4/G5 PASS: formulas=%d; reconciliation=%d/%d" % (formula_cells, sum(row["status"] == "PASS" for row in reconciliation), len(reconciliation)))
