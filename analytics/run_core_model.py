@@ -703,6 +703,8 @@ def run(root=BASE_DIR):
         "pooled_dscr": coverage_ratio(pool["cfads"][:pool["tenor"]], [num(item, "debt_service") for item in pool["schedule"]]),
         "pooled_feedback_iterations": len(feedback_history),
         "pooled_feedback_converged": feedback_converged,
+        "pooled_equity_vnd": pool["capex"] - pool["debt"],
+        "base_sponsor_npv_vnd": sum(project["equity_npv_vnd"] for project in selected),
         "billing_status": tariff_info["billing_status"],
         "tariff_version": tariff_info["tariff_version"],
         "qa_failures": sum(row["status"] == "FAIL" for row in qa_rows),
