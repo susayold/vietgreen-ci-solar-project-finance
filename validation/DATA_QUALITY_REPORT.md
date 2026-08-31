@@ -1,9 +1,9 @@
 # DATA_QUALITY_REPORT
 
-Remote-only quality checks for the synthetic pipeline. Grain is one row per project except CAPEX, which is six components per project.
+Remote-only quality checks for the synthetic pipeline. Grain is one row per project except CAPEX, which is six components per project, plus a 12-month construction curve.
 
-- Checks run: 18
-- Passed: 18
+- Checks run: 20
+- Passed: 20
 - Failed: 0
 - Data class: synthetic / simulated; no real customer data.
 - Freshness: source-register dates and regulatory/tariff recheck flags govern release; no local snapshot is used.

@@ -5,6 +5,7 @@ DQ-003,offtaker,foreign_key_coverage,all project IDs,True,PASS,CRITICAL,Prevents
 DQ-004,site,foreign_key_coverage,all site IDs,True,PASS,CRITICAL,Prevents missing site-risk joins
 DQ-005,PPA,foreign_key_coverage,all project IDs,True,PASS,CRITICAL,Prevents missing contract terms
 DQ-006,CAPEX,row_count_and_key,120 rows / 6 per project,120 rows,PASS,CRITICAL,CAPEX aggregation grain
+DQ-019,construction,schedule_shape_and_share,240 rows / months 1-12 / shares sum 1,240 rows,PASS,CRITICAL,Construction timing and IDC basis
 DQ-007,debt,foreign_key_coverage,all project IDs,True,PASS,CRITICAL,Prevents missing financing terms
 DQ-008,solar,foreign_key_coverage,all project IDs,True,PASS,CRITICAL,Prevents missing resource joins
 DQ-009,source,source_id_coverage,all referenced source IDs,True,PASS,CRITICAL,Evidence traceability
@@ -16,4 +17,5 @@ DQ-014,tariff,legal_billing_separation,schema and non-empty lineage fields,True,
 DQ-015,tariff,unsupported_billed_rate_firewall,no numeric billed rate on legal-only rows,True,PASS,CRITICAL,No unsupported market-rate claim
 DQ-016,regulatory,register_completeness,"tax, tariff and FX rules with effective fields",True,PASS,CRITICAL,Release evidence register completeness
 DQ-017,regulatory,required_rule_ids,all current tax/FX/tariff rules,True,PASS,CRITICAL,Current-source control
+DQ-020,construction,source_assumption_coverage,all construction rows reference registered assumptions,True,PASS,HIGH,IDC and construction-curve provenance
 DQ-018,discount_rate,source_assumption_coverage,all rate IDs registered,True,PASS,HIGH,Discount-rate provenance

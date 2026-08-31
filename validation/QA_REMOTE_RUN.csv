@@ -17,3 +17,5 @@ QA-REMOTE-015,PASS,hourly P50 load/solar reconciles,"8,760 load and solar vector
 QA-REMOTE-016,PASS,Decision 963 schedule validation PASS,Half-hour boundaries are represented by one-hour interval midpoints
 QA-REMOTE-017,PASS,registered LLCR/PLCR rates,Coverage discount rates come from the discount-rate register
 QA-REMOTE-018,PASS,DSO minimum annual CFADS <= base,Working-capital timing downside is tested at annual grain
+QA-REMOTE-019,PASS,20 CAPEX/VAT/IDC schedules reconcile,"Bottom-up construction, VAT and capitalised IDC tie to total uses"
+QA-REMOTE-020,PASS,year-zero full-equity no-debt check,Cash-flow construction pass reconciles before debt sizing
