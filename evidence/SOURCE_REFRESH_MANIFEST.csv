@@ -11,3 +11,5 @@ SRC-SOLAR-GSA,https://www.globalsolaratlas.info/support/methodology,official_met
 SRC-SOLAR-NREL,https://atb.nrel.gov/electricity/2024/commercial_pv,official_methodology,Commercial PV technical comparator
 SRC-REFRESH-EVN-963-20260423,https://www.evn.com.vn/d/vi-VN/news-d/Quyet-dinh-so-963QD-BCT-ve-khung-gio-cao-diem-thap-diem-va-gio-binh-thuong-cua-he-thong-dien-quoc-gia--60-134-507803,official_ev_notice,Decision 963 legal windows and EVN implementation role
 SRC-REFRESH-MOIT-20260611,https://moit.gov.vn/tin-tuc/thong-tin-hop-bao/diem-bao-nganh-cong-thuong-ngay-11-6-2026.html,official_briefing,Historical billed-status corroboration
+SRC-REFRESH-EVNSPC-20260715,https://cskh.evnspc.vn/TinTuc/TinTucChiTiet?LoaiTinBai=ALL&MaTinBai=2987,official_utility_notice,EVNSPC customer-facing implementation corroboration
+SRC-REFRESH-EVNSPC-PRICING-20260831,https://cskh.evnspc.vn/TraCuu/ThongTinGiaDien,official_utility_pricing_portal,EVNSPC current TOU pricing-page corroboration
