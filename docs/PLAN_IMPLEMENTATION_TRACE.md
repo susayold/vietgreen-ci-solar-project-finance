@@ -60,7 +60,7 @@ Live deployment verified at https://susayold.github.io/vietgreen-ci-solar-projec
 
 ## J. Master Plan V3 DoD audit
 
-Implemented: checkbox-level audit for all 65 requirements in DoD 42.1–42.9, with evidence paths, validation basis, limitation/blocker and next action. Remote workflow 33367548636 / job 99411255741 passed 65/65 row identity checks and 190/190 evidence-path checks; status counts are 62 PASS, 2 PARTIAL and 1 PENDING.
+Implemented: checkbox-level audit for all 65 requirements in DoD 42.1–42.9, with evidence paths, validation basis, limitation/blocker and next action. Remote workflow 33367706649 / job 99411724105 passed 65/65 row identity checks and 190/190 evidence-path checks; status counts are 62 PASS, 2 PARTIAL and 1 PENDING.
 
 ## J. Open gates
 
