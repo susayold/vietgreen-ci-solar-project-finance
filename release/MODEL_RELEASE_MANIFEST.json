@@ -72,8 +72,8 @@
     "v4_phase2_job_id": 99567717422,
     "v4_phase2_artifact_id": 9767143995,
     "v4_phase2_artifact_digest": "sha256:b1681b8fb9bee8135bc52b1f79ea2fa99fa6ba0956098b8f614b4975c7551b73",
-    "v4_g6_run_id": 33417540599,
-    "v4_g6_commit": "7f85f6792c7ec2df8c8b8a1ffaccd155a024d368"
+    "v4_g6_run_id": 33418242531,
+    "v4_g6_commit": "83e6d792f59c7f5049ceb84020685327166bbf8a"
   },
   "validation": {
     "phase1_dod": 7,
@@ -90,7 +90,10 @@
     "lender_memo": "reports/LENDER_CREDIT_MEMO.md",
     "recruiter_package": "reports/RECRUITER_PACKAGE.md",
     "final_dod": "validation/V4_FINAL_DOD_MATRIX.csv",
-    "red_team": "validation/V4_RED_TEAM_REPORT.md"
+    "red_team": "validation/V4_RED_TEAM_REPORT.md",
+    "cv_bullets": "reports/CV_BULLETS_V4.md",
+    "workbook_preview": "website/model_preview/index.html",
+    "implementation_trace": "docs/PLAN_IMPLEMENTATION_TRACE.md"
   },
   "claim_boundary": "Synthetic recruiter package only; not investment approval, lender approval, legal/tax opinion, technical certification, site diligence or bankable P90."
 }

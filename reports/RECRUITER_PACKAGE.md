@@ -29,3 +29,4 @@ No executed transaction, lender approval, legal/tax opinion, technical certifica
 - Formula workbook: model/vietgreen_v4_formula_model.xlsx
 - Final DoD: validation/V4_FINAL_DOD_MATRIX.csv
 - Release manifest: release/MODEL_RELEASE_MANIFEST.json
+- CV bullets: reports/CV_BULLETS_V4.md

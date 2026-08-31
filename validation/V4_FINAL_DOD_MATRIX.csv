@@ -26,7 +26,7 @@ DOD-24,Scenarios report sponsor and lender metrics,CORE,PASS,revenue/CFADS/debt 
 DOD-25,IC classifications are economically correct,CORE,PASS,no negative-NPV proceed rows,outputs/IC_DECISION_TABLE.csv
 DOD-26,Excel formula QA passes,CORE,PASS,5/5 QA rows,validation/EXCEL_FORMULA_QA.csv
 DOD-27,Excel/Python reconciliation passes,CORE,PASS,240/240 PASS,validation/EXCEL_PYTHON_RECONCILIATION.csv
-DOD-28,Website tells the finance decision story first,CORE,PASS,V4 finance-first recruiter page generated,website/index.html
+DOD-28,Website tells the finance decision story first,CORE,PASS,V4 finance-first recruiter page and workbook preview generated,website/index.html
 DOD-29,Recruiter-ready is separated from transaction-ready,CORE,PASS,recruiter TRUE; transaction OPEN; bankable FALSE,validation/V4_READINESS_STATE.csv
 DOD-30,Claim governance remains intact,CORE,PASS,synthetic / not bankable,release/MODEL_RELEASE_MANIFEST.json
 DOD-31,External gates remain visible without blocking synthetic recruiter release,CORE,PASS,8 external gates remain OPEN,release/MODEL_RELEASE_MANIFEST.json
