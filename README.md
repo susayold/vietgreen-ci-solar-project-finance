@@ -43,7 +43,7 @@ This is a reviewable candidate, not a lender approval, bankable P90 case, legal 
 - Artifact digest: sha256:3f1f7c193192ca4bd652a131e453e9bd7cd996592f0f2343b081664618fdba70.
 - Native workbook: 22 sheets, 117493 bytes; SHA-256 9e72588fd7a084282befa74dd0f97036f15e1f306aac6080fc86fdd75f605c5f; GitHub blob c0d2e2dadf3720a35b9101205efdec108425bec5.
 - Same-head reproducibility run: 33367239508 / job 99410324360; remote comparator: 33367293807 / job 99410490341; 6/6 file hashes matched, with raw artifact contents not stored.
-- Latest official-source refresh: 33368222168 / job 99413280315; 24 URLs, 20 PASS and 4 non-blocking WARNs; raw snapshots were not stored.
+- Latest official-source refresh: 33370454210 / job 99420130285; 24 URLs, 20 PASS and 4 non-blocking WARNs; raw snapshots were not stored.
 - The source-refresh workflow is also scheduled weekly at 02:00 UTC on Monday and remains metadata-only.
 - External-gate validator: 33370201444 / job 99419321412; 8 gate rows, 0 submissions, PASS_EMPTY_SUBMISSIONS; no gate was closed.
 

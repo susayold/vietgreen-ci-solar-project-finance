@@ -50,8 +50,8 @@ Source rows: SRC-TAR-963, SRC-TAR-60, SRC-TAR-278, SRC-REFRESH-EVN-20260831, SRC
 
 ## Remote live-check provenance
 
-- Workflow: 33368222168; job: 99413280315; metadata commit: 47debfe2fbce147554bfcecc165df971065fd0b8; artifact: 9749081207; artifact digest: sha256:4106b2dab2c29d7f1eaf46e463148e8f3f4b19e8fcaae27657285b375c940264.
-- Live-check file: evidence/REMOTE_SOURCE_LIVE_CHECK.csv; GitHub blob 2c5ed2d5ebe74cf829c5f4feefe61906e0dab1aa; SHA-256 9a064b708ac181a51917a80c02026c0e4144d171995e6269af7f567139937e93; 24 rows; 20 PASS and 4 non-blocking WARNs.
+- Workflow: 33370454210; job: 99420130285; metadata commit: d10424817fb9cd9ec84a5e9265e1a1a9fcca65dd; artifact: 9749862740; artifact digest: sha256:b651c62122b79996b6984846029f094acac1d7c7225a3c29536d58bff31b3768.
+- Live-check file: evidence/REMOTE_SOURCE_LIVE_CHECK.csv; GitHub blob e33a2177433eec8c4a3053e208bc1060838af308; SHA-256 3973ccbdb8d7d7493e53c2e5e04d42a39242d63903595f27e2e77bc0d7da8478; 24 rows; 20 PASS and 4 non-blocking WARNs.
 - The two MOIT runner network-unreachable, NREL DNS and IRENA HTTP 403 warnings are preserved as WARNs and are not treated as evidence that a source is unavailable or that the model can claim certification.
 - All 24 rows record raw_snapshot_stored=FALSE and storage_boundary=REMOTE_RUNNER_EPHEMERAL.
 

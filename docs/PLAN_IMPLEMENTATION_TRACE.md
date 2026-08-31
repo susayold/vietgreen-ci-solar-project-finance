@@ -50,7 +50,7 @@ Status: PASS WITH NEGATIVE BASE SPONSOR NPV; recommendation is conditional and t
 
 ## H. Validation and release
 
-Latest core remote run: 33367160495 / job 99410087552; latest source-refresh run: 33368222168 / job 99413280315; 20/20 DQ; 20/20 dynamic remote QA; 31/31 workbook checks; 7/7 tests; 13/13 mechanical release controls plus 1 candidate-manifest warning; 240 construction schedule rows; 9 external-validation rows; 24 official URLs returned 20 PASS and 4 non-blocking WARNs; four remote 8,760 streams (Parquet plus deterministic CSV.GZ compatibility) remain artifact-only with local_storage NONE.
+Latest core remote run: 33367160495 / job 99410087552; latest source-refresh run: 33370454210 / job 99420130285; 20/20 DQ; 20/20 dynamic remote QA; 31/31 workbook checks; 7/7 tests; 13/13 mechanical release controls plus 1 candidate-manifest warning; 240 construction schedule rows; 9 external-validation rows; 24 official URLs returned 20 PASS and 4 non-blocking WARNs; four remote 8,760 streams (Parquet plus deterministic CSV.GZ compatibility) remain artifact-only with local_storage NONE.
 
 ## I. Recruiter-facing communication
 

@@ -30,7 +30,7 @@ The project data-room is represented by the repository, the workflow artifact an
 - Automated tests: 7 passed.
 - Mechanical release controls: 13 PASS, 1 WARN.
 - External gate tracker: 8 open transaction/evidence gates; no gate is closed by synthetic data alone.
-- Official source refresh: `.github/workflows/source-refresh.yml` crawls 24 controlled public URLs remotely and commits metadata only to `evidence/REMOTE_SOURCE_LIVE_CHECK.csv`; a weekly recheck is scheduled for Monday 02:00 UTC. Latest run 33368222168 / job 99413280315: 20 PASS / 4 non-blocking WARNs (two MOIT runner network-unreachable pages, NREL DNS and IRENA HTTP 403); artifact 9749081207, digest sha256:4106b2dab2c29d7f1eaf46e463148e8f3f4b19e8fcaae27657285b375c940264; raw snapshots FALSE.
+- Official source refresh: `.github/workflows/source-refresh.yml` crawls 24 controlled public URLs remotely and commits metadata only to `evidence/REMOTE_SOURCE_LIVE_CHECK.csv`; a weekly recheck is scheduled for Monday 02:00 UTC. Latest run 33370454210 / job 99420130285: 20 PASS / 4 non-blocking WARNs (two MOIT runner network-unreachable pages, NREL DNS and IRENA HTTP 403); artifact 9749862740, digest sha256:b651c62122b79996b6984846029f094acac1d7c7225a3c29536d58bff31b3768; raw snapshots FALSE.
 - Locked input hashes: PASS.
 - Remote 8,760 artifact streams: 175,200 rows each in plan-specified Parquet plus CSV.GZ compatibility format; local_storage NONE.
 - Same-head remote comparator: 33367293807 / job 99410490341; 6/6 target files matched, baseline artifact 9748676847 and repeat artifact 9748704397; comparison metadata artifact 9748718166, raw artifact contents not stored.

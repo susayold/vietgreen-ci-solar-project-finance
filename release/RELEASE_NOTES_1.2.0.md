@@ -23,7 +23,7 @@ Date: 2026-08-31
 
 - Source register advanced to SR-1.14 with EVNSPC customer-facing, meter-training and IT-readiness corroboration plus official tax/FX/benchmark rechecks; the refresh remains corroborative and does not close the billed-tariff gate.
 
-- Metadata-only official-source crawl 33368222168 / job 99413280315 checked 24 controlled URLs: 20 PASS, 4 non-blocking warnings (two MOIT runner network-unreachable pages, NREL DNS and IRENA HTTP 403); no raw source snapshot was stored. Artifact 9749081207, digest sha256:4106b2dab2c29d7f1eaf46e463148e8f3f4b19e8fcaae27657285b375c940264. The MOIT briefing and four EVNSPC pages corroborate the billing-status watch.
+- Metadata-only official-source crawl 33370454210 / job 99420130285 checked 24 controlled URLs: 20 PASS, 4 non-blocking warnings (two MOIT runner network-unreachable pages, NREL DNS and IRENA HTTP 403); no raw source snapshot was stored. Artifact 9749862740, digest sha256:b651c62122b79996b6984846029f094acac1d7c7225a3c29536d58bff31b3768. The MOIT briefing and four EVNSPC pages corroborate the billing-status watch.
 
 - Regulatory refresh: EVN Bulletin No. 16/2026 and Decree 278/2026/ND-CP were registered as current official references; billed implementation remains WATCH.
 
