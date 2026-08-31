@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import csv
 import hashlib
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.error import HTTPError, URLError
@@ -17,6 +18,9 @@ MANIFEST = ROOT / "evidence" / "SOURCE_REFRESH_MANIFEST.csv"
 REGISTER = ROOT / "evidence" / "SOURCE_REGISTER.csv"
 OUTPUT = ROOT / "evidence" / "REMOTE_SOURCE_LIVE_CHECK.csv"
 MAX_BYTES = 12_000_000
+MAX_ATTEMPTS = 3
+RETRY_BACKOFF_SECONDS = 2
+RETRYABLE_HTTP_CODES = {408, 425, 429, 500, 502, 503, 504}
 
 
 def utc_now() -> str:
@@ -30,38 +34,60 @@ def registered_ids() -> set[str]:
 
 def fetch(row: dict[str, str]) -> dict[str, str]:
     checked_at = utc_now()
-    digest = hashlib.sha256()
-    bytes_read = 0
+    final_url = row["url"]
     status = ""
     content_type = ""
-    final_url = row["url"]
+    bytes_read = 0
     note = ""
     fetch_status = "WARN"
-    try:
-        request = Request(row["url"], headers={"User-Agent": "VietGreen-remote-source-refresh/1.0"})
-        with urlopen(request, timeout=30) as response:
-            status = str(getattr(response, "status", response.getcode()))
-            content_type = response.headers.get("Content-Type", "")
-            final_url = response.geturl()
-            while True:
-                chunk = response.read(64 * 1024)
-                if not chunk:
-                    break
-                bytes_read += len(chunk)
-                digest.update(chunk)
-                if bytes_read > MAX_BYTES:
-                    note = f"response exceeded {MAX_BYTES} bytes; hash is truncated at the safety cap"
-                    break
-            fetch_status = "PASS" if status.startswith("2") else "WARN"
-            if not note:
-                note = "response body hashed in memory; raw snapshot not stored"
-    except HTTPError as exc:
-        status = str(exc.code)
-        content_type = exc.headers.get("Content-Type", "") if exc.headers else ""
-        final_url = exc.geturl()
-        note = f"HTTP error; raw response not stored: {exc.reason}"
-    except (URLError, TimeoutError, OSError) as exc:
-        note = f"fetch error; raw response not stored: {exc}"
+    attempts = 0
+
+    for attempts in range(1, MAX_ATTEMPTS + 1):
+        digest = hashlib.sha256()
+        bytes_read = 0
+        status = ""
+        content_type = ""
+        final_url = row["url"]
+        try:
+            request = Request(
+                row["url"],
+                headers={"User-Agent": "VietGreen-remote-source-refresh/1.1"},
+            )
+            with urlopen(request, timeout=30) as response:
+                status = str(getattr(response, "status", response.getcode()))
+                content_type = response.headers.get("Content-Type", "")
+                final_url = response.geturl()
+                while True:
+                    chunk = response.read(64 * 1024)
+                    if not chunk:
+                        break
+                    bytes_read += len(chunk)
+                    digest.update(chunk)
+                    if bytes_read > MAX_BYTES:
+                        note = (
+                            f"response exceeded {MAX_BYTES} bytes; "
+                            "hash is truncated at the safety cap"
+                        )
+                        break
+                fetch_status = "PASS" if status.startswith("2") else "WARN"
+                if not note:
+                    note = "response body hashed in memory; raw snapshot not stored"
+                break
+        except HTTPError as exc:
+            status = str(exc.code)
+            content_type = exc.headers.get("Content-Type", "") if exc.headers else ""
+            final_url = exc.geturl()
+            note = f"HTTP error; raw response not stored: {exc.reason}"
+            if exc.code not in RETRYABLE_HTTP_CODES or attempts == MAX_ATTEMPTS:
+                break
+        except (URLError, TimeoutError, OSError) as exc:
+            note = f"fetch error; raw response not stored: {exc}"
+            if attempts == MAX_ATTEMPTS:
+                break
+
+        time.sleep(RETRY_BACKOFF_SECONDS * attempts)
+
+    note = f"attempts={attempts}; {note}"
     return {
         "source_id": row["source_id"],
         "url": row["url"],
@@ -76,7 +102,6 @@ def fetch(row: dict[str, str]) -> dict[str, str]:
         "storage_boundary": "REMOTE_RUNNER_EPHEMERAL",
         "notes": note,
     }
-
 
 def main() -> int:
     known = registered_ids()
