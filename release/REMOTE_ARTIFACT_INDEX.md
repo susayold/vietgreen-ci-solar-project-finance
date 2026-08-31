@@ -26,7 +26,7 @@ Artifact digest: sha256:d98e61282a9fbc564bc5078a805d64009ef1f2906a288cb3ec541f47
 - Remote 8,760 streams: four artifact-only streams, each 175,200 rows: Parquet load/solar plus deterministic CSV.GZ compatibility streams; index validation PASS.
 - Remote index SHA-256: d5f0e3822b126239c85756feda029fc40c793aa28f707cec0fd40b081e338cc0.
 - File-level reproducibility: push run 33362871604 and same-head workflow_dispatch run 33362978966 / job 99397849553 were compared by remote comparator run 33363289510 / job 99398752408; the index, native workbook bytes and all four hourly stream bytes matched (6/6 compared files).
-- Master Plan V3 DoD audit: 65 rows, 62 PASS, 2 PARTIAL and 1 PENDING; workflow 33366088337 / job 99406928185 passed all evidence-path and status-consistency checks; CSV SHA-256 ce48a0fa0ca91f68538d35d09829ffaebb4367cca62918023196ede422b0153f, blob 063a51a4950b3be8fce07499aa06acb8477c3d0b.
+- Master Plan V3 DoD audit: 65 rows, 62 PASS, 2 PARTIAL and 1 PENDING; workflow 33366770050 / job 99408939518 passed all evidence-path and status-consistency checks; CSV SHA-256 ce48a0fa0ca91f68538d35d09829ffaebb4367cca62918023196ede422b0153f, blob 063a51a4950b3be8fce07499aa06acb8477c3d0b.
 - Reproducibility comparator metadata: artifact 9747403047, digest sha256:6ac16bc4879ef269180cee5032d177a57b05a372dd8bcc69cc45c7adc99bf0a3; CSV SHA-256 eb571d45c45d54babb7e7dc23373d9ce35cec6fdcc2155420bca7546d42f79c0, blob e9885d5a33d94f5fc8169d1121a036e135e68ba8, 1,389 bytes; raw artifact contents were not stored.
 - Tariff: WATCH pending billed implementation confirmation.
 - Tax: WATCH for the official 2026-08-28 draft amendment; current registered tax rules remain unchanged in the model.
@@ -41,7 +41,7 @@ Live recruiter site (aggregate-only): https://susayold.github.io/vietgreen-ci-so
 
 - Full checkbox-level audit: `validation/PLAN_DOD_AUDIT.csv`.
 - 65 rows cover DoD 42.1–42.9; 62 PASS, 2 PARTIAL and 1 PENDING.
-- Remote validation workflow: 33366088337 / job 99406928185; all 190 evidence-path references were found on the GitHub source of truth.
+- Remote validation workflow: 33366770050 / job 99408939518; all 190 evidence-path references were found on the GitHub source of truth.
 
 ## Official source live check
 
