@@ -8,7 +8,7 @@ The project data-room is represented by the repository, the workflow artifact an
 
 ## Latest release evidence
 
-- Source register: SR-1.12-utility-billing-corroboration; latest live evidence row: SRC-REFRESH-EVN-20260831; corroborating EVNSPC rows: SRC-REFRESH-EVNSPC-20260715 and SRC-REFRESH-EVNSPC-PRICING-20260831; tariff-chain legal dependency: SRC-TAR-278.
+- Source register: SR-1.13-utility-implementation-readiness; latest live evidence row: SRC-REFRESH-EVN-20260831; corroborating EVNSPC rows: SRC-REFRESH-EVNSPC-20260715, SRC-REFRESH-EVNSPC-PRICING-20260831, SRC-REFRESH-EVNSPC-TRAINING-20260527 and SRC-REFRESH-EVNSPC-IT-20260525; tariff-chain legal dependency: SRC-TAR-278.
 
 - Release candidate: 1.2.0.
 - Workflow source commit: b7ac7ab507487d4ba021064c8cdeadb29fcefc44.
@@ -25,7 +25,7 @@ The project data-room is represented by the repository, the workflow artifact an
 - Automated tests: 7 passed.
 - Mechanical release controls: 13 PASS, 1 WARN.
 - External gate tracker: 8 open transaction/evidence gates; no gate is closed by synthetic data alone.
-- Official source refresh: `.github/workflows/source-refresh.yml` crawls 14 controlled public URLs remotely and commits metadata only to `evidence/REMOTE_SOURCE_LIVE_CHECK.csv`. Latest run 33365784183 / job 99406036492: 12 PASS / 2 non-blocking WARNs (MOIT runner network-unreachable; NREL DNS); artifact 9748250436, digest sha256:096256db116cdb03ea40f21c75d5b2d908ad5812910e755ba3c33f4a77c133fd; raw snapshots FALSE.
+- Official source refresh: `.github/workflows/source-refresh.yml` crawls 16 controlled public URLs remotely and commits metadata only to `evidence/REMOTE_SOURCE_LIVE_CHECK.csv`. Latest run 33366510106 / job 99408166781: 13 PASS / 3 non-blocking WARNs (MOIT runner network-unreachable on two pages; NREL DNS); artifact 9748486524, digest sha256:bbafe54b9991fb90b74ce39ca089c6b937855660411c3cfe859da506bff327aa; raw snapshots FALSE.
 - Locked input hashes: PASS.
 - Remote 8,760 artifact streams: 175,200 rows each in plan-specified Parquet plus CSV.GZ compatibility format; local_storage NONE.
 - Same-head remote comparator: 33363289510 / job 99398752408; 6/6 target files matched, comparison metadata artifact 9747403047, raw artifact contents not stored.
