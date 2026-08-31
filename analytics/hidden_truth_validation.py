@@ -21,21 +21,20 @@ def run(root=ROOT):
     for index in range(1, 6):
         annual_load = 900_000.0 + index * 125_000.0
         annual_solar = 1_050_000.0 + index * 90_000.0
-        truth_daytime_share = 0.68 + index * 0.02
+        truth_daytime_share = 0.30 + index * 0.08
         truth = profile(annual_load, annual_solar, daytime_share=truth_daytime_share)
+        modeled = profile(annual_load, annual_solar, daytime_share=0.78)
         truth_cases.append(
             {
                 "case_id": "HIDDEN-%02d" % index,
                 "truth_self_consumption": sum(truth["self_consumed"]),
-                "model_self_consumption": sum(
-                    profile(annual_load, annual_solar, daytime_share=0.78)["self_consumed"]
-                ),
+                "model_self_consumption": sum(modeled["self_consumed"]),
             }
         )
     rows = []
     for case in truth_cases:
         error = abs(case["model_self_consumption"] - case["truth_self_consumption"])
-        threshold = max(1.0, case["truth_self_consumption"] * 0.01)
+        threshold = max(1.0, case["truth_self_consumption"] * 0.005)
         detected = error > threshold
         rows.append(
             {
