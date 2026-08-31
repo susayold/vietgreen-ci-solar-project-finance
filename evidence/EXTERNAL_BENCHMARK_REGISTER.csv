@@ -6,3 +6,4 @@ BM-UTILITY-CAPEX,Utility PV installed cost,691,691,691,USD/kW,USD,2024,Global,ut
 BM-ADB-SCALE,Financed rooftop precedent,29.77,32.3,45,MWp/systems,N/A,2023,Viet Nam,C&I rooftop,SRC-ADB-56245,N/A_CONTEXT,N/A-CONTEXT,Structure proof,No leverage inference
 BM-FMO,FMO GreenYellow debt,4.49,4.49,4.49,USDm,USD,2023,Viet Nam,C&I rooftop,SRC-FMO-62172,N/A_CONTEXT,N/A-CONTEXT,Context,No term calibration
 BM-UTILITY-LCOE-2025,Utility-scale solar PV LCOE,44,44,44,USD/MWh,USD,2025,Global,utility PV,SRC-IRENA-2025,LOW,SANITY_BENCHMARK,Fresh cost context only,Not a Vietnam C&I rooftop quote and not a model tariff
+BM-TAX-DRAFT-20260831,Tax rule amendment monitoring,,,,N/A,N/A,2026,Viet Nam,corporate income tax,SRC-REFRESH-TAX-20260831,N/A_CONTEXT,EXTERNAL_WATCH,Monitor only,Not an effective tax rule or model input
