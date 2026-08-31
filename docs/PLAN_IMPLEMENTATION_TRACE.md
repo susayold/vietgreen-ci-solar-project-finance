@@ -71,3 +71,7 @@ Independent final model review; billed tariff confirmation; transaction-specific
 Release 1.2.0 remains candidate with PASS_WITH_LIMITATIONS. recruiter_ready remains false until the external gates are closed.
 
 Reproducibility control: remote push run 33362871604 and same-head workflow_dispatch run 33362978966 / job 99397849553 both succeeded and produced identical native workbook SHA-256 e01406f644ab6a9d810ca6dd5c31d240ec2ed99ff7f73e593d0f756cae2ff03a; comparator run 33363289510 / job 99398752408 compared the index, native workbook and all four hourly streams with 6/6 matches; comparison metadata artifact 9747403047 was recorded without raw artifact contents; reproducibility_check_status=PASS.
+
+## L. Final remote output refresh
+
+A final push-triggered core rebuild is queued after the SR-1.13 evidence registration so the repository workbook and output hashes are regenerated against the current remote source of truth.
