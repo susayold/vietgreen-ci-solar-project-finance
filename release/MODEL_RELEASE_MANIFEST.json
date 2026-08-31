@@ -56,8 +56,8 @@
   "release_timestamp_utc": "2026-08-31T03:53:24Z",
   "excel_file": {
     "path": "model/vietgreen_core_model.xlsx",
-    "sha256": "c7f669ab3ca89808011aa456e89d2945828f7b1d829bdbcf3379d9c6185f30ba",
-    "blob_sha": "a9ff3f3bcb6207588dd9b6c20c6768dc5fad60df",
+    "sha256": "03a78fd294212b8a771b0eee35fd2010f77975de59037044e4b120a86e6fffdd",
+    "blob_sha": "c160cb5b630f653c68343381a8d0d514faa54b02",
     "size_bytes": 116230
   },
   "backend_artifacts_manifest_path": "release/BACKEND_OUTPUT_MANIFEST.csv",
