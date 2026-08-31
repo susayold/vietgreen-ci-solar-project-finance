@@ -13,3 +13,5 @@ SRC-REFRESH-EVN-963-20260423,https://www.evn.com.vn/d/vi-VN/news-d/Quyet-dinh-so
 SRC-REFRESH-MOIT-20260611,https://moit.gov.vn/tin-tuc/thong-tin-hop-bao/diem-bao-nganh-cong-thuong-ngay-11-6-2026.html,official_briefing,Historical billed-status corroboration
 SRC-REFRESH-EVNSPC-20260715,https://cskh.evnspc.vn/TinTuc/TinTucChiTiet?LoaiTinBai=ALL&MaTinBai=2987,official_utility_notice,EVNSPC customer-facing implementation corroboration
 SRC-REFRESH-EVNSPC-PRICING-20260831,https://cskh.evnspc.vn/TraCuu/ThongTinGiaDien,official_utility_pricing_portal,EVNSPC current TOU pricing-page corroboration
+SRC-REFRESH-EVNSPC-TRAINING-20260527,https://evnspc.vn/bai-viet/ARTICLE26050302/evnspc-tap-huan-cai-dat-thay-doi-khung-gio-cao-diem-thap-diem-binh-thuong-cua-cong-to,official_utility_implementation_preparation,EVNSPC meter reprogramming and implementation preparation
+SRC-REFRESH-EVNSPC-IT-20260525,https://it.evnspc.vn/CMS_Article/ArticleByID?ArticleID=F02WEB-202605-0000000000007,official_utility_it_notice,EVNSPC system readiness and invoice-testing context
