@@ -1,36 +1,36 @@
-# Investment Committee memo - candidate release 1.2.0
+# Investment Committee Memo — V4 Final Synthetic Candidate
+
+Release ID: V4-FINAL-2026-08-31
+Date: 2026-08-31
+Source of truth: https://github.com/susayold/vietgreen-ci-solar-project-finance
+Control index: https://docs.google.com/document/d/1koSgbc1Akic6cVDFD1svmuVN9gSq8qSGUw2obfHYN80/edit
 
 ## Recommendation
 
-INVEST WITH CONDITIONS / RENEGOTIATE. Do not approve unconditional investment on the current candidate.
+Current Terms: NO_DEPLOYMENT. All 20 Current Terms rows remain below sponsor Equity NPV hurdle (0 positive rows). Negotiated Terms are a hypothetical remediation case, not executed terms.
 
-## Current candidate evidence
+Exposure-constrained negotiated screening selects 4 projects: VG-005, VG-010, VG-011, VG-012. Equity required is 30.124825 BVND, debt is 55.946104 BVND and Year-1 CFADS is 12.003384 BVND. Proceed only with conditions and only after external gates are closed; this is not IC approval.
 
-The synthetic pipeline evaluates 20 projects, 15 pass the internal eligibility screen, and 11 are selected after IDC-inclusive total uses and the budget/concentration gates. The selected set is 13.10 MWp, requires 138.143294 BVND of equity, and supports 152.457008 BVND of endogenous pooled debt at 1.30x base pooled DSCR. Base sponsor NPV is -66.202345 BVND.
+## Economics
 
-The candidate runs a 12-month remote construction curve across the six-category CAPEX table. The 8.5% capitalised IDC proxy is separated from construction VAT and reconciled into total uses and depreciable basis. This is a model control, not EPC drawdown evidence.
+- Base Project NPV: 5.262393 BVND; Base Equity NPV: 5.942277 BVND.
+- Base Project IRR: 12.732%; Base Equity IRR: 15.929%; pooled Min DSCR: 1.300x.
+- P90 Equity NPV: -1.177896 BVND.
+- CAPEX overrun Equity NPV: -3.179160 BVND.
+- COD-delay Min DSCR: 0.000x.
+- Combined-downside Equity NPV: -38.814456 BVND; Min DSCR: 0.000x.
 
-## Downside read-through
+## Required conditions
 
-| Case | Portfolio CFADS (BVND) | DSCR |
-|---|---:|---:|
-| Base P50 | 481.951725 | 1.3000x |
-| P90 energy | 431.064159 | 1.1588x |
-| 4% FX crawl | 481.951725 | 1.0729x |
-| 10% one-off FX | 481.951725 | 0.7743x |
-| 90-day DSO | 481.951725 | 0.9982x |
-| COD delay | 445.612753 | 0.0000x |
-| Combined downside | 358.735632 | 0.0000x |
+1. Confirm billed tariff and implementation chain; model-only avoided tariff is not an invoice.
+2. Obtain independent model review, site/technical diligence, lender/legal/tax evidence, executed PPA/security package and financing terms.
+3. Re-run the V4 formula workbook and Python reconciliation when controlled evidence is available.
+4. Treat negative stress outputs as decision inputs, not as hidden or averaged-away downside.
 
-## Conditions precedent
+## Evidence
 
-- Confirm billed tariff implementation and final legal applicability.
-- Replace synthetic construction curve/IDC with EPC payment schedule and committed financing terms.
-- Reprice, reduce CAPEX or otherwise resolve the negative sponsor hurdle.
-- Complete independent lender, legal, tax, technical, site, insurance, reserve and FX-hedge diligence.
-- Re-run P90, debt, portfolio and communication reconciliation after documentary updates.
-- Approve only against an executed PPA, security package and bankable diligence pack.
+- IC decision table: outputs/IC_DECISION_TABLE.csv
+- Final DoD: validation/V4_FINAL_DOD_MATRIX.csv
+- V4 release manifest: release/MODEL_RELEASE_MANIFEST.json
 
-## Boundary
-
-This is a screening memo based on synthetic inputs and public evidence. It is not a legal opinion, lender approval, technical certification, tax opinion, bankable P90 study, formal audit or final investment recommendation.
+This memo is a recruiter-ready synthetic case package. It is not investment approval, lender approval, a legal/tax opinion, a technical certification or a bankable P90 case.

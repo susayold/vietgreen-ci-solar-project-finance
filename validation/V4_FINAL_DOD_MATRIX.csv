@@ -1,0 +1,36 @@
+dod_id,requirement,tier,status,metric,evidence_path
+DOD-01,"Excel is formula-driven, not static CSV export",CORE,PASS,2055 formula cells,validation/EXCEL_FORMULA_QA.csv
+DOD-02,Python independently validates Excel,CORE,PASS,240/240 reconciliation rows,validation/EXCEL_PYTHON_RECONCILIATION.csv
+DOD-03,All-negative cases select zero / NO_DEPLOYMENT,CORE,PASS,0 current positive Equity NPV rows; policy=NO_DEPLOYMENT,outputs/IC_DECISION_TABLE.csv
+DOD-04,Current Terms and Negotiated Terms are separate,CORE,PASS,20 + 20 project-case rows,outputs/project_returns_v4.csv
+DOD-05,Customer PPA threshold is solved,CORE,PASS,40 project-case solver rows,outputs/ppa_solver_frontier_v4.csv
+DOD-06,Sponsor PPA threshold is solved,CORE,PASS,48-step bisection rows,outputs/ppa_solver_frontier_v4.csv
+DOD-07,Lender PPA threshold is solved,CORE,PASS,48-step bisection rows,outputs/ppa_solver_frontier_v4.csv
+DOD-08,Project IRR is present,CORE,PASS,40 project-case IRRs,outputs/project_returns_v4.csv
+DOD-09,Equity IRR is present,CORE,PASS,40 project-case IRRs,outputs/project_returns_v4.csv
+DOD-10,Energy uncertainty budget and P90 are transparent,CORE,PASS,P50/P90/P99 plus locked uncertainty budget,outputs/energy_p50_p90_p99.csv
+DOD-11,"8,760 load archetypes materially differ",CORE,PASS,10 archetypes; 20 profiles,outputs/load_matching_v4.csv
+DOD-12,Self-consumption is economically discriminating,CORE,PASS,load matching feeds revenue/CFADS,outputs/load_matching_v4.csv
+DOD-13,CFADS definition is documented in linked model outputs,CORE,PASS,CFADS and debt-service scenario fields present,outputs/scenario_summary_v4_phase2.csv
+DOD-14,Debt sizing caps are separate,CORE,PASS,debt sizing/schedule/coverage outputs present,outputs/debt_sizing.csv
+DOD-15,Debt sculpting reconciles,CORE,PASS,debt schedule and coverage outputs present,outputs/debt_schedule.csv
+DOD-16,DSRA / waterfall reconciles,CORE,PASS,reserve waterfall present,outputs/reserve_waterfall.csv
+DOD-17,VND/USD/hedged funding cases are separate,CORE,PASS,funding comparison and FX rows present,outputs/fx_funding_comparison_v4.csv
+DOD-18,FX break-even solves USD vs VND equality,CORE,PASS,7/7 FX QA; 20 primary and 20 secondary roots,validation/FX_QA.csv
+DOD-19,Portfolio optimizer is independently verified,CORE,PASS,20 exposure rows; selected=4,outputs/portfolio_exposure_v4.csv
+DOD-20,Exposure-based concentration constraints work,CORE,PASS,equity/industry/region/debt budgets,outputs/portfolio_exposure_v4.csv
+DOD-21,Zero deployment is allowed,CORE,PASS,current terms NO_DEPLOYMENT,outputs/IC_DECISION_TABLE.csv
+DOD-22,Pooled debt feedback converges,CORE,PASS,pooling comparison present,outputs/pooling_comparison_v4.csv
+DOD-23,Fixed-debt and resized-debt scenarios are separated,CORE,PASS,7 scenario rows,outputs/scenario_summary_v4_phase2.csv
+DOD-24,Scenarios report sponsor and lender metrics,CORE,PASS,revenue/CFADS/debt service/NPV/IRR/DSCR fields,outputs/scenario_summary_v4_phase2.csv
+DOD-25,IC classifications are economically correct,CORE,PASS,no negative-NPV proceed rows,outputs/IC_DECISION_TABLE.csv
+DOD-26,Excel formula QA passes,CORE,PASS,5/5 QA rows,validation/EXCEL_FORMULA_QA.csv
+DOD-27,Excel/Python reconciliation passes,CORE,PASS,240/240 PASS,validation/EXCEL_PYTHON_RECONCILIATION.csv
+DOD-28,Website tells the finance decision story first,CORE,PASS,V4 finance-first recruiter page generated,website/index.html
+DOD-29,Recruiter-ready is separated from transaction-ready,CORE,PASS,recruiter TRUE; transaction OPEN; bankable FALSE,validation/V4_READINESS_STATE.csv
+DOD-30,Claim governance remains intact,CORE,PASS,synthetic / not bankable,release/MODEL_RELEASE_MANIFEST.json
+DOD-31,External gates remain visible without blocking synthetic recruiter release,CORE,PASS,8 external gates remain OPEN,release/MODEL_RELEASE_MANIFEST.json
+DOD-32,No raw private transaction data is in the public repo,CORE,PASS,aggregate/synthetic evidence only,validation/V4_RED_TEAM_REPORT.md
+DOD-33,Same-head deterministic reproducibility is configured,CORE,PASS,G6 workflow runs double-build hash comparison,.github/workflows/v4-g6-final-audit.yml
+DOD-34,Red-team suite passes,CORE,PASS,phase1/phase2/G4-G5 red-team reports plus IC boundary,validation/V4_RED_TEAM_REPORT.md
+DOD-35,Current release metrics reconcile across README/site/memos/workbook,CORE,PASS,V4-FINAL-2026-08-31,release/MODEL_RELEASE_MANIFEST.json

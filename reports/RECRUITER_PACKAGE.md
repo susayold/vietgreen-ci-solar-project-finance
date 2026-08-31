@@ -1,29 +1,31 @@
-# Recruiter package - VietGreen CI Solar Project Finance
+# Recruiter Package — V4 Project Finance Case
+
+Release ID: V4-FINAL-2026-08-31
+Date: 2026-08-31
+Repository: https://github.com/susayold/vietgreen-ci-solar-project-finance
+Recruiter site: https://susayold.github.io/vietgreen-ci-solar-project-finance/
 
 ## Positioning
 
-A remote-only, source-backed candidate project-finance model for a synthetic Vietnam C&I solar portfolio. All project code, synthetic inputs, evidence registers, outputs and release metadata are stored on GitHub; Google Drive stores the execution-control record; no project data is retained in the local workspace.
+Recruiter-ready synthetic Vietnam C&I rooftop-solar project-finance model. The package separates recruiter readiness from transaction readiness: RECRUITER_READY=TRUE, TRANSACTION_EVIDENCE=OPEN, BANKABLE_TRANSACTION_READY=FALSE.
 
-## CV-ready bullets
+## Defensible bullets
 
-- Built a reproducible 20-project C&I solar project-finance pipeline with 8,760-hour load/solar matching, P50/P90 energy cases, three-sided PPA frontier logic and a native 22-sheet Excel workbook.
-- Integrated bottom-up six-category CAPEX, 12-month construction timing, VAT separation, capitalised IDC proxy, tax/loss carryforward, working capital, DSCR/LLCR/PLCR debt sizing, DSRA and pooled-facility feedback.
-- Implemented GitHub Actions QA and release controls covering locked hashes, 20/20 data-quality checks, 20/20 dynamic QA checks, 31/31 workbook checks, hidden-truth firewall, same-head 6/6 artifact reproducibility and automated tests.
-- Built a lender-informed IC and credit communication pack with explicit claim governance, regulatory/billing separation, FX/common-factor stresses, concentration controls and pairwise portfolio-improvement logic.
-- Maintained an audit-ready evidence/data-room structure with remote source-fetch logging, immutable workflow artifacts and recruiter-safe wording that does not overclaim bank approval or bankability.
+- Built a formula-driven Excel Project Finance model linking synthetic 8,760 load matching, P50/P90 energy, CFADS, debt sizing and Project/Equity NPV/IRR.
+- Solved customer ceiling, sponsor floor and lender floor with explicit bisection roots and residual/interval evidence.
+- Compared VND, unhedged USD and hedged USD funding and solved primary/secondary FX break-even conditions.
+- Optimized a negotiated hypothetical portfolio under equity, parent, industry, region and debt exposure constraints; reconciled standalone versus pooled financing in Python.
+- Automated Excel formula QA, remote recalculation, Python parity, red-team tests and release governance on GitHub Actions.
 
-## Quantified candidate snapshot
+## What is not claimed
 
-- Selected portfolio: 11 projects / 13.10 MWp.
-- Equity: 138.143294 BVND.
-- Endogenous pooled debt: 152.457008 BVND.
-- Base pooled DSCR: 1.30x; P90 DSCR: 1.1588x.
-- Base sponsor NPV: -66.202345 BVND; recommendation remains conditional.
-- Latest verified workflow: https://github.com/susayold/vietgreen-ci-solar-project-finance/actions/runs/33362871604 (job 99397534044; artifact 9747272913; digest sha256:d98e61282a9fbc564bc5078a805d64009ef1f2906a288cb3ec541f4704db93d6).
-- Same-head reproducibility: workflow 33362978966 / job 99397849553; remote comparator 33363289510 / job 99398752408; 6/6 file hashes matched without storing raw artifact contents.
+No executed transaction, lender approval, legal/tax opinion, technical certification, site diligence or bankable P90 claim. All transaction evidence gates remain visible in the release manifest and Drive control document.
 
-## Claim boundary
+## Traceability
 
-This package demonstrates model-building, evidence lineage, reproducibility and QA discipline. It does not claim lender approval, bank-certified terms, bankable P90, legal/tax/technical certification or a completed commercial transaction. recruiter_ready remains false pending the 8 external gates tracked in validation/OPEN_EXTERNAL_GATES.csv.
-
-Live recruiter site (aggregate-only): https://susayold.github.io/vietgreen-ci-solar-project-finance/
+- IC memo: reports/INVESTMENT_COMMITTEE_MEMO.md
+- Lender memo: reports/LENDER_CREDIT_MEMO.md
+- IC table: outputs/IC_DECISION_TABLE.csv
+- Formula workbook: model/vietgreen_v4_formula_model.xlsx
+- Final DoD: validation/V4_FINAL_DOD_MATRIX.csv
+- Release manifest: release/MODEL_RELEASE_MANIFEST.json

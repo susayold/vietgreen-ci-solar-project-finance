@@ -1,21 +1,28 @@
-# Lender credit memo - candidate release 1.2.0
+# Lender Credit Memo — V4 Final Synthetic Candidate
+
+Release ID: V4-FINAL-2026-08-31
+Date: 2026-08-31
+Source: https://github.com/susayold/vietgreen-ci-solar-project-finance
 
 ## Credit view
 
-CONDITIONAL / NOT READY FOR CREDIT APPROVAL.
+The exposure-constrained negotiated screening pool contains 4 projects with 55.946104 BVND debt and pooled Min DSCR 1.300x in the base case. Debt sizing is constrained by coverage/leverage logic and is not a lender commitment.
 
-The candidate portfolio contains 11 selected synthetic projects at 13.10 MWp. Endogenous pooled debt is 152.457008 BVND and base pooled DSCR is 1.30x. The base sponsor NPV is -66.202345 BVND, so sponsor economics are not a credit substitute.
+## Downside
 
-## Controls observed
+- P90 Equity NPV: -1.177896 BVND; scenario Min DSCR: 1.300x.
+- CAPEX-overrun Equity NPV: -3.179160 BVND.
+- COD-delay Min DSCR: 0.000x.
+- Combined downside Equity NPV: -38.814456 BVND; Min DSCR: 0.000x.
+- VND, unhedged USD and hedged USD cases are separate; FX roots are in outputs/fx_break_even_v4.csv.
 
-- 8,760-hour P50/P90 profiles with remote artifact export.
-- Annual CFADS with tax proxy, VAT, working capital, major maintenance and zero terminal value.
-- Bottom-up CAPEX with 12-month construction curve, VAT split and capitalised IDC proxy.
-- DSCR, LLCR, PLCR and leverage constraints with registered coverage discount rates.
-- Forward debt rebuild, debt-close, pooled feedback convergence, DSRA and reserve waterfall.
-- P90, FX, DSO, default, COD, site-event and common-factor stress cases.
-- 20/20 DQ, 20/20 dynamic QA, 31/31 workbook checks, 5/5 tests and 13/13 mechanical release controls.
+## Credit conditions
 
-## Credit gaps
+Require executed PPA/security package, billed-tariff evidence, technical/site diligence, insurance, EPC/O&M support, debt terms, DSRA/reserve confirmation and independent model review before any credit decision. BANKABLE_TRANSACTION_READY=FALSE; external transaction evidence is OPEN.
 
-No lender has certified the assumed pricing, billed tariff, PPA, security, construction schedule, IDC rate, insurance, site, technical yield, sponsor support, customer credit, FX hedge or reserve documentation. The model is therefore not a bankable P90, credit approval, commitment or lender-approved term sheet.
+## Reconciliations
+
+- FX QA: validation/FX_QA.csv
+- Debt/portfolio/scenario evidence: validation/V4_PHASE2_DOD.csv
+- Excel/Python parity: validation/EXCEL_PYTHON_RECONCILIATION.csv
+- Release manifest: release/MODEL_RELEASE_MANIFEST.json

@@ -1,76 +1,45 @@
-# VietGreen CI Solar Project Finance
+# VietGreen CI Solar Project Finance — V4 Final Candidate
 
-Release candidate 1.2.0, dated 2026-08-31.
+Release ID: V4-FINAL-2026-08-31
+Date: 2026-08-31
+GitHub source of truth: https://github.com/susayold/vietgreen-ci-solar-project-finance
+Google Drive control index: https://docs.google.com/document/d/1koSgbc1Akic6cVDFD1svmuVN9gSq8qSGUw2obfHYN80/edit
 
-This repository is the remote GitHub source of truth for a synthetic Vietnam commercial-and-industrial solar project-finance model. It executes the attached master plan while respecting the user instruction that project data and project activity remain on remote Drive/GitHub. No project data is intentionally stored in the local workspace.
+This is a recruiter-ready synthetic Vietnam C&I rooftop-solar project-finance case. The attached V4 master plan is the implementation specification; the user request controls the remote-only boundary. The plan source is tracked by SHA-256 (28042fe994343a864486a9cc08085f176d3743a10fadab6a6c6278efd14c742a); no raw plan copy, private transaction file or local project-data copy is stored.
 
-## Request versus attached-plan instructions
+## Decision in one line
 
-The user request controls the operating boundary: create one new Drive file, create one new GitHub repository, read the plan in detail, and execute it remotely without local project-data storage. The attached Markdown plan is treated as the implementation specification and definition of done; it does not override the remote-only boundary or authorize unsupported claims.
+Current Terms = NO_DEPLOYMENT because all 20 Current Terms rows have negative Equity NPV. Negotiated Terms are a hypothetical remediation sensitivity. Under explicit exposure constraints, 4 projects are selected: VG-005, VG-010, VG-011, VG-012.
 
-## Current candidate snapshot
+## Headline economics
 
-- Population: 20 synthetic projects; 15 eligibility-pass; 11 selected after IDC-inclusive uses.
-- Selected capacity: 13.10 MWp.
-- Equity used: 138.143294 BVND.
-- Endogenous pooled debt: 152.457008 BVND.
-- Pooled DSCR: 1.300000x.
-- Base sponsor NPV: -66.202345 BVND.
-- Tariff status: WATCH. Decision 963 legal time windows are mapped separately from the current billed reference; numeric avoided-tariff components remain simulated/model-only.
-- Tax status: WATCH for the 2026-08-28 draft amendment to Decree 320/2025; no model-tax change was applied.
-- Pooled feedback: converged in 2 iterations.
-- 8,760 engine: executed in memory for every project, with P50 and P90 profiles.
-- Hourly backend: plan-specified Parquet plus CSV.GZ compatibility streams, remote artifact-only; local_storage is NONE.
-- Quality gates: 20/20 data-quality checks; 31/31 workbook structural checks; 20/20 dynamic remote QA checks; 5/5 hidden-truth classifications; 7 automated tests; 13/13 mechanical release controls pass, with 1 candidate-manifest warning; official-source live check 22/28 PASS and 6 non-blocking WARNs (SR-1.16-executive-summary-recheck).
+- Selected equity: 30.124825 BVND; selected debt: 55.946104 BVND; selected Year-1 CFADS: 12.003384 BVND; pooled Min DSCR: 1.300x.
+- Base Project NPV: 5.262393 BVND; Base Equity NPV: 5.942277 BVND; Base Project IRR: 12.732%; Base Equity IRR: 15.929%.
+- P90 Equity NPV: -1.177896 BVND; CAPEX-overrun Equity NPV: -3.179160 BVND; COD-delay Min DSCR: 0.000x.
+- Combined-downside Equity NPV: -38.814456 BVND; Combined-downside Min DSCR: 0.000x.
 
-## What is implemented
+## What V4 fixed
 
-The candidate implements synthetic-input lineage, locked input hashes, exact Decision 963 midpoint schedule mapping, current billed-reference separation, tax/VAT/working-capital cash flow, 8,760 energy profiles, P50/P90 cases, bottom-up construction CAPEX, a 12-month construction curve, capitalised IDC proxy, standalone debt sizing, registered LLCR/PLCR discount rates, pooled debt re-sizing with feedback, DSCR/LLCR/PLCR/leverage gates, FX sensitivities, scenario isolation, portfolio concentration/common-factor analysis, pairwise-swap improvement, IC and lender views, a hidden-truth firewall, remote 8,760 artifact export, and a native 22-sheet workbook generated on an ephemeral GitHub Actions runner.
+Formula-driven Excel workbook; independent Python reconciliation; customer/sponsor/lender PPA solver; Project/Equity IRR; P50/P90/P99 uncertainty budget; realistic load archetypes and self-consumption; debt/FX/exposure optimizer/pooling/scenarios; IC/lender decision materials; red-team and claim governance.
 
-The Python and CSV logic is the source of truth. The current construction curve and IDC rate remain synthetic until replaced by EPC drawdown and financing evidence.
+## Gate status
 
-## Claim boundary
+V4-G0 through V4-G6: PASS for synthetic/recruiter package. Formula QA: 5/5; Excel/Python reconciliation: 240/240; final DoD: 35/35 PASS. RECRUITER_READY=TRUE is intentionally separate from TRANSACTION_EVIDENCE=OPEN and BANKABLE_TRANSACTION_READY=FALSE. Eight external gates remain open.
 
-This is a reviewable candidate, not a lender approval, bankable P90 case, legal opinion, tax opinion, technical certification, site-diligence result, or formally audited model. The open gates are billed-tariff confirmation, independent final review, and lender/legal/tax/technical/site diligence. The release manifest therefore sets recruiter_ready to false.
+## Remote-only storage
 
-## Latest remote verification
+All project code, synthetic inputs, aggregate outputs, validation evidence, manifests and workflow activity are on GitHub; Google Drive is the control/audit index. Hourly arrays exist only ephemerally on GitHub Actions and raw project data is not stored in this local workspace.
 
-- Core validation run: https://github.com/susayold/vietgreen-ci-solar-project-finance/actions/runs/33376353645 (job 99438608535) — PASS.
-- Validation reference commit: 7c55591a93102aeaedbcd2a93355759b92ba84f9.
-- Workbook refresh commit: 02b3fc9bc9c39728b5796db34184ddd7778e5edb.
-- Current DoD audit: 33376356698 / job 99438619544 — 65 rows: 62 PASS, 2 PARTIAL, 1 PENDING.
-- Native workbook: 22 sheets, 117493 bytes; SHA-256 9e72588fd7a084282befa74dd0f97036f15e1f306aac6080fc86fdd75f605c5f; GitHub blob c0d2e2dadf3720a35b9101205efdec108425bec5.
-- Same-head reproducibility run: 33367239508 / job 99410324360; remote comparator: 33367293807 / job 99410490341; 6/6 file hashes matched, with raw artifact contents not stored.
-- Latest official-source refresh: https://github.com/susayold/vietgreen-ci-solar-project-finance/actions/runs/33376058622 (job 99437690338); 28 URLs, 22 PASS and 6 non-blocking WARNs; raw snapshots were not stored; source version SR-1.16-executive-summary-recheck.
-- The source-refresh workflow is also scheduled weekly at 02:00 UTC on Monday and remains metadata-only.
-- External-gate validator: 33376359695 / job 99438635313; 8 gate rows, 0 submissions, PASS_EMPTY_SUBMISSIONS; all gates remain OPEN and recruiter_ready=false.
+## Traceability
 
-## Reproducibility and storage
-
-- Master seed: 260831.
-- Plan source fingerprint is recorded in `evidence/PLAN_SOURCE_MANIFEST.csv`; the user-provided plan was read in memory and no raw plan copy was stored by the agent.
-- Synthetic input hashes are locked in config/SYNTHETIC_INPUT_HASHES.csv.
-- The workflow creates derived hourly streams on the GitHub-hosted runner and uploads them as remote artifacts; local_storage is NONE.
-- No credentials, private hidden truth, proprietary raw data or personal information is part of this public repository.
-
-Key links:
-
-- [Recruiter-facing site](website/index.html)
-- [Live recruiter site](https://susayold.github.io/vietgreen-ci-solar-project-finance/)
-- [Native workbook](model/vietgreen_core_model.xlsx)
-- [Release manifest](release/MODEL_RELEASE_MANIFEST.json)
-- [Backend artifact manifest](release/BACKEND_OUTPUT_MANIFEST.csv)
-- [Plan implementation trace](docs/PLAN_IMPLEMENTATION_TRACE.md)
-- [Plan source fingerprint (metadata-only)](evidence/PLAN_SOURCE_MANIFEST.csv)
-- [Final DOD status matrix](validation/FINAL_DOD_STATUS_MATRIX.csv)
-- [Full Master Plan V3 DoD audit (65 rows; 62 PASS, 2 PARTIAL, 1 PENDING)](validation/PLAN_DOD_AUDIT.csv)
-- [Remote source-fetch log](evidence/REMOTE_SOURCE_FETCH_LOG_2026-08-31.csv)
-- [Data-room index](reports/DATA_ROOM_INDEX.md)
-
-- [Google Drive execution control](https://docs.google.com/document/d/1koSgbc1Akic6cVDFD1svmuVN9gSq8qSGUw2obfHYN80/edit)
-- The Drive control document contains the remote-only operating boundary, current provenance, and the EXT-001–EXT-008 evidence-closure checklist.
-- [External gate intake register](validation/EXTERNAL_GATE_INTAKE.csv)
-- [External gate intake template](evidence/EXTERNAL_GATE_INTAKE_TEMPLATE.md)
-- [External gate submissions schema](validation/EXTERNAL_GATE_SUBMISSIONS.csv)
-- [Remote external-gate validator](.github/workflows/external-gate-validation.yml)
-- [IC decision table](outputs/IC_DECISION_TABLE.csv)
+- Formula workbook: model/vietgreen_v4_formula_model.xlsx
+- IC decision table: outputs/IC_DECISION_TABLE.csv
+- IC memo: reports/INVESTMENT_COMMITTEE_MEMO.md
+- Lender memo: reports/LENDER_CREDIT_MEMO.md
+- Recruiter package: reports/RECRUITER_PACKAGE.md
+- Final DoD: validation/V4_FINAL_DOD_MATRIX.csv
+- Final red-team: validation/V4_RED_TEAM_REPORT.md
+- V4 release manifest: release/MODEL_RELEASE_MANIFEST.json
+- G4/G5 validation run: https://github.com/susayold/vietgreen-ci-solar-project-finance/actions/runs/33415906096
+- Phase 2 validation run: https://github.com/susayold/vietgreen-ci-solar-project-finance/actions/runs/33416323104
+- Drive control document: https://docs.google.com/document/d/1koSgbc1Akic6cVDFD1svmuVN9gSq8qSGUw2obfHYN80/edit
