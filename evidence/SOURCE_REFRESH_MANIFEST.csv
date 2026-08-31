@@ -23,3 +23,5 @@ SRC-TAX-020,https://vanban.chinhphu.vn/?docid=217191&pageid=27160,official_tax_g
 SRC-FX-008,https://vanban.chinhphu.vn/?docid=208258&pageid=27160,official_foreign_borrowing,Circular 08/2023/TT-NHNN foreign borrowing
 SRC-FX-019,https://vanban.chinhphu.vn/?classid=1&docid=210566&pageid=27160,official_foreign_borrowing_amendment,Circular 19/2024/TT-NHNN foreign borrowing amendment
 SRC-IRENA-2024,https://www.irena.org/Digital-Report/Renewable-Power-Generation-Costs-in-2024,official_cost_benchmark,IRENA 2024 utility-scale cost comparator
+SRC-SOLAR-NREL-ATB-REPORT-2024,https://www.nrel.gov/docs/fy24osti/89960.pdf,official_methodology,NREL ATB 2024 methodology comparator
+SRC-IRENA-2024-PUBLICATION,https://www.irena.org/Publications/2025/Jun/Renewable-Power-Generation-Costs-in-2024,official_cost_benchmark,IRENA 2024 cost publication landing page

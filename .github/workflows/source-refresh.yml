@@ -28,7 +28,7 @@ jobs:
           from pathlib import Path
           p=Path("evidence/REMOTE_SOURCE_LIVE_CHECK.csv")
           rows=list(csv.DictReader(p.open(encoding="utf-8", newline="")))
-          assert len(rows) == 24
+          assert len(rows) == 26
           assert all(row["raw_snapshot_stored"] == "FALSE" for row in rows)
           print({"rows":len(rows),"raw_snapshot_stored":False})
           PY
