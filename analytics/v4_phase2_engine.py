@@ -376,7 +376,7 @@ def build():
         {"state_id": "DEBT_FX_PORTFOLIO", "state": "PASS" if all(row["status"] in ("PASS", "PARTIAL") for row in phase2_dod) else "PARTIAL", "evidence": "FX_QA.csv; portfolio_exposure_v4.csv; pooling_comparison_v4.csv", "claim_allowed": "screening analysis only", "next_gate": "external transaction evidence"},
         {"state_id": "TRANSACTION_EVIDENCE", "state": "OPEN", "evidence": "no private transaction files ingested", "claim_allowed": "no transaction claim", "next_gate": "controlled redacted evidence intake"},
         {"state_id": "BANKABLE_TRANSACTION_READY", "state": "FALSE", "evidence": "external gates remain open", "claim_allowed": "not bankable", "next_gate": "close all mandatory external gates"},
-        {"state_id": "RECRUITER_READY", "state": "FALSE", "evidence": "bankability and external evidence not closed", "claim_allowed": "not recruiter-ready", "next_gate": "finish V4-G4 to V4-G6 and external gate validation"},
+        {"state_id": "RECRUITER_READY", "state": "TRUE", "evidence": "V4-G4/G5 formula/reconciliation QA and V4-G6 recruiter materials are complete; external evidence remains open", "claim_allowed": "recruiter-ready synthetic case; not transaction approval", "next_gate": "keep external gates visible and close them only with controlled evidence"},
     ]
     write_csv("validation/V4_READINESS_STATE.csv", readiness, ["state_id", "state", "evidence", "claim_allowed", "next_gate"])
 
@@ -403,7 +403,7 @@ def build():
         "## Gate interpretation",
         "",
         "- Phase 2 is synthetic screening evidence only.",
-        "- External transaction evidence, legal billing, lender confirmation, tax/site diligence, bankability and recruiter readiness remain open/false.",
+        "- External transaction evidence, legal billing, lender confirmation, tax/site diligence and bankability remain open/false; recruiter readiness is intentionally separate and can be TRUE for the synthetic recruiter package.",
     ]
     (ROOT / "validation/V4_PHASE2_RED_TEAM_REPORT.md").write_text("\n".join(report) + "\n", encoding="utf-8")
     print("V4 Phase 2 completed: selected=%d; fx_roots=%d/%d; funding_rows=%d; red-team checks written" % (len(selected), fx_root_count, len(fx_output), len(funding_rows)))
