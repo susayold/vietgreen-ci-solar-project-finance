@@ -88,7 +88,7 @@ def main() -> int:
     results = [fetch(row) for row in sources]
     fields = list(results[0])
     with OUTPUT.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fields)
+        writer = csv.DictWriter(handle, fieldnames=fields, lineterminator="\n")
         writer.writeheader()
         writer.writerows(results)
     print({
