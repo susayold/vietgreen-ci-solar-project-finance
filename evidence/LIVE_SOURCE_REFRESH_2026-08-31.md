@@ -7,6 +7,7 @@ Remote evidence note for the candidate release. Raw snapshots are intentionally 
 - **SRC-TAR-278 — Decree 278/2026/ND-CP:** the Government Portal records the decree as issued and effective on 09 July 2026. It amends the mechanism and timing for average retail electricity-price adjustment. It is a legal dependency for the tariff chain, not invoice-cutover evidence.
 - **SRC-TAR-60 — Circular 60/2025/TT-BCT:** the Government Portal records the electricity-pricing implementation circular as issued and effective on 02 December 2025.
 - **SRC-REFRESH-EVN-BULLETIN-20260831 — EVN Bulletin No. 16/2026:** EVN states the Decision 963 time windows apply with the next relevant average retail-price adjustment and records preparation activity; it does not state an invoice cutover date.
+- **SRC-REFRESH-MOIT-20260611 — MOIT briefing:** the official 11 June 2026 briefing quotes EVN that the new windows had not yet been applied and were awaiting the Circular 60 amendment; it is corroborative and not invoice-cutover evidence.
 - **SRC-REFRESH-EVN-20260831 — Electricity Authority/EVN notice:** the 24 April 2026 notice ties application to the Circular 60 / average-retail-price-adjustment condition and requests meter and operational preparation.
 - **SRC-REFRESH-EVN-20260730 — EVN explainer:** the 30 July 2026 article describes the revised windows and mandatory TOU customer scope, while stating that the adjustment does not change the electricity price; it does not establish a billed invoice cutover date.
 - **SRC-REFRESH-EVN-963-20260423 — EVN republication:** the 23 April 2026 EVN page confirms the Decision 963 legal windows and EVN implementation role; it does not establish an invoice cutover date.
@@ -30,16 +31,16 @@ The model keeps LEGAL_EFFECTIVE_NOT_BILLED, CURRENT_BILLED_REFERENCE, and SIMULA
 - Tax draft: https://vanban.chinhphu.vn/du-thao-vbqppl/du-thao-nghi-dinh-sua-doi-bo-sung-mot-so-dieu-cua-nghi-dinh-so-320-2025-nd-cp-ngay-15-thang-12-n-7915
 
 Retrieval date: 2026-08-31
-Source rows: SRC-TAR-963, SRC-TAR-60, SRC-TAR-278, SRC-REFRESH-EVN-20260831, SRC-REFRESH-MOIT-20260709, SRC-REFRESH-EVN-20260730, SRC-REFRESH-EVN-BULLETIN-20260831, SRC-REFRESH-TAX-20260831
+Source rows: SRC-TAR-963, SRC-TAR-60, SRC-TAR-278, SRC-REFRESH-EVN-20260831, SRC-REFRESH-MOIT-20260709, SRC-REFRESH-MOIT-20260611, SRC-REFRESH-EVN-20260730, SRC-REFRESH-EVN-BULLETIN-20260831, SRC-REFRESH-TAX-20260831
 
 ## Remote live-check provenance
 
-- Workflow: 33364458824; job: 99402147432; metadata commit: 154404b2361f124886f8f8181a5ecbbd4ae1c80f; artifact: 9747800648; artifact digest: sha256:066e5195af422ea64180a3406e9cb9c41ec2257888bd806d13d47ab110045ffb.
-- Live-check file: evidence/REMOTE_SOURCE_LIVE_CHECK.csv; GitHub blob 280e12f9728a202276513e31374f0ff745c21cee; SHA-256 55405d06f77c95ea20843aa3fa300e586662e11988695c1cea1f776314495140; 11 rows; 9 PASS and 2 non-blocking WARNs.
+- Workflow: 33364978503; job: 99403637315; metadata commit: b362990222c1094cdaca1fd27727cb6cd7c9e1dd; artifact: 9747970647; artifact digest: sha256:ac5be014c1e70ac410644d15de925add5c6e73a9e295f0447e7c4c71999ab44f.
+- Live-check file: evidence/REMOTE_SOURCE_LIVE_CHECK.csv; GitHub blob 5147275bf286ac594bf31beb694faaafe1c5880c; SHA-256 d5ee76a9ad4db76ae2ab0c242876356ffc1840613e10e9fcd037d1be5420ebaa; 12 rows; 10 PASS and 2 non-blocking WARNs.
 - The NREL comparator endpoint returned a DNS warning on the runner. This is preserved as WARN and is not treated as evidence that the source is unavailable or that the model can claim certification.
 - All 11 rows record raw_snapshot_stored=FALSE and storage_boundary=REMOTE_RUNNER_EPHEMERAL.
 
-- Latest live-check result: 11 rows; 9 PASS and 2 non-blocking WARNs (MOIT runner network-unreachable; NREL DNS). Warnings are retained for recheck and do not alter model inputs.
+- Latest live-check result: 12 rows; 10 PASS and 2 non-blocking WARNs (MOIT runner network-unreachable; NREL DNS). Warnings are retained for recheck and do not alter model inputs.
 
 ## Core validation after SR-1.10 evidence refresh
 

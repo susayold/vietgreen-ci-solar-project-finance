@@ -10,16 +10,16 @@ Date: 2026-08-31
 - Explicit CAPEX/VAT/IDC reconciliation and year-zero no-debt check.
 - PPA negotiation-zone helper with explicit RENEGOTIATE_OR_REJECT action for empty zones, covered by a boundary test.
 - Pairwise-swap improvement pass after hard-gated value-density selection.
-- Remote source-fetch log, DOD status matrix, full 65-row DoD audit, boundary tests, EVN billing-status refresh and recruiter-safe package.
+- Remote source-fetch log, SR-1.11 DOD status matrix, full 65-row DoD audit, boundary tests, EVN billing-status refresh and recruiter-safe package.
 - Plan-specified Parquet hourly streams plus deterministic CSV.GZ compatibility streams in the remote-only GitHub Actions artifact.
 - Tax amendment watch for the official 2026-08-28 draft affecting Decree 320/2025; no effective model tax input was changed.
 - Added Decree 278/2026/ND-CP as a locked legal dependency in the tariff/billing chain; it does not by itself prove invoice cutover.
 
 ## Verified
 
-- Source register advanced to SR-1.10 with an EVN republication of Decision 963; the refresh remains corroborative and does not close the billed-tariff gate.
+- Source register advanced to SR-1.11 with an EVN republication of Decision 963; the refresh remains corroborative and does not close the billed-tariff gate.
 
-- Metadata-only official-source crawl 33364458824 / job 99402147432 checked 11 controlled URLs: 9 PASS, 2 non-blocking warnings (MOIT runner network-unreachable; NREL DNS); no raw source snapshot was stored. Artifact 9747800648, digest sha256:066e5195af422ea64180a3406e9cb9c41ec2257888bd806d13d47ab110045ffb.
+- Metadata-only official-source crawl 33364978503 / job 99403637315 checked 12 controlled URLs: 10 PASS, 2 non-blocking warnings (MOIT runner network-unreachable; NREL DNS); no raw source snapshot was stored. Artifact 9747970647, digest sha256:ac5be014c1e70ac410644d15de925add5c6e73a9e295f0447e7c4c71999ab44f. The additional MOIT 11 June 2026 briefing corroborates the billing-status watch.
 
 - Regulatory refresh: EVN Bulletin No. 16/2026 and Decree 278/2026/ND-CP were registered as current official references; billed implementation remains WATCH.
 
