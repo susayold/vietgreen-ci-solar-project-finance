@@ -6,6 +6,11 @@ Repository: https://github.com/susayold/vietgreen-ci-solar-project-finance
 
 The project data-room is represented by the repository, the workflow artifact and the one linked Google Drive execution-control document. No project-data copy is intentionally retained in the local workspace.
 
+
+## Plan provenance
+
+- The user-provided Master Plan V3 was read in memory; only its SHA-256/size metadata is recorded in `evidence/PLAN_SOURCE_MANIFEST.csv`. No raw plan copy was stored by the agent.
+
 ## Latest release evidence
 
 - Source register: SR-1.14-rolling-regulatory-recheck; latest live evidence row: SRC-REG-243; corroborating EVNSPC rows: SRC-REFRESH-EVNSPC-20260715, SRC-REFRESH-EVNSPC-PRICING-20260831, SRC-REFRESH-EVNSPC-TRAINING-20260527 and SRC-REFRESH-EVNSPC-IT-20260525; tariff-chain legal dependency: SRC-TAR-278; rolling tax/FX references: SRC-TAX-067, SRC-TAX-320, SRC-TAX-141, SRC-TAX-020, SRC-FX-008 and SRC-FX-019.

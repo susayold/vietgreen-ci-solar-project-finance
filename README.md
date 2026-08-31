@@ -48,6 +48,7 @@ This is a reviewable candidate, not a lender approval, bankable P90 case, legal 
 ## Reproducibility and storage
 
 - Master seed: 260831.
+- Plan source fingerprint is recorded in `evidence/PLAN_SOURCE_MANIFEST.csv`; the user-provided plan was read in memory and no raw plan copy was stored by the agent.
 - Synthetic input hashes are locked in config/SYNTHETIC_INPUT_HASHES.csv.
 - The workflow creates derived hourly streams on the GitHub-hosted runner and uploads them as remote artifacts; local_storage is NONE.
 - No credentials, private hidden truth, proprietary raw data or personal information is part of this public repository.
@@ -60,6 +61,7 @@ Key links:
 - [Release manifest](release/MODEL_RELEASE_MANIFEST.json)
 - [Backend artifact manifest](release/BACKEND_OUTPUT_MANIFEST.csv)
 - [Plan implementation trace](docs/PLAN_IMPLEMENTATION_TRACE.md)
+- [Plan source fingerprint (metadata-only)](evidence/PLAN_SOURCE_MANIFEST.csv)
 - [Final DOD status matrix](validation/FINAL_DOD_STATUS_MATRIX.csv)
 - [Full Master Plan V3 DoD audit (65 rows; 62 PASS, 2 PARTIAL, 1 PENDING)](validation/PLAN_DOD_AUDIT.csv)
 - [Remote source-fetch log](evidence/REMOTE_SOURCE_FETCH_LOG_2026-08-31.csv)

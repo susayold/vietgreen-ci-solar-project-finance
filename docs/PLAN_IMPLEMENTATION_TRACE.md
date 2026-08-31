@@ -2,6 +2,8 @@
 
 ## A. Evidence and regulatory lineage
 
+Plan provenance: the user-provided Master Plan V3 was read in memory and fingerprinted as SHA-256 `77e1709bc8d33ed0fa3a991b52d3a372f11322064f22a93f5272456e58d75c15` (128,145 bytes); only metadata is stored remotely in `evidence/PLAN_SOURCE_MANIFEST.csv`.
+
 Implemented: material inputs carry source/assumption IDs through the lineage matrix; legal tariff windows, current billed references and model-only price components are separate; tax and foreign-borrowing rules are registered with effective dates and recheck flags; the remote source-fetch log records the 2026-08-31 refresh without storing raw snapshots locally.
 
 Status: PASS WITH BILLING/TAX WATCH. Decision 963 legal windows are mapped, Decree 278/2026/ND-CP is registered as a legal dependency in the average-retail-price adjustment chain, but billed implementation/invoice cutover and final transaction applicability remain external gates; the 2026-08-28 draft amendment to Decree 320/2025 is monitored without changing effective tax inputs.

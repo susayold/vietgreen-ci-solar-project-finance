@@ -52,8 +52,8 @@
   "external_validation_rows": 9,
   "latest_benchmark_refresh_source_id": "SRC-IRENA-2025",
   "git_commit": "02b3fc9bc9c39728b5796db34184ddd7778e5edb",
-  "release_metadata_parent_commit": "7063966bf5d4146495608788e9da7f7a1f900821",
-  "release_timestamp_utc": "2026-08-31T07:41:00Z",
+  "release_metadata_parent_commit": "cd4288bf57d4cb9da1028874b31590e90c3cb14b",
+  "release_timestamp_utc": "2026-08-31T07:45:00Z",
   "excel_file": {
     "path": "model/vietgreen_core_model.xlsx",
     "sha256": "9e72588fd7a084282befa74dd0f97036f15e1f306aac6080fc86fdd75f605c5f",
@@ -146,5 +146,10 @@
   "external_gate_intake_path": "validation/EXTERNAL_GATE_INTAKE.csv",
   "external_gate_intake_template_path": "evidence/EXTERNAL_GATE_INTAKE_TEMPLATE.md",
   "external_gate_intake_schema_version": "EGI-1.0",
-  "external_gate_intake_scope": "METADATA_ONLY_REMOTE"
+  "external_gate_intake_scope": "METADATA_ONLY_REMOTE",
+  "plan_source_manifest_path": "evidence/PLAN_SOURCE_MANIFEST.csv",
+  "plan_source_sha256": "77e1709bc8d33ed0fa3a991b52d3a372f11322064f22a93f5272456e58d75c15",
+  "plan_source_size_bytes": 128145,
+  "plan_source_raw_copy_stored": false,
+  "plan_source_storage_boundary": "USER_PROVIDED_INPUT_READ_IN_MEMORY_ONLY"
 }
