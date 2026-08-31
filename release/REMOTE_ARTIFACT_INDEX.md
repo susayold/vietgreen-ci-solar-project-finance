@@ -30,4 +30,8 @@ Artifact digest: sha256:b98a6c21209a644dfd0a32509d5ee008b928e409fdae825873e05336
 
 The artifact is remote-only and contains synthetic inputs, aggregate validation, controlled outputs and review streams. It excludes credentials and private hidden raw truth. Hourly streams are available through the workflow artifact, not the desktop workspace.
 
+Backend manifest SHA-256: 4df5d760c46a715d76c246a695ae28567cb647b5aca12806770f75015472ba0b.
+Remote 8,760 index SHA-256: 563752a09c787b097e8ba17e633ed53b8cfe6bf842d728c9745292d3c80b6ba6.
+Parquet streams: load_8760.parquet 43c5e0b2555360d15bc234f7d023d06e6a76dcbd26d7ff2b0c29e33ed8418a17; solar_8760.parquet 96a2c773309d92b1b4c24d321616ec23e4ac333014fb5e5dd6a8e9937f7da449.
+
 Live recruiter site (aggregate-only): https://susayold.github.io/vietgreen-ci-solar-project-finance/
