@@ -71,7 +71,7 @@ Independent final model review; billed tariff confirmation; transaction-specific
 
 ## K. External gate intake
 
-A remote-only intake register and acceptance template now map each of EXT-001–EXT-008 to the required document, verifier, model reconciliation and storage boundary. The register does not close any gate; it prevents comparator, readiness or synthetic evidence from being mislabeled as transaction proof.
+A remote-only intake register and acceptance template now map each of EXT-001–EXT-008 to the required document, verifier, model reconciliation and storage boundary. A fail-closed GitHub Actions validator checks submission metadata against the gate tracker and manifest. The register does not close any gate; it prevents comparator, readiness or synthetic evidence from being mislabeled as transaction proof.
 
 ## L. Release classification
 

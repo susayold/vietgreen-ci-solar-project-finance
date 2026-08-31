@@ -1,6 +1,6 @@
 # External gate intake template — remote-only
 
-This file is an intake contract, not evidence and not a gate-closing decision. It was created because the candidate release still has eight external gates open. The acceptance rules below implement the Master Plan V3 claim boundary.
+This file is an intake contract, not evidence and not a gate-closing decision. The candidate release has eight external gates open. The acceptance rules below implement the Master Plan V3 claim boundary.
 
 ## Storage boundary
 
@@ -9,9 +9,15 @@ This file is an intake contract, not evidence and not a gate-closing decision. I
 - Do not download or stage project data in the desktop workspace. Any future validation must run in memory on a remote runner or against a controlled Drive copy.
 - A hash or public comparator is provenance, not proof of applicability.
 
-## Required intake record
+## Two-level intake
 
-For each submission, add one metadata record to `validation/EXTERNAL_GATE_INTAKE.csv` and preserve the following fields:
+- `validation/EXTERNAL_GATE_INTAKE.csv` is the gate-level register: one planning row for each EXT-001–EXT-008.
+- `validation/EXTERNAL_GATE_SUBMISSIONS.csv` is the submission-metadata register. It is intentionally empty until a real evidence bundle is supplied. Add one row per submitted evidence bundle; never add raw document contents.
+- `.github/workflows/external-gate-validation.yml` runs `scripts/validate_external_gate_metadata.py` remotely and fails closed on malformed or unsupported closure metadata.
+
+## Required submission record
+
+Use this exact header in `validation/EXTERNAL_GATE_SUBMISSIONS.csv`:
 
 ```text
 gate_id,document_type,issuer_or_counterparty,document_date,effective_date,applicability_scope,redaction_status,drive_file_id_or_controlled_link,github_metadata_commit,sha256,verifier,verification_date,model_update_required,status,notes

@@ -1,0 +1,28 @@
+name: external-gate-validation
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "validation/OPEN_EXTERNAL_GATES.csv"
+      - "validation/EXTERNAL_GATE_INTAKE.csv"
+      - "validation/EXTERNAL_GATE_SUBMISSIONS.csv"
+      - "release/MODEL_RELEASE_MANIFEST.json"
+      - "scripts/validate_external_gate_metadata.py"
+      - ".github/workflows/external-gate-validation.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout remote source of truth
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Validate external gate metadata
+        run: python scripts/validate_external_gate_metadata.py

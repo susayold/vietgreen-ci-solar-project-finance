@@ -15,6 +15,7 @@ Date: 2026-08-31
 - Tax amendment watch for the official 2026-08-28 draft affecting Decree 320/2025; no effective model tax input was changed.
 - Added Decree 278/2026/ND-CP as a locked legal dependency in the tariff/billing chain; it does not by itself prove invoice cutover.
 - Added a metadata-only fingerprint of the user-provided Master Plan V3; no raw plan copy was stored by the agent.
+- Added a fail-closed remote external-gate submission schema and GitHub Actions validator; no submission is present yet.
 
 ## Verified
 

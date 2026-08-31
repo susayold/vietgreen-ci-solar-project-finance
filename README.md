@@ -68,4 +68,6 @@ Key links:
 - [Data-room index](reports/DATA_ROOM_INDEX.md)
 - [External gate intake register](validation/EXTERNAL_GATE_INTAKE.csv)
 - [External gate intake template](evidence/EXTERNAL_GATE_INTAKE_TEMPLATE.md)
+- [External gate submissions schema](validation/EXTERNAL_GATE_SUBMISSIONS.csv)
+- [Remote external-gate validator](.github/workflows/external-gate-validation.yml)
 - [IC decision table](outputs/IC_DECISION_TABLE.csv)
