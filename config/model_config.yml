@@ -1,4 +1,4 @@
-model_version: 1.0.0-candidate
+model_version: 1.1.0-candidate
 model_date: 2026-08-31
 currency: VND
 fx_base_vnd_per_usd: 25000
@@ -7,6 +7,11 @@ sculpting_dscr: 1.30
 minimum_covenant_dscr: 1.20
 lockup_dscr: 1.25
 llcr_floor: 1.35
+plcr_floor: 1.25
 leverage_cap: 0.65
 debt_tenor_years: 10
 ppa_tenor_years: 15
+tax_rule_version: RULE-TAX-067/RULE-TAX-320/RULE-TAX-141/RULE-TAX-020
+tariff_version: TAR-TOU-963-EFFECTIVE_BILLING_WATCH
+billing_status: WATCH
+source_register_version: SR-1.3-lineage-and-tax-refresh

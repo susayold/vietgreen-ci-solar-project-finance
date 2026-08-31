@@ -15,10 +15,7 @@ def unique(rows, key):
 def coverage(child_rows, child_key, parent_ids):
     return set(row.get(child_key, "") for row in child_rows) == set(parent_ids)
 
-def add(results, check_id, domain, check_type, expected, actual, status, severity, impact=None):
-    if impact is None:
-        impact = severity
-        severity = "MEDIUM"
+def add(results, check_id, domain, check_type, expected, actual, status, severity, impact):
     results.append({
         "check_id": check_id,
         "domain": domain,
@@ -41,9 +38,12 @@ def run(root=BASE_DIR):
     solar = read_csv(root / "data/synthetic/solar_resource.csv")
     sources = read_csv(root / "evidence/SOURCE_REGISTER.csv")
     assumptions = read_csv(root / "evidence/ASSUMPTION_REGISTER.csv")
-
+    regs = read_csv(root / "evidence/REGULATORY_REGISTER.csv")
+    tariffs = read_csv(root / "evidence/TARIFF_MASTER.csv")
+    rates = read_csv(root / "evidence/DISCOUNT_RATE_REGISTER.csv")
     results = []
     project_ids = [row["project_id"] for row in master]
+
     add(results, "DQ-001", "pipeline", "row_count", "20", str(len(master)),
         "PASS" if len(master) == 20 else "FAIL", "CRITICAL", "Pipeline completeness")
     add(results, "DQ-002", "pipeline", "primary_key_unique", "unique project_id",
@@ -52,34 +52,40 @@ def run(root=BASE_DIR):
     add(results, "DQ-003", "offtaker", "foreign_key_coverage", "all project IDs",
         str(coverage(offtakers, "offtaker_id", [row["offtaker_id"] for row in master])),
         "PASS" if set(row["offtaker_id"] for row in master) == set(row["offtaker_id"] for row in offtakers) else "FAIL",
-        "Prevents missing offtaker joins")
+        "CRITICAL", "Prevents missing offtaker joins")
     add(results, "DQ-004", "site", "foreign_key_coverage", "all site IDs",
         str(coverage(sites, "project_id", project_ids)),
         "PASS" if coverage(sites, "project_id", project_ids) else "FAIL",
-        "Prevents missing site-risk joins")
+        "CRITICAL", "Prevents missing site-risk joins")
     add(results, "DQ-005", "PPA", "foreign_key_coverage", "all project IDs",
         str(coverage(ppas, "project_id", project_ids)),
         "PASS" if coverage(ppas, "project_id", project_ids) else "FAIL",
-        "Prevents missing contract terms")
+        "CRITICAL", "Prevents missing contract terms")
     add(results, "DQ-006", "CAPEX", "row_count_and_key", "120 rows / 6 per project",
-        f"{len(capex)} rows", "PASS" if len(capex) == 120 and len(capex) == len(master) * 6 else "FAIL",
-        "CAPEX aggregation grain")
+        "%s rows" % len(capex), "PASS" if len(capex) == 120 and len(capex) == len(master) * 6 else "FAIL",
+        "CRITICAL", "CAPEX aggregation grain")
     add(results, "DQ-007", "debt", "foreign_key_coverage", "all project IDs",
         str(coverage(debt, "project_or_portfolio_id", project_ids)),
         "PASS" if coverage(debt, "project_or_portfolio_id", project_ids) else "FAIL",
-        "Prevents missing financing terms")
+        "CRITICAL", "Prevents missing financing terms")
     add(results, "DQ-008", "solar", "foreign_key_coverage", "all project IDs",
         str(coverage(solar, "project_id", project_ids)),
         "PASS" if coverage(solar, "project_id", project_ids) else "FAIL",
-        "Prevents missing resource joins")
+        "CRITICAL", "Prevents missing resource joins")
+    referenced_source_ids = set(row["source_id"] for row in solar)
+    referenced_source_ids.update(row["source_id"] for row in tariffs if row.get("source_id", "").startswith("SRC-"))
     add(results, "DQ-009", "source", "source_id_coverage", "all referenced source IDs",
-        str(set(row["source_id"] for row in solar).issubset(set(row["source_id"] for row in sources))),
-        "PASS" if set(row["source_id"] for row in solar).issubset(set(row["source_id"] for row in sources)) else "FAIL",
-        "Evidence traceability")
+        str(referenced_source_ids.issubset(set(row["source_id"] for row in sources))),
+        "PASS" if referenced_source_ids.issubset(set(row["source_id"] for row in sources)) else "FAIL",
+        "CRITICAL", "Evidence traceability")
+    assumption_ids = set(row["assumption_id"] for row in assumptions)
+    referenced_assumptions = set(row["source_or_assumption_id"] for row in ppas)
+    referenced_assumptions.update(row["source_id"] for row in tariffs if row.get("source_id", "").startswith("ASM-"))
+    referenced_assumptions.update(row["source_or_assumption_id"] for row in rates)
     add(results, "DQ-010", "assumption", "assumption_id_coverage", "all referenced assumption IDs",
-        str(set(row["source_or_assumption_id"] for row in ppas).issubset(set(row["assumption_id"] for row in assumptions))),
-        "PASS" if set(row["source_or_assumption_id"] for row in ppas).issubset(set(row["assumption_id"] for row in assumptions)) else "FAIL",
-        "Assumption traceability")
+        str(referenced_assumptions.issubset(assumption_ids)),
+        "PASS" if referenced_assumptions.issubset(assumption_ids) else "FAIL",
+        "CRITICAL", "Assumption and discount-rate traceability")
 
     offtaker_by = {row["offtaker_id"]: row for row in offtakers}
     site_by = {row["project_id"]: row for row in sites}
@@ -88,7 +94,6 @@ def run(root=BASE_DIR):
     capex_by = {}
     for row in capex:
         capex_by[row["project_id"]] = capex_by.get(row["project_id"], 0.0) + float(row["amount_local"])
-
     mismatch = []
     for row in master:
         offtaker = offtaker_by.get(row["offtaker_id"], {})
@@ -124,8 +129,8 @@ def run(root=BASE_DIR):
         if float(row["proposed_capacity_kwp"]) > float(row["feasible_capacity_kwp"]):
             invalid.append(row["project_id"] + ":capacity")
     add(results, "DQ-012", "domain", "range_validation", "valid ratios and capacity",
-        str(len(invalid)), "PASS" if not invalid else "FAIL", "HIGH", "Prevents invalid model inputs")
-
+        str(len(invalid)), "PASS" if not invalid else "FAIL", "HIGH",
+        "Prevents invalid model inputs")
     ppa_price_mismatch = []
     for row in master:
         ppa = ppa_by.get(row["project_id"], {})
@@ -138,6 +143,34 @@ def run(root=BASE_DIR):
         "project master equals PPA terms", str(len(ppa_price_mismatch)),
         "PASS" if not ppa_price_mismatch else "FAIL", "HIGH",
         "PPA source lineage")
+    tariff_schema = {"tariff_version", "legal_effective_from", "billing_effective_from", "billing_status", "source_id"}
+    tariff_schema_ok = tariff_schema.issubset(set(tariffs[0])) and all(
+        row["source_id"] and row["billing_status"] and row["tariff_version"] for row in tariffs
+    )
+    add(results, "DQ-014", "tariff", "legal_billing_separation",
+        "schema and non-empty lineage fields", str(tariff_schema_ok),
+        "PASS" if tariff_schema_ok else "FAIL", "CRITICAL",
+        "Prevents treating legal effective date as billed implementation")
+    billing_rates_ok = all(
+        not row.get("energy_charge_vnd_kwh") or row["billing_status"] != "LEGAL_EFFECTIVE_NOT_BILLED"
+        for row in tariffs
+    )
+    add(results, "DQ-015", "tariff", "unsupported_billed_rate_firewall",
+        "no numeric billed rate on legal-only rows", str(billing_rates_ok),
+        "PASS" if billing_rates_ok else "FAIL", "CRITICAL",
+        "No unsupported market-rate claim")
+    regulatory_schema_ok = {"legal_effective_from", "billing_effective_from", "source_id", "recheck_before_release", "status"}.issubset(set(regs[0])) and len(regs) >= 10
+    add(results, "DQ-016", "regulatory", "register_completeness",
+        "tax, tariff and FX rules with effective fields", str(regulatory_schema_ok),
+        "PASS" if regulatory_schema_ok else "FAIL", "CRITICAL",
+        "Release evidence register completeness")
+    required_rules = {"RULE-TAX-067", "RULE-TAX-320", "RULE-TAX-141", "RULE-TAX-020", "RULE-FX-008", "RULE-FX-019", "RULE-TAR-60", "RULE-TAR-963"}
+    rules_ok = required_rules.issubset({row["rule_id"] for row in regs})
+    add(results, "DQ-017", "regulatory", "required_rule_ids", "all current tax/FX/tariff rules", str(rules_ok),
+        "PASS" if rules_ok else "FAIL", "CRITICAL", "Current-source control")
+    rate_links_ok = all(row["source_or_assumption_id"] in assumption_ids for row in rates)
+    add(results, "DQ-018", "discount_rate", "source_assumption_coverage", "all rate IDs registered", str(rate_links_ok),
+        "PASS" if rate_links_ok else "FAIL", "HIGH", "Discount-rate provenance")
 
     out = root / "validation/DATA_QUALITY_RESULTS.csv"
     out.parent.mkdir(parents=True, exist_ok=True)
@@ -146,19 +179,20 @@ def run(root=BASE_DIR):
         writer = csv.DictWriter(f, fieldnames=fields)
         writer.writeheader()
         writer.writerows(results)
-
     failures = [row for row in results if row["status"] == "FAIL"]
     report = root / "validation/DATA_QUALITY_REPORT.md"
     report.write_text(
         "# DATA_QUALITY_REPORT\n\n"
         "Remote-only quality checks for the synthetic pipeline. Grain is one row per project except CAPEX, which is six components per project.\n\n"
-        f"- Checks run: {len(results)}\n"
-        f"- Passed: {len(results) - len(failures)}\n"
-        f"- Failed: {len(failures)}\n"
+        "- Checks run: %s\n"
+        "- Passed: %s\n"
+        "- Failed: %s\n"
         "- Data class: synthetic / simulated; no real customer data.\n"
-        "- Freshness: source-register dates and regulatory/tariff recheck flags govern release; no local snapshot is used.\n\n"
+        "- Freshness: source-register dates and regulatory/tariff recheck flags govern release; no local snapshot is used.\n"
+        "- Billing firewall: legal effective dates and billed implementation dates are separate; legal-only rows cannot carry billed energy rates.\n\n"
         "## Interpretation\n\n"
-        "The checks cover completeness, uniqueness, foreign-key coverage, source/assumption lineage, cross-table reconciliation, and domain validity. A failure is a release blocker until the source or transformation is corrected.\n",
+        "A failure is a release blocker until the source or transformation is corrected. The checks cover completeness, uniqueness, foreign-key coverage, lineage, cross-table reconciliation, legal/billing separation and domain validity.\n"
+        % (len(results), len(results) - len(failures), len(failures)),
         encoding="utf-8",
     )
     if failures:

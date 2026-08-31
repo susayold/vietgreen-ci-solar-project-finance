@@ -1,5 +1,7 @@
-tariff_id,customer_class,voltage_level,period_type,weekday_group,start_time,end_time,energy_charge_vnd_kwh,billing_status,source_id,recheck_before_release
-TAR-TOU-CURRENT,industrial_C&I,medium_voltage,day,weekday,06:00,17:30,2350,CURRENT_VERIFIED_BILLING,SRC-TAR-963,TRUE
-TAR-TOU-CURRENT,industrial_C&I,medium_voltage,peak,weekday,17:30,22:30,3900,CURRENT_VERIFIED_BILLING,SRC-TAR-963,TRUE
-TAR-TOU-CURRENT,industrial_C&I,medium_voltage,offpeak,weekday,22:30,06:00,1450,CURRENT_VERIFIED_BILLING,SRC-TAR-963,TRUE
-TAR-TOU-CURRENT,industrial_C&I,medium_voltage,offpeak,sunday,06:00,22:30,1450,CURRENT_VERIFIED_BILLING,SRC-TAR-963,TRUE
+tariff_id,tariff_version,customer_class,voltage_level,period_type,weekday_group,start_time,end_time,energy_charge_vnd_kwh,legal_effective_from,billing_effective_from,applicability,billing_status,source_id,recheck_before_release,notes
+TAR-TOU-963-LEGAL,TAR-TOU-963-EFFECTIVE_BILLING_WATCH,industrial_C&I,medium_voltage,peak,weekday,17:30,22:30,,2026-04-22,,legal_time_window_only,LEGAL_EFFECTIVE_NOT_BILLED,SRC-TAR-963,TRUE,Decision 963 confirms the time window; no billed energy rate is inferred from this source.
+TAR-TOU-963-LEGAL,TAR-TOU-963-EFFECTIVE_BILLING_WATCH,industrial_C&I,medium_voltage,day,weekday,06:00,17:30,,2026-04-22,,legal_time_window_only,LEGAL_EFFECTIVE_NOT_BILLED,SRC-TAR-963,TRUE,Decision 963 confirms the time window; no billed energy rate is inferred from this source.
+TAR-TOU-963-LEGAL,TAR-TOU-963-EFFECTIVE_BILLING_WATCH,industrial_C&I,medium_voltage,offpeak,weekday,22:30,06:00,,2026-04-22,,legal_time_window_only,LEGAL_EFFECTIVE_NOT_BILLED,SRC-TAR-963,TRUE,Decision 963 confirms the time window; no billed energy rate is inferred from this source.
+TAR-TOU-963-LEGAL,TAR-TOU-963-EFFECTIVE_BILLING_WATCH,industrial_C&I,medium_voltage,offpeak,sunday,06:00,22:30,,2026-04-22,,legal_time_window_only,LEGAL_EFFECTIVE_NOT_BILLED,SRC-TAR-963,TRUE,Decision 963 confirms the time window; no billed energy rate is inferred from this source.
+TAR-SIM-BASE,TAR-TOU-963-EFFECTIVE_BILLING_WATCH,model_only,model_only,blended_base,all_day,,,1450,,,synthetic_model_input,SIMULATED_MODEL_INPUT,ASM-TARIFF-BASE,TRUE,Explicit simulated base component; not a billed tariff claim.
+TAR-SIM-DAY-PREMIUM,TAR-TOU-963-EFFECTIVE_BILLING_WATCH,model_only,model_only,daytime_premium,all_day,,,1450,,,synthetic_model_input,SIMULATED_MODEL_INPUT,ASM-TARIFF-DAY-PREMIUM,TRUE,Explicit simulated daytime premium component; not a billed tariff claim.

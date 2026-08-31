@@ -1,11 +1,27 @@
 assumption_id,category,parameter,base_value,unit,currency,nominal_real,base_date,base_downside_upside,classification,benchmark_source_id,benchmark_role,owner,reviewer,status,sensitivity_required,materiality_level,notes
-ASM-CAPEX,CAPEX,C&I rooftop CAPEX,850,USD/kWp,USD,nominal,2026-08-31,850/1100/700,ASSUMPTION,SRC-IRENA-2024,SANITY_BENCHMARK,VietGreen,Internal reviewer,LOCKED,TRUE,HIGH,Global utility comparator only
-ASM-OPEX,OPEX,Routine O&M,15,USD/kW-year,USD,nominal,2026-08-31,15/25/10,ASSUMPTION,SRC-SOLAR-NREL,COMPARATOR_ONLY,VietGreen,Internal reviewer,LOCKED,TRUE,MEDIUM,Local evidence required
-ASM-DEG,Energy,Annual degradation,0.5,%/year,N/A,nominal,2026-08-31,0.5/1.0/0.3,ASSUMPTION,SRC-SOLAR-NREL,COMPARATOR_ONLY,VietGreen,Internal reviewer,LOCKED,TRUE,MEDIUM,Not warranty evidence
-ASM-PPA-TENOR,Commercial,PPA tenor,15,years,N/A,nominal,2026-08-31,12/15/20,SIMULATED,,NO_RELIABLE_PUBLIC_BENCHMARK,VietGreen,Internal reviewer,LOCKED,TRUE,HIGH,Must fit site rights
-ASM-DSCR-SIZE,Debt,Sizing DSCR,1.3,x,N/A,nominal,2026-08-31,1.2/1.3/1.5,SIMULATED,,NO_RELIABLE_PUBLIC_BENCHMARK,VietGreen,Internal reviewer,LOCKED,TRUE,HIGH,Not market standard
-ASM-DSCR-COV,Debt,Minimum covenant DSCR,1.2,x,N/A,nominal,2026-08-31,1.15/1.2/1.3,SIMULATED,,NO_RELIABLE_PUBLIC_BENCHMARK,VietGreen,Internal reviewer,LOCKED,TRUE,HIGH,Distinct from sizing
-ASM-LLCR,Debt,LLCR floor,1.35,x,N/A,nominal,2026-08-31,1.25/1.35/1.5,SIMULATED,,NO_RELIABLE_PUBLIC_BENCHMARK,VietGreen,Internal reviewer,LOCKED,TRUE,HIGH,Rate registered separately
-ASM-LEV,Debt,Debt/CAPEX cap,0.65,%,N/A,nominal,2026-08-31,50%/65%/75%,SIMULATED,,NO_RELIABLE_PUBLIC_BENCHMARK,VietGreen,Internal reviewer,LOCKED,TRUE,HIGH,Minimum of caps
+ASM-CAPEX,CAPEX,C&I rooftop CAPEX,850,USD/kWp,USD,nominal,2026-08-31,850/1100/700,ASSUMPTION,SRC-IRENA-2024,SANITY_BENCHMARK,VietGreen,Internal reviewer,LOCKED,TRUE,HIGH,Global utility comparator only.
+ASM-OPEX,OPEX,Routine O&M,15,USD/kW-year,USD,nominal,2026-08-31,15/25/10,ASSUMPTION,SRC-SOLAR-NREL,COMPARATOR_ONLY,VietGreen,Internal reviewer,LOCKED,TRUE,MEDIUM,Local evidence required.
+ASM-DEG,Energy,Annual degradation,0.5,%/year,N/A,nominal,2026-08-31,0.5/1.0/0.3,ASSUMPTION,SRC-SOLAR-NREL,COMPARATOR_ONLY,VietGreen,Internal reviewer,LOCKED,TRUE,MEDIUM,Not warranty evidence.
+ASM-PPA-TENOR,Commercial,PPA tenor,15,years,N/A,nominal,2026-08-31,12/15/20,SIMULATED,,NO_RELIABLE_PUBLIC_BENCHMARK,VietGreen,Internal reviewer,LOCKED,TRUE,HIGH,Must fit site rights.
+ASM-DSCR-SIZE,Debt,Sizing DSCR,1.3,x,N/A,nominal,2026-08-31,1.2/1.3/1.5,SIMULATED,,NO_RELIABLE_PUBLIC_BENCHMARK,VietGreen,Internal reviewer,LOCKED,TRUE,HIGH,Not market standard.
+ASM-DSCR-COV,Debt,Minimum covenant DSCR,1.2,x,N/A,nominal,2026-08-31,1.15/1.2/1.3,SIMULATED,,NO_RELIABLE_PUBLIC_BENCHMARK,VietGreen,Internal reviewer,LOCKED,TRUE,HIGH,Distinct from sizing.
+ASM-DSCR-LOCKUP,Debt,Lock-up DSCR,1.25,x,N/A,nominal,2026-08-31,1.2/1.25/1.35,SIMULATED,,NO_RELIABLE_PUBLIC_BENCHMARK,VietGreen,Internal reviewer,LOCKED,TRUE,Different from covenant DSCR.
+ASM-LLCR,Debt,LLCR floor,1.35,x,N/A,nominal,2026-08-31,1.25/1.35/1.5,SIMULATED,,NO_RELIABLE_PUBLIC_BENCHMARK,VietGreen,Internal reviewer,LOCKED,TRUE,HIGH,Rate registered separately.
+ASM-PLCR,Debt,PLCR floor,1.25,x,N/A,nominal,2026-08-31,1.15/1.25/1.4,SIMULATED,,NO_RELIABLE_PUBLIC_BENCHMARK,VietGreen,Internal reviewer,LOCKED,TRUE,MEDIUM,Rate registered separately.
+ASM-LEV,Debt,Debt/CAPEX cap,0.65,%,N/A,nominal,2026-08-31,50%/65%/75%,SIMULATED,,NO_RELIABLE_PUBLIC_BENCHMARK,VietGreen,Internal reviewer,LOCKED,TRUE,HIGH,Minimum of caps.
 ASM-DSRA,Reserves,DSRA,6,months,N/A,nominal,2026-08-31,3/6/12,SIMULATED,,NO_RELIABLE_PUBLIC_BENCHMARK,VietGreen,Internal reviewer,LOCKED,TRUE,MEDIUM,
-ASM-FX,FX,Annual VND depreciation,0,%/year,N/A,nominal,2026-08-31,0/2/4/6,ASSUMPTION,,NO_RELIABLE_PUBLIC_BENCHMARK,VietGreen,Internal reviewer,LOCKED,TRUE,HIGH,"Stress path, not forecast"
+ASM-FX,FX,Annual VND depreciation,0,%/year,N/A,nominal,2026-08-31,0/2/4/6,ASSUMPTION,,NO_RELIABLE_PUBLIC_BENCHMARK,VietGreen,Internal reviewer,LOCKED,TRUE,HIGH,Stress path, not forecast.
+ASM-TAX,Cash flow,CIT cash tax rate,0.20,decimal,VND,nominal,2026-08-31,0.20/0.22/0.25,ASSUMPTION,SRC-TAX-067,DIRECT_EVIDENCE,VietGreen,Internal reviewer,LOCKED,TRUE,HIGH,Model proxy pending transaction-specific tax advice; tax rules are separately registered.
+ASM-DSO,Cash flow,Accounts receivable days,30,days,N/A,nominal,2026-08-31,30/60/90,SIMULATED,,NO_RELIABLE_PUBLIC_BENCHMARK,VietGreen,Internal reviewer,LOCKED,TRUE,HIGH,Working-capital assumption.
+ASM-PPA-ESCALATION,Commercial,PPA escalation,0.01,decimal,N/A,nominal,2026-08-31,0.00/0.01/0.02,SIMULATED,,NO_RELIABLE_PUBLIC_BENCHMARK,VietGreen,Internal reviewer,LOCKED,TRUE,MEDIUM,Contract-specific input required.
+ASM-OPEX-ESCALATION,Operations,O&M escalation,0.02,decimal,N/A,nominal,2026-08-31,0.01/0.02/0.03,SIMULATED,,NO_RELIABLE_PUBLIC_BENCHMARK,VietGreen,Internal reviewer,LOCKED,TRUE,MEDIUM,Contract-specific input required.
+ASM-VAT,Cash flow,Input VAT rate,0.08,decimal,VND,nominal,2026-08-31,0.08/0.10/0.12,SIMULATED,SRC-TAX-020,CONTEXT_ONLY,VietGreen,Internal reviewer,LOCKED,TRUE,HIGH,Tax/VAT treatment requires local advice.
+ASM-MAINT,Cash flow,Major maintenance as percent of net CAPEX,0.005,decimal,VND,nominal,2026-08-31,0.00/0.005/0.01,SIMULATED,,NO_RELIABLE_PUBLIC_BENCHMARK,VietGreen,Internal reviewer,LOCKED,TRUE,MEDIUM,Applied in years 5 and 10 only.
+ASM-TARIFF-BASE,Tariff,Simulated blended base avoided tariff,1450,VND/kWh,VND,nominal,2026-08-31,1450/1800/2350,SIMULATED,SRC-TAR-60,CONTEXT_ONLY,VietGreen,Internal reviewer,LOCKED,TRUE,HIGH,Model-only component; not a billed tariff.
+ASM-TARIFF-DAY-PREMIUM,Tariff,Simulated daytime premium,1450,VND/kWh,VND,nominal,2026-08-31,0/1450/2500,SIMULATED,SRC-TAR-963,CONTEXT_ONLY,VietGreen,Internal reviewer,LOCKED,TRUE,HIGH,Model-only component; Decision 963 provides hours, not this price.
+ASM-FX-BASE,FX,Base VND per USD,25000,VND/USD,VND,nominal,2026-08-31,24000/25000/27000,ASSUMPTION,,NO_RELIABLE_PUBLIC_BENCHMARK,VietGreen,Internal reviewer,LOCKED,TRUE,HIGH,Transaction input placeholder.
+ASM-DISC-PROJECT,Discount rate,Unlevered project NPV rate,0.12,decimal,VND,nominal,2026-08-31,0.10/0.12/0.15,SIMULATED,,NO_RELIABLE_PUBLIC_BENCHMARK,VietGreen,Internal reviewer,LOCKED,TRUE,HIGH,Registered for project cash flow.
+ASM-DISC-EQUITY,Discount rate,Sponsor equity NPV rate,0.14,decimal,VND,nominal,2026-08-31,0.12/0.14/0.18,SIMULATED,,NO_RELIABLE_PUBLIC_BENCHMARK,VietGreen,Internal reviewer,LOCKED,TRUE,HIGH,Registered for sponsor cash flow.
+ASM-DISC-CUSTOMER,Discount rate,Customer NPV rate,0.10,decimal,VND,nominal,2026-08-31,0.08/0.10/0.12,SIMULATED,,NO_RELIABLE_PUBLIC_BENCHMARK,VietGreen,Internal reviewer,LOCKED,TRUE,MEDIUM,Registered for customer value.
+ASM-DISC-LLCR,Discount rate,LLCR discount rate,0.085,decimal,VND,nominal,2026-08-31,0.07/0.085/0.10,SIMULATED,,NO_RELIABLE_PUBLIC_BENCHMARK,VietGreen,Internal reviewer,LOCKED,TRUE,HIGH,Debt-rate-linked simulated input.
+ASM-DISC-PLCR,Discount rate,PLCR discount rate,0.085,decimal,VND,nominal,2026-08-31,0.07/0.085/0.10,SIMULATED,,NO_RELIABLE_PUBLIC_BENCHMARK,VietGreen,Internal reviewer,LOCKED,TRUE,HIGH,Debt-rate-linked simulated input.

@@ -1,6 +1,6 @@
 rate_id,purpose,cash_flow_definition,currency,nominal_or_real,base_date,pre_or_post_tax,annual_periodicity,compounding_convention,source_or_assumption_id,value,status,review_note
-PROJECT_NPV_VND,Unlevered project NPV,unlevered project CF,VND,nominal,2026-08-31,after-tax,1,annual,ASM-DISC-PROJECT,0.12,LOCKED,
-EQUITY_NPV_VND,Sponsor equity NPV,equity CF,VND,nominal,2026-08-31,after-tax,1,annual,ASM-DISC-EQUITY,0.14,LOCKED,Analyst assumption
-CUSTOMER_NPV_VND,Customer savings NPV,customer savings,VND,nominal,2026-08-31,after-tax,1,annual,ASM-DISC-CUSTOMER,0.1,LOCKED,
-LLCR_DISC_VND,LLCR,CFADS to maturity,VND,nominal,2026-08-31,after-tax,1,annual,ASM-DISC-LLCR,0.085,LOCKED,
-PLCR_DISC_VND,PLCR,CFADS to project end,VND,nominal,2026-08-31,after-tax,1,annual,ASM-DISC-PLCR,0.085,LOCKED,
+PROJECT_NPV_VND,Unlevered project NPV,unlevered project CF,VND,nominal,2026-08-31,after-tax,1,annual,ASM-DISC-PROJECT,0.12,LOCKED,Registered assumption; no market-standard claim.
+EQUITY_NPV_VND,Sponsor equity NPV,equity CF,VND,nominal,2026-08-31,after-tax,1,annual,ASM-DISC-EQUITY,0.14,LOCKED,Registered assumption.
+CUSTOMER_NPV_VND,Customer savings NPV,customer savings,VND,nominal,2026-08-31,after-tax,1,annual,ASM-DISC-CUSTOMER,0.10,LOCKED,Registered assumption.
+LLCR_DISC_VND,LLCR,CFADS to debt maturity,VND,nominal,2026-08-31,after-tax,1,annual,ASM-DISC-LLCR,0.085,LOCKED,Registered assumption; lender term remains simulated.
+PLCR_DISC_VND,PLCR,CFADS to project end,VND,nominal,2026-08-31,after-tax,1,annual,ASM-DISC-PLCR,0.085,LOCKED,Registered assumption; lender term remains simulated.
