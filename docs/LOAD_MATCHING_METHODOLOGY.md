@@ -5,7 +5,9 @@
 The model keeps a 20-project screening population and runs deterministic 8,760
 profiles for every project in memory on the GitHub Actions runner. Final
 decision outputs are controlled CSV summaries. Full derived hourly vectors are
-exported only to remote workflow artifacts:
+exported only to remote workflow artifacts in the plan-specified Parquet format:
+remote_derived/load_8760.parquet and remote_derived/solar_8760.parquet.
+Compressed CSV.GZ compatibility streams are exported alongside them:
 remote_derived/load_8760.csv.gz and remote_derived/solar_8760.csv.gz.
 No project data is written to the desktop workspace.
 

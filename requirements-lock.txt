@@ -1,2 +1,3 @@
-python==3.12
-# Core runner uses Python standard library only.
+# Python runtime is pinned by .github/workflows/core-validation.yml.
+# Project data and hourly streams are generated only on the ephemeral remote runner.
+pyarrow==19.0.1
