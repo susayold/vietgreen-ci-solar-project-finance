@@ -7,7 +7,7 @@
 
 ## Deliberate checks
 
-1. Zero-depreciation equality uses the full initial equity investment and an explicit base-FX VND-equivalent target.
+1. Zero-depreciation USD rows include the full initial equity investment; the USD funding advantage is measured against the VND-equivalent target and then solved at the primary break-even.
 2. Increasing unhedged depreciation is checked for non-improving USD Equity NPV and DSCR.
 3. Hedge fraction is explicit and carries a 1.5% service fee; 0%, 50% and 100% USD debt switches are exercised.
 4. Exposure limits are applied against an explicit equity/debt budget, not only project counts.
