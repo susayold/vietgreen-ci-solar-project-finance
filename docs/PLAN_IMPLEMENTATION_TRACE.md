@@ -2,56 +2,54 @@
 
 ## A. Evidence and regulatory lineage
 
-Implemented: material synthetic inputs carry IDs through evidence/INPUT_LINEAGE_MATRIX.csv; tariff legal, current billed reference and model-only price components are separate; Decision 963, Circular 60, EVN implementation, MOIT current-practice, tax and foreign-borrowing rows are registered. The live recheck note is remote and raw_snapshot_path remains NOT_STORED_LOCAL.
+Implemented: material inputs carry source/assumption IDs through the lineage matrix; legal tariff windows, current billed references and model-only price components are separate; tax and foreign-borrowing rules are registered with effective dates and recheck flags; the remote source-fetch log records the 2026-08-31 refresh without storing raw snapshots locally.
 
-Status: PASS WITH BILLING WATCH. Billed tariff and final legal applicability remain external gates.
+Status: PASS WITH BILLING WATCH. Decision 963 legal windows are mapped, but billed implementation and final transaction applicability remain external gates.
 
-## B. Synthetic data and hidden truth
+## B. Synthetic data, hidden truth and reproducibility
 
-Implemented: locked seed 260831; locked input hashes; rerunable deterministic pipeline; cross-field QA; operational-outage hidden-truth cases stored only as aggregate labels; no raw truth in the public repository.
+Implemented: locked master seed 260831; hashes for all synthetic inputs including the 240-row construction curve; deterministic generation; cross-field DQ; hidden-truth cases isolated to aggregate labels; no customer data or raw hidden truth in the public repository.
 
-Status: PASS. Five cases matched with zero false negatives.
+Status: PASS. 20/20 DQ, 5/5 hidden-truth classifications and locked hashes.
 
 ## C. Energy, PPA and 8,760
 
-Implemented: hourly in-memory profiles for all 20 projects, P50/P90, P90 no greater than P50, separated loss/load matching, Decision 963 midpoint mapping, current billed reference mapping, PPA frontier and customer/sponsor/lender gates. Full derived streams are uploaded as remote workflow artifacts.
+Implemented: 20 in-memory 8,760 load/solar profiles, P50/P90 flow-through, P90 <= P50, separate loss and load matching, legal tariff midpoint mapping, current billed-reference mapping, three-sided PPA frontier, explicit empty-zone action and remote artifact export.
 
-Status: PASS for implemented synthetic mechanics; external PPA and site evidence remain open.
+Status: PASS for synthetic mechanics; external PPA, site, technical-yield and billed-tariff evidence remain open.
 
-## D. CAPEX, tax, VAT, WC and terminal
+## D. CAPEX, construction, tax, VAT, WC and terminal
 
-Implemented: bottom-up synthetic capex, sources-and-uses reconciliation, IDC proxy, VAT, depreciation/loss-carryforward tax proxy, DSO working capital, major maintenance and zero-terminal branch.
+Implemented: six-category bottom-up CAPEX; 12-month construction spend curve; monthly gross/net/VAT/IDC schedule; capitalised IDC proxy at 8.5%; reconciled total uses and depreciable basis; tax/loss-carryforward proxy; DSO working capital; major maintenance; zero-terminal branch; explicit year-zero full-equity no-debt pass.
 
-Status: PASS for internal mechanics; tax/accounting certification remains open.
+Status: PASS for internal mechanics; replace the synthetic curve/rate and obtain tax/accounting certification before bankable release.
 
-## E. Debt
+## E. Debt and reserves
 
-Implemented: registered LLCR/PLCR discount rates, DSCR, LLCR, PLCR, leverage, backward sizing, forward rebuild, debt close, tail, DSRA/reserve waterfall and pooled feedback.
+Implemented: separate sizing/sculpting/covenant/lock-up DSCR concepts; LLCR and PLCR with registered discount rates; leverage cap; backward sizing/forward rebuild; debt close; DSRA/reserve waterfall; pooled debt feedback.
 
-Status: PASS for automated controls; lender term confirmation remains open.
+Status: PASS for automated controls; lender terms, security, reserves and hedging remain unconfirmed.
 
 ## F. FX and portfolio
 
-Implemented: period-by-period FX sensitivity, crawl and one-off shocks, break-even FX, aggregate DSCR, pooled resize, concentration and common-factor cases.
+Implemented: period-by-period FX crawl and one-off shocks, break-even FX, common-factor downside, concentration outputs, hard gates before ranking, budget and concentration caps, and pairwise-swap improvement pass.
 
-Status: PASS for implemented synthetic mechanics; hedge/portfolio-correlation evidence remains open.
+Status: PASS for synthetic mechanics; transaction hedge and correlation evidence remain open.
 
 ## G. Allocation and IC
 
-Implemented: eligibility gates before ranking, fixed budget allocation, additive equity NPV register, sponsor/lender split and portfolio IC decision table.
+Current candidate: 11 selected projects; 13.10 MWp; equity 138.143294 BVND; endogenous pooled debt 152.457008 BVND; pooled DSCR 1.30x; base sponsor NPV -66.202345 BVND.
 
-Current candidate: 12 selected projects; 14.95 MWp; equity 145.275160 BVND; pooled debt 172.412340 BVND; DSCR 1.30x; base sponsor NPV -63.922321 BVND.
-
-Status: PASS WITH NEGATIVE BASE SPONSOR NPV; conditions are recorded.
+Status: PASS WITH NEGATIVE BASE SPONSOR NPV; recommendation is conditional and the IC memo is not an approval.
 
 ## H. Validation and release
 
-Implemented: unit/reconciliation/boundary/monotonicity/isolation checks, 18/18 DQ, 18/18 dynamic remote QA, hidden-truth classification, 31/31 workbook validation, 5/5 tests, locked input hashes, remote 8,760 index and release controls.
+Latest remote run: 33349715239; 20/20 DQ; 20/20 dynamic remote QA; 31/31 workbook checks; 5/5 tests; 13/13 mechanical release controls plus 1 candidate-manifest warning; 240 construction schedule rows; remote 8,760 streams remain artifact-only with local_storage NONE.
 
 ## I. Open gates
 
-Independent final review; billed tariff confirmation; lender/legal/tax/technical/site diligence; bankable P90 and executed PPA/security evidence.
+Independent final model review; billed tariff confirmation; transaction-specific tax and foreign-borrowing advice; lender/legal/technical/site diligence; bankable P90; executed PPA; security, insurance, reserve and hedge evidence; sponsor hurdle resolution.
 
 ## J. Release classification
 
-Release 1.2.0 is a candidate with PASS_WITH_LIMITATIONS. recruiter_ready is false.
+Release 1.2.0 remains candidate with PASS_WITH_LIMITATIONS. recruiter_ready remains false until the external gates are closed.
