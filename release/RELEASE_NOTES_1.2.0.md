@@ -10,7 +10,7 @@ Date: 2026-08-31
 - Explicit CAPEX/VAT/IDC reconciliation and year-zero no-debt check.
 - PPA negotiation-zone helper with explicit RENEGOTIATE_OR_REJECT action for empty zones, covered by a boundary test.
 - Pairwise-swap improvement pass after hard-gated value-density selection.
-- Remote source-fetch log, DOD status matrix, boundary tests and recruiter-safe package.
+- Remote source-fetch log, DOD status matrix, boundary tests, latest EVN billing-status refresh and recruiter-safe package.
 
 ## Verified
 
