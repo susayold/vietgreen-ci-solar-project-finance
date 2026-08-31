@@ -19,3 +19,5 @@ LIN-017,debt terms,data/synthetic/debt_terms.csv,rate/DSCR/tenor,FACILITY_TERMS_
 LIN-018,foreign borrowing rules,evidence/REGULATORY_REGISTER.csv,legal applicability,SRC-FX-008|SRC-FX-019,observed_regulatory_input,LOCKED,TRUE,amendment-aware checklist,FX and financing
 LIN-019,terminal branch,analytics/cash_flow.py,VND,TERMINAL-ZERO,model_control,LOCKED,TRUE,zero residual no sale,returns and reserves
 LIN-020,hidden truth,analytics/hidden_truth_validation.py,aggregate-only,SEED-260837,private_test_control,ISOLATED,TRUE,never passed into public model,firewall validation
+LIN-021,construction schedule,data/synthetic/construction_schedule.csv,share by month,ASM-CONSTRUCTION-SCHEDULE,simulated_input,LOCKED,TRUE,12-month locked spend curve applied to six-category CAPEX,IDC and sources/uses
+LIN-022,capitalised IDC,analytics/capex_engine.py,VND,ASM-IDC-RATE,simulated_input,LOCKED,TRUE,net construction CAPEX x rate x months to COD / 12,uses depreciation and debt sizing

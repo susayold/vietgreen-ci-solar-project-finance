@@ -34,6 +34,7 @@ def run(root=BASE_DIR):
     sites = read_csv(root / "data/synthetic/site_risk.csv")
     ppas = read_csv(root / "data/synthetic/ppa_terms.csv")
     capex = read_csv(root / "data/synthetic/capex.csv")
+    construction = read_csv(root / "data/synthetic/construction_schedule.csv")
     debt = read_csv(root / "data/synthetic/debt_terms.csv")
     solar = read_csv(root / "data/synthetic/solar_resource.csv")
     sources = read_csv(root / "evidence/SOURCE_REGISTER.csv")
@@ -64,6 +65,11 @@ def run(root=BASE_DIR):
     add(results, "DQ-006", "CAPEX", "row_count_and_key", "120 rows / 6 per project",
         "%s rows" % len(capex), "PASS" if len(capex) == 120 and len(capex) == len(master) * 6 else "FAIL",
         "CRITICAL", "CAPEX aggregation grain")
+    construction_months = {}
+    for row in construction:
+        construction_months.setdefault(row["project_id"], []).append(int(row["construction_month"]))
+    curve_ok = len(construction) == len(master) * 12 and all(sorted(months) == list(range(1, 13)) for months in construction_months.values()) and all(abs(sum(float(row["construction_share"]) for row in construction if row["project_id"] == project_id) - 1.0) <= 1e-9 for project_id in project_ids)
+    add(results, "DQ-019", "construction", "schedule_shape_and_share", "240 rows / months 1-12 / shares sum 1", "%s rows" % len(construction), "PASS" if curve_ok else "FAIL", "CRITICAL", "Construction timing and IDC basis")
     add(results, "DQ-007", "debt", "foreign_key_coverage", "all project IDs",
         str(coverage(debt, "project_or_portfolio_id", project_ids)),
         "PASS" if coverage(debt, "project_or_portfolio_id", project_ids) else "FAIL",
@@ -168,6 +174,8 @@ def run(root=BASE_DIR):
     rules_ok = required_rules.issubset({row["rule_id"] for row in regs})
     add(results, "DQ-017", "regulatory", "required_rule_ids", "all current tax/FX/tariff rules", str(rules_ok),
         "PASS" if rules_ok else "FAIL", "CRITICAL", "Current-source control")
+    construction_source_ok = all(row.get("source_or_assumption_id") in assumption_ids for row in construction)
+    add(results, "DQ-020", "construction", "source_assumption_coverage", "all construction rows reference registered assumptions", str(construction_source_ok), "PASS" if construction_source_ok else "FAIL", "HIGH", "IDC and construction-curve provenance")
     rate_links_ok = all(row["source_or_assumption_id"] in assumption_ids for row in rates)
     add(results, "DQ-018", "discount_rate", "source_assumption_coverage", "all rate IDs registered", str(rate_links_ok),
         "PASS" if rate_links_ok else "FAIL", "HIGH", "Discount-rate provenance")
@@ -183,7 +191,7 @@ def run(root=BASE_DIR):
     report = root / "validation/DATA_QUALITY_REPORT.md"
     report.write_text(
         "# DATA_QUALITY_REPORT\n\n"
-        "Remote-only quality checks for the synthetic pipeline. Grain is one row per project except CAPEX, which is six components per project.\n\n"
+        "Remote-only quality checks for the synthetic pipeline. Grain is one row per project except CAPEX, which is six components per project, plus a 12-month construction curve.\n\n"
         "- Checks run: %s\n"
         "- Passed: %s\n"
         "- Failed: %s\n"

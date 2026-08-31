@@ -32,6 +32,7 @@ def validate_input_csv(path=ROOT/"data/synthetic/project_master.csv"):
     required={
       "ppa_terms.csv":{"project_id"},"solar_resource.csv":{"project_id","source_id"},
       "debt_terms.csv":{"project_or_portfolio_id"},"capex.csv":{"project_id","source_or_assumption_id"},
+      "construction_schedule.csv":{"project_id","construction_month","construction_share","source_or_assumption_id"},
       "offtaker_master.csv":{"offtaker_id"},"site_risk.csv":{"site_id","project_id"}}
     for filename,columns in required.items():
         child=ROOT/"data/synthetic"/filename; child_rows=read_csv(child)

@@ -10,7 +10,7 @@ def main():
     def add(cid,status,actual,detail): checks.append({"control_id":cid,"status":status,"actual":actual,"detail":detail})
     projects=read_rows("data/synthetic/project_master.csv"); energy=read_rows("outputs/energy_p50_p90.csv"); load=read_rows("outputs/load_matching_summary.csv")
     qa=read_rows("validation/QA_REMOTE_RUN.csv"); dq=read_rows("validation/DATA_QUALITY_RESULTS.csv"); tariff=read_rows("evidence/TARIFF_MASTER.csv")
-    sources=read_rows("evidence/SOURCE_REGISTER.csv"); regulatory=read_rows("evidence/REGULATORY_REGISTER.csv")
+    sources=read_rows("evidence/SOURCE_REGISTER.csv"); regulatory=read_rows("evidence/REGULATORY_REGISTER.csv"); capex_schedule=read_rows("outputs/capex_schedule.csv")
     add("REL-001","PASS" if len(projects)==20 else "FAIL",len(projects),"locked 20-project synthetic population")
     add("REL-002","PASS" if len(energy)==20 and len(load)==20 else "FAIL","%d energy / %d load"%(len(energy),len(load)),"final one-row-per-project outputs")
     add("REL-003","PASS" if all(len(row.get("hourly_profile_hash",""))==64 for row in energy) else "FAIL","20 profile hashes","8,760 profile lineage")
@@ -29,6 +29,8 @@ def main():
     manifest=json.loads((ROOT/"release/MODEL_RELEASE_MANIFEST.json").read_text(encoding="utf-8"))
     add("REL-012","WARN",manifest.get("release_status"),"candidate manifest is refreshed after the immutable workflow artifact")
     add("REL-013","PASS" if all(row.get("raw_snapshot_path")=="NOT_STORED_LOCAL" for row in sources) else "FAIL","remote source policy","no desktop snapshots")
+    capex_ok = len(capex_schedule) == 240 and all(row.get("reconciliation_status") == "PASS" and row.get("idc_vnd") not in ("", None) for row in capex_schedule)
+    add("REL-014","PASS" if capex_ok else "FAIL","%d construction rows" % len(capex_schedule),"construction CAPEX, VAT and IDC output is present and reconciled")
     out=ROOT/"validation/RELEASE_CONTROL_RESULTS.csv"
     with out.open("w",newline="",encoding="utf-8") as handle:
         writer=csv.DictWriter(handle,fieldnames=["control_id","status","actual","detail"]); writer.writeheader(); writer.writerows(checks)

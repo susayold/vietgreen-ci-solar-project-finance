@@ -30,7 +30,9 @@ from analytics.fx_engine import (
     translate_usd_debt_service,
 )
 from analytics.load_match_8760 import profile
-from analytics.portfolio_selection import select_by_value_density
+from analytics.capex_engine import build_capex_schedule
+from analytics.ppa_engine import negotiation_zone
+from analytics.portfolio_selection import improve_by_pairwise_swaps, select_by_value_density
 from analytics.tariff_engine import hourly_tariff_summary, weighted_model_only_tariff
 from analytics.qa_checks import (
     assert_debt_closes,
@@ -136,7 +138,8 @@ def facility_size(cfads, capex, terms, rate_override=None, llcr_rate_override=No
     }
 
 
-def build_project(row, ppa_term, capex_total, solar_resource, assumptions, tariffs, terms, rates):
+def build_project(row, ppa_term, capex_summary, solar_resource, assumptions, tariffs, terms, rates):
+    capex_total = float(capex_summary["total_uses_vnd"])
     capacity = num(row, "proposed_capacity_kwp")
     load = num(row, "annual_load_kwh")
     daytime_share = num(row, "daytime_load_share")
@@ -185,6 +188,12 @@ def build_project(row, ppa_term, capex_total, solar_resource, assumptions, tarif
         "ppa_price_vnd_kwh": ppa_price,
         "ppa_tenor_years": ppa_tenor,
         "capex_vnd": float(capex_total),
+        "construction_capex_vnd": float(capex_summary["construction_capex_gross_vnd"]),
+        "construction_net_capex_vnd": float(capex_summary["construction_capex_net_vnd"]),
+        "capex_vat_vnd": float(capex_summary["vat_vnd"]),
+        "idc_vnd": float(capex_summary["idc_vnd"]),
+        "idc_rate": float(capex_summary["idc_rate"]),
+        "construction_months": int(capex_summary["construction_months"]),
         "opex_vnd": capacity * assumption_value(assumptions, "ASM-OPEX", 15.0) * assumption_value(assumptions, "ASM-FX-BASE", 25000.0),
         "tariff_version": tariff_info["tariff_version"],
         "billing_status": tariff_info["billing_status"],
@@ -206,6 +215,7 @@ def build_project(row, ppa_term, capex_total, solar_resource, assumptions, tarif
         degradation=degradation, ppa_escalation=ppa_escalation,
         opex_escalation=opex_escalation, vat_rate=vat_rate,
         major_maintenance_rate=maintenance_rate,
+        capex_summary=capex_summary,
     )
     p90_case = dict(base)
     p90_case["self_consumption_kwh"] = self_kwh_p90
@@ -214,6 +224,7 @@ def build_project(row, ppa_term, capex_total, solar_resource, assumptions, tarif
         degradation=degradation, ppa_escalation=ppa_escalation,
         opex_escalation=opex_escalation, vat_rate=vat_rate,
         major_maintenance_rate=maintenance_rate,
+        capex_summary=capex_summary,
     )
     cfads = [num(item, "cfads_vnd") for item in annual_rows[1:]]
     p90_cfads = [num(item, "cfads_vnd") for item in p90_rows[1:]]
@@ -239,7 +250,8 @@ def build_project(row, ppa_term, capex_total, solar_resource, assumptions, tarif
     customer_ceiling = tariff * 0.86
     sponsor_floor = ppa_price * 0.94
     lender_floor = ppa_price * (0.96 if min_dscr >= num(terms, "minimum_covenant_dscr", 1.20) else 1.08)
-    ppa_gate = "PASS" if customer_ceiling >= max(sponsor_floor, lender_floor) else "RENEGOTIATE"
+    ppa_zone = negotiation_zone(customer_ceiling, sponsor_floor, lender_floor)
+    ppa_gate = "PASS" if ppa_zone["status"] == "FEASIBLE_ZONE" else "RENEGOTIATE"
     finance_gate = "PASS" if min_dscr >= num(terms, "minimum_covenant_dscr", 1.20) and ppa_tenor >= 10 else "FAIL"
     is_dppa = "DPPA" in row.get("business_model_archetype", "")
     regulatory_gate = "HOLD_FOR_LEGAL_REVIEW" if is_dppa else "CONDITION_BILLING_WATCH"
@@ -273,6 +285,7 @@ def build_project(row, ppa_term, capex_total, solar_resource, assumptions, tarif
         "customer_ceiling_vnd_kwh": customer_ceiling,
         "sponsor_floor_vnd_kwh": sponsor_floor,
         "lender_floor_vnd_kwh": lender_floor,
+        "ppa_negotiation_zone_status": ppa_zone["status"],
         "ppa_gate": ppa_gate,
         "finance_gate": finance_gate,
         "regulatory_gate": regulatory_gate,
@@ -280,6 +293,7 @@ def build_project(row, ppa_term, capex_total, solar_resource, assumptions, tarif
         "credit_site_gate": credit_site_gate,
         "shortlist_flag": shortlist,
         "final_classification": classification,
+        "_capex_summary": capex_summary,
         "_annual_cash_flow": annual_rows,
         "_p90_annual_cash_flow": p90_rows,
         "_annual_cfads": cfads,
@@ -341,6 +355,7 @@ def scenario_rows(selected, pool, terms, assumptions, rates):
                 degradation=project["_degradation"], ppa_escalation=project["_ppa_escalation"],
                 opex_escalation=project["_opex_escalation"], vat_rate=project["_vat_rate"],
                 major_maintenance_rate=project["_maintenance_rate"],
+                capex_summary=project["_capex_summary"],
             )
             rows.append([num(item, "cfads_vnd") for item in annual[1:]])
         return [sum(row[year] for row in rows) for year in range(YEARS)]
@@ -417,6 +432,7 @@ def run(root=BASE_DIR):
     projects_raw = read_csv(root / "data/synthetic/project_master.csv")
     ppa_rows = read_csv(root / "data/synthetic/ppa_terms.csv")
     capex_rows = read_csv(root / "data/synthetic/capex.csv")
+    construction_rows = read_csv(root / "data/synthetic/construction_schedule.csv")
     solar_rows = read_csv(root / "data/synthetic/solar_resource.csv")
     debt_rows = read_csv(root / "data/synthetic/debt_terms.csv")
     assumptions_rows = read_csv(root / "evidence/ASSUMPTION_REGISTER.csv")
@@ -429,12 +445,22 @@ def run(root=BASE_DIR):
     capex_by = {}
     for row in capex_rows:
         capex_by[row["project_id"]] = capex_by.get(row["project_id"], 0.0) + num(row, "amount_local")
+    construction_by = {}
+    for row in construction_rows:
+        construction_by.setdefault(row["project_id"], []).append(row)
+    idc_rate = assumption_value(assumptions, "ASM-IDC-RATE", 0.085)
+    capex_summaries = {}
+    capex_schedule_rows = []
+    for project_id in capex_by:
+        schedule, summary = build_capex_schedule(capex_rows, construction_by.get(project_id, []), project_id, idc_rate=idc_rate)
+        capex_summaries[project_id] = summary
+        capex_schedule_rows.extend(schedule)
     rates = {row["rate_id"]: row for row in rate_rows}
     projects = [
         build_project(
             row,
             ppa_by[row["project_id"]],
-            capex_by[row["project_id"]],
+            capex_summaries[row["project_id"]],
             solar_by[row["project_id"]],
             assumptions,
             tariff_rows,
@@ -445,6 +471,7 @@ def run(root=BASE_DIR):
     ]
     assert_project_invariants(projects)
     selected, equity_used = select_by_value_density(projects, 150e9)
+    selected, equity_used, pairwise_swaps = improve_by_pairwise_swaps(projects, selected, 150e9)
     previous_ids = None
     feedback_history = []
     pool = None
@@ -530,8 +557,13 @@ def run(root=BASE_DIR):
             "tariff_schedule_status": project["_tariff_details"]["tariff_schedule_status"],
             "billing_rate_status": project["_tariff_details"]["billing_rate_status"],
         })
-        lower = max(project["sponsor_floor_vnd_kwh"], project["lender_floor_vnd_kwh"])
-        upper = project["customer_ceiling_vnd_kwh"]
+        ppa_zone = negotiation_zone(
+            project["customer_ceiling_vnd_kwh"],
+            project["sponsor_floor_vnd_kwh"],
+            project["lender_floor_vnd_kwh"],
+        )
+        lower = ppa_zone["lower_bound_vnd_kwh"]
+        upper = ppa_zone["upper_bound_vnd_kwh"]
         ppa_frontier_rows.append({
             "project_id": project["project_id"],
             "customer_ceiling_vnd_kwh": upper,
@@ -539,9 +571,10 @@ def run(root=BASE_DIR):
             "lender_floor_vnd_kwh": project["lender_floor_vnd_kwh"],
             "lower_bound_vnd_kwh": lower,
             "upper_bound_vnd_kwh": upper,
-            "negotiation_zone_status": "FEASIBLE_ZONE" if lower <= upper else "EMPTY_ZONE",
+            "negotiation_zone_status": ppa_zone["status"],
+            "recommended_action": ppa_zone["action"],
             "solver_method": "registered_three_sided_frontier",
-            "tolerance_vnd_kwh": 0.01,
+            "tolerance_vnd_kwh": ppa_zone["tolerance_vnd_kwh"],
             "iterations": 1,
             "billing_status": project["billing_status"],
         })
@@ -575,6 +608,7 @@ def run(root=BASE_DIR):
             "value_density": project["equity_npv_vnd"] / project["equity_required_vnd"] if project["equity_required_vnd"] else 0.0,
             "standalone_min_dscr": project["min_dscr"],
             "selection_reason": "selected_after_hard_gates_and_budget" if selected_flag else "hard_gate_or_budget_or_concentration",
+            "selection_method": "greedy_value_density_plus_pairwise_swap",
             "parent_group_id": project["parent_group_id"],
             "industry": project["industry"],
             "region": project["region"],
@@ -584,6 +618,10 @@ def run(root=BASE_DIR):
         cash_flow_rows.extend(annual_rows)
         sources_uses_rows.append({
             "project_id": project["project_id"],
+            "construction_capex_gross_vnd": project["construction_capex_vnd"],
+            "construction_capex_net_vnd": project["construction_net_capex_vnd"],
+            "vat_uses_vnd": project["capex_vat_vnd"],
+            "idc_uses_vnd": project["idc_vnd"],
             "capex_uses_vnd": project["capex_vnd"],
             "debt_sources_vnd": project["debt_vnd"],
             "equity_sources_vnd": project["equity_required_vnd"],
@@ -717,6 +755,19 @@ def run(root=BASE_DIR):
     qa_rows.append({"test_id": "QA-REMOTE-016", "status": "PASS" if all(project["tariff_schedule_status"] == "PASS" for project in projects) else "FAIL", "actual": "Decision 963 schedule validation PASS", "detail": "Half-hour boundaries are represented by one-hour interval midpoints"})
     qa_rows.append({"test_id": "QA-REMOTE-017", "status": "PASS" if all(project["_llcr_rate"] == num(rates.get("LLCR_DISC_VND", {}), "value", 0.085) and project["_plcr_rate"] == num(rates.get("PLCR_DISC_VND", {}), "value", 0.085) for project in projects) else "FAIL", "actual": "registered LLCR/PLCR rates", "detail": "Coverage discount rates come from the discount-rate register"})
     qa_rows.append({"test_id": "QA-REMOTE-018", "status": "PASS" if base_scenario["minimum_annual_cfads_bvnd"] >= dso_scenario["minimum_annual_cfads_bvnd"] else "FAIL", "actual": "DSO minimum annual CFADS <= base", "detail": "Working-capital timing downside is tested at annual grain"})
+    capex_reconciles = all(
+        abs(summary["construction_capex_net_vnd"] + summary["vat_vnd"] - summary["construction_capex_gross_vnd"]) <= 1.0
+        and abs(summary["construction_capex_gross_vnd"] + summary["idc_vnd"] - summary["total_uses_vnd"]) <= 1.0
+        and summary["reconciliation_status"] == "PASS"
+        for summary in capex_summaries.values()
+    )
+    qa_rows.append({"test_id": "QA-REMOTE-019", "status": "PASS" if capex_reconciles else "FAIL", "actual": "20 CAPEX/VAT/IDC schedules reconcile", "detail": "Bottom-up construction, VAT and capitalised IDC tie to total uses"})
+    no_debt_reconciles = all(
+        abs(num(project["_annual_cash_flow"][0], "sources_uses_balance_vnd")) <= 1.0
+        and abs(num(project["_annual_cash_flow"][0], "debt_sources_vnd", 0.0)) <= 1.0
+        for project in projects
+    )
+    qa_rows.append({"test_id": "QA-REMOTE-020", "status": "PASS" if no_debt_reconciles else "FAIL", "actual": "year-zero full-equity no-debt check", "detail": "Cash-flow construction pass reconciles before debt sizing"})
 
     ic_rows = []
     for project in projects:
@@ -759,6 +810,7 @@ def run(root=BASE_DIR):
     write_csv(root / "outputs/ppa_frontier.csv", ppa_frontier_rows, list(ppa_frontier_rows[0]))
     write_csv(root / "outputs/debt_sizing.csv", debt_sizing_rows, list(debt_sizing_rows[0]))
     write_csv(root / "outputs/portfolio_selection.csv", portfolio_rows, list(portfolio_rows[0]))
+    write_csv(root / "outputs/capex_schedule.csv", capex_schedule_rows, list(capex_schedule_rows[0]))
     write_csv(root / "outputs/project_cash_flow.csv", cash_flow_rows, list(cash_flow_rows[0]))
     write_csv(root / "outputs/sources_uses.csv", sources_uses_rows, list(sources_uses_rows[0]))
     write_csv(root / "outputs/debt_schedule.csv", debt_schedule_rows, list(debt_schedule_rows[0]))

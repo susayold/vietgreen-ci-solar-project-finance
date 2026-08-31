@@ -23,7 +23,7 @@ SHEETS = [
     ("04_Offtakers_Credit_Site", "data/synthetic/offtaker_master.csv"),
     ("05_Solar_Energy", "outputs/energy_p50_p90.csv"),
     ("06_Load_PPA", "outputs/load_matching_summary.csv"),
-    ("07_CAPEX_Construction", "data/synthetic/capex.csv"),
+    ("07_CAPEX_Construction", "outputs/capex_schedule.csv"),
     ("08_OPEX", "outputs/project_cash_flow.csv"),
     ("09_Project_CF_CFADS", "outputs/project_cash_flow.csv"),
     ("10_Portfolio_CFADS", "outputs/portfolio_cfads.csv"),

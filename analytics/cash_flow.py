@@ -18,6 +18,7 @@ def project_cash_flow(
     vat_rate=0.08,
     major_maintenance_rate=0.005,
     terminal_branch="ZERO_RESIDUAL_NO_SALE",
+    capex_summary=None,
 ):
     """Return annual rows with explicit tax/VAT/WC/terminal branches.
 
@@ -32,8 +33,17 @@ def project_cash_flow(
     previous_nwc = 0.0
     tax_losses = 0.0
     capex_total = float(project["capex_vnd"])
-    capex_net = capex_total / (1.0 + vat_rate)
-    capex_vat = capex_total - capex_net
+    if capex_summary:
+        capex_total = float(capex_summary["total_uses_vnd"])
+        capex_net = float(capex_summary["depreciable_basis_vnd"])
+        capex_vat = float(capex_summary["vat_vnd"])
+        construction_capex = float(capex_summary["construction_capex_gross_vnd"])
+        idc = float(capex_summary["idc_vnd"])
+    else:
+        capex_net = capex_total / (1.0 + vat_rate)
+        capex_vat = capex_total - capex_net
+        construction_capex = capex_total
+        idc = 0.0
     depreciation = capex_net / years if years else 0.0
     debt_source = float(project.get("debt_vnd", 0.0))
     equity_source = float(project.get("equity_required_vnd", capex_total))
@@ -49,6 +59,8 @@ def project_cash_flow(
             capex = capex_total
             capex_net_use = capex_net
             capex_vat_paid = capex_vat
+            construction_capex_paid = construction_capex
+            idc_paid = idc
             major_maintenance = 0.0
             terminal_value = 0.0
             terminal_release = 0.0
@@ -88,6 +100,8 @@ def project_cash_flow(
             capex = 0.0
             capex_net_use = 0.0
             capex_vat_paid = 0.0
+            construction_capex_paid = 0.0
+            idc_paid = 0.0
             major_maintenance = capex_net * major_maintenance_rate if year in (5, 10) else 0.0
             terminal_value = 0.0
             terminal_release = max(0.0, previous_nwc) if year == years else 0.0
@@ -110,6 +124,8 @@ def project_cash_flow(
                 "capex_vnd": capex,
                 "capex_net_vnd": capex_net_use,
                 "vat_paid_vnd": capex_vat_paid,
+                "construction_capex_vnd": construction_capex_paid,
+                "idc_vnd": idc_paid,
                 "major_maintenance_vnd": major_maintenance,
                 "terminal_value_vnd": terminal_value,
                 "terminal_release_vnd": terminal_release,
