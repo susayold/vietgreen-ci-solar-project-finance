@@ -1,21 +1,21 @@
-# Lender credit memo — candidate release
+# Lender credit memo - candidate release 1.2.0
 
 ## Credit view
 
 CONDITIONAL / NOT READY FOR CREDIT APPROVAL.
 
-The candidate portfolio contains 11 selected synthetic projects at 13.4 MWp. Endogenous pooled debt is 152.880435 BVND and pooled DSCR is 1.30x at the base case. P90, FX, DSO, interest-rate, default and common-factor cases are available for challenge.
+The candidate portfolio contains 11 selected synthetic projects at 13.10 MWp. Endogenous pooled debt is 152.457008 BVND and base pooled DSCR is 1.30x. The base sponsor NPV is -66.202345 BVND, so sponsor economics are not a credit substitute.
 
 ## Controls observed
 
-- 8,760-hour P50/P90 profiles.
-- Annual CFADS with tax, VAT, working capital and major maintenance.
-- DSCR, LLCR, PLCR and leverage constraints.
-- Forward debt rebuild and pooled feedback convergence in 2 iterations.
-- Debt-close, sources-and-uses, isolation and monotonicity checks.
-- Hidden-truth cases isolated from the model and matched 5/5.
+- 8,760-hour P50/P90 profiles with remote artifact export.
+- Annual CFADS with tax proxy, VAT, working capital, major maintenance and zero terminal value.
+- Bottom-up CAPEX with 12-month construction curve, VAT split and capitalised IDC proxy.
+- DSCR, LLCR, PLCR and leverage constraints with registered coverage discount rates.
+- Forward debt rebuild, debt-close, pooled feedback convergence, DSRA and reserve waterfall.
+- P90, FX, DSO, default, COD, site-event and common-factor stress cases.
+- 20/20 DQ, 20/20 dynamic QA, 31/31 workbook checks, 5/5 tests and 13/13 mechanical release controls.
 
 ## Credit gaps
 
-No lender has certified the assumptions, billed tariff, PPA, security, insurance, site, technical yield, sponsor support, customer credit, FX hedge or reserve documentation. The model is therefore not a bankable P90, credit approval or commitment document.
-
+No lender has certified the assumed pricing, billed tariff, PPA, security, construction schedule, IDC rate, insurance, site, technical yield, sponsor support, customer credit, FX hedge or reserve documentation. The model is therefore not a bankable P90, credit approval, commitment or lender-approved term sheet.
