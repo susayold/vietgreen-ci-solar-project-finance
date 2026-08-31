@@ -1,23 +1,32 @@
-# DATA_ROOM_INDEX
+# Data-room index
 
-## Public synthetic sections
+## Remote-only location
 
-- Corporate/sponsor case framing: BUSINESS_CASE.md
-- Project/offtaker/site: data/synthetic/
-- Technical/yield/load: data/synthetic/solar_resource.csv, outputs/energy_p50_p90.csv, outputs/load_matching_summary.csv
-- Commercial/PPA: data/synthetic/ppa_terms.csv, outputs/ppa_frontier.csv
-- CAPEX/CFADS/tax/WC: data/synthetic/capex.csv, outputs/project_cash_flow.csv, outputs/sources_uses.csv
-- Financing/coverage/reserves/FX: data/synthetic/debt_terms.csv, outputs/debt_schedule.csv, outputs/coverage_summary.csv, outputs/reserve_waterfall.csv, outputs/fx_sensitivity.csv
-- Portfolio/IC: outputs/portfolio_selection.csv, outputs/portfolio_concentration.csv, outputs/IC_DECISION_TABLE.csv
-- Validation/release: evidence/, validation/, release/
+Repository: https://github.com/susayold/vietgreen-ci-solar-project-finance
 
-## Remote artifact run
+The project data-room is represented by the repository and the one linked Google Drive execution-control document. No project-data copy is intentionally retained in the local workspace.
 
-Workflow: https://github.com/susayold/vietgreen-ci-solar-project-finance/actions/runs/33341728029
+## Latest release evidence
 
-Artifact: vietgreen-core-outputs; digest:
-sha256:643968eaa69cd578e06a94de4f39b486e597274735059981b0bd8d8510171c29
+- Repository HEAD: c1688a4044ad89c87be5e8e78978889d51f63a39.
+- Model source commit: 80e16ef841795b64234b2a76cc6e31f070adefad.
+- Workflow run: 33344412788.
+- Workflow job: 99345713943.
+- Artifact: vietgreen-core-outputs, ID 9741517882.
+- Artifact digest: sha256:4ac36aa2000f7d56093c0432e4a440c7610ef63d10a681030c2ad4d9e6c254b7.
+- Native workbook: 22 sheets; current blob acddae11d2860c93091bf5b898701c36617eac13; 105385 bytes.
+- Data quality: 18 checks, 0 failures.
+- Workbook validation: 31 checks, 0 failures.
+- Hidden truth: 5 cases, 5 classification matches, 0 false negatives.
+- Automated tests: 5 passed.
 
-## Private / excluded
+## Evidence map
 
-No real customer identifiers, credentials, proprietary quotes, restricted raw snapshots or hidden truth are stored publicly. A future private data room must be permissioned separately and must not be mixed into the public synthetic repository.
+- evidence/: synthetic source, assumption, tariff, regulatory, discount-rate and debt-term registers.
+- outputs/: energy, load, PPA, debt, cash-flow, reserve, returns, FX, scenarios, selection, concentration and IC outputs.
+- validation/: data-quality, hidden-truth, remote QA and workbook-validation outputs.
+- model/: native workbook and workbook specification.
+- docs/: methodology and plan trace.
+- release/: remote artifact and release manifests.
+- reports/: IC, lender, financing and data-room memos.
+

@@ -1,8 +1,12 @@
-test_id,module,scenario_id,test_type,expected,actual,tolerance,status,severity,notes
-QA-001,pipeline,BASE_SPONSOR,hard_gate_before_score,failed gate cannot be rescued,verified,N/A,PASS,BLOCKER,
-QA-002,energy,BASE_SPONSOR,p90_le_p50,P90 <= P50,verified,N/A,PASS,BLOCKER,PVOUT not multiplied by generic PR
-QA-003,cash_flow,BASE_SPONSOR,sources_equals_uses,reconcile,remote_workflow_pass,1 VND,PASS,BLOCKER,
-QA-004,debt,BASE_SPONSOR,debt_closes_zero,zero at maturity,remote_workflow_pass,1 VND,PASS,BLOCKER,
-QA-005,portfolio,BASE_SPONSOR,aggregate_dscr,sum CFADS/sum debt service,verified,N/A,PASS,MAJOR,
-QA-006,fx,FX_CRAWL,period_translation,period-by-period,verified,N/A,PASS,MAJOR,Stress path not forecast
-QA-007,release,BASE_SPONSOR,claim_gate,no lender-grade claim,verified,N/A,PASS,MAJOR,
+check_id,category,status,evidence,limitation
+DQ-001,data_quality,PASS,18 of 18 checks passed,Internal synthetic lineage and cross-field checks only
+WB-001,workbook,PASS,31 of 31 checks passed,Structural workbook validation only
+HT-001,hidden_truth,PASS,5 of 5 cases matched; 0 false negatives,Aggregate-only test cases; raw truth withheld
+TEST-001,automated_tests,PASS,5 of 5 tests passed,Test suite is not independent model assurance
+QA-001,energy,PASS,8760 hashes and P90 monotonicity,Profiles are synthetic
+QA-002,cash_flow,PASS,Sources and uses and terminal checks passed,Tax/accounting proxy not certified
+QA-003,debt,PASS,Debt close and pooled feedback convergence,Not lender-approved terms
+QA-004,scenario,PASS,Scenario isolation and monotonicity checks passed,Annual timing limitations remain
+QA-005,regulatory,WATCH,Decision 963 metadata linked; billed implementation open,Confirm Circular 60/EVN chain
+QA-006,external_review,PENDING,Independent final review not completed,Required before final/recruiter-ready claim
+QA-007,diligence,PENDING,Lender/legal/tax/technical/site diligence not completed,Required before investment or credit approval

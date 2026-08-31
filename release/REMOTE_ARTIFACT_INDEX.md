@@ -1,15 +1,24 @@
-# REMOTE_ARTIFACT_INDEX
+# Remote artifact index
 
-The canonical execution surface is GitHub Actions. The runner is ephemeral; generated outputs are retained as the workflow artifact vietgreen-core-outputs, not written to the user's device.
+Release candidate: 1.1.0
+Date: 2026-08-31
+Repository: https://github.com/susayold/vietgreen-ci-solar-project-finance
+Repository HEAD: c1688a4044ad89c87be5e8e78978889d51f63a39
+Source/model commit: 80e16ef841795b64234b2a76cc6e31f070adefad
+Workflow run: 33344412788
+Workflow job: 99345713943
+Artifact: vietgreen-core-outputs, ID 9741517882
+Artifact digest: sha256:4ac36aa2000f7d56093c0432e4a440c7610ef63d10a681030c2ad4d9e6c254b7
 
-- Workflow run: https://github.com/susayold/vietgreen-ci-solar-project-finance/actions/runs/33342737172
-- Artifact digest: sha256:48140a7af9dafe67c58bbdfbf3c28decac291bf3f2a3331e8417421f673b85d6
-- Data-quality validation: 13/13 PASS
-- Native workbook structural validation: 31/31 PASS (22 sheet contract + package/XML/control checks)
-- Native workbook: model/vietgreen_core_model.xlsx (22 sheets; blob 1cddc9a326ba675b450b9dba9ccf63b52293023b; 670,861 bytes)
-- Model, tests and upload steps: PASS
-- Regulatory/tariff recheck: Decision 963 and Circular 60 are in the register; EVN implementation notice keeps billed tariff status WATCH
-- Release status: candidate / PASS_WITH_LIMITATIONS
-- Remaining gates: independent final review, confirmed billed-tariff implementation and lender/legal/technical/site diligence.
+## Gate summary
 
-The public repository contains synthetic inputs and source metadata only. Private hidden truth, restricted raw snapshots, credentials and proprietary quotes are excluded.
+- Data-quality: 18 checks, 0 failures.
+- Workbook: 31 checks, 0 failures.
+- Hidden truth: 5 cases, 5 matches, 0 false negatives.
+- Automated tests: 5 passed.
+- Native workbook: 22 sheets, 105385 bytes.
+- Tariff: WATCH pending billed implementation confirmation.
+- Release status: candidate.
+- recruiter_ready: false.
+
+The artifact is remote-only and contains synthetic inputs, aggregate validation and review outputs. It excludes credentials and hidden raw truth.

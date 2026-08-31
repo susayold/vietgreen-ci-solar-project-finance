@@ -1,9 +1,21 @@
-# LENDER CREDIT MEMO — CANDIDATE
+# Lender credit memo — candidate release
 
-Candidate: 8 selected projects / 9.9 MWp; provisional pooled debt 67.403216 BVND; pooled DSCR 1.476303x.
+## Credit view
 
-Public ADB/FMO/responsAbility precedents support structure plausibility only; they do not prove VietGreen leverage, DSCR, spread, tenor or covenants.
+CONDITIONAL / NOT READY FOR CREDIT APPROVAL.
 
-Focus: P90 coverage, contract tail, termination support, site continuity, concentration, reserves, circularity, foreign-borrowing legality and security perfection.
+The candidate portfolio contains 11 selected synthetic projects at 13.4 MWp. Endogenous pooled debt is 152.880435 BVND and pooled DSCR is 1.30x at the base case. P90, FX, DSO, interest-rate, default and common-factor cases are available for challenge.
 
-Conclusion: CONDITIONAL. The screening shortlist is not lender approval; sponsor value remains below hurdle in the base case and documentary diligence is required.
+## Controls observed
+
+- 8,760-hour P50/P90 profiles.
+- Annual CFADS with tax, VAT, working capital and major maintenance.
+- DSCR, LLCR, PLCR and leverage constraints.
+- Forward debt rebuild and pooled feedback convergence in 2 iterations.
+- Debt-close, sources-and-uses, isolation and monotonicity checks.
+- Hidden-truth cases isolated from the model and matched 5/5.
+
+## Credit gaps
+
+No lender has certified the assumptions, billed tariff, PPA, security, insurance, site, technical yield, sponsor support, customer credit, FX hedge or reserve documentation. The model is therefore not a bankable P90, credit approval or commitment document.
+

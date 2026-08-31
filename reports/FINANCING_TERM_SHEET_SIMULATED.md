@@ -1,12 +1,18 @@
-# FINANCING_TERM_SHEET_SIMULATED
+# Simulated financing term sheet
 
-Status: simulated screening term sheet, not an offer or commitment.
+This is a modeling term sheet, not an offer, commitment, or lender-approved term sheet.
 
-- Currency: VND model; USD debt translation shown as a stress path.
-- Debt sizing: minimum of DSCR, LLCR and leverage caps.
-- Base sizing DSCR: 1.30x; minimum covenant DSCR: 1.20x; lock-up DSCR: 1.25x.
-- Debt tenor: 10 years; PPA tenor screen: 15 years; DSRA: six months of debt service.
-- Provisional pooled debt: 87.18547 BVND; pooled DSCR: 1.476303x.
-- Required conditions: bankable PPA, termination support, site continuity, insurance, reserve mechanics, FX/legal review and independent diligence.
+- Borrower/portfolio: VietGreen synthetic C&I solar portfolio.
+- Selected projects: 11 of 20.
+- Selected capacity: 13.4 MWp.
+- Equity used: 131.869565 BVND.
+- Endogenous pooled facility: 152.880435 BVND.
+- Base pooled DSCR target: 1.30x.
+- Pooled feedback: 2 iterations; converged.
+- Debt sculpting concepts: DSCR, LLCR, PLCR and leverage caps.
+- Tail: debt closes within modeled service period; terminal value is zero.
+- Currency: VND model base with FX sensitivities.
+- Pricing: modeled assumption only; interest-rate shock is separately tested.
+- Reserves: DSRA and reserve waterfall included as screening mechanics.
+- Conditions: billed tariff/legal applicability, executed PPA/security package, bankable P90, independent review, lender/legal/tax/technical/site diligence.
 
-All terms are synthetic assumptions.

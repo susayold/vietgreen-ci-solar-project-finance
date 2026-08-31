@@ -1,17 +1,24 @@
-# DEBT_SCULPTING_METHODOLOGY
+# Debt sculpting methodology
 
-Debt sizing applies hard caps in this order:
+## Standalone sizing
 
-1. DSCR capacity from forecast CFADS and sizing DSCR;
-2. LLCR capacity from discounted CFADS and LLCR floor;
-3. leverage capacity from CAPEX and leverage cap.
+For each eligible project, debt capacity is bounded by:
 
-The binding amount is the minimum of the three. Backward sizing uses:
+- DSCR capacity from annual CFADS;
+- LLCR capacity from discounted CFADS;
+- PLCR capacity from discounted CFADS including the modeled tail;
+- leverage cap;
+- minimum debt and tail rules.
 
-OpeningDebt_t = (DebtService_t + ClosingDebt_t) / (1 + rate)
+The minimum binding capacity is selected, then a forward debt schedule is rebuilt and checked for debt close, coverage and tail.
 
-Forward rebuild uses:
+## Pooled facility
 
-ClosingDebt_t = max(0, OpeningDebt_t − Principal_t)
+The pooled facility is sized from aggregate selected-project CFADS and the same coverage and leverage concepts. A feedback loop rebuilds project cash flows with the pooled allocations, recalculates CFADS and debt service, and repeats until convergence. The latest run converged in 2 iterations.
 
-and must close to zero at maturity within DEBT_CLOSE_TOL_VND. Interest is included once in debt service; principal is debt service less interest. A pooled facility must be re-sized from aggregate CFADS rather than summing standalone facilities.
+The pooled amount equals the displayed standalone sum in this candidate because the current synthetic terms and linear aggregation make the independent capacity sum binding. This equality is an observed output, not a hard-coded pooled-debt assumption.
+
+## Limitations
+
+Annual screening debt service does not substitute for lender-specific covenant, reserve, hedge, default, intercreditor or security documentation. P90 debt sizing and final lender sizing remain open diligence gates.
+
