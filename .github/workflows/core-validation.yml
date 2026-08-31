@@ -30,6 +30,9 @@ jobs:
         run: python -m analytics.hidden_truth_validation
       - name: Build native workbook
         run: python -m analytics.build_native_workbook
+      - name: Report deterministic workbook byte hash
+        run: sha256sum model/vietgreen_core_model.xlsx
+
       - name: Validate native workbook structure
         run: python -m analytics.validate_workbook
       - name: Run tests
