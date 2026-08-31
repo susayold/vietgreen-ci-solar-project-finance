@@ -1,24 +1,27 @@
 # Remote artifact index
 
-Release candidate: 1.1.0
+Release candidate: 1.2.0
 Date: 2026-08-31
 Repository: https://github.com/susayold/vietgreen-ci-solar-project-finance
-Workflow source commit: 504d6129c3660a02cd3ac71208eddccbd01fae80
-Workbook refresh commit: 00c99a29629921571dc26cdb39a32a1b2cbf6d7d
-Workflow run: 33344817775
-Workflow job: 99346822770
-Artifact: vietgreen-core-outputs, ID 9741638986
-Artifact digest: sha256:62f6f9b892623d5a81ee9ef10e9aad0b370b0cc707a865a1aad0217000a485fc
+Workflow source commit: 09b91dfcccaa12259df0b5ac87a1fd612f73ba13
+Workbook refresh commit: 67d341a728cfd6863a89128f2c79a2892715c946
+Workflow run: 33346497581
+Workflow job: 99351523243
+Artifact: vietgreen-core-outputs, ID 9742154404
+Artifact digest: sha256:3fd6cb3507a5bf90241495fca332bb50dc7cfcf67fd37b31a38ae183f93580ef
 
 ## Gate summary
 
 - Data-quality: 18 checks, 0 failures.
+- Dynamic remote QA: 18 checks, 0 failures.
 - Workbook: 31 checks, 0 failures.
 - Hidden truth: 5 cases, 5 matches, 0 false negatives.
 - Automated tests: 5 passed.
-- Native workbook: 22 sheets, 105385 bytes; blob 3134dcfdc60b6f3bfa2d75e36179649ca9c1dfa9.
+- Release controls: 12 mechanical PASS, 1 candidate WARN for post-run manifest linkage.
+- Native workbook: 22 sheets, 106636 bytes; blob 2af6371982c35eb117f50dff344dcc0cfae8108f.
+- Remote 8,760 streams: load 175,200 rows and solar/self-consumption 175,200 rows; index validation PASS.
 - Tariff: WATCH pending billed implementation confirmation.
 - Release status: candidate.
 - recruiter_ready: false.
 
-The artifact is remote-only and contains synthetic inputs, aggregate validation and review outputs. It excludes credentials and hidden raw truth.
+The artifact is remote-only and contains synthetic inputs, aggregate validation, controlled outputs and review streams. It excludes credentials and private hidden raw truth. The compressed hourly streams are available through the workflow artifact, not the desktop workspace.
