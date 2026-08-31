@@ -52,8 +52,8 @@
   "external_validation_rows": 9,
   "latest_benchmark_refresh_source_id": "SRC-IRENA-2025",
   "git_commit": "02b3fc9bc9c39728b5796db34184ddd7778e5edb",
-  "release_metadata_parent_commit": "d10424817fb9cd9ec84a5e9265e1a1a9fcca65dd",
-  "release_timestamp_utc": "2026-08-31T07:57:00Z",
+  "release_metadata_parent_commit": "8155a9fe6d41b357a74de12eeb4f087bb3c7a7d9",
+  "release_timestamp_utc": "2026-08-31T07:59:00Z",
   "excel_file": {
     "path": "model/vietgreen_core_model.xlsx",
     "sha256": "9e72588fd7a084282befa74dd0f97036f15e1f306aac6080fc86fdd75f605c5f",
@@ -139,10 +139,10 @@
     "PENDING": 1,
     "WATCH": 0
   },
-  "plan_dod_audit_workflow_run_id": 33369402509,
-  "plan_dod_audit_workflow_job_id": 99416840692,
+  "plan_dod_audit_workflow_run_id": 33370722645,
+  "plan_dod_audit_workflow_job_id": 99420995851,
   "plan_dod_audit_workflow_status": "PASS",
-  "plan_dod_audit_timestamp_utc": "2026-08-31T07:40:28Z",
+  "plan_dod_audit_timestamp_utc": "2026-08-31T07:58:25Z",
   "external_gate_intake_path": "validation/EXTERNAL_GATE_INTAKE.csv",
   "external_gate_intake_template_path": "evidence/EXTERNAL_GATE_INTAKE_TEMPLATE.md",
   "external_gate_intake_schema_version": "EGI-1.0",
@@ -155,8 +155,8 @@
   "external_gate_submission_path": "validation/EXTERNAL_GATE_SUBMISSIONS.csv",
   "external_gate_validation_workflow": ".github/workflows/external-gate-validation.yml",
   "external_gate_validation_status": "PASS_EMPTY_SUBMISSIONS",
-  "external_gate_validation_run_id": 33370201444,
-  "external_gate_validation_job_id": 99419321412,
+  "external_gate_validation_run_id": 33370744629,
+  "external_gate_validation_job_id": 99421069680,
   "source_refresh_schedule": "0 2 * * 1 (UTC)",
   "source_refresh_schedule_status": "ACTIVE"
 }

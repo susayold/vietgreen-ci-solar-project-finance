@@ -45,7 +45,7 @@ This is a reviewable candidate, not a lender approval, bankable P90 case, legal 
 - Same-head reproducibility run: 33367239508 / job 99410324360; remote comparator: 33367293807 / job 99410490341; 6/6 file hashes matched, with raw artifact contents not stored.
 - Latest official-source refresh: 33370454210 / job 99420130285; 24 URLs, 20 PASS and 4 non-blocking WARNs; raw snapshots were not stored.
 - The source-refresh workflow is also scheduled weekly at 02:00 UTC on Monday and remains metadata-only.
-- External-gate validator: 33370201444 / job 99419321412; 8 gate rows, 0 submissions, PASS_EMPTY_SUBMISSIONS; no gate was closed.
+- External-gate validator: 33370744629 / job 99421069680; 8 gate rows, 0 submissions, PASS_EMPTY_SUBMISSIONS; no gate was closed.
 
 ## Reproducibility and storage
 

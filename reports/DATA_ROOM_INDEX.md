@@ -34,7 +34,7 @@ The project data-room is represented by the repository, the workflow artifact an
 - Locked input hashes: PASS.
 - Remote 8,760 artifact streams: 175,200 rows each in plan-specified Parquet plus CSV.GZ compatibility format; local_storage NONE.
 - Same-head remote comparator: 33367293807 / job 99410490341; 6/6 target files matched, baseline artifact 9748676847 and repeat artifact 9748704397; comparison metadata artifact 9748718166, raw artifact contents not stored.
-- Full Master Plan V3 DoD audit: 65 rows, 62 PASS, 2 PARTIAL and 1 PENDING; workflow 33369402509 / job 99416840692 passed all 190 evidence-path checks. See validation/PLAN_DOD_AUDIT.csv.
+- Full Master Plan V3 DoD audit: 65 rows, 62 PASS, 2 PARTIAL and 1 PENDING; workflow 33370722645 / job 99420995851 passed all 190 evidence-path checks. See validation/PLAN_DOD_AUDIT.csv.
 
 
 ## External gate intake
@@ -42,7 +42,7 @@ The project data-room is represented by the repository, the workflow artifact an
 - Remote-only intake register: `validation/EXTERNAL_GATE_INTAKE.csv`.
 - Acceptance contract: `evidence/EXTERNAL_GATE_INTAKE_TEMPLATE.md`.
 - Submission schema: `validation/EXTERNAL_GATE_SUBMISSIONS.csv`; remote validator: `.github/workflows/external-gate-validation.yml`.
-- External-gate validator run 33370201444 / job 99419321412 passed with 8 gate rows and 0 submissions; all gates remain OPEN.
+- External-gate validator run 33370744629 / job 99421069680 passed with 8 gate rows and 0 submissions; all gates remain OPEN.
 - These files contain metadata and acceptance rules only; private transaction documents must remain in controlled Drive storage and are not uploaded to this public repository.
 
 ## Candidate economics
