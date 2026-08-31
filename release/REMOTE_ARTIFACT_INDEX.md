@@ -5,11 +5,11 @@ Date: 2026-08-31
 Source register: SR-1.6-live-benchmark-refresh (latest live source: SRC-REFRESH-EVN-20260730)
 Repository: https://github.com/susayold/vietgreen-ci-solar-project-finance
 Workflow source commit: 95af3267ebfc615e194323f1fa503c2d13bad5bb
-Workbook refresh commit: bc5d8207814cb43b645199b0b4d23921bc3606aa
-Workflow run: 33354033001
-Workflow job: 99372662335
-Artifact: vietgreen-core-outputs, ID 9744543908
-Artifact digest: sha256:c7a9ddd43d97a414603e5ba693fc0559208857e86ca7996ae6786850980bde9d
+Workbook refresh commit: 2abe6a965380390f041955fdde05977345e310f4
+Workflow run: 33355268974
+Workflow job: 99376083185
+Artifact: vietgreen-core-outputs, ID 9744920510
+Artifact digest: sha256:1539f7410e98dc8a1c5493f5e898b9eacb6e6fac2fae7566e0457441683ccf8b
 
 ## Gate summary
 
@@ -19,7 +19,7 @@ Artifact digest: sha256:c7a9ddd43d97a414603e5ba693fc0559208857e86ca7996ae6786850
 - Hidden truth: 5 cases, 5 matches, 0 false negatives.
 - Automated tests: 7 passed.
 - Release controls: 13 mechanical PASS, 1 candidate WARN for post-run manifest linkage.
-- Native workbook: 22 sheets, 116230 bytes; blob a9ff3f3bcb6207588dd9b6c20c6768dc5fad60df.
+- Native workbook: 22 sheets, 116230 bytes; blob c160cb5b630f653c68343381a8d0d514faa54b02.
 - Construction schedule: 240 rows; capitalised IDC proxy rate 8.5%; sources and uses reconciled.
 - Portfolio: 11 selected projects, 13.10 MWp, pooled DSCR 1.300x, sponsor NPV -66.202345 BVND.
 - Remote 8,760 streams: load 175,200 rows and solar/self-consumption 175,200 rows; index validation PASS.
