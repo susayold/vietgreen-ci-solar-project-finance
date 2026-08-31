@@ -6,6 +6,13 @@ retrieval date, and transformation destinations are recorded instead.
 
 ## Tariff and billing
 
+## Tax watch
+
+- The official Government Portal published a draft amendment to Decree 320/2025 on 28 August 2026.
+- The draft is recorded as WATCH only; no effective tax input or tax version in the candidate model was changed.
+- Recheck with Vietnam tax counsel before any bankable or recruiter-ready release.
+
+
 - Decision 963/QD-BCT was issued by MOIT on 22 April 2026. The engine uses low
   00:00-06:00 every day, peak 17:30-22:30 Monday-Saturday, and normal hours
   otherwise, including Sunday 06:00-24:00.
@@ -27,10 +34,10 @@ retrieval date, and transformation destinations are recorded instead.
 - EVN notice: https://evn.com.vn/d/vi-VN/news-d/Cuc-Dien-luc-thong-tin-ve-thoi-gian-ap-dung-khung-gio-cao-diem-thap-diem-va-gio-binh-thuong-cua-he-thong-dien-quoc-gia-60-2025-507824
 
 Retrieval date: 2026-08-31
-Source rows: SRC-TAR-963, SRC-TAR-60, SRC-REFRESH-EVN-20260831, SRC-REFRESH-MOIT-20260709
+Source rows: SRC-TAR-963, SRC-TAR-60, SRC-REFRESH-EVN-20260831, SRC-REFRESH-MOIT-20260709, SRC-REFRESH-TAX-20260831
 
 - EVN public explainer dated 30 July 2026 describes the new Decision 963 windows and the customer scope for TOU, but does not provide an invoice cutover/effective billing date; billing_status remains WATCH.
 
 - Latest EVN explainer: https://www.evn.com.vn/d/vi-VN/news/Dieu-chinh-khung-gio-cao-diem-Doanh-nghiep-duoc-loi-gi-60-3557-509124
 
-Latest refresh source row: SRC-REFRESH-EVN-20260730
+Latest refresh source rows: SRC-REFRESH-EVN-20260730; tax watch SRC-REFRESH-TAX-20260831
