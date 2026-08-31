@@ -1,2 +1,2 @@
 portfolio_case,selected_count,standalone_equity_required_vnd,standalone_equity_npv_vnd,standalone_debt_vnd,pooled_equity_required_vnd,pooled_equity_npv_vnd,pooled_debt_vnd,standalone_min_dscr,pooled_min_dscr,pooled_binding_cap,standalone_vs_pooled_status
-NEGOTIATED_EXPOSURE_BASE,7,50622128958.333336,8509767509.326926,94012525208.33334,50622128958.33334,8505076118.916892,94012525208.33334,1.2999999999999998,1.3,LEVERAGE,PASS
+NEGOTIATED_EXPOSURE_BASE,4,30124825208.333336,5942276842.6387205,55946103958.333336,30124825208.333336,5942276842.638723,55946103958.333336,1.2999999999999998,1.3,LEVERAGE,PASS
