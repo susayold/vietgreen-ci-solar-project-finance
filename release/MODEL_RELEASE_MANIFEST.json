@@ -6,7 +6,7 @@
   "research_freeze_date": "2026-08-31",
   "workflow_artifact": "vietgreen-core-outputs",
   "master_seed": 260831,
-  "source_register_version": "SR-1.4-tou-billing-and-reproducibility",
+  "source_register_version": "SR-1.5-live-evn-refresh",
   "regulatory_freeze_date": "2026-08-31",
   "tariff_version": "TAR-TOU-963-EFFECTIVE_BILLING_WATCH",
   "billing_status": "WATCH",
@@ -47,5 +47,6 @@
   "native_workbook_size_bytes": 116110,
   "limitation": "Decision 963 time windows are legally effective, but billed tariff implementation remains to be confirmed through the Circular 60 and EVN implementation chain; capitalised IDC and the construction curve are synthetic proxies; independent final review and lender/legal/tax/technical/site diligence remain outstanding.",
   "automated_tests": 7,
-  "backend_manifest_reconciled": true
+  "backend_manifest_reconciled": true,
+  "latest_live_refresh_source_id": "SRC-REFRESH-EVN-20260730"
 }
