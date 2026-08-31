@@ -21,35 +21,34 @@ def run(root=ROOT):
     for index in range(1, 6):
         annual_load = 900_000.0 + index * 125_000.0
         annual_solar = 1_050_000.0 + index * 90_000.0
-        truth = profile(annual_load, annual_solar, daytime_share=0.68 + index * 0.02)
+        truth_daytime_share = 0.68 + index * 0.02
+        truth = profile(annual_load, annual_solar, daytime_share=truth_daytime_share)
         truth_cases.append(
             {
                 "case_id": "HIDDEN-%02d" % index,
                 "truth_self_consumption": sum(truth["self_consumed"]),
-                "truth_excess": sum(truth["excess"]),
+                "model_self_consumption": sum(
+                    profile(annual_load, annual_solar, daytime_share=0.78)["self_consumed"]
+                ),
             }
         )
     rows = []
     for case in truth_cases:
-        modeled = profile(
-            annual_load=case["truth_self_consumption"] + case["truth_excess"],
-            annual_solar=case["truth_self_consumption"] + case["truth_excess"],
-            daytime_share=0.78,
-        )
-        modeled_self = sum(modeled["self_consumed"])
-        error = abs(modeled_self - case["truth_self_consumption"])
+        error = abs(case["model_self_consumption"] - case["truth_self_consumption"])
+        threshold = max(1.0, case["truth_self_consumption"] * 0.01)
+        detected = error > threshold
         rows.append(
             {
                 "case_id": case["case_id"],
-                "hidden_truth_category": "in_memory_8760_reconciliation",
-                "model_detected_flag": True,
-                "model_primary_issue": "none" if error <= max(1.0, case["truth_self_consumption"] * 0.50) else "hourly_reconciliation_gap",
-                "truth_primary_issue": "none",
-                "classification_match": error <= max(1.0, case["truth_self_consumption"] * 0.50),
+                "hidden_truth_category": "in_memory_8760_load_shape",
+                "model_detected_flag": detected,
+                "model_primary_issue": "hourly_shape_mismatch" if detected else "none",
+                "truth_primary_issue": "hourly_shape_mismatch",
+                "classification_match": detected,
                 "false_positive_flag": False,
-                "false_negative_flag": False,
-                "review_comment": "Aggregate-only firewall result; raw truth is not persisted.",
-                "requires_future_model_change": error > max(1.0, case["truth_self_consumption"] * 0.50),
+                "false_negative_flag": not detected,
+                "review_comment": "Aggregate-only firewall result; raw truth and hourly arrays are not persisted.",
+                "requires_future_model_change": not detected,
             }
         )
     out = Path(root) / "validation/HIDDEN_TRUTH_RESULTS.csv"
@@ -70,7 +69,11 @@ def run(root=ROOT):
         writer = csv.DictWriter(handle, fieldnames=fields)
         writer.writeheader()
         writer.writerows(rows)
-    summary = {"cases": len(rows), "classification_matches": sum(row["classification_match"] for row in rows)}
+    summary = {
+        "cases": len(rows),
+        "classification_matches": sum(bool(row["classification_match"]) for row in rows),
+        "false_negatives": sum(bool(row["false_negative_flag"]) for row in rows),
+    }
     print(json.dumps(summary, sort_keys=True))
     return summary
 
