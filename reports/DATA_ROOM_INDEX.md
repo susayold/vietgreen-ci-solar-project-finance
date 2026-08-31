@@ -8,7 +8,7 @@ The project data-room is represented by the repository, the workflow artifact an
 
 ## Latest release evidence
 
-- Source register: SR-1.13-utility-implementation-readiness; latest live evidence row: SRC-REFRESH-EVN-20260831; corroborating EVNSPC rows: SRC-REFRESH-EVNSPC-20260715, SRC-REFRESH-EVNSPC-PRICING-20260831, SRC-REFRESH-EVNSPC-TRAINING-20260527 and SRC-REFRESH-EVNSPC-IT-20260525; tariff-chain legal dependency: SRC-TAR-278.
+- Source register: SR-1.14-rolling-regulatory-recheck; latest live evidence row: SRC-REG-243; corroborating EVNSPC rows: SRC-REFRESH-EVNSPC-20260715, SRC-REFRESH-EVNSPC-PRICING-20260831, SRC-REFRESH-EVNSPC-TRAINING-20260527 and SRC-REFRESH-EVNSPC-IT-20260525; tariff-chain legal dependency: SRC-TAR-278; rolling tax/FX references: SRC-TAX-067, SRC-TAX-320, SRC-TAX-141, SRC-TAX-020, SRC-FX-008 and SRC-FX-019.
 
 - Release candidate: 1.2.0.
 - Workflow source commit: b7ac7ab507487d4ba021064c8cdeadb29fcefc44.
@@ -25,7 +25,7 @@ The project data-room is represented by the repository, the workflow artifact an
 - Automated tests: 7 passed.
 - Mechanical release controls: 13 PASS, 1 WARN.
 - External gate tracker: 8 open transaction/evidence gates; no gate is closed by synthetic data alone.
-- Official source refresh: `.github/workflows/source-refresh.yml` crawls 16 controlled public URLs remotely and commits metadata only to `evidence/REMOTE_SOURCE_LIVE_CHECK.csv`. Latest run 33366510106 / job 99408166781: 13 PASS / 3 non-blocking WARNs (MOIT runner network-unreachable on two pages; NREL DNS); artifact 9748486524, digest sha256:bbafe54b9991fb90b74ce39ca089c6b937855660411c3cfe859da506bff327aa; raw snapshots FALSE.
+- Official source refresh: `.github/workflows/source-refresh.yml` crawls 24 controlled public URLs remotely and commits metadata only to `evidence/REMOTE_SOURCE_LIVE_CHECK.csv`. Latest run 33368222168 / job 99413280315: 20 PASS / 4 non-blocking WARNs (two MOIT runner network-unreachable pages, NREL DNS and IRENA HTTP 403); artifact 9749081207, digest sha256:4106b2dab2c29d7f1eaf46e463148e8f3f4b19e8fcaae27657285b375c940264; raw snapshots FALSE.
 - Locked input hashes: PASS.
 - Remote 8,760 artifact streams: 175,200 rows each in plan-specified Parquet plus CSV.GZ compatibility format; local_storage NONE.
 - Same-head remote comparator: 33367293807 / job 99410490341; 6/6 target files matched, baseline artifact 9748676847 and repeat artifact 9748704397; comparison metadata artifact 9748718166, raw artifact contents not stored.

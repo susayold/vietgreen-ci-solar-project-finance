@@ -18,6 +18,13 @@ Remote evidence note for the candidate release. Raw snapshots are intentionally 
 - **SRC-REFRESH-MOIT-20260709 — MOIT Q2 briefing:** the 09 July 2026 briefing is retained as the contemporaneous statement that Decision 963 had not yet been applied in practice.
 - **SRC-REFRESH-TAX-20260831 — Government Portal tax draft:** the 28 August 2026 draft amendment to Decree 320/2025 remains consultation material and is not treated as effective tax law.
 
+## Rolling official-source recheck
+
+- **SRC-REG-243 — Decree 243/2026/ND-CP:** Government Portal page was reachable and recorded as a metadata-only PASS (HTTP 200); the source remains registered for regulatory lineage.
+- **SRC-TAX-067, SRC-TAX-320, SRC-TAX-141 and SRC-TAX-020:** Government Portal pages for the registered tax law, decree and guidance were reachable and recorded as metadata-only PASS (HTTP 200); the 2026 draft amendment remains a separate WATCH item and no effective model-tax input changed.
+- **SRC-FX-008 and SRC-FX-019:** Government Portal pages for the registered foreign-borrowing rules were reachable and recorded as metadata-only PASS (HTTP 200); they remain legal/reference inputs, not proof of transaction-specific advice.
+- **SRC-IRENA-2024:** the registered 2024 IRENA cost-benchmark URL returned HTTP 403 from the ephemeral runner, so it is retained as a WARN for recheck and is not used as certification evidence.
+
 ## Claim boundary
 
 The model keeps LEGAL_EFFECTIVE_NOT_BILLED, CURRENT_BILLED_REFERENCE, and SIMULATED_MODEL_INPUT as separate statuses. billing_status=WATCH remains a hard release limitation until a directly applicable utility/EVN billing record or authoritative implementation notice shows the invoice effective date.
@@ -39,16 +46,16 @@ The model keeps LEGAL_EFFECTIVE_NOT_BILLED, CURRENT_BILLED_REFERENCE, and SIMULA
 - EVNSPC IT readiness note: https://it.evnspc.vn/CMS_Article/ArticleByID?ArticleID=F02WEB-202605-0000000000007
 
 Retrieval date: 2026-08-31
-Source rows: SRC-TAR-963, SRC-TAR-60, SRC-TAR-278, SRC-REFRESH-EVN-20260831, SRC-REFRESH-EVN-BULLETIN-20260831, SRC-REFRESH-EVN-20260730, SRC-REFRESH-MOIT-20260709, SRC-REFRESH-TAX-20260831, SRC-SOLAR-GSA, SRC-SOLAR-NREL, SRC-REFRESH-EVN-963-20260423, SRC-REFRESH-MOIT-20260611, SRC-REFRESH-EVNSPC-20260715, SRC-REFRESH-EVNSPC-PRICING-20260831, SRC-REFRESH-EVNSPC-TRAINING-20260527, SRC-REFRESH-EVNSPC-IT-20260525
+Source rows: SRC-TAR-963, SRC-TAR-60, SRC-TAR-278, SRC-REFRESH-EVN-20260831, SRC-REFRESH-EVN-BULLETIN-20260831, SRC-REFRESH-EVN-20260730, SRC-REFRESH-MOIT-20260709, SRC-REFRESH-TAX-20260831, SRC-SOLAR-GSA, SRC-SOLAR-NREL, SRC-REFRESH-EVN-963-20260423, SRC-REFRESH-MOIT-20260611, SRC-REFRESH-EVNSPC-20260715, SRC-REFRESH-EVNSPC-PRICING-20260831, SRC-REFRESH-EVNSPC-TRAINING-20260527, SRC-REFRESH-EVNSPC-IT-20260525, SRC-REG-243, SRC-TAX-067, SRC-TAX-320, SRC-TAX-141, SRC-TAX-020, SRC-FX-008, SRC-FX-019, SRC-IRENA-2024
 
 ## Remote live-check provenance
 
 - Workflow: 33366510106; job: 99408166781; metadata commit: 116c80ea7559cb55d9db11484bc7529177c77c8c; artifact: 9748486524; artifact digest: sha256:bbafe54b9991fb90b74ce39ca089c6b937855660411c3cfe859da506bff327aa.
-- Live-check file: evidence/REMOTE_SOURCE_LIVE_CHECK.csv; GitHub blob 0619516e76b7de44059f2a0cc1f342e1e4c9715c; SHA-256 1accde29ebc20aabf8967a77acfcf968bd9092000e75511903546e92f73fd0a9; 16 rows; 13 PASS and 3 non-blocking WARNs.
-- The two MOIT runner network-unreachable and NREL DNS warnings are preserved as WARNs and are not treated as evidence that a source is unavailable or that the model can claim certification.
-- All 16 rows record raw_snapshot_stored=FALSE and storage_boundary=REMOTE_RUNNER_EPHEMERAL.
+- Live-check file: evidence/REMOTE_SOURCE_LIVE_CHECK.csv; GitHub blob 2c5ed2d5ebe74cf829c5f4feefe61906e0dab1aa; SHA-256 9a064b708ac181a51917a80c02026c0e4144d171995e6269af7f567139937e93; 24 rows; 20 PASS and 4 non-blocking WARNs.
+- The two MOIT runner network-unreachable, NREL DNS and IRENA HTTP 403 warnings are preserved as WARNs and are not treated as evidence that a source is unavailable or that the model can claim certification.
+- All 24 rows record raw_snapshot_stored=FALSE and storage_boundary=REMOTE_RUNNER_EPHEMERAL.
 
-- Latest live-check result: 16 rows; 13 PASS and 3 non-blocking WARNs (MOIT runner network-unreachable on two pages; NREL DNS). Warnings are retained for recheck and do not alter model inputs.
+- Latest live-check result: 24 rows; 20 PASS and 4 non-blocking WARNs (MOIT runner network-unreachable on two pages; NREL DNS; IRENA HTTP 403). Warnings are retained for recheck and do not alter model inputs.
 
 ## Core validation lineage after core model refresh
 

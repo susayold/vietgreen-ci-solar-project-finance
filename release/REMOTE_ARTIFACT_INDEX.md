@@ -2,7 +2,7 @@
 
 Release candidate: 1.2.0
 Date: 2026-08-31
-Source register: SR-1.13-utility-implementation-readiness (latest live source: SRC-REFRESH-EVN-20260831; corroborating EVNSPC notice SRC-REFRESH-EVNSPC-20260715, pricing portal SRC-REFRESH-EVNSPC-PRICING-20260831, meter-training notice SRC-REFRESH-EVNSPC-TRAINING-20260527 and IT readiness note SRC-REFRESH-EVNSPC-IT-20260525; latest tax watch: SRC-REFRESH-TAX-20260831)
+Source register: SR-1.14-rolling-regulatory-recheck (latest live source: SRC-REG-243; corroborating EVNSPC notice SRC-REFRESH-EVNSPC-20260715, pricing portal SRC-REFRESH-EVNSPC-PRICING-20260831, meter-training notice SRC-REFRESH-EVNSPC-TRAINING-20260527 and IT readiness note SRC-REFRESH-EVNSPC-IT-20260525; latest tax watch: SRC-REFRESH-TAX-20260831, plus rolling tax/FX and benchmark rechecks)
 Repository: https://github.com/susayold/vietgreen-ci-solar-project-finance
 Workflow source commit: b7ac7ab507487d4ba021064c8cdeadb29fcefc44
 Workbook/remote-output refresh commit: 02b3fc9bc9c39728b5796db34184ddd7778e5edb
@@ -46,4 +46,4 @@ Live recruiter site (aggregate-only): https://susayold.github.io/vietgreen-ci-so
 ## Official source live check
 
 - Remote metadata-only crawl: workflow 33366510106 / job 99408166781; artifact official-source-live-check ID 9748486524, digest sha256:bbafe54b9991fb90b74ce39ca089c6b937855660411c3cfe859da506bff327aa.
-- 16 controlled official URLs were checked in memory: 13 PASS and 3 non-blocking WARNs (MOIT runner network-unreachable on two pages; NREL DNS); raw_snapshot_stored=FALSE for every row. Live-check SHA-256: 1accde29ebc20aabf8967a77acfcf968bd9092000e75511903546e92f73fd0a9; GitHub blob 0619516e76b7de44059f2a0cc1f342e1e4c9715c; 6,868 bytes.
+- 24 controlled official URLs were checked in memory: 20 PASS and 4 non-blocking WARNs (two MOIT runner network-unreachable pages, NREL DNS and IRENA HTTP 403); raw_snapshot_stored=FALSE for every row. Live-check SHA-256: 9a064b708ac181a51917a80c02026c0e4144d171995e6269af7f567139937e93; GitHub blob 2c5ed2d5ebe74cf829c5f4feefe61906e0dab1aa; 9,561 bytes.

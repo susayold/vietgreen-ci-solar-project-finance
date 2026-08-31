@@ -21,7 +21,7 @@ The user request controls the operating boundary: create one new Drive file, cre
 - Pooled feedback: converged in 2 iterations.
 - 8,760 engine: executed in memory for every project, with P50 and P90 profiles.
 - Hourly backend: plan-specified Parquet plus CSV.GZ compatibility streams, remote artifact-only; local_storage is NONE.
-- Quality gates: 20/20 data-quality checks; 31/31 workbook structural checks; 20/20 dynamic remote QA checks; 5/5 hidden-truth classifications; 7 automated tests; 13/13 mechanical release controls pass, with 1 candidate-manifest warning; official-source live check 13/16 PASS and 3 non-blocking WARNs.
+- Quality gates: 20/20 data-quality checks; 31/31 workbook structural checks; 20/20 dynamic remote QA checks; 5/5 hidden-truth classifications; 7 automated tests; 13/13 mechanical release controls pass, with 1 candidate-manifest warning; official-source live check 20/24 PASS and 4 non-blocking WARNs.
 
 ## What is implemented
 
@@ -43,6 +43,7 @@ This is a reviewable candidate, not a lender approval, bankable P90 case, legal 
 - Artifact digest: sha256:3f1f7c193192ca4bd652a131e453e9bd7cd996592f0f2343b081664618fdba70.
 - Native workbook: 22 sheets, 117493 bytes; SHA-256 9e72588fd7a084282befa74dd0f97036f15e1f306aac6080fc86fdd75f605c5f; GitHub blob c0d2e2dadf3720a35b9101205efdec108425bec5.
 - Same-head reproducibility run: 33367239508 / job 99410324360; remote comparator: 33367293807 / job 99410490341; 6/6 file hashes matched, with raw artifact contents not stored.
+- Latest official-source refresh: 33368222168 / job 99413280315; 24 URLs, 20 PASS and 4 non-blocking WARNs; raw snapshots were not stored.
 
 ## Reproducibility and storage
 

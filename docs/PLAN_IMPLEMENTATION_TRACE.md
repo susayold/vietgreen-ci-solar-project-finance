@@ -6,7 +6,7 @@ Implemented: material inputs carry source/assumption IDs through the lineage mat
 
 Status: PASS WITH BILLING/TAX WATCH. Decision 963 legal windows are mapped, Decree 278/2026/ND-CP is registered as a legal dependency in the average-retail-price adjustment chain, but billed implementation/invoice cutover and final transaction applicability remain external gates; the 2026-08-28 draft amendment to Decree 320/2025 is monitored without changing effective tax inputs.
 
-Latest benchmark refresh: IRENA 2025 official utility-scale solar PV cost context was added to the external benchmark register; it is comparator-only and does not set the C&I rooftop tariff or CAPEX. Latest tariff-chain evidence: EVN Bulletin No. 16/2026, Decree 278/2026/ND-CP, EVN's Decision 963 republication and four EVNSPC implementation/readiness pages; none is treated as invoice-cutover proof.
+Latest benchmark refresh: IRENA 2025 official utility-scale solar PV cost context remains comparator-only; the IRENA 2024 URL was rechecked but returned HTTP 403 and is not used as certification evidence. Latest tariff-chain evidence: EVN Bulletin No. 16/2026, Decree 278/2026/ND-CP, EVN's Decision 963 republication and four EVNSPC implementation/readiness pages; none is treated as invoice-cutover proof. Official tax/FX references were also rechecked remotely.
 
 ## B. Synthetic data, hidden truth and reproducibility
 
@@ -74,4 +74,4 @@ Reproducibility control: remote push run 33367160495 and same-head workflow_disp
 
 ## L. Final remote output refresh
 
-The final push-triggered core rebuild completed in workflow 33367160495 / job 99410087552; the repository workbook is now regenerated against SR-1.13 with SHA-256 9e72588fd7a084282befa74dd0f97036f15e1f306aac6080fc86fdd75f605c5f and 117493 bytes. Same-head run 33367239508 / job 99410324360 and comparator 33367293807 / job 99410490341 matched 6/6 files.
+The final push-triggered core rebuild completed in workflow 33367160495 / job 99410087552; the repository workbook is now regenerated against SR-1.14 with SHA-256 9e72588fd7a084282befa74dd0f97036f15e1f306aac6080fc86fdd75f605c5f and 117493 bytes. Same-head run 33367239508 / job 99410324360 and comparator 33367293807 / job 99410490341 matched 6/6 files.
