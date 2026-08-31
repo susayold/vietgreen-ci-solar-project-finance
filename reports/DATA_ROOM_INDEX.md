@@ -8,17 +8,27 @@ The project data-room is represented by the repository and the one linked Google
 
 ## Latest release evidence
 
-- Repository HEAD: c1688a4044ad89c87be5e8e78978889d51f63a39.
-- Model source commit: 80e16ef841795b64234b2a76cc6e31f070adefad.
-- Workflow run: 33344412788.
-- Workflow job: 99345713943.
-- Artifact: vietgreen-core-outputs, ID 9741517882.
-- Artifact digest: sha256:4ac36aa2000f7d56093c0432e4a440c7610ef63d10a681030c2ad4d9e6c254b7.
-- Native workbook: 22 sheets; current blob acddae11d2860c93091bf5b898701c36617eac13; 105385 bytes.
+- Workflow source commit: 504d6129c3660a02cd3ac71208eddccbd01fae80.
+- Workbook refresh commit: 00c99a29629921571dc26cdb39a32a1b2cbf6d7d.
+- Workflow run: 33344817775.
+- Workflow job: 99346822770.
+- Artifact: vietgreen-core-outputs, ID 9741638986.
+- Artifact digest: sha256:62f6f9b892623d5a81ee9ef10e9aad0b370b0cc707a865a1aad0217000a485fc.
+- Native workbook: 22 sheets; current blob 3134dcfdc60b6f3bfa2d75e36179649ca9c1dfa9; 105385 bytes.
 - Data quality: 18 checks, 0 failures.
 - Workbook validation: 31 checks, 0 failures.
 - Hidden truth: 5 cases, 5 classification matches, 0 false negatives.
 - Automated tests: 5 passed.
+
+## Candidate economics
+
+- 20 synthetic projects evaluated; 12 eligibility-pass; 11 selected.
+- Selected capacity: 13.4 MWp.
+- Equity used: 131.869565 BVND.
+- Endogenous pooled debt: 152.880435 BVND.
+- Pooled DSCR: 1.30x.
+- Base sponsor NPV: -59.736498 BVND.
+- Tariff: WATCH pending billed implementation confirmation.
 
 ## Evidence map
 

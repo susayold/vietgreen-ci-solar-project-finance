@@ -2,7 +2,7 @@
 
 Release candidate 1.1.0, dated 2026-08-31.
 
-This repository is the remote GitHub source of truth for a synthetic Vietnam commercial-and-industrial solar project-finance model. It was created to execute the attached master plan while respecting the user instruction that project data and project activity remain on remote Drive/GitHub. No project data is intentionally stored in the local workspace.
+This repository is the remote GitHub source of truth for a synthetic Vietnam commercial-and-industrial solar project-finance model. It executes the attached master plan while respecting the user instruction that project data and project activity remain on remote Drive/GitHub. No project data is intentionally stored in the local workspace.
 
 ## Request versus attached-plan instructions
 
@@ -31,13 +31,21 @@ The Python and CSV logic is the source of truth. The native workbook is a presen
 
 This is a reviewable candidate, not a lender approval, bankable P90 case, legal opinion, tax opinion, technical certification, site-diligence result, or formally audited model. The open gates are billed-tariff confirmation, independent final review, and lender/legal/tax/technical/site diligence. The release manifest therefore sets recruiter_ready to false.
 
+## Latest remote verification
+
+- Workflow run: https://github.com/susayold/vietgreen-ci-solar-project-finance/actions/runs/33344817775
+- Workflow job: 99346822770.
+- Workflow source commit: 504d6129c3660a02cd3ac71208eddccbd01fae80.
+- Workbook refresh commit: 00c99a29629921571dc26cdb39a32a1b2cbf6d7d.
+- Artifact: vietgreen-core-outputs, ID 9741638986.
+- Artifact digest: sha256:62f6f9b892623d5a81ee9ef10e9aad0b370b0cc707a865a1aad0217000a485fc.
+- Native workbook blob: 3134dcfdc60b6f3bfa2d75e36179649ca9c1dfa9.
+
 ## Reproducibility
 
 - Master seed: 260831.
-- Model source commit: 80e16ef841795b64234b2a76cc6e31f070adefad.
-- Current repository HEAD: c1688a4044ad89c87be5e8e78978889d51f63a39.
-- Latest successful workflow: https://github.com/susayold/vietgreen-ci-solar-project-finance/actions/runs/33344412788
-- Latest artifact digest: sha256:4ac36aa2000f7d56093c0432e4a440c7610ef63d10a681030c2ad4d9e6c254b7
+- Python and CSV logic is regenerated on the ephemeral runner from the remote repository.
+- No credentials, private hidden truth, proprietary raw data or personal information is part of this public repository.
 
 Key links:
 

@@ -12,13 +12,14 @@ The current workbook contains 22 sheets covering cover, assumptions, regulatory/
 
 ## Integrity controls
 
-- Repository commit and artifact digest are recorded in release manifests.
-- Workbook validation checks sheet count, required sheets, visible values, formula references and binary readability.
-- Current validation: 31 checks, 0 failures.
-- Workbook blob: acddae11d2860c93091bf5b898701c36617eac13.
+- Workflow run: 33344817775.
+- Workflow source commit: 504d6129c3660a02cd3ac71208eddccbd01fae80.
+- Workbook refresh commit: 00c99a29629921571dc26cdb39a32a1b2cbf6d7d.
+- Artifact digest: sha256:62f6f9b892623d5a81ee9ef10e9aad0b370b0cc707a865a1aad0217000a485fc.
+- Workbook validation: 31 checks, 0 failures.
+- Workbook blob: 3134dcfdc60b6f3bfa2d75e36179649ca9c1dfa9.
 - Workbook size: 105385 bytes.
 
 ## Use boundary
 
 The workbook is a review artifact, not a substitute for an independent model audit, bankable P90, executed PPA, lender data-room or legal/tax/technical diligence.
-

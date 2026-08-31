@@ -3,12 +3,12 @@
 Release candidate: 1.1.0
 Date: 2026-08-31
 Repository: https://github.com/susayold/vietgreen-ci-solar-project-finance
-Repository HEAD: c1688a4044ad89c87be5e8e78978889d51f63a39
-Source/model commit: 80e16ef841795b64234b2a76cc6e31f070adefad
-Workflow run: 33344412788
-Workflow job: 99345713943
-Artifact: vietgreen-core-outputs, ID 9741517882
-Artifact digest: sha256:4ac36aa2000f7d56093c0432e4a440c7610ef63d10a681030c2ad4d9e6c254b7
+Workflow source commit: 504d6129c3660a02cd3ac71208eddccbd01fae80
+Workbook refresh commit: 00c99a29629921571dc26cdb39a32a1b2cbf6d7d
+Workflow run: 33344817775
+Workflow job: 99346822770
+Artifact: vietgreen-core-outputs, ID 9741638986
+Artifact digest: sha256:62f6f9b892623d5a81ee9ef10e9aad0b370b0cc707a865a1aad0217000a485fc
 
 ## Gate summary
 
@@ -16,7 +16,7 @@ Artifact digest: sha256:4ac36aa2000f7d56093c0432e4a440c7610ef63d10a681030c2ad4d9
 - Workbook: 31 checks, 0 failures.
 - Hidden truth: 5 cases, 5 matches, 0 false negatives.
 - Automated tests: 5 passed.
-- Native workbook: 22 sheets, 105385 bytes.
+- Native workbook: 22 sheets, 105385 bytes; blob 3134dcfdc60b6f3bfa2d75e36179649ca9c1dfa9.
 - Tariff: WATCH pending billed implementation confirmation.
 - Release status: candidate.
 - recruiter_ready: false.
