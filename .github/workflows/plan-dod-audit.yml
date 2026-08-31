@@ -1,0 +1,16 @@
+name: plan-dod-audit
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout remote source of truth
+        uses: actions/checkout@v4
+      - name: Validate all Master Plan V3 DoD rows
+        run: python -m analytics.validate_plan_dod_audit
