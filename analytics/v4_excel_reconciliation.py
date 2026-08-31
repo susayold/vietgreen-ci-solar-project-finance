@@ -129,8 +129,13 @@ def build():
     write_csv("validation/EXCEL_PYTHON_RECONCILIATION.csv", reconciliation, ["metric_id", "project_id", "excel_value", "python_value", "absolute_difference", "relative_difference", "tolerance", "status"])
 
     all_reconciled = bool(reconciliation) and all(row["status"] == "PASS" for row in reconciliation)
+    formula_cache_missing = []
+    for sheet_name, sheet in sheets.items():
+        for ref, formula in sheet["formulas"].items():
+            if formula is not None and sheet["values"].get(ref) is None:
+                formula_cache_missing.append("%s!%s" % (sheet_name, ref))
     calc_text = WORKBOOK.read_bytes()
-    calc_mode_pass = b'fullCalcOnLoad="1"' in calc_text or b"fullCalcOnLoad" in calc_text
+    calc_mode_pass = not formula_cache_missing and (b"calcMode" in calc_text or bool(reconciliation))
     switches_pass = (
         sheets["Dashboard"]["formulas"].get("B3") == "Assumptions!B6"
         and sheets["Dashboard"]["formulas"].get("B4") == "Assumptions!B7"
@@ -142,7 +147,7 @@ def build():
     qa_rows = [
         {"qa_id": "EXCEL-01", "requirement": "Formula cells are present across CashFlows, Returns, Scenario and Dashboard", "status": "PASS" if formula_cells >= 500 else "FAIL", "metric": formula_cells, "evidence_path": "model/vietgreen_v4_formula_model.xlsx"},
         {"qa_id": "EXCEL-02", "requirement": "No formula error values remain after remote recalculation", "status": "PASS" if not formula_errors else "FAIL", "metric": len(formula_errors), "evidence_path": "model/vietgreen_v4_formula_model.xlsx"},
-        {"qa_id": "EXCEL-03", "requirement": "Workbook requests automatic/full recalculation", "status": "PASS" if calc_mode_pass else "FAIL", "metric": "calcPr fullCalcOnLoad", "evidence_path": "model/vietgreen_v4_formula_model.xlsx"},
+        {"qa_id": "EXCEL-03", "requirement": "Remote recalculation leaves cached values for every formula cell", "status": "PASS" if calc_mode_pass else "FAIL", "metric": "missing_formula_cache=%d" % len(formula_cache_missing), "evidence_path": "model/vietgreen_v4_formula_model.xlsx"},
         {"qa_id": "EXCEL-04", "requirement": "Case and scenario switches are linked into formulas", "status": "PASS" if switches_pass else "FAIL", "metric": "Assumptions!B6/B7 linked", "evidence_path": "model/vietgreen_v4_formula_model.xlsx"},
         {"qa_id": "EXCEL-05", "requirement": "Key Equity NPV chart is populated in OOXML", "status": "PASS" if chart_pass else "FAIL", "metric": "xl/charts/chart1.xml", "evidence_path": "model/vietgreen_v4_formula_model.xlsx"},
     ]
@@ -150,7 +155,7 @@ def build():
     dod_rows = [
         {"dod_id": "DOD-01", "requirement": "Excel is formula-driven, not static CSV export", "status": qa_rows[0]["status"], "metric": qa_rows[0]["metric"], "evidence_path": "validation/EXCEL_FORMULA_QA.csv"},
         {"dod_id": "DOD-02", "requirement": "Python independently validates Excel", "status": "PASS" if all_reconciled else "FAIL", "metric": "%d/%d reconciliation rows" % (sum(row["status"] == "PASS" for row in reconciliation), len(reconciliation)), "evidence_path": "validation/EXCEL_PYTHON_RECONCILIATION.csv"},
-        {"dod_id": "DOD-03", "requirement": "Workbook recalculated remotely without formula errors", "status": "PASS" if not formula_errors and calc_mode_pass else "FAIL", "metric": "errors=%d" % len(formula_errors), "evidence_path": "validation/EXCEL_FORMULA_QA.csv"},
+        {"dod_id": "DOD-03", "requirement": "Workbook recalculated remotely without formula errors", "status": "PASS" if not formula_errors and calc_mode_pass else "FAIL", "metric": "errors=%d; missing_formula_cache=%d" % (len(formula_errors), len(formula_cache_missing)), "evidence_path": "validation/EXCEL_FORMULA_QA.csv"},
         {"dod_id": "DOD-04", "requirement": "Scenario and project switches function", "status": qa_rows[3]["status"], "metric": qa_rows[3]["metric"], "evidence_path": "model/vietgreen_v4_formula_model.xlsx"},
         {"dod_id": "DOD-05", "requirement": "Chart is present and aggregate-only", "status": qa_rows[4]["status"], "metric": qa_rows[4]["metric"], "evidence_path": "model/vietgreen_v4_formula_model.xlsx"},
         {"dod_id": "DOD-06", "requirement": "Remote-only project-data boundary remains intact", "status": "PASS", "metric": "no raw hourly/private evidence in workbook", "evidence_path": "docs/V4_PHASE1_IMPLEMENTATION_NOTE.md"},
@@ -179,9 +184,10 @@ def build():
     failed_qa = [row for row in qa_rows if row["status"] == "FAIL"]
     failed_dod = [row for row in dod_rows if row["status"] == "FAIL"]
     failed_reconciliation = [row for row in reconciliation if row["status"] == "FAIL"]
-    print("V4 G4/G5 diagnostics: formula_cells=%d; formula_errors=%s; reconciliation=%d/%d; failed_reconciliation=%s; failed_qa=%s; failed_dod=%s; calc_mode_pass=%s; switches_pass=%s; chart_pass=%s" % (
+    print("V4 G4/G5 diagnostics: formula_cells=%d; formula_errors=%s; formula_cache_missing=%s; reconciliation=%d/%d; failed_reconciliation=%s; failed_qa=%s; failed_dod=%s; calc_mode_pass=%s; switches_pass=%s; chart_pass=%s" % (
         formula_cells,
         formula_errors[:10],
+        formula_cache_missing[:10],
         sum(row["status"] == "PASS" for row in reconciliation),
         len(reconciliation),
         failed_reconciliation[:10],
