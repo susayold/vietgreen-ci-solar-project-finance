@@ -8,15 +8,15 @@ The project data-room is represented by the repository, the workflow artifact an
 
 ## Latest release evidence
 
-- Source register: SR-1.6-live-benchmark-refresh; latest live evidence row: SRC-REFRESH-EVN-20260730.
+- Source register: SR-1.6-live-benchmark-refresh; latest live evidence row: SRC-REFRESH-EVN-20260831.
 
 - Release candidate: 1.2.0.
-- Workflow source commit: 95af3267ebfc615e194323f1fa503c2d13bad5bb.
+- Workflow source commit: c9d7e9712c2b6f868a4eaf042204257a8a2965a8.
 - Workbook refresh commit: 2abe6a965380390f041955fdde05977345e310f4.
-- Workflow run: 33355268974.
-- Workflow job: 99376083185.
-- Artifact: vietgreen-core-outputs, ID 9744920510.
-- Artifact digest: sha256:1539f7410e98dc8a1c5493f5e898b9eacb6e6fac2fae7566e0457441683ccf8b.
+- Workflow run: 33356405815.
+- Workflow job: 99379325568.
+- Artifact: vietgreen-core-outputs, ID 9745267596.
+- Artifact digest: sha256:b98a6c21209a644dfd0a32509d5ee008b928e409fdae825873e053366a319b53.
 - Native workbook: 22 sheets; current blob is recorded in release/MODEL_RELEASE_MANIFEST.json.
 - Data quality: 20 checks, 0 failures.
 - Dynamic remote QA: 20 checks, 0 failures.
@@ -25,7 +25,7 @@ The project data-room is represented by the repository, the workflow artifact an
 - Automated tests: 7 passed.
 - Mechanical release controls: 13 PASS, 1 WARN.
 - Locked input hashes: PASS.
-- Remote 8,760 artifact streams: 175,200 rows each; local_storage NONE.
+- Remote 8,760 artifact streams: 175,200 rows each in plan-specified Parquet plus CSV.GZ compatibility format; local_storage NONE.
 
 ## Candidate economics
 

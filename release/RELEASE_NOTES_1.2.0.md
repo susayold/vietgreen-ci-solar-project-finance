@@ -11,14 +11,16 @@ Date: 2026-08-31
 - PPA negotiation-zone helper with explicit RENEGOTIATE_OR_REJECT action for empty zones, covered by a boundary test.
 - Pairwise-swap improvement pass after hard-gated value-density selection.
 - Remote source-fetch log, DOD status matrix, boundary tests, latest EVN billing-status refresh and recruiter-safe package.
+- Plan-specified Parquet hourly streams plus CSV.GZ compatibility streams in the remote-only GitHub Actions artifact.
 
 ## Verified
 
-- Workflow run 33355268974 / job 99376083185.
+- Workflow run 33356405815 / job 99379325568.
 - 20/20 data-quality checks; 20/20 dynamic remote QA checks.
 - 31/31 workbook checks; 7/7 automated tests.
 - 13/13 mechanical release controls pass; 1 candidate-manifest warning.
-- Artifact vietgreen-core-outputs, ID 9744920510, digest sha256:1539f7410e98dc8a1c5493f5e898b9eacb6e6fac2fae7566e0457441683ccf8b.
+- Artifact vietgreen-core-outputs, ID 9745267596, digest sha256:b98a6c21209a644dfd0a32509d5ee008b928e409fdae825873e053366a319b53.
+- Independent workflow_dispatch run 33356485956 / job 99379546146 succeeded with matching native workbook SHA-256.
 
 ## Economics
 

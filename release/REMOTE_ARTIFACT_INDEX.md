@@ -2,14 +2,14 @@
 
 Release candidate: 1.2.0
 Date: 2026-08-31
-Source register: SR-1.6-live-benchmark-refresh (latest live source: SRC-REFRESH-EVN-20260730)
+Source register: SR-1.6-live-benchmark-refresh (latest live source: SRC-REFRESH-EVN-20260831)
 Repository: https://github.com/susayold/vietgreen-ci-solar-project-finance
-Workflow source commit: 95af3267ebfc615e194323f1fa503c2d13bad5bb
-Workbook refresh commit: 2abe6a965380390f041955fdde05977345e310f4
-Workflow run: 33355268974
-Workflow job: 99376083185
-Artifact: vietgreen-core-outputs, ID 9744920510
-Artifact digest: sha256:1539f7410e98dc8a1c5493f5e898b9eacb6e6fac2fae7566e0457441683ccf8b
+Workflow source commit: c9d7e9712c2b6f868a4eaf042204257a8a2965a8
+Workbook/remote-output refresh commit: 669e33324c162955981314d31a8e3b40937aeff9
+Workflow run: 33356405815
+Workflow job: 99379325568
+Artifact: vietgreen-core-outputs, ID 9745267596
+Artifact digest: sha256:b98a6c21209a644dfd0a32509d5ee008b928e409fdae825873e053366a319b53
 
 ## Gate summary
 
@@ -22,11 +22,12 @@ Artifact digest: sha256:1539f7410e98dc8a1c5493f5e898b9eacb6e6fac2fae7566e0457441
 - Native workbook: 22 sheets, 116230 bytes; blob c160cb5b630f653c68343381a8d0d514faa54b02.
 - Construction schedule: 240 rows; capitalised IDC proxy rate 8.5%; sources and uses reconciled.
 - Portfolio: 11 selected projects, 13.10 MWp, pooled DSCR 1.300x, sponsor NPV -66.202345 BVND.
-- Remote 8,760 streams: load 175,200 rows and solar/self-consumption 175,200 rows; index validation PASS.
-- Tariff: WATCH pending billed implementation confirmation; latest EVN public explainer does not document an invoice cutover date.
+- Remote 8,760 streams: four artifact-only streams, each 175,200 rows: Parquet load/solar plus CSV.GZ compatibility streams; index validation PASS.
+- Tariff: WATCH pending billed implementation confirmation; latest official EVN/MOIT evidence does not document an invoice cutover date.
+- Reproducibility: independent workflow_dispatch run 33356485956 / job 99379546146 succeeded; native workbook SHA matched the push run.
 - Release status: candidate.
 - recruiter_ready: false.
 
-The artifact is remote-only and contains synthetic inputs, aggregate validation, controlled outputs and review streams. It excludes credentials and private hidden raw truth. The compressed hourly streams are available through the workflow artifact, not the desktop workspace.
+The artifact is remote-only and contains synthetic inputs, aggregate validation, controlled outputs and review streams. It excludes credentials and private hidden raw truth. Hourly streams are available through the workflow artifact, not the desktop workspace.
 
 Live recruiter site (aggregate-only): https://susayold.github.io/vietgreen-ci-solar-project-finance/
