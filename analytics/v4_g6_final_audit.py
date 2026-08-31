@@ -142,7 +142,7 @@ def build():
     negotiated_positive = sum(num(row, "equity_npv_vnd") > 0 for row in negotiated_rows)
     negotiated_empty_zones = sum(row["ppa_zone_status"] == "EMPTY_ZONE" for row in negotiated_rows)
     base = next(row for row in scenarios if row["scenario"] == "BASE_SPONSOR")
-    p90 = next(row for row in scenarios if row["scenario"] == "P90")
+    p90 = next(row for row in scenarios if row["scenario"] == "P90_ENERGY")
     capex = next(row for row in scenarios if row["scenario"] == "CAPEX_OVERRUN")
     cod = next(row for row in scenarios if row["scenario"] == "COD_DELAY")
     combined = next(row for row in scenarios if row["scenario"] == "COMBINED_DOWNSIDE")
