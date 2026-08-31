@@ -52,7 +52,7 @@
   "external_validation_rows": 9,
   "latest_benchmark_refresh_source_id": "SRC-IRENA-2025",
   "git_commit": "d2fd8835bb0591bc850a90b13cb37f3b5ec2310b",
-  "release_metadata_parent_commit": "be509531f6a9a66ff42e6ec0b601e33517abff08",
+  "release_metadata_parent_commit": "a5d0a732d7490b36530dc0711e839516813f8f70",
   "release_timestamp_utc": "2026-08-31T05:23:59Z",
   "excel_file": {
     "path": "model/vietgreen_core_model.xlsx",
