@@ -2,7 +2,7 @@
 
 Release candidate: 1.2.0
 Date: 2026-08-31
-Source register: SR-1.9-tax-tariff-watch (latest live source: SRC-REFRESH-EVN-20260831; latest tax watch: SRC-REFRESH-TAX-20260831)
+Source register: SR-1.10-tax-tariff-watch (latest live source: SRC-REFRESH-EVN-20260831; corroborating EVN Decision 963 page SRC-REFRESH-EVN-963-20260423; latest tax watch: SRC-REFRESH-TAX-20260831)
 Repository: https://github.com/susayold/vietgreen-ci-solar-project-finance
 Workflow source commit: d2fd8835bb0591bc850a90b13cb37f3b5ec2310b
 Workbook/remote-output refresh commit: d2fd8835bb0591bc850a90b13cb37f3b5ec2310b
@@ -37,5 +37,5 @@ Live recruiter site (aggregate-only): https://susayold.github.io/vietgreen-ci-so
 
 ## Official source live check
 
-- Remote metadata-only crawl: workflow 33361780986 / job 99394389541; artifact official-source-live-check ID 9746924931, digest sha256:95aa484f7a2ac8db0cc1679ad865f8ffe64eb50cb1e3355eb7307f73cd48f00e.
-- 10 controlled official URLs were checked in memory: 9 PASS and 1 non-blocking WARN for the NREL comparator endpoint DNS; raw_snapshot_stored=FALSE for every row. Live-check SHA-256: 749c4ebf52ef3e640c7973d9d470f991c80fdf3e1acb80d3f993f0cda97c0701.
+- Remote metadata-only crawl: workflow 33362227008 / job 99395656762; artifact official-source-live-check ID 9747079173, digest sha256:736250385f4b4cd684fc7abd1b187cf80f0d2d1a1acd48520816b7bb295e2ee5.
+- 11 controlled official URLs were checked in memory: 9 PASS and 1 non-blocking WARN for the NREL comparator endpoint DNS; raw_snapshot_stored=FALSE for every row. Live-check SHA-256: f991a4a071a52432b8486e0800dc79d7750c311c120b7c4b615b4f0ba80267fd.
