@@ -169,7 +169,7 @@
   "drive_control_document_id": "1koSgbc1Akic6cVDFD1svmuVN9gSq8qSGUw2obfHYN80",
   "drive_control_document_url": "https://docs.google.com/document/d/1koSgbc1Akic6cVDFD1svmuVN9gSq8qSGUw2obfHYN80/edit",
   "drive_control_document_revision_id": "AIroW37HyTm7ZlVTUUt8JWLmnyKvyfuqUfjUTbbC3phLvI8h9HdJlM3JM9BJmU2AC3sFHM4RCaqzyX3q7zF1a5oEIs6haPqQb2Bxm6vPgQM",
-  "provenance_note": "Retry-enabled source refresh 33373662985 PASS on 26 URLs; latest live metadata is 20 PASS / 6 WARN with raw snapshots disabled. Core, DoD and external-gate workflows PASS on validation reference commit 9e047dee4bfaaf14ac317c3257040d80495ab8d. Any later manifest reconciliation is metadata-only.",
+  "provenance_note": "Retry-enabled source refresh 33373662985 PASS on 26 URLs; latest live metadata is 20 PASS / 6 WARN with raw snapshots disabled. Core, DoD and external-gate workflows PASS on validation reference commit 9e047dee4bfaaf14ac317c3257040d80495ab8ad. Any later manifest reconciliation is metadata-only.",
   "last_substantive_validation_commit": "9e047dee4bfaaf14ac317c3257040d80495ab8ad",
   "manifest_write_parent_commit": "9e047dee4bfaaf14ac317c3257040d80495ab8ad"
 }
