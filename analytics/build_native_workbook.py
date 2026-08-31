@@ -83,7 +83,7 @@ def build_control_rows():
         ["claim_boundary", "PASS_WITH_LIMITATIONS"],
         ["data_quality", "%d / %d PASS" % (passed, checks)],
         ["billing_status", "WATCH"],
-        ["github_sha", os.environ.get("GITHUB_SHA", "remote-run")],
+        ["github_sha", "remote-generated; see release manifest"],
         ["storage_policy", "GitHub + Google Drive only; no desktop project data"],
     ]
 
