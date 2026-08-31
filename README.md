@@ -68,6 +68,9 @@ Key links:
 - [Full Master Plan V3 DoD audit (65 rows; 62 PASS, 2 PARTIAL, 1 PENDING)](validation/PLAN_DOD_AUDIT.csv)
 - [Remote source-fetch log](evidence/REMOTE_SOURCE_FETCH_LOG_2026-08-31.csv)
 - [Data-room index](reports/DATA_ROOM_INDEX.md)
+
+- [Google Drive execution control](https://docs.google.com/document/d/1koSgbc1Akic6cVDFD1svmuVN9gSq8qSGUw2obfHYN80/edit)
+- The Drive control document contains the remote-only operating boundary, current provenance, and the EXT-001–EXT-008 evidence-closure checklist.
 - [External gate intake register](validation/EXTERNAL_GATE_INTAKE.csv)
 - [External gate intake template](evidence/EXTERNAL_GATE_INTAKE_TEMPLATE.md)
 - [External gate submissions schema](validation/EXTERNAL_GATE_SUBMISSIONS.csv)
