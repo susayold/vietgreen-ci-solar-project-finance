@@ -13,16 +13,19 @@ Date: 2026-08-31
 - Remote source-fetch log, DOD status matrix, boundary tests, EVN billing-status refresh and recruiter-safe package.
 - Plan-specified Parquet hourly streams plus deterministic CSV.GZ compatibility streams in the remote-only GitHub Actions artifact.
 - Tax amendment watch for the official 2026-08-28 draft affecting Decree 320/2025; no effective model tax input was changed.
+- Added Decree 278/2026/ND-CP as a locked legal dependency in the tariff/billing chain; it does not by itself prove invoice cutover.
 
 ## Verified
 
-- Workflow run 33359778838 / job 99388771448.
+- Regulatory refresh: EVN Bulletin No. 16/2026 and Decree 278/2026/ND-CP were registered as current official references; billed implementation remains WATCH.
+
+- Workflow run 33360401233 / job 99390501627.
 - 20/20 data-quality checks; 20/20 dynamic remote QA checks.
 - 31/31 workbook checks; 7/7 automated tests.
 - 13/13 mechanical release controls pass; 1 candidate-manifest warning.
 - 9 external-validation rows registered.
-- Artifact vietgreen-core-outputs, ID 9746298888, digest sha256:87e1c95bb9924b943458f31c8ea8ffb7e79df20fbc1a702d9d0cfdf8963c9fde.
-- Independent workflow_dispatch run 33359813867 / job 99388866204 succeeded.
+- Artifact vietgreen-core-outputs, ID 9746487203, digest sha256:3396dce1eee9420c8c16532c30e38d7be33d4fbdf0c8da4e317af75b6a4b6f2b.
+- Independent workflow_dispatch run 33360504910 / job 99390787043 succeeded.
 - Byte-level comparison matched the index and all four hourly streams; native workbook SHA-256 remained identical.
 
 ## Economics

@@ -8,7 +8,7 @@ This static landing page is an aggregate-only communication layer for release ca
 - Control record: [Google Drive execution-control document](https://docs.google.com/document/d/1koSgbc1Akic6cVDFD1svmuVN9gSq8qSGUw2obfHYN80/edit)
 - Release status: candidate / PASS_WITH_LIMITATIONS
 - No raw 8,760 streams, hidden truth, credentials, personal information or project-sensitive data is embedded in the page.
-- Metrics are synchronized to workflow run 33359778838 and artifact digest sha256:87e1c95bb9924b943458f31c8ea8ffb7e79df20fbc1a702d9d0cfdf8963c9fde. Hourly Parquet and CSV.GZ streams remain remote artifact-only.
+- Metrics are synchronized to workflow run 33360401233 and artifact digest sha256:3396dce1eee9420c8c16532c30e38d7be33d4fbdf0c8da4e317af75b6a4b6f2b. Hourly Parquet and CSV.GZ streams remain remote artifact-only. Tariff-chain legal references include EVN Bulletin No. 16/2026 and Decree 278/2026/ND-CP; billed invoice cutover remains WATCH.
 
 Live deployment: https://susayold.github.io/vietgreen-ci-solar-project-finance/
 Deployment workflow: https://github.com/susayold/vietgreen-ci-solar-project-finance/actions/runs/33358568134
