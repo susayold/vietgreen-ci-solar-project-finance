@@ -9,6 +9,7 @@ import csv
 import hashlib
 import io
 import os
+import urllib.error
 import urllib.request
 import zipfile
 from pathlib import Path
@@ -25,6 +26,11 @@ TARGETS = (
 )
 
 
+class NoRedirect(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, request, fp, code, msg, headers, new_url):
+        return None
+
+
 def download_artifact(artifact_id: str) -> dict[str, tuple[str, int]]:
     repo = os.environ["GITHUB_REPOSITORY"]
     token = os.environ["GITHUB_TOKEN"]
@@ -34,10 +40,27 @@ def download_artifact(artifact_id: str) -> dict[str, tuple[str, int]]:
         headers={
             "Accept": "application/vnd.github+json",
             "Authorization": f"Bearer {token}",
-            "User-Agent": "VietGreen-remote-reproducibility-check/1.0",
+            "User-Agent": "VietGreen-remote-reproducibility-check/1.1",
         },
     )
-    with urllib.request.urlopen(request, timeout=120) as response:
+    opener = urllib.request.build_opener(NoRedirect)
+    try:
+        response = opener.open(request, timeout=120)
+    except urllib.error.HTTPError as error:
+        if error.code not in {301, 302, 303, 307, 308}:
+            raise
+        location = error.headers.get("Location")
+        if not location:
+            raise RuntimeError(f"artifact {artifact_id} redirect missing Location header")
+        # The signed storage URL must not receive the GitHub bearer token.
+        response = urllib.request.urlopen(
+            urllib.request.Request(
+                location,
+                headers={"User-Agent": "VietGreen-remote-reproducibility-check/1.1"},
+            ),
+            timeout=120,
+        )
+    with response:
         archive_bytes = response.read()
     result: dict[str, tuple[str, int]] = {}
     with zipfile.ZipFile(io.BytesIO(archive_bytes)) as archive:
