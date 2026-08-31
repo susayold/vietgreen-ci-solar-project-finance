@@ -50,7 +50,7 @@ Source rows: SRC-TAR-963, SRC-TAR-60, SRC-TAR-278, SRC-REFRESH-EVN-20260831, SRC
 
 ## Remote live-check provenance
 
-- Workflow: 33366510106; job: 99408166781; metadata commit: 116c80ea7559cb55d9db11484bc7529177c77c8c; artifact: 9748486524; artifact digest: sha256:bbafe54b9991fb90b74ce39ca089c6b937855660411c3cfe859da506bff327aa.
+- Workflow: 33368222168; job: 99413280315; metadata commit: 47debfe2fbce147554bfcecc165df971065fd0b8; artifact: 9749081207; artifact digest: sha256:4106b2dab2c29d7f1eaf46e463148e8f3f4b19e8fcaae27657285b375c940264.
 - Live-check file: evidence/REMOTE_SOURCE_LIVE_CHECK.csv; GitHub blob 2c5ed2d5ebe74cf829c5f4feefe61906e0dab1aa; SHA-256 9a064b708ac181a51917a80c02026c0e4144d171995e6269af7f567139937e93; 24 rows; 20 PASS and 4 non-blocking WARNs.
 - The two MOIT runner network-unreachable, NREL DNS and IRENA HTTP 403 warnings are preserved as WARNs and are not treated as evidence that a source is unavailable or that the model can claim certification.
 - All 24 rows record raw_snapshot_stored=FALSE and storage_boundary=REMOTE_RUNNER_EPHEMERAL.
@@ -59,7 +59,7 @@ Source rows: SRC-TAR-963, SRC-TAR-60, SRC-TAR-278, SRC-REFRESH-EVN-20260831, SRC
 
 ## Core validation lineage after core model refresh
 
-- Push workflow 33367160495 / job 99410087552 completed successfully after the SR-1.13 evidence registration; artifact 9748676847, digest sha256:3f1f7c193192ca4bd652a131e453e9bd7cd996592f0f2343b081664618fdba70.
+- Push workflow 33367160495 / job 99410087552 completed successfully after the SR-1.14 evidence registration; artifact 9748676847, digest sha256:3f1f7c193192ca4bd652a131e453e9bd7cd996592f0f2343b081664618fdba70.
 - Remote checks remained green: 20/20 data quality, 20/20 dynamic QA, 31/31 workbook checks, 7/7 tests and 13 PASS plus 1 intentional candidate WARN in release controls.
 - The rebuilt native workbook is 22 sheets, 117493 bytes, SHA-256 9e72588fd7a084282befa74dd0f97036f15e1f306aac6080fc86fdd75f605c5f; GitHub blob c0d2e2dadf3720a35b9101205efdec108425bec5.
 - Same-head repeat 33367239508 / job 99410324360 and remote comparator 33367293807 / job 99410490341 matched all six target files; comparator artifact 9748718166, digest sha256:5b445b9ad1b8b292edf19197ca25b7a7ecf7c4204d9d788baaed21afca483b3e; comparison CSV SHA-256 28b02df8bfa8516586597a374ac11fe02907056f3f787de34675683ab7a9b8df; raw artifact contents were not stored.
