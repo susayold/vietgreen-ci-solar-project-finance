@@ -663,6 +663,42 @@ def run(root=BASE_DIR):
     qa_rows.append({"test_id": "QA-REMOTE-012", "status": "PASS" if pool["debt"] <= sum(project["capex_vnd"] for project in selected) else "FAIL", "actual": "pooled debt <= selected CAPEX", "detail": "Pooled debt has an explicit borrowing-base cap"})
     qa_rows.append({"test_id": "QA-REMOTE-013", "status": "PASS" if tariff_info["billing_status"] == "WATCH" else "FAIL", "actual": tariff_info["billing_status"], "detail": "Legal tariff schedule is not treated as billed implementation"})
 
+    ic_rows = []
+    for project in projects:
+        issues = []
+        if project["regulatory_gate"] == "HOLD_FOR_LEGAL_REVIEW":
+            issues.append("legal_applicability")
+        if project["technical_gate"] != "PASS":
+            issues.append("technical_due_diligence")
+        if project["credit_site_gate"] != "PASS":
+            issues.append("credit_site_continuity")
+        if project["ppa_gate"] != "PASS":
+            issues.append("ppa_frontier")
+        if project["finance_gate"] != "PASS":
+            issues.append("tenor_or_dscr")
+        if project["billing_status"] == "WATCH":
+            issues.append("billed_tariff_confirmation")
+        binding_issue = "|".join(issues) if issues else "equity_hurdle" if project["equity_npv_vnd"] < 0 else "none"
+        sponsor_status = "CONDITIONAL" if project["shortlist_flag"] and project["equity_npv_vnd"] < 0 else "PASS" if project["shortlist_flag"] else "FAIL"
+        lender_status = "CONDITIONAL" if project["shortlist_flag"] and project["credit_site_gate"] == "CONDITION" else "PASS" if project["shortlist_flag"] else "FAIL"
+        ic_rows.append({
+            "project_id": project["project_id"],
+            "sponsor_status": sponsor_status,
+            "lender_status": lender_status,
+            "binding_issue": binding_issue,
+            "recommended_action": project["final_classification"],
+            "condition_1": "confirm billed tariff and final legal applicability" if project["billing_status"] == "WATCH" else "resolve binding issue",
+            "condition_2": "complete lender/legal/technical/site diligence",
+            "condition_3": "re-run P90, debt and portfolio QA",
+            "final_classification": project["final_classification"],
+        })
+    write_csv(
+        root / "outputs/IC_DECISION_TABLE.csv",
+        ic_rows,
+        ["project_id", "sponsor_status", "lender_status", "binding_issue", "recommended_action",
+         "condition_1", "condition_2", "condition_3", "final_classification"],
+    )
+
     write_csv(root / "outputs/energy_p50_p90.csv", energy_rows, list(energy_rows[0]))
     write_csv(root / "outputs/load_matching_summary.csv", load_rows, list(load_rows[0]))
     write_csv(root / "outputs/ppa_frontier.csv", ppa_frontier_rows, list(ppa_frontier_rows[0]))
