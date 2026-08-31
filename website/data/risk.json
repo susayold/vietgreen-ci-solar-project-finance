@@ -29,7 +29,17 @@
     "bankableTransactionReady": false,
     "externalGateCountOpen": 8,
     "claimBoundary": "Synthetic recruiter package only; not investment approval, lender approval, legal/tax opinion, technical certification, site diligence or bankable P90.",
-    "evidenceClass": "SYNTHETIC_RECRUITER_OUTPUT"
+    "evidenceClass": "SYNTHETIC_RECRUITER_OUTPUT",
+    "metricIds": [
+      "projects_screened",
+      "current_positive_equity_npv",
+      "negotiated_positive_equity_npv",
+      "selected_projects",
+      "selected_equity_bvnd",
+      "selected_debt_bvnd",
+      "selected_cfads_bvnd",
+      "base_sizing_dscr"
+    ]
   },
   "currentDecision": {
     "value": "NO DEPLOYMENT",
@@ -120,6 +130,10 @@
     {
       "label": "COD delay",
       "deltaBVND": -10.73467
+    },
+    {
+      "label": "FX depreciation",
+      "deltaBVND": -7.796245
     }
   ],
   "fixedVsResized": [
@@ -160,27 +174,37 @@
     {
       "risk": "PPA price risk",
       "impact": "High",
-      "mitigation": "Diversify offtakers; indexation; price floor"
+      "status": "OPEN",
+      "mitigation": "Diversify offtakers; indexation; price floor",
+      "evidenceClass": "EXTERNAL_DEPENDENCY"
     },
     {
       "risk": "CAPEX overrun",
       "impact": "High",
-      "mitigation": "EPC fixed-price; contingency buffer"
+      "status": "OPEN",
+      "mitigation": "EPC fixed-price; contingency buffer",
+      "evidenceClass": "MODELLED_OUTPUT"
     },
     {
       "risk": "Interest-rate risk",
       "impact": "High",
-      "mitigation": "Fixed rate, cap or hedge"
+      "status": "OPEN",
+      "mitigation": "Fixed rate, cap or hedge",
+      "evidenceClass": "SIMULATED_INPUT"
     },
     {
       "risk": "Generation underperformance",
       "impact": "Medium",
-      "mitigation": "Quality equipment and performance guarantees"
+      "status": "OPEN",
+      "mitigation": "Quality equipment and performance guarantees",
+      "evidenceClass": "EXTERNAL_DEPENDENCY"
     },
     {
       "risk": "COD delay",
       "impact": "Medium",
-      "mitigation": "Milestone incentives and liquidated damages"
+      "status": "OPEN",
+      "mitigation": "Milestone incentives and liquidated damages",
+      "evidenceClass": "EXTERNAL_DEPENDENCY"
     }
   ],
   "sources": [

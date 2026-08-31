@@ -29,7 +29,23 @@
     "bankableTransactionReady": false,
     "externalGateCountOpen": 8,
     "claimBoundary": "Synthetic recruiter package only; not investment approval, lender approval, legal/tax opinion, technical certification, site diligence or bankable P90.",
-    "evidenceClass": "SYNTHETIC_RECRUITER_OUTPUT"
+    "evidenceClass": "SYNTHETIC_RECRUITER_OUTPUT",
+    "metricIds": [
+      "projects_screened",
+      "current_positive_equity_npv",
+      "negotiated_positive_equity_npv",
+      "selected_projects",
+      "selected_equity_bvnd",
+      "selected_debt_bvnd",
+      "selected_cfads_bvnd",
+      "base_sizing_dscr"
+    ]
+  },
+  "metadata": {
+    "modelVersion": "V4.0.0",
+    "buildDate": "2026-08-31",
+    "modelOwner": "VietGreen Risk",
+    "reviewStatus": "Complete"
   },
   "qa": {
     "formulaCells": 2055,

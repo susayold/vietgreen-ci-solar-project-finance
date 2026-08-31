@@ -42,6 +42,11 @@ if shared.get("currentDecision") != "NO_DEPLOYMENT":
     errors.append("current decision must be NO_DEPLOYMENT")
 if shared.get("transactionEvidenceStatus") != "OPEN" or shared.get("bankableTransactionReady") is not False:
     errors.append("evidence boundary mismatch")
+metric_ids = shared.get("metricIds", [])
+if len(metric_ids) != len(set(metric_ids)):
+    errors.append("duplicated metric ID in shared contract")
+if shared.get("modelVersion") != "V4.0.0":
+    errors.append("V4 model version mismatch")
 
 exposure = read_csv(ROOT / "outputs/portfolio_exposure_v4.csv")
 selected = [row for row in exposure if row.get("selected_flag", "").lower() == "true"]
@@ -61,6 +66,9 @@ if not math.isclose(total("cfads_y1_vnd") / 1e9, manifest["selected_cfads_y1_bvn
     errors.append("selected CFADS total mismatch")
 
 phase2 = read_csv(ROOT / "outputs/scenario_summary_v4_phase2.csv")
+expected_scenarios = {"BASE_SPONSOR", "P90_ENERGY", "CAPEX_OVERRUN", "COD_DELAY", "INTEREST_RATE_SHOCK", "DSO_DELAY", "COMBINED_DOWNSIDE"}
+if {row["scenario"] for row in phase2} != expected_scenarios:
+    errors.append("scenario names inconsistent")
 if not any(row["scenario"] == "BASE_SPONSOR" and row["status"] == "PASS" for row in phase2):
     errors.append("base scenario missing or not PASS")
 if not any(row["scenario"] == "COMBINED_DOWNSIDE" and row["status"] == "FAIL_DSCR" for row in phase2):
@@ -84,6 +92,12 @@ for path in DATA.glob("*.json"):
                 stack.extend(item)
     except json.JSONDecodeError:
         pass
+
+    # Any explicit ISO date in the public payload must be the released as-of date.
+    import re
+    for date_value in re.findall(r"20\d{2}-\d{2}-\d{2}", text):
+        if date_value != manifest["release_date"]:
+            errors.append(f"unapproved date {date_value} in {path.name}")
 
 if errors:
     print("Website data validation FAILED")

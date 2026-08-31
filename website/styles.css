@@ -124,6 +124,9 @@ tbody tr:hover { background: #f8fcf9; }
 .chart-grid { stroke: #e6eee8; stroke-width: 1; }
 .chart-axis { fill: #74847d; font-size: 9px; }
 .chart-label { fill: #3f554b; font-size: 9px; }
+.chart-legend { display: flex; flex-wrap: wrap; gap: 12px; color: var(--muted); font-size: 10px; }
+.legend-swatch { display: inline-block; width: 17px; height: 3px; margin: 0 5px 3px 0; vertical-align: middle; background: var(--leaf); }
+.legend-swatch.blue { background: #2d6cc4; }.legend-swatch.red { background: #c7493e; }
 .line-green { fill: none; stroke: #0b7747; stroke-width: 3; }
 .line-blue { fill: none; stroke: #2d6cc4; stroke-width: 2.5; }
 .line-red { fill: none; stroke: #c7493e; stroke-width: 2.5; }
@@ -151,8 +154,9 @@ tbody tr:hover { background: #f8fcf9; }
 .donut strong { display: block; font-size: 14px; }
 .donut small { color: var(--muted); font-size: 10px; }
 .legend { display: grid; gap: 4px; margin-top: 7px; color: var(--muted); font-size: 10px; }
-.legend span:before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 5px; border-radius: 2px; background: var(--leaf); }
-.legend span:nth-child(2):before { background: #70b771; }.legend span:nth-child(3):before { background: #e3b741; }.legend span:nth-child(4):before { background: #b9c5be; }
+.legend span:before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 5px; border-radius: 2px; background: var(--legend-color, var(--leaf)); }
+.source-line { display: flex; flex-wrap: wrap; gap: 7px; align-items: center; margin-top: 16px; color: var(--muted); font-size: 10px; }
+.source-line > span { color: var(--forest); font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
 .code-block { overflow-x: auto; padding: 16px; color: #d4f2db; border-radius: 12px; background: #052e24; font: 12px/1.65 ui-monospace, SFMono-Regular, Consolas, monospace; }
 .architecture { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px; padding: 20px; }
 .arch-node { padding: 13px 12px; border: 1px solid var(--mint-2); border-radius: 10px; color: var(--forest); background: #f4fbf4; font-size: 11px; font-weight: 750; text-align: center; }

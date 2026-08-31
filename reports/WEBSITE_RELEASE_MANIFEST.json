@@ -1,7 +1,7 @@
 {
   "site": "VietGreen C&I Solar Project Finance",
   "releaseId": "V4-FINAL-2026-08-31",
-  "siteVersion": "1.0.0-recruiter-memo",
+  "siteVersion": "1.1.0-recruiter-memo",
   "dataSource": "scripts/build_website_data.py",
   "routes": 8,
   "selectedProjectIds": ["VG-005", "VG-010", "VG-011", "VG-012"],
