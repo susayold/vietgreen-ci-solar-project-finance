@@ -25,6 +25,8 @@ def project_cash_flow(
     project["self_consumption_kwh"]; it is not a flat annual load heuristic.
     Tax uses straight-line depreciation and a loss carryforward proxy. VAT is
     split from all-in construction CAPEX and is reconciled in sources/uses.
+    Debt sizing happens after this operating schedule, so year-zero sources
+    gracefully use zero debt and full-equity placeholders during the first pass.
     """
     rows = []
     previous_nwc = 0.0
@@ -33,6 +35,8 @@ def project_cash_flow(
     capex_net = capex_total / (1.0 + vat_rate)
     capex_vat = capex_total - capex_net
     depreciation = capex_net / years if years else 0.0
+    debt_source = float(project.get("debt_vnd", 0.0))
+    equity_source = float(project.get("equity_required_vnd", capex_total))
     for year in range(years + 1):
         in_contract = 0 < year <= int(float(project["ppa_tenor_years"]))
         if year == 0:
@@ -69,13 +73,12 @@ def project_cash_flow(
             depreciation_expense = depreciation if in_contract else 0.0
             taxable_income = revenue - opex - depreciation_expense
             tax_loss_opening = tax_losses
-            taxable_after_losses = taxable_income - tax_loss_opening
-            tax = max(0.0, taxable_after_losses * tax_rate)
-            tax_loss_closing = max(0.0, tax_loss_opening - taxable_income) if taxable_income < 0 else max(0.0, tax_loss_opening - taxable_income)
-            if taxable_income > tax_loss_opening:
+            if taxable_income >= tax_loss_opening:
+                tax = max(0.0, (taxable_income - tax_loss_opening) * tax_rate)
                 tax_loss_closing = 0.0
             else:
-                tax_loss_closing = tax_loss_opening + max(0.0, -taxable_income)
+                tax = 0.0
+                tax_loss_closing = tax_loss_opening - taxable_income
             tax_losses = tax_loss_closing
             billed_nwc = revenue * dso_days / 365.0
             working_capital = 0.0 if year == years else billed_nwc
@@ -89,11 +92,7 @@ def project_cash_flow(
             terminal_value = 0.0
             terminal_release = max(0.0, previous_nwc) if year == years else 0.0
         cfads = revenue - opex - tax - delta_working_capital - major_maintenance
-        sources = (
-            float(project["debt_vnd"]) + float(project["equity_required_vnd"])
-            if year == 0
-            else 0.0
-        )
+        sources = debt_source + equity_source if year == 0 else 0.0
         uses = capex
         rows.append(
             {
