@@ -64,4 +64,6 @@ Key links:
 - [Full Master Plan V3 DoD audit (65 rows; 62 PASS, 2 PARTIAL, 1 PENDING)](validation/PLAN_DOD_AUDIT.csv)
 - [Remote source-fetch log](evidence/REMOTE_SOURCE_FETCH_LOG_2026-08-31.csv)
 - [Data-room index](reports/DATA_ROOM_INDEX.md)
+- [External gate intake register](validation/EXTERNAL_GATE_INTAKE.csv)
+- [External gate intake template](evidence/EXTERNAL_GATE_INTAKE_TEMPLATE.md)
 - [IC decision table](outputs/IC_DECISION_TABLE.csv)

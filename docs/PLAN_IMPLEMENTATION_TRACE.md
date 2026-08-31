@@ -66,12 +66,17 @@ Implemented: checkbox-level audit for all 65 requirements in DoD 42.1–42.9, wi
 
 Independent final model review; billed tariff confirmation; transaction-specific tax and foreign-borrowing advice; lender/legal/technical/site diligence; bankable P90; executed PPA; security, insurance, reserve and hedge evidence; sponsor hurdle resolution. These are tracked in validation/OPEN_EXTERNAL_GATES.csv; no synthetic or public comparator evidence closes them.
 
-## K. Release classification
+
+## K. External gate intake
+
+A remote-only intake register and acceptance template now map each of EXT-001–EXT-008 to the required document, verifier, model reconciliation and storage boundary. The register does not close any gate; it prevents comparator, readiness or synthetic evidence from being mislabeled as transaction proof.
+
+## L. Release classification
 
 Release 1.2.0 remains candidate with PASS_WITH_LIMITATIONS. recruiter_ready remains false until the external gates are closed.
 
 Reproducibility control: remote push run 33367160495 and same-head workflow_dispatch run 33367239508 / job 99410324360 both succeeded and produced identical native workbook SHA-256 9e72588fd7a084282befa74dd0f97036f15e1f306aac6080fc86fdd75f605c5f; comparator run 33367293807 / job 99410490341 compared the index, native workbook and all four hourly streams with 6/6 matches; comparison metadata artifact 9748718166 was recorded without raw artifact contents; reproducibility_check_status=PASS.
 
-## L. Final remote output refresh
+## M. Final remote output refresh
 
 The final push-triggered core rebuild completed in workflow 33367160495 / job 99410087552; the repository workbook is now regenerated against SR-1.14 with SHA-256 9e72588fd7a084282befa74dd0f97036f15e1f306aac6080fc86fdd75f605c5f and 117493 bytes. Same-head run 33367239508 / job 99410324360 and comparator 33367293807 / job 99410490341 matched 6/6 files.
