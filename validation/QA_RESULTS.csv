@@ -1,5 +1,5 @@
 check_id,category,status,evidence,limitation
-DQ-001,data_quality,PASS,18 of 18 checks passed,Internal synthetic lineage and cross-field checks only
+DQ-001,data_quality,PASS,20 of 20 checks passed,Internal synthetic lineage and cross-field checks only
 WB-001,workbook,PASS,31 of 31 checks passed,Structural workbook validation only
 HT-001,hidden_truth,PASS,5 of 5 cases matched; 0 false negatives,Aggregate-only test cases; raw truth withheld
 TEST-001,automated_tests,PASS,5 of 5 tests passed,Test suite is not independent model assurance
