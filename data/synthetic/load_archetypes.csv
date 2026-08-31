@@ -3,9 +3,9 @@ ARCH-01,continuous_process,0,24,1.00,0.95,1.00,0.05,0.75,0.03,24x7 process with 
 ARCH-02,electronics_day_shift,7,21,1.00,0.30,0.90,0.04,0.12,0.03,weekday production concentrated in daytime
 ARCH-03,cold_chain_24x7,0,24,1.00,0.98,0.65,0.08,0.80,0.04,refrigeration baseload with seasonal demand
 ARCH-04,food_day_extended,6,22,1.00,0.75,1.00,0.10,0.20,0.05,extended operating window
-ARCH-05,textile_weekday,7,18,1.00,0.20,0.35,0.07,0.10,0.05,weekday-heavy profile with limited weekend load
-ARCH-06,hospitality_evening,6,24,0.95,0.90,0.55,0.12,0.30,0.06,late-day demand and weekend continuity
+ARCH-05,textile_weekday,7,18,1.00,0.20,0.15,0.07,0.10,0.05,weekday-heavy profile with limited weekend load
+ARCH-06,hospitality_evening,6,24,0.95,0.90,0.30,0.12,0.30,0.06,late-day demand and weekend continuity
 ARCH-07,pharma_stable,0,24,1.00,0.92,1.00,0.04,0.70,0.03,stable critical-load profile
 ARCH-08,automotive_two_shift,6,22,1.00,0.45,0.85,0.06,0.18,0.04,two-shift production
-ARCH-09,agribusiness_seasonal,6,20,0.95,0.55,0.45,0.18,0.15,0.08,seasonal daylight processing
+ARCH-09,agribusiness_seasonal,6,20,0.95,0.55,0.18,0.18,0.15,0.08,seasonal daylight processing
 ARCH-10,plastics_mixed_shift,5,22,1.00,0.65,0.75,0.06,0.20,0.04,mixed-shift manufacturing

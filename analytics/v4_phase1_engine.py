@@ -50,11 +50,11 @@ ARCHETYPES = {
         {"archetype_id": "ARCH-02", "archetype_name": "electronics_day_shift", "day_start": "7", "day_end": "21", "weekday_factor": "1.00", "weekend_factor": "0.30", "daytime_share_multiplier": "0.90", "season_amp": "0.04", "night_floor": "0.12", "cloud_volatility": "0.03"},
         {"archetype_id": "ARCH-03", "archetype_name": "cold_chain_24x7", "day_start": "0", "day_end": "24", "weekday_factor": "1.00", "weekend_factor": "0.98", "daytime_share_multiplier": "0.65", "season_amp": "0.08", "night_floor": "0.80", "cloud_volatility": "0.04"},
         {"archetype_id": "ARCH-04", "archetype_name": "food_day_extended", "day_start": "6", "day_end": "22", "weekday_factor": "1.00", "weekend_factor": "0.75", "daytime_share_multiplier": "1.00", "season_amp": "0.10", "night_floor": "0.20", "cloud_volatility": "0.05"},
-        {"archetype_id": "ARCH-05", "archetype_name": "textile_weekday", "day_start": "7", "day_end": "18", "weekday_factor": "1.00", "weekend_factor": "0.20", "daytime_share_multiplier": "0.35", "season_amp": "0.07", "night_floor": "0.10", "cloud_volatility": "0.05"},
-        {"archetype_id": "ARCH-06", "archetype_name": "hospitality_evening", "day_start": "6", "day_end": "24", "weekday_factor": "0.95", "weekend_factor": "0.90", "daytime_share_multiplier": "0.55", "season_amp": "0.12", "night_floor": "0.30", "cloud_volatility": "0.06"},
+        {"archetype_id": "ARCH-05", "archetype_name": "textile_weekday", "day_start": "7", "day_end": "18", "weekday_factor": "1.00", "weekend_factor": "0.20", "daytime_share_multiplier": "0.15", "season_amp": "0.07", "night_floor": "0.10", "cloud_volatility": "0.05"},
+        {"archetype_id": "ARCH-06", "archetype_name": "hospitality_evening", "day_start": "6", "day_end": "24", "weekday_factor": "0.95", "weekend_factor": "0.90", "daytime_share_multiplier": "0.30", "season_amp": "0.12", "night_floor": "0.30", "cloud_volatility": "0.06"},
         {"archetype_id": "ARCH-07", "archetype_name": "pharma_stable", "day_start": "0", "day_end": "24", "weekday_factor": "1.00", "weekend_factor": "0.92", "daytime_share_multiplier": "1.00", "season_amp": "0.04", "night_floor": "0.70", "cloud_volatility": "0.03"},
         {"archetype_id": "ARCH-08", "archetype_name": "automotive_two_shift", "day_start": "6", "day_end": "22", "weekday_factor": "1.00", "weekend_factor": "0.45", "daytime_share_multiplier": "0.85", "season_amp": "0.06", "night_floor": "0.18", "cloud_volatility": "0.04"},
-        {"archetype_id": "ARCH-09", "archetype_name": "agribusiness_seasonal", "day_start": "6", "day_end": "20", "weekday_factor": "0.95", "weekend_factor": "0.55", "daytime_share_multiplier": "0.45", "season_amp": "0.18", "night_floor": "0.15", "cloud_volatility": "0.08"},
+        {"archetype_id": "ARCH-09", "archetype_name": "agribusiness_seasonal", "day_start": "6", "day_end": "20", "weekday_factor": "0.95", "weekend_factor": "0.55", "daytime_share_multiplier": "0.18", "season_amp": "0.18", "night_floor": "0.15", "cloud_volatility": "0.08"},
         {"archetype_id": "ARCH-10", "archetype_name": "plastics_mixed_shift", "day_start": "5", "day_end": "22", "weekday_factor": "1.00", "weekend_factor": "0.65", "daytime_share_multiplier": "0.75", "season_amp": "0.06", "night_floor": "0.20", "cloud_volatility": "0.04"},
     ]
 }
@@ -744,7 +744,7 @@ def build():
         "- This does not close external transaction gates, legal billing confirmation, lender term confirmation, or bankability.",
     ]
     (ROOT / "validation/V4_PHASE1_RED_TEAM_REPORT.md").write_text("\n".join(report) + "\n", encoding="utf-8")
-    print("V4 Phase 1 completed: %d projects; %d full PPA roots; portfolio rows=%d; red-team=%s" % (len(ledgers), solver_roots, len(portfolio_output), red_status))
+    print("V4 Phase 1 completed: %d projects; %d full PPA roots; portfolio rows=%d; red-team=%s; profile=%s; uncertainty=%s; dispersion=%s" % (len(ledgers), solver_roots, len(portfolio_output), red_status, profile_hours_pass, uncertainty_order_pass, dispersion_pass))
     if red_status == "FAIL" or not profile_hours_pass or not uncertainty_order_pass or not dispersion_pass:
         raise SystemExit("V4 Phase 1 red-team checks failed")
 
