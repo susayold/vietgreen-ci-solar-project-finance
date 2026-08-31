@@ -42,6 +42,7 @@ The project data-room is represented by the repository, the workflow artifact an
 - Remote-only intake register: `validation/EXTERNAL_GATE_INTAKE.csv`.
 - Acceptance contract: `evidence/EXTERNAL_GATE_INTAKE_TEMPLATE.md`.
 - Submission schema: `validation/EXTERNAL_GATE_SUBMISSIONS.csv`; remote validator: `.github/workflows/external-gate-validation.yml`.
+- External-gate validator run 33370201444 / job 99419321412 passed with 8 gate rows and 0 submissions; all gates remain OPEN.
 - These files contain metadata and acceptance rules only; private transaction documents must remain in controlled Drive storage and are not uploaded to this public repository.
 
 ## Candidate economics
