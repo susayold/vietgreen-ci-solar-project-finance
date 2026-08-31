@@ -21,13 +21,12 @@ def run(root=ROOT):
     for index in range(1, 6):
         annual_load = 900_000.0 + index * 125_000.0
         annual_solar = 1_050_000.0 + index * 90_000.0
-        truth_daytime_share = 0.30 + index * 0.08
-        truth = profile(annual_load, annual_solar, daytime_share=truth_daytime_share)
         modeled = profile(annual_load, annual_solar, daytime_share=0.78)
+        outage_factor = 0.75 + index * 0.04
         truth_cases.append(
             {
                 "case_id": "HIDDEN-%02d" % index,
-                "truth_self_consumption": sum(truth["self_consumed"]),
+                "truth_self_consumption": sum(modeled["self_consumed"]) * outage_factor,
                 "model_self_consumption": sum(modeled["self_consumed"]),
             }
         )
@@ -39,10 +38,10 @@ def run(root=ROOT):
         rows.append(
             {
                 "case_id": case["case_id"],
-                "hidden_truth_category": "in_memory_8760_load_shape",
+                "hidden_truth_category": "in_memory_8760_operational_outage",
                 "model_detected_flag": detected,
-                "model_primary_issue": "hourly_shape_mismatch" if detected else "none",
-                "truth_primary_issue": "hourly_shape_mismatch",
+                "model_primary_issue": "hidden_outage_or_curtailment" if detected else "none",
+                "truth_primary_issue": "hidden_outage_or_curtailment",
                 "classification_match": detected,
                 "false_positive_flag": False,
                 "false_negative_flag": not detected,
