@@ -107,16 +107,22 @@ def cashflow_usd(ledger, depreciation, fraction=1.0, hedge_fraction=0.0):
 def fx_break_even(ledger):
     target_vnd = float(ledger["negotiated_eval"]["equity_npv_vnd"])
     target_usd_equivalent = target_vnd / FX_BASE
+    base = cashflow_usd(ledger, 0.0)
+    fixed_service = list(base["total_service_usd"])
 
     def equity_difference(depreciation):
         return cashflow_usd(ledger, depreciation)["equity_npv_usd"] * FX_BASE - target_vnd
 
+    def fixed_debt_dscr(depreciation):
+        current = cashflow_usd(ledger, depreciation)
+        active = [(cash, service) for cash, service in zip(current["cfads_usd"], fixed_service) if service > 1e-8]
+        return min((cash / service for cash, service in active), default=0.0)
+
     def dscr_difference(depreciation):
-        return cashflow_usd(ledger, depreciation)["min_dscr"] - 1.20
+        return fixed_debt_dscr(depreciation) - 1.20
 
     primary = solve_root(equity_difference, increasing=False, initial_high=0.04, max_expansions=5)
     secondary = solve_root(dscr_difference, increasing=False, initial_high=0.04, max_expansions=5)
-    base = cashflow_usd(ledger, 0.0)
     shocked = cashflow_usd(ledger, 0.04)
     hedged_base = cashflow_usd(ledger, 0.04, hedge_fraction=1.0)
     return {
@@ -134,14 +140,13 @@ def fx_break_even(ledger):
         "dscr_break_even_secondary_residual": secondary["residual"],
         "dscr_break_even_secondary_status": secondary["status"],
         "dscr_break_even_secondary_iterations": secondary["iterations"],
-        "min_dscr_usd_zero_fx": base["min_dscr"],
-        "min_dscr_usd_4pct_fx": shocked["min_dscr"],
+        "min_dscr_usd_zero_fx": fixed_debt_dscr(0.0),
+        "min_dscr_usd_4pct_fx": fixed_debt_dscr(0.04),
         "min_dscr_usd_4pct_hedged": hedged_base["min_dscr"],
         "hedge_value_delta_vnd_equivalent": (hedged_base["equity_npv_usd"] - shocked["equity_npv_usd"]) * FX_BASE,
         "usd_npv_monotonic_pass": shocked["equity_npv_usd"] <= base["equity_npv_usd"] + 1e-6,
-        "dscr_monotonic_pass": shocked["min_dscr"] <= base["min_dscr"] + 1e-6,
+        "dscr_monotonic_pass": fixed_debt_dscr(0.04) <= fixed_debt_dscr(0.0) + 1e-6,
     }
-
 
 def exposure_selection(ledgers):
     eligible = []
@@ -189,7 +194,7 @@ def exposure_selection(ledgers):
             and max(parent_equity.values(), default=0.0) <= EQUITY_BUDGET * PARENT_EQUITY_SHARE_CAP + 1e-6
             and max(industry_equity.values(), default=0.0) <= EQUITY_BUDGET * INDUSTRY_EQUITY_SHARE_CAP + 1e-6
             and max(region_equity.values(), default=0.0) <= EQUITY_BUDGET * REGION_EQUITY_SHARE_CAP + 1e-6
-            and total_debt <= DEBT_BUDGET_VND * (1.0 - DEBT_EXPOSURE_CAP) + 1e-6
+            and total_debt <= DEBT_BUDGET_VND * DEBT_EXPOSURE_CAP + 1e-6
         )
         if limits_pass:
             selected.append(ledger)
@@ -341,7 +346,7 @@ def build():
         float(row["parent_equity_share_of_budget"]) <= PARENT_EQUITY_SHARE_CAP + 1e-9
         and float(row["industry_equity_share_of_budget"]) <= INDUSTRY_EQUITY_SHARE_CAP + 1e-9
         and float(row["region_equity_share_of_budget"]) <= REGION_EQUITY_SHARE_CAP + 1e-9
-        and float(row["portfolio_debt_share_of_debt_budget"]) <= 1.0 - DEBT_EXPOSURE_CAP + 1e-9
+        and float(row["portfolio_debt_share_of_debt_budget"]) <= DEBT_EXPOSURE_CAP + 1e-9
         for row in exposure_output
     )
     positive_selected_pass = all(item["negotiated_eval"]["equity_npv_vnd"] > 0.0 for item in selected)
