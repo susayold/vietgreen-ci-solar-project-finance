@@ -4,7 +4,8 @@ on:
   push:
     branches: [main]
     paths:
-      - "analytics/v4_*.py"
+      - "analytics/v4_returns.py"
+      - "analytics/v4_phase1_engine.py"
       - "data/synthetic/load_archetypes.csv"
       - "data/synthetic/energy_uncertainty_budget.csv"
       - ".github/workflows/v4-phase1-validation.yml"

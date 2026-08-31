@@ -78,9 +78,8 @@ def cashflow_usd(ledger, depreciation, fraction=1.0, hedge_fraction=0.0):
     usd_debt = debt_metrics(blended_cfads, usd_capex, usd_terms, rate_override=USD_DEBT_RATE)
     vnd_service_usd = [value / FX_BASE for value in vnd_debt["service"]]
     usd_service = usd_debt["service"]
-    max_len = max(len(vnd_service_usd), len(usd_service))
-    vnd_service_usd += [0.0] * (max_len - len(vnd_service_usd))
-    usd_service += [0.0] * (max_len - len(usd_service))
+    vnd_service_usd += [0.0] * max(0, YEARS - len(vnd_service_usd))
+    usd_service += [0.0] * max(0, YEARS - len(usd_service))
     total_service = [
         vnd_service_usd[index] * (1.0 - float(fraction))
         + usd_service[index] * float(fraction)
