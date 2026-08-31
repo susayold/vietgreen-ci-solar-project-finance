@@ -26,4 +26,4 @@ SRC-IRENA-2024,https://www.irena.org/Digital-Report/Renewable-Power-Generation-C
 SRC-SOLAR-NREL-ATB-REPORT-2024,https://www.nrel.gov/docs/fy24osti/89960.pdf,official_methodology,NREL ATB 2024 methodology comparator
 SRC-IRENA-2024-PUBLICATION,https://www.irena.org/Publications/2025/Jun/Renewable-Power-Generation-Costs-in-2024,official_cost_benchmark,IRENA 2024 cost publication landing page
 SRC-SOLAR-NREL-ATB-2024B-DATA,https://atb.nrel.gov/electricity/2024b/data,official_methodology,Current official NREL Electricity ATB 2024b data comparator
-SRC-IRENA-2024-FULL-PDF,https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2025/Jul/IRENA_TEC_RPGC_in_2024_2025.pdf,official_cost_benchmark,Full official IRENA report comparator
+SRC-IRENA-2024-SUMMARY-PDF,https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2025/Jul/IRENA_TEC_RPGC_in_2024_Summary_2025.pdf,official_cost_benchmark,Official IRENA executive-summary comparator
