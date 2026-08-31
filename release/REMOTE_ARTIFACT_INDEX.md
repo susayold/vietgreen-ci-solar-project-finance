@@ -4,12 +4,12 @@ Release candidate: 1.2.0
 Date: 2026-08-31
 Source register: SR-1.7-tax-draft-watch (latest live source: SRC-REFRESH-EVN-20260831; latest tax watch: SRC-REFRESH-TAX-20260831)
 Repository: https://github.com/susayold/vietgreen-ci-solar-project-finance
-Workflow source commit: 59cfa0d5304ecd7e8c05b865d45a1abcc58b8372
+Workflow source commit: 5e3e3f4801bb4abfad4ca1b7b569c5c58efcdead
 Workbook/remote-output refresh commit: d50f918d4a4756a78d4e82ae786136cbf3d38ec7
-Workflow run: 33357877259
-Workflow job: 99383381558
-Artifact: vietgreen-core-outputs, ID 9745707771
-Artifact digest: sha256:16addbaafa85aeaecde83ce12a5f3c9513988911d2090d915b29899f0dec607e
+Workflow run: 33358923808
+Workflow job: 99386362961
+Artifact: vietgreen-core-outputs, ID 9746043440
+Artifact digest: sha256:5148efc5e4b6461db83736221a500bc926a2764c176e85851c5217283c5d1784
 
 ## Gate summary
 
@@ -25,7 +25,7 @@ Artifact digest: sha256:16addbaafa85aeaecde83ce12a5f3c9513988911d2090d915b29899f
 - Portfolio: 11 selected projects, 13.10 MWp, pooled DSCR 1.300x, sponsor NPV -66.202345 BVND.
 - Remote 8,760 streams: four artifact-only streams, each 175,200 rows: Parquet load/solar plus deterministic CSV.GZ compatibility streams; index validation PASS.
 - Remote index SHA-256: d5f0e3822b126239c85756feda029fc40c793aa28f707cec0fd40b081e338cc0.
-- File-level reproducibility: push run 33357877259 and independent workflow_dispatch run 33357990799 / job 99383699191 matched the index and all four hourly stream bytes.
+- File-level reproducibility: push run 33358923808 and independent workflow_dispatch run 33358955525 / job 99386452901 matched the index and all four hourly stream bytes.
 - Tariff: WATCH pending billed implementation confirmation.
 - Tax: WATCH for the official 2026-08-28 draft amendment; current registered tax rules remain unchanged in the model.
 - Release status: candidate.
