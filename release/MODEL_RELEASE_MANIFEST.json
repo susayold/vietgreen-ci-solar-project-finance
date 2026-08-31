@@ -21,7 +21,7 @@
   "reproducibility_input_hashes": "LOCKED",
   "remote_8760_rows_per_stream": 175200,
   "native_workbook_path": "model/vietgreen_core_model.xlsx",
-  "source_register_commit": "09b91dfcccaa12259df0b5ac87a1fd612f73ba13",
+  "source_register_commit": "427593721cb5846d4517f9781c2af5b24dcbcf9f",
   "live_regulatory_refresh": "PASS_WITH_BILLING_WATCH",
   "workbook_validation_checks": 31,
   "workbook_validation_failures": 0,
