@@ -23,7 +23,7 @@ Date: 2026-08-31
 
 - Source register advanced to SR-1.14 with EVNSPC customer-facing, meter-training and IT-readiness corroboration plus official tax/FX/benchmark rechecks; the refresh remains corroborative and does not close the billed-tariff gate.
 
-- Metadata-only official-source crawl 33370454210 / job 99420130285 checked 24 controlled URLs: 20 PASS, 4 non-blocking warnings (two MOIT runner network-unreachable pages, NREL DNS and IRENA HTTP 403); no raw source snapshot was stored. Artifact 9749862740, digest sha256:b651c62122b79996b6984846029f094acac1d7c7225a3c29536d58bff31b3768. The MOIT briefing and four EVNSPC pages corroborate the billing-status watch.
+- Metadata-only official-source crawl 33371147810 / job 99422352549 checked 24 controlled URLs: 20 PASS, 6 non-blocking warnings (two MOIT runner network-unreachable pages, NREL DNS and IRENA HTTP 403); no raw source snapshot was stored. Artifact 9750130974, digest sha256:24d20a3bf9ee66f5eb94af620a40c3cc1352856ea97dcc413af02b4304d5b972. The MOIT briefing and four EVNSPC pages corroborate the billing-status watch.
 
 - Regulatory refresh: EVN Bulletin No. 16/2026 and Decree 278/2026/ND-CP were registered as current official references; billed implementation remains WATCH.
 
@@ -31,7 +31,7 @@ Date: 2026-08-31
 - 20/20 data-quality checks; 20/20 dynamic remote QA checks.
 - 31/31 workbook checks; 7/7 automated tests.
 - 13/13 mechanical release controls pass; 1 candidate-manifest warning.
-- 9 external-validation rows registered; 24 official source URLs live-checked remotely with raw snapshots disabled.
+- 9 external-validation rows registered; 26 official source URLs live-checked remotely with raw snapshots disabled.
 - Artifact vietgreen-core-outputs, ID 9748676847, digest sha256:3f1f7c193192ca4bd652a131e453e9bd7cd996592f0f2343b081664618fdba70; native workbook SHA-256 9e72588fd7a084282befa74dd0f97036f15e1f306aac6080fc86fdd75f605c5f, 117493 bytes.
 - Independent same-head workflow_dispatch run 33367239508 / job 99410324360 succeeded; artifact 9748704397, digest sha256:714cba930edeb46a34dd780f3b372855e2b39eab646f8328757da6c74dbf8d24.
 - Remote comparator run 33367293807 / job 99410490341 downloaded both core artifacts in memory and matched the native workbook, 8760 index and all four hourly streams (6/6); comparison metadata artifact 9748718166 was stored without raw artifact contents.

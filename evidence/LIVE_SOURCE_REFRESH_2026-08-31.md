@@ -25,6 +25,12 @@ Remote evidence note for the candidate release. Raw snapshots are intentionally 
 - **SRC-FX-008 and SRC-FX-019:** Government Portal pages for the registered foreign-borrowing rules were reachable and recorded as metadata-only PASS (HTTP 200); they remain legal/reference inputs, not proof of transaction-specific advice.
 - **SRC-IRENA-2024:** the registered 2024 IRENA cost-benchmark URL returned HTTP 403 from the ephemeral runner, so it is retained as a WARN for recheck and is not used as certification evidence.
 
+## Alternate official comparator recheck
+
+- **SRC-SOLAR-NREL-ATB-REPORT-2024:** the official NREL ATB report URL was tested from the ephemeral runner and returned a DNS error; it remains a comparator-only WARN.
+- **SRC-IRENA-2024-PUBLICATION:** the official IRENA publication landing page was tested from the ephemeral runner and returned HTTP 403; it remains a comparator-only WARN.
+- These alternate URLs were retained alongside the original NREL/IRENA URLs so the inaccessible runner paths remain auditable rather than silently replaced.
+
 ## Claim boundary
 
 The model keeps LEGAL_EFFECTIVE_NOT_BILLED, CURRENT_BILLED_REFERENCE, and SIMULATED_MODEL_INPUT as separate statuses. billing_status=WATCH remains a hard release limitation until a directly applicable utility/EVN billing record or authoritative implementation notice shows the invoice effective date.
@@ -46,16 +52,16 @@ The model keeps LEGAL_EFFECTIVE_NOT_BILLED, CURRENT_BILLED_REFERENCE, and SIMULA
 - EVNSPC IT readiness note: https://it.evnspc.vn/CMS_Article/ArticleByID?ArticleID=F02WEB-202605-0000000000007
 
 Retrieval date: 2026-08-31
-Source rows: SRC-TAR-963, SRC-TAR-60, SRC-TAR-278, SRC-REFRESH-EVN-20260831, SRC-REFRESH-EVN-BULLETIN-20260831, SRC-REFRESH-EVN-20260730, SRC-REFRESH-MOIT-20260709, SRC-REFRESH-TAX-20260831, SRC-SOLAR-GSA, SRC-SOLAR-NREL, SRC-REFRESH-EVN-963-20260423, SRC-REFRESH-MOIT-20260611, SRC-REFRESH-EVNSPC-20260715, SRC-REFRESH-EVNSPC-PRICING-20260831, SRC-REFRESH-EVNSPC-TRAINING-20260527, SRC-REFRESH-EVNSPC-IT-20260525, SRC-REG-243, SRC-TAX-067, SRC-TAX-320, SRC-TAX-141, SRC-TAX-020, SRC-FX-008, SRC-FX-019, SRC-IRENA-2024
+Source rows: SRC-TAR-963, SRC-TAR-60, SRC-TAR-278, SRC-REFRESH-EVN-20260831, SRC-REFRESH-EVN-BULLETIN-20260831, SRC-REFRESH-EVN-20260730, SRC-REFRESH-MOIT-20260709, SRC-REFRESH-TAX-20260831, SRC-SOLAR-GSA, SRC-SOLAR-NREL, SRC-REFRESH-EVN-963-20260423, SRC-REFRESH-MOIT-20260611, SRC-REFRESH-EVNSPC-20260715, SRC-REFRESH-EVNSPC-PRICING-20260831, SRC-REFRESH-EVNSPC-TRAINING-20260527, SRC-REFRESH-EVNSPC-IT-20260525, SRC-REG-243, SRC-TAX-067, SRC-TAX-320, SRC-TAX-141, SRC-TAX-020, SRC-FX-008, SRC-FX-019, SRC-IRENA-2024, SRC-SOLAR-NREL-ATB-REPORT-2024, SRC-IRENA-2024-PUBLICATION
 
 ## Remote live-check provenance
 
-- Workflow: 33370454210; job: 99420130285; metadata commit: d10424817fb9cd9ec84a5e9265e1a1a9fcca65dd; artifact: 9749862740; artifact digest: sha256:b651c62122b79996b6984846029f094acac1d7c7225a3c29536d58bff31b3768.
-- Live-check file: evidence/REMOTE_SOURCE_LIVE_CHECK.csv; GitHub blob e33a2177433eec8c4a3053e208bc1060838af308; SHA-256 3973ccbdb8d7d7493e53c2e5e04d42a39242d63903595f27e2e77bc0d7da8478; 24 rows; 20 PASS and 4 non-blocking WARNs.
+- Workflow: 33371147810; job: 99422352549; metadata commit: 53f39020d6dfef5467768c81e18ddb19c76e9582; artifact: 9750130974; artifact digest: sha256:24d20a3bf9ee66f5eb94af620a40c3cc1352856ea97dcc413af02b4304d5b972.
+- Live-check file: evidence/REMOTE_SOURCE_LIVE_CHECK.csv; GitHub blob 9a7f78b57e20ebe35502308412f2b0f536fb37fc; SHA-256 81145632b8e45ba53808ba06aa305d7434ef14f3e44ca21141c7c056d0676236; 24 rows; 20 PASS and 6 non-blocking WARNs.
 - The two MOIT runner network-unreachable, NREL DNS and IRENA HTTP 403 warnings are preserved as WARNs and are not treated as evidence that a source is unavailable or that the model can claim certification.
 - All 24 rows record raw_snapshot_stored=FALSE and storage_boundary=REMOTE_RUNNER_EPHEMERAL.
 
-- Latest live-check result: 24 rows; 20 PASS and 4 non-blocking WARNs (MOIT runner network-unreachable on two pages; NREL DNS; IRENA HTTP 403). Warnings are retained for recheck and do not alter model inputs.
+- Latest live-check result: 24 rows; 20 PASS and 6 non-blocking WARNs (MOIT runner network-unreachable on two pages; NREL DNS; IRENA HTTP 403). Warnings are retained for recheck and do not alter model inputs.
 
 ## Core validation lineage after core model refresh
 

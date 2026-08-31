@@ -2,7 +2,7 @@
 
 Release candidate: 1.2.0
 Date: 2026-08-31
-Source register: SR-1.14-rolling-regulatory-recheck (latest live source: SRC-REG-243; corroborating EVNSPC notice SRC-REFRESH-EVNSPC-20260715, pricing portal SRC-REFRESH-EVNSPC-PRICING-20260831, meter-training notice SRC-REFRESH-EVNSPC-TRAINING-20260527 and IT readiness note SRC-REFRESH-EVNSPC-IT-20260525; latest tax watch: SRC-REFRESH-TAX-20260831, plus rolling tax/FX and benchmark rechecks)
+Source register: SR-1.15-alternate-source-recheck (latest live source: SRC-REG-243; corroborating EVNSPC notice SRC-REFRESH-EVNSPC-20260715, pricing portal SRC-REFRESH-EVNSPC-PRICING-20260831, meter-training notice SRC-REFRESH-EVNSPC-TRAINING-20260527 and IT readiness note SRC-REFRESH-EVNSPC-IT-20260525; latest tax watch: SRC-REFRESH-TAX-20260831, plus rolling tax/FX and benchmark rechecks)
 Repository: https://github.com/susayold/vietgreen-ci-solar-project-finance
 Workflow source commit: b7ac7ab507487d4ba021064c8cdeadb29fcefc44
 Workbook/remote-output refresh commit: 02b3fc9bc9c39728b5796db34184ddd7778e5edb
@@ -45,5 +45,5 @@ Live recruiter site (aggregate-only): https://susayold.github.io/vietgreen-ci-so
 
 ## Official source live check
 
-- Remote metadata-only crawl: workflow 33370454210 / job 99420130285; artifact official-source-live-check ID 9749862740, digest sha256:b651c62122b79996b6984846029f094acac1d7c7225a3c29536d58bff31b3768.
-- 24 controlled official URLs were checked in memory: 20 PASS and 4 non-blocking WARNs (two MOIT runner network-unreachable pages, NREL DNS and IRENA HTTP 403); raw_snapshot_stored=FALSE for every row. Live-check SHA-256: 3973ccbdb8d7d7493e53c2e5e04d42a39242d63903595f27e2e77bc0d7da8478; GitHub blob e33a2177433eec8c4a3053e208bc1060838af308; 9,561 bytes.
+- Remote metadata-only crawl: workflow 33371147810 / job 99422352549; artifact official-source-live-check ID 9750130974, digest sha256:24d20a3bf9ee66f5eb94af620a40c3cc1352856ea97dcc413af02b4304d5b972.
+- 24 controlled official URLs were checked in memory: 20 PASS and 6 non-blocking WARNs (two MOIT runner network-unreachable pages, NREL DNS and IRENA HTTP 403); raw_snapshot_stored=FALSE for every row. Live-check SHA-256: 81145632b8e45ba53808ba06aa305d7434ef14f3e44ca21141c7c056d0676236; GitHub blob 9a7f78b57e20ebe35502308412f2b0f536fb37fc; 9,561 bytes.

@@ -8,7 +8,7 @@ Implemented: material inputs carry source/assumption IDs through the lineage mat
 
 Status: PASS WITH BILLING/TAX WATCH. Decision 963 legal windows are mapped, Decree 278/2026/ND-CP is registered as a legal dependency in the average-retail-price adjustment chain, but billed implementation/invoice cutover and final transaction applicability remain external gates; the 2026-08-28 draft amendment to Decree 320/2025 is monitored without changing effective tax inputs.
 
-Latest benchmark refresh: IRENA 2025 official utility-scale solar PV cost context remains comparator-only; the IRENA 2024 URL was rechecked but returned HTTP 403 and is not used as certification evidence. Latest tariff-chain evidence: EVN Bulletin No. 16/2026, Decree 278/2026/ND-CP, EVN's Decision 963 republication and four EVNSPC implementation/readiness pages; none is treated as invoice-cutover proof. Official tax/FX references were also rechecked remotely.
+Latest benchmark refresh: IRENA 2025 official utility-scale solar PV cost context remains comparator-only; the original IRENA 2024 URL and its official publication landing-page alternate both returned HTTP 403 from the runner and are not used as certification evidence. Latest tariff-chain evidence: EVN Bulletin No. 16/2026, Decree 278/2026/ND-CP, EVN's Decision 963 republication and four EVNSPC implementation/readiness pages; none is treated as invoice-cutover proof. Official tax/FX references were also rechecked remotely.
 
 ## B. Synthetic data, hidden truth and reproducibility
 
@@ -50,7 +50,7 @@ Status: PASS WITH NEGATIVE BASE SPONSOR NPV; recommendation is conditional and t
 
 ## H. Validation and release
 
-Latest core remote run: 33367160495 / job 99410087552; latest source-refresh run: 33370454210 / job 99420130285; 20/20 DQ; 20/20 dynamic remote QA; 31/31 workbook checks; 7/7 tests; 13/13 mechanical release controls plus 1 candidate-manifest warning; 240 construction schedule rows; 9 external-validation rows; 24 official URLs returned 20 PASS and 4 non-blocking WARNs; four remote 8,760 streams (Parquet plus deterministic CSV.GZ compatibility) remain artifact-only with local_storage NONE.
+Latest core remote run: 33367160495 / job 99410087552; latest source-refresh run: 33371147810 / job 99422352549; 20/20 DQ; 20/20 dynamic remote QA; 31/31 workbook checks; 7/7 tests; 13/13 mechanical release controls plus 1 candidate-manifest warning; 240 construction schedule rows; 9 external-validation rows; 24 official URLs returned 20 PASS and 6 non-blocking WARNs; four remote 8,760 streams (Parquet plus deterministic CSV.GZ compatibility) remain artifact-only with local_storage NONE.
 
 ## I. Recruiter-facing communication
 
