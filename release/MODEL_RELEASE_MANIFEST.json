@@ -52,8 +52,8 @@
   "external_validation_rows": 9,
   "latest_benchmark_refresh_source_id": "SRC-IRENA-2025",
   "git_commit": "02b3fc9bc9c39728b5796db34184ddd7778e5edb",
-  "release_metadata_parent_commit": "47debfe2fbce147554bfcecc165df971065fd0b8",
-  "release_timestamp_utc": "2026-08-31T07:26:53Z",
+  "release_metadata_parent_commit": "45b5d85acb3edcfbe3f2d66a5f6ddfa8590dcefe",
+  "release_timestamp_utc": "2026-08-31T07:33:00Z",
   "excel_file": {
     "path": "model/vietgreen_core_model.xlsx",
     "sha256": "9e72588fd7a084282befa74dd0f97036f15e1f306aac6080fc86fdd75f605c5f",
@@ -139,8 +139,8 @@
     "PENDING": 1,
     "WATCH": 0
   },
-  "plan_dod_audit_workflow_run_id": 33367706649,
-  "plan_dod_audit_workflow_job_id": 99411724105,
+  "plan_dod_audit_workflow_run_id": 33368775498,
+  "plan_dod_audit_workflow_job_id": 99414962943,
   "plan_dod_audit_workflow_status": "PASS",
-  "plan_dod_audit_timestamp_utc": "2026-08-31T07:17:24Z"
+  "plan_dod_audit_timestamp_utc": "2026-08-31T07:32:02Z"
 }
