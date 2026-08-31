@@ -17,7 +17,7 @@ Date: 2026-08-31
 - Added a metadata-only fingerprint of the user-provided Master Plan V3; no raw plan copy was stored by the agent.
 - Added a fail-closed remote external-gate submission schema and GitHub Actions validator; no submission is present yet.
 - Enabled a weekly Monday 02:00 UTC metadata-only official-source recheck with no raw snapshot storage.
-- External-gate validator run 33370744629 / job 99421069680 passed with 8 gate rows and 0 submissions; all eight gates remain OPEN.
+- External-gate validator run 33371508632 / job 99423466049 passed with 8 gate rows and 0 submissions; all eight gates remain OPEN.
 
 ## Verified
 
@@ -38,7 +38,7 @@ Date: 2026-08-31
 
 - Comparator metadata: SHA-256 28b02df8bfa8516586597a374ac11fe02907056f3f787de34675683ab7a9b8df, 1,389 bytes, GitHub blob 987e1605aecdd89525e76a9e29737401e9aa882c; raw_artifact_contents_stored=FALSE.
 
-- Full DoD audit workflow 33370722645 / job 99420995851 passed 65/65 rows and 190/190 evidence-path checks: 62 PASS, 2 PARTIAL and 1 PENDING.
+- Full DoD audit workflow 33371476512 / job 99423375898 passed 65/65 rows and 190/190 evidence-path checks: 62 PASS, 2 PARTIAL and 1 PENDING.
 
 ## Economics
 

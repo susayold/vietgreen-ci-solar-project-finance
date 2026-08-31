@@ -62,7 +62,7 @@ Live deployment verified at https://susayold.github.io/vietgreen-ci-solar-projec
 
 ## J. Master Plan V3 DoD audit
 
-Implemented: checkbox-level audit for all 65 requirements in DoD 42.1–42.9, with evidence paths, validation basis, limitation/blocker and next action. Remote workflow 33370722645 / job 99420995851 passed 65/65 row identity checks and 190/190 evidence-path checks; status counts are 62 PASS, 2 PARTIAL and 1 PENDING.
+Implemented: checkbox-level audit for all 65 requirements in DoD 42.1–42.9, with evidence paths, validation basis, limitation/blocker and next action. Remote workflow 33371476512 / job 99423375898 passed 65/65 row identity checks and 190/190 evidence-path checks; status counts are 62 PASS, 2 PARTIAL and 1 PENDING.
 
 ## J. Open gates
 
@@ -71,7 +71,7 @@ Independent final model review; billed tariff confirmation; transaction-specific
 
 ## K. External gate intake
 
-A remote-only intake register and acceptance template now map each of EXT-001–EXT-008 to the required document, verifier, model reconciliation and storage boundary. A fail-closed GitHub Actions validator checks submission metadata against the gate tracker and manifest; run 33370744629 / job 99421069680 passed with 8 gate rows and 0 submissions. The register does not close any gate; it prevents comparator, readiness or synthetic evidence from being mislabeled as transaction proof.
+A remote-only intake register and acceptance template now map each of EXT-001–EXT-008 to the required document, verifier, model reconciliation and storage boundary. A fail-closed GitHub Actions validator checks submission metadata against the gate tracker and manifest; run 33371508632 / job 99423466049 passed with 8 gate rows and 0 submissions. The register does not close any gate; it prevents comparator, readiness or synthetic evidence from being mislabeled as transaction proof.
 
 ## L. Release classification
 
