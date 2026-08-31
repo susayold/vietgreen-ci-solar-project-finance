@@ -6,3 +6,5 @@
 4. The Drive control document stores the execution record and links.
 5. GitHub Actions is the remote execution surface; runner storage is ephemeral.
 6. Hidden truth and private/proprietary data are excluded from this public repository.
+
+7. Official-source refreshes run on a manually dispatched GitHub Actions runner; response bodies are read and hashed in memory, while only status/hash metadata is committed to GitHub. No raw public source snapshot is stored locally or in the repository.

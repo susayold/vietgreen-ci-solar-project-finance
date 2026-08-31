@@ -52,7 +52,7 @@
   "external_validation_rows": 9,
   "latest_benchmark_refresh_source_id": "SRC-IRENA-2025",
   "git_commit": "d2fd8835bb0591bc850a90b13cb37f3b5ec2310b",
-  "release_metadata_parent_commit": "a5d0a732d7490b36530dc0711e839516813f8f70",
+  "release_metadata_parent_commit": "65e9cba37120593148b9f529709a542012e7e68a",
   "release_timestamp_utc": "2026-08-31T05:23:59Z",
   "excel_file": {
     "path": "model/vietgreen_core_model.xlsx",
@@ -97,5 +97,8 @@
   "reproducibility_artifact_file_matches": 6,
   "regulatory_refresh_commit": "99aaa3b1736d37169ce9b4268832d757727e4658",
   "external_gate_tracker_path": "validation/OPEN_EXTERNAL_GATES.csv",
-  "open_external_gate_count": 8
+  "open_external_gate_count": 8,
+  "source_refresh_manifest_path": "evidence/SOURCE_REFRESH_MANIFEST.csv",
+  "source_live_check_path": "evidence/REMOTE_SOURCE_LIVE_CHECK.csv",
+  "source_refresh_workflow": ".github/workflows/source-refresh.yml"
 }

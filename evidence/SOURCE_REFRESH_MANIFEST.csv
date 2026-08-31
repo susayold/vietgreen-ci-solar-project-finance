@@ -1,0 +1,11 @@
+source_id,url,source_class,expected_use
+SRC-TAR-963,https://moit.gov.vn/van-ban-phap-luat/quyet-dinh-ve-khung-gio-cao-diem-thap-diem-va-gio-binh-thuong-cua-he-thong-dien-quoc-gia.html,official_regulation,Decision 963 legal time windows
+SRC-TAR-60,https://vanban.chinhphu.vn/?classid=1&docid=216125&pageid=27160&typegroupid=6,official_regulation,Circular 60 electricity-pricing implementation
+SRC-TAR-278,https://vanban.chinhphu.vn/?classid=1&docid=218849&pageid=27160&typegroupid=4,official_regulation,Average retail-price adjustment dependency
+SRC-REFRESH-EVN-20260831,https://evn.com.vn/d/vi-VN/news-d/Cuc-Dien-luc-thong-tin-ve-thoi-gian-ap-dung-khung-gio-cao-diem-thap-diem-va-gio-binh-thuong-cua-he-thong-dien-quoc-gia-60-2025-507824,official_implementation_notice,Decision 963 implementation condition
+SRC-REFRESH-EVN-BULLETIN-20260831,https://www.evn.com.vn/userfile/User/tcdl/files/2026/4/BanTinEVNSo162026-20260428150748448.pdf,official_bulletin,EVN preparation and timing corroboration
+SRC-REFRESH-EVN-20260730,https://www.evn.com.vn/d/vi-VN/news/Dieu-chinh-khung-gio-cao-diem-Doanh-nghiep-duoc-loi-gi-60-3557-509124,official_explainer,TOU windows and customer scope
+SRC-REFRESH-MOIT-20260709,https://moit.gov.vn/tin-tuc/bo-cong-thuong-hop-bao-thuong-ky-quy-ii-2026.html,official_briefing,Contemporaneous billed-status reference
+SRC-REFRESH-TAX-20260831,https://vanban.chinhphu.vn/du-thao-vbqppl/du-thao-nghi-dinh-sua-doi-bo-sung-mot-so-dieu-cua-nghi-dinh-so-320-2025-nd-cp-ngay-15-thang-12-n-7915,official_draft,Tax amendment watch
+SRC-SOLAR-GSA,https://www.globalsolaratlas.info/support/methodology,official_methodology,PVOUT methodology comparator
+SRC-SOLAR-NREL,https://atb.nrel.gov/electricity/2024/commercial_pv,official_methodology,Commercial PV technical comparator

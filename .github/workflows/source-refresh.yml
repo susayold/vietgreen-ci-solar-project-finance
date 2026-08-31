@@ -1,0 +1,43 @@
+name: official-source-refresh
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout remote source of truth
+        uses: actions/checkout@v4
+      - name: Run metadata-only official source crawl
+        run: python -m analytics.refresh_official_sources
+      - name: Check generated metadata
+        run: |
+          git diff --check
+          python - <<'PY'
+          import csv
+          from pathlib import Path
+          p=Path("evidence/REMOTE_SOURCE_LIVE_CHECK.csv")
+          rows=list(csv.DictReader(p.open(encoding="utf-8", newline="")))
+          assert len(rows) == 10
+          assert all(row["raw_snapshot_stored"] == "FALSE" for row in rows)
+          print({"rows":len(rows),"raw_snapshot_stored":False})
+          PY
+      - name: Upload remote live-check artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: official-source-live-check
+          path: evidence/REMOTE_SOURCE_LIVE_CHECK.csv
+      - name: Commit metadata-only refresh
+        run: |
+          git config user.name "vietgreen-actions"
+          git config user.email "actions@users.noreply.github.com"
+          git add evidence/REMOTE_SOURCE_LIVE_CHECK.csv
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m "chore: refresh official source metadata [skip ci]"
+          git push origin HEAD:main
