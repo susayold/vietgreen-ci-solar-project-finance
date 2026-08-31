@@ -52,7 +52,7 @@ Source rows: SRC-TAR-963, SRC-TAR-60, SRC-TAR-278, SRC-REFRESH-EVN-20260831, SRC
 
 ## Core validation lineage after core model refresh
 
-- Push workflow 33362871604 / job 99397534044 completed successfully after the EVN corroboration was added; artifact 9747272913, digest sha256:d98e61282a9fbc564bc5078a805d64009ef1f2906a288cb3ec541f4704db93d6.
+- Push workflow 33367160495 / job 99410087552 completed successfully after the SR-1.13 evidence registration; artifact 9748676847, digest sha256:3f1f7c193192ca4bd652a131e453e9bd7cd996592f0f2343b081664618fdba70.
 - Remote checks remained green: 20/20 data quality, 20/20 dynamic QA, 31/31 workbook checks, 7/7 tests and 13 PASS plus 1 intentional candidate WARN in release controls.
-- The rebuilt native workbook was 22 sheets, 116807 bytes, SHA-256 e01406f644ab6a9d810ca6dd5c31d240ec2ed99ff7f73e593d0f756cae2ff03a; GitHub blob c45b996de6cc364062966638da73666629179638.
-- Same-head repeat 33362978966 / job 99397849553 and remote comparator 33363289510 / job 99398752408 matched all six target files; comparator artifact 9747403047, digest sha256:6ac16bc4879ef269180cee5032d177a57b05a372dd8bcc69cc45c7adc99bf0a3; comparison CSV SHA-256 eb571d45c45d54babb7e7dc23373d9ce35cec6fdcc2155420bca7546d42f79c0; raw artifact contents were not stored.
+- The rebuilt native workbook is 22 sheets, 117493 bytes, SHA-256 9e72588fd7a084282befa74dd0f97036f15e1f306aac6080fc86fdd75f605c5f; GitHub blob c0d2e2dadf3720a35b9101205efdec108425bec5.
+- Same-head repeat 33367239508 / job 99410324360 and remote comparator 33367293807 / job 99410490341 matched all six target files; comparator artifact 9748718166, digest sha256:5b445b9ad1b8b292edf19197ca25b7a7ecf7c4204d9d788baaed21afca483b3e; comparison CSV SHA-256 28b02df8bfa8516586597a374ac11fe02907056f3f787de34675683ab7a9b8df; raw artifact contents were not stored.
