@@ -1,0 +1,14 @@
+test_id,status,actual,detail
+QA-REMOTE-001,PASS,20,20-project master population
+QA-REMOTE-002,PASS,all P90<=P50,"P90 is source uncertainty, not a second loss multiplier"
+QA-REMOTE-003,PASS,20 hashes,"8,760 profile used for final finance"
+QA-REMOTE-004,PASS,all balances zero,CAPEX sources and uses reconcile
+QA-REMOTE-005,PASS,all debt schedules close,Backward sizing and forward rebuild reconcile
+QA-REMOTE-006,PASS,2,Pooled facility re-sizing feedback converged
+QA-REMOTE-007,PASS,all scenario isolation statuses PASS,Scenario mechanisms remain explicit
+QA-REMOTE-008,PASS,P90 CFADS <= base,Energy downside monotonicity
+QA-REMOTE-009,PASS,DSO CFADS <= base,Working-capital downside monotonicity
+QA-REMOTE-010,PASS,CAPEX factor 1.15,CAPEX overrun is isolated from CFADS
+QA-REMOTE-011,PASS,zero terminal value,Terminal branch is visible and conservative
+QA-REMOTE-012,PASS,pooled debt <= selected CAPEX,Pooled debt has an explicit borrowing-base cap
+QA-REMOTE-013,PASS,WATCH,Legal tariff schedule is not treated as billed implementation

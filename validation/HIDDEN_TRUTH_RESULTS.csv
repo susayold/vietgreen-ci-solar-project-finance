@@ -1,1 +1,6 @@
-project_id,hidden_truth_category,model_detected_flag,model_primary_issue,truth_primary_issue,classification_match,false_positive_flag,false_negative_flag,review_comment,requires_future_model_change
+case_id,hidden_truth_category,model_detected_flag,model_primary_issue,truth_primary_issue,classification_match,false_positive_flag,false_negative_flag,review_comment,requires_future_model_change
+HIDDEN-01,in_memory_8760_operational_outage,True,hidden_outage_or_curtailment,hidden_outage_or_curtailment,True,False,False,Aggregate-only firewall result; raw truth and hourly arrays are not persisted.,False
+HIDDEN-02,in_memory_8760_operational_outage,True,hidden_outage_or_curtailment,hidden_outage_or_curtailment,True,False,False,Aggregate-only firewall result; raw truth and hourly arrays are not persisted.,False
+HIDDEN-03,in_memory_8760_operational_outage,True,hidden_outage_or_curtailment,hidden_outage_or_curtailment,True,False,False,Aggregate-only firewall result; raw truth and hourly arrays are not persisted.,False
+HIDDEN-04,in_memory_8760_operational_outage,True,hidden_outage_or_curtailment,hidden_outage_or_curtailment,True,False,False,Aggregate-only firewall result; raw truth and hourly arrays are not persisted.,False
+HIDDEN-05,in_memory_8760_operational_outage,True,hidden_outage_or_curtailment,hidden_outage_or_curtailment,True,False,False,Aggregate-only firewall result; raw truth and hourly arrays are not persisted.,False

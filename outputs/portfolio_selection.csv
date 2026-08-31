@@ -1,21 +1,21 @@
-project_id,eligible_shortlist,selected_flag,capacity_mwp,standalone_debt_bvnd,standalone_equity_bvnd,equity_npv_bvnd,value_density,standalone_min_dscr,selection_reason,parent_group_id,industry,region
-VG-001,true,true,1.4,8.652514,21.097486,-17.239555,-0.817138,1.476303,selected_by_value_density_under_budget,PG-01,Electronics,North
-VG-002,true,true,1.5,10.151954,21.723046,-17.196554,-0.791627,1.476303,selected_by_value_density_under_budget,PG-01,Electronics,North
-VG-003,true,true,1.1,7.072442,16.302558,-13.14914,-0.806569,1.476303,selected_by_value_density_under_budget,PG-02,Logistics,North
-VG-004,false,false,1.45,9.12444,21.68806,-17.619709,-0.812415,1.476303,hard_gate_ineligible,PG-03,Materials,North
-VG-005,true,false,1.2,10.00123,15.49877,-11.03948,-0.712281,1.476303,eligible_not_selected_budget_or_concentration,PG-04,Food & Beverage,Central
-VG-006,false,false,1.2,8.620465,16.879535,-13.035893,-0.77229,1.476303,hard_gate_ineligible,PG-05,Textile,Central
-VG-007,true,true,1.3,9.826937,17.798063,-13.416486,-0.753817,1.476303,selected_by_value_density_under_budget,PG-06,Packaging,Central
-VG-008,false,false,1.3,9.176133,18.448867,-14.357467,-0.77823,1.476303,hard_gate_ineligible,PG-07,Hospitality,South
-VG-009,false,false,1.3,9.673534,17.951466,-13.638288,-0.759731,1.476303,hard_gate_ineligible,PG-08,Automotive,South
-VG-010,true,false,1.3,9.836674,17.788326,-13.402409,-0.753438,1.476303,eligible_not_selected_budget_or_concentration,PG-09,Pharma,South
-VG-011,true,false,1.2,9.304295,16.195705,-12.047161,-0.743849,1.476303,eligible_not_selected_budget_or_concentration,PG-10,Plastics,South
-VG-012,true,true,1.15,8.278477,16.159023,-12.467865,-0.771573,1.476303,selected_by_value_density_under_budget,PG-04,Food & Beverage,South
-VG-013,true,true,1.05,7.463282,14.849218,-11.521533,-0.775902,1.476303,selected_by_value_density_under_budget,PG-11,Agribusiness,South
-VG-014,true,true,1.25,8.65971,17.90279,-14.04165,-0.784327,1.476303,selected_by_value_density_under_budget,PG-12,Chemicals,South
-VG-015,true,false,1.2,8.421103,17.078897,-13.324146,-0.780153,1.476303,eligible_not_selected_budget_or_concentration,PG-01,Electronics,South
-VG-016,false,false,1,7.44118,13.80882,-10.490991,-0.759731,1.476303,hard_gate_ineligible,PG-13,Rubber,South
-VG-017,false,false,1.2,7.973318,17.526682,-13.971586,-0.797161,1.476303,hard_gate_ineligible,PG-14,Steel,North
-VG-018,true,true,1.15,7.2979,17.1396,-13.885655,-0.810151,1.476303,selected_by_value_density_under_budget,PG-15,Machinery,North
-VG-019,false,false,1.05,7.070277,15.242223,-12.08977,-0.793176,1.476303,hard_gate_ineligible,PG-16,Retail,North
-VG-020,false,false,1.05,7.368465,14.944035,-11.658628,-0.780153,1.476303,hard_gate_ineligible,PG-17,Food & Beverage,South
+project_id,eligible_shortlist,selected_flag,capacity_mwp,standalone_debt_bvnd,standalone_equity_bvnd,pooled_allocated_debt_bvnd,pooled_equity_bvnd,equity_npv_bvnd,value_density,standalone_min_dscr,selection_reason,parent_group_id,industry,region,pooled_feedback_converged
+VG-001,True,False,1.4,14.482182168868118,15.267817831131882,0.0,0.0,-8.438042460612563,-0.5526685315439742,1.2999999999999998,hard_gate_or_budget_or_concentration,PG-01,Electronics,North,True
+VG-002,True,True,1.5,16.16016104481641,15.71483895518359,16.160161044816405,15.714838955183593,-8.092157571013976,-0.5149373527843091,1.3,selected_after_hard_gates_and_budget,PG-01,Electronics,North,True
+VG-003,True,True,1.1,11.581111996025946,11.793888003974054,11.581111996025944,11.793888003974056,-6.331758382185543,-0.5368677725320099,1.2999999999999998,selected_after_hard_gates_and_budget,PG-02,Logistics,North,True
+VG-004,False,False,1.45,15.83390863660532,14.97859136339468,0.0,0.0,-7.509303134472217,-0.5013357366049636,1.3,hard_gate_or_budget_or_concentration,PG-03,Materials,North,True
+VG-005,True,True,1.2,15.04539438679625,10.45460561320375,15.045394386796248,10.454605613203752,-3.352783726757222,-0.3206992067230915,1.3,selected_after_hard_gates_and_budget,PG-04,Food & Beverage,Central,True
+VG-006,False,False,1.2,14.055851329302829,11.444148670697171,0.0,0.0,-4.811413615750865,-0.4204256475687463,1.3,hard_gate_or_budget_or_concentration,PG-05,Textile,Central,True
+VG-007,True,True,1.3,15.584507266395132,12.040492733604868,15.58450726639513,12.04049273360487,-4.6856372904824015,-0.3891566063077174,1.3,selected_after_hard_gates_and_budget,PG-06,Packaging,Central,True
+VG-008,False,False,1.3,15.49705794790785,12.12794205209215,0.0,0.0,-4.814541423305873,-0.39697925687856767,1.3,hard_gate_or_budget_or_concentration,PG-07,Hospitality,South,True
+VG-009,False,False,1.3,15.873355015337983,11.751644984662017,0.0,0.0,-4.259863033580625,-0.3624907865358852,1.2999999999999998,hard_gate_or_budget_or_concentration,PG-08,Automotive,South,True
+VG-010,True,True,1.3,15.275460785976774,12.349539214023226,15.27546078597677,12.34953921402323,-5.141185363921848,-0.4163058454912955,1.3,selected_after_hard_gates_and_budget,PG-09,Pharma,South,True
+VG-011,True,True,1.2,14.258663082077385,11.241336917922615,14.258663082077383,11.241336917922617,-4.512460192556221,-0.40141668428795013,1.2999999999999998,selected_after_hard_gates_and_budget,PG-10,Plastics,South,True
+VG-012,True,True,1.15,13.209618614443878,11.227881385556122,13.209618614443876,11.227881385556124,-4.9950329685213966,-0.44487760397497206,1.3,selected_after_hard_gates_and_budget,PG-04,Food & Beverage,South,True
+VG-013,True,True,1.05,11.991727114466977,10.320772885533023,11.991727114466975,10.320772885533025,-4.662728876793124,-0.45178097885760377,1.3,selected_after_hard_gates_and_budget,PG-11,Agribusiness,South,True
+VG-014,True,True,1.25,14.111034632069286,12.451465367930714,14.111034632069284,12.451465367930716,-5.793835808531412,-0.4653135705178674,1.3,selected_after_hard_gates_and_budget,PG-12,Chemicals,South,True
+VG-015,True,True,1.2,13.625712117374388,11.874287882625612,13.625712117374384,11.874287882625616,-5.445457689119719,-0.4585923587963098,1.3,selected_after_hard_gates_and_budget,PG-01,Electronics,South,True
+VG-016,False,False,1.0,10.231537407322616,11.018462592677384,0.0,0.0,-8.549169944205582,-0.7758949919099569,1.3,hard_gate_or_budget_or_concentration,PG-13,Rubber,South,True
+VG-017,False,False,1.2,13.42681418025241,12.07318581974759,0.0,0.0,-5.7386419762998875,-0.475321266646409,1.3,hard_gate_or_budget_or_concentration,PG-14,Steel,North,True
+VG-018,True,True,1.15,12.037043521822882,12.400456478177118,12.037043521822877,12.400456478177123,-6.723460108942065,-0.5421945652383292,1.3,selected_after_hard_gates_and_budget,PG-15,Machinery,North,True
+VG-019,False,False,1.05,11.819094549575976,10.493405450424024,0.0,0.0,-4.917196852751134,-0.4685987667190003,1.3,hard_gate_or_budget_or_concentration,PG-16,Retail,North,True
+VG-020,False,False,1.05,11.922498102702587,10.390001897297413,0.0,0.0,-4.764775477979756,-0.45859235879630994,1.2999999999999998,hard_gate_or_budget_or_concentration,PG-17,Food & Beverage,South,True

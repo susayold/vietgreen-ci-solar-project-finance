@@ -1,0 +1,32 @@
+check_id,check,expected,actual,status,severity,impact
+WB-001,file_exists,True,True,PASS,CRITICAL,Native workbook is present in the remote checkout.
+WB-002,zip_magic,PK,PK,PASS,CRITICAL,Confirms the binary is an OOXML ZIP package.
+WB-003,zip_integrity,None,None,PASS,CRITICAL,Detects corrupt ZIP members.
+WB-004,package_parts,All required parts,None missing,PASS,CRITICAL,Ensures the workbook has the core OOXML package topology.
+WB-005,sheet_count,22,22,PASS,CRITICAL,Checks the required 22-sheet architecture.
+WB-006,sheet_contract,"[""00_Control"", ""01_Assumptions"", ""02_Evidence_Regulatory"", ""03_Project_Pipeline"", ""04_Offtakers_Credit_Site"", ""05_Solar_Energy"", ""06_Load_PPA"", ""07_CAPEX_Construction"", ""08_OPEX"", ""09_Project_CF_CFADS"", ""10_Portfolio_CFADS"", ""11_Debt_Terms"", ""12_Debt_Sculpting"", ""13_Reserves_Waterfall"", ""14_Coverage"", ""15_Returns_Discount"", ""16_FX_Financing"", ""17_Scenarios_Sensitivity"", ""18_Portfolio"", ""19_IC_Bankability"", ""20_External_Validation"", ""21_QA_Audit""]","[""00_Control"", ""01_Assumptions"", ""02_Evidence_Regulatory"", ""03_Project_Pipeline"", ""04_Offtakers_Credit_Site"", ""05_Solar_Energy"", ""06_Load_PPA"", ""07_CAPEX_Construction"", ""08_OPEX"", ""09_Project_CF_CFADS"", ""10_Portfolio_CFADS"", ""11_Debt_Terms"", ""12_Debt_Sculpting"", ""13_Reserves_Waterfall"", ""14_Coverage"", ""15_Returns_Discount"", ""16_FX_Financing"", ""17_Scenarios_Sensitivity"", ""18_Portfolio"", ""19_IC_Bankability"", ""20_External_Validation"", ""21_QA_Audit""]",PASS,CRITICAL,Prevents silent sheet renaming or reordering.
+WB-SHEET-01,worksheet_01_xml,Present and parseable,Present and parseable,PASS,CRITICAL,Validates each sheet XML member.
+WB-SHEET-02,worksheet_02_xml,Present and parseable,Present and parseable,PASS,CRITICAL,Validates each sheet XML member.
+WB-SHEET-03,worksheet_03_xml,Present and parseable,Present and parseable,PASS,CRITICAL,Validates each sheet XML member.
+WB-SHEET-04,worksheet_04_xml,Present and parseable,Present and parseable,PASS,CRITICAL,Validates each sheet XML member.
+WB-SHEET-05,worksheet_05_xml,Present and parseable,Present and parseable,PASS,CRITICAL,Validates each sheet XML member.
+WB-SHEET-06,worksheet_06_xml,Present and parseable,Present and parseable,PASS,CRITICAL,Validates each sheet XML member.
+WB-SHEET-07,worksheet_07_xml,Present and parseable,Present and parseable,PASS,CRITICAL,Validates each sheet XML member.
+WB-SHEET-08,worksheet_08_xml,Present and parseable,Present and parseable,PASS,CRITICAL,Validates each sheet XML member.
+WB-SHEET-09,worksheet_09_xml,Present and parseable,Present and parseable,PASS,CRITICAL,Validates each sheet XML member.
+WB-SHEET-10,worksheet_10_xml,Present and parseable,Present and parseable,PASS,CRITICAL,Validates each sheet XML member.
+WB-SHEET-11,worksheet_11_xml,Present and parseable,Present and parseable,PASS,CRITICAL,Validates each sheet XML member.
+WB-SHEET-12,worksheet_12_xml,Present and parseable,Present and parseable,PASS,CRITICAL,Validates each sheet XML member.
+WB-SHEET-13,worksheet_13_xml,Present and parseable,Present and parseable,PASS,CRITICAL,Validates each sheet XML member.
+WB-SHEET-14,worksheet_14_xml,Present and parseable,Present and parseable,PASS,CRITICAL,Validates each sheet XML member.
+WB-SHEET-15,worksheet_15_xml,Present and parseable,Present and parseable,PASS,CRITICAL,Validates each sheet XML member.
+WB-SHEET-16,worksheet_16_xml,Present and parseable,Present and parseable,PASS,CRITICAL,Validates each sheet XML member.
+WB-SHEET-17,worksheet_17_xml,Present and parseable,Present and parseable,PASS,CRITICAL,Validates each sheet XML member.
+WB-SHEET-18,worksheet_18_xml,Present and parseable,Present and parseable,PASS,CRITICAL,Validates each sheet XML member.
+WB-SHEET-19,worksheet_19_xml,Present and parseable,Present and parseable,PASS,CRITICAL,Validates each sheet XML member.
+WB-SHEET-20,worksheet_20_xml,Present and parseable,Present and parseable,PASS,CRITICAL,Validates each sheet XML member.
+WB-SHEET-21,worksheet_21_xml,Present and parseable,Present and parseable,PASS,CRITICAL,Validates each sheet XML member.
+WB-SHEET-22,worksheet_22_xml,Present and parseable,Present and parseable,PASS,CRITICAL,Validates each sheet XML member.
+WB-030,control_metadata_token,VietGreen_CI_Solar_Project_Finance,Present,PASS,CRITICAL,Control sheet must identify the project.
+WB-031,control_metadata_token,PASS_WITH_LIMITATIONS,Present,PASS,CRITICAL,Control sheet must expose the release boundary.
+WB-032,control_metadata_token,current DQ count / PASS,Present,PASS,CRITICAL,Control sheet must expose data-quality status.
