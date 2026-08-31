@@ -21,7 +21,7 @@ The user request controls the operating boundary: create one new Drive file, cre
 - Pooled feedback: converged in 2 iterations.
 - 8,760 engine: executed in memory for every project, with P50 and P90 profiles.
 - Hourly backend: plan-specified Parquet plus CSV.GZ compatibility streams, remote artifact-only; local_storage is NONE.
-- Quality gates: 20/20 data-quality checks; 31/31 workbook structural checks; 20/20 dynamic remote QA checks; 5/5 hidden-truth classifications; 7 automated tests; 13/13 mechanical release controls pass, with 1 candidate-manifest warning; official-source live check 20/26 PASS and 6 non-blocking WARNs.
+- Quality gates: 20/20 data-quality checks; 31/31 workbook structural checks; 20/20 dynamic remote QA checks; 5/5 hidden-truth classifications; 7 automated tests; 13/13 mechanical release controls pass, with 1 candidate-manifest warning; official-source live check 22/28 PASS and 6 non-blocking WARNs (SR-1.16-executive-summary-recheck).
 
 ## What is implemented
 
@@ -35,17 +35,15 @@ This is a reviewable candidate, not a lender approval, bankable P90 case, legal 
 
 ## Latest remote verification
 
-- Workflow run: https://github.com/susayold/vietgreen-ci-solar-project-finance/actions/runs/33367160495
-- Workflow job: 99410087552.
-- Workflow source commit: b7ac7ab507487d4ba021064c8cdeadb29fcefc44.
+- Core validation run: https://github.com/susayold/vietgreen-ci-solar-project-finance/actions/runs/33376353645 (job 99438608535) — PASS.
+- Validation reference commit: 7c55591a93102aeaedbcd2a93355759b92ba84f9.
 - Workbook refresh commit: 02b3fc9bc9c39728b5796db34184ddd7778e5edb.
-- Artifact: vietgreen-core-outputs, ID 9748676847.
-- Artifact digest: sha256:3f1f7c193192ca4bd652a131e453e9bd7cd996592f0f2343b081664618fdba70.
+- Current DoD audit: 33376356698 / job 99438619544 — 65 rows: 62 PASS, 2 PARTIAL, 1 PENDING.
 - Native workbook: 22 sheets, 117493 bytes; SHA-256 9e72588fd7a084282befa74dd0f97036f15e1f306aac6080fc86fdd75f605c5f; GitHub blob c0d2e2dadf3720a35b9101205efdec108425bec5.
 - Same-head reproducibility run: 33367239508 / job 99410324360; remote comparator: 33367293807 / job 99410490341; 6/6 file hashes matched, with raw artifact contents not stored.
-- Latest official-source refresh: 33371147810 / job 99422352549; 26 URLs, 20 PASS and 6 non-blocking WARNs; raw snapshots were not stored.
+- Latest official-source refresh: https://github.com/susayold/vietgreen-ci-solar-project-finance/actions/runs/33376058622 (job 99437690338); 28 URLs, 22 PASS and 6 non-blocking WARNs; raw snapshots were not stored; source version SR-1.16-executive-summary-recheck.
 - The source-refresh workflow is also scheduled weekly at 02:00 UTC on Monday and remains metadata-only.
-- External-gate validator: 33371508632 / job 99423466049; 8 gate rows, 0 submissions, PASS_EMPTY_SUBMISSIONS; no gate was closed.
+- External-gate validator: 33376359695 / job 99438635313; 8 gate rows, 0 submissions, PASS_EMPTY_SUBMISSIONS; all gates remain OPEN and recruiter_ready=false.
 
 ## Reproducibility and storage
 
