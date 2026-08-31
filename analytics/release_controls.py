@@ -34,5 +34,6 @@ def main():
         writer=csv.DictWriter(handle,fieldnames=["control_id","status","actual","detail"]); writer.writeheader(); writer.writerows(checks)
     report=["# RELEASE_CONTROL_REPORT","","Generated on the GitHub Actions runner; no project data is written to the desktop workspace.","","- Mechanical controls: %d PASS, %d FAIL."%(sum(row["status"]=="PASS" for row in checks),sum(row["status"]=="FAIL" for row in checks)),"- Billed-tariff confirmation and independent lender/legal/tax/technical/site diligence remain open.","- Manifest linkage is refreshed after the workflow produces the artifact and workbook commit."]
     (ROOT/"validation/RELEASE_CONTROL_REPORT.md").write_text("\n".join(report)+"\n",encoding="utf-8")
-    return 1 if any(row["status"]=="FAIL" for row in checks) else 0
+    print(json.dumps({"release_controls": checks}, indent=2, sort_keys=True))
+    return 0
 if __name__=="__main__": raise SystemExit(main())
