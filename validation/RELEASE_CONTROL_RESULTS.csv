@@ -1,0 +1,14 @@
+control_id,status,actual,detail
+REL-001,PASS,20,locked 20-project synthetic population
+REL-002,PASS,20 energy / 20 load,final one-row-per-project outputs
+REL-003,PASS,20 profile hashes,"8,760 profile lineage"
+REL-004,PASS,final_8760,hourly output scope explicit
+REL-005,PASS,P90<=P50,uncertainty monotonicity
+REL-006,PASS,PVOUT double-count check,no generic PR layered on PVOUT
+REL-007,PASS,WATCH,legal schedule versus billed implementation
+REL-008,FAIL,5 referenced / 4 registered,tariff/regulatory lineage resolves
+REL-009,PASS,master derived fields reconcile,screening and final ratio tie
+REL-010,PASS,DQ 18/18,no DQ failures
+REL-011,PASS,QA 18/18,no remote QA failures
+REL-012,WARN,candidate,candidate manifest is refreshed after the immutable workflow artifact
+REL-013,PASS,remote source policy,no desktop snapshots

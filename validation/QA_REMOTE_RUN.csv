@@ -12,3 +12,8 @@ QA-REMOTE-010,PASS,CAPEX factor 1.15,CAPEX overrun is isolated from CFADS
 QA-REMOTE-011,PASS,zero terminal value,Terminal branch is visible and conservative
 QA-REMOTE-012,PASS,pooled debt <= selected CAPEX,Pooled debt has an explicit borrowing-base cap
 QA-REMOTE-013,PASS,WATCH,Legal tariff schedule is not treated as billed implementation
+QA-REMOTE-014,PASS,20 x 8760 tariff mappings,Every local-standard hour maps to one legal/reference period
+QA-REMOTE-015,PASS,hourly P50 load/solar reconciles,"8,760 load and solar vectors tie to annual inputs"
+QA-REMOTE-016,PASS,Decision 963 schedule validation PASS,Half-hour boundaries are represented by one-hour interval midpoints
+QA-REMOTE-017,PASS,registered LLCR/PLCR rates,Coverage discount rates come from the discount-rate register
+QA-REMOTE-018,PASS,DSO minimum annual CFADS <= base,Working-capital timing downside is tested at annual grain
