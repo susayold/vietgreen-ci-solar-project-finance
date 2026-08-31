@@ -11,4 +11,4 @@ This static landing page is an aggregate-only communication layer for release ca
 - Metrics are synchronized to workflow run 33357877259 and artifact digest sha256:16addbaafa85aeaecde83ce12a5f3c9513988911d2090d915b29899f0dec607e. Hourly Parquet and CSV.GZ streams remain remote artifact-only.
 
 Live deployment: https://susayold.github.io/vietgreen-ci-solar-project-finance/
-Deployment workflow: https://github.com/susayold/vietgreen-ci-solar-project-finance/actions/runs/33358433434
+Deployment workflow: https://github.com/susayold/vietgreen-ci-solar-project-finance/actions/runs/33358568134
