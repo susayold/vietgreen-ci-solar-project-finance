@@ -50,5 +50,24 @@
   "backend_manifest_reconciled": true,
   "latest_live_refresh_source_id": "SRC-REFRESH-EVN-20260730",
   "external_validation_rows": 8,
-  "latest_benchmark_refresh_source_id": "SRC-IRENA-2025"
+  "latest_benchmark_refresh_source_id": "SRC-IRENA-2025",
+  "git_commit": "5ec787bd575131b4d3c5ee504cba3058182158ab",
+  "release_metadata_parent_commit": "135f7a5eeccdf174c8dad5f9245668f2a1951583",
+  "release_timestamp_utc": "2026-08-30T20:30:05Z",
+  "excel_file": {
+    "path": "model/vietgreen_core_model.xlsx",
+    "sha256": "c7f669ab3ca89808011aa456e89d2945828f7b1d829bdbcf3379d9c6185f30ba",
+    "blob_sha": "a9ff3f3bcb6207588dd9b6c20c6768dc5fad60df",
+    "size_bytes": 116230
+  },
+  "backend_artifacts_manifest_path": "release/BACKEND_OUTPUT_MANIFEST.csv",
+  "backend_artifacts_manifest_sha256": "f662a8627fe98e55cfa372a32310d422d731a736a493cbf7ea668f80af572822",
+  "backend_artifacts_manifest_blob_sha": "5108f193357382dc0415048e42492ac725bb0573",
+  "config_sha256": {
+    "config/model_config.yml": "d543dc348f8033d3d3277746c6b802b03ec937fc1e34d73f786b755bb4421c23",
+    "config/scenario_config.yml": "b00d311bc59f9ddc455acd448b9d13ed3063c7da1e3ed31ef1e6547f73bd81ad",
+    "config/synthetic_seed.yml": "14bb5b1ba9f3f5c76efcd2e0ba3cad7eb3d256a500d1c773df3663bf9163d52f",
+    "config/validation_config.yml": "06c519211abe95e13c4ddfc76c40af654c1c36795ac3e431e8e689efad3bdeff",
+    "requirements-lock.txt": "8528c88b4b612e2c8cff30f12790a5ad88e00c0561158af1f2f185232e8b14d5"
+  }
 }
