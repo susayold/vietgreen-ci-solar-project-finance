@@ -81,4 +81,4 @@ Reproducibility control: remote push run 33367160495 and same-head workflow_disp
 
 ## M. Final remote output refresh
 
-The final push-triggered core rebuild completed in workflow 33367160495 / job 99410087552; the repository workbook is regenerated against the SR-1.14 model-input set. SR-1.15 adds comparator-only source URLs and does not change model inputs. Workbook SHA-256 is 9e72588fd7a084282befa74dd0f97036f15e1f306aac6080fc86fdd75f605c5f and size is 117493 bytes. Same-head run 33367239508 / job 99410324360 and comparator 33367293807 / job 99410490341 matched 6/6 files.
+The final push-triggered core rebuild completed in workflow 33367160495 / job 99410087552; the repository workbook uses the locked model-input set established before the SR-1.15 comparator-only URL additions. SR-1.15 does not change model inputs. Workbook SHA-256 is 9e72588fd7a084282befa74dd0f97036f15e1f306aac6080fc86fdd75f605c5f and size is 117493 bytes. Same-head run 33367239508 / job 99410324360 and comparator 33367293807 / job 99410490341 matched 6/6 files.

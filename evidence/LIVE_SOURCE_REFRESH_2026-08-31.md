@@ -68,7 +68,7 @@ Source rows: SRC-TAR-963, SRC-TAR-60, SRC-TAR-278, SRC-REFRESH-EVN-20260831, SRC
 
 ## Core validation lineage after core model refresh
 
-- Push workflow 33367160495 / job 99410087552 completed successfully after the SR-1.14 evidence registration; artifact 9748676847, digest sha256:3f1f7c193192ca4bd652a131e453e9bd7cd996592f0f2343b081664618fdba70.
+- Push workflow 33367160495 / job 99410087552 completed successfully after the locked model-input evidence registration; artifact 9748676847, digest sha256:3f1f7c193192ca4bd652a131e453e9bd7cd996592f0f2343b081664618fdba70.
 - Remote checks remained green: 20/20 data quality, 20/20 dynamic QA, 31/31 workbook checks, 7/7 tests and 13 PASS plus 1 intentional candidate WARN in release controls.
 - The rebuilt native workbook is 22 sheets, 117493 bytes, SHA-256 9e72588fd7a084282befa74dd0f97036f15e1f306aac6080fc86fdd75f605c5f; GitHub blob c0d2e2dadf3720a35b9101205efdec108425bec5.
 - Same-head repeat 33367239508 / job 99410324360 and remote comparator 33367293807 / job 99410490341 matched all six target files; comparator artifact 9748718166, digest sha256:5b445b9ad1b8b292edf19197ca25b7a7ecf7c4204d9d788baaed21afca483b3e; comparison CSV SHA-256 28b02df8bfa8516586597a374ac11fe02907056f3f787de34675683ab7a9b8df; raw artifact contents were not stored.
