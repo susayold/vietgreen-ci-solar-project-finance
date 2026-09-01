@@ -1,0 +1,54 @@
+{
+  "freeze_id": "V5.1-INPUT-FREEZE-2026-09-01-OUTCOME-BLIND",
+  "freeze_timestamp": "2026-09-01T00:00:00+07:00",
+  "selection_algorithm_version": "V5.1-OUTCOME-BLIND-SCORE-GRADE-GRANULARITY-V1",
+  "project_ids": [
+    "EU-GY-ALTAREA-BOLLENE-ROOF",
+    "EU-GY-ALTAREA-PUCEUL",
+    "EU-GY-FRUEHAUF-AUXERRE",
+    "EU-GY-PANATTONI-MOISSY",
+    "EU-GY-SAFRAN-EVRY",
+    "EU-GY-STELLANTIS-CAEN",
+    "EU-GY-STELLANTIS-CHARLEVILLE",
+    "EU-GY-STELLANTIS-VALENCIENNES",
+    "EU-GY-GIVA-CELLA",
+    "EU-GY-GIVA-VISANO",
+    "EU-GY-SASOL-ITALY",
+    "EU-GY-STELLANTIS-SLOVAKIA",
+    "IN-AZURE-GANDHINAGAR",
+    "IN-CLEANMAX-TN-30MW",
+    "IN-FPEL-ARISUDHANA",
+    "IN-CLEANTECH-EXIDE-HALDIA",
+    "VN-GY-GOMALL",
+    "VN-GY-LOTTEMART",
+    "EU-GY-PTP-CADIZ",
+    "EU-GY-CMC-ANDRYCHOW"
+  ],
+  "project_count": 20,
+  "country_distribution": {
+    "France": 8,
+    "Italy": 3,
+    "Slovakia": 1,
+    "India": 4,
+    "Vietnam": 2,
+    "Spain": 1,
+    "Poland": 1
+  },
+  "coverage_grade_distribution": {
+    "GOLD": 7,
+    "STRONG": 9,
+    "ACCEPTABLE": 4
+  },
+  "candidate_scoring_hash": "RUNTIME_SHA256",
+  "project_master_hash": "RUNTIME_SHA256",
+  "raw_observation_hash": "RUNTIME_SHA256",
+  "entity_map_hash": "RUNTIME_SHA256",
+  "conflict_register_hash": "RUNTIME_SHA256",
+  "benchmark_register_hashes": [
+    "RUNTIME_SHA256"
+  ],
+  "assumption_overlay_hash": "RUNTIME_SHA256",
+  "code_sha": "RUNTIME_SHA_REQUIRED",
+  "selection_predates_economics": true,
+  "invalidation_rule": "Any selected-project input change invalidates freeze; documentation-only changes do not."
+}
