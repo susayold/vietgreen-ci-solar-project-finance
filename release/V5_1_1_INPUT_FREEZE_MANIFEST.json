@@ -1,9 +1,9 @@
 {
   "manifest_version": "V5.1.1",
   "release_tag": "v5.1.1-recruiter-final",
-  "code_sha": "dbaf0f4180d7cb520597847e38977f0d85405d47",
-  "input_freeze_status": "SEALED_CANDIDATE",
-  "freeze_date_utc": "2026-09-02T00:00:00Z",
+  "code_sha": "26cb4dfd9ac45e829646f2d52f3f3a4041c8bb61",
+  "input_freeze_status": "SEALED_IN_CI",
+  "freeze_date_utc": "2026-09-01T18:41:44Z",
   "selected_project_count": 20,
   "candidate_history_count": 54,
   "raw_observation_count": 441,
