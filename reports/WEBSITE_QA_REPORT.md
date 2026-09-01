@@ -8,5 +8,5 @@ The Pages workflow is the publication path for the V5.1.1 recruiter surface. The
 - PPA contract: PASS; FRONTIER_ONLY and exact commercial PPA data is not presented as observed.
 - Model boundary: PASS; recruiter-ready does not mean bankable, transaction-ready, lender-approved, IC-approved, legal, tax or technical sign-off.
 - Responsive browser QA: PASS at 390, 430, 768, 1024 and 1440px using headless Chrome.
-- Live deployment: PASS; Pages run `33546532792` verified `https://susayold.github.io/vietgreen-ci-solar-project-finance/` and `website/data/release-meta.json` reported SHA `14fe1e5e19ab0ecdd67f79be6be4d0aa5c59f2cb`.
+- Live deployment: PASS; the Pages workflow verifies HTTP 200 routes and exact SHA through the runtime deployment check. The exact SHA, run ID, artifact ID and digest are sealed in the CI runtime manifest and Drive control index.
 - Static QA remains a communication-layer check; the workbook, outputs, validation registers and CI runtime manifest remain authoritative for model evidence.
