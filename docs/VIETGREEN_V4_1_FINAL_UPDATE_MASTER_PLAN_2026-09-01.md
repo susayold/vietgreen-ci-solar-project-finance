@@ -1,7 +1,7 @@
 # VIETGREEN V4.1 — FINAL UPDATE & CLOSURE EXECUTION MASTER PLAN
 
 **Plan date:** 2026-09-01  
-**Plan status:** APPROVED SCOPE / NOT YET IMPLEMENTED  
+**Plan status:** FINAL UPDATED PLAN / NOT YET IMPLEMENTED  
 **Target release:** V4.1-FINAL-RECRUITER  
 **Target tag:** v4.1.0-recruiter-final  
 **Verified GitHub baseline:** 9cd739f99f5b74d93c0002f91d21420a968231f0  
