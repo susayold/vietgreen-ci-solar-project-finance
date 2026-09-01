@@ -12,7 +12,8 @@
   "freeze_rule": "research -> select -> freeze inputs -> run economics",
   "blockers": [
     "No asset-level VietGreen project evidence is available in the inspected Drive/GitHub scope.",
-    "Candidate portfolio disclosures cannot be treated as site-level projects.",
+    "15 public candidates are registered, but portfolio/facility disclosures cannot be treated as site-level projects.",
+    "CAND-005 and CAND-012 are priority retrieval candidates but remain blocked by missing tariff/generation/technical and asset finance fields.",
     "Minimum project universe is 15 and current frozen universe is 0.",
     "Tariff, tax, FX and debt registers are metadata-ready but not refreshed into model inputs."
   ]

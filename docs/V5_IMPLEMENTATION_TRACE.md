@@ -48,3 +48,16 @@ Both remain candidate/portfolio-level records. They are not frozen V5 project-un
 ## Do not do
 
 Do not use V4 synthetic rows as V5 real projects. Do not manufacture site names, coordinates, PPA price, actual lender terms, tax applicability, offtaker ratings, generation series or bankable claims.
+
+
+## Research expansion — 2026-09-01
+
+The public candidate register was expanded to 15 records using official IFC disclosures. The highest-value leads are:
+
+- Clean Max Tamil Nadu: named KAS On-Site Solar LLP, 30 MWp, Tata Communications Ltd offtaker and 25-year PPA; tariff and generation are not public.
+- Azure Sun Gandhinagar: named 2.5 MW rooftop asset, Torrent Power offtaker, 25-year concession, estimated cost and IFC loan ceiling; tariff value and generation are not public.
+- Clean Max Karnataka: 30 MWp reference plant visited by IFC; offtaker and commercial terms are not public.
+- FPE Uppal: 547 kWp operating rooftop asset visited by IFC; legal asset identity and offtaker are not public.
+- KES Vietnam: aggregate 6–7 MW rooftop capacity across MDF1/MDF2; plant-level decomposition is not public.
+
+Portfolio and facility disclosures are stored as candidate evidence, not as frozen projects. Secondary-market records are labeled as such. The release remains blocked with 1 current project-master row, 0 frozen projects and 15 minimum-project requirement unmet.

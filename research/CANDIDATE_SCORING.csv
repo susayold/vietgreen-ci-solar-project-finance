@@ -1,0 +1,16 @@
+candidate_id,identity_score,geography_score,capacity_status_score,business_model_score,transaction_score,source_quality_score,completeness_score,total_score,evidence_grade,selection_disposition,scoring_note
+CAND-001,20,8,17,14,10,9,0,78,STRONG,HOLD_PORTFOLIO_NOT_ASSET,High source and transaction quality; no asset-level identity or model inputs.
+CAND-002,18,8,15,14,10,9,0,74,ACCEPTABLE,HOLD_MISSING_COUNTRY_ASSET_SPLIT,Multi-country platform; country allocation and site records unavailable.
+CAND-003,18,5,18,15,13,9,2,80,STRONG,HOLD_SUBPROJECT_IDS_MISSING,Program and financing are public; sub-project identities and contract prices unavailable.
+CAND-004,17,8,17,14,10,8,2,76,STRONG,HOLD_PLATFORM_NOT_ASSET,Platform facts plus visited plants; only named asset candidates are separated below.
+CAND-005,20,10,19,15,13,9,4,90,GOLD,HOLD_MISSING_CAPEX_GENERATION_TARIFF,"Best disclosed Indian asset candidate; missing tariff value, generation and asset debt/O&M."
+CAND-006,18,10,18,14,10,9,1,80,STRONG,HOLD_OFFTAKER_AND_TERMS_MISSING,Named capacity and state visit; commercial identity incomplete.
+CAND-007,18,5,18,15,13,9,4,82,STRONG,HOLD_PORTFOLIO_SITE_IDS_MISSING,"Strong C&I/PPA/transaction evidence, but portfolio is not decomposed."
+CAND-008,18,8,17,13,10,9,4,79,STRONG,HOLD_OFFTAKER_PPA_NOT_DISCLOSED,"Observed operating site size, but legal asset and commercial terms absent."
+CAND-009,15,2,16,15,9,8,7,72,ACCEPTABLE,SECONDARY_RESEARCH_ONLY,Good historical ESCO evidence; secondary geography and stale operating date.
+CAND-010,16,3,16,14,10,9,7,75,STRONG,SECONDARY_RESEARCH_ONLY,Official DFI evidence and example site; no quantitative asset data.
+CAND-011,12,2,14,8,13,9,10,68,ACCEPTABLE,EXCLUDE_FACILITY_NOT_ASSET,Facility evidence only; retained for market benchmark research.
+CAND-012,20,10,19,15,13,9,2,88,GOLD,HOLD_MISSING_TARIFF_GENERATION,"Asset, location, offtaker, cost and tenor public; tariff value and generation absent."
+CAND-013,12,10,15,11,10,9,1,68,ACCEPTABLE,HOLD_COUNTRY_SPLIT_MISSING,Vietnam is present only within a four-country aggregate.
+CAND-014,15,10,16,11,8,8,1,69,ACCEPTABLE,HOLD_FACILITY_AGGREGATE_ONLY,Vietnam facility and aggregate rooftop capacity public; no project-level decomposition.
+CAND-015,12,8,14,10,8,9,5,66,ACCEPTABLE,RESEARCH_ONLY_NOT_ASSET_IDENTIFIABLE,Market lead only; no asset-level disclosure.

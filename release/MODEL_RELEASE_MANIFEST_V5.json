@@ -6,21 +6,28 @@
   "input_freeze_id": null,
   "manifest_status": "CONTROL_SKELETON_ONLY",
   "release_status": "INPUT_DATA_BLOCKED",
-  "project_count": 0,
-  "country_count": 0,
-  "countries": [],
-  "real_project_count": 0,
+  "project_count": 1,
+  "country_count": 1,
+  "countries": [
+    "India"
+  ],
+  "real_project_count": 1,
   "frozen_project_count": 0,
-  "candidate_count": 2,
-  "observed_fact_count": 30,
+  "candidate_count": 15,
+  "observed_fact_count": 117,
   "derived_fact_count": 0,
   "benchmark_assumption_count": 0,
   "analyst_assumption_count": 0,
   "not_disclosed_count": 6,
-  "coverage_grade_distribution": {"GOLD": 0, "STRONG": 0, "ACCEPTABLE": 0, "EXCLUDE": 0},
+  "coverage_grade_distribution": {
+    "GOLD": 0,
+    "STRONG": 1,
+    "ACCEPTABLE": 0,
+    "EXCLUDE": 0
+  },
   "current_positive_count": null,
   "current_negative_count": null,
-  "indeterminate_count": null,
+  "indeterminate_count": 1,
   "selected_count": 0,
   "selected_ids": [],
   "selected_countries": [],
@@ -33,11 +40,15 @@
   "transaction_evidence_status": "OPEN",
   "bankable_transaction_ready": false,
   "claim_boundary": "PUBLIC_DATA_RECONSTRUCTION_ONLY; CONFIDENTIAL_TERMS_ARE_NOT_DISCLOSED; STANDARDIZED_UNDERWRITING_IS_NOT_ACTUAL_LENDER_PRICING; NOT_TRANSACTION_ADVICE",
-  "model_modes_present": ["FRONTIER_ONLY"],
+  "model_modes_present": [
+    "FRONTIER_ONLY"
+  ],
   "blockers": [
-    "Input freeze is not complete.",
-    "Current universe does not meet the minimum 15 projects.",
-    "No asset-level project records are eligible for economics.",
-    "No final V5 website or recruiter surfaces may claim a completed global portfolio."
-  ]
+    "G5_NOT_FULL_RECONSTRUCTION:IFC-FPE-46362",
+    "G0_DATA_QUALITY_BLOCKED:IFC-FPE-46362",
+    "G5_MINIMUM_PROJECT_UNIVERSE_NOT_MET:1<15",
+    "G4_BENCHMARK_PACKS_NOT_READY:VN-CI-2026-METADATA|IN-CI-2026-METADATA|US-CI-2026-METADATA|EU-CI-2026-METADATA|SG-CI-2026-METADATA|AU-CI-2026-METADATA"
+  ],
+  "last_research_update": "2026-09-01",
+  "research_note": "15 source-backed candidates registered; none frozen as V5 economics."
 }
