@@ -112,7 +112,7 @@ def build(root=ROOT):
       "input_hashes":input_hashes,
       "workbook_hash":_hash(workbook_path) if workbook_path else "WORKBOOK_NOT_BUILT",
       "output_hashes":output_hashes,"surface_hashes":surface_hashes,"website_hashes":website_hashes,
-      "test_counts":{"pytest":56,"semantic":12},
+      "test_counts":{"pytest":66,"semantic":12},
       "gates":["G0","G1","G2","G3","G4","G5","G6","G7","G8","G9"],"remote_only":True
     }
     _write(root/"release/V5_RUNTIME_RELEASE_MANIFEST.json",json.dumps(runtime_manifest,indent=2,sort_keys=True)+"\n")
