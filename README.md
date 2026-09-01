@@ -1,6 +1,6 @@
 # VietGreen CI Solar Project Finance — V5.1.1
 
-Current authoritative branch: v5.1.1-data-model-content-rebuild.
+Current authoritative branch: v5.1.1-data-model-content-rebuild. Final tag: v5.1.1-recruiter-final.
 
 V5.1.1 is a full data-model and content rebuild over the preserved V5.1 research history: 54 candidate projects, 441 raw observations, and 20 selected projects. It separates observed public facts from derived calculations, benchmark assumptions, analyst assumptions, and scenarios.
 
