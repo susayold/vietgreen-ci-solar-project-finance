@@ -1,8 +1,21 @@
-surface,status,contract
-README.md,CURRENT,V5.1.1 claim boundary
-EXECUTIVE_SUMMARY.md,CURRENT,V5.1.1 decision boundary
-BUSINESS_CASE.md,CURRENT,Frontier-only economics
-ASSUMPTIONS_AND_LIMITATIONS.md,CURRENT,Observed/derived/assumption split
-CLAIM_GOVERNANCE.md,CURRENT,Claim classes and prohibited claims
-SCOPE_MATRIX.md,CURRENT,In scope and stop boundary
-V5_MIGRATION_STATUS.md,CURRENT,V5.1.1 migration status
+surface,old_version_detected,old_metric_detected,rewrite_status,authoritative_source,reconciliation_status
+README.md,V4/V5.0 legacy,V5.1.1 rewrite,README.md,V5.1.1 current claim boundary,PASS
+EXECUTIVE_SUMMARY.md,V4/V5.0 legacy,V5.1.1 rewrite,EXECUTIVE_SUMMARY.md,V5.1.1 decision boundary,PASS
+BUSINESS_CASE.md,V4/V5.0 legacy,V5.1.1 rewrite,BUSINESS_CASE.md,V5.1.1 frontier economics,PASS
+ASSUMPTIONS_AND_LIMITATIONS.md,V4/V5.0 legacy,V5.1.1 rewrite,ASSUMPTIONS_AND_LIMITATIONS.md,Observed/derived/assumption split,PASS
+CLAIM_GOVERNANCE.md,V4/V5.0 legacy,V5.1.1 rewrite,CLAIM_GOVERNANCE.md,Claim classes and prohibited claims,PASS
+SCOPE_MATRIX.md,V4/V5.0 legacy,V5.1.1 rewrite,SCOPE_MATRIX.md,V5.1.1 stop boundary,PASS
+V5_MIGRATION_STATUS.md,V4/V5.0 legacy,V5.1.1 rewrite,V5_MIGRATION_STATUS.md,V5.1.1 migration status,PASS
+reports/INVESTMENT_COMMITTEE_MEMO.md,V4 legacy,V5.1.1 rewrite,reports/INVESTMENT_COMMITTEE_MEMO.md,"Diligence memo, no INVEST",PASS
+reports/LENDER_CREDIT_MEMO.md,V4 legacy,V5.1.1 rewrite,reports/LENDER_CREDIT_MEMO.md,Standardized underwriting boundary,PASS
+reports/RECRUITER_PACKAGE.md,V4 legacy,V5.1.1 rewrite,reports/RECRUITER_PACKAGE.md,Recruiter package boundary,PASS
+reports/DATA_ROOM_INDEX.md,V4 legacy,V5.1.1 rewrite,reports/DATA_ROOM_INDEX.md,Remote-only V5.1.1 data room,PASS
+reports/RECRUITER_SURFACE_RECONCILIATION.md,V4 legacy,V5.1.1 rewrite,reports/RECRUITER_SURFACE_RECONCILIATION.md,Cross-surface reconciliation,PASS
+reports/CV_BULLETS_V5_1_1.md,V4 legacy,V5.1.1 rewrite,reports/CV_BULLETS_V5_1_1.md,Counts reconcile to manifest,PASS
+reports/STANDARDIZED_UNDERWRITING_TERMS_V5_1_1.md,V4 legacy,V5.1.1 rewrite,reports/STANDARDIZED_UNDERWRITING_TERMS_V5_1_1.md,Not actual lender terms,PASS
+website/index.html,V4 legacy,V5.1.1 rewrite,website/index.html,V5.1.1 current website,PASS
+website/data/shared-summary.json,V4 legacy,V5.1.1 generated,website/data/shared-summary.json,V5.1.1 summary,PASS
+website/data/release-meta.json,V4 legacy,V5.1.1 generated,website/data/release-meta.json,CI-sealed release identity,PASS
+release/MODEL_RELEASE_MANIFEST.json,V4 legacy,V5.1.1 current,release/MODEL_RELEASE_MANIFEST.json,V5.1.1 release metadata,PASS
+Drive current header,V4/V5.0 history,V5.1.1 current,Drive control document,Exact SHA/run/artifact/digest readback,PASS
+GitHub Release body,V4/V5.0 history,V5.1.1 current,v5.1.1-recruiter-final,"Exact SHA, frontier-only, bankable false",PASS
