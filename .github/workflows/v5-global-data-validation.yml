@@ -20,6 +20,12 @@ jobs:
         run: echo "V5_1_1_FREEZE_DATE_UTC=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_ENV"
       - name: Build V5.1.1 model, workbook and registers
         run: python -m analytics.build_v5_1_1_release
+      - name: Reproducibility check
+        run: |
+          python -m analytics.build_v5_1_1_release
+          sha256sum outputs/v5_1_1_project_economics.csv outputs/v5_1_1_scenarios.csv outputs/v5_1_1_reconciliation.csv > /tmp/v511-build-2.sha256
+          sha256sum outputs/v5_1_1_project_economics.csv outputs/v5_1_1_scenarios.csv outputs/v5_1_1_reconciliation.csv > /tmp/v511-build-1.sha256
+          diff -u /tmp/v511-build-1.sha256 /tmp/v511-build-2.sha256
       - name: Validate current surfaces
         run: python -m scripts.run_v5_1_1_checks
       - name: Run semantic and regression tests
@@ -52,6 +58,7 @@ jobs:
           data["artifact_id"]=str(artifact["id"]); data["artifact_digest"]=artifact["digest"]; data["artifact_name"]=artifact["name"]
           p.write_text(json.dumps(data,indent=2,sort_keys=True)+"\n")
           m=Path("release/MODEL_RELEASE_MANIFEST.json"); md=json.loads(m.read_text()); md["runtime_manifest_artifact_id"]=str(artifact["id"]); md["runtime_manifest_artifact_digest"]=artifact["digest"]; m.write_text(json.dumps(md,indent=2,sort_keys=True)+"\n")
+          print(json.dumps(data,indent=2,sort_keys=True))
           PY
       - name: Upload sealed runtime manifests
         uses: actions/upload-artifact@v4
