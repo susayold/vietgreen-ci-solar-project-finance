@@ -37,9 +37,9 @@ jobs:
           if-no-files-found: error
       - name: Seal artifact metadata into runtime manifest
         env:
-          GH_TOKEN: \${{ github.token }}
-          GH_REPOSITORY: \${{ github.repository }}
-          GH_RUN_ID: \${{ github.run_id }}
+          GH_TOKEN: ${{ github.token }}
+          GH_REPOSITORY: ${{ github.repository }}
+          GH_RUN_ID: ${{ github.run_id }}
         run: |
           python - <<'PY'
           import json, os, urllib.request
