@@ -1,7 +1,12 @@
 scenario_id,energy_factor,capex_factor,price_factor,rate_delta,cod_delay_years,debt_mode,description
-BASE,1,1,1,0,0,STANDARDIZED,Public-data benchmark base case
-P90_ENERGY,.9,1,1,0,0,STANDARDIZED,P90-style energy haircut
-CAPEX_OVERRUN,1,1.15,1,0,0,STANDARDIZED,15 percent capex overrun
-INTEREST_RATE_SHOCK,1,1,1,.02,0,STANDARDIZED,200 bps rate shock
-COD_DELAY,1,1,1,0,1,STANDARDIZED,One-year COD delay
-COMBINED_DOWNSIDE,.9,1.15,.95,.02,1,STANDARDIZED,Combined downside
+BASE,1,1,1,0,0,FIXED_DEBT_SCHEDULE,Public-data benchmark reference case
+P90_ENERGY,0.9,1,1,0,0,FIXED_DEBT_SCHEDULE,P90-style energy haircut
+CAPEX_OVERRUN,1,1.15,1,0,0,NO_NEW_DEBT,15 percent capex overrun
+INTEREST_RATE_SHOCK,1,1,1,0.02,0,FIXED_DEBT_SCHEDULE,200 bps rate shock
+COD_DELAY,1,1,1,0,1,NO_NEW_DEBT,One-year COD delay
+OPEX_INFLATION,1,1,1,0,0,FIXED_DEBT_SCHEDULE,OPEX escalation shock
+OFFTAKER_NONPAYMENT,1,1,0.75,0,0,FIXED_DEBT_SCHEDULE,25 percent revenue collection haircut
+OFFTAKER_TERMINATION,1,1,0,0,0,NO_NEW_DEBT,PPA termination after base year
+COMBINED_DOWNSIDE,0.9,1.15,0.95,0.02,1,NO_NEW_DEBT,Combined downside
+SELF_CONSUMPTION_DROP,0.9,1,0.9,0,0,FIXED_DEBT_SCHEDULE,Rooftop self-consumption stress
+GRID_TARIFF_COMPRESSION,1,1,0.9,0,0,FIXED_DEBT_SCHEDULE,Market-linked savings compression
