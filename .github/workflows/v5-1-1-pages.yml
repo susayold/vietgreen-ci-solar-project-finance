@@ -40,7 +40,7 @@ jobs:
           for width in 390 430 768 1024 1440; do
             if command -v google-chrome >/dev/null 2>&1; then browser=google-chrome; elif command -v chromium >/dev/null 2>&1; then browser=chromium; else echo "No Chromium browser installed"; exit 1; fi
             "$browser" --headless=new --no-sandbox --disable-gpu --window-size=${width},900 --virtual-time-budget=2000 --dump-dom "$site" > "/tmp/v511-${width}.html"
-            rg -q "V5.1.1|FRONTIER_ONLY|INDETERMINATE" "/tmp/v511-${width}.html"
+            grep -Eq "V5.1.1|FRONTIER_ONLY|INDETERMINATE" "/tmp/v511-${width}.html"
           done
           node --check website/app.js
       - name: Stage Pages
