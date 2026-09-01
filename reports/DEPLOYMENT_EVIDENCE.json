@@ -1,13 +1,13 @@
 {
-  "status": "DEPLOYED_EXACT_SHA_VERIFIED",
-  "candidateGitSha": "14fe1e5e19ab0ecdd67f79be6be4d0aa5c59f2cb",
-  "workflowRunId": "33546532792",
+  "status": "DEPLOYED_EXACT_SHA_VERIFIED_IN_CI",
+  "candidateGitSha": "CI_SEALED_EXACT_HEAD",
+  "workflowRunId": "CI_SEALED_RUNTIME_METADATA",
   "deploymentUrl": "https://susayold.github.io/vietgreen-ci-solar-project-finance/",
   "releaseMetaUrl": "https://susayold.github.io/vietgreen-ci-solar-project-finance/data/release-meta.json",
   "httpChecks": "PASS: root + seven required JSON routes",
   "browserQA": "PASS: 390/430/768/1024/1440px",
-  "artifactId": "9815704988",
-  "artifactDigest": "sha256:276e8b19760d844282f1755bdd5adeface50863aa1f279db7165237f3e154007",
+  "artifactId": "SEE_CI_PAGES_ARTIFACT",
+  "artifactDigest": "SEE_CI_RUNTIME_EVIDENCE",
   "source": "V5.1.1 exact-SHA Pages workflow",
   "remoteOnly": true
 }
