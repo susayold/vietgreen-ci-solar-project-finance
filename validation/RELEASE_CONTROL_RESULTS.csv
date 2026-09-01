@@ -10,6 +10,6 @@ REL-008,PASS,22 referenced / 22 registered,tariff/regulatory lineage resolves
 REL-009,PASS,master derived fields reconcile,screening and final ratio tie
 REL-010,PASS,DQ 20/20,no DQ failures
 REL-011,PASS,QA 20/20,no remote QA failures
-REL-012,WARN,FINAL_RECRUITER_CANDIDATE,candidate manifest is refreshed after the immutable workflow artifact
+REL-012,WARN,FINAL_RECRUITER_RELEASE,candidate manifest is refreshed after the versioned workflow artifact
 REL-013,PASS,remote source policy,no desktop snapshots
 REL-014,PASS,240 construction rows,"construction CAPEX, VAT and IDC output is present and reconciled"

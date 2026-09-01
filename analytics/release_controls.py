@@ -27,7 +27,7 @@ def main():
     add("REL-010","PASS" if not any(row.get("status")=="FAIL" for row in dq) else "FAIL","DQ %d/%d"%(sum(row.get("status")=="PASS" for row in dq),len(dq)),"no DQ failures")
     add("REL-011","PASS" if not any(row.get("status")=="FAIL" for row in qa) else "FAIL","QA %d/%d"%(sum(row.get("status")=="PASS" for row in qa),len(qa)),"no remote QA failures")
     manifest=json.loads((ROOT/"release/MODEL_RELEASE_MANIFEST.json").read_text(encoding="utf-8"))
-    add("REL-012","WARN",manifest.get("release_status"),"candidate manifest is refreshed after the immutable workflow artifact")
+    add("REL-012","WARN",manifest.get("release_status"),"candidate manifest is refreshed after the versioned workflow artifact")
     add("REL-013","PASS" if all(row.get("raw_snapshot_path")=="NOT_STORED_LOCAL" for row in sources) else "FAIL","remote source policy","no desktop snapshots")
     capex_ok = len(capex_schedule) == 240 and all(row.get("reconciliation_status") == "PASS" and row.get("idc_vnd") not in ("", None) for row in capex_schedule)
     add("REL-014","PASS" if capex_ok else "FAIL","%d construction rows" % len(capex_schedule),"construction CAPEX, VAT and IDC output is present and reconciled")
