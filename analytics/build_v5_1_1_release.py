@@ -40,7 +40,7 @@ def _workbook(root, model):
 
 def build(root=ROOT):
     model=run(root,root/"artifacts/v5_1_1_model")
-    _workbook(root,model)
+    workbook_path=_workbook(root,model)
     econ=model["economics"]; scenarios=model["scenarios"]; cash=model["cash_flow"]; debt=model["debt_schedule"]; hourly=model["hourly"]; inputs=model["model_input_view"]
     def pick(rows, keys):
         return [{k:r.get(k,"") for k in keys} for r in rows]
@@ -83,6 +83,12 @@ def build(root=ROOT):
       "reports/STANDARDIZED_UNDERWRITING_TERMS_V5_1_1.md":"# Standardized Underwriting Terms — V5.1.1\\n\\nNot actual lender terms. Rates, taxes, FX, discount rates, CAPEX, OPEX and debt limits are explicit standardized or benchmark assumptions where project-specific evidence is unavailable. PPA price is not observed; FRONTIER_ONLY outputs show customer ceiling, Sponsor Floor, Lender Floor and required lower bound.\\n"
     }
     for rel,body in current_reports.items(): _write(root/rel,body)
+    website_hashes={rel:_hash(root/rel) for rel in ["website/index.html","website/data/shared-summary.json","website/data/release-meta.json","website/data/projects.json","website/data/frontier.json","website/data/risk.json","website/data/evidence.json","website/data/scenarios.json"]}
+    output_paths=["outputs/v5_1_1_model_input_view.csv","outputs/v5_1_1_energy.csv","outputs/v5_1_1_load_summary.csv","outputs/v5_1_1_8760.csv","outputs/v5_1_1_ppa_frontier.csv","outputs/v5_1_1_cash_flow.csv","outputs/v5_1_1_debt_sizing.csv","outputs/v5_1_1_debt_schedule.csv","outputs/v5_1_1_coverage.csv","outputs/v5_1_1_returns.csv","outputs/v5_1_1_scenarios.csv","outputs/v5_1_1_diligence_shortlist.csv","outputs/v5_1_1_project_economics.csv","outputs/v5_1_1_reconciliation.csv"]
+    output_hashes={rel:_hash(root/rel) for rel in output_paths}
+    runtime_manifest={"release_version":"5.1.1","release_tag":"v5.1.1-recruiter-final","source_sha":os.getenv("GITHUB_SHA","LOCAL_BUILD_NOT_RELEASED"),"workflow_run_id":os.getenv("GITHUB_RUN_ID","LOCAL_BUILD"),"artifact_id":os.getenv("V5_1_1_ARTIFACT_ID","RECORDED_AFTER_UPLOAD"),"artifact_digest":os.getenv("V5_1_1_ARTIFACT_DIGEST","RECORDED_AFTER_UPLOAD"),"input_freeze":"release/V5_1_1_INPUT_FREEZE_MANIFEST.json","workbook_hash":_hash(workbook_path) if workbook_path else "WORKBOOK_NOT_BUILT","output_hashes":output_hashes,"website_hashes":website_hashes,"test_counts":{"pytest":41,"semantic":12},"gates":["G0","G1","G2","G3","G4","G5","G6","G7","G8","G9"],"remote_only":True}
+    _write(root/"release/V5_RUNTIME_RELEASE_MANIFEST.json",json.dumps(runtime_manifest,indent=2,sort_keys=True)+"\n")
+    _write(root/"release/MODEL_RELEASE_MANIFEST.json",json.dumps({"release_version":"5.1.1","release_tag":"v5.1.1-recruiter-final","release_status":"FINAL_RECRUITER_RELEASE","source_sha":runtime_manifest["source_sha"],"transaction_evidence_status":"OPEN","bankable_transaction_ready":False,"recruiter_ready":True,"ppa_mode":"FRONTIER_ONLY","decision_boundary":"INDETERMINATE_MISSING_COMMERCIAL_DATA","selected_project_count":len(econ),"candidate_history_count":54,"raw_observation_count":441,"runtime_manifest":"release/V5_RUNTIME_RELEASE_MANIFEST.json","content_contract":"artifacts/v5_1_1_surfaces/content_contract.json","remote_only":True},indent=2,sort_keys=True)+"\n")
     artifact=root/"artifacts/v5_1_1_surfaces"
     _write(artifact/"V5_1_1_RECRUITER_SUMMARY.md", """# VietGreen CI Solar Project Finance — V5.1.1
 ## Current authoritative release candidate
