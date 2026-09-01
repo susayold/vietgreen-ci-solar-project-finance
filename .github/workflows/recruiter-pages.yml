@@ -101,7 +101,7 @@ jobs:
             sleep 1
           done
           for route in / /data/shared-summary.json /data/release-meta.json /data/overview.json /data/case.json /data/economics.json /data/debt.json /data/portfolio.json /data/risk.json /data/model.json /data/evidence.json /data/metadata.json /model_preview/index.html; do
-            curl --fail --silent --show-error "http://127.0.0.1:8765\${route}" >/dev/null
+            curl --fail --silent --show-error "http://127.0.0.1:8765${route}" >/dev/null
           done
 
       - name: Upload Pages artifact
@@ -117,7 +117,7 @@ jobs:
       id-token: write
     environment:
       name: github-pages
-      url: \${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
@@ -125,9 +125,9 @@ jobs:
 
       - name: Verify live release SHA
         env:
-          SITE_URL: \${{ steps.deployment.outputs.page_url }}
-          CANDIDATE_SHA: \${{ github.sha }}
-          WORKFLOW_RUN_ID: \${{ github.run_id }}
+          SITE_URL: ${{ steps.deployment.outputs.page_url }}
+          CANDIDATE_SHA: ${{ github.sha }}
+          WORKFLOW_RUN_ID: ${{ github.run_id }}
         shell: bash
         run: |
           set -euo pipefail
@@ -143,7 +143,7 @@ jobs:
               raise SystemExit(f"live SHA mismatch: {meta.get('gitSha')} != {os.environ['CANDIDATE_SHA']}")
           if meta.get("workflowRunId") != os.environ["WORKFLOW_RUN_ID"]:
               raise SystemExit(f"live workflow mismatch: {meta.get('workflowRunId')} != {os.environ['WORKFLOW_RUN_ID']}")
-          for route in ("", "data/shared-summary.json", "data/release-meta.json", "risk.json"):
+          for route in ("", "data/shared-summary.json", "data/release-meta.json", "data/risk.json"):
               target = base + route
               with urlopen(target, timeout=30) as response:
                   if response.status != 200:
@@ -155,7 +155,7 @@ jobs:
               "deploymentUrl": base,
               "releaseMetaUrl": base + "data/release-meta.json",
               "liveReleaseMeta": meta,
-              "httpChecks": ["/", "/data/shared-summary.json", "/data/release-meta.json", "/risk.json"],
+              "httpChecks": ["/", "/data/shared-summary.json", "/data/release-meta.json", "/data/risk.json"],
           }
           with open("deployment-evidence.json", "w", encoding="utf-8") as handle:
               json.dump(evidence, handle, indent=2)

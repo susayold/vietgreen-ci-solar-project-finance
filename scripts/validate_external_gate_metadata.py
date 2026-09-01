@@ -79,8 +79,20 @@ for row in submission_rows:
         require(row["status"] == "CLOSED", f"{row['gate_id']} gate tracker CLOSED without a CLOSED submission")
 
 manifest = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
+open_gate_count = sum(row["status"] != "CLOSED" for row in gate_rows)
+require(
+    manifest.get("external_gate_count_open") == open_gate_count,
+    "manifest external_gate_count_open does not match the gate tracker",
+)
 if manifest.get("recruiter_ready") is True:
-    require(all(row["status"] == "CLOSED" for row in gate_rows), "recruiter_ready cannot be true while any gate is open")
+    require(
+        manifest.get("transaction_evidence_status") == "OPEN",
+        "recruiter_ready boundary changed: transaction evidence must remain OPEN",
+    )
+    require(
+        manifest.get("bankable_transaction_ready") is False,
+        "recruiter_ready cannot imply bankable transaction readiness",
+    )
 
 print(json.dumps({
     "gate_rows": len(gate_rows),
