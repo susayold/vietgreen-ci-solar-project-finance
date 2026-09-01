@@ -1,42 +1,5 @@
-# Recruiter Package — V4.1.3 Project Finance Case
+# Recruiter Package — V5.1.1
 
-Release ID: V4.1.3-RECRUITER-FINAL
-Date: 2026-09-01
-Repository: https://github.com/susayold/vietgreen-ci-solar-project-finance
-Recruiter site: https://susayold.github.io/vietgreen-ci-solar-project-finance/
+Global public-data C&I/distributed-solar Project Finance reconstruction across 20 selected projects, preserving 54 candidates and 441 observations. Built observed-vs-assumption data governance, deterministic 8,760 load matching, PPA negotiation frontier, CFADS debt sizing, scenario stress testing and diligence shortlists.
 
-## V4.1.3 governance status
-
-CURRENT_TERMS_DECISION=NO_DEPLOYMENT
-SELECTED_COUNT=4
-SELECTED_IDS=VG-005|VG-010|VG-011|VG-012
-RECRUITER_READY=TRUE
-TRANSACTION_EVIDENCE_STATUS=OPEN
-BANKABLE_TRANSACTION_READY=FALSE
-EXTERNAL_GATE_COUNT_OPEN=8
-
-## Positioning
-
-Recruiter-ready synthetic Vietnam C&I rooftop-solar project-finance model. The package separates recruiter readiness from transaction readiness: RECRUITER_READY=TRUE, TRANSACTION_EVIDENCE=OPEN, BANKABLE_TRANSACTION_READY=FALSE.
-
-## Defensible bullets
-
-- Built a formula-driven Excel Project Finance model linking synthetic 8,760 load matching, P50/P90 energy, CFADS, debt sizing and Project/Equity NPV/IRR.
-- Solved customer ceiling, sponsor floor and lender floor with explicit bisection roots and residual/interval evidence.
-- Compared VND, unhedged USD and hedged USD funding and solved primary/secondary FX break-even conditions.
-- Optimized a negotiated hypothetical portfolio under equity, parent, industry, region and debt exposure constraints; reconciled standalone versus pooled financing in Python.
-- Automated Excel formula QA, remote recalculation, Python parity, red-team tests and release governance on GitHub Actions.
-
-## What is not claimed
-
-No executed transaction, lender approval, legal/tax opinion, technical certification, site diligence or bankable P90 claim. All transaction evidence gates remain visible in the release manifest and Drive control document.
-
-## Traceability
-
-- IC memo: reports/INVESTMENT_COMMITTEE_MEMO.md
-- Lender memo: reports/LENDER_CREDIT_MEMO.md
-- IC table: outputs/IC_DECISION_TABLE.csv
-- Formula workbook: model/vietgreen_v4_formula_model.xlsx
-- Final DoD: validation/V4_FINAL_DOD_MATRIX.csv
-- Release manifest: release/MODEL_RELEASE_MANIFEST.json
-- CV bullets: reports/CV_BULLETS_V4.md
+PPA mode: FRONTIER_ONLY. Exact confidential PPA and lender terms are not claimed. Recruiter-ready does not mean transaction-ready, lender-ready, bankable, IC-approved, legal, tax or technical approval.
