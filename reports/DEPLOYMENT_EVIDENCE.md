@@ -1,12 +1,7 @@
 # Deployment Evidence — V5.1.1
 
-- Status: DEPLOYED_EXACT_SHA_VERIFIED
-- Source SHA: `14fe1e5e19ab0ecdd67f79be6be4d0aa5c59f2cb`
-- Pages workflow run: `33546532792` — PASS
-- Deployment URL: https://susayold.github.io/vietgreen-ci-solar-project-finance/
-- Live `release-meta.json`: SHA matches source SHA; workflow run ID is `33546532792`
-- HTTP routes: root, shared-summary, release-meta, projects, frontier, risk, evidence and scenarios — PASS
-- Browser QA: 390/430/768/1024/1440px — PASS
-- Pages artifact: `9815704988`; artifact digest: `sha256:276e8b19760d844282f1755bdd5adeface50863aa1f279db7165237f3e154007`
+Status: DEPLOYED_EXACT_SHA_VERIFIED_IN_CI.
+
+The Pages workflow is the authoritative deployment evidence producer. It verifies the exact checked-out SHA, live `release-meta.json`, HTTP 200 for the root and seven required JSON routes, and browser QA at 390/430/768/1024/1440px. The exact source SHA, workflow run, Pages artifact ID and digest are sealed in the uploaded CI runtime evidence and copied to the Drive control index after readback.
 
 PPA remains FRONTIER_ONLY and the public site is a recruiter/diligence communication layer, not a bankability or transaction approval.
