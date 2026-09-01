@@ -1,7 +1,9 @@
-# VietGreen V5 Global Real-Data Migration
+# VietGreen CI Solar Project Finance — V5.1.1
 
-54 source-backed candidates and 20 outcome-blind frozen selected rows. Standardized public-data reconstruction only; no confidential PPA, lender, tax or site-right fact is fabricated.
+Current authoritative branch: v5.1.1-data-model-content-rebuild.
 
-GitHub: https://github.com/susayold/vietgreen-ci-solar-project-finance/tree/v5-global-real-data
-Drive control: https://docs.google.com/document/d/1koSgbc1Akic6cVDFD1svmuVN9gSq8qSGUw2obfHYN80/edit
-Local project data: NONE
+V5.1.1 is a full data-model and content rebuild over the preserved V5.1 research history: 54 candidate projects, 441 raw observations, and 20 selected projects. It separates observed public facts from derived calculations, benchmark assumptions, analyst assumptions, and scenarios.
+
+PPA mode is FRONTIER_ONLY. Exact PPA price, lender terms, confidential load, site, tax and engineering data are not claimed. The reference economics are REFERENCE_CASE_NOT_ACTUAL_PPA and the decision boundary is INDETERMINATE_MISSING_COMMERCIAL_DATA.
+
+Recruiter-ready is not transaction-ready, lender-ready, bankable, IC-approved, legal, tax or technical approval. V5.1.0 is superseded after post-release audit; V4.1.3 remains preserved as immutable history.
