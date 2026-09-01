@@ -1,0 +1,81 @@
+name: V5.1.1 Exact-SHA GitHub Pages Deployment
+on:
+  push:
+    branches:
+      - v5.1.1-data-model-content-rebuild
+    paths:
+      - "website/**"
+      - ".github/workflows/v5-1-1-pages.yml"
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Stamp exact release SHA
+        env:
+          BUILD_SHA: ${{ github.sha }}
+          RUN_ID: ${{ github.run_id }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          p=Path("website/data/release-meta.json")
+          d=json.loads(p.read_text())
+          d["gitSha"]=os.environ["BUILD_SHA"]; d["sourceSha"]=os.environ["BUILD_SHA"]; d["workflowRunId"]=os.environ["RUN_ID"]; d["status"]="DEPLOYED_EXACT_SHA"
+          p.write_text(json.dumps(d,indent=2)+"\n")
+          PY
+      - name: Local HTTP and route smoke
+        run: |
+          python -m http.server 8765 --directory website >/tmp/v511-pages.log 2>&1 &
+          pid=$!; trap 'kill "$pid"' EXIT
+          sleep 2
+          for route in / /data/shared-summary.json /data/release-meta.json /data/projects.json /data/frontier.json /data/risk.json /data/evidence.json /data/scenarios.json; do curl --fail --silent --show-error "http://127.0.0.1:8765${route}" >/dev/null; done
+      - name: Browser QA at required viewports
+        run: |
+          set -euo pipefail
+          site="file://${GITHUB_WORKSPACE}/website/index.html"
+          for width in 390 430 768 1024 1440; do
+            if command -v google-chrome >/dev/null 2>&1; then browser=google-chrome; elif command -v chromium >/dev/null 2>&1; then browser=chromium; else echo "No Chromium browser installed"; exit 1; fi
+            "$browser" --headless=new --no-sandbox --disable-gpu --window-size=${width},900 --virtual-time-budget=2000 --dump-dom "$site" > "/tmp/v511-${width}.html"
+            rg -q "V5.1.1|FRONTIER_ONLY|INDETERMINATE" "/tmp/v511-${width}.html"
+          done
+          node --check website/app.js
+      - name: Stage Pages
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: website
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy exact SHA
+        id: deployment
+        uses: actions/deploy-pages@v5
+      - name: Verify exact SHA and HTTP 200
+        env:
+          SITE_URL: ${{ steps.deployment.outputs.page_url }}
+          EXPECTED_SHA: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from urllib.request import urlopen
+          base=os.environ["SITE_URL"].rstrip("/")+"/"
+          with urlopen(base+"data/release-meta.json",timeout=30) as r:
+              if r.status != 200: raise SystemExit(r.status)
+              d=json.load(r)
+          if d.get("gitSha") != os.environ["EXPECTED_SHA"]:
+              raise SystemExit(f"live SHA mismatch: {d.get('gitSha')} != {os.environ['EXPECTED_SHA']}")
+          for route in ("","data/shared-summary.json","data/release-meta.json","data/projects.json","data/frontier.json","data/risk.json"):
+              with urlopen(base+route,timeout=30) as r:
+                  if r.status != 200: raise SystemExit(f"HTTP {r.status} {route}")
+          print(json.dumps({"status":"PASS","deploymentUrl":base,"gitSha":d["gitSha"],"workflowRunId":d.get("workflowRunId")},indent=2))
+          PY
