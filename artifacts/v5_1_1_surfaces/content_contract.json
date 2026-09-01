@@ -1,0 +1,19 @@
+{
+  "release_version": "5.1.1",
+  "release_tag": "v5.1.1-recruiter-final",
+  "source_sha": "6a9276a552c42400c20f2cc552eb37ae222f27d0",
+  "authoritative_builder": "analytics/build_v5_1_1_release.py",
+  "outputs": "outputs/v5_1_1_*",
+  "website_data": "website/data/*.json",
+  "current_surfaces": [
+    "README.md",
+    "EXECUTIVE_SUMMARY.md",
+    "BUSINESS_CASE.md",
+    "reports/INVESTMENT_COMMITTEE_MEMO.md",
+    "reports/LENDER_CREDIT_MEMO.md",
+    "reports/RECRUITER_PACKAGE.md",
+    "reports/CV_BULLETS_V5_1_1.md"
+  ],
+  "claim_boundary": "STANDARDIZED_PUBLIC_DATA_RECONSTRUCTION_NOT_BANKABILITY",
+  "remote_only": true
+}
