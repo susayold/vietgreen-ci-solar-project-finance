@@ -1,7 +1,5 @@
-# CLAIM_GOVERNANCE
+# Claim Governance — V5.1.1
 
-Allowed: lender-informed; audit-ready framework; simulated financing terms; based on public DFI/technical benchmarks; reproducible Excel–Python architecture; external reality validation.
+Every output must retain source lineage and one of the classes OBSERVED, DERIVED, BENCHMARK_ASSUMPTION, ANALYST_ASSUMPTION or SCENARIO. Exact PPA and bankability claims are prohibited when the evidence is missing. A reference-case tariff is labeled REFERENCE_CASE_NOT_ACTUAL_PPA. The release decision boundary is INDETERMINATE_MISSING_COMMERCIAL_DATA.
 
-Avoid unless true: lender-approved; bank-certified; formally audited; market-standard DSCR; actual bank terms; bankable P90 study; blanket legal-compliance claim.
-
-Every material input has an ID and classification: OBSERVED, DERIVED, SIMULATED or ASSUMPTION.
+V5.1.0 is superseded after the V5.1.1 post-release audit. V4.1.3 is preserved as immutable historical governance.
