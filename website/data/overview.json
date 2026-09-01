@@ -39,7 +39,9 @@
       "selected_debt_bvnd",
       "selected_cfads_bvnd",
       "base_sizing_dscr"
-    ]
+    ],
+    "dataContractVersion": "V4.1-RECRUITER-CLOSURE",
+    "releaseMetaPath": "data/release-meta.json"
   },
   "decision": {
     "current": "NO_DEPLOYMENT",
@@ -81,7 +83,10 @@
       "projectIRR": 12.73,
       "dscr": 1.3,
       "selectedCount": 4,
-      "status": "PASS"
+      "economicStatus": "PASS",
+      "creditStatus": "PASS",
+      "readinessImpact": "BASE_CASE",
+      "sourceScenarioId": "Base sponsor"
     },
     {
       "label": "P90 energy",
@@ -91,7 +96,10 @@
       "projectIRR": 10.68,
       "dscr": 1.3,
       "selectedCount": 4,
-      "status": "PASS"
+      "economicStatus": "NEGATIVE",
+      "creditStatus": "PASS",
+      "readinessImpact": "DOWNSIDE_REVIEW",
+      "sourceScenarioId": "P90 energy"
     },
     {
       "label": "Combined downside",
@@ -99,9 +107,12 @@
       "equityNPV": -38.814456,
       "equityIRR": 3.11,
       "projectIRR": 4.99,
-      "dscr": 0.0,
+      "dscr": 0,
       "selectedCount": 4,
-      "status": "FAIL_DSCR"
+      "economicStatus": "NEGATIVE",
+      "creditStatus": "FAIL_DSCR",
+      "readinessImpact": "DOWNSIDE_REVIEW",
+      "sourceScenarioId": "Combined downside"
     }
   ],
   "built": [

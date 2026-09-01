@@ -39,7 +39,9 @@
       "selected_debt_bvnd",
       "selected_cfads_bvnd",
       "base_sizing_dscr"
-    ]
+    ],
+    "dataContractVersion": "V4.1-RECRUITER-CLOSURE",
+    "releaseMetaPath": "data/release-meta.json"
   },
   "defaultProjectId": "VG-005",
   "headline": {
@@ -67,7 +69,7 @@
     },
     {
       "label": "Maintenance CAPEX",
-      "valueBVND": -0.0
+      "valueBVND": 0
     },
     {
       "label": "CFADS",
@@ -167,7 +169,7 @@
       "year": 10,
       "cfadsBVND": 3.090866,
       "debtServiceBVND": 1.065582,
-      "closingBVND": 0.0,
+      "closingBVND": 0,
       "dscr": 2.9
     }
   ],
@@ -244,7 +246,7 @@
     },
     {
       "year": 15,
-      "dsraBVND": 0.0,
+      "dsraBVND": 0,
       "distributionBVND": 3.600197
     }
   ],

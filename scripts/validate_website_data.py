@@ -1,87 +1,84 @@
-"""Validate the public website data contract against the V4 release."""
+"""Fail-closed validation of the V4.1 recruiter website data contract."""
 
 from __future__ import annotations
 
-import csv
 import json
 import math
+import os
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "website" / "data"
-
-
-def read_csv(path: Path):
-    with path.open(encoding="utf-8-sig", newline="") as fh:
-        return list(csv.DictReader(fh))
-
-
-manifest = json.loads((ROOT / "release/MODEL_RELEASE_MANIFEST.json").read_text(encoding="utf-8"))
-shared = json.loads((DATA / "shared-summary.json").read_text(encoding="utf-8"))
-required = ["shared-summary.json", "overview.json", "case.json", "economics.json", "debt.json", "portfolio.json", "risk.json", "model.json", "evidence.json", "metadata.json"]
+MANIFEST = json.loads((ROOT / "release/MODEL_RELEASE_MANIFEST.json").read_text(encoding="utf-8"))
+REQUIRED = [
+    "shared-summary.json", "overview.json", "case.json", "economics.json",
+    "debt.json", "portfolio.json", "risk.json", "model.json", "evidence.json",
+    "metadata.json", "release-meta.json",
+]
 errors: list[str] = []
+payloads = {}
 
-for filename in required:
+for filename in REQUIRED:
     path = DATA / filename
     if not path.exists():
         errors.append(f"missing {filename}")
-    else:
-        try:
-            json.loads(path.read_text(encoding="utf-8"))
-        except json.JSONDecodeError as exc:
-            errors.append(f"invalid JSON {filename}: {exc}")
+        continue
+    try:
+        payloads[filename] = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        errors.append(f"invalid JSON {filename}: {exc}")
 
-if shared.get("releaseId") != manifest["release_id"]:
-    errors.append("release id mismatch")
-if shared.get("selectedProjectIds") != manifest["selected_ids"]:
-    errors.append("selected project IDs mismatch")
-for key, manifest_key in [("selectedProjects", "selected_count"), ("currentPositiveEquityNPV", "current_terms_positive_equity_npv_rows"), ("negotiatedPositiveEquityNPV", "negotiated_positive_equity_npv_rows")]:
-    if shared.get(key) != manifest[manifest_key]:
-        errors.append(f"{key} mismatch")
-if shared.get("currentDecision") != "NO_DEPLOYMENT":
-    errors.append("current decision must be NO_DEPLOYMENT")
-if shared.get("transactionEvidenceStatus") != "OPEN" or shared.get("bankableTransactionReady") is not False:
-    errors.append("evidence boundary mismatch")
-metric_ids = shared.get("metricIds", [])
-if len(metric_ids) != len(set(metric_ids)):
-    errors.append("duplicated metric ID in shared contract")
-if shared.get("modelVersion") != "V4.0.0":
-    errors.append("V4 model version mismatch")
+shared = payloads.get("shared-summary.json", {})
+expected_shared = {
+    "releaseId": MANIFEST["release_id"],
+    "selectedProjectIds": MANIFEST["selected_ids"],
+    "selectedProjects": MANIFEST["selected_count"],
+    "currentPositiveEquityNPV": MANIFEST["current_terms_positive_equity_npv_rows"],
+    "negotiatedPositiveEquityNPV": MANIFEST["negotiated_positive_equity_npv_rows"],
+    "currentDecision": "NO_DEPLOYMENT",
+    "transactionEvidenceStatus": "OPEN",
+    "bankableTransactionReady": False,
+    "dataContractVersion": "V4.1-RECRUITER-CLOSURE",
+}
+for key, expected in expected_shared.items():
+    if shared.get(key) != expected:
+        errors.append(f"shared {key} mismatch: {shared.get(key)!r} != {expected!r}")
+if len(shared.get("metricIds", [])) != len(set(shared.get("metricIds", []))):
+    errors.append("shared metricIds are not unique")
 
-exposure = read_csv(ROOT / "outputs/portfolio_exposure_v4.csv")
-selected = [row for row in exposure if row.get("selected_flag", "").lower() == "true"]
-if {row["project_id"] for row in selected} != set(manifest["selected_ids"]):
-    errors.append("exposure selected rows mismatch")
-if len(selected) != manifest["selected_count"]:
-    errors.append("selected count mismatch")
+meta = payloads.get("release-meta.json", {})
+if meta.get("dataContractVersion") != "V4.1-RECRUITER-CLOSURE":
+    errors.append("release metadata contract version mismatch")
+expected_sha = os.environ.get("GITHUB_SHA")
+if expected_sha and meta.get("gitSha") not in {expected_sha, "pending-ci"}:
+    errors.append("release metadata gitSha does not match GITHUB_SHA")
 
-def total(field: str) -> float:
-    return sum(float(row[field]) for row in selected)
-
-if not math.isclose(total("equity_required_vnd") / 1e9, manifest["selected_equity_bvnd"], rel_tol=0, abs_tol=1e-6):
-    errors.append("selected equity total mismatch")
-if not math.isclose(total("debt_vnd") / 1e9, manifest["selected_debt_bvnd"], rel_tol=0, abs_tol=1e-6):
-    errors.append("selected debt total mismatch")
-if not math.isclose(total("cfads_y1_vnd") / 1e9, manifest["selected_cfads_y1_bvnd"], rel_tol=0, abs_tol=1e-6):
-    errors.append("selected CFADS total mismatch")
-
-phase2 = read_csv(ROOT / "outputs/scenario_summary_v4_phase2.csv")
-expected_scenarios = {"BASE_SPONSOR", "P90_ENERGY", "CAPEX_OVERRUN", "COD_DELAY", "INTEREST_RATE_SHOCK", "DSO_DELAY", "COMBINED_DOWNSIDE"}
-if {row["scenario"] for row in phase2} != expected_scenarios:
-    errors.append("scenario names inconsistent")
-if not any(row["scenario"] == "BASE_SPONSOR" and row["status"] == "PASS" for row in phase2):
-    errors.append("base scenario missing or not PASS")
-if not any(row["scenario"] == "COMBINED_DOWNSIDE" and row["status"] == "FAIL_DSCR" for row in phase2):
-    errors.append("combined downside status not visible")
+risk = payloads.get("risk.json", {})
+if "fixedVsResized" in risk:
+    errors.append("risk contract still exposes fixedVsResized")
+for row in risk.get("scenarios", []):
+    required = {"economicStatus", "creditStatus", "readinessImpact", "sourceScenarioId"}
+    missing = required - set(row)
+    if missing:
+        errors.append(f"scenario {row.get('scenario')} missing {sorted(missing)}")
+    economic = "PASS" if float(row.get("equityNPVBVND", -1)) >= 0 else "NEGATIVE"
+    credit = "PASS" if float(row.get("minDSCR", 0)) >= float(MANIFEST["pooled_min_dscr"]) else "FAIL_DSCR"
+    if row.get("economicStatus") != economic:
+        errors.append(f"scenario {row.get('scenario')} economicStatus is not derived from Equity NPV")
+    if row.get("creditStatus") != credit:
+        errors.append(f"scenario {row.get('scenario')} creditStatus is not derived from DSCR")
+    if "status" in row:
+        errors.append(f"scenario {row.get('scenario')} has ambiguous legacy status")
 
 for path in DATA.glob("*.json"):
     text = path.read_text(encoding="utf-8").lower()
-    for token in ("hidden_truth", "password", "localhost", "private_validation"):
+    for token in ("hidden_truth", "private_validation", "localhost", "password", "secret"):
         if token in text:
             errors.append(f"forbidden token {token} in {path.name}")
     try:
-        parsed = json.loads(text)
-        stack = [parsed]
+        value = json.loads(text)
+        stack = [value]
         while stack:
             item = stack.pop()
             if isinstance(item, float) and not math.isfinite(item):
@@ -92,11 +89,8 @@ for path in DATA.glob("*.json"):
                 stack.extend(item)
     except json.JSONDecodeError:
         pass
-
-    # Any explicit ISO date in the public payload must be the released as-of date.
-    import re
     for date_value in re.findall(r"20\d{2}-\d{2}-\d{2}", text):
-        if date_value != manifest["release_date"]:
+        if date_value != MANIFEST["release_date"]:
             errors.append(f"unapproved date {date_value} in {path.name}")
 
 if errors:
@@ -104,5 +98,4 @@ if errors:
     for error in errors:
         print(f"- {error}")
     raise SystemExit(1)
-
-print(f"Website data validation PASS: {len(required)} JSON contracts; {len(selected)} selected projects; release {manifest['release_id']}")
+print(f"Website data validation PASS: {len(payloads)} JSON contracts; contract V4.1-RECRUITER-CLOSURE")

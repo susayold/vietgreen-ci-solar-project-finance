@@ -1,0 +1,6 @@
+{
+  "status": "PENDING_LIVE_DEPLOYMENT",
+  "requiredFields": ["gitSha", "workflowRunId", "deploymentUrl", "releaseMetaUrl", "httpChecks", "artifactId", "artifactDigest"],
+  "candidateGitSha": "pending-ci",
+  "source": "recruiter-pages workflow"
+}

@@ -13,5 +13,7 @@
     "model",
     "evidence"
   ],
-  "generatedBy": "scripts/build_website_data.py"
+  "generatedBy": "scripts/build_website_data.py",
+  "contractVersion": "V4.1-RECRUITER-CLOSURE",
+  "releaseMetaPath": "data/release-meta.json"
 }

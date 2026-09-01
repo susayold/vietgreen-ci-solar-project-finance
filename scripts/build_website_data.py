@@ -52,6 +52,31 @@ def round_num(value: Any, digits: int = 6) -> float | None:
     return None if value is None else round(value, digits)
 
 
+
+def scenario_semantics(row: dict[str, str]) -> dict[str, str]:
+    """Expose economic and credit outcomes separately; never collapse them to one PASS."""
+    equity_npv = bvnd(row["equity_npv_vnd"])
+    dscr = num(row["min_dscr"])
+    dscr_floor = num(manifest.get("pooled_min_dscr")) or 1.3
+    return {
+        "economicStatus": "PASS" if equity_npv is not None and equity_npv >= 0 else "NEGATIVE",
+        "creditStatus": "PASS" if dscr is not None and dscr >= dscr_floor else "FAIL_DSCR",
+        "readinessImpact": "BASE_CASE" if row["scenario"] == "BASE_SPONSOR" else "DOWNSIDE_REVIEW",
+        "sourceScenarioId": row["scenario"],
+    }
+
+
+def scenario_payload(row: dict[str, str]) -> dict[str, Any]:
+    return {
+        "projectNPV": round_num(bvnd(row["project_npv_vnd"])),
+        "equityNPV": round_num(bvnd(row["equity_npv_vnd"])),
+        "equityIRR": round_num(pct(row["equity_irr_min"]), 2),
+        "projectIRR": round_num(pct(row["project_irr_min"]), 2),
+        "dscr": round_num(row["min_dscr"], 3),
+        "selectedCount": int(num(row["selected_count"])),
+        **scenario_semantics(row),
+    }
+
 def write(name: str, payload: dict[str, Any]) -> None:
     WEBSITE.mkdir(parents=True, exist_ok=True)
     (WEBSITE / name).write_text(
@@ -113,6 +138,8 @@ shared = {
     "releaseVersion": manifest["release_version"],
     "asOfDate": manifest["release_date"],
     "modelVersion": "V4.0.0",
+    "dataContractVersion": "V4.1-RECRUITER-CLOSURE",
+    "releaseMetaPath": "data/release-meta.json",
     "masterSeed": manifest["master_seed"],
     "projectsScreened": 20,
     "currentPositiveEquityNPV": manifest["current_terms_positive_equity_npv_rows"],
@@ -180,9 +207,9 @@ overview = {
         {"step": "04", "label": "Exposure-constrained portfolio", "value": "4 projects selected", "tone": "positive"},
     ],
     "scenarioSummary": [
-        {"label": "Base sponsor", "projectNPV": round_num(bvnd(base_scenario["project_npv_vnd"])), "equityNPV": round_num(bvnd(base_scenario["equity_npv_vnd"])), "equityIRR": round_num(pct(base_scenario["equity_irr_min"]), 2), "projectIRR": round_num(pct(base_scenario["project_irr_min"]), 2), "dscr": round_num(base_scenario["min_dscr"], 3), "selectedCount": int(num(base_scenario["selected_count"])), "status": base_scenario["status"]},
-        {"label": "P90 energy", "projectNPV": round_num(bvnd(scenario_by_name["P90_ENERGY"]["project_npv_vnd"])), "equityNPV": round_num(bvnd(scenario_by_name["P90_ENERGY"]["equity_npv_vnd"])), "equityIRR": round_num(pct(scenario_by_name["P90_ENERGY"]["equity_irr_min"]), 2), "projectIRR": round_num(pct(scenario_by_name["P90_ENERGY"]["project_irr_min"]), 2), "dscr": round_num(scenario_by_name["P90_ENERGY"]["min_dscr"], 3), "selectedCount": int(num(scenario_by_name["P90_ENERGY"]["selected_count"])), "status": scenario_by_name["P90_ENERGY"]["status"]},
-        {"label": "Combined downside", "projectNPV": round_num(bvnd(scenario_by_name["COMBINED_DOWNSIDE"]["project_npv_vnd"])), "equityNPV": round_num(bvnd(scenario_by_name["COMBINED_DOWNSIDE"]["equity_npv_vnd"])), "equityIRR": round_num(pct(scenario_by_name["COMBINED_DOWNSIDE"]["equity_irr_min"]), 2), "projectIRR": round_num(pct(scenario_by_name["COMBINED_DOWNSIDE"]["project_irr_min"]), 2), "dscr": round_num(scenario_by_name["COMBINED_DOWNSIDE"]["min_dscr"], 3), "selectedCount": int(num(scenario_by_name["COMBINED_DOWNSIDE"]["selected_count"])), "status": scenario_by_name["COMBINED_DOWNSIDE"]["status"]},
+        {"label": "Base sponsor", **scenario_payload(base_scenario)},
+        {"label": "P90 energy", **scenario_payload(scenario_by_name["P90_ENERGY"])},
+        {"label": "Combined downside", **scenario_payload(scenario_by_name["COMBINED_DOWNSIDE"])},
     ],
     "built": [
         {"title": "8,760 load mapping", "text": "Annual load and P50/P90 energy yield are reconciled from the release outputs."},
@@ -342,9 +369,9 @@ risk = {
     "subtitle": "Stress the selected portfolio under energy, CAPEX, rates and execution shocks; show what breaks and what needs remediation.",
     "shared": shared,
     "currentDecision": {"value": "NO DEPLOYMENT", "text": "Current terms still fail the equity value gate across all 20 projects."},
-    "scenarios": [{"scenario": r["scenario"].replace("_", " ").title(), "note": r["scenario_note"], "projectNPVBVND": round_num(bvnd(r["project_npv_vnd"])), "equityNPVBVND": round_num(bvnd(r["equity_npv_vnd"])), "equityIRR": round_num(pct(r["equity_irr_min"]), 2), "minDSCR": round_num(r["min_dscr"], 3), "status": r["status"]} for r in scenarios],
+    "scenarios": [{"scenario": r["scenario"].replace("_", " ").title(), "note": r["scenario_note"], "projectNPVBVND": round_num(bvnd(r["project_npv_vnd"])), "equityNPVBVND": round_num(bvnd(r["equity_npv_vnd"])), "equityIRR": round_num(pct(r["equity_irr_min"]), 2), "minDSCR": round_num(r["min_dscr"], 3), **scenario_semantics(r)} for r in scenarios],
     "tornado": [{"label": "P90 energy", "deltaBVND": delta("P90_ENERGY")}, {"label": "CAPEX overrun", "deltaBVND": delta("CAPEX_OVERRUN")}, {"label": "Interest rate shock", "deltaBVND": delta("INTEREST_RATE_SHOCK")}, {"label": "DSO delay", "deltaBVND": delta("DSO_DELAY")}, {"label": "COD delay", "deltaBVND": delta("COD_DELAY")}, {"label": "FX depreciation", "deltaBVND": round_num(bvnd(fx_usd_risk["equity_npv_vnd_equivalent"]) - bvnd(fx_vnd_risk["equity_npv_vnd_equivalent"]))}],
-    "fixedVsResized": [{"label": "Debt (BVND)", "fixed": selected_total_debt, "resized": round_num(selected_total_debt * 0.85)}, {"label": "Min DSCR", "fixed": round_num(base_scenario["min_dscr"], 2), "resized": 1.55}, {"label": "Equity NPV (BVND)", "fixed": round_num(bvnd(scenario_by_name["COMBINED_DOWNSIDE"]["equity_npv_vnd"])), "resized": round_num(bvnd(scenario_by_name["P90_ENERGY"]["equity_npv_vnd"]) * -1)}],
+    "debtResizingDisclosure": {"status": "OPEN", "text": "No fixed-versus-resized debt result is published in V4.1; a debt response requires a deterministic model-backed scenario and lineage.", "source": "release/MODEL_RELEASE_MANIFEST.json"},
     "stressSummary": [{"label": "P90 energy", "value": round_num(bvnd(scenario_by_name["P90_ENERGY"]["equity_npv_vnd"])), "status": "NEGATIVE"}, {"label": "CAPEX +15%", "value": round_num(bvnd(scenario_by_name["CAPEX_OVERRUN"]["equity_npv_vnd"])), "status": "NEGATIVE"}, {"label": "Combined downside", "value": round_num(bvnd(scenario_by_name["COMBINED_DOWNSIDE"]["equity_npv_vnd"])), "status": "NEGATIVE"}],
     "riskRegister": [{"risk": "PPA price risk", "impact": "High", "status": "OPEN", "mitigation": "Diversify offtakers; indexation; price floor", "evidenceClass": "EXTERNAL_DEPENDENCY"}, {"risk": "CAPEX overrun", "impact": "High", "status": "OPEN", "mitigation": "EPC fixed-price; contingency buffer", "evidenceClass": "MODELLED_OUTPUT"}, {"risk": "Interest-rate risk", "impact": "High", "status": "OPEN", "mitigation": "Fixed rate, cap or hedge", "evidenceClass": "SIMULATED_INPUT"}, {"risk": "Generation underperformance", "impact": "Medium", "status": "OPEN", "mitigation": "Quality equipment and performance guarantees", "evidenceClass": "EXTERNAL_DEPENDENCY"}, {"risk": "COD delay", "impact": "Medium", "status": "OPEN", "mitigation": "Milestone incentives and liquidated damages", "evidenceClass": "EXTERNAL_DEPENDENCY"}],
     "sources": ["outputs/scenario_summary_v4_phase2.csv", "validation/V4_PHASE2_RED_TEAM_REPORT.md"],

@@ -1,26 +1,49 @@
-"""Block known stale release claims from the public website payload."""
+"""Fail-closed stale-claim scan for the declared recruiter and control surfaces."""
 
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-targets = [ROOT / "website" / "index.html", ROOT / "website" / "app.js", ROOT / "website" / "styles.css", *(ROOT / "website" / "data").glob("*.json")]
-patterns = {
-    "release candidate 1.2.0": "1.2.0",
-    "old selected count 13": "selected 13",
-    "old selected count 11": "selected 11",
-    "old workflow run": "33360401233",
-    "old artifact digest": "3396dce1eee9420c8c16532c30e38d7be33d4fbdf0c8da4e317af75b6a4b6f2b",
+SURFACE_PATHS = [
+    "README.md",
+    "EXECUTIVE_SUMMARY.md",
+    "BUSINESS_CASE.md",
+    "reports/RECRUITER_PACKAGE.md",
+    "reports/WEBSITE_CONTENT_MAP.md",
+    "reports/WEBSITE_QA_REPORT.md",
+    "reports/WEBSITE_RELEASE_MANIFEST.json",
+    "release/MODEL_RELEASE_MANIFEST.json",
+    "validation/OPEN_EXTERNAL_GATES.csv",
+    "validation/V4_READINESS_STATE.csv",
+]
+SURFACE_PATHS.extend(
+    str(path.relative_to(ROOT))
+    for path in (ROOT / "website").rglob("*")
+    if path.is_file()
+)
+FORBIDDEN = {
+    "legacy selected count": "11 selected",
+    "legacy capacity": "13.10 mwp",
+    "legacy equity": "138.143294",
+    "legacy debt": "152.457008",
+    "legacy sponsor npv": "-66.202345",
+    "legacy workbook path": "model/vietgreen_core_model.xlsx",
+    "unsupported debt response object": "fixedvsresized",
+    "unsupported resized value": '"resized"',
 }
 errors = []
-for path in targets:
+scanned = 0
+for relative in sorted(set(SURFACE_PATHS)):
+    path = ROOT / relative
     if not path.exists():
+        errors.append(f"missing declared surface: {relative}")
         continue
+    scanned += 1
     text = path.read_text(encoding="utf-8", errors="ignore").lower()
-    for label, pattern in patterns.items():
-        if pattern.lower() in text:
-            errors.append(f"{label}: {path.relative_to(ROOT)}")
+    for label, pattern in FORBIDDEN.items():
+        if pattern in text:
+            errors.append(f"{label}: {relative}")
 if errors:
     print("Stale V3 claim check FAILED")
     print("\n".join(f"- {item}" for item in errors))
     raise SystemExit(1)
-print(f"Stale V3 claim check PASS: scanned {len(targets)} public files")
+print(f"Stale V3 claim check PASS: scanned {scanned} declared recruiter surfaces")

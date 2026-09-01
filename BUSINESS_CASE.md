@@ -2,19 +2,28 @@
 
 ## Decision framing
 
-The candidate answers whether a synthetic Vietnam C&I solar portfolio can be screened through an auditable energy, cash-flow, debt and portfolio workflow. It is not a claim that the synthetic portfolio is financeable in the market.
+The case tests whether a synthetic Vietnam C&I rooftop-solar portfolio can be screened through an auditable energy, cash-flow, debt and portfolio workflow. It is a screening and communication package, not a claim that the synthetic portfolio is financeable in the market.
 
-## Base candidate
+## Current Terms decision
 
-The selection gate produces 11 selected projects from 20 synthetic candidates, with 13.10 MWp selected capacity. Equity use is 138.143294 BVND. Aggregate CFADS supports 152.457008 BVND of endogenous pooled debt at the configured 1.30x DSCR target. The base sponsor NPV is -66.202345 BVND.
+The current-terms gate is NO_DEPLOYMENT: 0 / 20 projects have positive Equity NPV. This result is kept visible and is not replaced by a later negotiated sensitivity.
 
-The negative sponsor NPV is the central decision signal: the candidate should be treated as invest-with-conditions or renegotiate, not unconditional approval. The IC decision table records project-level conditions and keeps sponsor and lender views separate.
+## Negotiated hypothetical case
 
-## Value levers
+The negotiated case is a commercial and financing sensitivity, not an executed transaction. It produces 19 / 20 positive Equity NPV rows. The released exposure-constrained selection contains four projects: VG-005, VG-010, VG-011 and VG-012.
 
-The model supports controlled tests of tariff, capex, COD, DSO, P90 energy, interest rate, FX, default termination, site events and common factors. The next commercial levers are tariff confirmation and repricing, capex/vendor validation, construction schedule, PPA/security package, and lender terms.
+The selected case uses 30.124825 BVND of equity, 55.946104 BVND of debt and 12.003384 BVND of Year-1 CFADS at a pooled minimum DSCR of 1.300x. The base hypothetical case produces 5.262393 BVND Project NPV, 5.942277 BVND Equity NPV, 12.732% Project IRR and 15.929% Equity IRR.
 
-## Risks and conditions
+## Downside and credit boundary
 
-Tariff implementation, final legal applicability, documentary diligence, site continuity, technical performance, debt documentation and bankable P90 remain open. Any change to these items must be entered as a new remote commit and rerun through the workflow.
+P90 Equity NPV is -1.177896 BVND, CAPEX-overrun Equity NPV is -3.179160 BVND and combined-downside Equity NPV is -38.814456 BVND. A P90 or CAPEX row can retain a credit-status PASS at the DSCR floor while remaining economically negative. The release therefore exposes economicStatus and creditStatus as separate fields.
 
+No fixed-versus-resized debt result is published in V4.1 unless a deterministic model-backed debt-sizing output is added with lineage. The public package does not infer a new DSCR or Equity NPV from a multiplier or sign flip.
+
+## Value levers and open evidence
+
+The model supports controlled tests of tariff, CAPEX, COD, DSO, P90 energy, interest rate, FX, default termination, site events and common factors. The next commercial levers are customer-specific tariff confirmation, repricing, CAPEX/vendor validation, construction schedule, PPA/security package and lender terms.
+
+Recruiter-ready mechanics remain separate from transaction evidence. Regulatory/billing, tax, legal, independent review, technical/site, executed PPA/security, lender financing and sponsor/IC evidence remain open until primary evidence is supplied and reconciled.
+
+Any change to assumptions or external-gate status must be recorded on GitHub, linked from the Google Drive control index and rerun through the release workflow.

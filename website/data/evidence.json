@@ -39,7 +39,9 @@
       "selected_debt_bvnd",
       "selected_cfads_bvnd",
       "base_sizing_dscr"
-    ]
+    ],
+    "dataContractVersion": "V4.1-RECRUITER-CLOSURE",
+    "releaseMetaPath": "data/release-meta.json"
   },
   "readiness": [
     {

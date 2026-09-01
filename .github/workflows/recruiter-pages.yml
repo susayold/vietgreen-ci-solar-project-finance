@@ -6,31 +6,34 @@ on:
     paths:
       - "website/**"
       - "scripts/build_website_data.py"
+      - "scripts/write_release_meta.py"
       - "scripts/validate_website_data.py"
       - "scripts/check_stale_v3_claims.py"
+      - "scripts/validate_recruiter_surfaces.py"
+      - "scripts/validate_metric_lineage.py"
+      - "scripts/validate_public_claims.py"
+      - "tests/test_ppa_zone_math.py"
       - "outputs/**"
       - "release/MODEL_RELEASE_MANIFEST.json"
+      - "reports/**"
       - "validation/**"
+      - "README.md"
+      - "EXECUTIVE_SUMMARY.md"
+      - "BUSINESS_CASE.md"
       - ".github/workflows/recruiter-pages.yml"
   workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
 
 concurrency:
   group: pages
   cancel-in-progress: false
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      contents: read
     steps:
-      - name: Checkout
+      - name: Checkout candidate SHA
         uses: actions/checkout@v4
 
       - name: Setup Python
@@ -41,11 +44,29 @@ jobs:
       - name: Build website data contract
         run: python scripts/build_website_data.py
 
+      - name: Write release metadata from GITHUB_SHA
+        run: python scripts/write_release_meta.py
+
       - name: Validate website data contract
         run: python scripts/validate_website_data.py
 
+      - name: Reconcile recruiter surfaces
+        run: python scripts/validate_recruiter_surfaces.py
+
+      - name: Validate metric lineage
+        run: python scripts/validate_metric_lineage.py
+
+      - name: Validate public claims
+        run: python scripts/validate_public_claims.py
+
       - name: Block stale V3 claims
         run: python scripts/check_stale_v3_claims.py
+
+      - name: Run PPA geometry tests
+        run: python -m unittest tests.test_ppa_zone_math -v
+
+      - name: JavaScript syntax
+        run: node --check website/app.js
 
       - name: Verify aggregate-only website boundary
         shell: bash
@@ -79,14 +100,74 @@ jobs:
             if curl --fail --silent --show-error http://127.0.0.1:8765/ >/dev/null; then break; fi
             sleep 1
           done
-          curl --fail --silent --show-error http://127.0.0.1:8765/data/shared-summary.json >/dev/null
-          curl --fail --silent --show-error http://127.0.0.1:8765/model_preview/index.html >/dev/null
+          for route in / /data/shared-summary.json /data/release-meta.json /data/overview.json /data/case.json /data/economics.json /data/debt.json /data/portfolio.json /data/risk.json /data/model.json /data/evidence.json /data/metadata.json /model_preview/index.html; do
+            curl --fail --silent --show-error "http://127.0.0.1:8765\${route}" >/dev/null
+          done
 
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: _site
 
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: \${{ steps.deployment.outputs.page_url }}
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
+
+      - name: Verify live release SHA
+        env:
+          SITE_URL: \${{ steps.deployment.outputs.page_url }}
+          CANDIDATE_SHA: \${{ github.sha }}
+          WORKFLOW_RUN_ID: \${{ github.run_id }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          import os
+          from urllib.request import urlopen
+
+          base = os.environ["SITE_URL"].rstrip("/") + "/"
+          with urlopen(base + "data/release-meta.json", timeout=30) as response:
+              meta = json.load(response)
+          if meta.get("gitSha") != os.environ["CANDIDATE_SHA"]:
+              raise SystemExit(f"live SHA mismatch: {meta.get('gitSha')} != {os.environ['CANDIDATE_SHA']}")
+          if meta.get("workflowRunId") != os.environ["WORKFLOW_RUN_ID"]:
+              raise SystemExit(f"live workflow mismatch: {meta.get('workflowRunId')} != {os.environ['WORKFLOW_RUN_ID']}")
+          for route in ("", "data/shared-summary.json", "data/release-meta.json", "risk.json"):
+              target = base + route
+              with urlopen(target, timeout=30) as response:
+                  if response.status != 200:
+                      raise SystemExit(f"HTTP {response.status}: {target}")
+          evidence = {
+              "status": "PASS",
+              "gitSha": meta["gitSha"],
+              "workflowRunId": meta["workflowRunId"],
+              "deploymentUrl": base,
+              "releaseMetaUrl": base + "data/release-meta.json",
+              "liveReleaseMeta": meta,
+              "httpChecks": ["/", "/data/shared-summary.json", "/data/release-meta.json", "/risk.json"],
+          }
+          with open("deployment-evidence.json", "w", encoding="utf-8") as handle:
+              json.dump(evidence, handle, indent=2)
+          with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as handle:
+              handle.write("## VietGreen deployment evidence\n\n")
+              handle.write(f"- Candidate SHA: {meta['gitSha']}\n")
+              handle.write(f"- Workflow run: {meta['workflowRunId']}\n")
+              handle.write(f"- Live URL: {base}\n")
+              handle.write("- Live release-meta check: PASS\n")
+
+      - name: Upload deployment evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: vietgreen-deployment-evidence
+          path: deployment-evidence.json

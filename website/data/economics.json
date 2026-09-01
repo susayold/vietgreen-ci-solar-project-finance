@@ -39,7 +39,9 @@
       "selected_debt_bvnd",
       "selected_cfads_bvnd",
       "base_sizing_dscr"
-    ]
+    ],
+    "dataContractVersion": "V4.1-RECRUITER-CLOSURE",
+    "releaseMetaPath": "data/release-meta.json"
   },
   "defaultProjectId": "VG-005",
   "projects": [
@@ -143,21 +145,21 @@
   "projectDetails": {
     "VG-005": {
       "load": {
-        "annualLoadKWh": 16000000.0,
-        "solarP50KWh": 1776000.0,
-        "selfConsumptionKWh": 1776000.0,
-        "selfConsumptionPct": 100.0,
+        "annualLoadKWh": 16000000,
+        "solarP50KWh": 1776000,
+        "selfConsumptionKWh": 1776000,
+        "selfConsumptionPct": 100,
         "solarSharePct": 11.1,
         "avoidedGridCostBVND": 5.062652,
-        "weightedTariff": 2851.0,
+        "weightedTariff": 2851,
         "profileHours": 8760
       },
       "energy": {
-        "p50KWh": 1776000.0,
+        "p50KWh": 1776000,
         "p90KWh": 1616677.693816,
         "p99KWh": 1486788.149514,
-        "p90P50Pct": 91.0,
-        "uncertaintyPct": 7.0,
+        "p90P50Pct": 91,
+        "uncertaintyPct": 7,
         "profileHourCount": 8760
       },
       "frontier": {
@@ -176,7 +178,7 @@
         "capexFactor": 0.8,
         "tenorYears": 15,
         "annualOpexBVND": 0.45,
-        "annualMaintenanceCapexBVND": 0.0,
+        "annualMaintenanceCapexBVND": 0,
         "projectNPVBVND": 1.944886,
         "projectIRR": 13.64,
         "equityNPVBVND": 1.989347,
@@ -211,21 +213,21 @@
     },
     "VG-010": {
       "load": {
-        "annualLoadKWh": 22000000.0,
-        "solarP50KWh": 1846000.0,
-        "selfConsumptionKWh": 1846000.0,
-        "selfConsumptionPct": 100.0,
+        "annualLoadKWh": 22000000,
+        "solarP50KWh": 1846000,
+        "selfConsumptionKWh": 1846000,
+        "selfConsumptionPct": 100,
         "solarSharePct": 8.4,
         "avoidedGridCostBVND": 5.262194,
-        "weightedTariff": 2851.0,
+        "weightedTariff": 2851,
         "profileHours": 8760
       },
       "energy": {
-        "p50KWh": 1846000.0,
+        "p50KWh": 1846000,
         "p90KWh": 1680398.098415,
         "p99KWh": 1545389.033786,
-        "p90P50Pct": 91.0,
-        "uncertaintyPct": 7.0,
+        "p90P50Pct": 91,
+        "uncertaintyPct": 7,
         "profileHourCount": 8760
       },
       "frontier": {
@@ -244,7 +246,7 @@
         "capexFactor": 0.8,
         "tenorYears": 15,
         "annualOpexBVND": 0.4875,
-        "annualMaintenanceCapexBVND": 0.0,
+        "annualMaintenanceCapexBVND": 0,
         "projectNPVBVND": 1.226152,
         "projectIRR": 12.96,
         "equityNPVBVND": 1.443886,
@@ -279,17 +281,17 @@
     },
     "VG-011": {
       "load": {
-        "annualLoadKWh": 12000000.0,
-        "solarP50KWh": 1704000.0,
-        "selfConsumptionKWh": 1704000.0,
-        "selfConsumptionPct": 100.0,
+        "annualLoadKWh": 12000000,
+        "solarP50KWh": 1704000,
+        "selfConsumptionKWh": 1704000,
+        "selfConsumptionPct": 100,
         "solarSharePct": 14.2,
         "avoidedGridCostBVND": 4.85741,
-        "weightedTariff": 2851.0,
+        "weightedTariff": 2851,
         "profileHours": 8760
       },
       "energy": {
-        "p50KWh": 1704000.0,
+        "p50KWh": 1704000,
         "p90KWh": 1540217.91473,
         "p99KWh": 1406692.478585,
         "p90P50Pct": 90.4,
@@ -312,7 +314,7 @@
         "capexFactor": 0.8,
         "tenorYears": 15,
         "annualOpexBVND": 0.45,
-        "annualMaintenanceCapexBVND": 0.0,
+        "annualMaintenanceCapexBVND": 0,
         "projectNPVBVND": 1.268362,
         "projectIRR": 13.08,
         "equityNPVBVND": 1.443063,
@@ -347,21 +349,21 @@
     },
     "VG-012": {
       "load": {
-        "annualLoadKWh": 15000000.0,
-        "solarP50KWh": 1633000.0,
-        "selfConsumptionKWh": 1633000.0,
-        "selfConsumptionPct": 100.0,
+        "annualLoadKWh": 15000000,
+        "solarP50KWh": 1633000,
+        "selfConsumptionKWh": 1633000,
+        "selfConsumptionPct": 100,
         "solarSharePct": 10.9,
         "avoidedGridCostBVND": 4.655017,
-        "weightedTariff": 2851.0,
+        "weightedTariff": 2851,
         "profileHours": 8760
       },
       "energy": {
-        "p50KWh": 1633000.0,
+        "p50KWh": 1633000,
         "p90KWh": 1465578.29878,
         "p99KWh": 1329085.619263,
         "p90P50Pct": 89.7,
-        "uncertaintyPct": 8.0,
+        "uncertaintyPct": 8,
         "profileHourCount": 8760
       },
       "frontier": {
@@ -380,7 +382,7 @@
         "capexFactor": 0.8,
         "tenorYears": 15,
         "annualOpexBVND": 0.43125,
-        "annualMaintenanceCapexBVND": 0.0,
+        "annualMaintenanceCapexBVND": 0,
         "projectNPVBVND": 0.822993,
         "projectIRR": 12.73,
         "equityNPVBVND": 1.065981,

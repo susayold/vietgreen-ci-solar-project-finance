@@ -1,0 +1,9 @@
+metric_id,public_label,source_path,source_field,source_sha256,source_git_sha,unit,precision,transform,consumers,claim_class,tolerance
+projects_screened,Projects screened,release/MODEL_RELEASE_MANIFEST.json,projects_screened,computed_at_validation,current_commit,count,0,none,website/data/shared-summary.json;README.md,MODEL_OUTPUT,exact
+current_positive_equity_npv,Current positive Equity NPV,release/MODEL_RELEASE_MANIFEST.json,current_terms_positive_equity_npv_rows,computed_at_validation,current_commit,count,0,none,website/data/shared-summary.json;EXECUTIVE_SUMMARY.md,MODEL_OUTPUT,exact
+negotiated_positive_equity_npv,Positive after remediation,release/MODEL_RELEASE_MANIFEST.json,negotiated_positive_equity_npv_rows,computed_at_validation,current_commit,count,0,none,website/data/shared-summary.json;overview.json,MODEL_OUTPUT,exact
+selected_projects,Selected portfolio,release/MODEL_RELEASE_MANIFEST.json,selected_count,computed_at_validation,current_commit,count,0,none,website/data/shared-summary.json;BUSINESS_CASE.md,MODEL_OUTPUT,exact
+selected_equity_bvnd,Selected equity,release/MODEL_RELEASE_MANIFEST.json,selected_equity_bvnd,computed_at_validation,current_commit,BVND,6,VND_to_BVND,website/data/shared-summary.json;EXECUTIVE_SUMMARY.md,MODEL_OUTPUT,1e-6
+selected_debt_bvnd,Selected debt,release/MODEL_RELEASE_MANIFEST.json,selected_debt_bvnd,computed_at_validation,current_commit,BVND,6,VND_to_BVND,website/data/shared-summary.json;EXECUTIVE_SUMMARY.md,MODEL_OUTPUT,1e-6
+selected_cfads_bvnd,Selected Year-1 CFADS,release/MODEL_RELEASE_MANIFEST.json,selected_cfads_y1_bvnd,computed_at_validation,current_commit,BVND,6,VND_to_BVND,website/data/shared-summary.json;EXECUTIVE_SUMMARY.md,MODEL_OUTPUT,1e-6
+base_sizing_dscr,Pooled minimum DSCR,release/MODEL_RELEASE_MANIFEST.json,pooled_min_dscr,computed_at_validation,current_commit,x,3,display_rounding,website/data/shared-summary.json;website/data/debt.json,MODEL_OUTPUT,0.001

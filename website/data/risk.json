@@ -39,7 +39,9 @@
       "selected_debt_bvnd",
       "selected_cfads_bvnd",
       "base_sizing_dscr"
-    ]
+    ],
+    "dataContractVersion": "V4.1-RECRUITER-CLOSURE",
+    "releaseMetaPath": "data/release-meta.json"
   },
   "currentDecision": {
     "value": "NO DEPLOYMENT",
@@ -53,7 +55,10 @@
       "equityNPVBVND": 5.942277,
       "equityIRR": 15.93,
       "minDSCR": 1.3,
-      "status": "PASS"
+      "economicStatus": "PASS",
+      "creditStatus": "PASS",
+      "readinessImpact": "BASE_CASE",
+      "sourceScenarioId": "BASE_SPONSOR"
     },
     {
       "scenario": "P90 Energy",
@@ -62,7 +67,10 @@
       "equityNPVBVND": -1.177896,
       "equityIRR": 12.58,
       "minDSCR": 1.3,
-      "status": "PASS"
+      "economicStatus": "NEGATIVE",
+      "creditStatus": "PASS",
+      "readinessImpact": "DOWNSIDE_REVIEW",
+      "sourceScenarioId": "P90_ENERGY"
     },
     {
       "scenario": "Capex Overrun",
@@ -71,7 +79,10 @@
       "equityNPVBVND": -3.17916,
       "equityIRR": 12.11,
       "minDSCR": 1.3,
-      "status": "PASS"
+      "economicStatus": "NEGATIVE",
+      "creditStatus": "PASS",
+      "readinessImpact": "DOWNSIDE_REVIEW",
+      "sourceScenarioId": "CAPEX_OVERRUN"
     },
     {
       "scenario": "Cod Delay",
@@ -79,8 +90,11 @@
       "projectNPVBVND": -7.045211,
       "equityNPVBVND": -4.792393,
       "equityIRR": 11.59,
-      "minDSCR": 0.0,
-      "status": "FAIL_DSCR"
+      "minDSCR": 0,
+      "economicStatus": "NEGATIVE",
+      "creditStatus": "FAIL_DSCR",
+      "readinessImpact": "DOWNSIDE_REVIEW",
+      "sourceScenarioId": "COD_DELAY"
     },
     {
       "scenario": "Interest Rate Shock",
@@ -89,7 +103,10 @@
       "equityNPVBVND": 2.104725,
       "equityIRR": 14.28,
       "minDSCR": 1.3,
-      "status": "PASS"
+      "economicStatus": "PASS",
+      "creditStatus": "PASS",
+      "readinessImpact": "DOWNSIDE_REVIEW",
+      "sourceScenarioId": "INTEREST_RATE_SHOCK"
     },
     {
       "scenario": "Dso Delay",
@@ -98,7 +115,10 @@
       "equityNPVBVND": 4.394423,
       "equityIRR": 15.28,
       "minDSCR": 1.3,
-      "status": "PASS"
+      "economicStatus": "PASS",
+      "creditStatus": "PASS",
+      "readinessImpact": "DOWNSIDE_REVIEW",
+      "sourceScenarioId": "DSO_DELAY"
     },
     {
       "scenario": "Combined Downside",
@@ -106,8 +126,11 @@
       "projectNPVBVND": -35.95699,
       "equityNPVBVND": -38.814456,
       "equityIRR": 3.11,
-      "minDSCR": 0.0,
-      "status": "FAIL_DSCR"
+      "minDSCR": 0,
+      "economicStatus": "NEGATIVE",
+      "creditStatus": "FAIL_DSCR",
+      "readinessImpact": "DOWNSIDE_REVIEW",
+      "sourceScenarioId": "COMBINED_DOWNSIDE"
     }
   ],
   "tornado": [
@@ -134,23 +157,6 @@
     {
       "label": "FX depreciation",
       "deltaBVND": -7.796245
-    }
-  ],
-  "fixedVsResized": [
-    {
-      "label": "Debt (BVND)",
-      "fixed": 55.94610395833334,
-      "resized": 47.554188
-    },
-    {
-      "label": "Min DSCR",
-      "fixed": 1.3,
-      "resized": 1.55
-    },
-    {
-      "label": "Equity NPV (BVND)",
-      "fixed": -38.814456,
-      "resized": 1.177896
     }
   ],
   "stressSummary": [
@@ -211,5 +217,10 @@
     "outputs/scenario_summary_v4_phase2.csv",
     "validation/V4_PHASE2_RED_TEAM_REPORT.md"
   ],
-  "evidenceClass": "STRESS_TESTED_SYNTHETIC_OUTPUT"
+  "evidenceClass": "STRESS_TESTED_SYNTHETIC_OUTPUT",
+  "debtResizingDisclosure": {
+    "status": "OPEN",
+    "text": "No fixed-versus-resized debt result is published in V4.1; a debt response requires a deterministic model-backed scenario and lineage.",
+    "source": "release/MODEL_RELEASE_MANIFEST.json"
+  }
 }
