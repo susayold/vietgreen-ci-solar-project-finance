@@ -1,36 +1,37 @@
-name: V5.1 Global Real-Data Full-Engine Validation
+name: V5.1.1 Global Data and Model Validation
 on:
   push:
-    branches: [v5-global-real-data, v5.1-full-engine-remediation]
+    branches:
+      - v5.1.1-data-model-content-rebuild
   workflow_dispatch:
-permissions:
-  contents: read
 jobs:
-  validate:
+  validate-v5-1-1:
     runs-on: ubuntu-latest
+    env:
+      PYTHONUNBUFFERED: "1"
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
-      - name: Install ephemeral CI dependencies
-        run: python -m pip install --disable-pip-version-check pytest openpyxl
-      - name: V5.1 one-command full-engine build and gates
-        run: python -m analytics.build_v5_release
-      - name: Expanded V5.1 substantive QA
-        run: python -m pytest -q tests
-      - name: Upload V5.1 remote release artifact
+          python-version: "3.11"
+      - name: Install runtime
+        run: python -m pip install --upgrade pip pytest openpyxl
+      - name: Seal CI timestamp
+        run: echo "V5_1_1_FREEZE_DATE_UTC=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_ENV"
+      - name: Build V5.1.1 model, workbook and registers
+        run: python -m analytics.build_v5_1_1_release
+      - name: Validate current surfaces
+        run: python -m scripts.run_v5_1_1_checks
+      - name: Run semantic and regression tests
+        run: python -m pytest -q
+      - name: Upload V5.1.1 release artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: vietgreen-v5-1-full-engine-release
+          name: vietgreen-v5-1-1-full-data-model-release
           path: |
-            release/V5_RUNTIME_RELEASE_MANIFEST.json
-            release/V5_BUILD_STATUS.json
-            release/V5_1_INPUT_FREEZE_MANIFEST.json
-            outputs/**
-            artifacts/v5_model/**
-            artifacts/v5_website_data/**
-            artifacts/v5_surfaces/**
-            validation/**
-            research/SOURCE_QUALITY_REPORT_V5_1.md
+            artifacts/v5_1_1_model
+            artifacts/v5_1_1_surfaces
+            outputs/v5_1_1_model_input_view.csv
+            validation
+            release/V5_1_1_INPUT_FREEZE_MANIFEST.json
           if-no-files-found: error
