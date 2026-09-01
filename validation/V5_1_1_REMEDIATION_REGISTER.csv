@@ -1,0 +1,6 @@
+control_id,status,evidence,notes
+DATA_MODEL,PASS,project_master_real.csv + project_assumption_overlay.csv,Observed fields separated from explicit overlay assumptions.
+ARISUDHANA,PASS_WITH_DISCLOSED_HIGH_OUTLIER,FPEL-ARISUDHANA primary case study,30.5 Mn Units preserved as source claim; engineering review required.
+TAX_LOSS,PASS,analytics/tax_engine_v5.py,Positive carryforward balance; no tax on loss year.
+PPA,PASS,analytics/build_v5_1_1_economics.py,Frontier-only; exact PPA not invented.
+REMOTE_ONLY,PASS,CI artifact paths,No project data persisted to local workstation.
