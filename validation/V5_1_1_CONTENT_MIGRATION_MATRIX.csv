@@ -1,0 +1,8 @@
+surface,status,contract
+README.md,CURRENT,V5.1.1 claim boundary
+EXECUTIVE_SUMMARY.md,CURRENT,V5.1.1 decision boundary
+BUSINESS_CASE.md,CURRENT,Frontier-only economics
+ASSUMPTIONS_AND_LIMITATIONS.md,CURRENT,Observed/derived/assumption split
+CLAIM_GOVERNANCE.md,CURRENT,Claim classes and prohibited claims
+SCOPE_MATRIX.md,CURRENT,In scope and stop boundary
+V5_MIGRATION_STATUS.md,CURRENT,V5.1.1 migration status
