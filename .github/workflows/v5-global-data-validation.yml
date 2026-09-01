@@ -1,13 +1,10 @@
 name: V5 Global Real-Data Validation
-
 on:
   push:
     branches: [v5-global-real-data]
   workflow_dispatch:
-
 permissions:
   contents: read
-
 jobs:
   validate:
     runs-on: ubuntu-latest
@@ -16,19 +13,31 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Install validation dependency on ephemeral runner
-        run: python -m pip install --disable-pip-version-check pytest
-      - name: Run V5 contract tests
+      - name: Install ephemeral CI dependencies
+        run: python -m pip install --disable-pip-version-check pytest openpyxl
+      - name: V5 contract tests
         run: python -m pytest -q tests/test_v5_contract.py
-      - name: Build V5 control status
-        run: python -m analytics.build_v5_release --allow-incomplete
-      - name: Generate V5 surfaces in ephemeral runner only
+      - name: Validate frozen V5 input controls
+        run: python -m analytics.build_v5_release
+      - name: Build V5 economics in ephemeral runner
+        run: python -m analytics.build_v5_economics
+      - name: Final G0-G9 reconciliation
+        run: python -m analytics.build_v5_release --final
+      - name: Build V5 workbook in ephemeral runner
+        run: python -m analytics.build_v5_workbook
+      - name: Build V5 website data
+        run: python scripts/build_website_data_v5.py
+      - name: Build V5 recruiter surfaces
         run: python scripts/generate_recruiter_surfaces.py
-      - name: Publish metadata-only validation artifact
+      - name: Upload V5 remote artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: vietgreen-v5-validation-status
+          name: vietgreen-v5-global-real-data-release
           path: |
             release/V5_BUILD_STATUS.json
-            artifacts/v5_surfaces/website_headline.txt
+            outputs/v5_*.csv
+            outputs/v5_*.json
+            artifacts/v5_model/vietgreen_v5_model.xlsx
+            artifacts/v5_website_data/**
+            artifacts/v5_surfaces/**
           if-no-files-found: error
