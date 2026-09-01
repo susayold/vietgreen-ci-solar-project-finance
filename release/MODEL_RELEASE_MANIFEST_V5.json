@@ -3,7 +3,7 @@
   "release_version": "V5.0.0",
   "release_date": "2026-09-01",
   "git_sha": "RUNTIME_CI_COMMIT_SHA",
-  "source_commit_sha": "2cb68e891f7d25a9cfc653a35ebba6e157340c62",
+  "source_commit_sha": "be5b56f6096d7bca692af44777c7532ffeb2c8d3",
   "release_status": "READY_FOR_SCREENING_RECONSTRUCTION",
   "manifest_status": "FINAL_RECONCILED",
   "project_count": 20,
@@ -48,10 +48,13 @@
     "G9": "PASS"
   },
   "blockers": [],
-  "ci_run_id": 33518527430,
-  "ci_artifact_id": 9804638462,
-  "ci_artifact_url": "https://github.com/susayold/vietgreen-ci-solar-project-finance/actions/runs/33518527430/artifacts/9804638462",
+  "ci_run_id": 33519185330,
+  "ci_artifact_id": 9804905611,
+  "ci_artifact_url": "https://github.com/susayold/vietgreen-ci-solar-project-finance/actions/runs/33519185330/artifacts/9804905611",
   "input_hashes": "Calculated in CI V5_BUILD_STATUS.json",
   "local_project_data": "NONE",
-  "v4_history_commit": "42f2e7216c09a2a0dc4c5500b7239fde4fb97745"
+  "v4_history_commit": "42f2e7216c09a2a0dc4c5500b7239fde4fb97745",
+  "ci_job_id": 99893800073,
+  "ci_artifact_digest": "sha256:26bab2fb61686fe35e2d4d971b3f5f2958b282b1bd23e1189739fe6a8ad83de9",
+  "status_note": "Latest final G0-G9 CI build passed; runtime release manifest contains file SHA-256 input hashes."
 }
