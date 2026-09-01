@@ -29,7 +29,7 @@ require('<main id="app" tabindex="-1" aria-live="polite">' in INDEX, "focusable 
 require('aria-label="Primary navigation"' in INDEX, "primary nav label is missing")
 require('class="mobile-menu" type="button"' in INDEX and 'aria-expanded="false"' in INDEX, "mobile menu keyboard state is missing")
 require('href="#/model"' in INDEX and 'href="#/evidence"' in INDEX, "primary decision links are missing")
-require("page.focus({preventScroll: true})" in APP, "route focus management is missing")
+require("let hasRendered = false;" in APP and "if (hasRendered) page.focus({preventScroll: true})" in APP, "route focus management is missing")
 require('setAttribute("aria-expanded"' in APP and 'classList.toggle("open")' in APP, "mobile menu state handler is missing")
 require('window.addEventListener("hashchange", renderRoute)' in APP, "hash route navigation handler is missing")
 require('const PAGE_NAMES = ["overview", "case", "economics", "debt", "portfolio", "risk", "model", "evidence"];' in APP, "eight-route registry is missing")

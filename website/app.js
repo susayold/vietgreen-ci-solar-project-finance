@@ -3,6 +3,7 @@ const PAGE_NAMES = ["overview", "case", "economics", "debt", "portfolio", "risk"
 const repo = "https://github.com/susayold/vietgreen-ci-solar-project-finance";
 const page = document.querySelector("#app");
 const cache = {};
+let hasRendered = false;
 
 const esc = (value) => String(value ?? "").replace(/[&<>\"']/g, (char) => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[char]));
 const n = (value, digits = 3) => value === null || value === undefined || value === "" || Number.isNaN(Number(value)) ? "—" : Number(value).toLocaleString("en-US", {maximumFractionDigits: digits, minimumFractionDigits: 0});
@@ -252,7 +253,8 @@ async function renderRoute() {
     if (route === "economics") {
       [document.querySelector("#project-select"), document.querySelector("#project-select-inline")].forEach((select) => select?.addEventListener("change", (event) => { window.location.hash = `#/economics?project=${event.target.value}`; }));
     }
-    page.focus({preventScroll: true});
+    if (hasRendered) page.focus({preventScroll: true});
+    hasRendered = true;
   } catch (error) {
     page.innerHTML = `<div class="page"><div class="panel panel-pad empty"><h1>Data contract unavailable</h1><p>${esc(error.message)}</p><p>Open the repository to inspect the release artifacts.</p>${external(repo, "Open GitHub")}</div></div>`;
   }
