@@ -1,3 +1,36 @@
+# VietGreen CI Solar Project Finance — V5 Global Real-Data Migration
+
+V5 branch: v5-global-real-data
+V5 status: INPUT_DATA_BLOCKED — research/evidence baseline only
+V4.1.3 historical recruiter release remains preserved on main and v4.1.3-recruiter-final.
+
+V5 is being reconstructed from public evidence across multiple markets. It does not claim confidential PPA terms, actual lender pricing, investment approval, legal/tax/technical certification or bankability. No V4 synthetic economics are reused as V5 facts.
+
+Remote-only control:
+- GitHub source of truth: https://github.com/susayold/vietgreen-ci-solar-project-finance/tree/v5-global-real-data
+- Google Drive control index: https://docs.google.com/document/d/1koSgbc1Akic6cVDFD1svmuVN9gSq8qSGUw2obfHYN80/edit
+- Local project data: NONE
+
+## Current V5 evidence baseline
+
+- Candidate records: 2 portfolio/platform disclosures from official IFC ESRS pages.
+- Frozen V5 economics universe: 0.
+- Public asset-level projects eligible for economics: 0.
+- Transaction evidence: OPEN.
+- Recruiter-ready V5 release: FALSE.
+
+The candidate records and all evidence classes are in data/public/, research/ and evidence/. Portfolio-level capacity or financing is never silently converted into an asset-level project.
+
+## V5 build contract
+
+Run on a remote GitHub Actions runner:
+
+python -m analytics.build_v5_release --allow-incomplete
+
+The build produces a metadata-only blocked status. Economics must only be enabled after outcome-blind selection, input freeze, country-pack refresh and G0–G9 reconciliation.
+
+## V4 historical package
+
 # VietGreen CI Solar Project Finance — V4.1.3 Recruiter Final
 
 Release ID: V4.1.3-RECRUITER-FINAL
@@ -54,3 +87,4 @@ All project code, synthetic inputs, aggregate outputs, validation evidence, mani
 - G4/G5 validation run: https://github.com/susayold/vietgreen-ci-solar-project-finance/actions/runs/33415906096
 - Phase 2 validation run: https://github.com/susayold/vietgreen-ci-solar-project-finance/actions/runs/33416323104
 - Drive control document: https://docs.google.com/document/d/1koSgbc1Akic6cVDFD1svmuVN9gSq8qSGUw2obfHYN80/edit
+

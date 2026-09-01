@@ -1,0 +1,32 @@
+name: V5 Global Real-Data Validation
+
+on:
+  push:
+    branches: [v5-global-real-data]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run V5 contract tests
+        run: python -m pytest -q tests/test_v5_contract.py
+      - name: Build V5 control status
+        run: python -m analytics.build_v5_release --allow-incomplete
+      - name: Generate V5 surfaces in ephemeral runner only
+        run: python scripts/generate_recruiter_surfaces.py
+      - name: Publish metadata-only validation artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: vietgreen-v5-validation-status
+          path: |
+            release/V5_BUILD_STATUS.json
+            artifacts/v5_surfaces/website_headline.txt
+          if-no-files-found: error
