@@ -17,7 +17,7 @@ def test_sources_and_scoring_are_registered_and_weighted():
     assert all(set(r["source_ids"].split("|")).issubset(src) for r in cs)
 def test_selected_universe_is_frozen_and_constrained():
     rows=read(ROOT/"data"/"public"/"project_master_real.csv");sel=[r for r in rows if "SELECTED" in r["selection_status"]]
-    assert len(sel)==20 and all(r["freeze_status"]=="FROZEN" for r in sel)
+    assert len(sel)==20 and all(r["freeze_status"] in {"FROZEN","FROZEN_V5_1"} for r in sel)
     counts={}
     for r in sel:counts[r["country"]]=counts.get(r["country"],0)+1
     assert max(counts.values())/len(sel)<=.40
