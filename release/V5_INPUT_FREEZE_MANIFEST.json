@@ -25,10 +25,10 @@
     "TH-CLEANTECH-DENSO",
     "TH-IFC-CLEANMAX-72MW"
   ],
-  "source_register_hash": "RUNTIME_HASH_FROM_CI",
-  "project_master_hash": "RUNTIME_HASH_FROM_CI",
-  "assumption_overlay_hash": "RUNTIME_HASH_FROM_CI",
-  "candidate_register_hash": "RUNTIME_HASH_FROM_CI",
+  "source_register_hash": "CALCULATED_IN_V5_CI_BUILD_STATUS",
+  "project_master_hash": "CALCULATED_IN_V5_CI_BUILD_STATUS",
+  "assumption_overlay_hash": "CALCULATED_IN_V5_CI_BUILD_STATUS",
+  "candidate_register_hash": "CALCULATED_IN_V5_CI_BUILD_STATUS",
   "freeze_basis": "Selection completed before economics; no NPV/IRR/DSCR/equity result was used.",
   "data_boundary": "PUBLIC_DATA_RECONSTRUCTION_ONLY",
   "local_project_data": "NONE"

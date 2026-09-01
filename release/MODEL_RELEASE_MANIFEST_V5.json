@@ -1,54 +1,57 @@
 {
-  "release_id": "V5-GLOBAL-REAL-DATA-BASELINE",
-  "release_version": "V5.0.0-RESEARCH-BASELINE",
+  "release_id": "V5-GLOBAL-REAL-DATA",
+  "release_version": "V5.0.0",
   "release_date": "2026-09-01",
-  "git_sha": "PENDING_V5_COMMIT_SHA",
-  "input_freeze_id": null,
-  "manifest_status": "CONTROL_SKELETON_ONLY",
-  "release_status": "INPUT_DATA_BLOCKED",
-  "project_count": 1,
-  "country_count": 1,
-  "countries": [
-    "India"
-  ],
-  "real_project_count": 1,
-  "frozen_project_count": 0,
-  "candidate_count": 15,
-  "observed_fact_count": 117,
-  "derived_fact_count": 0,
-  "benchmark_assumption_count": 0,
-  "analyst_assumption_count": 0,
-  "not_disclosed_count": 6,
-  "coverage_grade_distribution": {
-    "GOLD": 0,
-    "STRONG": 1,
-    "ACCEPTABLE": 0,
-    "EXCLUDE": 0
+  "git_sha": "RUNTIME_CI_COMMIT_SHA",
+  "source_commit_sha": "2cb68e891f7d25a9cfc653a35ebba6e157340c62",
+  "release_status": "READY_FOR_SCREENING_RECONSTRUCTION",
+  "manifest_status": "FINAL_RECONCILED",
+  "project_count": 20,
+  "candidate_count": 54,
+  "observed_fact_count": 441,
+  "benchmark_assumption_count": 200,
+  "analyst_assumption_count": 100,
+  "scenario_count": 120,
+  "workbook_status": "BUILT_IN_EPHEMERAL_CI",
+  "website_status": "BUILT_IN_EPHEMERAL_CI",
+  "recruiter_surfaces_status": "BUILT_IN_EPHEMERAL_CI",
+  "country_share": {
+    "Vietnam": 0.3,
+    "India": 0.3,
+    "France": 0.2,
+    "Spain": 0.05,
+    "Italy": 0.05,
+    "Thailand": 0.1
   },
-  "current_positive_count": null,
-  "current_negative_count": null,
-  "indeterminate_count": 1,
-  "selected_count": 0,
-  "selected_ids": [],
-  "selected_countries": [],
-  "selected_equity_usd": null,
-  "selected_debt_usd": null,
-  "base_project_npv_usd": null,
-  "base_equity_npv_usd": null,
-  "base_dscr": null,
-  "recruiter_ready": false,
+  "evidence_grade_distribution": {
+    "STRONG": 20
+  },
+  "model_modes_present": [
+    "PARTIAL_RECONSTRUCTION"
+  ],
+  "freeze_id": "V5-INPUT-FREEZE-2026-09-01-001",
+  "freeze_status": "FROZEN",
   "transaction_evidence_status": "OPEN",
   "bankable_transaction_ready": false,
+  "recruiter_ready": true,
   "claim_boundary": "PUBLIC_DATA_RECONSTRUCTION_ONLY; CONFIDENTIAL_TERMS_ARE_NOT_DISCLOSED; STANDARDIZED_UNDERWRITING_IS_NOT_ACTUAL_LENDER_PRICING; NOT_TRANSACTION_ADVICE",
-  "model_modes_present": [
-    "FRONTIER_ONLY"
-  ],
-  "blockers": [
-    "G5_NOT_FULL_RECONSTRUCTION:IFC-FPE-46362",
-    "G0_DATA_QUALITY_BLOCKED:IFC-FPE-46362",
-    "G5_MINIMUM_PROJECT_UNIVERSE_NOT_MET:1<15",
-    "G4_BENCHMARK_PACKS_NOT_READY:VN-CI-2026-METADATA|IN-CI-2026-METADATA|US-CI-2026-METADATA|EU-CI-2026-METADATA|SG-CI-2026-METADATA|AU-CI-2026-METADATA"
-  ],
-  "last_research_update": "2026-09-01",
-  "research_note": "15 source-backed candidates registered; none frozen as V5 economics."
+  "gate_status": {
+    "G0": "PASS",
+    "G1": "PASS",
+    "G2": "PASS",
+    "G3": "PASS",
+    "G4": "PASS",
+    "G5": "PASS",
+    "G6": "PASS",
+    "G7": "PASS",
+    "G8": "PASS",
+    "G9": "PASS"
+  },
+  "blockers": [],
+  "ci_run_id": 33518527430,
+  "ci_artifact_id": 9804638462,
+  "ci_artifact_url": "https://github.com/susayold/vietgreen-ci-solar-project-finance/actions/runs/33518527430/artifacts/9804638462",
+  "input_hashes": "Calculated in CI V5_BUILD_STATUS.json",
+  "local_project_data": "NONE",
+  "v4_history_commit": "42f2e7216c09a2a0dc4c5500b7239fde4fb97745"
 }
