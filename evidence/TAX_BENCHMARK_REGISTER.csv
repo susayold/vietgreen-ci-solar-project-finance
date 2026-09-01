@@ -1,7 +1,9 @@
 country,parameter,value,unit,evidence_class,source_id,value_date,applicability_status,notes
-Vietnam,CIT,,percent,NOT_DISCLOSED,VN-TAX,,NOT_APPLICABLE_UNTIL_TRANSACTION_REVIEW,"No numeric tax assumption is authorized by this baseline."
-India,CIT,,percent,NOT_DISCLOSED,RBI-MONETARY,,NOT_APPLICABLE_UNTIL_TRANSACTION_REVIEW,"RBI is not a tax source; transaction tax source still required."
-United States,Federal_income_tax,,percent,NOT_DISCLOSED,US-IRS-TAX,,NOT_APPLICABLE_UNTIL_TRANSACTION_REVIEW,"Credit or depreciation eligibility must be proven per project."
-European Union,Corporate_tax,,percent,NOT_DISCLOSED,EUROSTAT-NONHOUSEHOLD,,NOT_APPLICABLE_UNTIL_MEMBER_STATE_REVIEW,"No EU-wide tax rate."
-Singapore,Corporate_tax,,percent,NOT_DISCLOSED,EMA-REG-TARIFF,,NOT_APPLICABLE_UNTIL_TRANSACTION_REVIEW,"Tariff source is not a tax source; tax source required."
-Australia,Corporate_tax,,percent,NOT_DISCLOSED,AER-RETAIL,,NOT_APPLICABLE_UNTIL_TRANSACTION_REVIEW,"Retail-market source is not a tax source; tax source required."
+Vietnam,CIT,20,percent,BENCHMARK_ASSUMPTION,METHOD-V5-TAX,2026-09-01,STANDARDIZED_SCREENING_ONLY,Not tax advice.
+India,CIT,25,percent,BENCHMARK_ASSUMPTION,METHOD-V5-TAX,2026-09-01,STANDARDIZED_SCREENING_ONLY,Not tax advice.
+Thailand,CIT,20,percent,BENCHMARK_ASSUMPTION,METHOD-V5-TAX,2026-09-01,STANDARDIZED_SCREENING_ONLY,Not tax advice.
+France,CIT,25,percent,BENCHMARK_ASSUMPTION,METHOD-V5-TAX,2026-09-01,STANDARDIZED_SCREENING_ONLY,Not tax advice.
+Italy,CIT,24,percent,BENCHMARK_ASSUMPTION,METHOD-V5-TAX,2026-09-01,STANDARDIZED_SCREENING_ONLY,Not tax advice.
+Spain,CIT,25,percent,BENCHMARK_ASSUMPTION,METHOD-V5-TAX,2026-09-01,STANDARDIZED_SCREENING_ONLY,Not tax advice.
+Poland,CIT,19,percent,BENCHMARK_ASSUMPTION,METHOD-V5-TAX,2026-09-01,STANDARDIZED_SCREENING_ONLY,Not tax advice.
+Slovakia,CIT,21,percent,BENCHMARK_ASSUMPTION,METHOD-V5-TAX,2026-09-01,STANDARDIZED_SCREENING_ONLY,Not tax advice.

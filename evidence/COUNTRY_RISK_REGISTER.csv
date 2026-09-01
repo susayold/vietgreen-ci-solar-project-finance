@@ -1,9 +1,9 @@
 country,risk_dimension,risk_level,evidence_class,source_id,as_of,review_status,notes
-Vietnam,regulatory,NOT_ASSESSED,NOT_DISCLOSED,MOIT-EVN,2026-09-01,OPEN,"Project-specific billing and regulatory applicability not supplied."
-Vietnam,tariff,NOT_ASSESSED,NOT_DISCLOSED,MOIT-EVN,2026-09-01,OPEN,"Legal-effective and billed-effective rates must be separated."
-India,open_access,NOT_ASSESSED,NOT_DISCLOSED,CERC-REG,2026-09-01,OPEN,"State ERC/DISCOM charges and banking/losses/surcharges required."
-India,financing,NOT_ASSESSED,NOT_DISCLOSED,RBI-MONETARY,2026-09-01,OPEN,"Base rate is not debt quote."
-United States,tariff,NOT_ASSESSED,NOT_DISCLOSED,EIA-ELECTRIC-PRICE,2026-09-01,OPEN,"Utility/state class mapping required."
-European Union,regulatory,NOT_ASSESSED,NOT_DISCLOSED,EUROSTAT-NONHOUSEHOLD,2026-09-01,OPEN,"Member-state regimes are not interchangeable."
-Singapore,tariff,NOT_ASSESSED,NOT_DISCLOSED,EMA-REG-TARIFF,2026-09-01,OPEN,"Quarterly regulated tariff must not be treated as project contract price."
-Australia,market,NOT_ASSESSED,NOT_DISCLOSED,AER-RETAIL,2026-09-01,OPEN,"Jurisdiction and customer-class mapping required."
+Vietnam,commercial,MEDIUM,BENCHMARK_ASSUMPTION,GY-VN-GOMALL,2026-09-01,DISCLOSED_OPEN_ITEMS,PPA public; price/credit open
+India,regulatory,HIGH,BENCHMARK_ASSUMPTION,CERC-REG,2026-09-01,DISCLOSED_OPEN_ITEMS,State/DISCOM mapping
+Thailand,commercial,MEDIUM,BENCHMARK_ASSUMPTION,IFC-48136,2026-09-01,DISCLOSED_OPEN_ITEMS,PPA platform; site split open
+France,commercial,MEDIUM,BENCHMARK_ASSUMPTION,GY-EU-ALTAREA,2026-09-01,DISCLOSED_OPEN_ITEMS,PPA assets; price/debt open
+Italy,commercial,MEDIUM,BENCHMARK_ASSUMPTION,GY-EU-GIVA,2026-09-01,DISCLOSED_OPEN_ITEMS,20-year agreement; output split open
+Spain,construction,MEDIUM,BENCHMARK_ASSUMPTION,GY-EU-PTP,2026-09-01,DISCLOSED_OPEN_ITEMS,Forward construction context
+Poland,commercial,MEDIUM,BENCHMARK_ASSUMPTION,GY-EU-CMC,2026-09-01,DISCLOSED_OPEN_ITEMS,Asset public; terms open
+Slovakia,commercial,MEDIUM,BENCHMARK_ASSUMPTION,GY-EU-STELLANTIS,2026-09-01,DISCLOSED_OPEN_ITEMS,17-year PPA; price/debt open

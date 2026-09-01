@@ -1,0 +1,7 @@
+scenario_id,energy_factor,capex_factor,price_factor,rate_delta,cod_delay_years,debt_mode,description
+BASE,1,1,1,0,0,STANDARDIZED,Public-data benchmark base case
+P90_ENERGY,.9,1,1,0,0,STANDARDIZED,P90-style energy haircut
+CAPEX_OVERRUN,1,1.15,1,0,0,STANDARDIZED,15 percent capex overrun
+INTEREST_RATE_SHOCK,1,1,1,.02,0,STANDARDIZED,200 bps rate shock
+COD_DELAY,1,1,1,0,1,STANDARDIZED,One-year COD delay
+COMBINED_DOWNSIDE,.9,1.15,.95,.02,1,STANDARDIZED,Combined downside
