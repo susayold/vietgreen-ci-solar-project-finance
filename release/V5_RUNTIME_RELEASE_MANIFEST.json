@@ -1,0 +1,28 @@
+{
+  "release_version": "5.1.1",
+  "release_tag": "v5.1.1-recruiter-final",
+  "source_sha": "26cb4dfd9ac45e829646f2d52f3f3a4041c8bb61",
+  "workflow_run_id": "33545132194",
+  "artifact_id": "9815147049",
+  "artifact_digest": "sha256:812ca19c4e6869d9d2451e7ffd75685a65c226e69689cdb44671c06b51cb0797",
+  "artifact_name": "vietgreen-v5-1-1-full-data-model-release",
+  "workbook_hash": "83e253c423d20b547283163d3afeb6b0ae125d1bfffa7d9f0686be4838bfbc6c",
+  "input_freeze": "release/V5_1_1_INPUT_FREEZE_MANIFEST.json",
+  "test_counts": {
+    "pytest": 56,
+    "semantic": 12
+  },
+  "gates": [
+    "G0",
+    "G1",
+    "G2",
+    "G3",
+    "G4",
+    "G5",
+    "G6",
+    "G7",
+    "G8",
+    "G9"
+  ],
+  "remote_only": true
+}
