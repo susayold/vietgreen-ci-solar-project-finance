@@ -1,0 +1,11 @@
+gate,requirement,status,resolved_commit,resolved_run
+G0_SOURCE,selected facts and source URLs controlled,PASS,6a9276a552c42400c20f2cc552eb37ae222f27d0,33542426321
+G1_ENTITY,20 selected projects preserved and unique,PASS,6a9276a552c42400c20f2cc552eb37d0,33542426321
+G2_PHYSICAL,yield audit complete; Arisudhana disclosed outlier,PASS_WITH_REVIEW,6a9276a552c42400c20f2cc552eb37d0,33542426321
+G3_FREEZE,real SHA-256 input freeze in CI artifact,PASS,6a9276a552c42400c20f2cc552eb37d0,33542426321
+G4_ECONOMICS,tax/PPA/CAPEX/CFADS corrected,PASS,6a9276a552c42400c20f2cc552eb37d0,33542426321
+G5_DEBT,DSCR/LLCR/PLCR and floors tested,PASS,6a9276a552c42400c20f2cc552eb37d0,33542426321
+G6_SCENARIOS,scenario semantics tests pass,PASS,6a9276a552c42400c20f2cc552eb37d0,33542426321
+G7_PORTFOLIO,common USD shortlist; no investment portfolio,PASS,6a9276a552c42400c20f2cc552eb37d0,33542426321
+G8_SURFACES,docs/reports/website generated contract,PASS,6a9276a552c42400c20f2cc552eb37d0,33542426321
+G9_CLAIMS,claim boundary and release governance pass,PASS,6a9276a552c42400c20f2cc552eb37d0,33542426321
