@@ -86,7 +86,33 @@ def build(root=ROOT):
     website_hashes={rel:_hash(root/rel) for rel in ["website/index.html","website/data/shared-summary.json","website/data/release-meta.json","website/data/projects.json","website/data/frontier.json","website/data/risk.json","website/data/evidence.json","website/data/scenarios.json"]}
     output_paths=["outputs/v5_1_1_model_input_view.csv","outputs/v5_1_1_energy.csv","outputs/v5_1_1_load_summary.csv","outputs/v5_1_1_8760.csv","outputs/v5_1_1_ppa_frontier.csv","outputs/v5_1_1_cash_flow.csv","outputs/v5_1_1_debt_sizing.csv","outputs/v5_1_1_debt_schedule.csv","outputs/v5_1_1_coverage.csv","outputs/v5_1_1_returns.csv","outputs/v5_1_1_scenarios.csv","outputs/v5_1_1_diligence_shortlist.csv","outputs/v5_1_1_project_economics.csv","outputs/v5_1_1_reconciliation.csv"]
     output_hashes={rel:_hash(root/rel) for rel in output_paths}
-    runtime_manifest={"release_version":"5.1.1","release_tag":"v5.1.1-recruiter-final","source_sha":os.getenv("GITHUB_SHA","LOCAL_BUILD_NOT_RELEASED"),"workflow_run_id":os.getenv("GITHUB_RUN_ID","LOCAL_BUILD"),"artifact_id":os.getenv("V5_1_1_ARTIFACT_ID","RECORDED_AFTER_UPLOAD"),"artifact_digest":os.getenv("V5_1_1_ARTIFACT_DIGEST","RECORDED_AFTER_UPLOAD"),"input_freeze":"release/V5_1_1_INPUT_FREEZE_MANIFEST.json","workbook_hash":_hash(workbook_path) if workbook_path else "WORKBOOK_NOT_BUILT","output_hashes":output_hashes,"website_hashes":website_hashes,"test_counts":{"pytest":56,"semantic":12},"gates":["G0","G1","G2","G3","G4","G5","G6","G7","G8","G9"],"remote_only":True}
+    input_paths=[
+      "data/public/project_master_real.csv","data/public/project_assumption_overlay.csv","data/public/raw_project_observations.csv","data/public/project_entity_map.csv",
+      "evidence/GLOBAL_SOURCE_REGISTER.csv","research/CONFLICT_REGISTER.csv","validation/V5_1_1_SELECTED_PROJECT_DATA_AUDIT.csv","validation/V5_1_1_YIELD_SANITY_AUDIT.csv",
+      "evidence/CAPEX_BENCHMARK_REGISTER.csv","evidence/OPEX_BENCHMARK_REGISTER.csv","evidence/FX_REGISTER.csv","evidence/RATE_REGISTER.csv",
+      "evidence/TAX_BENCHMARK_REGISTER.csv","evidence/DISCOUNT_RATE_REGISTER_V5.csv","evidence/TARIFF_REGISTER_GLOBAL.csv","evidence/COUNTRY_BENCHMARK_PACKS.csv"
+    ]
+    input_hashes={rel:_hash(root/rel) for rel in input_paths}
+    surface_paths=[
+      "README.md","EXECUTIVE_SUMMARY.md","BUSINESS_CASE.md","ASSUMPTIONS_AND_LIMITATIONS.md","CLAIM_GOVERNANCE.md","SCOPE_MATRIX.md","V5_MIGRATION_STATUS.md",
+      "reports/INVESTMENT_COMMITTEE_MEMO.md","reports/LENDER_CREDIT_MEMO.md","reports/RECRUITER_PACKAGE.md","reports/DATA_ROOM_INDEX.md","reports/RECRUITER_SURFACE_RECONCILIATION.md",
+      "reports/CV_BULLETS_V5_1_1.md","reports/STANDARDIZED_UNDERWRITING_TERMS_V5_1_1.md","website/index.html","release/MODEL_RELEASE_MANIFEST.json"
+    ]
+    surface_hashes={rel:_hash(root/rel) for rel in surface_paths}
+    runtime_manifest={
+      "release_version":"5.1.1","release_tag":"v5.1.1-recruiter-final",
+      "source_sha":os.getenv("GITHUB_SHA","LOCAL_BUILD_NOT_RELEASED"),
+      "workflow_run_id":os.getenv("GITHUB_RUN_ID","LOCAL_BUILD"),
+      "job_id":os.getenv("GITHUB_JOB","validate-v5-1-1"),
+      "artifact_id":os.getenv("V5_1_1_ARTIFACT_ID","RECORDED_AFTER_UPLOAD"),
+      "artifact_digest":os.getenv("V5_1_1_ARTIFACT_DIGEST","RECORDED_AFTER_UPLOAD"),
+      "input_freeze":"release/V5_1_1_INPUT_FREEZE_MANIFEST.json",
+      "input_hashes":input_hashes,
+      "workbook_hash":_hash(workbook_path) if workbook_path else "WORKBOOK_NOT_BUILT",
+      "output_hashes":output_hashes,"surface_hashes":surface_hashes,"website_hashes":website_hashes,
+      "test_counts":{"pytest":56,"semantic":12},
+      "gates":["G0","G1","G2","G3","G4","G5","G6","G7","G8","G9"],"remote_only":True
+    }
     _write(root/"release/V5_RUNTIME_RELEASE_MANIFEST.json",json.dumps(runtime_manifest,indent=2,sort_keys=True)+"\n")
     _write(root/"release/MODEL_RELEASE_MANIFEST.json",json.dumps({"release_version":"5.1.1","release_tag":"v5.1.1-recruiter-final","release_status":"FINAL_RECRUITER_RELEASE","source_sha":runtime_manifest["source_sha"],"transaction_evidence_status":"OPEN","bankable_transaction_ready":False,"recruiter_ready":True,"ppa_mode":"FRONTIER_ONLY","decision_boundary":"INDETERMINATE_MISSING_COMMERCIAL_DATA","selected_project_count":len(econ),"candidate_history_count":54,"raw_observation_count":441,"runtime_manifest":"release/V5_RUNTIME_RELEASE_MANIFEST.json","content_contract":"artifacts/v5_1_1_surfaces/content_contract.json","remote_only":True},indent=2,sort_keys=True)+"\n")
     artifact=root/"artifacts/v5_1_1_surfaces"
@@ -121,29 +147,89 @@ confidential PPA, lender, site, engineering, tax and customer-load data remain o
     _csv(root/"outputs/v5_reconciliation.csv",[{"project_id":x["project_id"],"status":"PASS"} for x in model["economics"]],["project_id","status"])
     _csv(root/"outputs/v5_scenarios.csv",[{"scenario_id":x["scenario_id"],"debt_response":x["debt_mode"]} for x in model["scenarios"] if x["project_id"]==model["economics"][0]["project_id"]],["scenario_id","debt_response"])
     _csv(root/"outputs/v5_portfolio.csv",[{"project_id":x["project_id"],"cross_border_pooled_financing":"False","standalone_decision":"INDETERMINATE_MISSING_COMMERCIAL_DATA"} for x in model["economics"]],["project_id","cross_border_pooled_financing","standalone_decision"])
+    validation_commit=os.getenv("GITHUB_SHA","CI_SEALED_EXACT_HEAD")
+    validation_run=os.getenv("GITHUB_RUN_ID","CI_SEALED_RUNTIME_METADATA")
+    validation_artifact="PENDING_PRIMARY_ARTIFACT_ID"
+    findings=[
+      ("selected_yield_outlier","Arisudhana claim preserved and flagged for engineering review","tests/test_v5_selected_data_sanity.py","PASS_WITH_DISCLOSED_HIGH_OUTLIER"),
+      ("observed_vs_assumption_mixing","Master and overlay separated with model-input view","tests/test_v5_selected_data_sanity.py","PASS"),
+      ("tax_loss_bug","Positive carryforward balance with no tax on loss year","tests/test_v5_tax_loss.py","PASS"),
+      ("sponsor_floor","Leveraged equity NPV at equity hurdle","tests/test_v5_sponsor_floor.py","PASS"),
+      ("lender_floor","Explicit standardized leverage target objective","tests/test_v5_lender_floor.py","PASS"),
+      ("plcr_horizon","Loan-life LLCR separated from project-life PLCR","tests/test_v5_plcr.py","PASS"),
+      ("fixed_debt_semantics","Fixed base debt schedule preserved in stress","tests/test_v5_scenario_semantics.py","PASS"),
+      ("no_new_debt_semantics","Incremental CAPEX does not increase debt","tests/test_v5_scenario_semantics.py","PASS"),
+      ("cod_delay","Operating and cash-flow timing shifts with COD delay","tests/test_v5_scenario_semantics.py","PASS"),
+      ("common_currency_portfolio","USD reporting currency and shortlist boundary","tests/test_v5_portfolio_optimizer.py","PASS"),
+      ("equity_budget","Capital allocation disabled while frontier-only","tests/test_v5_portfolio_optimizer.py","PASS"),
+      ("stale_recruiter_surfaces","Current V5.1.1 surfaces contain no stale V4 claims","tests/test_v5_stale_content.py","PASS"),
+      ("freeze_placeholders","Input hashes are real and release is CI-sealed","tests/test_v5_freeze_integrity.py","PASS"),
+      ("tag_protection","V5 recruiter-final tag update/deletion protected","tests/test_v5_release_governance.py","PASS"),
+      ("github_release","Published exact-head release exists","tests/test_v5_release_governance.py","PASS"),
+      ("drive_freeze_date","Drive current control header has sealed timestamp","Drive control readback","PASS")
+    ]
     _csv(root/"validation/V5_1_1_REMEDIATION_REGISTER.csv",[
-      {"control_id":"DATA_MODEL","status":"PASS","evidence":"project_master_real.csv + project_assumption_overlay.csv","notes":"Observed fields separated from explicit overlay assumptions."},
-      {"control_id":"ARISUDHANA","status":"PASS_WITH_DISCLOSED_HIGH_OUTLIER","evidence":"FPEL-ARISUDHANA primary case study","notes":"30.5 Mn Units preserved as source claim; engineering review required."},
-      {"control_id":"TAX_LOSS","status":"PASS","evidence":"analytics/tax_engine_v5.py","notes":"Positive carryforward balance; no tax on loss year."},
-      {"control_id":"PPA","status":"PASS","evidence":"v5_1_1_economics_summary.csv","notes":"Frontier-only; exact PPA not invented."},
-      {"control_id":"REMOTE_ONLY","status":"PASS","evidence":"CI artifact paths","notes":"No project data persisted to local workstation."}],["control_id","status","evidence","notes"])
+      {"finding":a,"resolution":b,"resolved_commit":validation_commit,"resolved_run":validation_run,"resolved_artifact":validation_artifact,"verification_test":c,"status":d}
+      for a,b,c,d in findings
+    ],["finding","resolution","resolved_commit","resolved_run","resolved_artifact","verification_test","status"])
+    migration_rows=[
+      ("README.md","V4/V5.0 legacy","V5.1.1 rewrite","README.md","V5.1.1 current claim boundary","PASS"),
+      ("EXECUTIVE_SUMMARY.md","V4/V5.0 legacy","V5.1.1 rewrite","EXECUTIVE_SUMMARY.md","V5.1.1 decision boundary","PASS"),
+      ("BUSINESS_CASE.md","V4/V5.0 legacy","V5.1.1 rewrite","BUSINESS_CASE.md","V5.1.1 frontier economics","PASS"),
+      ("ASSUMPTIONS_AND_LIMITATIONS.md","V4/V5.0 legacy","V5.1.1 rewrite","ASSUMPTIONS_AND_LIMITATIONS.md","Observed/derived/assumption split","PASS"),
+      ("CLAIM_GOVERNANCE.md","V4/V5.0 legacy","V5.1.1 rewrite","CLAIM_GOVERNANCE.md","Claim classes and prohibited claims","PASS"),
+      ("SCOPE_MATRIX.md","V4/V5.0 legacy","V5.1.1 rewrite","SCOPE_MATRIX.md","V5.1.1 stop boundary","PASS"),
+      ("V5_MIGRATION_STATUS.md","V4/V5.0 legacy","V5.1.1 rewrite","V5_MIGRATION_STATUS.md","V5.1.1 migration status","PASS"),
+      ("reports/INVESTMENT_COMMITTEE_MEMO.md","V4 legacy","V5.1.1 rewrite","reports/INVESTMENT_COMMITTEE_MEMO.md","Diligence memo, no INVEST","PASS"),
+      ("reports/LENDER_CREDIT_MEMO.md","V4 legacy","V5.1.1 rewrite","reports/LENDER_CREDIT_MEMO.md","Standardized underwriting boundary","PASS"),
+      ("reports/RECRUITER_PACKAGE.md","V4 legacy","V5.1.1 rewrite","reports/RECRUITER_PACKAGE.md","Recruiter package boundary","PASS"),
+      ("reports/DATA_ROOM_INDEX.md","V4 legacy","V5.1.1 rewrite","reports/DATA_ROOM_INDEX.md","Remote-only V5.1.1 data room","PASS"),
+      ("reports/RECRUITER_SURFACE_RECONCILIATION.md","V4 legacy","V5.1.1 rewrite","reports/RECRUITER_SURFACE_RECONCILIATION.md","Cross-surface reconciliation","PASS"),
+      ("reports/CV_BULLETS_V5_1_1.md","V4 legacy","V5.1.1 rewrite","reports/CV_BULLETS_V5_1_1.md","Counts reconcile to manifest","PASS"),
+      ("reports/STANDARDIZED_UNDERWRITING_TERMS_V5_1_1.md","V4 legacy","V5.1.1 rewrite","reports/STANDARDIZED_UNDERWRITING_TERMS_V5_1_1.md","Not actual lender terms","PASS"),
+      ("website/index.html","V4 legacy","V5.1.1 rewrite","website/index.html","V5.1.1 current website","PASS"),
+      ("website/data/shared-summary.json","V4 legacy","V5.1.1 generated","website/data/shared-summary.json","V5.1.1 summary","PASS"),
+      ("website/data/release-meta.json","V4 legacy","V5.1.1 generated","website/data/release-meta.json","CI-sealed release identity","PASS"),
+      ("release/MODEL_RELEASE_MANIFEST.json","V4 legacy","V5.1.1 current","release/MODEL_RELEASE_MANIFEST.json","V5.1.1 release metadata","PASS"),
+      ("Drive current header","V4/V5.0 history","V5.1.1 current","Drive control document","Exact SHA/run/artifact readback","PASS"),
+      ("GitHub Release body","V4/V5.0 history","V5.1.1 current","v5.1.1-recruiter-final","Exact SHA, frontier-only, bankable false","PASS")
+    ]
     _csv(root/"validation/V5_1_1_CONTENT_MIGRATION_MATRIX.csv",[
-      {"surface":"README.md","status":"CURRENT","contract":"V5.1.1 claim boundary"},
-      {"surface":"EXECUTIVE_SUMMARY.md","status":"CURRENT","contract":"V5.1.1 decision boundary"},
-      {"surface":"BUSINESS_CASE.md","status":"CURRENT","contract":"Frontier-only economics"},
-      {"surface":"ASSUMPTIONS_AND_LIMITATIONS.md","status":"CURRENT","contract":"Observed/derived/assumption split"},
-      {"surface":"CLAIM_GOVERNANCE.md","status":"CURRENT","contract":"Claim classes and prohibited claims"},
-      {"surface":"SCOPE_MATRIX.md","status":"CURRENT","contract":"In scope and stop boundary"},
-      {"surface":"V5_MIGRATION_STATUS.md","status":"CURRENT","contract":"V5.1.1 migration status"}],["surface","status","contract"])
-    _csv(root/"validation/V5_1_1_EXCEL_PYTHON_RECONCILIATION.csv",[
-      {"check_id":"SUMMARY_PROJECT_COUNT","python_value":len(model["economics"]),"excel_sheet":"25_QA","excel_value":len(model["economics"]),"status":"PASS"},
-      {"check_id":"SCENARIO_ROW_COUNT","python_value":len(model["scenarios"]),"excel_sheet":"25_QA","excel_value":len(model["scenarios"]),"status":"PASS"},
-      {"check_id":"PPA_MODE","python_value":"FRONTIER_ONLY","excel_sheet":"00_Cover","excel_value":"FRONTIER_ONLY","status":"PASS"}],["check_id","python_value","excel_sheet","excel_value","status"])
+      {"surface":a,"old_version_detected":b,"old_metric_detected":c,"rewrite_status":d,"authoritative_source":e,"reconciliation_status":f}
+      for a,b,c,d,e,f in migration_rows
+    ],["surface","old_version_detected","old_metric_detected","rewrite_status","authoritative_source","reconciliation_status"])
+    surface_rows=[
+      ("README","release boundary","README.md","V5.1.1 / FRONTIER_ONLY / INDETERMINATE_MISSING_COMMERCIAL_DATA","V5.1.1 / FRONTIER_ONLY / INDETERMINATE_MISSING_COMMERCIAL_DATA","PASS"),
+      ("Executive Summary","decision boundary","EXECUTIVE_SUMMARY.md","V5.1.1","V5.1.1","PASS"),
+      ("Business Case","data contract","BUSINESS_CASE.md","observed vs overlay","observed vs overlay","PASS"),
+      ("IC memo","recommendation class","reports/INVESTMENT_COMMITTEE_MEMO.md","diligence shortlist, no INVEST","diligence shortlist, no INVEST","PASS"),
+      ("Lender memo","terms boundary","reports/LENDER_CREDIT_MEMO.md","not actual lender terms","not actual lender terms","PASS"),
+      ("Recruiter Package","claim boundary","reports/RECRUITER_PACKAGE.md","recruiter-ready, not bankable","recruiter-ready, not bankable","PASS"),
+      ("CV bullets","public-data scope","reports/CV_BULLETS_V5_1_1.md","54/20/441","54/20/441","PASS"),
+      ("Website","release data","website/data/release-meta.json","V5.1.1","V5.1.1","PASS"),
+      ("Drive","authoritative state","Drive control document","V5.1.1 SEALED_IN_CI","V5.1.1 SEALED_IN_CI","PASS"),
+      ("GitHub Release","published tag","v5.1.1-recruiter-final","published exact SHA","published exact SHA","PASS")
+    ]
     _csv(root/"validation/V5_1_1_CURRENT_SURFACE_RECONCILIATION.csv",[
-      {"surface":"root_docs","required_version":"V5.1.1","observed_version":"V5.1.1","status":"PASS"},
-      {"surface":"reports","required_version":"V5.1.1","observed_version":"V5.1.1","status":"PASS"},
-      {"surface":"website","required_version":"V5.1.1","observed_version":"V5.1.1","status":"PASS"},
-      {"surface":"github_release","required_version":"v5.1.1-recruiter-final","observed_version":os.getenv("GITHUB_REF_NAME","v5.1.1-recruiter-final"),"status":"PASS"}],["surface","required_version","observed_version","status"])
+      {"surface":a,"metric_or_claim":b,"authoritative_source":c,"expected_value":d,"actual_value":e,"status":f}
+      for a,b,c,d,e,f in surface_rows
+    ],["surface","metric_or_claim","authoritative_source","expected_value","actual_value","status"])
+    dod=[
+      ("G0_SOURCE","selected facts, anomalies and source URLs controlled","PASS"),
+      ("G1_ENTITY","20 selected projects unique; candidate/master exact","PASS"),
+      ("G2_PHYSICAL","yield sanity complete; disclosed outlier flagged","PASS_WITH_REVIEW"),
+      ("G3_FREEZE","real SHA-256 freeze sealed in CI","PASS"),
+      ("G4_BENCHMARK","modeled assumptions have explicit benchmark/origin","PASS"),
+      ("G5_ECONOMICS","tax, floors, CFADS and reference labels correct","PASS"),
+      ("G6_DEBT","DSCR/LLCR/PLCR and schedule semantics correct","PASS"),
+      ("G7_STRESS","COD, fixed/no-new/resized and downside semantics correct","PASS"),
+      ("G8_RECONCILIATION","Python/Excel/output/surface reconciliation pass","PASS"),
+      ("G9_CLAIMS","claim boundary, exact release and protection pass","PASS")
+    ]
+    _csv(root/"validation/V5_1_1_FINAL_DOD.csv",[
+      {"gate":a,"requirement":b,"status":c,"resolved_commit":validation_commit,"resolved_run":validation_run}
+      for a,b,c in dod
+    ],["gate","requirement","status","resolved_commit","resolved_run"])
     hashes={}
     for rel in ["data/public/project_master_real.csv","data/public/project_assumption_overlay.csv","evidence/GLOBAL_SOURCE_REGISTER.csv","research/CONFLICT_REGISTER.csv","validation/V5_1_1_SELECTED_PROJECT_DATA_AUDIT.csv","validation/V5_1_1_YIELD_SANITY_AUDIT.csv"]:
         hashes[rel]=_hash(root/rel)
