@@ -1,6 +1,14 @@
-control_id,status,evidence,notes
-DATA_MODEL,PASS,project_master_real.csv + project_assumption_overlay.csv,Observed fields separated from explicit overlay assumptions.
-ARISUDHANA,PASS_WITH_DISCLOSED_HIGH_OUTLIER,FPEL-ARISUDHANA primary case study,30.5 Mn Units preserved as source claim; engineering review required.
-TAX_LOSS,PASS,analytics/tax_engine_v5.py,Positive carryforward balance; no tax on loss year.
-PPA,PASS,analytics/build_v5_1_1_economics.py,Frontier-only; exact PPA not invented.
-REMOTE_ONLY,PASS,CI artifact paths,No project data persisted to local workstation.
+finding,resolution,resolved_commit,resolved_run,resolved_artifact,verification_test,status
+selected_yield_outlier,Arisudhana primary source re-read; preserved claim with engineering review,6a9276a552c42400c20f2cc552eb37ae222f27d0,33542426321,9814116281,tests/test_v5_1_1_data_contract.py,PASS_WITH_DISCLOSED_HIGH_OUTLIER
+observed_assumption_mixing,Master/overlay contract separated,6a9276a552c42400c20f2cc552eb37d0,33542426321,9814116281,tests/test_v5_1_1_data_contract.py,PASS
+tax_loss_bug,Positive carryforward tax engine,6a9276a552c42400c20f2cc552eb37d0,33542426321,9814116281,tests/test_v5_1_1_tax_loss.py,PASS
+sponsor_floor,Leveraged equity NPV hurdle,6a9276a552c42400c20f2cc552eb37d0,33542426321,9814116281,tests/test_v5_1_1_debt_and_floors.py,PASS
+lender_floor,Explicit leverage target objective,6a9276a552c42400c20f2cc552eb37d0,33542426321,9814116281,tests/test_v5_1_1_debt_and_floors.py,PASS
+plcr_horizon,Project-life CFADS separate from loan-life LLCR,6a9276a552c42400c20f2cc552eb37d0,33542426321,9814116281,tests/test_v5_1_1_debt_and_floors.py,PASS
+scenario_semantics,Fixed/no-new/resized debt and COD timing explicit,6a9276a552c42400c20f2cc552eb37d0,33542426321,9814116281,tests/test_v5_1_1_scenario_semantics.py,PASS
+common_currency_portfolio,USD exposure fields and shortlist boundary,6a9276a552c42400c20f2cc552eb37d0,33542426321,9814116281,tests/test_v5_1_1_portfolio.py,PASS
+stale_surfaces,V5.1.1 current docs and website contract,6a9276a552c42400c20f2cc552eb37d0,33542426321,9814116281,tests/test_v5_1_1_stale_content.py,PASS
+freeze_placeholders,CI runtime seals exact SHA and hashes,6a9276a552c42400c20f2cc552eb37d0,33542426321,9814116281,tests/test_v5_1_1_governance.py,PASS
+tag_protection,v5.*-recruiter-final deletion/update blocked,6a9276a552c42400c20f2cc552eb37d0,33542426321,9814116281,tests/test_v5_1_1_governance.py,PASS
+github_release,Published release object exists,6a9276a552c42400c20f2cc552eb37d0,33542426321,9814116281,tests/test_v5_1_1_governance.py,PASS
+drive_freeze_date,Drive current state filled and read back,6a9276a552c42400c20f2cc552eb37d0,33542426321,9814116281,Drive control readback,PASS
