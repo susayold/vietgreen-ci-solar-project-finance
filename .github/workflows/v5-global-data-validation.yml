@@ -23,8 +23,9 @@ jobs:
       - name: Reproducibility check
         run: |
           python -m analytics.build_v5_1_1_release
-          sha256sum outputs/v5_1_1_project_economics.csv outputs/v5_1_1_scenarios.csv outputs/v5_1_1_reconciliation.csv > /tmp/v511-build-2.sha256
           sha256sum outputs/v5_1_1_project_economics.csv outputs/v5_1_1_scenarios.csv outputs/v5_1_1_reconciliation.csv > /tmp/v511-build-1.sha256
+          python -m analytics.build_v5_1_1_release
+          sha256sum outputs/v5_1_1_project_economics.csv outputs/v5_1_1_scenarios.csv outputs/v5_1_1_reconciliation.csv > /tmp/v511-build-2.sha256
           diff -u /tmp/v511-build-1.sha256 /tmp/v511-build-2.sha256
       - name: Validate current surfaces
         run: python -m scripts.run_v5_1_1_checks
