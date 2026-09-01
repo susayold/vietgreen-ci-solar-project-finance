@@ -66,7 +66,7 @@ Recruiter-ready does not mean transaction-ready, lender-ready, bankable, IC-appr
     # Backward-compatible recruiter/test surfaces remain generated from the V5.1.1 model.
     _write(root/"artifacts/v5_surfaces/recruiter_package.md", """# V5.1.1 Recruiter Package
 This is not a bankable transaction. It is a standardized public-data reconstruction.
-Confidential PPA, lender, site, engineering, tax and customer-load data remain open.
+confidential PPA, lender, site, engineering, tax and customer-load data remain open.
 """)
     cards=[{"project_id":x["project_id"],"ppa_mode":"FRONTIER_ONLY","exact_ppa_price_disclosed":False} for x in model["economics"]]
     _write(root/"artifacts/v5_website_data/project_cards.json", json.dumps({"version":"5.1.1","cards":cards},indent=2))
