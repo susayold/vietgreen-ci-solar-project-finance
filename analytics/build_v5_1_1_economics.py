@@ -145,8 +145,10 @@ def run(root: str|Path, output_dir: str|Path) -> Dict[str,List[Dict]]:
             return _debt_metrics(p,cf)[0]-target_debt
         lender_floor,lender_diag=_solve_floor(lender_fn,ref)
         lower=max([v for v in (sponsor_floor,lender_floor) if v!=""] or [0.0]); upper=ref
-        zone_status="FEASIBLE_NEGOTIATION_ZONE" if sponsor_floor!="" and lender_floor!="" and lower<=upper+1e-9 else "INSUFFICIENT_DATA"
-        if zone_status=="FEASIBLE_NEGOTIATION_ZONE" and lower>upper: zone_status="EMPTY_NEGOTIATION_ZONE"
+        if sponsor_floor!="" and lender_floor!="":
+            zone_status="FEASIBLE_NEGOTIATION_ZONE" if lower<=upper+1e-9 else "EMPTY_NEGOTIATION_ZONE"
+        else:
+            zone_status="INSUFFICIENT_DATA"
         row={"project_id":project["project_id"],"project_name":project["project_name"],"country":project["country"],"currency":p["currency"],
           "input_origin":"OBSERVED_FACTS_PLUS_EXPLICIT_OVERLAY","installed_capacity_kwp_observed":project.get("installed_capacity_kwp_observed",""),
           "generation_p50_kwh_observed":project.get("annual_generation_kwh_observed",""),"generation_p50_kwh_modeled":p["generation_p50_kwh"],
