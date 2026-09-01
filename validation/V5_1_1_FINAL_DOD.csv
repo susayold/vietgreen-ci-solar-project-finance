@@ -1,11 +1,11 @@
 gate,requirement,status,resolved_commit,resolved_run
-G0_SOURCE,selected facts and source URLs controlled,PASS,6a9276a552c42400c20f2cc552eb37ae222f27d0,33542426321
-G1_ENTITY,20 selected projects preserved and unique,PASS,6a9276a552c42400c20f2cc552eb37d0,33542426321
-G2_PHYSICAL,yield audit complete; Arisudhana disclosed outlier,PASS_WITH_REVIEW,6a9276a552c42400c20f2cc552eb37d0,33542426321
-G3_FREEZE,real SHA-256 input freeze in CI artifact,PASS,6a9276a552c42400c20f2cc552eb37d0,33542426321
-G4_ECONOMICS,tax/PPA/CAPEX/CFADS corrected,PASS,6a9276a552c42400c20f2cc552eb37d0,33542426321
-G5_DEBT,DSCR/LLCR/PLCR and floors tested,PASS,6a9276a552c42400c20f2cc552eb37d0,33542426321
-G6_SCENARIOS,scenario semantics tests pass,PASS,6a9276a552c42400c20f2cc552eb37d0,33542426321
-G7_PORTFOLIO,common USD shortlist; no investment portfolio,PASS,6a9276a552c42400c20f2cc552eb37d0,33542426321
-G8_SURFACES,docs/reports/website generated contract,PASS,6a9276a552c42400c20f2cc552eb37d0,33542426321
-G9_CLAIMS,claim boundary and release governance pass,PASS,6a9276a552c42400c20f2cc552eb37d0,33542426321
+G0_SOURCE,"selected facts, anomalies and source URLs controlled",PASS,d78f8b8d8784200a838b4a211e1ef863b32970ed,33554842359
+G1_ENTITY,20 selected projects unique; candidate/master exact,PASS,d78f8b8d8784200a838b4a211e1ef863b32970ed,33554842359
+G2_PHYSICAL,yield sanity complete; disclosed outlier flagged,PASS_WITH_REVIEW,d78f8b8d8784200a838b4a211e1ef863b32970ed,33554842359
+G3_FREEZE,real SHA-256 freeze sealed in CI,PASS,d78f8b8d8784200a838b4a211e1ef863b32970ed,33554842359
+G4_BENCHMARK,modeled assumptions have explicit benchmark/origin,PASS,d78f8b8d8784200a838b4a211e1ef863b32970ed,33554842359
+G5_ECONOMICS,"tax, floors, CFADS and reference labels correct",PASS,d78f8b8d8784200a838b4a211e1ef863b32970ed,33554842359
+G6_DEBT,DSCR/LLCR/PLCR and schedule semantics correct,PASS,d78f8b8d8784200a838b4a211e1ef863b32970ed,33554842359
+G7_STRESS,"COD, fixed/no-new/resized and downside semantics correct",PASS,d78f8b8d8784200a838b4a211e1ef863b32970ed,33554842359
+G8_RECONCILIATION,Python/Excel/output/surface reconciliation pass,PASS,d78f8b8d8784200a838b4a211e1ef863b32970ed,33554842359
+G9_CLAIMS,"claim boundary, exact release and protection pass",PASS,d78f8b8d8784200a838b4a211e1ef863b32970ed,33554842359
