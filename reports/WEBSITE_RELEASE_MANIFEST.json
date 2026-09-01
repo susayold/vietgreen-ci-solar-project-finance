@@ -4,8 +4,8 @@
   "siteVersion": "5.1.1-v5.1.1-recruiter-final",
   "dataSource": "analytics/build_v5_1_1_release.py",
   "dataContractVersion": "V5.1.1-FULL-DATA-MODEL-CONTENT",
-  "gitSha": "14fe1e5e19ab0ecdd67f79be6be4d0aa5c59f2cb",
-  "workflowRunId": "33546532792",
+  "gitSha": "CI_SEALED_EXACT_HEAD",
+  "workflowRunId": "CI_SEALED_RUNTIME_METADATA",
   "routes": 8,
   "selectedProjectCount": 20,
   "candidateHistoryCount": 54,
@@ -14,7 +14,7 @@
   "ppaMode": "FRONTIER_ONLY",
   "transactionEvidenceStatus": "OPEN",
   "bankableTransactionReady": false,
-  "closureStatus": "DEPLOYED_EXACT_SHA_VERIFIED",
+  "closureStatus": "DEPLOYED_EXACT_SHA_VERIFIED_IN_CI",
   "validation": {
     "dataContract": "PASS",
     "reproducibility": "PASS",
@@ -24,7 +24,7 @@
     "llcrPlcrSeparation": "PASS",
     "scenarioSemantics": "PASS",
     "browserQA": "PASS at 390/430/768/1024/1440px",
-    "deploymentShaProof": "PASS"
+    "deploymentShaProof": "SEALED_IN_CI_RUNTIME_MANIFEST"
   },
   "claimBoundary": "Standardized public-data Project Finance reconstruction; not bankable, transaction-ready, lender-approved, IC-approved, legal, tax or technical sign-off.",
   "recruiterReady": true,
