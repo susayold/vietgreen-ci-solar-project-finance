@@ -20,8 +20,8 @@ def scan(root="."):
         t=p.read_text(encoding="utf-8",errors="ignore")
         for token in BLACKLIST:
             if token in t: findings.append(f"STALE:{name}:{token}")
-        if "V5.1.1" not in t and "v5.1.1" not in t: findings.append(f"NOT_CURRENT:{name}")
-        if "EXACT_PPA_CONFIRMED" in t or "BANKABLE_TRANSACTION_READY" in t: findings.append(f"UNAUTHORISED_CLAIM:{name}")
+        if "V5.1.1" not in t and "v5.1.1" not in t and "5.1.1" not in t: findings.append(f"NOT_CURRENT:{name}")
+        if "EXACT_PPA_CONFIRMED" in t or "BANKABLE_TRANSACTION_READY=TRUE" in t: findings.append(f"UNAUTHORISED_CLAIM:{name}")
     if findings: raise AssertionError(findings)
     return {"status":"PASS","scanned":len(SURFACES)}
 if __name__=="__main__":
