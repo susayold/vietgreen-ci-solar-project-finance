@@ -1,4 +1,4 @@
-"""Fail-closed stale-claim scan for the declared recruiter and control surfaces."""
+"""Fail-closed stale-claim scan for all declared recruiter and control surfaces."""
 
 from pathlib import Path
 
@@ -8,12 +8,16 @@ SURFACE_PATHS = [
     "EXECUTIVE_SUMMARY.md",
     "BUSINESS_CASE.md",
     "reports/RECRUITER_PACKAGE.md",
+    "reports/CV_BULLETS_V4.md",
+    "reports/INVESTMENT_COMMITTEE_MEMO.md",
+    "reports/LENDER_CREDIT_MEMO.md",
     "reports/WEBSITE_CONTENT_MAP.md",
     "reports/WEBSITE_QA_REPORT.md",
     "reports/WEBSITE_RELEASE_MANIFEST.json",
     "release/MODEL_RELEASE_MANIFEST.json",
     "validation/OPEN_EXTERNAL_GATES.csv",
     "validation/V4_READINESS_STATE.csv",
+    "validation/RECRUITER_SURFACE_RECONCILIATION.csv",
 ]
 SURFACE_PATHS.extend(
     str(path.relative_to(ROOT))

@@ -1,8 +1,20 @@
-# Lender Credit Memo — V4 Final Synthetic Candidate
+# Lender Credit Memo — V4.1.3 Final Synthetic Candidate
 
-Release ID: V4-FINAL-2026-08-31
-Date: 2026-08-31
+Release ID: V4.1.3-RECRUITER-FINAL
+Date: 2026-09-01
 Source: https://github.com/susayold/vietgreen-ci-solar-project-finance
+
+## V4.1.3 governance status
+
+CURRENT_TERMS_DECISION=NO_DEPLOYMENT
+SELECTED_COUNT=4
+SELECTED_IDS=VG-005|VG-010|VG-011|VG-012
+RECRUITER_READY=TRUE
+TRANSACTION_EVIDENCE_STATUS=OPEN
+BANKABLE_TRANSACTION_READY=FALSE
+EXTERNAL_GATE_COUNT_OPEN=8
+SELECTED_DEBT_BVND=55.946104
+POOLED_MIN_DSCR=1.300
 
 ## Credit view
 

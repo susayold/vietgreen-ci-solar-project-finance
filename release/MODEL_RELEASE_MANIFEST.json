@@ -1,10 +1,10 @@
 {
-  "release_id": "V4-FINAL-2026-08-31",
+  "release_id": "V4.1.3-RECRUITER-FINAL",
   "project": "VietGreen_CI_Solar_Project_Finance",
-  "release_version": "4.0.0-recruiter-candidate",
-  "release_status": "FINAL_RECRUITER_CANDIDATE",
-  "release_date": "2026-08-31",
-  "source_plan_sha256": "28042fe994343a864486a9cc08085f176d3743a10fadab6a6c6278efd14c742a",
+  "release_version": "4.1.3-recruiter-final",
+  "release_status": "FINAL_RECRUITER_RELEASE",
+  "release_date": "2026-09-01",
+  "source_plan_sha256": "ebf18083c631a023b804a391e096b8593fea02607128d1e16c85513c710fe8c7",
   "plan_raw_copy_stored": false,
   "remote_only": true,
   "recruiter_ready": true,
@@ -43,9 +43,9 @@
     "base_min_dscr": 1.2999999999999998,
     "p90_equity_npv_bvnd": -1.1778961071417045,
     "capex_equity_npv_bvnd": -3.1791596279448697,
-    "cod_min_dscr": 0.0,
+    "cod_min_dscr": 0,
     "combined_equity_npv_bvnd": -38.81445585728023,
-    "combined_min_dscr": 0.0
+    "combined_min_dscr": 0
   },
   "formula_workbook": {
     "path": "model/vietgreen_v4_formula_model.xlsx",

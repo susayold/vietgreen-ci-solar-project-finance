@@ -1,0 +1,27 @@
+surface,metric_id,authoritative_value,surface_value,tolerance,status,notes
+README.md,current_terms_decision,NO_DEPLOYMENT,NO_DEPLOYMENT,exact,PASS,Current Terms decision
+README.md,selected_count,4,4,exact,PASS,Exposure-constrained selected project count
+README.md,selected_ids,VG-005|VG-010|VG-011|VG-012,VG-005|VG-010|VG-011|VG-012,exact,PASS,Selected project IDs
+README.md,recruiter_ready,TRUE,TRUE,exact,PASS,Recruiter package readiness
+README.md,transaction_evidence_status,OPEN,OPEN,exact,PASS,External evidence boundary
+README.md,bankable_transaction_ready,FALSE,FALSE,exact,PASS,Bankability boundary
+README.md,selected_equity_bvnd,30.124825,30.124825,0.000001,PASS,Selected equity BVND
+EXECUTIVE_SUMMARY.md,current_terms_decision,NO_DEPLOYMENT,NO_DEPLOYMENT,exact,PASS,Current Terms decision
+EXECUTIVE_SUMMARY.md,selected_count,4,4,exact,PASS,Exposure-constrained selected project count
+EXECUTIVE_SUMMARY.md,selected_equity_bvnd,30.124825,30.124825,0.000001,PASS,Selected equity BVND
+EXECUTIVE_SUMMARY.md,selected_debt_bvnd,55.946104,55.946104,0.000001,PASS,Selected debt BVND
+BUSINESS_CASE.md,current_terms_decision,NO_DEPLOYMENT,NO_DEPLOYMENT,exact,PASS,Current Terms decision
+BUSINESS_CASE.md,negotiated_case_type,HYPOTHETICAL,HYPOTHETICAL,exact,PASS,Negotiated case is hypothetical
+BUSINESS_CASE.md,selected_count,4,4,exact,PASS,Exposure-constrained selected project count
+reports/CV_BULLETS_V4.md,selected_count,4,4,exact,PASS,Exposure-constrained selected project count
+reports/CV_BULLETS_V4.md,base_equity_npv_bvnd,5.942277,5.942277,0.000001,PASS,Base hypothetical Equity NPV BVND
+reports/CV_BULLETS_V4.md,p90_equity_npv_bvnd,-1.177896,-1.177896,0.000001,PASS,P90 Equity NPV BVND
+reports/INVESTMENT_COMMITTEE_MEMO.md,selected_debt_bvnd,55.946104,55.946104,0.000001,PASS,Selected debt BVND
+reports/INVESTMENT_COMMITTEE_MEMO.md,selected_cfads_bvnd,12.003384,12.003384,0.000001,PASS,Selected Year-1 CFADS BVND
+reports/INVESTMENT_COMMITTEE_MEMO.md,pooled_min_dscr,1.300,1.300,0.001,PASS,Pooled minimum DSCR
+reports/LENDER_CREDIT_MEMO.md,selected_debt_bvnd,55.946104,55.946104,0.000001,PASS,Selected debt BVND
+reports/LENDER_CREDIT_MEMO.md,pooled_min_dscr,1.300,1.300,0.001,PASS,Pooled minimum DSCR
+reports/LENDER_CREDIT_MEMO.md,bankable_transaction_ready,FALSE,FALSE,exact,PASS,Bankability boundary
+website/data/shared-summary.json,selected_count,4,4,exact,PASS,Shared website selected count
+website/data/shared-summary.json,selected_ids,VG-005|VG-010|VG-011|VG-012,VG-005|VG-010|VG-011|VG-012,exact,PASS,Shared website selected IDs
+website/data/shared-summary.json,current_terms_decision,NO_DEPLOYMENT,NO_DEPLOYMENT,exact,PASS,Shared website current decision

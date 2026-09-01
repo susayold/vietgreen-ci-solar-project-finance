@@ -4,6 +4,17 @@
 
 The case tests whether a synthetic Vietnam C&I rooftop-solar portfolio can be screened through an auditable energy, cash-flow, debt and portfolio workflow. It is a screening and communication package, not a claim that the synthetic portfolio is financeable in the market.
 
+## V4.1.3 governance status
+
+CURRENT_TERMS_DECISION=NO_DEPLOYMENT
+SELECTED_COUNT=4
+SELECTED_IDS=VG-005|VG-010|VG-011|VG-012
+RECRUITER_READY=TRUE
+TRANSACTION_EVIDENCE_STATUS=OPEN
+BANKABLE_TRANSACTION_READY=FALSE
+EXTERNAL_GATE_COUNT_OPEN=8
+NEGOTIATED_CASE_TYPE=HYPOTHETICAL
+
 ## Current Terms decision
 
 The current-terms gate is NO_DEPLOYMENT: 0 / 20 projects have positive Equity NPV. This result is kept visible and is not replaced by a later negotiated sensitivity.

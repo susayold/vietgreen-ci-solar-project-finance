@@ -1,7 +1,19 @@
-# V4 CV Bullets — VietGreen CI Solar Project Finance
+# V4.1.3 CV Bullets — VietGreen CI Solar Project Finance
 
-Release ID: V4-FINAL-2026-08-31
+Release ID: V4.1.3-RECRUITER-FINAL
 Repository: https://github.com/susayold/vietgreen-ci-solar-project-finance
+
+## V4.1.3 governance status
+
+CURRENT_TERMS_DECISION=NO_DEPLOYMENT
+SELECTED_COUNT=4
+SELECTED_IDS=VG-005|VG-010|VG-011|VG-012
+RECRUITER_READY=TRUE
+TRANSACTION_EVIDENCE_STATUS=OPEN
+BANKABLE_TRANSACTION_READY=FALSE
+EXTERNAL_GATE_COUNT_OPEN=8
+BASE_EQUITY_NPV_BVND=5.942277
+P90_EQUITY_NPV_BVND=-1.177896
 
 - Built a formula-driven Excel Project Finance model for a synthetic Vietnam C&I rooftop-solar pipeline, linking 8,760 load matching, P50/P90 energy, CFADS, debt sizing and Project/Equity NPV/IRR.
 - Solved customer ceiling, sponsor floor and lender floor with explicit bisection roots, residuals and interval evidence.

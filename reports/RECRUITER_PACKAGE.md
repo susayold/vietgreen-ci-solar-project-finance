@@ -1,9 +1,19 @@
-# Recruiter Package — V4 Project Finance Case
+# Recruiter Package — V4.1.3 Project Finance Case
 
-Release ID: V4-FINAL-2026-08-31
-Date: 2026-08-31
+Release ID: V4.1.3-RECRUITER-FINAL
+Date: 2026-09-01
 Repository: https://github.com/susayold/vietgreen-ci-solar-project-finance
 Recruiter site: https://susayold.github.io/vietgreen-ci-solar-project-finance/
+
+## V4.1.3 governance status
+
+CURRENT_TERMS_DECISION=NO_DEPLOYMENT
+SELECTED_COUNT=4
+SELECTED_IDS=VG-005|VG-010|VG-011|VG-012
+RECRUITER_READY=TRUE
+TRANSACTION_EVIDENCE_STATUS=OPEN
+BANKABLE_TRANSACTION_READY=FALSE
+EXTERNAL_GATE_COUNT_OPEN=8
 
 ## Positioning
 

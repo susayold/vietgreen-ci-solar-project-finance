@@ -2,6 +2,18 @@
 
 VietGreen CI Solar Project Finance is a synthetic, remote-reproducible candidate for screening a Vietnam C&I solar portfolio.
 
+## V4.1.3 governance status
+
+CURRENT_TERMS_DECISION=NO_DEPLOYMENT
+SELECTED_COUNT=4
+SELECTED_IDS=VG-005|VG-010|VG-011|VG-012
+RECRUITER_READY=TRUE
+TRANSACTION_EVIDENCE_STATUS=OPEN
+BANKABLE_TRANSACTION_READY=FALSE
+EXTERNAL_GATE_COUNT_OPEN=8
+SELECTED_EQUITY_BVND=30.124825
+SELECTED_DEBT_BVND=55.946104
+
 The released V4 candidate screens 20 synthetic projects. Current Terms produce 0 / 20 positive Equity NPV rows, so the current decision is NO_DEPLOYMENT. A separate negotiated-terms case is a hypothetical commercial remediation sensitivity: 19 / 20 rows are positive, and four projects are selected under the released exposure constraints: VG-005, VG-010, VG-011 and VG-012.
 
 The selected hypothetical portfolio requires 30.124825 BVND of equity and 55.946104 BVND of debt, generates 12.003384 BVND of Year-1 CFADS and meets a pooled minimum DSCR of 1.300x. The negotiated hypothetical base case has Project NPV of 5.262393 BVND, Equity NPV of 5.942277 BVND, Project IRR of 12.732% and Equity IRR of 15.929%.

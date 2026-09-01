@@ -1,11 +1,22 @@
-# VietGreen CI Solar Project Finance — V4 Final Candidate
+# VietGreen CI Solar Project Finance — V4.1.3 Recruiter Final
 
-Release ID: V4-FINAL-2026-08-31
-Date: 2026-08-31
+Release ID: V4.1.3-RECRUITER-FINAL
+Date: 2026-09-01
 GitHub source of truth: https://github.com/susayold/vietgreen-ci-solar-project-finance
 Google Drive control index: https://docs.google.com/document/d/1koSgbc1Akic6cVDFD1svmuVN9gSq8qSGUw2obfHYN80/edit
 
-This is a recruiter-ready synthetic Vietnam C&I rooftop-solar project-finance case. The attached V4 master plan is the implementation specification; the user request controls the remote-only boundary. The plan source is tracked by SHA-256 (28042fe994343a864486a9cc08085f176d3743a10fadab6a6c6278efd14c742a); no raw plan copy, private transaction file or local project-data copy is stored.
+This is a recruiter-ready synthetic Vietnam C&I rooftop-solar project-finance case. The attached V4.1.3 governance closure plan is the implementation specification; the user request controls the remote-only boundary. The plan source is tracked by SHA-256 (ebf18083c631a023b804a391e096b8593fea02607128d1e16c85513c710fe8c7); no raw plan copy, private transaction file or local project-data copy is stored.
+
+## V4.1.3 governance status
+
+CURRENT_TERMS_DECISION=NO_DEPLOYMENT
+SELECTED_COUNT=4
+SELECTED_IDS=VG-005|VG-010|VG-011|VG-012
+RECRUITER_READY=TRUE
+TRANSACTION_EVIDENCE_STATUS=OPEN
+BANKABLE_TRANSACTION_READY=FALSE
+EXTERNAL_GATE_COUNT_OPEN=8
+SELECTED_EQUITY_BVND=30.124825
 
 ## Decision in one line
 
