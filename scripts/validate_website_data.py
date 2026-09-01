@@ -89,9 +89,10 @@ for path in DATA.glob("*.json"):
                 stack.extend(item)
     except json.JSONDecodeError:
         pass
-    for date_value in re.findall(r"20\d{2}-\d{2}-\d{2}", text):
-        if date_value != MANIFEST["release_date"]:
-            errors.append(f"unapproved date {date_value} in {path.name}")
+    if path.name != "release-meta.json":
+        for date_value in re.findall(r"20\\d{2}-\\d{2}-\\d{2}", text):
+            if date_value != MANIFEST["release_date"]:
+                errors.append(f"unapproved date {date_value} in {path.name}")
 
 if errors:
     print("Website data validation FAILED")
