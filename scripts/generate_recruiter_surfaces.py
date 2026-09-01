@@ -1,13 +1,18 @@
-"""Generate governed V5 recruiter surfaces from the final V5 manifest."""
+"""Generate recruiter surfaces from the authoritative V5.1 economics output."""
+import csv,json
 from pathlib import Path
-import json
-ROOT=Path(__file__).resolve().parents[1]; M=ROOT/"release"/"V5_BUILD_STATUS.json"; OUT=ROOT/"artifacts"/"v5_surfaces"
-def main():
-    m=json.loads(M.read_text(encoding="utf-8"));OUT.mkdir(parents=True,exist_ok=True);status=m.get("release_status","INPUT_DATA_BLOCKED");ready=status.startswith("READY")
-    headline=f"{m.get('project_count',0)} selected real C&I solar records across {m.get('candidate_count',0)} public candidates."
-    if not ready:headline+=" Release is blocked pending V5 input/evidence gates."
-    common="This is a public-data reconstruction. It does not claim confidential PPA terms, actual lender pricing, transaction approval, legal/tax certification or bankability."
-    docs={"README.md":f"# VietGreen V5\n\n{headline}\n\nStatus: {status}\n\n{common}\n","EXECUTIVE_SUMMARY.md":f"# V5 Executive Summary\n\n{headline}\n\n{common}\n","BUSINESS_CASE.md":f"# V5 Business Case\n\nSelected real records are modeled with observed facts separated from explicit benchmark assumptions.\n\nStatus: {status}\n","IC_MEMO.md":f"# V5 Investment Committee Memo\n\nDecision boundary: standardized public-data screening only.\n\n{common}\n","LENDER_MEMO.md":f"# V5 Lender Memo\n\nStatus: SCREENING_ONLY; actual debt terms remain undisclosed.\n\n{common}\n","CV_BULLETS.md":"# V5 CV Bullets\n\n- Built a governed real-data migration across 50+ public C&I solar candidates.\n- Implemented outcome-blind selection, country benchmark packs, source lineage, conflict controls and remote CI reproducibility.\n- Separated observed facts from standardized underwriting assumptions and claim boundaries.\n"}
-    for n,c in docs.items():(OUT/n).write_text(c,encoding="utf-8")
-    (OUT/"website_headline.txt").write_text(headline+"\n",encoding="utf-8")
-if __name__=="__main__":main()
+ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/"outputs";DEST=ROOT/"artifacts"/"v5_surfaces"
+def rows(p):
+ with p.open(newline="",encoding="utf-8-sig") as h:return list(csv.DictReader(h))
+def build():
+ DEST.mkdir(parents=True,exist_ok=True);econ=rows(OUT/"v5_project_economics.csv");n=len(econ)
+ intro="Reconstructed and underwrote a portfolio of real C&I/distributed-solar projects from public project and transaction evidence, using country-specific solar, tariff, tax, financing and FX benchmarks; integrated 8,760 load matching, PPA frontier analysis, CFADS-based debt sizing, DSCR/LLCR/PLCR, sponsor returns and downside stress testing with evidence-level governance."
+ boundary="V5.1 is a standardized public-data reconstruction. Confidential PPA, lender, tax, technical and site terms are not represented as actual unless explicitly disclosed. Recruiter-ready does not mean investment approval, lender approval, legal/tax opinion, technical certification or a bankable transaction."
+ (DEST/"README.md").write_text("# VietGreen V5.1\n\n"+intro+"\n\n"+boundary+"\n",encoding="utf-8")
+ (DEST/"Executive_Summary.md").write_text("# Executive Summary\n\nProjects under full-engine public-data reconstruction: "+str(n)+". Every project is outcome-blind selected before economics. PPA mode is FRONTIER_ONLY when exact price is not public; displayed reference economics is not a confidential PPA.\n\n"+boundary+"\n",encoding="utf-8")
+ (DEST/"Business_Case.md").write_text("# Business Case\n\nThe customer ceiling, sponsor floor and lender floor are shown as a negotiation frontier. Local currency cash flows are translated to USD only for reporting. No manual NPV/IRR edits are permitted.\n\n"+boundary+"\n",encoding="utf-8")
+ (DEST/"IC_memo.md").write_text("# IC Memo\n\nDecision status is INDETERMINATE_MISSING_COMMERCIAL_DATA unless confidential PPA, site, technical, tax and financing diligence closes the missing evidence. No IC approval is claimed.\n\n"+boundary+"\n",encoding="utf-8")
+ (DEST/"Lender_memo.md").write_text("# Lender Memo\n\nDebt is capacity-sized using DSCR/LLCR/PLCR/leverage constraints and a forward schedule. Financing inputs are standardized underwriting assumptions, not lender terms; transaction evidence remains OPEN.\n\n"+boundary+"\n",encoding="utf-8")
+ (DEST/"recruiter_package.md").write_text("# Recruiter Package\n\n"+intro+"\n\nEvidence labels: OBSERVED PUBLIC FACT; DERIVED PUBLIC FACT; BENCHMARK RECONSTRUCTION; ANALYST ASSUMPTION; STANDARDIZED UNDERWRITING; SCENARIO; NOT DISCLOSED.\n\n"+boundary+"\n",encoding="utf-8")
+ (DEST/"CV_bullets.md").write_text("# CV Bullets\n\n- "+intro+"\n- Built reproducible remote CI controls for units, FX, source lineage, 8,760 load matching, PPA frontier, CFADS/debt sizing, DSCR/LLCR/PLCR, returns and downside scenarios.\n\n"+boundary+"\n",encoding="utf-8")
+if __name__=="__main__":build()
