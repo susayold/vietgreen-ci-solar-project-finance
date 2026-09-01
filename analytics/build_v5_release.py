@@ -86,7 +86,7 @@ def main():
     if shares and max(shares.values())>float(config["portfolio"]["hard_max_country_share"]):blockers.append("G5_COUNTRY_CONCENTRATION:"+json.dumps(shares,sort_keys=True))
     # G8 conflict/reconciliation resolution
     for r in conflicts:
-        if r.get("resolution_status") not in {"DISCLOSED_NOT_USED","RESOLVED","SUPERSEDED"}: "+r.get("conflict_id",""))
+        if r.get("resolution_status") not in {"DISCLOSED_NOT_USED","RESOLVED","SUPERSEDED"}:blockers.append("G8_CONFLICT_OPEN:"+r.get("conflict_id",""))
     # G6 debt: standardized debt must be explicit, linked to a rate register and bounded.
     rate_countries={r.get("country") for r in rate_rows if r.get("status") in {"READY_FOR_SCREENING","READY_FOR_ECONOMICS"}}
     for r in selected:
