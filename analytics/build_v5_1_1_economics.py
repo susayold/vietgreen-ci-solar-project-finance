@@ -119,12 +119,14 @@ def _debt_metrics(p, cfads):
 def run(root: str|Path, output_dir: str|Path) -> Dict[str,List[Dict]]:
     root=Path(root); out=Path(output_dir); out.mkdir(parents=True,exist_ok=True)
     projects=_read_csv(root/"data/public/project_master_real.csv"); overlays=_assumptions(_read_csv(root/"data/public/project_assumption_overlay.csv"))
-    econ=[]; cash=[]; debt_rows=[]; scenario_rows=[]; input_view=[]
+    econ=[]; cash=[]; debt_rows=[]; scenario_rows=[]; input_view=[]; hourly=[]
     scenario_ids=["BASE","P90_ENERGY","CAPEX_OVERRUN","INTEREST_RATE_SHOCK","COD_DELAY","OPEX_INFLATION","OFFTAKER_NONPAYMENT","OFFTAKER_TERMINATION","COMBINED_DOWNSIDE"]
     for project in projects:
         if "SELECTED" not in project.get("selection_status",""): continue
         p=_project_inputs(project,overlays[project["project_id"]])
         solar=profile(p["annual_load_kwh"],p["generation_p50_kwh"],.75,2027)
+        for h,(ts,load_kwh,solar_kwh,self_kwh,export_kwh) in enumerate(zip(solar["timestamps"],solar["load"],solar["solar"],solar["self_consumed"],solar["export"])):
+            hourly.append({"project_id":project["project_id"],"timestamp":ts,"load_kwh":load_kwh,"solar_kwh":solar_kwh,"self_consumed_kwh":self_kwh,"export_kwh":export_kwh,"profile_year":solar["profile_year"]})
         ref=p["customer_ceiling"]; base_rows,base_cf=operating_schedule(p,ref)
         debt,binding,constraints,sched,dscr,llcr,plcr=_debt_metrics(p,base_cf)
         debt_service=[x["debt_service"] for x in sched]+[0.0]*max(0,len(base_cf)-len(sched))
@@ -196,7 +198,7 @@ def run(root: str|Path, output_dir: str|Path) -> Dict[str,List[Dict]]:
           "overlay_evidence_classes":"EXPLICIT_OVERLAY_PER_PARAMETER","input_view_status":"READY_FOR_REVIEW"})
     _write_csv(out/"v5_1_1_economics_summary.csv",econ); _write_csv(out/"v5_1_1_cash_flow.csv",cash); _write_csv(out/"v5_1_1_debt_schedule.csv",debt_rows)
     _write_csv(out/"v5_1_1_scenario_results.csv",scenario_rows); _write_csv(out/"v5_1_1_model_input_view.csv",input_view)
-    return {"economics":econ,"cash_flow":cash,"debt_schedule":debt_rows,"scenarios":scenario_rows,"model_input_view":input_view}
+    return {"economics":econ,"cash_flow":cash,"debt_schedule":debt_rows,"scenarios":scenario_rows,"model_input_view":input_view,"hourly":hourly}
 
 if __name__=="__main__":
     root=Path(__file__).resolve().parents[1]
