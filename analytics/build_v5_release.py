@@ -340,7 +340,7 @@ def main() -> int:
     args = parser.parse_args()
     manifest, blockers = build_manifest()
     RELEASE.mkdir(parents=True, exist_ok=True)
-    (RELEASE / "V5_BUILD_STATUS.json").write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\\n", encoding="utf-8")
+    (RELEASE / "V5_BUILD_STATUS.json").write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(json.dumps({"release_status": manifest["release_status"], "project_count": manifest["project_count"], "candidate_count": manifest["candidate_count"], "blocker_count": len(blockers), "blockers": blockers}, ensure_ascii=False))
     return 0 if args.allow_incomplete or not blockers else 2
 
