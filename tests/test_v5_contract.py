@@ -2,6 +2,7 @@ from pathlib import Path
 import csv
 import json
 
+
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -29,8 +30,23 @@ def test_v5_candidate_sources_are_registered():
     assert all(set(row["source_ids"].split("|")).issubset(sources) for row in candidates)
 
 
+def test_v5_candidate_scoring_is_consistent():
+    with (ROOT / "research" / "GLOBAL_PROJECT_CANDIDATES.csv").open(newline="", encoding="utf-8") as handle:
+        candidates = {row["candidate_id"] for row in csv.DictReader(handle)}
+    with (ROOT / "research" / "CANDIDATE_SCORING.csv").open(newline="", encoding="utf-8") as handle:
+        scored = list(csv.DictReader(handle))
+    assert candidates == {row["candidate_id"] for row in scored}
+    assert all(0 <= int(row["total_score"]) <= 100 for row in scored)
+    assert all(row["evidence_grade"] in {"GOLD", "STRONG", "ACCEPTABLE", "EXCLUDE"} for row in scored)
+
+
 def test_v5_release_is_blocked_before_freeze():
     manifest = json.loads((ROOT / "release" / "MODEL_RELEASE_MANIFEST_V5.json").read_text(encoding="utf-8"))
     assert manifest["release_status"] == "INPUT_DATA_BLOCKED"
     assert manifest["recruiter_ready"] is False
     assert manifest["base_project_npv_usd"] is None
+
+
+def test_v5_gate_surface_is_explicit():
+    source = (ROOT / "analytics" / "build_v5_release.py").read_text(encoding="utf-8")
+    assert all(f"G{i}" in source for i in range(10))

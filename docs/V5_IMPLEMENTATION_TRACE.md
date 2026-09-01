@@ -61,3 +61,21 @@ The public candidate register was expanded to 15 records using official IFC disc
 - KES Vietnam: aggregate 6–7 MW rooftop capacity across MDF1/MDF2; plant-level decomposition is not public.
 
 Portfolio and facility disclosures are stored as candidate evidence, not as frozen projects. Secondary-market records are labeled as such. The release remains blocked with 1 current project-master row, 0 frozen projects and 15 minimum-project requirement unmet.
+
+
+## Validation gate engine — 2026-09-01
+
+The V5 build now evaluates explicit G0–G9 controls in the remote CI runner:
+
+- G0: source/evidence/data-quality integrity.
+- G1: controlled-country and project identity integrity.
+- G2: schema, evidence-class and source-tier integrity.
+- G3: source lineage, candidate scoring and observation registration.
+- G4: benchmark-pack readiness.
+- G5: minimum-universe, reconstruction-mode and selection quality controls.
+- G6: hard country-concentration control for selected rows.
+- G7: unresolved observation-conflict detection.
+- G8: claim-boundary protection against bankable/transaction-ready overclaim.
+- G9: release configuration sanity.
+
+The builder emits an ephemeral V5_BUILD_STATUS.json with gate status, candidate-quality metrics and input hashes. It does not save raw web snapshots or project data locally in the shared workspace.
