@@ -1,0 +1,7 @@
+project_id,parameter,value,low,high,unit,currency,evidence_class,benchmark_pack_id,source_id,reason,review_status
+IFC-FPE-46362,installed_capacity_kwp,,,,kWp,,NOT_DISCLOSED,IN-CI-2026-METADATA,IFC-46362,"The disclosure aggregates rooftop, open-access and wind capacity; do not allocate or net across asset types.",BLOCKED_NOT_DISCLOSED
+IFC-FPE-46362,annual_generation_kwh,,,,kWh,,NOT_DISCLOSED,IN-CI-2026-METADATA,IFC-46362,"No asset-level production or P50/P90 series is disclosed.",BLOCKED_NOT_DISCLOSED
+IFC-FPE-46362,annual_customer_load_kwh,,,,kWh,,NOT_DISCLOSED,IN-CI-2026-METADATA,IFC-46362,"Individual customer loads and load matching are not disclosed.",BLOCKED_NOT_DISCLOSED
+IFC-FPE-46362,ppa_price,,,,local_currency_per_kWh,,NOT_DISCLOSED,IN-CI-2026-METADATA,IFC-46362,"No project-specific PPA price is disclosed.",BLOCKED_NOT_DISCLOSED
+IFC-FPE-46362,debt_schedule,,,,local_currency,,NOT_DISCLOSED,IN-CI-2026-METADATA,IFC-46362,"Public financing totals do not disclose asset-level debt service, tenor, spread or covenants.",BLOCKED_NOT_DISCLOSED
+IFC-FPE-46362,operating_horizon_years,,,,years,,NOT_DISCLOSED,IN-CI-2026-METADATA,IFC-46362,"Portfolio operating life and terminal treatment are not disclosed.",BLOCKED_NOT_DISCLOSED

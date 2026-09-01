@@ -1,0 +1,12 @@
+model:
+  v4:
+    universe: SYNTHETIC
+    status: HISTORICAL_IMMUTABLE_RELEASE
+    release: v4.1.3-recruiter-final
+  v5:
+    universe: REAL_PUBLIC_PROJECTS
+    status: MIGRATION_IN_PROGRESS
+    branch: v5-global-real-data
+    release: V5-GLOBAL-REAL-DATA-BASELINE
+  claim_boundary: PUBLIC_DATA_RECONSTRUCTION_ONLY
+  local_project_data: NONE

@@ -1,0 +1,6 @@
+fx_id,base_currency,quote_currency,spot_value,spot_date,source_id,source_url,evidence_class,status,notes
+FX-USD-VND,USD,VND,,,MOIT-EVN,https://evn.com.vn/,OBSERVED_MARKET_FACT,REFRESH_REQUIRED,"Do not use until official value date and method are registered."
+FX-USD-INR,USD,INR,,,RBI-MONETARY,https://www.rbi.org.in/,OBSERVED_MARKET_FACT,REFRESH_REQUIRED,"Use one common FX base date across global reporting."
+FX-USD-SGD,USD,SGD,,,EMA-REG-TARIFF,https://www.ema.gov.sg/,OBSERVED_MARKET_FACT,REFRESH_REQUIRED,"Replace placeholder source with central-bank/official FX source before release."
+FX-USD-AUD,USD,AUD,,,RBA-CASH,https://www.rba.gov.au/,OBSERVED_MARKET_FACT,REFRESH_REQUIRED,"Use official value date and reporting convention."
+FX-EUR-USD,EUR,USD,,,ECB-RATES,https://www.ecb.europa.eu/,OBSERVED_MARKET_FACT,REFRESH_REQUIRED,"Reporting USD translation only; local NPV remains primary."

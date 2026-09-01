@@ -1,0 +1,6 @@
+entity_id,entity_type,canonical_name,project_id,role,country,identity_status,source_id,source_locator,notes
+ENT-FPE,developer,Fourth Partner Energy Private Limited,IFC-FPE-46362,developer,India,CONFIRMED_PORTFOLIO_ENTITY,IFC-46362,Company Name / Project Description,"Developer and client are identified; site-level entities are not disclosed."
+ENT-FPE-PORTFOLIO,portfolio,Fourth Partner Energy India Distributed C&I Portfolio,IFC-FPE-46362,financed_portfolio,India,CONFIRMED_PORTFOLIO_IDENTITY,IFC-46362,Project Description,"Public disclosure is portfolio-level and covers rooftop/open-access assets."
+ENT-FPE-OFFTAKERS,offtaker_group,Multiple commercial and industrial clients,IFC-FPE-46362,offtaker_group,India,AGGREGATE_ONLY,IFC-46362,Project Description,"Individual offtaker names and credit terms are not disclosed."
+ENT-CANDI,developer,Candi Solar AG,CANDI-SOLAR-49109,developer,India|South Africa,CONFIRMED_PLATFORM_ENTITY,IFC-49109,Company Name / Project Description,"Platform operates in two countries; asset split is not disclosed."
+ENT-CANDI-PLATFORM,portfolio,Candi Solar India and South Africa C&I Platform,CANDI-SOLAR-49109,financed_platform,India|South Africa,CONFIRMED_PLATFORM_IDENTITY,IFC-49109,Project Description,"Candidate only until country allocation and asset identity are resolved."

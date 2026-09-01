@@ -1,0 +1,19 @@
+{
+  "freeze_id": null,
+  "freeze_timestamp": null,
+  "freeze_status": "NOT_FROZEN",
+  "project_count": 0,
+  "project_ids": [],
+  "source_register_hash": null,
+  "project_master_hash": null,
+  "assumption_overlay_hash": null,
+  "benchmark_pack_hash": null,
+  "code_sha": null,
+  "freeze_rule": "research -> select -> freeze inputs -> run economics",
+  "blockers": [
+    "No asset-level VietGreen project evidence is available in the inspected Drive/GitHub scope.",
+    "Candidate portfolio disclosures cannot be treated as site-level projects.",
+    "Minimum project universe is 15 and current frozen universe is 0.",
+    "Tariff, tax, FX and debt registers are metadata-ready but not refreshed into model inputs."
+  ]
+}

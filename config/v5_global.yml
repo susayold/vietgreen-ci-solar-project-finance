@@ -1,0 +1,16 @@
+{
+  "portfolio": {
+    "minimum_projects": 15,
+    "target_projects": 20,
+    "maximum_projects": 25,
+    "preferred_max_country_share": 0.30,
+    "hard_max_country_share": 0.40,
+    "minimum_evidence_grade": "ACCEPTABLE"
+  },
+  "countries": ["Vietnam", "India", "United States", "European Union", "Singapore", "Australia"],
+  "evidence_classes": ["OBSERVED_PROJECT_FACT", "OBSERVED_TRANSACTION_FACT", "OBSERVED_REGULATORY_FACT", "OBSERVED_MARKET_FACT", "DERIVED_FROM_OBSERVED", "BENCHMARK_ASSUMPTION", "ANALYST_ASSUMPTION", "SCENARIO_ONLY", "NOT_DISCLOSED", "NOT_APPLICABLE"],
+  "model_modes": ["FULL_RECONSTRUCTION", "PARTIAL_RECONSTRUCTION", "FRONTIER_ONLY", "SCREENING_ONLY"],
+  "terminal_branches": ["ZERO_RESIDUAL", "MERCHANT_TAIL", "PPA_RENEWAL", "CUSTOMER_BUYOUT", "ASSET_TRANSFER", "REMOVAL", "UNKNOWN_ZERO_BASE"],
+  "operating_horizon": {"minimum_years": 1, "maximum_years": 30},
+  "release": {"release_status_when_blocked": "INPUT_DATA_BLOCKED", "recruiter_ready_when_blocked": false, "transaction_evidence_status": "OPEN", "bankable_transaction_ready": false}
+}

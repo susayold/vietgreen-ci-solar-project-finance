@@ -1,0 +1,7 @@
+rate_id,country,currency,base_rate,spread,pf_premium,all_in_rate,tenor_years,sizing_dscr,minimum_dscr,llcr_floor,plcr_floor,leverage_cap,source_id,value_date,evidence_class,status,notes
+RATE-VN,Vietnam,VND,,,,,,,,,,,,VN-TAX,,"NOT_DISCLOSED",REFRESH_REQUIRED,"No debt rate is inferred from V4."
+RATE-IN,India,INR,,,,,,,,,,,,RBI-MONETARY,,"NOT_DISCLOSED",REFRESH_REQUIRED,"State/project-finance debt terms required."
+RATE-US,United States,USD,,,,,,,,,,,,US-TREASURY-YIELD,,"NOT_DISCLOSED",REFRESH_REQUIRED,"Treasury curve is not a lender quote."
+RATE-EU,European Union,EUR,,,,,,,,,,,,ECB-RATES,,"NOT_DISCLOSED",REFRESH_REQUIRED,"ECB policy rate is not project debt pricing."
+RATE-SG,Singapore,SGD,,,,,,,,,,,,EMA-REG-TARIFF,,"NOT_DISCLOSED",REFRESH_REQUIRED,"Placeholder row intentionally blocked pending official financing source."
+RATE-AU,Australia,AUD,,,,,,,,,,,,RBA-CASH,,"NOT_DISCLOSED",REFRESH_REQUIRED,"Cash rate is an anchor, not a debt quote."

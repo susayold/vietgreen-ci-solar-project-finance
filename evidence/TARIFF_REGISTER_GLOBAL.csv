@@ -1,0 +1,7 @@
+tariff_id,country,customer_class,region,tariff_reference,energy_rate,demand_charge,tou,network_charge,wheeling_charge,losses,taxes,currency,source_id,value_date,evidence_class,status,notes
+TAR-VN-CI,Vietnam,commercial_industrial,NOT_DISCLOSED,NOT_DISCLOSED,,,,,,,VND,MOIT-EVN,,NOT_DISCLOSED,REFRESH_REQUIRED,"No project bill or confirmed customer class supplied."
+TAR-IN-CI,India,commercial_industrial,NOT_DISCLOSED,NOT_DISCLOSED,,,,,,,INR,CERC-REG,,NOT_DISCLOSED,REFRESH_REQUIRED,"State ERC/DISCOM and open-access charges required."
+TAR-US-CI,United States,commercial_industrial,NOT_DISCLOSED,NOT_DISCLOSED,,,,,,,USD,EIA-ELECTRIC-PRICE,,NOT_DISCLOSED,REFRESH_REQUIRED,"Utility/state and demand charges required."
+TAR-EU-CI,European Union,non_household,NOT_DISCLOSED,NOT_DISCLOSED,,,,,,,EUR,EUROSTAT-NONHOUSEHOLD,,NOT_DISCLOSED,REFRESH_REQUIRED,"Use member state and consumption band."
+TAR-SG-CI,Singapore,commercial_industrial,NOT_DISCLOSED,NOT_DISCLOSED,,,,,,,SGD,EMA-REG-TARIFF,,NOT_DISCLOSED,REFRESH_REQUIRED,"Quarterly regulated tariff is not automatically an industrial project price."
+TAR-AU-CI,Australia,commercial_industrial,NOT_DISCLOSED,NOT_DISCLOSED,,,,,,,AUD,AER-RETAIL,,NOT_DISCLOSED,REFRESH_REQUIRED,"Use jurisdiction, distributor and retailer mapping."
