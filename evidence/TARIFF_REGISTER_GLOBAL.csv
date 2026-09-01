@@ -1,9 +1,8 @@
 tariff_id,country,customer_class,region,tariff_reference,energy_rate,demand_charge,tou,network_charge,wheeling_charge,losses,taxes,currency,source_id,value_date,evidence_class,status,notes
-TAR-VN,Vietnam,manufacturing,National,3460 VND/kWh official reference,3460,,,,,,,VND,MOIT-EVN,2025-05-09,OBSERVED_REGULATORY_FACT,READY_FOR_BENCHMARK,Retail reference only.
-TAR-IN,India,C&I,National,7 INR/kWh standardized,7,,,,,,,INR,METHOD-V5-BENCHMARK,2026-09-01,BENCHMARK_ASSUMPTION,READY_FOR_BENCHMARK,State mapping required.
-TAR-TH,Thailand,C&I,National,3.25 THB/kWh standardized,3.25,,,,,,,THB,METHOD-V5-BENCHMARK,2026-09-01,BENCHMARK_ASSUMPTION,READY_FOR_BENCHMARK,Not project PPA.
-TAR-FR,France,non-household,France,0.12 EUR/kWh standardized,.12,,,,,,,EUR,METHOD-V5-BENCHMARK,2026-09-01,BENCHMARK_ASSUMPTION,READY_FOR_BENCHMARK,Member-state assumption.
-TAR-IT,Italy,non-household,Italy,0.13 EUR/kWh standardized,.13,,,,,,,EUR,METHOD-V5-BENCHMARK,2026-09-01,BENCHMARK_ASSUMPTION,READY_FOR_BENCHMARK,Member-state assumption.
-TAR-ES,Spain,non-household,Spain,0.11 EUR/kWh standardized,.11,,,,,,,EUR,METHOD-V5-BENCHMARK,2026-09-01,BENCHMARK_ASSUMPTION,READY_FOR_BENCHMARK,Member-state assumption.
-TAR-PL,Poland,non-household,Poland,0.12 EUR/kWh standardized,.12,,,,,,,EUR,METHOD-V5-BENCHMARK,2026-09-01,BENCHMARK_ASSUMPTION,READY_FOR_BENCHMARK,Member-state assumption.
-TAR-SK,Slovakia,non-household,Slovakia,0.115 EUR/kWh standardized,.115,,,,,,,EUR,METHOD-V5-BENCHMARK,2026-09-01,BENCHMARK_ASSUMPTION,READY_FOR_BENCHMARK,Member-state assumption.
+TAR-V5.1-VIETNAM,Vietnam,non-household,LEGAL_REFERENCE,3460 VND/kWh reference,3460,,,,,,,VND,MOIT-EVN,2025-05-09,OBSERVED_REGULATORY_FACT,READY_FOR_V5_1_ENGINE,Legal reference only; billed/project-confirmed tariff not disclosed.
+TAR-V5.1-INDIA,India,C&I_STATE_OR_OPEN_ACCESS,STATE_REQUIRED,7 INR/kWh reference,7,,,,REQUIRED_IF_OPEN_ACCESS,REQUIRED_IF_OPEN_ACCESS,,INR,CERC-REG,2026-09-01,BENCHMARK_ASSUMPTION,FRONTIER_ONLY_REFERENCE,State/DISCOM/open-access charges required; not a national customer tariff.
+TAR-V5.1-FRANCE,France,non-household,COUNTRY_BAND_OR_REFERENCE,0.12 EUR/kWh reference,0.12,,,,,,,EUR,EUROSTAT-NRG-PC-205,2026-09-01,BENCHMARK_ASSUMPTION,READY_FOR_V5_1_ENGINE,Band/reference only; not project PPA.
+TAR-V5.1-ITALY,Italy,non-household,COUNTRY_BAND_OR_REFERENCE,0.13 EUR/kWh reference,0.13,,,,,,,EUR,EUROSTAT-NRG-PC-205,2026-09-01,BENCHMARK_ASSUMPTION,READY_FOR_V5_1_ENGINE,Band/reference only; not project PPA.
+TAR-V5.1-SPAIN,Spain,non-household,COUNTRY_BAND_OR_REFERENCE,0.11 EUR/kWh reference,0.11,,,,,,,EUR,EUROSTAT-NRG-PC-205,2026-09-01,BENCHMARK_ASSUMPTION,READY_FOR_V5_1_ENGINE,Band/reference only; not project PPA.
+TAR-V5.1-POLAND,Poland,non-household,COUNTRY_BAND_OR_REFERENCE,0.12 EUR/kWh reference,0.12,,,,,,,EUR,EUROSTAT-NRG-PC-205,2026-09-01,BENCHMARK_ASSUMPTION,READY_FOR_V5_1_ENGINE,Band/reference only; not project PPA.
+TAR-V5.1-SLOVAKIA,Slovakia,non-household,COUNTRY_BAND_OR_REFERENCE,0.115 EUR/kWh reference,0.115,,,,,,,EUR,EUROSTAT-NRG-PC-205,2026-09-01,BENCHMARK_ASSUMPTION,READY_FOR_V5_1_ENGINE,Band/reference only; not project PPA.
