@@ -1,5 +1,11 @@
-surface,required_version,observed_version,status
-root_docs,V5.1.1,V5.1.1,PASS
-reports,V5.1.1,V5.1.1,PASS
-website,V5.1.1,V5.1.1,PASS
-github_release,v5.1.1-recruiter-final,v5.1.1-recruiter-final,PASS
+surface,metric_or_claim,authoritative_source,expected_value,actual_value,status
+README,release boundary,README.md,V5.1.1 / FRONTIER_ONLY / INDETERMINATE_MISSING_COMMERCIAL_DATA,V5.1.1 / FRONTIER_ONLY / INDETERMINATE_MISSING_COMMERCIAL_DATA,PASS
+Executive Summary,decision boundary,EXECUTIVE_SUMMARY.md,V5.1.1,V5.1.1,PASS
+Business Case,data contract,BUSINESS_CASE.md,observed vs overlay,observed vs overlay,PASS
+IC memo,recommendation class,reports/INVESTMENT_COMMITTEE_MEMO.md,"diligence shortlist, no INVEST","diligence shortlist, no INVEST",PASS
+Lender memo,terms boundary,reports/LENDER_CREDIT_MEMO.md,not actual lender terms,not actual lender terms,PASS
+Recruiter Package,claim boundary,reports/RECRUITER_PACKAGE.md,"recruiter-ready, not bankable","recruiter-ready, not bankable",PASS
+CV bullets,public-data scope,reports/CV_BULLETS_V5_1_1.md,54/20/441,54/20/441,PASS
+Website,release data,website/data/release-meta.json,V5.1.1,V5.1.1,PASS
+Drive,authoritative state,Drive control document,V5.1.1 SEALED_IN_CI,V5.1.1 SEALED_IN_CI,PASS
+GitHub Release,published tag,v5.1.1-recruiter-final,published exact SHA,published exact SHA,PASS
