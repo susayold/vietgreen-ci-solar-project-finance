@@ -1,0 +1,7 @@
+dod_area,status,evidence
+DATA,CI_GENERATED,baseline preserved and outcome-blind freeze
+UNITS,CI_GENERATED,explicit source unit currency and FX conversion
+BENCHMARKS,CI_GENERATED,scoped external anchors and comparability
+MODEL,CI_GENERATED,full engine path with 8760 P50 P90 frontier CFADS debt returns
+QA,CI_GENERATED,G0-G9 and expanded substantive tests
+RELEASE,CI_GENERATED,exact SHA runtime manifest artifact and claim boundary
