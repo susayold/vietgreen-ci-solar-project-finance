@@ -1,33 +1,16 @@
-# V4.1.3 recruiter surface reconciliation
+# V5.1.1 Recruiter Surface Reconciliation
 
-**Release:** V4.1.3-RECRUITER-FINAL  
-**Contract:** V4.1-RECRUITER-CLOSURE  
-**Status:** Candidate validation required on the final SHA
+**Release:** `v5.1.1-recruiter-final`  
+**Scope:** 54 candidates preserved / 20 selected projects / 441 raw observations  
+**PPA mode:** `FRONTIER_ONLY`  
+**Decision boundary:** `INDETERMINATE_MISSING_COMMERCIAL_DATA`  
+**Transaction evidence:** `OPEN`  
+**Bankable transaction ready:** `FALSE`
 
-## V4.1.3 governance status
+All current recruiter surfaces derive from the same V5.1.1 model and claim contract: README, Executive Summary, Business Case, current IC memo, lender memo, recruiter package, CV bullets, website data, release manifests, and Drive control.
 
-CURRENT_TERMS_DECISION=NO_DEPLOYMENT
-SELECTED_COUNT=4
-SELECTED_IDS=VG-005|VG-010|VG-011|VG-012
-RECRUITER_READY=TRUE
-TRANSACTION_EVIDENCE_STATUS=OPEN
-BANKABLE_TRANSACTION_READY=FALSE
-EXTERNAL_GATE_COUNT_OPEN=8
+The output is a diligence-priority and commercial-negotiation shortlist. It does not disclose an exact PPA price, assert an executed PPA, promise lender terms, or authorize investment. Customer ceiling, leveraged Sponsor Floor, Lender Floor, negotiation bounds, evidence grades, observed-vs-overlay fields, standardized debt capacity, DSCR, LLCR, PLCR and scenario semantics reconcile to the generated output tables and sealed runtime manifest.
 
-The declared recruiter surface inventory includes the root README, Executive Summary, Business Case, recruiter package, website content map, website QA/release manifest, release manifest, readiness/gate metadata and all website files.
+The Arisudhana high-yield observation remains in the selected dataset with an explicit engineering-review flag. Historical V4/V5.1.0 material is preserved only as history and is not a current headline.
 
-The current candidate must reconcile to:
-
-- 20 projects screened;
-- 0 / 20 positive Equity NPV under Current Terms;
-- 19 / 20 positive Equity NPV under the negotiated hypothetical case;
-- selected IDs VG-005, VG-010, VG-011 and VG-012;
-- selected equity 30.124825 BVND;
-- selected debt 55.946104 BVND;
-- base hypothetical Equity NPV 5.942277 BVND;
-- transaction evidence OPEN and bankable transaction FALSE.
-
-This report is evidence metadata. The validator is the executable authority; a PASS is valid only when the candidate workflow prints it.
-
-Machine-readable contract: `validation/RECRUITER_SURFACE_RECONCILIATION.csv`.
-The validator reports `rows_failed=0`, `missing_surfaces=0`, `missing_metrics=0` only after it has parsed the live files and compared them with the release manifest.
+Machine-readable controls: `validation/V5_1_1_CURRENT_SURFACE_RECONCILIATION.csv`, `validation/V5_1_1_CONTENT_MIGRATION_MATRIX.csv`, and `validation/V5_1_1_REMEDIATION_REGISTER.csv`.
