@@ -31,7 +31,7 @@ def build():
   s=score_map.get(x["candidate_project_id"],{})
   if s.get("candidate_coverage_grade")!=x.get("candidate_coverage_grade") or s.get("candidate_coverage_grade")!=x.get("evidence_grade"):blockers.append("G1_SCORE_GRADE_MISMATCH:"+x["project_id"])
   if x.get("entity_granularity") not in {"ASSET_SITE","MULTISITE_PORTFOLIO","PORTFOLIO_FACILITY","PROGRAM","PLATFORM","REFERENCE_ONLY"}:blockers.append("G1_GRANULARITY")
- source_ids.update({x["rate_id"] for x in rates});source_ids.update({x["benchmark_id"] for x in capex});source_ids.update({x["benchmark_id"] for x in opex});source_ids.update({x["rate_id"] for x in read(EVID/"DISCOUNT_RATE_REGISTER_V5.csv")})
+ source_ids.update({x["fx_id"] for x in fx});source_ids.update({x["rate_id"] for x in rates});source_ids.update({x["benchmark_id"] for x in capex});source_ids.update({x["benchmark_id"] for x in opex});source_ids.update({x["rate_id"] for x in read(EVID/"DISCOUNT_RATE_REGISTER_V5.csv")})
  for row in overlay:
   if row["source_id"] not in source_ids and row["source_id"]!="NOT_DISCLOSED":blockers.append("G0_OVERLAY_SOURCE:"+row["source_id"])
   if row["parameter"]=="project_cost_local":
@@ -43,9 +43,9 @@ def build():
  if any(str(x.get("base_index_source_id","")).startswith("METHOD-V5") for x in rates) or any(str(x.get("source_id","")).startswith("METHOD-V5") for x in tax):blockers.append("G4_METHOD_EXTERNAL_REGISTER")
  if any(x["comparability_grade"] not in {"ASSET_LEVEL_HIGH","PORTFOLIO_LEVEL_MEDIUM","REGIONAL_CONTEXT","GLOBAL_CONTEXT","LOW_COMPARABILITY"} for x in capex):blockers.append("G4_COMPARABILITY")
  if any(x["status"]!="READY_FOR_V5_1_ENGINE" for x in packs):blockers.append("G4_PACK_STATUS")
- raw=read(PUB/"raw_project_observations.csv")
- if any(not x.get("value_date") or not x.get("source_id") for x in raw):blockers.append("G0_RAW_LINEAGE")
- if any(x.get("source_id") not in source_ids for x in raw if x.get("source_id")):blockers.append("G0_RAW_SOURCE")
+ raw=read(PUB/"raw_project_observations.csv");registered_urls={x["url"] for x in sources}
+ if any(not x.get("value_date") or not x.get("source_url") for x in raw):blockers.append("G0_RAW_LINEAGE")
+ if any(x.get("source_url") not in registered_urls for x in raw if x.get("source_url")):blockers.append("G0_RAW_SOURCE")
  run([sys.executable,"-m","analytics.build_v5_economics"])
  run([sys.executable,"-m","analytics.build_v5_workbook"])
  run([sys.executable,"scripts/build_website_data_v5.py"])
