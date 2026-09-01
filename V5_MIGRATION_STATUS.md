@@ -1,9 +1,9 @@
 # V5 Migration Status — V5.1.1
 
-Status: REMEDIATION_IN_PROGRESS on v5.1.1-data-model-content-rebuild.
+Status: FINAL_RELEASE_CLOSED on v5.1.1-data-model-content-rebuild.
 
-Baseline: V5.1.0 recruiter final at 020b5ce47839588f9d8fbb474282d9b40e129e58. Historical V4.1.3 remains immutable.
+Validated source: 26cb4dfd9ac45e829646f2d52f3f3a4041c8bb61. CI run 33545132194 passed the full suite, reproducibility comparison and current-surface scan. The runtime artifact recorded workbook/output/website hashes and the sealed input freeze.
 
-Completed in this branch: selected-data contract rebuild, Arisudhana source audit, yield sanity register, tax engine, debt metric separation, explicit scenario semantics, common-currency shortlist controls, release builder, workbook contract, current-content rewrite and CI gates.
+Completed: selected-data and yield audits, observed-vs-overlay model contract, tax engine, PPA frontier, leveraged Sponsor/Lender floors, LLCR/PLCR separation, explicit debt/timing scenarios, common-USD diligence shortlist, 26-sheet workbook, current report/website migration, runtime manifests and G0-G9 controls.
 
-Final status is set only after CI, release, tag/ruleset and Drive readback pass. No project data is written to local storage.
+Exact PPA, lender terms, site rights, customer telemetry, engineering yield validation and bankability remain open. V4.1.3 and V5.1.0 are preserved as immutable history. No project data is written to local storage.
