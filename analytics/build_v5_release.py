@@ -20,7 +20,7 @@ def req(path,fields,blockers):
 def main():
     ap=argparse.ArgumentParser();ap.add_argument("--final",action="store_true");ap.add_argument("--allow-incomplete",action="store_true");a=ap.parse_args()
     blockers=[]; config=json.loads((ROOT/"config"/"v5_global.yml").read_text(encoding="utf-8"))
-    sources=rows(EVID/"GLOBAL_SOURCE_REGISTER.csv"); source_ids={r["source_id"] for r in sources}
+    sources=rows(EVID/"GLOBAL_SOURCE_REGISTER.csv"); source_ids={r["source_id"] for r in sources}; rate_rows=rows(EVID/"RATE_REGISTER.csv")
     candidates=rows(RES/"GLOBAL_PROJECT_CANDIDATES.csv"); scoring=rows(RES/"CANDIDATE_SCORING.csv")
     master=rows(PUB/"project_master_real.csv"); overlay=rows(PUB/"project_assumption_overlay.csv"); raw=rows(PUB/"raw_project_observations.csv")
     entities=rows(PUB/"project_entity_map.csv"); packs=rows(EVID/"COUNTRY_BENCHMARK_PACKS.csv"); conflicts=rows(RES/"CONFLICT_REGISTER.csv")
@@ -80,13 +80,25 @@ def main():
         have={x.get("parameter") for x in ps}
         for p in {"annual_generation_kwh","ppa_price_local_per_kwh","project_cost_local","financing_amount_local","operating_horizon_years","tax_rate","debt_all_in_rate"}:
             if p not in have:blockers.append("G5_OVERLAY_PARAMETER_MISSING:"+r.get("project_id","")+":"+p)
-    # G6 concentration
+    # G5 portfolio concentration
     counts=Counter(r.get("country") for r in selected); total=len(selected) or 1
     shares={k:round(v/total,4) for k,v in counts.items()}
-    if shares and max(shares.values())>float(config["portfolio"]["hard_max_country_share"]):blockers.append("G6_COUNTRY_CONCENTRATION:"+json.dumps(shares,sort_keys=True))
-    # G7 conflict resolution
+    if shares and max(shares.values())>float(config["portfolio"]["hard_max_country_share"]):blockers.append("G5_COUNTRY_CONCENTRATION:"+json.dumps(shares,sort_keys=True))
+    # G8 conflict/reconciliation resolution
     for r in conflicts:
-        if r.get("resolution_status") not in {"DISCLOSED_NOT_USED","RESOLVED","SUPERSEDED"}:blockers.append("G7_CONFLICT_OPEN:"+r.get("conflict_id",""))
+        if r.get("resolution_status") not in {"DISCLOSED_NOT_USED","RESOLVED","SUPERSEDED"}: "+r.get("conflict_id",""))
+    # G6 debt: standardized debt must be explicit, linked to a rate register and bounded.
+    rate_countries={r.get("country") for r in rate_rows if r.get("status") in {"READY_FOR_SCREENING","READY_FOR_ECONOMICS"}}
+    for r in selected:
+        if r.get("country") not in rate_countries:blockers.append("G6_DEBT_RATE_REGISTER_MISSING:"+r.get("project_id",""))
+        ps={x.get("parameter"):x for x in overlay if x.get("project_id")==r.get("project_id")}
+        for p in {"financing_amount_local","debt_all_in_rate"}:
+            if p not in ps or fnum(ps[p].get("value")) is None:blockers.append("G6_DEBT_INPUT_MISSING:"+r.get("project_id","")+":"+p)
+    # G7 stress: the plan requires named downside scenarios before release.
+    scenario_rows=rows(ROOT/"config"/"v5_scenarios.yml")
+    required_scenarios={"BASE","P90_ENERGY","CAPEX_OVERRUN","INTEREST_RATE_SHOCK","COD_DELAY","COMBINED_DOWNSIDE"}
+    if required_scenarios-{x.get("scenario_id") for x in scenario_rows}:blockers.append("G7_STRESS_SCENARIO_MATRIX_INCOMPLETE")
+    if a.final and (not (OUT/"v5_scenarios.csv").exists() or len(rows(OUT/"v5_scenarios.csv"))<len(selected)*len(required_scenarios)):blockers.append("G7_STRESS_OUTPUT_INCOMPLETE")
     # G8 final reconciliation / output surface
     if a.final:
         econ=OUT/"v5_project_economics.csv"; scen=OUT/"v5_scenarios.csv"; rec=OUT/"v5_reconciliation.csv"
