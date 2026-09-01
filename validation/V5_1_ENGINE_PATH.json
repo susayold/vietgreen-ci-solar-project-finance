@@ -1,0 +1,14 @@
+{
+  "engine_version": "V5.1.0",
+  "status": "CI_GENERATED",
+  "energy_engine": "analytics.load_match_8760.profile",
+  "load_engine": "analytics.load_match_8760.profile",
+  "ppa_engine": "analytics.ppa_engine",
+  "capex_engine": "analytics.capex_engine",
+  "cash_flow_engine": "analytics.build_v5_economics.operating_schedule",
+  "debt_sculpting_engine": "analytics.debt_sculpting",
+  "reserve_engine": "standardized reserve policy",
+  "returns_engine": "analytics.build_v5_economics.npv/irr",
+  "scenario_engine": "analytics.build_v5_economics.scenario loop",
+  "portfolio_engine": "analytics.portfolio_selection"
+}
