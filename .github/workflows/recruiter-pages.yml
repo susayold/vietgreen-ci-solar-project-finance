@@ -12,6 +12,8 @@ on:
       - "scripts/validate_recruiter_surfaces.py"
       - "scripts/validate_metric_lineage.py"
       - "scripts/validate_public_claims.py"
+      - "scripts/validate_website_assets.py"
+      - "scripts/validate_website_ux.py"
       - "tests/test_ppa_zone_math.py"
       - "outputs/**"
       - "release/MODEL_RELEASE_MANIFEST.json"
@@ -61,6 +63,12 @@ jobs:
 
       - name: Block stale V3 claims
         run: python scripts/check_stale_v3_claims.py
+
+      - name: Validate website links and assets
+        run: python scripts/validate_website_assets.py
+
+      - name: Validate responsive and accessibility critical contract
+        run: python scripts/validate_website_ux.py
 
       - name: Run PPA geometry tests
         run: python -m unittest tests.test_ppa_zone_math -v
