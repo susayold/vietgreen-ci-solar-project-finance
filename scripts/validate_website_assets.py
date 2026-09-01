@@ -42,7 +42,7 @@ def check_local_reference(source: Path, reference: str) -> None:
 
 
 def check_hash_routes(text: str, source: Path) -> None:
-    for route in re.findall(r'href\s*=\s*["']#/([^"']*)', text):
+    for route in re.findall(r'href\s*=\s*["\']#/([^"\']*)', text):
         route = route.split("?", 1)[0].strip("/")
         if route and route not in EXPECTED_ROUTES:
             add_error(f"unknown hash route in {source.relative_to(ROOT)}: {route}")
