@@ -1,7 +1,15 @@
-# Website data contract
+# Website Data Contract — V5.1.1
 
-`scripts/build_website_data.py` is the single build-time adapter between released V4 outputs and the static website. It converts VND to BVND, percentages to display units, and attaches the source paths and evidence class to every page contract.
+`analytics/build_v5_1_1_release.py` is the single CI build-time adapter between the authoritative observed/overlay inputs and the static website. It derives the website payload from the same model run that writes the V5.1.1 outputs, workbook and validation registers.
 
-The shared contract is the cross-page spine: release ID, selected IDs, current-terms decision, selected equity/debt/CFADS, DSCR, recruiter readiness and the transaction/bankability boundary. Page JSON files contain only route-specific derived views.
+The shared contract contains release version/tag, selected-project counts, claim classes, PPA mode, decision boundary and remote-only status. Route datasets are:
 
-The public payload intentionally excludes raw 8,760 streams, private transaction files, credentials and hidden validation results. A deterministic daily shape on Economics is explicitly labelled as communication-only; annual energy and load values are sourced from the released aggregate summaries.
+- `website/data/shared-summary.json`
+- `website/data/release-meta.json`
+- `website/data/projects.json`
+- `website/data/frontier.json`
+- `website/data/risk.json`
+- `website/data/evidence.json`
+- `website/data/scenarios.json`
+
+The payload intentionally excludes credentials, private transaction files and raw local snapshots. It does not claim an actual confidential PPA, lender commitment, bankability conclusion or site/engineering/tax sign-off. Exact source and artifact identity are sealed in CI runtime manifests and the Pages deployment evidence.
