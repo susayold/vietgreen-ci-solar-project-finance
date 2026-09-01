@@ -1,11 +1,18 @@
 {
-  "releaseId": "V4-FINAL-2026-08-31",
-  "modelVersion": "V4.0.0",
-  "dataContractVersion": "V4.1-RECRUITER-CLOSURE",
-  "gitSha": "pending-ci",
-  "builtAtUtc": "2026-09-01T00:00:00Z",
-  "workflowRunId": "candidate-build",
-  "sourceManifestPath": "release/MODEL_RELEASE_MANIFEST.json",
-  "status": "CANDIDATE_PRE_DEPLOYMENT",
-  "claimBoundary": "Synthetic recruiter package only; not investment approval, lender approval, legal/tax opinion, technical certification, site diligence or bankable P90."
+  "releaseVersion": "5.1.1",
+  "releaseTag": "v5.1.1-recruiter-final",
+  "sourceSha": "6a9276a552c42400c20f2cc552eb37ae222f27d0",
+  "candidateHistory": 54,
+  "rawObservations": 441,
+  "projectsScreened": 20,
+  "selectedProjects": 20,
+  "ppaMode": "FRONTIER_ONLY",
+  "referenceCase": "REFERENCE_CASE_NOT_ACTUAL_PPA",
+  "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
+  "transactionEvidence": "OPEN",
+  "bankableTransactionReady": false,
+  "claimBoundary": "Standardized public-data reconstruction; exact confidential PPA/lender/site/tax/engineering data not represented as actual.",
+  "remoteOnly": true,
+  "status": "SEALED_IN_CI",
+  "workflowRunId": "33542426321"
 }
