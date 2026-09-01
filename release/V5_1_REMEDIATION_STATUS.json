@@ -1,0 +1,10 @@
+{
+  "release_family": "V5.1",
+  "economics_authoritative": false,
+  "economics_status": "INVALID_PENDING_UNIT_REBUILD",
+  "data_research_status": "PRESERVED",
+  "transaction_evidence_status": "OPEN",
+  "bankable_transaction_ready": false,
+  "recruiter_ready": false,
+  "claim_boundary": "PUBLIC_DATA_RECONSTRUCTION_ONLY"
+}
