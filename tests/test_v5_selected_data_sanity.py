@@ -8,7 +8,9 @@ def _rows(path):
 def test_selected_20_field_yield_and_observation_contract():
     master=_rows("data/public/project_master_real.csv")
     selected=[r for r in master if "SELECTED" in r["selection_status"]]
-    assert len(master)==54
+    candidates=_rows("research/GLOBAL_PROJECT_CANDIDATES.csv")
+    assert len(candidates)==54
+    assert len(master)==20
     assert len(selected)==20
     ids=[r["project_id"] for r in selected]
     assert len(ids)==len(set(ids))
