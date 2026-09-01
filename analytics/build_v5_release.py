@@ -40,7 +40,7 @@ def build():
  for row in fx:
   if not row["source_id"] or row["source_id"].startswith("METHOD-V5"):blockers.append("G2_FX_METHOD_SOURCE")
   if not row["spot_date"] or not row["last_checked"]:blockers.append("G3_FX_DATE")
- if any(x["source_id"].startswith("METHOD-V5") for x in rates+tax):blockers.append("G4_METHOD_EXTERNAL_REGISTER")
+ if any(str(x.get("base_index_source_id","")).startswith("METHOD-V5") for x in rates) or any(str(x.get("source_id","")).startswith("METHOD-V5") for x in tax):blockers.append("G4_METHOD_EXTERNAL_REGISTER")
  if any(x["comparability_grade"] not in {"ASSET_LEVEL_HIGH","PORTFOLIO_LEVEL_MEDIUM","REGIONAL_CONTEXT","GLOBAL_CONTEXT","LOW_COMPARABILITY"} for x in capex):blockers.append("G4_COMPARABILITY")
  if any(x["status"]!="READY_FOR_V5_1_ENGINE" for x in packs):blockers.append("G4_PACK_STATUS")
  raw=read(PUB/"raw_project_observations.csv")
