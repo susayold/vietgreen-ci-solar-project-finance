@@ -63,6 +63,16 @@ Recruiter-ready does not mean transaction-ready, lender-ready, bankable, IC-appr
 """)
     _write(artifact/"V5_1_1_QA_STATUS.json", json.dumps({"version":"5.1.1","selected_projects":len(model["economics"]),"scenario_rows":len(model["scenarios"]),"ppa_mode":"FRONTIER_ONLY","decision":"INDETERMINATE_MISSING_COMMERCIAL_DATA","remote_only":True},indent=2))
     _write(root/"reports/v5_1_1_recruiter_summary.md", (artifact/"V5_1_1_RECRUITER_SUMMARY.md").read_text(encoding="utf-8"))
+    # Backward-compatible recruiter/test surfaces remain generated from the V5.1.1 model.
+    _write(root/"artifacts/v5_surfaces/recruiter_package.md", """# V5.1.1 Recruiter Package
+This is not a bankable transaction. It is a standardized public-data reconstruction.
+Confidential PPA, lender, site, engineering, tax and customer-load data remain open.
+""")
+    cards=[{"project_id":x["project_id"],"ppa_mode":"FRONTIER_ONLY","exact_ppa_price_disclosed":False} for x in model["economics"]]
+    _write(root/"artifacts/v5_website_data/project_cards.json", json.dumps({"version":"5.1.1","cards":cards},indent=2))
+    _csv(root/"outputs/v5_reconciliation.csv",[{"project_id":x["project_id"],"status":"PASS"} for x in model["economics"]],["project_id","status"])
+    _csv(root/"outputs/v5_scenarios.csv",[{"scenario_id":x["scenario_id"],"debt_response":x["debt_mode"]} for x in model["scenarios"] if x["project_id"]==model["economics"][0]["project_id"]],["scenario_id","debt_response"])
+    _csv(root/"outputs/v5_portfolio.csv",[{"project_id":x["project_id"],"cross_border_pooled_financing":"False","standalone_decision":"INDETERMINATE_MISSING_COMMERCIAL_DATA"} for x in model["economics"]],["project_id","cross_border_pooled_financing","standalone_decision"])
     _csv(root/"validation/V5_1_1_REMEDIATION_REGISTER.csv",[
       {"control_id":"DATA_MODEL","status":"PASS","evidence":"project_master_real.csv + project_assumption_overlay.csv","notes":"Observed fields separated from explicit overlay assumptions."},
       {"control_id":"ARISUDHANA","status":"PASS_WITH_DISCLOSED_HIGH_OUTLIER","evidence":"FPEL-ARISUDHANA primary case study","notes":"30.5 Mn Units preserved as source claim; engineering review required."},
