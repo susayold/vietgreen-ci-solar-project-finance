@@ -31,7 +31,34 @@ jobs:
           path: |
             artifacts/v5_1_1_model
             artifacts/v5_1_1_surfaces
-            outputs/v5_1_1_model_input_view.csv
+            outputs
             validation
+            release
+          if-no-files-found: error
+      - name: Seal artifact metadata into runtime manifest
+        env:
+          GH_TOKEN: \${{ github.token }}
+          GH_REPOSITORY: \${{ github.repository }}
+          GH_RUN_ID: \${{ github.run_id }}
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request
+          from pathlib import Path
+          url=f"https://api.github.com/repos/{os.environ['GH_REPOSITORY']}/actions/runs/{os.environ['GH_RUN_ID']}/artifacts"
+          req=urllib.request.Request(url,headers={"Authorization":f"Bearer {os.environ['GH_TOKEN']}","Accept":"application/vnd.github+json"})
+          with urllib.request.urlopen(req) as resp: payload=json.load(resp)
+          artifact=next(x for x in payload["artifacts"] if x["name"]=="vietgreen-v5-1-1-full-data-model-release")
+          p=Path("release/V5_RUNTIME_RELEASE_MANIFEST.json"); data=json.loads(p.read_text())
+          data["artifact_id"]=str(artifact["id"]); data["artifact_digest"]=artifact["digest"]; data["artifact_name"]=artifact["name"]
+          p.write_text(json.dumps(data,indent=2,sort_keys=True)+"\n")
+          m=Path("release/MODEL_RELEASE_MANIFEST.json"); md=json.loads(m.read_text()); md["runtime_manifest_artifact_id"]=str(artifact["id"]); md["runtime_manifest_artifact_digest"]=artifact["digest"]; m.write_text(json.dumps(md,indent=2,sort_keys=True)+"\n")
+          PY
+      - name: Upload sealed runtime manifests
+        uses: actions/upload-artifact@v4
+        with:
+          name: vietgreen-v5-1-1-runtime-manifest
+          path: |
+            release/MODEL_RELEASE_MANIFEST.json
+            release/V5_RUNTIME_RELEASE_MANIFEST.json
             release/V5_1_1_INPUT_FREEZE_MANIFEST.json
           if-no-files-found: error
