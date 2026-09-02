@@ -26,7 +26,7 @@ def allocate(projects: Iterable[Dict], equity_budget: float=float("inf"),
         keys={"country":p.get("country","UNKNOWN"),"developer":p.get("developer","UNKNOWN"),
               "offtaker":p.get("offtaker","UNKNOWN"),"currency":p.get("currency",currency),
               "industry":p.get("industry","UNKNOWN")}
-        if any(book.get(key,0.0)+need>limit_value(share)+1e-9 for book,share in dimensions.values() for key in [keys[next(name for name,(b,_) in dimensions.items() if b is book)]]):
+        if any(book.get(keys[name],0.0)+need>limit_value(share)+1e-9 for name,(book,share) in dimensions.items()):
             continue
         q=dict(p); q["equity_required_usd"]=need; q["currency"]=currency; selected.append(q)
         spent+=need
