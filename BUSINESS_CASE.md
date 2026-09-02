@@ -1,4 +1,4 @@
-# Business Case — V5.1.2
+# Business Case — V5.1.3
 
 VietGreen’s use case is a source-backed diligence and recruiter-facing comparison of publicly disclosed C&I/distributed-solar projects. The value is a transparent common data model and repeatable economics layer, not a claim that confidential transaction data is available.
 
