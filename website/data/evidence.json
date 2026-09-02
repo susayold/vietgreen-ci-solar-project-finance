@@ -1,5 +1,5 @@
 {
-  "version": "5.1.1",
+  "version": "5.1.2",
   "classes": [
     "OBSERVED_PUBLIC_OR_SOURCE_REPORTED",
     "DERIVED",
@@ -8,5 +8,7 @@
     "SCENARIO",
     "NOT_DISCLOSED"
   ],
-  "selectedCount": 20
+  "selectedCount": 19,
+  "screenedCount": 20,
+  "technicalBlockedCount": 1
 }
