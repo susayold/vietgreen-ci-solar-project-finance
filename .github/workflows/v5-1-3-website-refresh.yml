@@ -1,0 +1,123 @@
+name: V5.1.3 recruiter website refresh
+
+on:
+  push:
+    branches: [v5.1.3-website-refresh]
+  workflow_dispatch:
+
+concurrency:
+  group: v5.1.3-website-refresh
+  cancel-in-progress: false
+
+env:
+  MODEL_SOURCE_SHA: ff69e15d211ff1abc88200574242ed2f1db49074
+  MODEL_TAG: v5.1.3-recruiter-final
+
+jobs:
+  validate-v5-1-3-website:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: v5.1.3-website-refresh
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install model and browser QA dependencies
+        run: python -m pip install --upgrade pip pytest openpyxl
+      - name: Build frozen V5.1.3 model and website data
+        env:
+          V5_1_3_FREEZE_DATE_UTC: 2026-09-02T00:00:00Z
+          WEBSITE_SOURCE_SHA: ${{ github.sha }}
+          WEBSITE_WORKFLOW_RUN_ID: ${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          export GITHUB_SHA="$MODEL_SOURCE_SHA"
+          python -m analytics.build_v5_1_3_release
+          python -m analytics.validate_v5_1_3_release
+          export GITHUB_SHA="$WEBSITE_SOURCE_SHA"
+          python -m analytics.build_v5_1_3_website_data
+      - name: Validate website contract, claims and stale content
+        run: |
+          python -m analytics.validate_v5_1_3_website_data
+          python -m analytics.scan_v5_1_3_website_stale_content
+          pytest -q tests/test_v5_1_3_website_contract.py tests/test_v5_1_3_website_claims.py tests/test_v5_1_3_website_scenarios.py tests/test_v5_1_3_website_frontier.py
+      - name: Re-run frozen model semantics
+        run: |
+          pytest -q tests/test_v5_1_3_no_new_debt_contract.py tests/test_v5_1_3_release_controls.py tests/test_v5_1_2_physical_sanity.py
+      - name: Validate JavaScript, CSS and JSON
+        run: |
+          node --check website/app.js
+          test "$(git show v4.1.2-recruiter-final:website/styles.css | git hash-object --stdin)" = "056ddf3c28b3530acf5fbdf0babfa9bc9a09c53d"
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          for p in Path("website/data").glob("*.json"): json.loads(p.read_text())
+          print("JSON syntax PASS")
+          PY
+      - name: HTTP smoke
+        run: |
+          set -euo pipefail
+          python -m http.server 8765 --directory website >/tmp/v513-website.log 2>&1 &
+          echo $! >/tmp/v513-website.pid
+          sleep 2
+          for route in / /data/shared-summary.json /data/release-meta.json /data/projects.json /data/economics.json /data/debt.json /data/portfolio.json /data/risk.json /data/model.json /data/evidence.json /model_preview/index.html; do
+            curl --fail --silent --show-error "http://127.0.0.1:8765$route" >/dev/null
+          done
+      - name: Install Chromium and run Playwright
+        run: |
+          npm install --no-save @playwright/test@1.55.0
+          npx playwright install --with-deps chromium
+          npx playwright test tests/v5_1_3_website_browser.spec.mjs
+      - name: Upload website QA and generated payloads
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v5.1.3-website-qa-${{ github.sha }}
+          path: |
+            website/data
+            /tmp/v513-website.log
+            test-results
+          if-no-files-found: warn
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: website
+
+  deploy-pages:
+    needs: validate-v5-1-3-website
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy exact website commit
+        id: deployment
+        uses: actions/deploy-pages@v4
+      - name: Verify live website identity and all routes
+        env:
+          SITE_URL: ${{ steps.deployment.outputs.page_url }}
+          WEBSITE_SHA: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from urllib.request import urlopen
+          base=os.environ["SITE_URL"].rstrip("/")+"/"
+          with urlopen(base+"data/release-meta.json",timeout=40) as r: meta=json.load(r)
+          assert meta["websiteRelease"]=="v5.1.3-website-final"
+          assert meta["websiteSourceSha"]==os.environ["WEBSITE_SHA"], meta
+          assert meta["modelSourceSha"]=="ff69e15d211ff1abc88200574242ed2f1db49074"
+          for route in ("","data/shared-summary.json","data/release-meta.json","data/projects.json","data/economics.json","data/debt.json","data/portfolio.json","data/risk.json","data/model.json","data/evidence.json","model_preview/index.html"):
+            with urlopen(base+route,timeout=40) as r: assert r.status==200
+          print("LIVE PAGES EXACT-SHA PASS", base)
+          PY

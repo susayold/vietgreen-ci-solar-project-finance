@@ -1,28 +1,20 @@
-# VietGreen recruiter-facing website
+# VietGreen V5.1.3 recruiter website
 
-This is the V4.1 recruiter communication layer for the VietGreen C&I solar project-finance study. It follows the supplied website build plan: dark forest-green narrative shell, white analytical panels, finance-first navigation and an explicit evidence boundary.
+This is the public presentation layer for the frozen V5.1.3 model release. The
+information architecture and visual language follow the established recruiter
+surface; all facts, counts, claims and scenario semantics are regenerated in CI
+by \`analytics/build_v5_1_3_website_data.py\`.
 
-## Data contract
+Routes: overview, case, economics, debt, portfolio, risk, model and evidence.
+The browser payload contains aggregate/representative views only. Full model
+outputs, native workbook, validation registers and 8,760 rows stay in the
+ephemeral GitHub Actions artifact/release chain.
 
-`website/data/*.json` is generated from authoritative release artifacts — portfolio exposure, current/negotiated returns, phase-2 scenarios, debt sizing, load matching, FX, QA and the release manifest. Do not edit the generated JSON by hand.
+The website is remote-only: no project data is committed as a developer
+snapshot and no local source of truth is used. Model source is frozen at
+\`v5.1.3-recruiter-final\`; website source and release metadata are separate.
 
-```text
-python scripts/build_website_data.py
-python scripts/validate_website_data.py
-python scripts/check_stale_v3_claims.py
-python scripts/validate_website_assets.py
-python scripts/validate_website_ux.py
-```
-
-The public payload contains aggregate model outputs only. Raw hourly streams and private transaction evidence are intentionally not embedded. The model is synthetic and recruiter-ready; transaction evidence is `OPEN` and bankable transaction readiness is `FALSE`.
-
-## Routes
-
-`#/` Overview · `#/case` Investment case · `#/economics` Economics & PPA · `#/debt` Debt · `#/portfolio` Portfolio · `#/risk` Risk · `#/model` Model · `#/evidence` Evidence.
-
-## Source and deployment
-
-- Source of truth: [VietGreen GitHub repository](https://github.com/susayold/vietgreen-ci-solar-project-finance)
-- Live GitHub Pages site: [susayold.github.io/vietgreen-ci-solar-project-finance](https://susayold.github.io/vietgreen-ci-solar-project-finance/)
-- Workbook preview: [model_preview/index.html](model_preview/index.html)
-- The `recruiter-pages` workflow rebuilds and validates the data contract, links/assets, claim boundary, scenario semantics, PPA geometry and responsive/accessibility critical contract on every release-output or website change before publishing Pages.
+Claim boundary: PUBLIC_DATA_ONLY, PPA mode FRONTIER_ONLY, transaction evidence
+OPEN, bankable transaction FALSE, capital allocation DISABLED_FRONTIER_ONLY.
+Arisudhana's extreme public observation is preserved and blocked from direct
+base economics pending technical review.

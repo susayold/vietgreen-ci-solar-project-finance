@@ -1,22 +1,13 @@
 {
-  "forbiddenWithoutExternalEvidence": [
-    "bankable",
-    "approved",
-    "executed transaction",
-    "realized return",
-    "real savings",
-    "live portfolio",
-    "lender approved",
-    "actual negotiated terms"
-  ],
-  "allowed": [
-    "synthetic",
-    "hypothetical",
-    "screening",
-    "modelled",
-    "illustrative",
-    "recruiter-ready",
-    "transaction evidence open"
-  ],
-  "policy": "Synthetic V4 outputs are recruiter communication only; external transaction evidence remains open."
+  "version": "5.1.3",
+  "claim_boundary": "PUBLIC_DATA_ONLY",
+  "ppa_mode": "FRONTIER_ONLY",
+  "commercial_decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
+  "transaction_evidence_status": "OPEN",
+  "bankable_transaction_ready": false,
+  "capital_allocation_status": "DISABLED_FRONTIER_ONLY",
+  "technical_block_policy": "EXTREME_OUTLIER_BLOCK_BASE",
+  "raw_observations_preserved": true,
+  "no_new_debt_policy": "Reuse base opening, principal and closing contractual schedule; do not re-sculpt principal. Floating-rate shocks may reprice interest only.",
+  "remote_only": true
 }
