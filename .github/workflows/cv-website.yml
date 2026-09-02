@@ -46,6 +46,14 @@ jobs:
           python -m pytest -q tests/test_cv_website_data.py
       - name: Build website
         run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          path = Path("website/public/data/release.json")
+          data = json.loads(path.read_text(encoding="utf-8"))
+          data["websiteStatus"] = "DEPLOYED_EXACT_SHA"
+          path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          PY
           npm run typecheck --prefix website
           npm run build --prefix website
       - name: Browser QA
