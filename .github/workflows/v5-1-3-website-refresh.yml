@@ -89,7 +89,7 @@ jobs:
           d["websiteSourceSha"]=os.environ["WEBSITE_SOURCE_SHA"]
           d["websiteWorkflowRunId"]=os.environ["WEBSITE_WORKFLOW_RUN_ID"]
           d["websiteStatus"]="DEPLOYED_EXACT_SHA"
-          p.write_text(json.dumps(d, indent=2)+"\\n")
+          p.write_text(json.dumps(d, indent=2)+"\n")
           PY
       - name: Upload website QA and generated payloads
         if: always()
