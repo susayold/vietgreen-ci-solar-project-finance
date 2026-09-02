@@ -276,7 +276,7 @@ def run(root: str|Path, output_dir: str|Path) -> Dict[str,List[Dict]]:
               "debt_capacity_local":debt_s,"debt_capacity_change_local":debt_s-debt,
               "additional_debt_local":max(debt_s-debt,0.0) if mode=="RESIZED_DEBT" else 0.0,
               "binding_constraint":bind_s,
-              "dscr_min":ds_s,"llcr":ll_s,"plcr":pl_s,
+              "dscr_min":ds_s,"min_dscr":ds_s,"llcr":ll_s,"plcr":pl_s,
               "llcr_loan_life":ll_s,"plcr_project_life":pl_s,
               "base_opening_schedule_signature":_schedule_signature(sched,"opening"),
               "scenario_opening_schedule_signature":_schedule_signature(sch_s,"opening"),
