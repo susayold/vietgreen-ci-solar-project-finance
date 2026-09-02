@@ -244,6 +244,8 @@ def run(root: str|Path, output_dir: str|Path) -> Dict[str,List[Dict]]:
               "principal_schedule_preserved":str(mode=="FIXED_CONTRACTUAL_SCHEDULE" and _schedule_signature(sched)==_schedule_signature(sch_s)).upper(),
               "incremental_capex_local":p["capex_local"]*max(sp["capex_factor"]-1.0,0.0),
               "equity_funded_incremental_capex_local":p["capex_local"]*max(sp["capex_factor"]-1.0,0.0) if mode=="NO_NEW_DEBT" else 0.0,
+              "additional_debt_local":max(debt_s-debt,0.0) if mode=="RESIZED_DEBT" else 0.0,
+              "interest_schedule_changed":str(any(abs(float(sch_s[i]["interest"])-float(sched[i]["interest"]))>1e-8 for i in range(min(len(sch_s),len(sched))))).upper(),
               "no_new_debt_increase":str(mode=="NO_NEW_DEBT" and debt_s<=debt+1e-8).upper(),
               "base_debt_schedule_preserved":str(mode=="FIXED_CONTRACTUAL_SCHEDULE" and _schedule_signature(sched)==_schedule_signature(sch_s)).upper(),
               "reference_case":"SCENARIO_REFERENCE_NOT_ACTUAL_PPA"})
@@ -252,10 +254,10 @@ def run(root: str|Path, output_dir: str|Path) -> Dict[str,List[Dict]]:
           "overlay_generation_input":p["generation_p50_kwh"],"overlay_self_consumption_ratio":p["self_consumption_ratio"],
           "overlay_annual_load_kwh":p["annual_load_kwh"],"overlay_project_cost_local":p["capex_local"],
           "overlay_evidence_classes":"EXPLICIT_OVERLAY_PER_PARAMETER","input_view_status":"READY_FOR_REVIEW"})
-    _write_csv(out/"v5_1_1_economics_summary.csv",econ); _write_csv(out/"v5_1_1_cash_flow.csv",cash); _write_csv(out/"v5_1_1_debt_schedule.csv",debt_rows)
-    _write_csv(out/"v5_1_1_scenario_results.csv",scenario_rows); _write_csv(out/"v5_1_1_model_input_view.csv",input_view)
+    _write_csv(out/"v5_1_2_economics_summary.csv",econ); _write_csv(out/"v5_1_2_cash_flow.csv",cash); _write_csv(out/"v5_1_2_debt_schedule.csv",debt_rows)
+    _write_csv(out/"v5_1_2_scenario_results.csv",scenario_rows); _write_csv(out/"v5_1_2_model_input_view.csv",input_view)
     return {"economics":econ,"cash_flow":cash,"debt_schedule":debt_rows,"scenarios":scenario_rows,"model_input_view":input_view,"hourly":hourly}
 
 if __name__=="__main__":
     root=Path(__file__).resolve().parents[1]
-    run(root,root/"artifacts/v5_1_1_model")
+    run(root,root/"artifacts/v5_1_2_model")
