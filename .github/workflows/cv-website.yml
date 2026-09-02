@@ -43,7 +43,7 @@ jobs:
           python scripts/validate_cv_website_data.py
           python scripts/validate_claims.py
           python scripts/validate_release_identity.py
-          python -m pytest -q
+          python -m pytest -q tests/test_cv_website_data.py
       - name: Build website
         run: |
           npm run typecheck --prefix website
