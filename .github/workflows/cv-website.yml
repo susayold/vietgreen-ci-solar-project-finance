@@ -2,7 +2,7 @@ name: cv-website-with-old-website-archive
 
 on:
   push:
-    branches: [old-website]
+    branches: [old-website, v5.1.3-cv-website-from-scratch]
   workflow_dispatch:
 
 permissions:
@@ -81,7 +81,6 @@ jobs:
               "old-website/app.js": "e3b81a11d4b7a091f316a7ef261f951a7fe4649f",
               "old-website/styles.css": "056ddf3c28b3530acf5fbdf0babfa9bc9a09c53d",
           }
-          # Git blob SHA = sha1("blob <size>\\0" + content)
           for name, want in expected.items():
               data = Path(name).read_bytes()
               got = hashlib.sha1(f"blob {len(data)}\0".encode() + data).hexdigest()
@@ -108,6 +107,7 @@ jobs:
           path: website/dist
 
   deploy:
+    if: github.ref == 'refs/heads/v5.1.3-cv-website-from-scratch'
     needs: validate-cv-website
     runs-on: ubuntu-latest
     environment:
