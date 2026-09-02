@@ -38,14 +38,14 @@ jobs:
     permissions: {pages: write, id-token: write}
     environment:
       name: github-pages
-      url: \${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Deploy exact SHA
         id: deployment
         uses: actions/deploy-pages@v5
       - name: Verify exact SHA and HTTP 200
         env:
-          SITE_URL: \${{ steps.deployment.outputs.page_url }}
+          SITE_URL: ${{ steps.deployment.outputs.page_url }}
         run: |
           python - <<'PY'
           import json,os
