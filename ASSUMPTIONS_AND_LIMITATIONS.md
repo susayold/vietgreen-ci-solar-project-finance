@@ -1,13 +1,13 @@
-# Assumptions and Limitations — V5.1.1
+# Assumptions and Limitations — V5.1.2
 
 ## Input classes
 
-OBSERVED_PUBLIC_OR_SOURCE_REPORTED means the source reports the fact. DERIVED means a deterministic calculation from observed inputs. BENCHMARK_ASSUMPTION means an external reference used for screening. ANALYST_ASSUMPTION means an explicit underwriting overlay. SCENARIO means a stress input, not a forecast.
+`OBSERVED_PUBLIC_OR_SOURCE_REPORTED`, `DERIVED`, `BENCHMARK_ASSUMPTION`, `ANALYST_ASSUMPTION` and `SCENARIO` are kept distinct. Missing evidence is not converted into a fact.
 
-## Important limitations
+## Physical controls
 
-- Exact PPA price, tenor where undisclosed, lender term sheet, customer load shape, site rights, EPC/O&M terms, tax opinions and engineering yield studies are not inferred as facts.
-- Annual load and self-consumption are reconstructed in the overlay and are not customer telemetry.
-- CAPEX, tax, rates, FX and discount rates are standardized or benchmarked where project-specific evidence is absent.
-- Arisudhana's source explicitly reports approximately 30.5 million annual units for a 2.09 MWp system. The claim is preserved, flagged as a high specific-yield outlier and not silently corrected.
-- Public-data reconstruction is not bankability, transaction readiness, investment advice, lender approval, IC approval, legal advice, tax advice or technical certification.
+The generic screening band is 900–1,600 kWh/kWp with an extreme threshold at 3,200 kWh/kWp. The Arisudhana source claim is preserved as raw evidence, flagged `EXTREME_OUTLIER_BLOCK_BASE`, and excluded from direct base economics. A replacement benchmark is not invented.
+
+## Model limitations
+
+Annual load and self-consumption are standardized proxies, not customer telemetry. CAPEX, OPEX, tax, rates, FX and discount rates are standardized or benchmark inputs where project-specific evidence is absent. P90/P99 are screening factors on modeled valid P50, not observed measurements. PPA, lender, site, engineering and bankability evidence remains open.
