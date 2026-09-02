@@ -85,7 +85,7 @@ def build_resolved_model_input_view(root: str|Path, physical_rows: Iterable[Dict
     overlays=_overlay(_rows(root/"data/public/project_assumption_overlay.csv")); out=[]
     for qa in physical_rows:
         a=overlays.get(qa["project_id"],{}); p=master[qa["project_id"]]
-        capex=float(_overlay_value(a,"project_cost",0) or 0)
+        capex=float(_overlay_value(a,"project_cost_local",0) or 0)
         opex_pct=float(_overlay_value(a,"opex_percent_of_capex",0) or 0)
         out.append({
             "project_id":qa["project_id"],"country":qa["country"],"currency":p.get("currency",""),
