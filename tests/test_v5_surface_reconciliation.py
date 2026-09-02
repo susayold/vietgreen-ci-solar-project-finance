@@ -14,3 +14,12 @@ def test_current_surface_reconciliation_has_plan_schema_and_all_pass():
         "reports/RECRUITER_PACKAGE.md","website/index.html"
     ])
     assert "V5.1.1" in text and "FRONTIER_ONLY" in text
+    with Path("outputs/v5_1_1_energy.csv").open(encoding="utf-8", newline="") as f:
+        energy=list(csv.DictReader(f))
+    assert len(energy)==20
+    for row in energy:
+        p50=float(row["generation_p50_kwh_modeled"])
+        p90=float(row["generation_p90_kwh"])
+        p99=float(row["generation_p99_kwh"])
+        assert p50 >= p90 >= p99 >= 0
+        assert row["specific_yield_observed"] != "BLOCK"
