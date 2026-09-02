@@ -46,7 +46,7 @@ jobs:
           if-no-files-found: error
       - name: Patch primary artifact identity
         env:
-          GH_TOKEN: "${{ github.token }}"}
+          GH_TOKEN: "${{ github.token }}"
         run: |
           set -euo pipefail
           python - <<'PY'
