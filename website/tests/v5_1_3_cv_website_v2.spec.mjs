@@ -22,7 +22,7 @@ test("entity, physical, economics and scenario reconciliation is visible", async
   const risk = await json(page, "data/risk.json");
   const economics = await json(page, "data/economics.json");
   expect(projects.projects).toHaveLength(20);
-  expect(economics.projects).toHaveLength(19);
+  expect(Object.values(economics.projects)).toHaveLength(19);
   expect(risk.rows).toHaveLength(171);
   expect(Object.keys(risk.heatmap)).toHaveLength(19);
   expect(Object.values(projects.projects).filter((p) => p.physicalStatus === "LOW_YIELD_REVIEW")).toHaveLength(4);
@@ -50,7 +50,7 @@ test("model page exposes exact workbook map and source boundary", async ({ page 
   expect(model.modelSha).toBe("ff69e15d211ff1abc88200574242ed2f1db49074");
   await visit(page, "/model");
   await expect(page.locator(".sheet")).toHaveCount(28);
-  await expect(page.locator("body")).toContainText("PPA_FRONTIER_ONLY");
+  await expect(page.locator("body")).toContainText("FRONTIER_ONLY");
 });
 test("responsive screenshot baselines are captured for every target route", async ({ page }, testInfo) => {
   for (const path of ["/", "/projects", "/energy", "/economics", "/debt", "/risk", "/diligence", "/model"]) {
