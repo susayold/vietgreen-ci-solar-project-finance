@@ -181,7 +181,7 @@ def _schedule_signature(schedule: List[Dict], field: str) -> str:
 def run(root: str|Path, output_dir: str|Path) -> Dict[str,List[Dict]]:
     root=Path(root); out=Path(output_dir); out.mkdir(parents=True,exist_ok=True)
     projects=_read_csv(root/"data/public/project_master_real.csv"); overlays=_assumptions(_read_csv(root/"data/public/project_assumption_overlay.csv"))
-    physical_rows={r["project_id"]:r for r in _read_csv(root/"validation/V5_1_2_PHYSICAL_QA.csv")}
+    physical_rows={r["project_id"]:r for r in _read_csv(root/"validation/V5_1_3_PHYSICAL_QA.csv")}
     econ=[]; cash=[]; debt_rows=[]; scenario_rows=[]; input_view=[]; hourly=[]
     scenario_ids=["BASE","P90_ENERGY","CAPEX_OVERRUN","INTEREST_RATE_SHOCK","COD_DELAY","OPEX_INFLATION","OFFTAKER_NONPAYMENT","OFFTAKER_TERMINATION","COMBINED_DOWNSIDE"]
     for project in projects:
