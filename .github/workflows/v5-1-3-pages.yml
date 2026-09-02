@@ -47,8 +47,8 @@ jobs:
           node --check website/app.js
           npx --yes playwright@1.55.0 install --with-deps chromium
           for width in 390 430 768 1024 1440; do
-            npx --yes playwright@1.55.0 screenshot --viewport-size="\${width},900" "http://127.0.0.1:8765/" "/tmp/v513-\${width}.png"
-            test -s "/tmp/v513-\${width}.png"
+            npx --yes playwright@1.55.0 screenshot --viewport-size="${width},900" "http://127.0.0.1:8765/" "/tmp/v513-${width}.png"
+            test -s "/tmp/v513-${width}.png"
           done
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
