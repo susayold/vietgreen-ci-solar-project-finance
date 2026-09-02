@@ -1,0 +1,21 @@
+{
+  "release_version": "5.1.2",
+  "release_tag": "v5.1.2-recruiter-final",
+  "release_status": "FINAL_RECRUITER_RELEASE",
+  "candidate_history_count": 54,
+  "selected_project_count": 20,
+  "economics_ready_count": 19,
+  "technical_blocked_count": 1,
+  "raw_observation_count": 441,
+  "ppa_mode": "FRONTIER_ONLY",
+  "reference_case": "REFERENCE_CASE_NOT_ACTUAL_PPA",
+  "decision_boundary": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
+  "transaction_evidence_status": "OPEN",
+  "bankable_transaction_ready": false,
+  "lender_approval_ready": false,
+  "ic_approval_ready": false,
+  "recruiter_ready": true,
+  "physical_gate": "PASS_WITH_NONBLOCKING_REVIEW",
+  "runtime_manifest_authority": "CI_ARTIFACT",
+  "remote_only": true
+}
