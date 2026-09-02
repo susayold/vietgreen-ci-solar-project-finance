@@ -1,21 +1,19 @@
-# Executive Summary — V5.1.1
+# Executive Summary — V5.1.2
 
 ## Outcome
 
-V5.1.1 rebuilds the real-data model contract and current content surfaces. The selected set remains 20 projects across the preserved 54-candidate / 441-observation research history. All project facts remain traceable to source IDs; modeled load, self-consumption, CAPEX, tax, rates, FX and discount rates are explicit overlay inputs.
+The final closure rebuild retains the full public research history (54 candidates / 441 observations), selects 20 projects, and resolves 19 records for standardized economics. One selected physical observation is technically blocked pending engineering validation.
+
+## Physical and model-input controls
+
+The generic specific-yield screen is 900–1,600 kWh/kWp; values above 3,200 kWh/kWp are blocked from direct base economics. Arisudhana’s preserved source claim is ~30,500,000 kWh on ~2,090 kWp (~14,593.3 kWh/kWp), with base P50 blank and `TECHNICAL_DATA_BLOCKED`. Resolved inputs expose observed values, base-generation provenance, review flags, and overlay assumptions.
 
 ## Economics boundary
 
-The engine reports customer ceiling, leveraged Sponsor Floor, explicit Lender Floor, debt constraints, loan-life LLCR, project-life PLCR and scenario results. It does not invent an exact PPA price. Every frontier result carries REFERENCE_CASE_NOT_ACTUAL_PPA and INDETERMINATE_MISSING_COMMERCIAL_DATA.
+PPA remains `FRONTIER_ONLY`; the exact price is not inferred. Outputs report customer ceiling, leveraged Sponsor Floor, Lender Floor, standardized debt capacity, DSCR, loan-life LLCR, project-life PLCR and scenario results. P90/P99 use explicit 0.90/0.80 screening factors on valid modeled P50.
 
-## Remediation completed
+## Release boundary
 
-- Tax-loss carryforward is a positive balance and cannot create tax in a loss year.
-- Sponsor Floor is solved on leveraged equity NPV at the equity hurdle.
-- Lender Floor is solved against a stated standardized leverage target.
-- LLCR uses loan-life CFADS; PLCR uses project-life CFADS.
-- FIXED_DEBT_SCHEDULE, NO_NEW_DEBT and RESIZED_DEBT have explicit scenario semantics.
-- COD delay shifts operating timing; interest shocks respect fixed/floating debt treatment.
-- Portfolio output is a common-USD diligence shortlist with budget and exposure controls, not an investment approval.
+`G0–G9 release gates cleared; G2 remains PASS_WITH_NONBLOCKING_REVIEW because one preserved source-reported physical outlier requires engineering validation but is excluded from direct base economics.`
 
-The output is recruiter-ready analysis, not bankability, IC approval, lender credit approval, legal/tax advice or technical sign-off.
+This is recruiter-ready screening/diligence evidence, not bankability, lender commitment, IC approval, legal, tax or technical sign-off.
