@@ -50,9 +50,9 @@ jobs:
           npm run build --prefix website
       - name: Browser QA
         run: |
-          nohup npm run preview --prefix website -- --host 127.0.0.1 --port 4173 > /tmp/vietgreen-preview.log 2>&1 &
+          nohup bash -c "cd website && npm run preview -- --host 127.0.0.1 --port 4173" > /tmp/vietgreen-preview.log 2>&1 &
           for i in $(seq 1 30); do curl -fsS http://127.0.0.1:4173/ >/dev/null && break || sleep 1; done
-          npx --prefix website playwright test tests/v5_1_3_cv_website.spec.mjs --reporter=line
+          npx --prefix website playwright test website/tests/v5_1_3_cv_website.spec.mjs --reporter=line
       - name: Upload QA evidence
         if: always()
         uses: actions/upload-artifact@v4
