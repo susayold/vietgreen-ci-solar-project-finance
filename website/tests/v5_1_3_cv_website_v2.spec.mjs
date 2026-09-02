@@ -6,7 +6,7 @@ async function json(page: any, path: string) {
   return page.evaluate(async (p: string) => fetch(p).then(r => r.json()), path);
 }
 async function visit(page: any, path: string) {
-  await page.goto(\`\${base}/#\${path}\`);
+  await page.goto(`${base}/#${path}`);
   await expect(page.locator(".hero")).toHaveCount(1);
   await expect(page.locator(".hero-image")).toHaveAttribute("src", /assets/);
 }
@@ -51,12 +51,12 @@ test("model page exposes exact workbook map and source boundary", async ({ page 
 test("responsive screenshot baselines are captured for every target route", async ({ page }, testInfo) => {
   for (const path of ["/", "/projects", "/energy", "/economics", "/debt", "/risk", "/diligence", "/model"]) {
     await page.setViewportSize({ width: 1440, height: 1000 });
-    await page.goto(\`\${base}/#\${path}\`);
-    await page.screenshot({ path: testInfo.outputPath(\`\${path.slice(1) || "overview"}-1440.png\`), fullPage: true });
+    await page.goto(`${base}/#${path}`);
+    await page.screenshot({ path: testInfo.outputPath(`${path.slice(1) || "overview"}-1440.png`), fullPage: true });
   }
   for (const path of ["/", "/economics", "/risk"]) {
     await page.setViewportSize({ width: 390, height: 844 });
-    await page.goto(\`\${base}/#\${path}\`);
-    await page.screenshot({ path: testInfo.outputPath(\`\${path.slice(1) || "overview"}-390.png\`), fullPage: true });
+    await page.goto(`${base}/#${path}`);
+    await page.screenshot({ path: testInfo.outputPath(`${path.slice(1) || "overview"}-390.png`), fullPage: true });
   }
 });
