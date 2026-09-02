@@ -17,6 +17,7 @@ test("all eight routes render from the frozen payload layer", async ({ page }) =
   }
 });
 test("entity, physical, economics and scenario reconciliation is visible", async ({ page }) => {
+  await page.goto(base + "/");
   const projects = await json(page, "data/projects.json");
   const risk = await json(page, "data/risk.json");
   const economics = await json(page, "data/economics.json");
@@ -32,6 +33,7 @@ test("entity, physical, economics and scenario reconciliation is visible", async
   await expect(page.locator(".heatmap tbody tr")).toHaveCount(19);
 });
 test("energy chart is a real SVG line chart with exact 24-hour series", async ({ page }) => {
+  await page.goto(base + "/");
   const energy = await json(page, "data/energy.json");
   const featured = energy.projects[energy.featuredProjectId];
   expect(featured.representativeDay.loadKwh).toHaveLength(24);
@@ -42,6 +44,7 @@ test("energy chart is a real SVG line chart with exact 24-hour series", async ({
   expect(naturalWidth).toBeGreaterThan(0);
 });
 test("model page exposes exact workbook map and source boundary", async ({ page }) => {
+  await page.goto(base + "/");
   const model = await json(page, "data/model.json");
   expect(model.workbookSheets).toHaveLength(28);
   expect(model.modelSha).toBe("ff69e15d211ff1abc88200574242ed2f1db49074");
