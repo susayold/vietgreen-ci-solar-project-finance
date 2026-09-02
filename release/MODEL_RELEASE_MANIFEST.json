@@ -17,5 +17,6 @@
   "recruiter_ready": true,
   "physical_gate": "PASS_WITH_NONBLOCKING_REVIEW",
   "runtime_manifest_authority": "CI_ARTIFACT",
-  "remote_only": true
+  "remote_only": true,
+  "external_gate_count_open": 8
 }
