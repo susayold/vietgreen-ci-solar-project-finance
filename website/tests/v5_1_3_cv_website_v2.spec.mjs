@@ -38,7 +38,8 @@ test("energy chart is a real SVG line chart with exact 24-hour series", async ({
   expect(featured.representativeDay.solarKwh).toHaveLength(24);
   await visit(page, "/energy");
   await expect(page.locator("svg polyline")).toHaveCount(4);
-  const naturalWidth = await page.locator(".hero-image").evaluate((img) => img.naturalWidth);\n  expect(naturalWidth).toBeGreaterThan(0);
+  const naturalWidth = await page.locator(".hero-image").evaluate((img) => img.naturalWidth);
+  expect(naturalWidth).toBeGreaterThan(0);
 });
 test("model page exposes exact workbook map and source boundary", async ({ page }) => {
   const model = await json(page, "data/model.json");
