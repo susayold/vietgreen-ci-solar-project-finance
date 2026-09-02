@@ -43,7 +43,7 @@ jobs:
             release
           if-no-files-found: error
       - name: Patch primary artifact identity
-        env: {GH_TOKEN: \${{ github.token }}}
+        env: {GH_TOKEN: ${{ github.token }}}
         run: |
           set -euo pipefail
           python - <<'PY'
@@ -80,7 +80,7 @@ jobs:
             validation/V5_1_2_REPRODUCIBILITY.csv
           if-no-files-found: error
       - name: Seal runtime identity
-        env: {GH_TOKEN: \${{ github.token }}}
+        env: {GH_TOKEN: ${{ github.token }}}
         run: |
           set -euo pipefail
           python - <<'PY'
