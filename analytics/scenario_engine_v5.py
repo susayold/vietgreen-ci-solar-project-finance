@@ -5,19 +5,19 @@ from typing import Dict, Any
 
 SCENARIO_RULES = {
     "BASE": {"debt_mode":"RESIZED_DEBT","energy_response":"NONE","capex_response":"NONE","rate_response":"NONE","timing_response":"NONE"},
-    "P90_ENERGY": {"debt_mode":"RESIZED_DEBT","energy_response":"P90_ENERGY","capex_response":"NONE","rate_response":"NONE","timing_response":"NONE"},
-    "CAPEX_OVERRUN": {"debt_mode":"RESIZED_DEBT","energy_response":"NONE","capex_response":"CAPEX_UP","rate_response":"NONE","timing_response":"NONE"},
-    "INTEREST_RATE_SHOCK": {"debt_mode":"FIXED_DEBT_SCHEDULE","energy_response":"NONE","capex_response":"NONE","rate_response":"RATE_UP_IF_FLOATING","timing_response":"NONE"},
-    "COD_DELAY": {"debt_mode":"FIXED_DEBT_SCHEDULE","energy_response":"NONE","capex_response":"NONE","rate_response":"NONE","timing_response":"COD_DELAY"},
-    "OPEX_INFLATION": {"debt_mode":"FIXED_DEBT_SCHEDULE","energy_response":"NONE","capex_response":"NONE","rate_response":"NONE","timing_response":"NONE"},
-    "OFFTAKER_NONPAYMENT": {"debt_mode":"FIXED_DEBT_SCHEDULE","energy_response":"NONE","capex_response":"NONE","rate_response":"NONE","timing_response":"NONE"},
+    "P90_ENERGY": {"debt_mode":"FIXED_CONTRACTUAL_SCHEDULE","energy_response":"P90_ENERGY","capex_response":"NONE","rate_response":"NONE","timing_response":"NONE"},
+    "CAPEX_OVERRUN": {"debt_mode":"NO_NEW_DEBT","energy_response":"NONE","capex_response":"CAPEX_UP","rate_response":"NONE","timing_response":"NONE"},
+    "INTEREST_RATE_SHOCK": {"debt_mode":"FIXED_CONTRACTUAL_SCHEDULE","energy_response":"NONE","capex_response":"NONE","rate_response":"RATE_UP_IF_FLOATING","timing_response":"NONE"},
+    "COD_DELAY": {"debt_mode":"FIXED_CONTRACTUAL_SCHEDULE","energy_response":"NONE","capex_response":"NONE","rate_response":"NONE","timing_response":"COD_DELAY"},
+    "OPEX_INFLATION": {"debt_mode":"FIXED_CONTRACTUAL_SCHEDULE","energy_response":"NONE","capex_response":"NONE","rate_response":"NONE","timing_response":"NONE"},
+    "OFFTAKER_NONPAYMENT": {"debt_mode":"FIXED_CONTRACTUAL_SCHEDULE","energy_response":"NONE","capex_response":"NONE","rate_response":"NONE","timing_response":"NONE"},
     "OFFTAKER_TERMINATION": {"debt_mode":"NO_NEW_DEBT","energy_response":"NONE","capex_response":"NONE","rate_response":"NONE","timing_response":"TERMINATION"},
     "COMBINED_DOWNSIDE": {"debt_mode":"NO_NEW_DEBT","energy_response":"P90_ENERGY","capex_response":"CAPEX_UP","rate_response":"RATE_UP_IF_FLOATING","timing_response":"COD_DELAY"},
 }
 
 def semantics(scenario_id: str, row: Dict[str, Any]|None=None) -> Dict[str, Any]:
     out=dict(SCENARIO_RULES.get(scenario_id, {})); out.update(row or {}); out["scenario_id"]=scenario_id
-    out.setdefault("debt_mode","FIXED_DEBT_SCHEDULE")
+    out.setdefault("debt_mode","FIXED_CONTRACTUAL_SCHEDULE")
     return out
 
 def apply_inputs(base: Dict[str, Any], scenario: Dict[str, Any]) -> Dict[str, Any]:
