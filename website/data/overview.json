@@ -1,7 +1,7 @@
 {
-  "releaseVersion": "5.1.1",
-  "releaseTag": "v5.1.1-recruiter-final",
-  "sourceSha": "6a9276a552c42400c20f2cc552eb37ae222f27d0",
+  "releaseVersion": "5.1.2",
+  "releaseTag": "v5.1.2-recruiter-final",
+  "sourceSha": "PAGES_BUILD_SHA_INJECTED",
   "candidateHistory": 54,
   "rawObservations": 441,
   "projectsScreened": 20,
@@ -13,5 +13,10 @@
   "bankableTransactionReady": false,
   "claimBoundary": "Standardized public-data reconstruction; exact confidential PPA/lender/site/tax/engineering data not represented as actual.",
   "remoteOnly": true,
-  "title": "Real C&I Solar Projects. Public Evidence. Project Finance Decisions Under Uncertainty."
+  "title": "Real C&I Solar Projects. Public Evidence. Project Finance Decisions Under Uncertainty.",
+  "workflowRunId": "PAGES_BUILD_RUN_ID_INJECTED",
+  "selectedResearchRecords": 20,
+  "economicsReadyRecords": 19,
+  "technicalBlockedRecords": 1,
+  "physicalGate": "PASS_WITH_NONBLOCKING_REVIEW"
 }
