@@ -8,6 +8,11 @@ from .debt_sculpting import capacity_constraints, forward_rebuild, discounted_va
 from .tax_engine_v5 import apply_tax_loss, validate_tax_row
 from .scenario_engine_v5 import apply_inputs, semantics
 
+# Screening quantiles are explicit analyst assumptions, not observed P90/P99 data.
+P90_ENERGY_FACTOR = 0.90
+P99_ENERGY_FACTOR = 0.80
+YIELD_QUANTILE_METHOD = "SCREENING_FACTOR_ON_P50_NOT_OBSERVED_P90_P99"
+
 def _read_csv(path: Path) -> List[Dict[str,str]]:
     with path.open(encoding="utf-8-sig", newline="") as f: return list(csv.DictReader(f))
 
@@ -77,6 +82,8 @@ def _project_inputs(project, a):
         "llcr_discount_rate":_rate(_v(a,"llcr_discount_rate",8)),
         "plcr_discount_rate":_rate(_v(a,"plcr_discount_rate",8)),
         "inflation_rate":_rate(_v(a,"inflation_rate",2)), "degradation_rate":_rate(_v(a,"degradation",.5)),
+        "p90_energy_factor":P90_ENERGY_FACTOR, "p99_energy_factor":P99_ENERGY_FACTOR,
+        "yield_quantile_method":YIELD_QUANTILE_METHOD,
         "ppa_mode":str(a.get("ppa_mode",{}).get("value") or "FRONTIER_ONLY"),
         "load_evidence_level":str(a.get("load_evidence_level",{}).get("value") or "LEVEL_4_NOT_DISCLOSED"),
         "debt_rate_type":"FLOATING_REFERENCE", "debt_sculpting_dscr":1.35,
@@ -116,6 +123,21 @@ def _debt_metrics(p, cfads):
     plcr=discounted_value(project,p["plcr_discount_rate"])/debt if debt else 0.0
     return debt,binding,constraints,sched,min(dscr) if dscr else 0.0,llcr,plcr
 
+def _reprice_fixed_schedule(base_schedule: List[Dict], cfads: List[float], rate: float) -> List[Dict]:
+    """Keep committed principal/closing balances exact; reprice only floating interest."""
+    rows=[]
+    for i,base in enumerate(base_schedule):
+        opening=float(base["opening"]); principal=float(base["principal"])
+        interest=opening*float(rate); service=interest+principal
+        cash=float(cfads[i]) if i < len(cfads) else 0.0
+        rows.append({"opening":opening,"interest":interest,"principal":principal,
+                     "debt_service":service,"closing":float(base["closing"]),
+                     "dscr":cash/service if service else None})
+    return rows
+
+def _schedule_signature(schedule: List[Dict]) -> str:
+    return "|".join("{:.8f}".format(float(row["principal"])) for row in schedule)
+
 def run(root: str|Path, output_dir: str|Path) -> Dict[str,List[Dict]]:
     root=Path(root); out=Path(output_dir); out.mkdir(parents=True,exist_ok=True)
     projects=_read_csv(root/"data/public/project_master_real.csv"); overlays=_assumptions(_read_csv(root/"data/public/project_assumption_overlay.csv"))
@@ -152,7 +174,12 @@ def run(root: str|Path, output_dir: str|Path) -> Dict[str,List[Dict]]:
         row={"project_id":project["project_id"],"project_name":project["project_name"],"country":project["country"],"currency":p["currency"],
           "input_origin":"OBSERVED_FACTS_PLUS_EXPLICIT_OVERLAY","installed_capacity_kwp_observed":project.get("installed_capacity_kwp_observed",""),
           "generation_p50_kwh_observed":project.get("annual_generation_kwh_observed",""),"generation_p50_kwh_modeled":p["generation_p50_kwh"],
+          "generation_p90_kwh":p["generation_p50_kwh"]*p["p90_energy_factor"],"generation_p99_kwh":p["generation_p50_kwh"]*p["p99_energy_factor"],
           "specific_yield_observed":_num(project.get("annual_generation_kwh_observed"))/p["capacity_kwp"] if p["capacity_kwp"] else "",
+          "specific_yield_p50_kwh_kwp":p["generation_p50_kwh"]/p["capacity_kwp"] if p["capacity_kwp"] else "",
+          "specific_yield_p90_kwh_kwp":(p["generation_p50_kwh"]*p["p90_energy_factor"])/p["capacity_kwp"] if p["capacity_kwp"] else "",
+          "specific_yield_p99_kwh_kwp":(p["generation_p50_kwh"]*p["p99_energy_factor"])/p["capacity_kwp"] if p["capacity_kwp"] else "",
+          "p50_p90_p99_method":p["yield_quantile_method"],
           "annual_load_kwh_modeled":p["annual_load_kwh"],"load_evidence_level":p["load_evidence_level"],"load_8760_rows":solar["hour_count"],
           "self_consumed_kwh_p50":solar["self_consumed_sum"],"export_kwh_p50":solar["export_sum"],"ppa_price_local_per_kwh":"",
           "customer_ceiling_local_per_kwh":ref,"sponsor_floor_local_per_kwh":sponsor_floor,"lender_floor_local_per_kwh":lender_floor,
@@ -179,19 +206,38 @@ def run(root: str|Path, output_dir: str|Path) -> Dict[str,List[Dict]]:
             sp=apply_inputs(p,{"scenario_id":sid}); srows,scf=operating_schedule(p,ref,sp)
             mode=sp["debt_mode"]; rate=p["debt_rate"]+(sp["rate_delta"] if p["debt_rate_type"]=="FLOATING_REFERENCE" else 0.0)
             if mode=="RESIZED_DEBT":
-                sp2=dict(p); sp2["debt_rate"]=rate; debt_s,bind_s,con_s,sch_s,ds_s,ll_s,pl_s=_debt_metrics(sp2,scf)
-            else:
-                debt_s=debt; sch_s=forward_rebuild(debt,scf[:p["debt_tenor_years"]],rate,p["debt_sculpting_dscr"])
+                sp2=dict(p); sp2["debt_rate"]=rate; sp2["capex_local"]=p["capex_local"]*sp["capex_factor"]; debt_s,bind_s,con_s,sch_s,ds_s,ll_s,pl_s=_debt_metrics(sp2,scf)
+            elif mode=="FIXED_DEBT_SCHEDULE":
+                debt_s=debt
+                sch_s=_reprice_fixed_schedule(sched,scf,rate)
                 bind_s=binding; ds_s=min([x["dscr"] for x in sch_s if x["dscr"] is not None] or [0.0])
-                ll_s=discounted_value(scf[:p["debt_tenor_years"]],rate)/debt if debt else 0; pl_s=discounted_value(scf,rate)/debt if debt else 0
+                ll_s=discounted_value(scf[:p["debt_tenor_years"]],p["llcr_discount_rate"])/debt if debt else 0
+                pl_s=discounted_value(scf,p["plcr_discount_rate"])/debt if debt else 0
+            else:
+                debt_s=debt
+                sch_s=forward_rebuild(debt,scf[:p["debt_tenor_years"]],p["debt_rate"],p["debt_sculpting_dscr"])
+                bind_s=binding; ds_s=min([x["dscr"] for x in sch_s if x["dscr"] is not None] or [0.0])
+                ll_s=discounted_value(scf[:p["debt_tenor_years"]],p["llcr_discount_rate"])/debt if debt else 0
+                pl_s=discounted_value(scf,p["plcr_discount_rate"])/debt if debt else 0
             scenario_rows.append({"project_id":project["project_id"],"scenario_id":sid,"debt_mode":mode,"rate_response":sp["rate_delta"],
               "cod_delay_years":sp["cod_delay_years"],"energy_factor":sp["energy_factor"],"capex_factor":sp["capex_factor"],
               "opex_factor":sp["opex_factor"],"collection_haircut":sp["collection_haircut"],"termination_year":sp["termination_year"],
-              "year_1_revenue_local":srows[0]["gross_revenue_local"],"first_operating_year":next((x["year"] for x in srows if x["active"]=="TRUE"),""),
+              "year_1_revenue_local":srows[0]["gross_revenue_local"],"year_2_revenue_local":srows[1]["gross_revenue_local"],
+              "year_1_generation_kwh":srows[0]["generation_kwh"],"base_year_1_generation_kwh":base_rows[0]["generation_kwh"],
+              "year_1_depreciation_local":srows[0]["depreciation_local"],"year_2_depreciation_local":srows[1]["depreciation_local"],
+              "year_1_tax_local":srows[0]["tax_local"],"year_2_tax_local":srows[1]["tax_local"],
+              "first_operating_year":next((x["year"] for x in srows if x["active"]=="TRUE"),""),
               "debt_capacity_local":debt_s,"debt_capacity_change_local":debt_s-debt,"binding_constraint":bind_s,
               "dscr_min":ds_s,"llcr_loan_life":ll_s,"plcr_project_life":pl_s,
+              "base_debt_interest_y1_local":sched[0]["interest"] if sched else 0.0,
+              "scenario_debt_interest_y1_local":sch_s[0]["interest"] if sch_s else 0.0,
+              "base_principal_schedule_signature":_schedule_signature(sched),
+              "scenario_principal_schedule_signature":_schedule_signature(sch_s),
+              "principal_schedule_preserved":str(mode=="FIXED_DEBT_SCHEDULE" and _schedule_signature(sched)==_schedule_signature(sch_s)).upper(),
+              "incremental_capex_local":p["capex_local"]*max(sp["capex_factor"]-1.0,0.0),
+              "equity_funded_incremental_capex_local":p["capex_local"]*max(sp["capex_factor"]-1.0,0.0) if mode=="NO_NEW_DEBT" else 0.0,
               "no_new_debt_increase":str(mode=="NO_NEW_DEBT" and debt_s<=debt+1e-8).upper(),
-              "base_debt_schedule_preserved":str(mode=="FIXED_DEBT_SCHEDULE").upper(),
+              "base_debt_schedule_preserved":str(mode=="FIXED_DEBT_SCHEDULE" and _schedule_signature(sched)==_schedule_signature(sch_s)).upper(),
               "reference_case":"SCENARIO_REFERENCE_NOT_ACTUAL_PPA"})
         input_view.append({"project_id":project["project_id"],"country":project["country"],"observed_capacity_kwp":project.get("installed_capacity_kwp_observed",""),
           "observed_generation_kwh":project.get("annual_generation_kwh_observed",""),"observed_source_id":project.get("primary_source_id",""),
