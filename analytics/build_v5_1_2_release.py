@@ -301,6 +301,8 @@ Each control below is an executable or read-back control, not a label-only asser
       {"gate":a,"requirement":b,"status":c,"resolved_commit":validation_commit,"resolved_run":validation_run}
       for a,b,c in dod
     ],["gate","requirement","status","resolved_commit","resolved_run"])
+    for source,target in [("validation/V5_1_1_SELECTED_PROJECT_DATA_AUDIT.csv","validation/V5_1_2_SELECTED_PROJECT_DATA_AUDIT.csv"),("validation/V5_1_1_YIELD_SANITY_AUDIT.csv","validation/V5_1_2_YIELD_SANITY_AUDIT.csv")]:
+        _write(root/target,(root/source).read_text(encoding="utf-8"))
     hashes={}
     for rel in ["data/public/project_master_real.csv","data/public/project_assumption_overlay.csv","evidence/GLOBAL_SOURCE_REGISTER.csv","research/CONFLICT_REGISTER.csv","validation/V5_1_2_SELECTED_PROJECT_DATA_AUDIT.csv","validation/V5_1_2_YIELD_SANITY_AUDIT.csv"]:
         hashes[rel]=_hash(root/rel)
