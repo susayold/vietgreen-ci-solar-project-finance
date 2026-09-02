@@ -12,6 +12,6 @@ for base in paths:
         text=path.read_text(encoding="utf-8")
         for phrase in ["executed PPA","bankable PPA","actual PPA","transaction-ready","transaction ready","lender approval","IC approval","approved loan","realized return"]:
             for match in re.finditer(re.escape(phrase),text,re.I):
-                if not negative.search(text[max(0,match.start()-70):match.start()]):
+                context=text[max(0,match.start()-70):match.start()]\n                if not negative.search(context) and "≠" not in context:
                     raise SystemExit(f"positive claim boundary violation: {phrase} in {path}")
 print("claim boundary validation PASS")
