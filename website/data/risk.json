@@ -1,5 +1,5 @@
 {
-  "version": "5.1.2",
+  "version": "5.1.3",
   "scenarioSemantics": [
     "FIXED_CONTRACTUAL_SCHEDULE",
     "NO_NEW_DEBT",
@@ -43,5 +43,7 @@
       "COMBINED_DOWNSIDE",
       "NO_NEW_DEBT"
     ]
-  ]
+  ],
+  "contractualDebtPolicy": "NO_NEW_DEBT_PRESERVE_BASE_CONTRACTUAL_SCHEDULE",
+  "interestPolicy": "FLOATING_RATE_REPRICE_ONLY"
 }
