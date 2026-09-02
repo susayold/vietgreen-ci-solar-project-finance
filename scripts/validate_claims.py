@@ -4,7 +4,7 @@ import re
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 paths=[ROOT/"website"/"src",ROOT/"website"/"public"/"data"]
-negative=re.compile(r"\b(?:not|no|never|does not|do not|without|disabled|false|missing|open|indeterminate)\b",re.I)
+negative=re.compile(r"\b(?:not|no|never|does not|do not|without|disabled|false|missing|open|indeterminate|≠)\b",re.I)
 for base in paths:
     if not base.exists(): continue
     for path in base.rglob("*"):
