@@ -1,9 +1,73 @@
 {
-  "version": "5.1.1",
+  "version": "5.1.2",
   "debtModes": [
-    "FIXED_DEBT_SCHEDULE",
+    "FIXED_CONTRACTUAL_SCHEDULE",
     "NO_NEW_DEBT",
     "RESIZED_DEBT"
   ],
-  "rows": []
+  "rows": [
+    {
+      "scenario_id": "BASE",
+      "debt_mode": "RESIZED_DEBT",
+      "principal_policy": "RESIZED_BY_BASE_CFADS",
+      "interest_policy": "UNCHANGED",
+      "capex_policy": "BASE_CAPEX"
+    },
+    {
+      "scenario_id": "P90_ENERGY",
+      "debt_mode": "FIXED_CONTRACTUAL_SCHEDULE",
+      "principal_policy": "UNCHANGED",
+      "interest_policy": "UNCHANGED",
+      "capex_policy": "BASE_CAPEX"
+    },
+    {
+      "scenario_id": "CAPEX_OVERRUN",
+      "debt_mode": "NO_NEW_DEBT",
+      "principal_policy": "BASE_CONTRACTUAL",
+      "interest_policy": "UNCHANGED",
+      "capex_policy": "SPONSOR_EQUITY"
+    },
+    {
+      "scenario_id": "INTEREST_RATE_SHOCK",
+      "debt_mode": "FIXED_CONTRACTUAL_SCHEDULE",
+      "principal_policy": "UNCHANGED",
+      "interest_policy": "REPRICE_IF_FLOATING",
+      "capex_policy": "BASE_CAPEX"
+    },
+    {
+      "scenario_id": "COD_DELAY",
+      "debt_mode": "FIXED_CONTRACTUAL_SCHEDULE",
+      "principal_policy": "UNCHANGED",
+      "interest_policy": "UNCHANGED",
+      "capex_policy": "BASE_CAPEX"
+    },
+    {
+      "scenario_id": "OPEX_INFLATION",
+      "debt_mode": "FIXED_CONTRACTUAL_SCHEDULE",
+      "principal_policy": "UNCHANGED",
+      "interest_policy": "UNCHANGED",
+      "capex_policy": "BASE_CAPEX"
+    },
+    {
+      "scenario_id": "OFFTAKER_NONPAYMENT",
+      "debt_mode": "FIXED_CONTRACTUAL_SCHEDULE",
+      "principal_policy": "UNCHANGED",
+      "interest_policy": "UNCHANGED",
+      "capex_policy": "BASE_CAPEX"
+    },
+    {
+      "scenario_id": "OFFTAKER_TERMINATION",
+      "debt_mode": "NO_NEW_DEBT",
+      "principal_policy": "BASE_CONTRACTUAL",
+      "interest_policy": "UNCHANGED",
+      "capex_policy": "BASE_CAPEX"
+    },
+    {
+      "scenario_id": "COMBINED_DOWNSIDE",
+      "debt_mode": "NO_NEW_DEBT",
+      "principal_policy": "BASE_CONTRACTUAL",
+      "interest_policy": "UNCHANGED",
+      "capex_policy": "SPONSOR_EQUITY"
+    }
+  ]
 }
