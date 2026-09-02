@@ -119,6 +119,8 @@ def build(root=ROOT):
       "evidence/CAPEX_BENCHMARK_REGISTER.csv","evidence/OPEX_BENCHMARK_REGISTER.csv","evidence/FX_REGISTER.csv","evidence/RATE_REGISTER.csv",
       "evidence/TAX_BENCHMARK_REGISTER.csv","evidence/DISCOUNT_RATE_REGISTER_V5.csv","evidence/TARIFF_REGISTER_GLOBAL.csv","evidence/COUNTRY_BENCHMARK_PACKS.csv"
     ]
+    for source,target in [("validation/V5_1_1_SELECTED_PROJECT_DATA_AUDIT.csv","validation/V5_1_2_SELECTED_PROJECT_DATA_AUDIT.csv"),("validation/V5_1_1_YIELD_SANITY_AUDIT.csv","validation/V5_1_2_YIELD_SANITY_AUDIT.csv")]:
+        _write(root/target,(root/source).read_text(encoding="utf-8"))
     input_hashes={rel:_hash(root/rel) for rel in input_paths}
     surface_paths=[
       "README.md","EXECUTIVE_SUMMARY.md","BUSINESS_CASE.md","ASSUMPTIONS_AND_LIMITATIONS.md","CLAIM_GOVERNANCE.md","SCOPE_MATRIX.md","V5_MIGRATION_STATUS.md",
@@ -301,8 +303,6 @@ Each control below is an executable or read-back control, not a label-only asser
       {"gate":a,"requirement":b,"status":c,"resolved_commit":validation_commit,"resolved_run":validation_run}
       for a,b,c in dod
     ],["gate","requirement","status","resolved_commit","resolved_run"])
-    for source,target in [("validation/V5_1_1_SELECTED_PROJECT_DATA_AUDIT.csv","validation/V5_1_2_SELECTED_PROJECT_DATA_AUDIT.csv"),("validation/V5_1_1_YIELD_SANITY_AUDIT.csv","validation/V5_1_2_YIELD_SANITY_AUDIT.csv")]:
-        _write(root/target,(root/source).read_text(encoding="utf-8"))
     hashes={}
     for rel in ["data/public/project_master_real.csv","data/public/project_assumption_overlay.csv","evidence/GLOBAL_SOURCE_REGISTER.csv","research/CONFLICT_REGISTER.csv","validation/V5_1_2_SELECTED_PROJECT_DATA_AUDIT.csv","validation/V5_1_2_YIELD_SANITY_AUDIT.csv"]:
         hashes[rel]=_hash(root/rel)
