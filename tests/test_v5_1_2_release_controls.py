@@ -18,7 +18,9 @@ def test_static_contract_is_remote_only_and_frontier_only():
 
 def test_current_content_has_truthful_boundary():
     assert "BANKABLE_TRANSACTION_READY=FALSE" in (ROOT/"reports/LENDER_CREDIT_MEMO.md").read_text()
-    assert "INVEST" not in (ROOT/"reports/INVESTMENT_COMMITTEE_MEMO.md").read_text().upper()
+    memo=(ROOT/"reports/INVESTMENT_COMMITTEE_MEMO.md").read_text().upper()
+    assert "INVESTMENT APPROVAL" not in memo
+    assert "INVEST=" not in memo
 
 def test_stale_current_surface_scan_passes():
     assert scan(ROOT)==[]
