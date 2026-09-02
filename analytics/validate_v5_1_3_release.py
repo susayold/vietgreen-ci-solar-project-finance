@@ -62,7 +62,9 @@ def validate_contractual_schedules():
         if sid in expected_fixed:
             for k in ("principal_schedule_preserved","opening_schedule_preserved","closing_schedule_preserved"):
                 if r[k] != "TRUE": failures.append(f"{sid}:{k}")
-        if sid=="COMBINED_DOWNSIDE" and r["interest_schedule_changed"]!="TRUE":
+        if sid=="COMBINED_DOWNSIDE" and r["interest_repricing_policy_applied"]!="TRUE":
+            failures.append("COMBINED_DOWNSIDE:interest_policy")
+        if sid=="COMBINED_DOWNSIDE" and abs(float(r["base_debt_local"]))>TOL and r["interest_schedule_changed"]!="TRUE":
             failures.append("COMBINED_DOWNSIDE:interest")
         if sid=="COD_DELAY" and (r["first_operating_year"]!="2" or float(r["year_1_revenue_local"])!=0.0 or float(r["year_1_depreciation_local"])!=0.0):
             failures.append("COD_DELAY:timing")
