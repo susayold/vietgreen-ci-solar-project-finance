@@ -1,0 +1,60 @@
+name: V5.1.2 Exact-SHA GitHub Pages Deployment
+on:
+  push:
+    branches: [v5.1.2-final-closure]
+    paths: ["website/**", ".github/workflows/v5-1-2-pages.yml"]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions: {contents: read}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Stamp exact release SHA
+        run: |
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          p=Path("website/data/release-meta.json"); d=json.loads(p.read_text())
+          d["gitSha"]=os.environ["GITHUB_SHA"]; d["sourceSha"]=os.environ["GITHUB_SHA"]; d["workflowRunId"]=os.environ["GITHUB_RUN_ID"]; d["status"]="DEPLOYED_EXACT_SHA"
+          p.write_text(json.dumps(d,indent=2)+"\n")
+          PY
+      - name: Route smoke and browser QA
+        run: |
+          set -euo pipefail
+          python -m http.server 8765 --directory website >/tmp/v512-pages.log 2>&1 &
+          pid=$!; trap 'kill "$pid"' EXIT
+          sleep 2
+          for route in / /data/shared-summary.json /data/release-meta.json /data/projects.json /data/frontier.json /data/risk.json /data/evidence.json /data/scenarios.json; do curl --fail --silent --show-error "http://127.0.0.1:8765$route" >/dev/null; done
+          node --check website/app.js
+          npx --yes playwright@1.55.0 install --with-deps chromium
+          npx --yes playwright@1.55.0 screenshot --device="Desktop Chrome" "file://$GITHUB_WORKSPACE/website/index.html" /tmp/v512-pages.png
+          test -s /tmp/v512-pages.png
+      - uses: actions/upload-pages-artifact@v4
+        with: {path: website}
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions: {pages: write, id-token: write}
+    environment:
+      name: github-pages
+      url: \${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy exact SHA
+        id: deployment
+        uses: actions/deploy-pages@v5
+      - name: Verify exact SHA and HTTP 200
+        env:
+          SITE_URL: \${{ steps.deployment.outputs.page_url }}
+        run: |
+          python - <<'PY'
+          import json,os
+          from urllib.request import urlopen
+          base=os.environ["SITE_URL"].rstrip("/")+"/"
+          with urlopen(base+"data/release-meta.json",timeout=30) as r: d=json.load(r)
+          assert d.get("gitSha")==os.environ["GITHUB_SHA"]
+          assert d.get("sourceSha")==os.environ["GITHUB_SHA"]
+          for route in ("","data/shared-summary.json","data/release-meta.json","data/projects.json","data/frontier.json","data/risk.json","data/evidence.json","data/scenarios.json"):
+              with urlopen(base+route,timeout=30) as r: assert r.status==200
+          print({"status":"PASS","url":base,"gitSha":d["gitSha"]})
+          PY
