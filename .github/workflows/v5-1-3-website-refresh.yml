@@ -76,6 +76,21 @@ jobs:
           npm install --no-save @playwright/test@1.55.0
           npx playwright install --with-deps chromium
           npx playwright test tests/v5_1_3_website_browser.spec.mjs
+      - name: Seal deployed website metadata
+        env:
+          WEBSITE_SOURCE_SHA: ${{ github.sha }}
+          WEBSITE_WORKFLOW_RUN_ID: ${{ github.run_id }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          p=Path("website/data/release-meta.json")
+          d=json.loads(p.read_text())
+          d["websiteSourceSha"]=os.environ["WEBSITE_SOURCE_SHA"]
+          d["websiteWorkflowRunId"]=os.environ["WEBSITE_WORKFLOW_RUN_ID"]
+          d["websiteStatus"]="DEPLOYED_EXACT_SHA"
+          p.write_text(json.dumps(d, indent=2)+"\\n")
+          PY
       - name: Upload website QA and generated payloads
         if: always()
         uses: actions/upload-artifact@v4
