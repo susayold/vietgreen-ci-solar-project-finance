@@ -7,8 +7,17 @@ def test_pf002_budget_enforced():
 def test_pf003_economic_country_cap():
     r=allocate([{"project_id":"a","country":"VN","equity_required_usd":60},{"project_id":"b","country":"VN","equity_required_usd":60},{"project_id":"c","country":"IN","equity_required_usd":40}],100,.6)
     assert r["exposure_enforced"]
+    capped=allocate([
+        {"project_id":"a","country":"VN","developer":"D1","offtaker":"O1","currency":"VND","industry":"TEXTILE","equity_required_usd":60},
+        {"project_id":"b","country":"IN","developer":"D1","offtaker":"O2","currency":"INR","industry":"TEXTILE","equity_required_usd":60},
+        {"project_id":"c","country":"US","developer":"D2","offtaker":"O3","currency":"USD","industry":"FOOD","equity_required_usd":40},
+    ],100,max_country_share=1.0,max_developer_share=.6,max_offtaker_share=1.0,max_currency_share=1.0,max_industry_share=1.0)
+    assert capped["exposure_enforced"]
+    assert capped["exposures_usd"]["developer"].get("D1",0) <= 60
 def test_pf004_frontier_boundary():
     r=allocate([{"project_id":"a","equity_required_usd":10}],100); assert r["capital_allocation_status"]=="NOT_INVESTMENT_APPROVAL"
 def test_pf005_deterministic():
     p=[{"project_id":"b","equity_required_usd":10,"equity_npv_usd_at_reference":1},{"project_id":"a","equity_required_usd":10,"equity_npv_usd_at_reference":2}]
     assert allocate(p,100)["selected"]==allocate(p,100)["selected"]
+    invalid=allocate([{"project_id":"negative","equity_required_usd":-5}],100)
+    assert all(float(x["equity_required_usd"])>=0 for x in invalid["selected"])
