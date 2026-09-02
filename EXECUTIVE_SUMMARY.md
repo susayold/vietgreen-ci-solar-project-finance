@@ -1,4 +1,4 @@
-# Executive Summary — V5.1.2
+# Executive Summary — V5.1.3
 
 ## Outcome
 
@@ -17,3 +17,7 @@ PPA remains `FRONTIER_ONLY`; the exact price is not inferred. Outputs report cus
 `G0–G9 release gates cleared; G2 remains PASS_WITH_NONBLOCKING_REVIEW because one preserved source-reported physical outlier requires engineering validation but is excluded from direct base economics.`
 
 This is recruiter-ready screening/diligence evidence, not bankability, lender commitment, IC approval, legal, tax or technical sign-off.
+
+## Contractual downside closure
+
+Debt downside testing is contractual rather than self-healing: no-new-debt cases retain committed amortization instead of re-sculpting principal to lower stressed CFADS.
