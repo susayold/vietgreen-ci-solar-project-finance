@@ -9,7 +9,7 @@ const routes = [
   ["#/debt", ["Debt sized from CFADS", "1.35x", "1.377x"]],
   ["#/risk", ["Nine scenarios", "1.350x", "0.990x"]],
   ["#/diligence", ["diligence shortlist", "19", "CAPITAL ALLOCATION DISABLED"]],
-  ["#/model", ["numbers can be traced", "V5.1.3", "26 Regression tests"]]
+  ["#/model", ["Model architecture", "V5.1.3", "26 Regression tests"]]
 ];
 
 for (const [route, words] of routes) {
