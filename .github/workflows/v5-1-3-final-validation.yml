@@ -68,7 +68,7 @@ jobs:
           with urllib.request.urlopen(q) as r: items=json.load(r)["artifacts"]
           a=next(x for x in items if x["name"]=="vietgreen-v5-1-3-full-data-model-release")
           p=Path("release/V5_1_3_RUNTIME_RELEASE_MANIFEST.json"); d=json.loads(p.read_text())
-          d.update(primary_artifact_id=str(a["id"]),primary_artifact_digest=a["digest"],pytest_count=17,semantic_test_count=17,build_timestamp_utc=os.environ["V5_1_3_FREEZE_DATE_UTC"])
+          d.update(primary_artifact_id=str(a["id"]),primary_artifact_digest=a["digest"],pytest_count=26,semantic_test_count=26,build_timestamp_utc=os.environ["V5_1_3_FREEZE_DATE_UTC"])
           p.write_text(json.dumps(d,indent=2,sort_keys=True)+"\n")
           PY
       - name: Upload runtime candidate
