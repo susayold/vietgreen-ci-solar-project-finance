@@ -53,7 +53,9 @@ def test_combined_equity_funding():
 
 def test_combined_floating_rate_reprices_interest_only():
     for r in _scenario("COMBINED_DOWNSIDE"):
-        assert r["interest_schedule_changed"] == "TRUE"
+        assert r["interest_repricing_policy_applied"] == "TRUE"
+        if float(r["base_debt_local"]) > 1e-7:
+            assert r["interest_schedule_changed"] == "TRUE"
         assert r["principal_schedule_preserved"] == "TRUE"
 
 
