@@ -1,12 +1,12 @@
-# Scope Matrix — V5.1.1
+# Scope Matrix — V5.1.2
 
 | In scope | Explicitly out of scope |
 |---|---|
 | 54-candidate / 441-observation research history | BESS, ML, Monte Carlo and Power BI |
-| Selected-20 data and yield audit | New countries or new project universe |
-| Observed-vs-overlay data model | Fabricated exact PPA or lender terms |
-| 8760 load match, tax, debt, PPA frontier, scenarios | Bankability, IC, legal, tax or technical approval |
-| Common-USD diligence shortlist | Investment portfolio recommendation |
-| GitHub CI and Drive control record | Local project-data storage |
+| 20 selected records and physical/resolved-input QA | Fabricated exact PPA or lender terms |
+| Observed-vs-overlay data model | Bankability, IC, legal, tax or technical approval |
+| 8,760 load match, tax, debt, PPA frontier and scenarios | Investment portfolio recommendation |
+| Diligence and commercial-negotiation shortlists | Local project-data storage |
+| GitHub CI, release artifacts and Drive control | New project universe or unrelated features |
 
-Stop boundary: close V5.1.1 after the release gates and remote readback pass.
+Stop boundary: close V5.1.2 after exact-head CI, release, Pages, remote readback and Drive reconciliation.
