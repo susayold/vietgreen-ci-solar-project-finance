@@ -2,10 +2,10 @@ import { test, expect } from "@playwright/test";
 
 const base = "http://127.0.0.1:4173";
 
-async function json(page: any, path: string) {
-  return page.evaluate(async (p: string) => fetch(p).then(r => r.json()), path);
+async function json(page, path) {
+  return page.evaluate(async (p) => fetch(p).then(r => r.json()), path);
 }
-async function visit(page: any, path: string) {
+async function visit(page, path) {
   await page.goto(`${base}/#${path}`);
   await expect(page.locator(".hero")).toHaveCount(1);
   await expect(page.locator(".hero-image")).toHaveAttribute("src", /assets/);
@@ -24,8 +24,8 @@ test("entity, physical, economics and scenario reconciliation is visible", async
   expect(economics.projects).toHaveLength(19);
   expect(risk.rows).toHaveLength(171);
   expect(Object.keys(risk.heatmap)).toHaveLength(19);
-  expect(Object.values(projects.projects).filter((p: any) => p.physicalStatus === "LOW_YIELD_REVIEW")).toHaveLength(4);
-  expect(projects.projects.find((p: any) => p.projectId === "IN-FPEL-ARISUDHANA").p50Gwh).toBeNull();
+  expect(Object.values(projects.projects).filter((p) => p.physicalStatus === "LOW_YIELD_REVIEW")).toHaveLength(4);
+  expect(projects.projects.find((p) => p.projectId === "IN-FPEL-ARISUDHANA").p50Gwh).toBeNull();
   await visit(page, "/projects");
   await expect(page.locator("tbody tr")).toHaveCount(20);
   await visit(page, "/risk");
@@ -38,7 +38,7 @@ test("energy chart is a real SVG line chart with exact 24-hour series", async ({
   expect(featured.representativeDay.solarKwh).toHaveLength(24);
   await visit(page, "/energy");
   await expect(page.locator("svg polyline")).toHaveCount(4);
-  const naturalWidth = await page.locator(".hero-image").evaluate((img: HTMLImageElement) => img.naturalWidth);\n  expect(naturalWidth).toBeGreaterThan(0);
+  const naturalWidth = await page.locator(".hero-image").evaluate((img) => img.naturalWidth);\n  expect(naturalWidth).toBeGreaterThan(0);
 });
 test("model page exposes exact workbook map and source boundary", async ({ page }) => {
   const model = await json(page, "data/model.json");
