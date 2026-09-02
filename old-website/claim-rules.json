@@ -1,0 +1,22 @@
+{
+  "forbiddenWithoutExternalEvidence": [
+    "bankable",
+    "approved",
+    "executed transaction",
+    "realized return",
+    "real savings",
+    "live portfolio",
+    "lender approved",
+    "actual negotiated terms"
+  ],
+  "allowed": [
+    "synthetic",
+    "hypothetical",
+    "screening",
+    "modelled",
+    "illustrative",
+    "recruiter-ready",
+    "transaction evidence open"
+  ],
+  "policy": "Synthetic V4 outputs are recruiter communication only; external transaction evidence remains open."
+}

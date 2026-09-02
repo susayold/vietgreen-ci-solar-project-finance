@@ -1,0 +1,226 @@
+{
+  "page": "risk",
+  "title": "Risk, scenario & downside",
+  "subtitle": "Stress the selected portfolio under energy, CAPEX, rates and execution shocks; show what breaks and what needs remediation.",
+  "shared": {
+    "releaseId": "V4-FINAL-2026-08-31",
+    "releaseVersion": "4.0.0-recruiter-candidate",
+    "asOfDate": "2026-08-31",
+    "modelVersion": "V4.0.0",
+    "masterSeed": 260831,
+    "projectsScreened": 20,
+    "currentPositiveEquityNPV": 0,
+    "negotiatedPositiveEquityNPV": 19,
+    "negotiatedEmptyZone": 1,
+    "selectedProjects": 4,
+    "selectedProjectIds": [
+      "VG-005",
+      "VG-010",
+      "VG-011",
+      "VG-012"
+    ],
+    "selectedEquityBVND": 30.124825,
+    "selectedDebtBVND": 55.946104,
+    "selectedCFADSBVND": 12.003384,
+    "baseSizingDSCR": 1.3,
+    "currentDecision": "NO_DEPLOYMENT",
+    "recruiterReady": true,
+    "transactionEvidenceStatus": "OPEN",
+    "bankableTransactionReady": false,
+    "externalGateCountOpen": 8,
+    "claimBoundary": "Synthetic recruiter package only; not investment approval, lender approval, legal/tax opinion, technical certification, site diligence or bankable P90.",
+    "evidenceClass": "SYNTHETIC_RECRUITER_OUTPUT",
+    "metricIds": [
+      "projects_screened",
+      "current_positive_equity_npv",
+      "negotiated_positive_equity_npv",
+      "selected_projects",
+      "selected_equity_bvnd",
+      "selected_debt_bvnd",
+      "selected_cfads_bvnd",
+      "base_sizing_dscr"
+    ],
+    "dataContractVersion": "V4.1-RECRUITER-CLOSURE",
+    "releaseMetaPath": "data/release-meta.json"
+  },
+  "currentDecision": {
+    "value": "NO DEPLOYMENT",
+    "text": "Current terms still fail the equity value gate across all 20 projects."
+  },
+  "scenarios": [
+    {
+      "scenario": "Base Sponsor",
+      "note": "P50; contractual base terms",
+      "projectNPVBVND": 5.262393,
+      "equityNPVBVND": 5.942277,
+      "equityIRR": 15.93,
+      "minDSCR": 1.3,
+      "economicStatus": "PASS",
+      "creditStatus": "PASS",
+      "readinessImpact": "BASE_CASE",
+      "sourceScenarioId": "BASE_SPONSOR"
+    },
+    {
+      "scenario": "P90 Energy",
+      "note": "P90 generation; no re-sizing of commercial price",
+      "projectNPVBVND": -3.729685,
+      "equityNPVBVND": -1.177896,
+      "equityIRR": 12.58,
+      "minDSCR": 1.3,
+      "economicStatus": "NEGATIVE",
+      "creditStatus": "PASS",
+      "readinessImpact": "DOWNSIDE_REVIEW",
+      "sourceScenarioId": "P90_ENERGY"
+    },
+    {
+      "scenario": "Capex Overrun",
+      "note": "15% CAPEX overrun; debt re-sized",
+      "projectNPVBVND": -6.61582,
+      "equityNPVBVND": -3.17916,
+      "equityIRR": 12.11,
+      "minDSCR": 1.3,
+      "economicStatus": "NEGATIVE",
+      "creditStatus": "PASS",
+      "readinessImpact": "DOWNSIDE_REVIEW",
+      "sourceScenarioId": "CAPEX_OVERRUN"
+    },
+    {
+      "scenario": "Cod Delay",
+      "note": "one-year COD delay; CFADS shifted",
+      "projectNPVBVND": -7.045211,
+      "equityNPVBVND": -4.792393,
+      "equityIRR": 11.59,
+      "minDSCR": 0,
+      "economicStatus": "NEGATIVE",
+      "creditStatus": "FAIL_DSCR",
+      "readinessImpact": "DOWNSIDE_REVIEW",
+      "sourceScenarioId": "COD_DELAY"
+    },
+    {
+      "scenario": "Interest Rate Shock",
+      "note": "rate moves to 11%; debt re-sized",
+      "projectNPVBVND": 5.262393,
+      "equityNPVBVND": 2.104725,
+      "equityIRR": 14.28,
+      "minDSCR": 1.3,
+      "economicStatus": "PASS",
+      "creditStatus": "PASS",
+      "readinessImpact": "DOWNSIDE_REVIEW",
+      "sourceScenarioId": "INTEREST_RATE_SHOCK"
+    },
+    {
+      "scenario": "Dso Delay",
+      "note": "DSO moves from 30 to 90 days",
+      "projectNPVBVND": 3.19842,
+      "equityNPVBVND": 4.394423,
+      "equityIRR": 15.28,
+      "minDSCR": 1.3,
+      "economicStatus": "PASS",
+      "creditStatus": "PASS",
+      "readinessImpact": "DOWNSIDE_REVIEW",
+      "sourceScenarioId": "DSO_DELAY"
+    },
+    {
+      "scenario": "Combined Downside",
+      "note": "P90; 15% CAPEX; 11% rate; DSO 90; COD delay; 10% common haircut",
+      "projectNPVBVND": -35.95699,
+      "equityNPVBVND": -38.814456,
+      "equityIRR": 3.11,
+      "minDSCR": 0,
+      "economicStatus": "NEGATIVE",
+      "creditStatus": "FAIL_DSCR",
+      "readinessImpact": "DOWNSIDE_REVIEW",
+      "sourceScenarioId": "COMBINED_DOWNSIDE"
+    }
+  ],
+  "tornado": [
+    {
+      "label": "P90 energy",
+      "deltaBVND": -7.120173
+    },
+    {
+      "label": "CAPEX overrun",
+      "deltaBVND": -9.121436
+    },
+    {
+      "label": "Interest rate shock",
+      "deltaBVND": -3.837551
+    },
+    {
+      "label": "DSO delay",
+      "deltaBVND": -1.547854
+    },
+    {
+      "label": "COD delay",
+      "deltaBVND": -10.73467
+    },
+    {
+      "label": "FX depreciation",
+      "deltaBVND": -7.796245
+    }
+  ],
+  "stressSummary": [
+    {
+      "label": "P90 energy",
+      "value": -1.177896,
+      "status": "NEGATIVE"
+    },
+    {
+      "label": "CAPEX +15%",
+      "value": -3.17916,
+      "status": "NEGATIVE"
+    },
+    {
+      "label": "Combined downside",
+      "value": -38.814456,
+      "status": "NEGATIVE"
+    }
+  ],
+  "riskRegister": [
+    {
+      "risk": "PPA price risk",
+      "impact": "High",
+      "status": "OPEN",
+      "mitigation": "Diversify offtakers; indexation; price floor",
+      "evidenceClass": "EXTERNAL_DEPENDENCY"
+    },
+    {
+      "risk": "CAPEX overrun",
+      "impact": "High",
+      "status": "OPEN",
+      "mitigation": "EPC fixed-price; contingency buffer",
+      "evidenceClass": "MODELLED_OUTPUT"
+    },
+    {
+      "risk": "Interest-rate risk",
+      "impact": "High",
+      "status": "OPEN",
+      "mitigation": "Fixed rate, cap or hedge",
+      "evidenceClass": "SIMULATED_INPUT"
+    },
+    {
+      "risk": "Generation underperformance",
+      "impact": "Medium",
+      "status": "OPEN",
+      "mitigation": "Quality equipment and performance guarantees",
+      "evidenceClass": "EXTERNAL_DEPENDENCY"
+    },
+    {
+      "risk": "COD delay",
+      "impact": "Medium",
+      "status": "OPEN",
+      "mitigation": "Milestone incentives and liquidated damages",
+      "evidenceClass": "EXTERNAL_DEPENDENCY"
+    }
+  ],
+  "sources": [
+    "outputs/scenario_summary_v4_phase2.csv",
+    "validation/V4_PHASE2_RED_TEAM_REPORT.md"
+  ],
+  "evidenceClass": "STRESS_TESTED_SYNTHETIC_OUTPUT",
+  "debtResizingDisclosure": {
+    "status": "OPEN",
+    "text": "No fixed-versus-resized debt result is published in V4.1; a debt response requires a deterministic model-backed scenario and lineage.",
+    "source": "release/MODEL_RELEASE_MANIFEST.json"
+  }
+}

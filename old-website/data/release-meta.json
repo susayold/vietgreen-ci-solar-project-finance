@@ -1,0 +1,11 @@
+{
+  "releaseId": "V4-FINAL-2026-08-31",
+  "modelVersion": "V4.0.0",
+  "dataContractVersion": "V4.1-RECRUITER-CLOSURE",
+  "gitSha": "pending-ci",
+  "builtAtUtc": "2026-09-01T00:00:00Z",
+  "workflowRunId": "candidate-build",
+  "sourceManifestPath": "release/MODEL_RELEASE_MANIFEST.json",
+  "status": "CANDIDATE_PRE_DEPLOYMENT",
+  "claimBoundary": "Synthetic recruiter package only; not investment approval, lender approval, legal/tax opinion, technical certification, site diligence or bankable P90."
+}

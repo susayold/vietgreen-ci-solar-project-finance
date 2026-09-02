@@ -1,0 +1,364 @@
+{
+  "page": "portfolio",
+  "title": "Portfolio construction: select value, respect concentration.",
+  "subtitle": "The final recruiter case moves from 20 screened opportunities to a four-project, exposure-constrained hypothetical portfolio.",
+  "shared": {
+    "releaseId": "V4-FINAL-2026-08-31",
+    "releaseVersion": "4.0.0-recruiter-candidate",
+    "asOfDate": "2026-08-31",
+    "modelVersion": "V4.0.0",
+    "masterSeed": 260831,
+    "projectsScreened": 20,
+    "currentPositiveEquityNPV": 0,
+    "negotiatedPositiveEquityNPV": 19,
+    "negotiatedEmptyZone": 1,
+    "selectedProjects": 4,
+    "selectedProjectIds": [
+      "VG-005",
+      "VG-010",
+      "VG-011",
+      "VG-012"
+    ],
+    "selectedEquityBVND": 30.124825,
+    "selectedDebtBVND": 55.946104,
+    "selectedCFADSBVND": 12.003384,
+    "baseSizingDSCR": 1.3,
+    "currentDecision": "NO_DEPLOYMENT",
+    "recruiterReady": true,
+    "transactionEvidenceStatus": "OPEN",
+    "bankableTransactionReady": false,
+    "externalGateCountOpen": 8,
+    "claimBoundary": "Synthetic recruiter package only; not investment approval, lender approval, legal/tax opinion, technical certification, site diligence or bankable P90.",
+    "evidenceClass": "SYNTHETIC_RECRUITER_OUTPUT",
+    "metricIds": [
+      "projects_screened",
+      "current_positive_equity_npv",
+      "negotiated_positive_equity_npv",
+      "selected_projects",
+      "selected_equity_bvnd",
+      "selected_debt_bvnd",
+      "selected_cfads_bvnd",
+      "base_sizing_dscr"
+    ],
+    "dataContractVersion": "V4.1-RECRUITER-CLOSURE",
+    "releaseMetaPath": "data/release-meta.json"
+  },
+  "funnel": [
+    {
+      "label": "Opportunities screened",
+      "value": 20
+    },
+    {
+      "label": "Positive under current terms",
+      "value": 0
+    },
+    {
+      "label": "Positive after remediation",
+      "value": 19
+    },
+    {
+      "label": "Selected after constraints",
+      "value": 4
+    }
+  ],
+  "selectedProjects": [
+    {
+      "projectId": "VG-005",
+      "name": "Da Nang Food Hub",
+      "region": "Central",
+      "industry": "Food & Beverage",
+      "parent": "PG-04",
+      "ppaZone": "FEASIBLE_ZONE",
+      "negotiatedPPA": 2471.7,
+      "tenorYears": 15,
+      "equityRequiredBVND": 7.453565,
+      "debtBVND": 13.842335,
+      "cfadsY1BVND": 3.053418,
+      "projectNPVBVND": 1.944886,
+      "projectIRR": 13.64,
+      "equityNPVBVND": 1.989347,
+      "equityIRR": 17.35,
+      "minDSCR": 1.3,
+      "selected": true,
+      "source": [
+        "outputs/portfolio_current_negotiated_v4.csv",
+        "outputs/portfolio_exposure_v4.csv"
+      ],
+      "evidenceClass": "HYPOTHETICAL_NEGOTIATED_MODEL_OUTPUT"
+    },
+    {
+      "projectId": "VG-010",
+      "name": "Dong Nai Pharma",
+      "region": "South",
+      "industry": "Pharma",
+      "parent": "PG-09",
+      "ppaZone": "FEASIBLE_ZONE",
+      "negotiatedPPA": 2489.4,
+      "tenorYears": 15,
+      "equityRequiredBVND": 8.074695,
+      "debtBVND": 14.995863,
+      "cfadsY1BVND": 3.193449,
+      "projectNPVBVND": 1.226152,
+      "projectIRR": 12.96,
+      "equityNPVBVND": 1.443886,
+      "equityIRR": 16.29,
+      "minDSCR": 1.3,
+      "selected": true,
+      "source": [
+        "outputs/portfolio_current_negotiated_v4.csv",
+        "outputs/portfolio_exposure_v4.csv"
+      ],
+      "evidenceClass": "HYPOTHETICAL_NEGOTIATED_MODEL_OUTPUT"
+    },
+    {
+      "projectId": "VG-011",
+      "name": "Ho Chi Minh Plastics",
+      "region": "South",
+      "industry": "Plastics",
+      "parent": "PG-10",
+      "ppaZone": "FEASIBLE_ZONE",
+      "negotiatedPPA": 2503.9,
+      "tenorYears": 15,
+      "equityRequiredBVND": 7.453565,
+      "debtBVND": 13.842335,
+      "cfadsY1BVND": 2.965535,
+      "projectNPVBVND": 1.268362,
+      "projectIRR": 13.08,
+      "equityNPVBVND": 1.443063,
+      "equityIRR": 16.47,
+      "minDSCR": 1.3,
+      "selected": true,
+      "source": [
+        "outputs/portfolio_current_negotiated_v4.csv",
+        "outputs/portfolio_exposure_v4.csv"
+      ],
+      "evidenceClass": "HYPOTHETICAL_NEGOTIATED_MODEL_OUTPUT"
+    },
+    {
+      "projectId": "VG-012",
+      "name": "Long An Beverage",
+      "region": "South",
+      "industry": "Food & Beverage",
+      "parent": "PG-04",
+      "ppaZone": "FEASIBLE_ZONE",
+      "negotiatedPPA": 2460.4,
+      "tenorYears": 15,
+      "equityRequiredBVND": 7.143,
+      "debtBVND": 13.265571,
+      "cfadsY1BVND": 2.790981,
+      "projectNPVBVND": 0.822993,
+      "projectIRR": 12.73,
+      "equityNPVBVND": 1.065981,
+      "equityIRR": 15.93,
+      "minDSCR": 1.3,
+      "selected": true,
+      "source": [
+        "outputs/portfolio_current_negotiated_v4.csv",
+        "outputs/portfolio_exposure_v4.csv"
+      ],
+      "evidenceClass": "HYPOTHETICAL_NEGOTIATED_MODEL_OUTPUT"
+    }
+  ],
+  "exposureLimits": [
+    {
+      "label": "Parent",
+      "limitPct": 40,
+      "currentPct": 14.6,
+      "headroomPct": 25.4,
+      "utilizationPct": 36.5,
+      "status": "PASS"
+    },
+    {
+      "label": "Industry",
+      "limitPct": 60,
+      "currentPct": 14.6,
+      "headroomPct": 45.4,
+      "utilizationPct": 24.3,
+      "status": "PASS"
+    },
+    {
+      "label": "Region",
+      "limitPct": 70,
+      "currentPct": 22.7,
+      "headroomPct": 47.3,
+      "utilizationPct": 32.4,
+      "status": "PASS"
+    },
+    {
+      "label": "Total debt cap",
+      "limitBVND": 80,
+      "currentBVND": 55.94610395833334,
+      "headroomBVND": 24.054,
+      "utilizationPct": 69.9,
+      "status": "PASS"
+    }
+  ],
+  "allocation": [
+    {
+      "label": "VG-005",
+      "valueBVND": 7.453565
+    },
+    {
+      "label": "VG-010",
+      "valueBVND": 8.074695
+    },
+    {
+      "label": "VG-011",
+      "valueBVND": 7.453565
+    },
+    {
+      "label": "VG-012",
+      "valueBVND": 7.143
+    }
+  ],
+  "donuts": [
+    {
+      "title": "Equity allocation",
+      "unit": "BVND",
+      "items": [
+        {
+          "label": "VG-005",
+          "value": 7.453565
+        },
+        {
+          "label": "VG-010",
+          "value": 8.074695
+        },
+        {
+          "label": "VG-011",
+          "value": 7.453565
+        },
+        {
+          "label": "VG-012",
+          "value": 7.143
+        }
+      ]
+    },
+    {
+      "title": "Debt allocation",
+      "unit": "BVND",
+      "items": [
+        {
+          "label": "VG-005",
+          "value": 13.842335
+        },
+        {
+          "label": "VG-010",
+          "value": 14.995863
+        },
+        {
+          "label": "VG-011",
+          "value": 13.842335
+        },
+        {
+          "label": "VG-012",
+          "value": 13.265571
+        }
+      ]
+    },
+    {
+      "title": "Industry exposure",
+      "unit": "BVND",
+      "items": [
+        {
+          "label": "Food & Beverage",
+          "valueBVND": 14.596565
+        },
+        {
+          "label": "Pharma",
+          "valueBVND": 8.074695
+        },
+        {
+          "label": "Plastics",
+          "valueBVND": 7.453565
+        }
+      ]
+    },
+    {
+      "title": "Region exposure",
+      "unit": "BVND",
+      "items": [
+        {
+          "label": "South",
+          "valueBVND": 22.67126
+        },
+        {
+          "label": "Central",
+          "valueBVND": 7.453565
+        }
+      ]
+    },
+    {
+      "title": "Parent exposure",
+      "unit": "BVND",
+      "items": [
+        {
+          "label": "PG-04",
+          "valueBVND": 14.596565
+        },
+        {
+          "label": "PG-09",
+          "valueBVND": 8.074695
+        },
+        {
+          "label": "PG-10",
+          "valueBVND": 7.453565
+        }
+      ]
+    }
+  ],
+  "rejectionReasons": [
+    {
+      "label": "Positive Equity Npv Gate",
+      "count": 20
+    },
+    {
+      "label": "Ppa Zone Empty",
+      "count": 19
+    },
+    {
+      "label": "Regulatory Gate",
+      "count": 2
+    },
+    {
+      "label": "Credit Gate",
+      "count": 1
+    },
+    {
+      "label": "Site Continuity Gate",
+      "count": 1
+    },
+    {
+      "label": "Technical Gate",
+      "count": 1
+    }
+  ],
+  "pooling": [
+    {
+      "label": "Standalone equity",
+      "standalone": 30.124825,
+      "pooled": 30.124825
+    },
+    {
+      "label": "Equity NPV",
+      "standalone": 5.942277,
+      "pooled": 5.942277
+    },
+    {
+      "label": "Debt",
+      "standalone": 55.946104,
+      "pooled": 55.946104
+    },
+    {
+      "label": "Min DSCR",
+      "standalone": 1.3,
+      "pooled": 1.3
+    }
+  ],
+  "sources": [
+    "outputs/portfolio_exposure_v4.csv",
+    "outputs/portfolio_current_negotiated_v4.csv",
+    "outputs/pooling_comparison_v4.csv"
+  ],
+  "evidenceClass": "HYPOTHETICAL_EXPOSURE_CONSTRAINED_OUTPUT"
+}
