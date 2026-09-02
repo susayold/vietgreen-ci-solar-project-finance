@@ -20,6 +20,7 @@ def test_generated_scenario_rows_preserve_the_contract():
     fixed_rows=[r for r in rows if r["debt_mode"]=="FIXED_DEBT_SCHEDULE"]
     assert all(r["base_debt_schedule_preserved"]=="TRUE" for r in fixed_rows)
     assert all(r["principal_schedule_preserved"]=="TRUE" for r in fixed_rows)
+    assert all(float(r["debt_capacity_change_local"])==0 for r in fixed_rows)
     p90=[r for r in rows if r["scenario_id"]=="P90_ENERGY"]
     assert all(float(r["year_1_generation_kwh"]) < float(r["base_year_1_generation_kwh"]) for r in p90)
     capex=[r for r in rows if r["scenario_id"]=="CAPEX_OVERRUN"]
