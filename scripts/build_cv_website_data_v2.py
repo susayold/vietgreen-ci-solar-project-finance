@@ -124,7 +124,7 @@ def schedule_row(row: dict[str, str]) -> dict[str, Any]:
 def scenario_row(row: dict[str, str], names: dict[str, str]) -> dict[str, Any]:
     pid = str(first(row,"project_id","projectId") or "")
     return {"projectId":pid,"projectName":names.get(pid,pid),
-            "scenario":first(row,"scenario","scenario_name","scenario_code"),
+            "scenario":first(row,"scenario","scenario_id","scenario_name","scenario_code"),
             "debtMode":first(row,"debt_mode","debt_policy","mode"),
             "minDscr":num(row,("dscr_min","min_dscr","minimum_dscr")),
             "llcr":num(row,("llcr_loan_life","llcr")),"plcr":num(row,("plcr_project_life","plcr")),
