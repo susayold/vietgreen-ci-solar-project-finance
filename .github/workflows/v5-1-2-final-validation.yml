@@ -1,0 +1,113 @@
+name: V5.1.2 Final Closure Validation
+on:
+  push:
+    branches: [v5.1.2-final-closure]
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  validate-v5-1-2:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: v5.1.2-final-closure}
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - run: python -m pip install --upgrade pip pytest openpyxl
+      - name: Build and reproducibility
+        run: |
+          set -euo pipefail
+          export V5_1_2_FREEZE_DATE_UTC=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+          echo "V5_1_2_FREEZE_DATE_UTC=$V5_1_2_FREEZE_DATE_UTC" >> "$GITHUB_ENV"
+          python -m analytics.build_v5_1_2_release
+          sha256sum outputs/v5_1_2_project_economics.csv outputs/v5_1_2_scenarios.csv outputs/v5_1_2_reconciliation.csv validation/V5_1_2_PHYSICAL_QA.csv > /tmp/v512-1.sha256
+          python -m analytics.build_v5_1_2_release
+          sha256sum outputs/v5_1_2_project_economics.csv outputs/v5_1_2_scenarios.csv outputs/v5_1_2_reconciliation.csv validation/V5_1_2_PHYSICAL_QA.csv > /tmp/v512-2.sha256
+          diff -u /tmp/v512-1.sha256 /tmp/v512-2.sha256
+      - name: Validate current surfaces and tests
+        run: |
+          python -m analytics.scan_v5_1_2_stale_content .
+          python -m pytest -q tests/test_v5_1_2_*.py
+      - name: Verify runtime pre-seal identity
+        run: python -m analytics.validate_v5_1_2_runtime_identity release/V5_1_2_RUNTIME_RELEASE_MANIFEST.json --sha "$GITHUB_SHA" --run "$GITHUB_RUN_ID"
+      - name: Upload primary release artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: vietgreen-v5-1-2-full-data-model-release
+          path: |
+            artifacts/v5_1_2_model
+            artifacts/v5_1_2_surfaces
+            outputs
+            validation
+            release
+          if-no-files-found: error
+      - name: Patch primary artifact identity
+        env: {GH_TOKEN: \${{ github.token }}}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import csv,json,os,urllib.request
+          from pathlib import Path
+          u=f"https://api.github.com/repos/{os.environ['GITHUB_REPOSITORY']}/actions/runs/{os.environ['GITHUB_RUN_ID']}/artifacts"
+          q=urllib.request.Request(u,headers={"Authorization":f"Bearer {os.environ['GH_TOKEN']}","Accept":"application/vnd.github+json"})
+          with urllib.request.urlopen(q) as r: items=json.load(r)["artifacts"]
+          a=next(x for x in items if x["name"]=="vietgreen-v5-1-2-full-data-model-release")
+          p=Path("release/V5_1_2_RUNTIME_RELEASE_MANIFEST.json"); d=json.loads(p.read_text())
+          d.update(primary_artifact_id=str(a["id"]),primary_artifact_digest=a["digest"],pytest_count=26,semantic_test_count=26,build_timestamp_utc=os.environ["V5_1_2_FREEZE_DATE_UTC"])
+          p.write_text(json.dumps(d,indent=2,sort_keys=True)+"\n")
+          reg=Path("validation/V5_1_2_REMEDIATION_REGISTER.csv")
+          with reg.open(newline="",encoding="utf-8") as f: rows=list(csv.DictReader(f))
+          for row in rows: row.update(resolved_artifact=str(a["id"]),resolved_commit=os.environ["GITHUB_SHA"],resolved_run=os.environ["GITHUB_RUN_ID"])
+          with reg.open("w",newline="",encoding="utf-8") as f:
+              w=csv.DictWriter(f,fieldnames=rows[0]); w.writeheader(); w.writerows(rows)
+          PY
+      - name: Upload runtime candidate
+        uses: actions/upload-artifact@v4
+        with:
+          name: vietgreen-v5-1-2-runtime-manifest-candidate
+          path: |
+            release/V5_1_2_RUNTIME_RELEASE_MANIFEST.json
+            release/V5_1_2_INPUT_FREEZE_MANIFEST.json
+            release/V5_1_2_STATIC_RELEASE_CONTRACT.json
+            release/MODEL_RELEASE_MANIFEST.json
+            validation/V5_1_2_REMEDIATION_REGISTER.csv
+            validation/V5_1_2_FINAL_DOD.csv
+            validation/V5_1_2_CURRENT_SURFACE_RECONCILIATION.csv
+            validation/V5_1_2_CONTENT_MIGRATION_MATRIX.csv
+            validation/V5_1_2_RED_TEAM_REPORT.md
+            validation/V5_1_2_EXCEL_PYTHON_RECONCILIATION.csv
+            validation/V5_1_2_REPRODUCIBILITY.csv
+          if-no-files-found: error
+      - name: Seal runtime identity
+        env: {GH_TOKEN: \${{ github.token }}}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json,os,urllib.request
+          from pathlib import Path
+          u=f"https://api.github.com/repos/{os.environ['GITHUB_REPOSITORY']}/actions/runs/{os.environ['GITHUB_RUN_ID']}/artifacts"
+          q=urllib.request.Request(u,headers={"Authorization":f"Bearer {os.environ['GH_TOKEN']}","Accept":"application/vnd.github+json"})
+          with urllib.request.urlopen(q) as r: items=json.load(r)["artifacts"]
+          a=next(x for x in items if x["name"]=="vietgreen-v5-1-2-runtime-manifest-candidate")
+          p=Path("release/V5_1_2_RUNTIME_RELEASE_MANIFEST.json"); d=json.loads(p.read_text())
+          d["runtime_manifest_artifact_id"]=str(a["id"]); d["runtime_manifest_artifact_digest"]=a["digest"]
+          p.write_text(json.dumps(d,indent=2,sort_keys=True)+"\n")
+          PY
+          python -m analytics.validate_v5_1_2_runtime_identity release/V5_1_2_RUNTIME_RELEASE_MANIFEST.json --sha "$GITHUB_SHA" --run "$GITHUB_RUN_ID"
+      - name: Upload sealed runtime manifest
+        uses: actions/upload-artifact@v4
+        with:
+          name: vietgreen-v5-1-2-runtime-manifest
+          path: |
+            release/V5_1_2_RUNTIME_RELEASE_MANIFEST.json
+            release/V5_1_2_INPUT_FREEZE_MANIFEST.json
+            release/V5_1_2_STATIC_RELEASE_CONTRACT.json
+            release/MODEL_RELEASE_MANIFEST.json
+            validation/V5_1_2_REMEDIATION_REGISTER.csv
+            validation/V5_1_2_FINAL_DOD.csv
+            validation/V5_1_2_CURRENT_SURFACE_RECONCILIATION.csv
+            validation/V5_1_2_CONTENT_MIGRATION_MATRIX.csv
+            validation/V5_1_2_RED_TEAM_REPORT.md
+            validation/V5_1_2_EXCEL_PYTHON_RECONCILIATION.csv
+            validation/V5_1_2_REPRODUCIBILITY.csv
