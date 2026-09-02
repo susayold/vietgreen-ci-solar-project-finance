@@ -34,5 +34,5 @@ def test_generated_scenario_rows_preserve_the_contract():
     assert all(float(r["year_1_depreciation_local"])==0 and float(r["year_2_depreciation_local"])>0 for r in delayed)
     terminated=[r for r in rows if r["scenario_id"]=="OFFTAKER_TERMINATION"]
     assert all(float(r["year_2_revenue_local"])==0 for r in terminated)
-    assert all(r["energy_factor"]==r["energy_factor"] for r in combined)
+    assert all(float(r["energy_factor"])==0.90 for r in combined)
     assert all(float(r["capex_factor"])>1 and float(r["rate_response"])>0 and int(r["cod_delay_years"])==1 for r in combined)
