@@ -14,3 +14,6 @@ The output is a diligence-priority and commercial-negotiation shortlist. It does
 The Arisudhana high-yield observation remains in the selected dataset with an explicit engineering-review flag. Historical V4/V5.1.0 material is preserved only as history and is not a current headline.
 
 Machine-readable controls: `validation/V5_1_1_CURRENT_SURFACE_RECONCILIATION.csv`, `validation/V5_1_1_CONTENT_MIGRATION_MATRIX.csv`, and `validation/V5_1_1_REMEDIATION_REGISTER.csv`.
+
+
+V5.1.3 closes the final NO_NEW_DEBT semantic issue: CAPEX-overrun, termination and combined downside preserve base contractual opening, principal and closing schedules and add zero new debt.
