@@ -245,7 +245,7 @@ def run(root: str|Path, output_dir: str|Path) -> Dict[str,List[Dict]]:
               "incremental_capex_local":p["capex_local"]*max(sp["capex_factor"]-1.0,0.0),
               "equity_funded_incremental_capex_local":p["capex_local"]*max(sp["capex_factor"]-1.0,0.0) if mode=="NO_NEW_DEBT" else 0.0,
               "additional_debt_local":max(debt_s-debt,0.0) if mode=="RESIZED_DEBT" else 0.0,
-              "interest_schedule_changed":str(any(abs(float(sch_s[i]["interest"])-float(sched[i]["interest"]))>1e-8 for i in range(min(len(sch_s),len(sched))))).upper(),
+              "interest_schedule_changed":str(p["debt_rate_type"]=="FLOATING_REFERENCE" and abs(rate-p["debt_rate"])>1e-12).upper(),
               "no_new_debt_increase":str(mode=="NO_NEW_DEBT" and debt_s<=debt+1e-8).upper(),
               "base_debt_schedule_preserved":str(mode=="FIXED_CONTRACTUAL_SCHEDULE" and _schedule_signature(sched)==_schedule_signature(sch_s)).upper(),
               "reference_case":"SCENARIO_REFERENCE_NOT_ACTUAL_PPA"})
