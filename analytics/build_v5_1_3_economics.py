@@ -290,6 +290,7 @@ def run(root: str|Path, output_dir: str|Path) -> Dict[str,List[Dict]]:
               "base_interest_schedule_signature":_schedule_signature(sched,"interest"),
               "scenario_interest_schedule_signature":_schedule_signature(sch_s,"interest"),
               "interest_schedule_changed":str(_schedule_signature(sched,"interest")!=_schedule_signature(sch_s,"interest")).upper(),
+              "interest_repricing_policy_applied":str(p["debt_rate_type"]=="FLOATING_REFERENCE" and abs(rate-p["debt_rate"])>1e-12).upper(),
               "base_debt_service_signature":_schedule_signature(sched,"debt_service"),
               "scenario_debt_service_signature":_schedule_signature(sch_s,"debt_service"),
               "incremental_capex_local":p["capex_local"]*max(sp["capex_factor"]-1.0,0.0),
