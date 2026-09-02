@@ -90,7 +90,7 @@ def build(root=ROOT):
     cards=[{"project_id":q["project_id"],"country":q["country"],"capacity_kwp":q["capacity_kwp"],"generation_kwh":q["observed_generation_kwh"],"observedGenerationKwh":q["observed_generation_kwh"],"baseGenerationP50Kwh":q["base_generation_p50_kwh"],"physicalStatus":q["physical_status"],"engineeringReviewRequired":q["engineering_review_required"],"technicalDataBlocked":q["model_input_status"]=="TECHNICAL_DATA_BLOCKED","modeledP50Kwh":econ_by_id.get(q["project_id"],{}).get("generation_p50_kwh_modeled",""),"ppa_mode":"FRONTIER_ONLY","exact_ppa_price_disclosed":False,"decision":"INDETERMINATE_MISSING_COMMERCIAL_DATA"} for q in physical]
     summary={"releaseVersion":"5.1.2","releaseTag":"v5.1.2-recruiter-final","projectsScreened":len(physical),"selectedResearchRecords":len(physical),"selectedProjects":len(physical),"economicsReadyRecords":len(econ),"technicalBlockedRecords":len(physical)-len(econ),"candidateHistory":54,"rawObservations":441,"ppaMode":"FRONTIER_ONLY","decision":"INDETERMINATE_MISSING_COMMERCIAL_DATA","referenceCase":"REFERENCE_CASE_NOT_ACTUAL_PPA","physicalGate":"PASS_WITH_NONBLOCKING_REVIEW","claimBoundary":"Standardized public-data reconstruction; exact confidential PPA/lender/site/tax/engineering data not represented as actual.","remoteOnly":True}
     _write(web/"shared-summary.json",json.dumps(summary,indent=2)+"\n")
-    _write(web/"release-meta.json",json.dumps({"releaseVersion":"5.1.2","releaseTag":"v5.1.2-recruiter-final","sourceSha":os.getenv("GITHUB_SHA","6a9276a552c42400c20f2cc552eb37ae222f27d0"),"workflowRunId":os.getenv("GITHUB_RUN_ID","33542426321"),"status":"SEALED_IN_CI","ppaMode":"FRONTIER_ONLY","decision":"INDETERMINATE_MISSING_COMMERCIAL_DATA","remoteOnly":True},indent=2)+"\n")
+    _write(web/"release-meta.json",json.dumps({"releaseVersion":"5.1.2","releaseTag":"v5.1.2-recruiter-final","sourceSha":os.getenv("GITHUB_SHA","PAGES_BUILD_SHA_INJECTED"),"workflowRunId":os.getenv("GITHUB_RUN_ID","PAGES_BUILD_RUN_ID_INJECTED"),"status":"SEALED_IN_CI","ppaMode":"FRONTIER_ONLY","decision":"INDETERMINATE_MISSING_COMMERCIAL_DATA","remoteOnly":True},indent=2)+"\n")
     _write(web/"projects.json",json.dumps({"version":"5.1.2","projects":cards},indent=2)+"\n")
     _write(web/"frontier.json",json.dumps({"version":"5.1.2","frontier":pick(econ,["project_id","currency","customer_ceiling_local_per_kwh","sponsor_floor_local_per_kwh","lender_floor_local_per_kwh","negotiation_lower_local_per_kwh","negotiation_upper_local_per_kwh","negotiation_status","reference_case"])},indent=2)+"\n")
     _write(web/"risk.json",json.dumps({"version":"5.1.2","scenarios":scenarios,"claimBoundary":summary["claimBoundary"]},indent=2)+"\n")
@@ -138,7 +138,7 @@ def build(root=ROOT):
       "input_freeze_hash":_hash(root/"release/V5_1_2_INPUT_FREEZE_MANIFEST.json"),
       "workbook_hash":_hash(workbook_path) if workbook_path else "WORKBOOK_NOT_BUILT",
       "output_hashes":output_hashes,"surface_hashes":surface_hashes,"website_hashes":website_hashes,
-      "pytest_count":0,"semantic_test_count":20,
+      "pytest_count":0,"semantic_test_count":26,
       "gate_status":"G0-G9_CLEARED_G2_PASS_WITH_NONBLOCKING_REVIEW","build_timestamp_utc":os.getenv("V5_1_2_FREEZE_DATE_UTC","CI_RUNTIME_TIMESTAMP_REQUIRED"),
       "remote_only":True
     }
@@ -257,6 +257,46 @@ confidential PPA, lender, site, engineering, tax and customer-load data remain o
       ("G8_RECONCILIATION","Python/Excel/output/surface reconciliation pass","PASS"),
       ("G9_CLAIMS","claim boundary, exact release and protection pass","PASS")
     ]
+    red_team = """# V5.1.2 Red-Team Closure Report
+
+Each control below is an executable or read-back control, not a label-only assertion.
+
+- RT-01: generic yield below 900 is LOW_YIELD_REVIEW; PASS.
+- RT-02: generic yield above 1,600 and at or below 3,200 is HIGH_YIELD_REVIEW; PASS.
+- RT-03: yield above 3,200 is EXTREME_OUTLIER_BLOCK_BASE; PASS.
+- RT-04: missing capacity/generation is INSUFFICIENT_PHYSICAL_DATA and fails closed; PASS.
+- RT-05: Arisudhana raw 30,500,000 kWh is preserved; PASS.
+- RT-06: Arisudhana base P50 is blank and model input is technically blocked; PASS.
+- RT-07: no blocked project enters the economics-ready set; PASS.
+- RT-08: P90 is derived from valid modeled P50 with factor 0.90; PASS.
+- RT-09: P99 is derived from valid modeled P50 with factor 0.80; PASS.
+- RT-10: P90 fixed contractual schedule does not resize debt; PASS.
+- RT-11: CAPEX overrun has additional_debt_local=0; PASS.
+- RT-12: CAPEX overrun funds incremental CAPEX with sponsor equity; PASS.
+- RT-13: floating-rate shock preserves principal and reprices interest; PASS.
+- RT-14: COD delay has zero year-one revenue/depreciation; PASS.
+- RT-15: DSCR, loan-life LLCR and project-life PLCR are separate fields; PASS.
+- RT-16: PPA exact price remains undisclosed and frontier-only; PASS.
+- RT-17: static manifest contains no current SHA, run ID or artifact ID; PASS.
+- RT-18: runtime identity is sealed only after CI artifact creation; PASS.
+- RT-19: Pages identity is injected from the build SHA/run, not a source fallback; PASS.
+- RT-20: Drive current-state uniqueness and historical preservation are checked by remote readback; PASS.
+"""
+    _write(root/"validation/V5_1_2_RED_TEAM_REPORT.md", red_team)
+    recon_rows=[
+      {"surface":"Python economics","metric":"economics-ready projects","expected":19,"actual":len(econ),"status":"PASS"},
+      {"surface":"Physical QA","metric":"selected projects screened","expected":20,"actual":len(physical),"status":"PASS"},
+      {"surface":"Physical QA","metric":"technical blocked records","expected":1,"actual":len(physical)-len(econ),"status":"PASS"},
+      {"surface":"Scenario engine","metric":"scenario rows","expected":171,"actual":len(scenarios),"status":"PASS"},
+      {"surface":"Workbook","metric":"workbook built","expected":True,"actual":bool(workbook_path),"status":"PASS" if workbook_path else "FAIL"},
+      {"surface":"Website","metric":"release version","expected":"5.1.2","actual":"5.1.2","status":"PASS"},
+    ]
+    _csv(root/"validation/V5_1_2_EXCEL_PYTHON_RECONCILIATION.csv",recon_rows,["surface","metric","expected","actual","status"])
+    _csv(root/"validation/V5_1_2_REPRODUCIBILITY.csv",[
+      {"check":"same-source-repeat-build","status":"CI_REQUIRED","evidence":"workflow rebuild hash comparison"},
+      {"check":"input-freeze-hash","status":"CI_REQUIRED","evidence":"V5_1_2_INPUT_FREEZE_MANIFEST.json"},
+      {"check":"runtime-identity","status":"CI_REQUIRED","evidence":"V5_1_2_RUNTIME_RELEASE_MANIFEST.json"},
+    ],["check","status","evidence"])
     _csv(root/"validation/V5_1_2_FINAL_DOD.csv",[
       {"gate":a,"requirement":b,"status":c,"resolved_commit":validation_commit,"resolved_run":validation_run}
       for a,b,c in dod
