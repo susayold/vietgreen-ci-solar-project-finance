@@ -48,10 +48,10 @@ jobs:
         run: |
           python -m analytics.validate_v5_1_3_website_data
           python -m analytics.scan_v5_1_3_website_stale_content
-          pytest -q tests/test_v5_1_3_website_contract.py tests/test_v5_1_3_website_claims.py tests/test_v5_1_3_website_scenarios.py tests/test_v5_1_3_website_frontier.py
+          python -m pytest -q tests/test_v5_1_3_website_contract.py tests/test_v5_1_3_website_claims.py tests/test_v5_1_3_website_scenarios.py tests/test_v5_1_3_website_frontier.py
       - name: Re-run frozen model semantics
         run: |
-          pytest -q tests/test_v5_1_3_no_new_debt_contract.py tests/test_v5_1_2_physical_sanity.py
+          python -m pytest -q tests/test_v5_1_3_no_new_debt_contract.py tests/test_v5_1_2_physical_sanity.py
       - name: Validate JavaScript, CSS and JSON
         run: |
           node --check website/app.js
