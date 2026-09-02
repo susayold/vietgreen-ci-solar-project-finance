@@ -2,7 +2,7 @@ name: cv-website-v2-frozen-model
 
 on:
   push:
-    branches: [v5.1.3-cv-website-data-visual-rebuild]
+    branches: [v5.1.3-cv-website-from-scratch]
   workflow_dispatch:
 
 permissions:
