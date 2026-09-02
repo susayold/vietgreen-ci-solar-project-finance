@@ -99,7 +99,7 @@ async function renderEvidence(){
  return html+closePage();
 }
 async function render(){
- const route=(location.hash.match(/^#\\/?([^?]*)/)||[])[1]||"overview";
+ const route=(location.hash.match(/^#\/?([^?]*)/)||[])[1]||"overview";
  const r=ROUTES.includes(route)?route:"overview";
  document.querySelectorAll("[data-nav]").forEach(a=>a.classList.toggle("active",a.dataset.nav===r));
  try{
