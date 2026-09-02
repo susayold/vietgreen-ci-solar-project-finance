@@ -1,5 +1,5 @@
 {
-  "version": "5.1.1",
+  "version": "5.1.2",
   "projects": [
     {
       "project_id": "EU-GY-ALTAREA-BOLLENE-ROOF",
@@ -10,7 +10,13 @@
       "source_id": "GY-EU-ALTAREA",
       "ppa_mode": "FRONTIER_ONLY",
       "exact_ppa_price_disclosed": false,
-      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA"
+      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
+      "capacity_kwp": "9600",
+      "observedGenerationKwh": "12000000",
+      "baseGenerationP50Kwh": "12000000",
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "engineeringReviewRequired": "FALSE",
+      "technicalDataBlocked": false
     },
     {
       "project_id": "EU-GY-ALTAREA-PUCEUL",
@@ -21,7 +27,13 @@
       "source_id": "GY-EU-ALTAREA",
       "ppa_mode": "FRONTIER_ONLY",
       "exact_ppa_price_disclosed": false,
-      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA"
+      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
+      "capacity_kwp": "3000",
+      "observedGenerationKwh": "3000000",
+      "baseGenerationP50Kwh": "3000000",
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "engineeringReviewRequired": "FALSE",
+      "technicalDataBlocked": false
     },
     {
       "project_id": "EU-GY-FRUEHAUF-AUXERRE",
@@ -32,7 +44,13 @@
       "source_id": "GY-EU-FRUEHAUF",
       "ppa_mode": "FRONTIER_ONLY",
       "exact_ppa_price_disclosed": false,
-      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA"
+      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
+      "capacity_kwp": "11000",
+      "observedGenerationKwh": "12700000",
+      "baseGenerationP50Kwh": "12700000",
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "engineeringReviewRequired": "FALSE",
+      "technicalDataBlocked": false
     },
     {
       "project_id": "EU-GY-PANATTONI-MOISSY",
@@ -43,7 +61,13 @@
       "source_id": "GY-EU-PANATTONI",
       "ppa_mode": "FRONTIER_ONLY",
       "exact_ppa_price_disclosed": false,
-      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA"
+      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
+      "capacity_kwp": "1300",
+      "observedGenerationKwh": "1321000",
+      "baseGenerationP50Kwh": "1321000",
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "engineeringReviewRequired": "FALSE",
+      "technicalDataBlocked": false
     },
     {
       "project_id": "EU-GY-SAFRAN-EVRY",
@@ -54,7 +78,13 @@
       "source_id": "GY-EU-SAFRAN",
       "ppa_mode": "FRONTIER_ONLY",
       "exact_ppa_price_disclosed": false,
-      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA"
+      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
+      "capacity_kwp": "8600",
+      "observedGenerationKwh": "8300000",
+      "baseGenerationP50Kwh": "8300000",
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "engineeringReviewRequired": "FALSE",
+      "technicalDataBlocked": false
     },
     {
       "project_id": "EU-GY-STELLANTIS-CAEN",
@@ -65,7 +95,13 @@
       "source_id": "GY-EU-STELLANTIS",
       "ppa_mode": "FRONTIER_ONLY",
       "exact_ppa_price_disclosed": false,
-      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA"
+      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
+      "capacity_kwp": "4000",
+      "observedGenerationKwh": "2300000",
+      "baseGenerationP50Kwh": "2300000",
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "engineeringReviewRequired": "FALSE",
+      "technicalDataBlocked": false
     },
     {
       "project_id": "EU-GY-STELLANTIS-CHARLEVILLE",
@@ -76,7 +112,13 @@
       "source_id": "GY-EU-STELLANTIS",
       "ppa_mode": "FRONTIER_ONLY",
       "exact_ppa_price_disclosed": false,
-      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA"
+      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
+      "capacity_kwp": "8000",
+      "observedGenerationKwh": "4500000",
+      "baseGenerationP50Kwh": "4500000",
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "engineeringReviewRequired": "FALSE",
+      "technicalDataBlocked": false
     },
     {
       "project_id": "EU-GY-STELLANTIS-VALENCIENNES",
@@ -87,7 +129,13 @@
       "source_id": "GY-EU-STELLANTIS",
       "ppa_mode": "FRONTIER_ONLY",
       "exact_ppa_price_disclosed": false,
-      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA"
+      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
+      "capacity_kwp": "6000",
+      "observedGenerationKwh": "4600000",
+      "baseGenerationP50Kwh": "4600000",
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "engineeringReviewRequired": "FALSE",
+      "technicalDataBlocked": false
     },
     {
       "project_id": "EU-GY-GIVA-CELLA",
@@ -98,7 +146,13 @@
       "source_id": "GY-EU-GIVA",
       "ppa_mode": "FRONTIER_ONLY",
       "exact_ppa_price_disclosed": false,
-      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA"
+      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
+      "capacity_kwp": "3000",
+      "observedGenerationKwh": "4050000",
+      "baseGenerationP50Kwh": "4050000",
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "engineeringReviewRequired": "FALSE",
+      "technicalDataBlocked": false
     },
     {
       "project_id": "EU-GY-GIVA-VISANO",
@@ -109,7 +163,13 @@
       "source_id": "GY-EU-GIVA",
       "ppa_mode": "FRONTIER_ONLY",
       "exact_ppa_price_disclosed": false,
-      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA"
+      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
+      "capacity_kwp": "8000",
+      "observedGenerationKwh": "10800000",
+      "baseGenerationP50Kwh": "10800000",
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "engineeringReviewRequired": "FALSE",
+      "technicalDataBlocked": false
     },
     {
       "project_id": "EU-GY-SASOL-ITALY",
@@ -120,7 +180,13 @@
       "source_id": "GY-EU-SASOL",
       "ppa_mode": "FRONTIER_ONLY",
       "exact_ppa_price_disclosed": false,
-      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA"
+      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
+      "capacity_kwp": "5100",
+      "observedGenerationKwh": "7610000",
+      "baseGenerationP50Kwh": "7610000",
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "engineeringReviewRequired": "FALSE",
+      "technicalDataBlocked": false
     },
     {
       "project_id": "EU-GY-STELLANTIS-SLOVAKIA",
@@ -131,7 +197,13 @@
       "source_id": "GY-EU-STELLANTIS",
       "ppa_mode": "FRONTIER_ONLY",
       "exact_ppa_price_disclosed": false,
-      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA"
+      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
+      "capacity_kwp": "13000",
+      "observedGenerationKwh": "7000000",
+      "baseGenerationP50Kwh": "7000000",
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "engineeringReviewRequired": "FALSE",
+      "technicalDataBlocked": false
     },
     {
       "project_id": "IN-AZURE-GANDHINAGAR",
@@ -142,7 +214,13 @@
       "source_id": "IFC-32148",
       "ppa_mode": "FRONTIER_ONLY",
       "exact_ppa_price_disclosed": false,
-      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA"
+      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
+      "capacity_kwp": "2500",
+      "observedGenerationKwh": "3625000",
+      "baseGenerationP50Kwh": "3625000",
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "engineeringReviewRequired": "FALSE",
+      "technicalDataBlocked": false
     },
     {
       "project_id": "IN-CLEANMAX-TN-30MW",
@@ -153,7 +231,13 @@
       "source_id": "IFC-38331",
       "ppa_mode": "FRONTIER_ONLY",
       "exact_ppa_price_disclosed": false,
-      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA"
+      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
+      "capacity_kwp": "30000",
+      "observedGenerationKwh": "43500000",
+      "baseGenerationP50Kwh": "43500000",
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "engineeringReviewRequired": "FALSE",
+      "technicalDataBlocked": false
     },
     {
       "project_id": "IN-FPEL-ARISUDHANA",
@@ -164,7 +248,13 @@
       "source_id": "FPEL-ARISUDHANA",
       "ppa_mode": "FRONTIER_ONLY",
       "exact_ppa_price_disclosed": false,
-      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA"
+      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
+      "capacity_kwp": "2090",
+      "observedGenerationKwh": "30500000",
+      "baseGenerationP50Kwh": "",
+      "physicalStatus": "EXTREME_OUTLIER_BLOCK_BASE",
+      "engineeringReviewRequired": "TRUE",
+      "technicalDataBlocked": true
     },
     {
       "project_id": "IN-CLEANTECH-EXIDE-HALDIA",
@@ -175,7 +265,13 @@
       "source_id": "CLEANTECH-HALDIA",
       "ppa_mode": "FRONTIER_ONLY",
       "exact_ppa_price_disclosed": false,
-      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA"
+      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
+      "capacity_kwp": "2600",
+      "observedGenerationKwh": "3770000",
+      "baseGenerationP50Kwh": "3770000",
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "engineeringReviewRequired": "FALSE",
+      "technicalDataBlocked": false
     },
     {
       "project_id": "VN-GY-GOMALL",
@@ -186,7 +282,13 @@
       "source_id": "GY-VN-GOMALL",
       "ppa_mode": "FRONTIER_ONLY",
       "exact_ppa_price_disclosed": false,
-      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA"
+      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
+      "capacity_kwp": "9000",
+      "observedGenerationKwh": "13000000",
+      "baseGenerationP50Kwh": "13000000",
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "engineeringReviewRequired": "FALSE",
+      "technicalDataBlocked": false
     },
     {
       "project_id": "VN-GY-LOTTEMART",
@@ -197,7 +299,13 @@
       "source_id": "GY-VN-LOTTEMART",
       "ppa_mode": "FRONTIER_ONLY",
       "exact_ppa_price_disclosed": false,
-      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA"
+      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
+      "capacity_kwp": "2660",
+      "observedGenerationKwh": "3059000",
+      "baseGenerationP50Kwh": "3059000",
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "engineeringReviewRequired": "FALSE",
+      "technicalDataBlocked": false
     },
     {
       "project_id": "EU-GY-PTP-CADIZ",
@@ -208,7 +316,13 @@
       "source_id": "GY-EU-PTP",
       "ppa_mode": "FRONTIER_ONLY",
       "exact_ppa_price_disclosed": false,
-      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA"
+      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
+      "capacity_kwp": "1840",
+      "observedGenerationKwh": "2400000",
+      "baseGenerationP50Kwh": "2400000",
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "engineeringReviewRequired": "FALSE",
+      "technicalDataBlocked": false
     },
     {
       "project_id": "EU-GY-CMC-ANDRYCHOW",
@@ -219,7 +333,13 @@
       "source_id": "GY-EU-CMC",
       "ppa_mode": "FRONTIER_ONLY",
       "exact_ppa_price_disclosed": false,
-      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA"
+      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
+      "capacity_kwp": "653",
+      "observedGenerationKwh": "685650",
+      "baseGenerationP50Kwh": "685650",
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "engineeringReviewRequired": "FALSE",
+      "technicalDataBlocked": false
     }
   ]
 }
