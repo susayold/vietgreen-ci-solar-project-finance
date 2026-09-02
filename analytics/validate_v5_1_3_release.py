@@ -79,6 +79,10 @@ def write_reconciliations(sc):
     pqa=rows("validation/V5_1_3_PHYSICAL_QA.csv")
     econ=rows("outputs/v5_1_3_project_economics.csv")
     hourly=rows("outputs/v5_1_3_8760.csv")
+    arisudhana=next(r for r in pqa if r["project_id"]=="IN-FPEL-ARISUDHANA")
+    assert float(arisudhana["observed_generation_kwh"]) == 30500000.0
+    assert arisudhana["physical_status"] == "EXTREME_OUTLIER_BLOCK_BASE"
+    assert arisudhana["base_generation_p50_kwh"] == "" and arisudhana["model_input_status"] == "TECHNICAL_DATA_BLOCKED"
     no_new={r["scenario_id"]:r for r in sc if r["scenario_id"]=="CAPEX_OVERRUN"}
     term={r["scenario_id"]:r for r in sc if r["scenario_id"]=="OFFTAKER_TERMINATION"}
     combined={r["scenario_id"]:r for r in sc if r["scenario_id"]=="COMBINED_DOWNSIDE"}
