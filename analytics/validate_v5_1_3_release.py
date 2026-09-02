@@ -116,7 +116,12 @@ def write_reconciliations(sc):
           ("additional_debt",0,r["additional_debt_local"]),
           ("equity_funded_incremental_capex",r["incremental_capex_local"],r["equity_funded_incremental_capex_local"]),
           ("min_dscr",r["dscr_min"],r["dscr_min"]),("LLCR",r["llcr"],r["llcr"]),("PLCR",r["plcr"],r["plcr"])]:
-            ok = abs(float(expected)-float(actual))<=TOL if isinstance(expected,(int,float)) else str(expected)==str(actual)
+            if isinstance(expected,bool):
+                ok = str(expected).upper() == str(actual).upper()
+            elif isinstance(expected,(int,float)):
+                ok = abs(float(expected)-float(actual)) <= TOL
+            else:
+                ok = str(expected) == str(actual)
             excel.append({"scenario_id":r["scenario_id"],"metric":metric,"python":expected,"excel":actual,"status":"PASS" if ok else "FAIL"})
     write_csv("validation/V5_1_3_EXCEL_PYTHON_RECONCILIATION.csv",excel,["scenario_id","metric","python","excel","status"])
 
