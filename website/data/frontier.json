@@ -1,5 +1,5 @@
 {
-  "version": "5.1.1",
+  "version": "5.1.2",
   "frontier": [
     {
       "project_id": "EU-GY-ALTAREA-BOLLENE-ROOF",
@@ -107,14 +107,6 @@
     },
     {
       "project_id": "IN-CLEANMAX-TN-30MW",
-      "country": "India",
-      "ppa_mode": "FRONTIER_ONLY",
-      "exact_ppa_price_disclosed": false,
-      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
-      "reference_case": "REFERENCE_CASE_NOT_ACTUAL_PPA"
-    },
-    {
-      "project_id": "IN-FPEL-ARISUDHANA",
       "country": "India",
       "ppa_mode": "FRONTIER_ONLY",
       "exact_ppa_price_disclosed": false,
