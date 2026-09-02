@@ -1,0 +1,13 @@
+{
+  "manifest_version": "5.1.3",
+  "release_tag": "v5.1.3-recruiter-final",
+  "input_freeze_status": "CI_GENERATED",
+  "selected_project_count": 20,
+  "candidate_history_count": 54,
+  "raw_observation_count": 441,
+  "ppa_mode": "FRONTIER_ONLY",
+  "reference_case": "REFERENCE_CASE_NOT_ACTUAL_PPA",
+  "decision_boundary": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
+  "input_sha256": "CI_GENERATED_FROM_REMOTE_AUTHORITATIVE_INPUTS",
+  "remote_only": true
+}
