@@ -1,4 +1,4 @@
-# Scope Matrix — V5.1.2
+# Scope Matrix — V5.1.3
 
 | In scope | Explicitly out of scope |
 |---|---|
@@ -9,4 +9,4 @@
 | Diligence and commercial-negotiation shortlists | Local project-data storage |
 | GitHub CI, release artifacts and Drive control | New project universe or unrelated features |
 
-Stop boundary: close V5.1.2 after exact-head CI, release, Pages, remote readback and Drive reconciliation.
+Stop boundary: close V5.1.3 after exact-head CI, release, Pages, remote readback and Drive reconciliation.
