@@ -12,7 +12,7 @@ CURRENT_FILES=(
  "website/data/release-meta.json","release/MODEL_RELEASE_MANIFEST.json",
 )
 STALE=("V5.1.1","v5.1.1-recruiter-final","v5.1.1-data-model-content-rebuild","v5.1.0-recruiter-final","v4.1.3-recruiter-final")
-ALLOWED=("HISTORICAL","SUPERSEDED","IMMUTABLE","legacy","history","Historical")
+ALLOWED=("HISTORICAL","SUPERSEDED","IMMUTABLE","legacy","history","Historical","historical")
 
 def scan(root: str|Path) -> list[str]:
     root=Path(root); errors=[]
