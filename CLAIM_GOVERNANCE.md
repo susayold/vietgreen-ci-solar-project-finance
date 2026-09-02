@@ -1,5 +1,5 @@
-# Claim Governance — V5.1.1
+# Claim Governance — V5.1.2
 
-Every output must retain source lineage and one of the classes OBSERVED, DERIVED, BENCHMARK_ASSUMPTION, ANALYST_ASSUMPTION or SCENARIO. Exact PPA and bankability claims are prohibited when the evidence is missing. A reference-case tariff is labeled REFERENCE_CASE_NOT_ACTUAL_PPA. The release decision boundary is INDETERMINATE_MISSING_COMMERCIAL_DATA.
+Every current output carries source lineage and an evidence class. Exact PPA, executed-PPA, lender-commitment, bankability, IC, legal, tax and technical-approval claims are prohibited when evidence is missing. `REFERENCE_CASE_NOT_ACTUAL_PPA` and `INDETERMINATE_MISSING_COMMERCIAL_DATA` remain mandatory boundaries.
 
-V5.1.0 is superseded after the V5.1.1 post-release audit. V4.1.3 is preserved as immutable historical governance.
+The current physical gate is `PASS_WITH_NONBLOCKING_REVIEW`: one disclosed source-reported outlier is preserved and blocked from base economics. Historical releases remain immutable and are never presented as current.
