@@ -1,0 +1,2 @@
+market_group,screening_lower_kwh_kwp,screening_upper_kwh_kwp,extreme_upper_multiplier,low_yield_policy,high_yield_policy,extreme_outlier_policy,benchmark_fallback_required
+GLOBAL_GENERIC,900,1600,2.0,LOW_YIELD_REVIEW,HIGH_YIELD_REVIEW,EXCLUDE_FROM_BASE_ECONOMICS,TRUE
