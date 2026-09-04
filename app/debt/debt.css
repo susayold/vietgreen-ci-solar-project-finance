@@ -1,0 +1,1186 @@
+.debt-page {
+  min-height: 100vh;
+  background: #fbfaf6;
+  color: #17382e;
+  font-family: var(--ui, Inter, Arial, sans-serif);
+}
+.debt-page h1,
+.debt-page h2,
+.debt-page h3,
+.debt-page strong,
+.debt-page b {
+  font-family: var(--heading, Georgia, serif);
+}
+.debt-header {
+  height: 64px;
+  display: grid;
+  grid-template-columns: 250px 1fr auto;
+  align-items: center;
+  gap: 18px;
+  padding: 0 32px;
+  background: #032e27;
+  color: #fffdf8;
+  border-bottom: 1px solid #d7a53666;
+}
+.debt-brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #fff;
+}
+.debt-brand > span {
+  width: 37px;
+  height: 37px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #efbb4b;
+  border-radius: 50%;
+  color: #efbb4b;
+}
+.debt-brand strong {
+  font-size: 22px;
+  line-height: 1;
+}
+.debt-brand small {
+  display: block;
+  margin-top: 3px;
+  color: #efbb4b;
+  font: 9px var(--ui);
+}
+.debt-header nav {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  height: 100%;
+}
+.debt-header nav a {
+  position: relative;
+  display: flex;
+  align-items: center;
+  color: #fffdf8cc;
+  font: 11px var(--heading);
+}
+.debt-header nav a.active {
+  color: #efbb4b;
+}
+.debt-header nav a.active:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background: #efb73c;
+}
+.debt-release {
+  padding: 7px 11px;
+  border: 1px solid #d7a536;
+  border-radius: 5px;
+  color: #efc45a;
+  font-size: 10px;
+  white-space: nowrap;
+}
+.debt-hero {
+  position: relative;
+  min-height: 350px;
+  overflow: hidden;
+  background: #04382e;
+  color: #fff;
+}
+.debt-hero > img {
+  object-fit: cover;
+  object-position: 57% center;
+}
+.debt-hero-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    #03392f 0%,
+    #03392ff5 31%,
+    #03392fb0 52%,
+    #03392f18 82%
+  );
+}
+.debt-hero-inner {
+  position: relative;
+  z-index: 1;
+  width: min(1420px, calc(100% - 64px));
+  min-height: 350px;
+  margin: auto;
+  padding: 34px 0;
+}
+.debt-hero-copy {
+  max-width: 600px;
+}
+.debt-eyebrow {
+  margin: 0 0 11px;
+  color: #efbb4b;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+}
+.debt-hero h1 {
+  margin: 0;
+  color: #fffdf8;
+  font-size: 50px;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+}
+.debt-hero-copy > p:not(.debt-eyebrow) {
+  max-width: 570px;
+  margin: 17px 0;
+  color: #fffdf8df;
+  font-size: 13px;
+  line-height: 1.45;
+}
+.debt-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.debt-button {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 14px;
+  border: 1px solid #fffdf8bb;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 10px;
+}
+.debt-button.primary {
+  background: #efb73c;
+  border-color: #efb73c;
+  color: #17382e;
+  font-weight: 700;
+}
+.debt-hero-card {
+  position: absolute;
+  right: 2%;
+  top: 39px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 290px;
+  padding: 13px 15px;
+  background: #073d33e8;
+  border: 1px solid #e6b94f99;
+  border-radius: 7px;
+}
+.debt-hero-card > div {
+  min-height: 69px;
+  padding: 8px 7px;
+  border-right: 1px solid #e5b34a75;
+  border-bottom: 1px solid #e5b34a75;
+}
+.debt-hero-card > div:nth-child(2n) {
+  border-right: 0;
+}
+.debt-hero-card > div:nth-child(n + 3) {
+  border-bottom: 0;
+}
+.debt-hero-card span,
+.debt-hero-card b {
+  display: block;
+}
+.debt-hero-card span {
+  color: #fff;
+  font-size: 9px;
+}
+.debt-hero-card b {
+  margin-top: 5px;
+  color: #fff;
+  font-size: 20px;
+}
+.debt-hero-card footer {
+  grid-column: 1/-1;
+  padding: 10px 7px 3px;
+  color: #efbd47;
+  font: 8px var(--ui);
+}
+.debt-main {
+  width: min(1420px, calc(100% - 64px));
+  margin: auto;
+}
+.debt-section {
+  padding: 15px 0;
+  border-top: 1px solid #e5e2d9;
+}
+.debt-heading {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  margin-bottom: 12px;
+}
+.debt-heading > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.debt-heading h2 {
+  margin: 0;
+  color: #123c31;
+  font-size: 20px;
+}
+.debt-heading p {
+  margin: 0;
+  color: #68756e;
+  font: 11px var(--heading);
+}
+.debt-index {
+  width: 21px;
+  height: 21px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #063c30;
+  color: #efbb4b;
+  font: 700 11px var(--ui);
+}
+.debt-selector {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 10px 13px;
+  border: 1px solid #dcdfd8;
+  border-radius: 7px;
+  background: #fffefa;
+}
+.debt-selector > div:first-child {
+  min-width: 190px;
+  margin-right: auto;
+}
+.debt-selector > div:first-child b,
+.debt-selector > div:first-child small {
+  display: block;
+}
+.debt-selector > div:first-child b {
+  font-size: 14px;
+}
+.debt-selector > div:first-child small {
+  margin-top: 3px;
+  color: #6c776f;
+  font: 9px var(--ui);
+}
+.debt-select {
+  position: relative;
+}
+.debt-select select {
+  width: 230px;
+  height: 34px;
+  appearance: none;
+  padding: 0 29px 0 10px;
+  border: 1px solid #d7ddd5;
+  border-radius: 5px;
+  background: #fff;
+  color: #17382e;
+  font-size: 10px;
+}
+.debt-select svg {
+  position: absolute;
+  right: 8px;
+  top: 10px;
+  pointer-events: none;
+}
+.debt-selector > span {
+  padding: 6px 8px;
+  border: 1px solid #dce1d8;
+  border-radius: 4px;
+  color: #52655b;
+  font-size: 9px;
+  white-space: nowrap;
+}
+.green-badge,
+.gold-badge {
+  padding: 6px 8px;
+  border-radius: 4px;
+  font: 8px var(--ui);
+  white-space: nowrap;
+}
+.green-badge {
+  border: 1px solid #add1b7;
+  background: #f0faf1;
+  color: #25734c;
+}
+.gold-badge {
+  border: 1px solid #e5c48a;
+  background: #fff8e9;
+  color: #a67122;
+}
+.debt-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+}
+.debt-kpi {
+  min-height: 108px;
+  padding: 12px 8px;
+  border: 1px solid #dfe2d9;
+  border-radius: 6px;
+  background: #fffefa;
+  text-align: center;
+}
+.debt-kpi svg {
+  color: #147452;
+}
+.debt-kpi strong {
+  display: block;
+  margin: 8px 0 5px;
+  color: #164337;
+  font-size: 21px;
+}
+.debt-kpi span {
+  display: block;
+  color: #5e6e65;
+  font-size: 9px;
+}
+.debt-strip {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  margin-top: 10px;
+  border: 1px solid #e0e1d8;
+  border-radius: 6px;
+  background: #fffefa;
+}
+.debt-strip span {
+  padding: 9px;
+  border-right: 1px solid #e5e4db;
+  text-align: center;
+  color: #21483b;
+  font: 600 15px var(--heading);
+}
+.debt-strip span:last-child {
+  border: 0;
+}
+.debt-strip small {
+  display: block;
+  margin-top: 3px;
+  color: #69766e;
+  font: 8px var(--ui);
+}
+.debt-warning {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 9px;
+  padding: 9px;
+  border: 1px solid #eddaaf;
+  border-radius: 5px;
+  background: #fff9ef;
+  color: #a06e1e;
+  font-size: 9px;
+}
+.debt-warning svg {
+  color: #dc9f29;
+}
+.capacity-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 11px;
+}
+.capacity-card,
+.binding-card,
+.chart-card,
+.credit-meaning,
+.portfolio-credit-grid > div,
+.claim-grid > div {
+  padding: 13px;
+  border: 1px solid #dedfd7;
+  border-radius: 7px;
+  background: #fffefa;
+}
+.credit-flow {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 4px;
+}
+.credit-flow > div {
+  position: relative;
+  min-height: 62px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  border: 1px solid #d8e1d8;
+  border-radius: 5px;
+  color: #205343;
+  text-align: center;
+  font-size: 9px;
+}
+.credit-flow > div.selected {
+  border: 1px dashed #daa533;
+  background: #fff8ea;
+}
+.credit-flow b {
+  font-size: 10px;
+}
+.credit-flow span {
+  margin-top: 3px;
+  font-size: 8px;
+}
+.credit-flow svg {
+  position: absolute;
+  right: -9px;
+  color: #b17c20;
+  background: #fffefa;
+  z-index: 1;
+}
+.leverage-callout {
+  display: flex;
+  gap: 9px;
+  margin-top: 12px;
+  padding: 11px;
+  border: 1px solid #ebd8b0;
+  border-radius: 6px;
+  background: #fff9ee;
+  color: #78541e;
+}
+.leverage-callout svg {
+  flex: none;
+}
+.leverage-callout b,
+.leverage-callout small {
+  display: block;
+}
+.leverage-callout b {
+  font-size: 10px;
+}
+.leverage-callout small {
+  margin-top: 4px;
+  font: 9px/1.3 var(--heading);
+}
+.binding-card {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 13px;
+  align-items: center;
+}
+.plcr-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px 8px;
+  border-radius: 5px;
+  background: #043d31;
+  color: #fff;
+  text-align: center;
+}
+.plcr-box b {
+  font-size: 16px;
+}
+.plcr-box strong {
+  font-size: 34px;
+  line-height: 1;
+}
+.plcr-box small {
+  margin-top: 5px;
+  color: #f7df9e;
+  font-size: 8px;
+}
+.plcr-box span {
+  margin-top: 10px;
+  padding: 6px 8px;
+  border-radius: 4px;
+  background: #e5aa2d;
+  color: #15392f;
+  font: 700 8px var(--ui);
+}
+.binding-card h3 {
+  margin: 0;
+  color: #234c3e;
+  font-size: 14px;
+}
+.binding-card p {
+  margin: 8px 0;
+  color: #58685f;
+  font: 10px/1.4 var(--heading);
+}
+.charts-section {
+  display: grid;
+  grid-template-columns: 1fr 1.28fr;
+  gap: 11px;
+}
+.chart-card {
+  min-width: 0;
+}
+.chart-card .debt-heading {
+  margin-bottom: 7px;
+}
+.chart-key {
+  display: flex;
+  gap: 18px;
+  font-size: 8px;
+}
+.chart-key span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.chart-key span:before {
+  content: '';
+  width: 16px;
+  height: 3px;
+  border-radius: 3px;
+}
+.cfads-key:before {
+  background: #1b7654;
+}
+.service-key:before {
+  background: #df9e27;
+}
+.debt-line-chart {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-top: 4px;
+}
+.debt-line-chart text {
+  fill: #607069;
+  font: 8px var(--ui);
+}
+.chart-axis {
+  stroke: #bdc9bd;
+}
+.chart-grid {
+  stroke: #e6e8e1;
+}
+.debt-bar {
+  fill: #d89b29b5;
+}
+.debt-polyline {
+  fill: none;
+  stroke: #177654;
+  stroke-width: 2.5;
+}
+.debt-point {
+  fill: #177654;
+}
+.chart-side-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: -194px 8px 0 auto;
+  width: 135px;
+}
+.chart-side-stats span {
+  padding: 6px;
+  border: 1px solid #dce3d9;
+  border-radius: 5px;
+  color: #6b776e;
+  font-size: 8px;
+}
+.chart-side-stats b {
+  display: block;
+  margin-top: 3px;
+  color: #1d694c;
+  font: 600 13px var(--heading);
+}
+.chart-footnote {
+  clear: both;
+  margin: 12px 0 0;
+  padding: 9px;
+  background: #f8f7f0;
+  color: #5f6c64;
+  font: 9px var(--heading);
+}
+.schedule-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 13px;
+  color: #52645a;
+  font-size: 9px;
+}
+.schedule-bars {
+  height: 120px;
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  margin: 10px 8px 4px;
+  border-bottom: 1px solid #bbcabe;
+}
+.schedule-year {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+  flex: 1;
+}
+.schedule-year strong {
+  font-size: 8px;
+}
+.schedule-year i {
+  width: 28px;
+  display: block;
+  margin: 4px 0;
+  background: #164d3d;
+}
+.schedule-year span {
+  font-size: 8px;
+}
+.schedule-legend {
+  display: flex;
+  gap: 13px;
+  font-size: 8px;
+}
+.schedule-legend span:before {
+  content: '';
+  display: inline-block;
+  width: 10px;
+  height: 3px;
+  margin-right: 4px;
+  background: #164d3d;
+}
+.schedule-legend .closing:before {
+  background: #e2a229;
+}
+.principal-visual {
+  position: relative;
+  height: 125px;
+  margin: 10px 10px;
+  border-bottom: 1px solid #bbcabe;
+}
+.principal-bar,
+.interest-bar {
+  position: absolute;
+  bottom: 0;
+  width: 45px;
+  display: block;
+}
+.principal-bar {
+  left: 40px;
+  height: 109px;
+  background: #174d3d;
+}
+.interest-bar {
+  left: 85px;
+  height: 16px;
+  background: #dda32a;
+}
+.principal-visual b {
+  position: absolute;
+  left: 43px;
+  top: 1px;
+  font-size: 9px;
+}
+.principal-visual small {
+  position: absolute;
+  bottom: -19px;
+  left: 40px;
+  font-size: 8px;
+}
+.debt-table,
+.portfolio-credit-table table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 11px;
+  font-size: 8px;
+}
+.debt-table th,
+.debt-table td,
+.portfolio-credit-table th,
+.portfolio-credit-table td {
+  padding: 6px 5px;
+  border: 1px solid #e6e6de;
+  text-align: right;
+}
+.debt-table th:first-child,
+.debt-table td:first-child,
+.portfolio-credit-table th:first-child,
+.portfolio-credit-table td:first-child {
+  text-align: left;
+}
+.debt-table th,
+.portfolio-credit-table th {
+  background: #f8f8f2;
+  color: #52645a;
+  font-weight: 600;
+}
+.ratio-grid {
+  display: grid;
+  grid-template-columns: 1.08fr 1fr;
+  gap: 11px;
+}
+.ratio-card {
+  position: relative;
+  padding: 11px;
+  margin-bottom: 8px;
+  border: 1px solid #dce2d9;
+  border-radius: 6px;
+  background: #fffefa;
+}
+.ratio-card > div:first-child {
+  display: grid;
+  grid-template-columns: 27px 1fr;
+}
+.ratio-icon {
+  grid-row: 1/3;
+  color: #197554;
+  font-size: 20px;
+}
+.ratio-card b,
+.ratio-card small {
+  display: block;
+}
+.ratio-card b {
+  font-size: 13px;
+}
+.ratio-card small {
+  margin-top: 3px;
+  color: #627068;
+  font: 8px var(--heading);
+}
+.ratio-values {
+  display: flex;
+  justify-content: flex-end;
+  gap: 25px;
+  margin-top: -31px;
+}
+.ratio-values span {
+  color: #6b776e;
+  font-size: 7px;
+}
+.ratio-values strong {
+  display: block;
+  margin-top: 4px;
+  color: #1c674a;
+  font: 600 15px var(--heading);
+}
+.ratio-track {
+  position: relative;
+  height: 4px;
+  margin-top: 17px;
+  background: #e4e8e0;
+}
+.ratio-track i,
+.ratio-track em {
+  position: absolute;
+  top: -4px;
+  width: 12px;
+  height: 12px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: #1b8059;
+  box-shadow: 0 0 0 1px #1b8059;
+}
+.ratio-track i {
+  left: 75%;
+}
+.ratio-track em {
+  left: 43%;
+  background: #e2a22b;
+  box-shadow: 0 0 0 1px #e2a22b;
+}
+.ratio-card.plcr {
+  border-color: #e4c789;
+  background: #fffaf0;
+}
+.ratio-card.plcr .ratio-values strong {
+  color: #b77a18;
+}
+.ratio-card.plcr .ratio-binding {
+  position: absolute;
+  right: 10px;
+  bottom: 8px;
+  padding: 4px 7px;
+  border-radius: 4px;
+  background: #dfa42e;
+  color: #173a30;
+  font: 700 7px var(--ui);
+}
+.credit-meaning .debt-heading {
+  margin-bottom: 9px;
+}
+.credit-meaning > div:not(.debt-heading) {
+  display: flex;
+  gap: 8px;
+  margin: 7px 0;
+  padding: 8px;
+  border-bottom: 1px solid #e9e8e0;
+}
+.credit-meaning > div svg {
+  flex: none;
+  color: #197452;
+}
+.credit-meaning b,
+.credit-meaning small {
+  display: block;
+}
+.credit-meaning b {
+  font-size: 10px;
+}
+.credit-meaning small {
+  margin-top: 3px;
+  color: #5c6b63;
+  font: 9px/1.3 var(--heading);
+}
+.model-supported {
+  justify-content: center !important;
+  border: 1px solid #b7d6c0;
+  border-radius: 5px;
+  color: #197452;
+  font: 700 8px var(--ui);
+}
+.portfolio-credit-grid {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 10px;
+}
+.credit-donut {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.donut-ring {
+  width: 125px;
+  height: 125px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: conic-gradient(#19825b 0 74%, #dfa32b 74%);
+  box-shadow: inset 0 0 0 24px #fffefa;
+}
+.donut-ring strong {
+  font-size: 27px;
+}
+.donut-ring small {
+  font-size: 9px;
+}
+.credit-donut > span {
+  font-size: 8px;
+}
+.dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  margin-right: 5px;
+  border-radius: 50%;
+  background: #19825b;
+}
+.dot.amber {
+  background: #dfa32b;
+}
+.binding-distribution h3 {
+  margin: 0 0 9px;
+  font-size: 11px;
+}
+.binding-distribution span {
+  display: grid;
+  grid-template-columns: 55px 1fr 56px;
+  align-items: center;
+  gap: 6px;
+  margin: 9px 0;
+  font-size: 9px;
+}
+.binding-distribution span i {
+  height: 11px;
+  border-radius: 2px;
+  background: #248261;
+}
+.binding-distribution span:nth-child(3) i,
+.binding-distribution span:nth-child(5) i {
+  background: #9cbca8;
+}
+.binding-distribution strong {
+  font-size: 9px;
+}
+.portfolio-credit-table {
+  grid-column: 1/-1;
+}
+.portfolio-credit-table a {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 8px;
+  color: #1c7452;
+  font-size: 9px;
+}
+.claim-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.7fr;
+  gap: 10px;
+}
+.claim-grid > div {
+  padding: 12px;
+}
+.claim-grid h3 {
+  margin: 0 0 9px;
+  color: #1a6f50;
+  font-size: 10px;
+}
+.claim-grid p {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  margin: 8px 0;
+  color: #56665d;
+  font: 9px var(--heading);
+}
+.claim-grid p svg {
+  color: #21845d;
+}
+.claim-grid .cannot {
+  background: #fff8f6;
+  border-color: #ebc5bf;
+}
+.claim-grid .cannot h3,
+.claim-grid .cannot p svg {
+  color: #bd3832;
+}
+.handoff-debt > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 19px 0;
+}
+.handoff-debt > div span {
+  padding: 8px 10px;
+  border: 1px solid #dce3d9;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 8px;
+}
+.handoff-debt > div svg {
+  color: #ac7b22;
+}
+.handoff-debt > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #1b7351;
+  font-size: 9px;
+}
+.debt-takeaway {
+  position: relative;
+  overflow: hidden;
+  min-height: 190px;
+  margin-top: 15px;
+  padding: 21px 39% 22px 30px;
+  background: #033a30;
+  color: #fff;
+}
+.debt-takeaway > img {
+  position: absolute;
+  inset: 0 0 0 auto;
+  width: 48%;
+  object-fit: cover;
+  opacity: 0.4;
+}
+.debt-takeaway:after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #033a30 0%, #033a30eb 43%, #033a3040 100%);
+}
+.debt-takeaway > div {
+  position: relative;
+  z-index: 1;
+}
+.debt-index.gold {
+  display: inline-grid;
+  background: #efbb4b;
+  color: #06382e;
+}
+.debt-takeaway p {
+  max-width: 700px;
+  margin: 0 0 8px;
+}
+.debt-takeaway > div > p:first-of-type {
+  display: inline-block;
+  margin-left: 8px;
+  color: #efbb4b;
+  font: 700 10px var(--ui);
+}
+.debt-takeaway h2 {
+  max-width: 700px;
+  margin: 0 0 8px;
+  font-size: 24px;
+  line-height: 1.1;
+}
+.debt-takeaway > div > p:last-of-type {
+  font: 12px/1.35 var(--heading);
+}
+.debt-takeaway > div > div {
+  display: flex;
+  gap: 8px;
+}
+.debt-takeaway > div > div b {
+  padding: 7px 9px;
+  border: 1px solid #d8a33b;
+  border-radius: 4px;
+  color: #efc056;
+  font: 8px var(--ui);
+}
+.debt-footer {
+  display: flex;
+  justify-content: center;
+  gap: 27px;
+  padding: 11px;
+  color: #596860;
+  font-size: 9px;
+}
+.debt-footer span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+@media (max-width: 1100px) {
+  .debt-header {
+    grid-template-columns: 210px 1fr auto;
+    padding-inline: 20px;
+  }
+  .debt-header nav {
+    gap: 12px;
+  }
+  .debt-main,
+  .debt-hero-inner {
+    width: calc(100% - 40px);
+  }
+  .debt-hero h1 {
+    font-size: 45px;
+  }
+  .debt-kpi-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .debt-selector {
+    display: grid;
+    grid-template-columns: 1fr 250px 1fr 1fr;
+  }
+  .debt-selector > div:first-child {
+    margin: 0;
+  }
+  .debt-selector .gold-badge {
+    display: none;
+  }
+  .capacity-grid,
+  .charts-section,
+  .ratio-grid {
+    grid-template-columns: 1fr;
+  }
+  .chart-side-stats {
+    width: 190px;
+  }
+  .portfolio-credit-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .credit-donut {
+    grid-row: span 2;
+  }
+  .claim-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .handoff-debt {
+    grid-column: 1/-1;
+  }
+}
+@media (max-width: 760px) {
+  .debt-header {
+    height: 58px;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+  }
+  .debt-header nav {
+    display: none;
+  }
+  .debt-release {
+    font-size: 8px;
+  }
+  .debt-hero {
+    min-height: 575px;
+  }
+  .debt-hero-inner {
+    min-height: 575px;
+    width: calc(100% - 28px);
+    padding-top: 30px;
+  }
+  .debt-hero h1 {
+    font-size: 40px;
+  }
+  .debt-hero-shade {
+    background: linear-gradient(90deg, #03392ff7, #03392daa 68%, #03392f55);
+  }
+  .debt-hero-card {
+    left: 0;
+    right: auto;
+    top: auto;
+    bottom: 22px;
+    width: 290px;
+  }
+  .debt-main {
+    width: calc(100% - 28px);
+  }
+  .debt-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .debt-heading p {
+    padding-left: 29px;
+  }
+  .debt-selector {
+    display: flex;
+  }
+  .debt-select {
+    width: 100%;
+    order: 3;
+  }
+  .debt-select select {
+    width: 100%;
+  }
+  .debt-kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .debt-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .debt-strip span:nth-child(2n) {
+    border-right: 0;
+  }
+  .credit-flow {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .credit-flow svg {
+    display: none;
+  }
+  .binding-card {
+    grid-template-columns: 1fr;
+  }
+  .schedule-columns {
+    grid-template-columns: 1fr;
+  }
+  .chart-side-stats {
+    margin: 0;
+    width: auto;
+  }
+  .portfolio-credit-grid {
+    grid-template-columns: 1fr;
+  }
+  .credit-donut {
+    grid-row: auto;
+  }
+  .claim-grid {
+    grid-template-columns: 1fr;
+  }
+  .handoff-debt {
+    grid-column: auto;
+  }
+  .debt-takeaway {
+    padding: 20px;
+  }
+  .debt-takeaway > img {
+    width: 100%;
+    opacity: 0.22;
+  }
+  .debt-footer {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}
