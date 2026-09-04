@@ -1,0 +1,90 @@
+name: VietGreen current web · GitHub Pages
+
+on:
+  push:
+    branches: [codex/vietgreen-web-pages-1-6]
+  workflow_dispatch:
+
+concurrency:
+  group: vietgreen-current-web-pages
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout current web source
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Build static export
+        run: npm run build
+
+      - name: Prepare project-site routes
+        run: |
+          set -euo pipefail
+          rm -rf _site
+          cp -R dist/client _site
+          for route in projects energy economics debt risk; do
+            mkdir -p "_site/$route"
+            cp "_site/$route.html" "_site/$route/index.html"
+          done
+          cp _site/index.html _site/404.html
+          touch _site/.nojekyll
+
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          prefix = "/vietgreen-ci-solar-project-finance"
+          extensions = {".html", ".js", ".css", ".json", ".rsc"}
+          pattern = re.compile(r'(["\'`])/(?!/)')
+          for path in Path("_site").rglob("*"):
+              if path.is_file() and path.suffix in extensions:
+                  text = path.read_text(encoding="utf-8")
+                  text = pattern.sub(rf"\1{prefix}/", text)
+                  path.write_text(text, encoding="utf-8")
+          PY
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Verify public routes
+        env:
+          SITE_URL: ${{ steps.deployment.outputs.page_url }}
+        run: |
+          set -euo pipefail
+          base="${SITE_URL%/}/"
+          for route in "" projects/ energy/ economics/ debt/ risk/; do
+            curl --fail --silent --show-error "${base}${route}" >/dev/null
+          done
+          echo "GitHub Pages live: ${base}"

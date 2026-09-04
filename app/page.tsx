@@ -1,33 +1,719 @@
 import {
-  ArrowRight, BadgeCheck, BarChart3, Check, ClipboardCheck, Clock3, Database,
-  FileSearch, FileText, Globe2, Landmark, LineChart, Search, ShieldAlert,
-  ShieldCheck, SlidersHorizontal, Sun, Table2, TrendingUp, X, Zap,
+  ArrowRight,
+  BadgeCheck,
+  BarChart3,
+  Check,
+  ClipboardCheck,
+  Clock3,
+  Database,
+  FileSearch,
+  FileText,
+  Globe2,
+  Landmark,
+  LineChart,
+  Search,
+  ShieldAlert,
+  ShieldCheck,
+  SlidersHorizontal,
+  Sun,
+  Table2,
+  TrendingUp,
+  X,
+  Zap,
 } from 'lucide-react';
 import Image from 'next/image';
 
-const DATA_BASE = 'https://susayold.github.io/vietgreen-ci-solar-project-finance/data';
-type Summary = { version:string; candidateProjects:number; selectedRecords:number; economicsReadyProjects:number; technicalBlockedProjects:number; observations:number; countries:number; economicsReadyCapacityMw:number; readyObservedGenerationGwh:number; modeledHourlyRows:number; scenarios:number; workbookSheets:number; regressionTests:number; semanticControls:number; ppaMode:string; decision:string; transactionEvidence:string; capitalAllocation:string };
-type Physical = { distribution:Record<string,number>; screeningBand:{minKwhKwp:number;maxKwhKwp:number;extremeUpperKwhKwp:number}; blockedProject:{projectName:string;capacityMw:number;observedGenerationGwh:number;specificYieldKwhKwp:number;physicalStatus:string;economicsStatus:string} };
-const emptySummary:Summary = {version:'V5.1.3',candidateProjects:0,selectedRecords:0,economicsReadyProjects:0,technicalBlockedProjects:0,observations:0,countries:0,economicsReadyCapacityMw:0,readyObservedGenerationGwh:0,modeledHourlyRows:0,scenarios:0,workbookSheets:0,regressionTests:0,semanticControls:0,ppaMode:'—',decision:'—',transactionEvidence:'—',capitalAllocation:'—'};
-const emptyPhysical:Physical = {distribution:{},screeningBand:{minKwhKwp:0,maxKwhKwp:0,extremeUpperKwhKwp:0},blockedProject:{projectName:'Blocked technical data',capacityMw:0,observedGenerationGwh:0,specificYieldKwhKwp:0,physicalStatus:'—',economicsStatus:'—'}};
-async function remoteJson<T>(path:string,fallback:T):Promise<T>{try{const response=await fetch(`${DATA_BASE}/${path}`,{cache:'no-store'});if(!response.ok)return fallback;return await response.json() as T}catch{return fallback}}
-function fmt(value:number,digits=0){return value.toLocaleString('en-US',{maximumFractionDigits:digits,minimumFractionDigits:digits})}
-function SectionTitle({number,title,note}:{number:string;title:string;note?:string}){return <div className="section-title-row"><div className="section-title"><span className="section-number">{number}</span><h2>{title}</h2></div>{note?<p className="section-note">{note}</p>:null}</div>}
-function Logo(){return <a className="brand" href="#top" aria-label="VietGreen Overview"><span className="brand-mark"><BarChart3 size={20} strokeWidth={1.8}/></span><span><strong>VietGreen</strong><small>C&amp;I Solar Project Finance</small></span></a>}
-const navItems=['Overview','Projects','Energy','Economics','Debt','Risk','Diligence','Model'];
-const workflow:[string,string,typeof FileSearch][]=[['Public Project Evidence','Collect & trace public disclosures.',FileSearch],['Data & Physical QA','Validate & quality-control data.',Database],['Resolved Model Inputs','Lock assumptions with lineage.',SlidersHorizontal],['8,760 Operating Model','Simulate hourly operating performance.',Clock3],['Project Economics & CFADS','Build cash flow, DSCR & returns.',TrendingUp],['Debt & Credit','Size debt & assess credit.',Landmark],['PPA Frontier','Map viable PPA price range.',LineChart],['Downside Scenarios','Stress test key risk factors.',ShieldAlert],['Diligence Decision','Document an informed decision.',ClipboardCheck]];
-const skillCards:[string,string[],typeof BarChart3][]=[['Financial Modeling',['CFADS & cash flow modeling','NPV / IRR','DSCR / LLCR / PLCR','Scenario & sensitivity analysis','Cash-flow waterfalls'],BarChart3],['Project Finance & Credit',['Debt sizing & structuring','Covenant analysis','Credit metrics','Lender overlays','Bankability boundaries'],Landmark],['Commercial Analysis',['PPA frontier methodology','Counterparty profiling','Pricing & term analysis','Offtaker & demand dynamics','Negotiation leverage view'],LineChart],['Data Analytics',['Public-data research','Data reconciliation','Physical QA','8,760 hourly modeling','Dashboarding & reporting'],Database],['Model Governance',['Assumption management','Claim controls','Version control','Auditability & reproducibility','Diligence documentation'],ShieldCheck]];
-function KpiCard({icon:Icon,value,unit,label}:{icon:typeof Search;value:string;unit?:string;label:string}){return <div className="kpi-card"><Icon size={22}/><div className="kpi-value">{value}{unit?<em>{unit}</em>:null}</div><div className="kpi-label">{label}</div></div>}
-export default async function Home(){const [summaryRaw,physical]=await Promise.all([remoteJson<Summary>('summary.json',emptySummary),remoteJson<Physical>('physical.json',emptyPhysical)]);const summary={...emptySummary,...summaryRaw};const band=physical.screeningBand??emptyPhysical.screeningBand;const blocked=physical.blockedProject??emptyPhysical.blockedProject;const dist=physical.distribution??{};const withinBand=dist.PASS_WITHIN_SCREENING_BAND??0;const lowYield=dist.LOW_YIELD_REVIEW??0;const extremeBlock=dist.EXTREME_OUTLIER_BLOCK_BASE??0;
-const mainKpis:[[typeof Search,string,undefined,string],[typeof FileText,string,undefined,string],[typeof ShieldCheck,string,undefined,string],[typeof Zap,string,string,string],[typeof Sun,string,string,string],[typeof ShieldCheck,string,undefined,string]]=[[Search,fmt(summary.candidateProjects),undefined,'Candidate projects researched'],[FileText,fmt(summary.selectedRecords),undefined,'Selected public-data project records'],[ShieldCheck,fmt(summary.economicsReadyProjects),undefined,'Economics-ready Project Finance cases'],[Zap,fmt(summary.economicsReadyCapacityMw,3),'MW','Economics-ready installed capacity'],[Sun,fmt(summary.readyObservedGenerationGwh,3),'GWh','Source-observed economics-ready generation'],[ShieldCheck,fmt(summary.scenarios),undefined,'Governed downside scenario rows']];
-const miniKpis:[[typeof Database,string,string],[typeof Globe2,string,string],[typeof Clock3,string,string],[typeof Table2,string,string],[typeof BadgeCheck,string,string],[typeof ShieldCheck,string,string]]=[[Database,fmt(summary.observations),'Preserved observations'],[Globe2,fmt(summary.countries),'Countries'],[Clock3,fmt(summary.modeledHourlyRows),'Modeled hourly rows'],[Table2,fmt(summary.workbookSheets),'Workbook sheets'],[BadgeCheck,fmt(summary.regressionTests),'Regression tests'],[ShieldCheck,fmt(summary.semanticControls),'Semantic controls']];
-return <main id="top" className="overview-page"><header className="site-header"><Logo/><nav aria-label="Primary navigation">{navItems.map(item=><a className={item==='Overview'?'active':''} href={item==='Overview'?'#top':'#'} key={item}>{item}</a>)}</nav><span className="release-badge">V5.1.3&nbsp; · &nbsp;Frozen Model</span></header>
-<section className="hero" aria-labelledby="hero-title"><Image className="hero-image" src="/assets/overview/hero-industrial-solar-campus.webp" width={1672} height={941} priority alt="Industrial rooftop solar campus at golden hour"/><div className="hero-overlay"/><div className="hero-inner"><div className="hero-copy"><p className="eyebrow">PROJECT FINANCE · C&amp;I SOLAR · PUBLIC-DATA RECONSTRUCTION</p><h1 id="hero-title">From Public Solar Disclosures to a Controlled Project Finance Diligence Framework.</h1><p className="hero-description">VietGreen reconstructs real commercial &amp; industrial solar projects from fragmented public evidence, then connects physical performance, operating profiles, project economics, debt capacity and downside risk inside one auditable analytical framework.</p><div className="button-row"><a className="button button-primary" href="#project-glance">Explore the Project <ArrowRight size={15}/></a><a className="button button-secondary" href="#decision">View Finance Analysis</a><a className="button button-secondary" href="#model-evidence">Model &amp; Evidence</a></div></div><aside className="hero-control-card"><div className="hero-control-row"><Database size={24}/><strong>PUBLIC-DATA<br/>RECONSTRUCTION</strong></div><div className="hero-control-row"><TrendingUp size={24}/><strong><b>{fmt(summary.economicsReadyProjects)}</b> ECONOMICS-READY CASES</strong></div><div className="hero-control-row"><ShieldAlert size={24}/><strong>NOT A TRANSACTION<br/>APPROVAL</strong></div></aside></div></section>
-<section className="overview-section problem-section"><SectionTitle number="1" title="The Problem"/><div className="problem-grid"><div className="problem-intro">Public information is enough to start an analysis — but rarely enough to finish an investment decision.</div><div className="evidence-compare"><div className="evidence-column public"><h3>Publicly Observable</h3>{['Capacity','Generation','Developer','Offtaker','Project status','Source lineage'].map(item=><p key={item}><span>•</span>{item}</p>)}</div><div className="evidence-vs">VS.</div><div className="evidence-column missing"><h3>Often Missing / Confidential</h3>{['Exact PPA price','Customer telemetry','Project CAPEX','Lender terms','Site diligence','Engineering validation'].map(item=><p key={item}><span>•</span>{item}</p>)}</div></div><blockquote className="problem-quote"><span>“</span>The analytical challenge is therefore not simply to calculate IRR. It is to determine what can be supported by evidence, what must be modeled as an assumption, and where the analyst must stop.</blockquote></div></section>
-<section className="overview-section workflow-section"><SectionTitle number="2" title="What I Built" note="One analytical workflow from public evidence to a controlled finance decision."/><ol className="workflow-grid">{workflow.map(([title,description,Icon],index)=><li className="workflow-card" key={title}><span className="step-number">{String(index+1).padStart(2,'0')}</span><Icon size={26}/><h3>{title}</h3><p>{description}</p>{index<workflow.length-1?<ArrowRight className="workflow-arrow" size={15}/>:null}</li>)}</ol></section>
-<section id="project-glance" className="overview-section glance-section"><SectionTitle number="3" title="Project at a Glance" note="A real-data research universe converted into a governed Project Finance screening model."/><div className="primary-kpis">{mainKpis.map(([Icon,value,unit,label])=><KpiCard key={label} icon={Icon} value={value} unit={unit} label={label}/>)}</div><div className="mini-strip">{miniKpis.map(([Icon,value,label])=><div className="mini-kpi" key={label}><Icon size={18}/><strong>{value}</strong><span>{label}</span></div>)}</div></section>
-<section className="overview-section real-projects-section"><div className="real-projects-image"><Image src="/assets/overview/real-projects-context.webp" width={1672} height={941} alt="Commercial building with rooftop solar, used as contextual C&I imagery"/></div><div className="real-projects-copy"><SectionTitle number="4" title="Real Projects. Real Evidence Gaps."/><p>A cross-country C&amp;I solar research universe built from actual public disclosures.</p><div className="country-chips">{[['🇫🇷','France'],['🇮🇳','India'],['🇮🇹','Italy'],['🇸🇰','Slovakia'],['🇻🇳','Vietnam'],['🇪🇸','Spain'],['🇵🇱','Poland']].map(([flag,country])=><span key={country}>{flag} {country}</span>)}</div><a className="text-link" href="#project-glance">Explore all {fmt(summary.selectedRecords)} projects <ArrowRight size={15}/></a></div></section>
-<section className="overview-section qa-section"><SectionTitle number="5" title="The Model Does Not Hide Bad Data." note="Physical QA is a decision control, not a cosmetic data-cleaning step."/><div className="qa-layout"><div className="qa-summary"><div className="qa-mini success"><Check size={18}/><strong>{fmt(withinBand)}</strong><span>Within screening band</span></div><div className="qa-mini warning"><span className="qa-symbol">!</span><strong>{fmt(lowYield)}</strong><span>Low-yield review</span></div><div className="qa-mini danger"><X size={18}/><strong>{fmt(extremeBlock)}</strong><span>Extreme technical block</span></div></div><div className="arisudhana-card"><div className="arisudhana-main"><h3>{blocked.projectName}</h3><div className="blocked-metrics"><div><b>~{fmt(blocked.capacityMw,2)} MW</b><span>Capacity</span></div><div><b>~{fmt(blocked.observedGenerationGwh,1)} GWh</b><span>Source-reported generation</span></div><div><b>~{fmt(blocked.specificYieldKwhKwp)} kWh/kWp</b><span>Implied specific yield</span></div></div><div className="status-pills"><span>{blocked.physicalStatus}</span><span>{blocked.economicsStatus}</span></div><p>The source-reported observation is preserved exactly as disclosed. The physical QA firewall flags the value as an extreme outlier and blocks it from direct base economics pending engineering validation. No replacement benchmark is invented.</p></div><div className="yield-scale"><div className="yield-label">Implied Specific Yield (kWh/kWp)</div><div className="scale-line"><i/><i/><i/><i/></div><div className="scale-labels"><span>{fmt(band.minKwhKwp)}</span><span>{fmt(band.maxKwhKwp)}</span><span>{fmt(band.extremeUpperKwhKwp)}</span><span>{fmt(blocked.specificYieldKwhKwp)}</span></div></div></div></div></section>
-<section id="decision" className="overview-section decision-section"><SectionTitle number="6" title="A Decision Framework — Not a Fabricated Investment Decision"/><div className="decision-grid"><div className="decision-card green"><BarChart3 size={28}/><small>PPA MODE</small><h3>{summary.ppaMode}</h3><p>PPA pricing is not inferred. All results are presented as a range based on observable market conditions and counterparty profiles.</p></div><div className="decision-card amber"><ClipboardCheck size={28}/><small>CURRENT DECISION</small><h3>INDETERMINATE</h3><strong>{summary.decision}</strong><p>Missing commercial and transaction evidence prevents a defensible approve / reject investment conclusion.</p></div><div className="decision-card green"><Landmark size={28}/><small>CAPITAL ALLOCATION</small><h3>$0 ALLOCATED</h3><p>The output is a diligence and commercial-negotiation shortlist, not an approved investment portfolio.</p></div></div><div className="claim-strip"><span>TRANSACTION EVIDENCE: <b>{summary.transactionEvidence}</b></span><span>BANKABLE: <b>NO</b></span><span>LENDER APPROVED: <b>NO</b></span><span>IC APPROVED: <b>NO</b></span></div></section>
-<section id="model-evidence" className="overview-section skills-section"><SectionTitle number="7" title="What This Project Demonstrates" note="A finance-first portfolio project with analytical, credit and data-governance depth."/><div className="skills-grid">{skillCards.map(([title,bullets,Icon])=><article className="skill-card" key={title}><Icon size={24}/><h3>{title}</h3><ul>{bullets.map(bullet=><li key={bullet}>{bullet}</li>)}</ul></article>)}</div></section>
-<section className="recruiter-takeaway"><Image src="/assets/overview/footer-solar-texture.webp" width={1672} height={941} alt=""/><div className="takeaway-overlay"/><div className="takeaway-inner"><SectionTitle number="8" title="Final Recruiter Takeaway"/><h2>Turning incomplete public evidence into a transparent, credit-aware Project Finance decision framework — while being explicit about where the evidence stops.</h2><div className="takeaway-pills"><span>Model: V5.1.3</span><span>PPA: {summary.ppaMode}</span><span>Decision: {summary.decision}</span><span>Transaction Evidence: {summary.transactionEvidence}</span></div><div className="button-row"><a className="button button-primary" href="#decision">Explore Economics <ArrowRight size={15}/></a><a className="button button-secondary" href="#decision">View Debt &amp; Credit <ArrowRight size={15}/></a><a className="button button-secondary" href="#model-evidence">Review Model &amp; Evidence <ArrowRight size={15}/></a></div></div></section></main>}
+const DATA_BASE =
+  'https://susayold.github.io/vietgreen-ci-solar-project-finance/data';
+type Summary = {
+  version: string;
+  candidateProjects: number;
+  selectedRecords: number;
+  economicsReadyProjects: number;
+  technicalBlockedProjects: number;
+  observations: number;
+  countries: number;
+  economicsReadyCapacityMw: number;
+  readyObservedGenerationGwh: number;
+  modeledHourlyRows: number;
+  scenarios: number;
+  workbookSheets: number;
+  regressionTests: number;
+  semanticControls: number;
+  ppaMode: string;
+  decision: string;
+  transactionEvidence: string;
+  capitalAllocation: string;
+};
+type Physical = {
+  distribution: Record<string, number>;
+  screeningBand: {
+    minKwhKwp: number;
+    maxKwhKwp: number;
+    extremeUpperKwhKwp: number;
+  };
+  blockedProject: {
+    projectName: string;
+    capacityMw: number;
+    observedGenerationGwh: number;
+    specificYieldKwhKwp: number;
+    physicalStatus: string;
+    economicsStatus: string;
+  };
+};
+const emptySummary: Summary = {
+  version: 'V5.1.3',
+  candidateProjects: 0,
+  selectedRecords: 0,
+  economicsReadyProjects: 0,
+  technicalBlockedProjects: 0,
+  observations: 0,
+  countries: 0,
+  economicsReadyCapacityMw: 0,
+  readyObservedGenerationGwh: 0,
+  modeledHourlyRows: 0,
+  scenarios: 0,
+  workbookSheets: 0,
+  regressionTests: 0,
+  semanticControls: 0,
+  ppaMode: '—',
+  decision: '—',
+  transactionEvidence: '—',
+  capitalAllocation: '—',
+};
+const emptyPhysical: Physical = {
+  distribution: {},
+  screeningBand: { minKwhKwp: 0, maxKwhKwp: 0, extremeUpperKwhKwp: 0 },
+  blockedProject: {
+    projectName: 'Blocked technical data',
+    capacityMw: 0,
+    observedGenerationGwh: 0,
+    specificYieldKwhKwp: 0,
+    physicalStatus: '—',
+    economicsStatus: '—',
+  },
+};
+async function remoteJson<T>(path: string, fallback: T): Promise<T> {
+  try {
+    const response = await fetch(`${DATA_BASE}/${path}`, {
+      cache: 'force-cache',
+    });
+    if (!response.ok) return fallback;
+    return (await response.json()) as T;
+  } catch {
+    return fallback;
+  }
+}
+function fmt(value: number, digits = 0) {
+  return value.toLocaleString('en-US', {
+    maximumFractionDigits: digits,
+    minimumFractionDigits: digits,
+  });
+}
+function SectionTitle({
+  number,
+  title,
+  note,
+}: {
+  number: string;
+  title: string;
+  note?: string;
+}) {
+  return (
+    <div className="section-title-row">
+      <div className="section-title">
+        <span className="section-number">{number}</span>
+        <h2>{title}</h2>
+      </div>
+      {note ? <p className="section-note">{note}</p> : null}
+    </div>
+  );
+}
+function Logo() {
+  return (
+    <a className="brand" href="#top" aria-label="VietGreen Overview">
+      <span className="brand-mark">
+        <BarChart3 size={20} strokeWidth={1.8} />
+      </span>
+      <span>
+        <strong>VietGreen</strong>
+        <small>C&amp;I Solar Project Finance</small>
+      </span>
+    </a>
+  );
+}
+const navItems = [
+  'Overview',
+  'Projects',
+  'Energy',
+  'Economics',
+  'Debt',
+  'Risk',
+  'Diligence',
+  'Model',
+];
+const workflow: [string, string, typeof FileSearch][] = [
+  [
+    'Public Project Evidence',
+    'Collect & trace public disclosures.',
+    FileSearch,
+  ],
+  ['Data & Physical QA', 'Validate & quality-control data.', Database],
+  [
+    'Resolved Model Inputs',
+    'Lock assumptions with lineage.',
+    SlidersHorizontal,
+  ],
+  ['8,760 Operating Model', 'Simulate hourly operating performance.', Clock3],
+  ['Project Economics & CFADS', 'Build cash flow, DSCR & returns.', TrendingUp],
+  ['Debt & Credit', 'Size debt & assess credit.', Landmark],
+  ['PPA Frontier', 'Map viable PPA price range.', LineChart],
+  ['Downside Scenarios', 'Stress test key risk factors.', ShieldAlert],
+  ['Diligence Decision', 'Document an informed decision.', ClipboardCheck],
+];
+const skillCards: [string, string[], typeof BarChart3][] = [
+  [
+    'Financial Modeling',
+    [
+      'CFADS & cash flow modeling',
+      'NPV / IRR',
+      'DSCR / LLCR / PLCR',
+      'Scenario & sensitivity analysis',
+      'Cash-flow waterfalls',
+    ],
+    BarChart3,
+  ],
+  [
+    'Project Finance & Credit',
+    [
+      'Debt sizing & structuring',
+      'Covenant analysis',
+      'Credit metrics',
+      'Lender overlays',
+      'Bankability boundaries',
+    ],
+    Landmark,
+  ],
+  [
+    'Commercial Analysis',
+    [
+      'PPA frontier methodology',
+      'Counterparty profiling',
+      'Pricing & term analysis',
+      'Offtaker & demand dynamics',
+      'Negotiation leverage view',
+    ],
+    LineChart,
+  ],
+  [
+    'Data Analytics',
+    [
+      'Public-data research',
+      'Data reconciliation',
+      'Physical QA',
+      '8,760 hourly modeling',
+      'Dashboarding & reporting',
+    ],
+    Database,
+  ],
+  [
+    'Model Governance',
+    [
+      'Assumption management',
+      'Claim controls',
+      'Version control',
+      'Auditability & reproducibility',
+      'Diligence documentation',
+    ],
+    ShieldCheck,
+  ],
+];
+function KpiCard({
+  icon: Icon,
+  value,
+  unit,
+  label,
+}: {
+  icon: typeof Search;
+  value: string;
+  unit?: string;
+  label: string;
+}) {
+  return (
+    <div className="kpi-card">
+      <Icon size={22} />
+      <div className="kpi-value">
+        {value}
+        {unit ? <em>{unit}</em> : null}
+      </div>
+      <div className="kpi-label">{label}</div>
+    </div>
+  );
+}
+export default async function Home() {
+  const [summaryRaw, physical] = await Promise.all([
+    remoteJson<Summary>('summary.json', emptySummary),
+    remoteJson<Physical>('physical.json', emptyPhysical),
+  ]);
+  const summary = { ...emptySummary, ...summaryRaw };
+  const band = physical.screeningBand ?? emptyPhysical.screeningBand;
+  const blocked = physical.blockedProject ?? emptyPhysical.blockedProject;
+  const dist = physical.distribution ?? {};
+  const withinBand = dist.PASS_WITHIN_SCREENING_BAND ?? 0;
+  const lowYield = dist.LOW_YIELD_REVIEW ?? 0;
+  const extremeBlock = dist.EXTREME_OUTLIER_BLOCK_BASE ?? 0;
+  const mainKpis: [
+    [typeof Search, string, undefined, string],
+    [typeof FileText, string, undefined, string],
+    [typeof ShieldCheck, string, undefined, string],
+    [typeof Zap, string, string, string],
+    [typeof Sun, string, string, string],
+    [typeof ShieldCheck, string, undefined, string],
+  ] = [
+    [
+      Search,
+      fmt(summary.candidateProjects),
+      undefined,
+      'Candidate projects researched',
+    ],
+    [
+      FileText,
+      fmt(summary.selectedRecords),
+      undefined,
+      'Selected public-data project records',
+    ],
+    [
+      ShieldCheck,
+      fmt(summary.economicsReadyProjects),
+      undefined,
+      'Economics-ready Project Finance cases',
+    ],
+    [
+      Zap,
+      fmt(summary.economicsReadyCapacityMw, 3),
+      'MW',
+      'Economics-ready installed capacity',
+    ],
+    [
+      Sun,
+      fmt(summary.readyObservedGenerationGwh, 3),
+      'GWh',
+      'Source-observed economics-ready generation',
+    ],
+    [
+      ShieldCheck,
+      fmt(summary.scenarios),
+      undefined,
+      'Governed downside scenario rows',
+    ],
+  ];
+  const miniKpis: [
+    [typeof Database, string, string],
+    [typeof Globe2, string, string],
+    [typeof Clock3, string, string],
+    [typeof Table2, string, string],
+    [typeof BadgeCheck, string, string],
+    [typeof ShieldCheck, string, string],
+  ] = [
+    [Database, fmt(summary.observations), 'Preserved observations'],
+    [Globe2, fmt(summary.countries), 'Countries'],
+    [Clock3, fmt(summary.modeledHourlyRows), 'Modeled hourly rows'],
+    [Table2, fmt(summary.workbookSheets), 'Workbook sheets'],
+    [BadgeCheck, fmt(summary.regressionTests), 'Regression tests'],
+    [ShieldCheck, fmt(summary.semanticControls), 'Semantic controls'],
+  ];
+  return (
+    <main id="top" className="overview-page">
+      <header className="site-header">
+        <Logo />
+        <nav aria-label="Primary navigation">
+          {navItems.map((item) => (
+            <a
+              className={item === 'Overview' ? 'active' : ''}
+              href={item === 'Overview' ? '#top' : '#'}
+              key={item}
+            >
+              {item}
+            </a>
+          ))}
+        </nav>
+        <span className="release-badge">V5.1.3&nbsp; · &nbsp;Frozen Model</span>
+      </header>
+      <section className="hero" aria-labelledby="hero-title">
+        <Image
+          className="hero-image"
+          src="/assets/overview/hero-industrial-solar-campus.webp"
+          width={1672}
+          height={941}
+          priority
+          alt="Industrial rooftop solar campus at golden hour"
+        />
+        <div className="hero-overlay" />
+        <div className="hero-inner">
+          <div className="hero-copy">
+            <p className="eyebrow">
+              PROJECT FINANCE · C&amp;I SOLAR · PUBLIC-DATA RECONSTRUCTION
+            </p>
+            <h1 id="hero-title">
+              From Public Solar Disclosures to a Controlled Project Finance
+              Diligence Framework.
+            </h1>
+            <p className="hero-description">
+              VietGreen reconstructs real commercial &amp; industrial solar
+              projects from fragmented public evidence, then connects physical
+              performance, operating profiles, project economics, debt capacity
+              and downside risk inside one auditable analytical framework.
+            </p>
+            <div className="button-row">
+              <a className="button button-primary" href="#project-glance">
+                Explore the Project <ArrowRight size={15} />
+              </a>
+              <a className="button button-secondary" href="#decision">
+                View Finance Analysis
+              </a>
+              <a className="button button-secondary" href="#model-evidence">
+                Model &amp; Evidence
+              </a>
+            </div>
+          </div>
+          <aside className="hero-control-card">
+            <div className="hero-control-row">
+              <Database size={24} />
+              <strong>
+                PUBLIC-DATA
+                <br />
+                RECONSTRUCTION
+              </strong>
+            </div>
+            <div className="hero-control-row">
+              <TrendingUp size={24} />
+              <strong>
+                <b>{fmt(summary.economicsReadyProjects)}</b> ECONOMICS-READY
+                CASES
+              </strong>
+            </div>
+            <div className="hero-control-row">
+              <ShieldAlert size={24} />
+              <strong>
+                NOT A TRANSACTION
+                <br />
+                APPROVAL
+              </strong>
+            </div>
+          </aside>
+        </div>
+      </section>
+      <section className="overview-section problem-section">
+        <SectionTitle number="1" title="The Problem" />
+        <div className="problem-grid">
+          <div className="problem-intro">
+            Public information is enough to start an analysis — but rarely
+            enough to finish an investment decision.
+          </div>
+          <div className="evidence-compare">
+            <div className="evidence-column public">
+              <h3>Publicly Observable</h3>
+              {[
+                'Capacity',
+                'Generation',
+                'Developer',
+                'Offtaker',
+                'Project status',
+                'Source lineage',
+              ].map((item) => (
+                <p key={item}>
+                  <span>•</span>
+                  {item}
+                </p>
+              ))}
+            </div>
+            <div className="evidence-vs">VS.</div>
+            <div className="evidence-column missing">
+              <h3>Often Missing / Confidential</h3>
+              {[
+                'Exact PPA price',
+                'Customer telemetry',
+                'Project CAPEX',
+                'Lender terms',
+                'Site diligence',
+                'Engineering validation',
+              ].map((item) => (
+                <p key={item}>
+                  <span>•</span>
+                  {item}
+                </p>
+              ))}
+            </div>
+          </div>
+          <blockquote className="problem-quote">
+            <span>“</span>The analytical challenge is therefore not simply to
+            calculate IRR. It is to determine what can be supported by evidence,
+            what must be modeled as an assumption, and where the analyst must
+            stop.
+          </blockquote>
+        </div>
+      </section>
+      <section className="overview-section workflow-section">
+        <SectionTitle
+          number="2"
+          title="What I Built"
+          note="One analytical workflow from public evidence to a controlled finance decision."
+        />
+        <ol className="workflow-grid">
+          {workflow.map(([title, description, Icon], index) => (
+            <li className="workflow-card" key={title}>
+              <span className="step-number">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <Icon size={26} />
+              <h3>{title}</h3>
+              <p>{description}</p>
+              {index < workflow.length - 1 ? (
+                <ArrowRight className="workflow-arrow" size={15} />
+              ) : null}
+            </li>
+          ))}
+        </ol>
+      </section>
+      <section id="project-glance" className="overview-section glance-section">
+        <SectionTitle
+          number="3"
+          title="Project at a Glance"
+          note="A real-data research universe converted into a governed Project Finance screening model."
+        />
+        <div className="primary-kpis">
+          {mainKpis.map(([Icon, value, unit, label]) => (
+            <KpiCard
+              key={label}
+              icon={Icon}
+              value={value}
+              unit={unit}
+              label={label}
+            />
+          ))}
+        </div>
+        <div className="mini-strip">
+          {miniKpis.map(([Icon, value, label]) => (
+            <div className="mini-kpi" key={label}>
+              <Icon size={18} />
+              <strong>{value}</strong>
+              <span>{label}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+      <section className="overview-section real-projects-section">
+        <div className="real-projects-image">
+          <Image
+            src="/assets/overview/real-projects-context.webp"
+            width={1672}
+            height={941}
+            alt="Commercial building with rooftop solar, used as contextual C&I imagery"
+          />
+        </div>
+        <div className="real-projects-copy">
+          <SectionTitle number="4" title="Real Projects. Real Evidence Gaps." />
+          <p>
+            A cross-country C&amp;I solar research universe built from actual
+            public disclosures.
+          </p>
+          <div className="country-chips">
+            {[
+              ['🇫🇷', 'France'],
+              ['🇮🇳', 'India'],
+              ['🇮🇹', 'Italy'],
+              ['🇸🇰', 'Slovakia'],
+              ['🇻🇳', 'Vietnam'],
+              ['🇪🇸', 'Spain'],
+              ['🇵🇱', 'Poland'],
+            ].map(([flag, country]) => (
+              <span key={country}>
+                {flag} {country}
+              </span>
+            ))}
+          </div>
+          <a className="text-link" href="#project-glance">
+            Explore all {fmt(summary.selectedRecords)} projects{' '}
+            <ArrowRight size={15} />
+          </a>
+        </div>
+      </section>
+      <section className="overview-section qa-section">
+        <SectionTitle
+          number="5"
+          title="The Model Does Not Hide Bad Data."
+          note="Physical QA is a decision control, not a cosmetic data-cleaning step."
+        />
+        <div className="qa-layout">
+          <div className="qa-summary">
+            <div className="qa-mini success">
+              <Check size={18} />
+              <strong>{fmt(withinBand)}</strong>
+              <span>Within screening band</span>
+            </div>
+            <div className="qa-mini warning">
+              <span className="qa-symbol">!</span>
+              <strong>{fmt(lowYield)}</strong>
+              <span>Low-yield review</span>
+            </div>
+            <div className="qa-mini danger">
+              <X size={18} />
+              <strong>{fmt(extremeBlock)}</strong>
+              <span>Extreme technical block</span>
+            </div>
+          </div>
+          <div className="arisudhana-card">
+            <div className="arisudhana-main">
+              <h3>{blocked.projectName}</h3>
+              <div className="blocked-metrics">
+                <div>
+                  <b>~{fmt(blocked.capacityMw, 2)} MW</b>
+                  <span>Capacity</span>
+                </div>
+                <div>
+                  <b>~{fmt(blocked.observedGenerationGwh, 1)} GWh</b>
+                  <span>Source-reported generation</span>
+                </div>
+                <div>
+                  <b>~{fmt(blocked.specificYieldKwhKwp)} kWh/kWp</b>
+                  <span>Implied specific yield</span>
+                </div>
+              </div>
+              <div className="status-pills">
+                <span>{blocked.physicalStatus}</span>
+                <span>{blocked.economicsStatus}</span>
+              </div>
+              <p>
+                The source-reported observation is preserved exactly as
+                disclosed. The physical QA firewall flags the value as an
+                extreme outlier and blocks it from direct base economics pending
+                engineering validation. No replacement benchmark is invented.
+              </p>
+            </div>
+            <div className="yield-scale">
+              <div className="yield-label">
+                Implied Specific Yield (kWh/kWp)
+              </div>
+              <div className="scale-line">
+                <i />
+                <i />
+                <i />
+                <i />
+              </div>
+              <div className="scale-labels">
+                <span>{fmt(band.minKwhKwp)}</span>
+                <span>{fmt(band.maxKwhKwp)}</span>
+                <span>{fmt(band.extremeUpperKwhKwp)}</span>
+                <span>{fmt(blocked.specificYieldKwhKwp)}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="decision" className="overview-section decision-section">
+        <SectionTitle
+          number="6"
+          title="A Decision Framework — Not a Fabricated Investment Decision"
+        />
+        <div className="decision-grid">
+          <div className="decision-card green">
+            <BarChart3 size={28} />
+            <small>PPA MODE</small>
+            <h3>{summary.ppaMode}</h3>
+            <p>
+              PPA pricing is not inferred. All results are presented as a range
+              based on observable market conditions and counterparty profiles.
+            </p>
+          </div>
+          <div className="decision-card amber">
+            <ClipboardCheck size={28} />
+            <small>CURRENT DECISION</small>
+            <h3>INDETERMINATE</h3>
+            <strong>{summary.decision}</strong>
+            <p>
+              Missing commercial and transaction evidence prevents a defensible
+              approve / reject investment conclusion.
+            </p>
+          </div>
+          <div className="decision-card green">
+            <Landmark size={28} />
+            <small>CAPITAL ALLOCATION</small>
+            <h3>$0 ALLOCATED</h3>
+            <p>
+              The output is a diligence and commercial-negotiation shortlist,
+              not an approved investment portfolio.
+            </p>
+          </div>
+        </div>
+        <div className="claim-strip">
+          <span>
+            TRANSACTION EVIDENCE: <b>{summary.transactionEvidence}</b>
+          </span>
+          <span>
+            BANKABLE: <b>NO</b>
+          </span>
+          <span>
+            LENDER APPROVED: <b>NO</b>
+          </span>
+          <span>
+            IC APPROVED: <b>NO</b>
+          </span>
+        </div>
+      </section>
+      <section id="model-evidence" className="overview-section skills-section">
+        <SectionTitle
+          number="7"
+          title="What This Project Demonstrates"
+          note="A finance-first portfolio project with analytical, credit and data-governance depth."
+        />
+        <div className="skills-grid">
+          {skillCards.map(([title, bullets, Icon]) => (
+            <article className="skill-card" key={title}>
+              <Icon size={24} />
+              <h3>{title}</h3>
+              <ul>
+                {bullets.map((bullet) => (
+                  <li key={bullet}>{bullet}</li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </section>
+      <section className="recruiter-takeaway">
+        <Image
+          src="/assets/overview/footer-solar-texture.webp"
+          width={1672}
+          height={941}
+          alt=""
+        />
+        <div className="takeaway-overlay" />
+        <div className="takeaway-inner">
+          <SectionTitle number="8" title="Final Recruiter Takeaway" />
+          <h2>
+            Turning incomplete public evidence into a transparent, credit-aware
+            Project Finance decision framework — while being explicit about
+            where the evidence stops.
+          </h2>
+          <div className="takeaway-pills">
+            <span>Model: V5.1.3</span>
+            <span>PPA: {summary.ppaMode}</span>
+            <span>Decision: {summary.decision}</span>
+            <span>Transaction Evidence: {summary.transactionEvidence}</span>
+          </div>
+          <div className="button-row">
+            <a className="button button-primary" href="#decision">
+              Explore Economics <ArrowRight size={15} />
+            </a>
+            <a className="button button-secondary" href="#decision">
+              View Debt &amp; Credit <ArrowRight size={15} />
+            </a>
+            <a className="button button-secondary" href="#model-evidence">
+              Review Model &amp; Evidence <ArrowRight size={15} />
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}
