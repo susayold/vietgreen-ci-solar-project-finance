@@ -63,7 +63,7 @@ jobs:
           # now has its content rendered into the build HTML, so remove the
           # runtime bundles from all route documents to prevent a post-load
           # blank screen while keeping the static pages readable.
-          for route_html in Path("_site").glob("*.html"):
+          for route_html in Path("_site").rglob("*.html"):
               text = route_html.read_text(encoding="utf-8")
               text = re.sub(r"<script\b[^>]*>.*?</script>", "", text, flags=re.S)
               route_html.write_text(text, encoding="utf-8")
