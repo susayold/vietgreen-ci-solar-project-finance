@@ -58,14 +58,15 @@ jobs:
                   text = pattern.sub(rf"\1{prefix}/", text)
                   path.write_text(text, encoding="utf-8")
 
-          # Overview is a fully rendered static landing page. Keep it stable on
-          # GitHub Pages, where there is no Vinext server runtime for hydration.
-          # Child pages retain their client bundles and project interactions.
-          root = Path("_site/index.html")
-          if root.exists():
-              text = root.read_text(encoding="utf-8")
+          # GitHub Pages is a static host and does not provide the Vinext
+          # server runtime needed to hydrate the client shells. Every route
+          # now has its content rendered into the build HTML, so remove the
+          # runtime bundles from all route documents to prevent a post-load
+          # blank screen while keeping the static pages readable.
+          for route_html in Path("_site").glob("*.html"):
+              text = route_html.read_text(encoding="utf-8")
               text = re.sub(r"<script\b[^>]*>.*?</script>", "", text, flags=re.S)
-              root.write_text(text, encoding="utf-8")
+              route_html.write_text(text, encoding="utf-8")
           PY
 
       - name: Configure Pages

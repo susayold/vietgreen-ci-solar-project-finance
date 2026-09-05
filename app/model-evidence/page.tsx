@@ -40,8 +40,9 @@ import {
   Zap,
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
-import { useEffect, useState } from 'react';
-import { loadWebsiteData } from '@/lib/data';
+import { useState } from 'react';
+import projectsSource from '../../public/data/projects.json';
+import reconciliationSource from '../../public/data/reconciliation.json';
 
 const MODEL_SHA = 'ff69e15d211ff1abc88200574242ed2f1db49074';
 const MODEL_TAG = 'v5.1.3-recruiter-final';
@@ -453,71 +454,20 @@ function LinkButton({
 }
 
 export default function ModelEvidencePage() {
-  const [projects, setProjects] = useState<RemoteProject[] | null>(null);
-  const [reconciliation, setReconciliation] = useState<Reconciliation[] | null>(null);
-  const [error, setError] = useState(false);
+  // Keep the evidence page fully rendered during the build. GitHub Pages has
+  // no Vinext server runtime to hydrate a loading shell after deployment.
+  const projects = projectsSource.projects as RemoteProject[];
+  const reconciliation = reconciliationSource.rows as Reconciliation[];
   const [workbookGroup, setWorkbookGroup] =
     useState<keyof typeof workbookGroups>('Governance');
   const [auditFilter, setAuditFilter] = useState('All');
   const [showAllSources, setShowAllSources] = useState(false);
 
-  useEffect(() => {
-    let alive = true;
-    Promise.all([
-      loadWebsiteData<{ projects: RemoteProject[] }>('projects'),
-      loadWebsiteData<{ rows: Reconciliation[] }>('reconciliation'),
-    ])
-      .then(([projectPayload, reconciliationPayload]) => {
-        if (!projectPayload || !reconciliationPayload) throw new Error('model evidence unavailable');
-        if (alive) {
-          setProjects(projectPayload.projects);
-          setReconciliation(reconciliationPayload.rows);
-        }
-      })
-      .catch(() => {
-        if (alive) setError(true);
-      });
-    return () => {
-      alive = false;
-    };
-  }, []);
-
-  const reconciliationPass = reconciliation?.every((row) => row.ok) ?? false;
+  const reconciliationPass = reconciliation.every((row) => row.ok);
   const filteredAudit = auditRows.filter(
     (row) => auditFilter === 'All' || row[1] === auditFilter,
   );
   const displayedSources = showAllSources ? sources : sources.slice(0, 5);
-
-  if (error) {
-    return (
-      <main className="model-page">
-        <Header />
-        <div className="model-error">
-          <CircleAlert size={38} />
-          <h1>MODEL EVIDENCE DATA UNAVAILABLE</h1>
-          <p>No substitute release identity will be generated.</p>
-          <button type="button" onClick={() => window.location.reload()}>
-            <RefreshCcw size={14} />
-            Retry
-          </button>
-        </div>
-      </main>
-    );
-  }
-
-  if (!projects || !reconciliation) {
-    return (
-      <main className="model-page">
-        <Header />
-        <div className="model-loading">
-          <span />
-          <span />
-          <span />
-          <p>Loading frozen release evidence…</p>
-        </div>
-      </main>
-    );
-  }
 
   return (
     <main className="model-page">
@@ -1412,5 +1362,4 @@ export default function ModelEvidencePage() {
     </main>
   );
 }
-
 
