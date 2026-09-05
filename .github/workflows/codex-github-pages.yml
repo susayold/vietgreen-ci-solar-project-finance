@@ -51,7 +51,7 @@ jobs:
 
           prefix = "/vietgreen-ci-solar-project-finance"
           extensions = {".html", ".js", ".css", ".json", ".rsc"}
-          pattern = re.compile(r'(["\'`])/(?!/)')
+          pattern = re.compile(r'(["\'`])/(?![/ >])')
           for path in Path("_site").rglob("*"):
               if path.is_file() and path.suffix in extensions:
                   text = path.read_text(encoding="utf-8")
