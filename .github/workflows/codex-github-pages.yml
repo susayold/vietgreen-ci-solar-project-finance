@@ -57,6 +57,15 @@ jobs:
                   text = path.read_text(encoding="utf-8")
                   text = pattern.sub(rf"\1{prefix}/", text)
                   path.write_text(text, encoding="utf-8")
+
+          # Overview is a fully rendered static landing page. Keep it stable on
+          # GitHub Pages, where there is no Vinext server runtime for hydration.
+          # Child pages retain their client bundles and project interactions.
+          root = Path("_site/index.html")
+          if root.exists():
+              text = root.read_text(encoding="utf-8")
+              text = re.sub(r"<script\b[^>]*>.*?</script>", "", text, flags=re.S)
+              root.write_text(text, encoding="utf-8")
           PY
 
       - name: Configure Pages
