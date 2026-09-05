@@ -1,0 +1,393 @@
+{
+  "version": "5.1.3",
+  "sourceSha": "ff69e15d211ff1abc88200574242ed2f1db49074",
+  "budgetUsd": 0,
+  "approvedAllocationsUsd": 0,
+  "rows": [
+    {
+      "projectId": "EU-GY-ALTAREA-BOLLENE-ROOF",
+      "projectName": "Altarea Bollene rooftop",
+      "country": "France",
+      "capacityMw": 9.6,
+      "physicalStatus": "LOW_YIELD_REVIEW",
+      "economicsStatus": "READY_FOR_ECONOMICS",
+      "commercialStatus": "INDETERMINATE",
+      "creditStatus": "MODEL_REVIEW",
+      "riskStatus": "TESTED",
+      "evidenceStatus": "OPEN",
+      "nextActions": [
+        "TRANSACTION_EVIDENCE"
+      ],
+      "diligencePriority": "LOW",
+      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
+      "capitalAllocatedUsd": 0
+    },
+    {
+      "projectId": "EU-GY-ALTAREA-PUCEUL",
+      "projectName": "Altarea Puceul rooftop",
+      "country": "France",
+      "capacityMw": 3,
+      "physicalStatus": "LOW_YIELD_REVIEW",
+      "economicsStatus": "READY_FOR_ECONOMICS",
+      "commercialStatus": "INDETERMINATE",
+      "creditStatus": "MODEL_REVIEW",
+      "riskStatus": "TESTED",
+      "evidenceStatus": "OPEN",
+      "nextActions": [
+        "TRANSACTION_EVIDENCE"
+      ],
+      "diligencePriority": "LOW",
+      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
+      "capitalAllocatedUsd": 0
+    },
+    {
+      "projectId": "EU-GY-FRUEHAUF-AUXERRE",
+      "projectName": "Fruehauf Auxerre carports",
+      "country": "France",
+      "capacityMw": 11,
+      "physicalStatus": "LOW_YIELD_REVIEW",
+      "economicsStatus": "READY_FOR_ECONOMICS",
+      "commercialStatus": "INDETERMINATE",
+      "creditStatus": "MODEL_REVIEW",
+      "riskStatus": "TESTED",
+      "evidenceStatus": "OPEN",
+      "nextActions": [
+        "TRANSACTION_EVIDENCE"
+      ],
+      "diligencePriority": "LOW",
+      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
+      "capitalAllocatedUsd": 0
+    },
+    {
+      "projectId": "EU-GY-PANATTONI-MOISSY",
+      "projectName": "Panattoni Moissy Cramayel",
+      "country": "France",
+      "capacityMw": 1.3,
+      "physicalStatus": "LOW_YIELD_REVIEW",
+      "economicsStatus": "READY_FOR_ECONOMICS",
+      "commercialStatus": "INDETERMINATE",
+      "creditStatus": "MODEL_REVIEW",
+      "riskStatus": "TESTED",
+      "evidenceStatus": "OPEN",
+      "nextActions": [
+        "TRANSACTION_EVIDENCE"
+      ],
+      "diligencePriority": "LOW",
+      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
+      "capitalAllocatedUsd": 0
+    },
+    {
+      "projectId": "EU-GY-SAFRAN-EVRY",
+      "projectName": "Safran Evry Corbeil",
+      "country": "France",
+      "capacityMw": 8.6,
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "economicsStatus": "READY_FOR_ECONOMICS",
+      "commercialStatus": "INDETERMINATE",
+      "creditStatus": "MODEL_REVIEW",
+      "riskStatus": "TESTED",
+      "evidenceStatus": "OPEN",
+      "nextActions": [
+        "TRANSACTION_EVIDENCE"
+      ],
+      "diligencePriority": "LOW",
+      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
+      "capitalAllocatedUsd": 0
+    },
+    {
+      "projectId": "EU-GY-STELLANTIS-CAEN",
+      "projectName": "Stellantis Caen",
+      "country": "France",
+      "capacityMw": 4,
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "economicsStatus": "READY_FOR_ECONOMICS",
+      "commercialStatus": "INDETERMINATE",
+      "creditStatus": "MODEL_REVIEW",
+      "riskStatus": "TESTED",
+      "evidenceStatus": "OPEN",
+      "nextActions": [
+        "TRANSACTION_EVIDENCE"
+      ],
+      "diligencePriority": "LOW",
+      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
+      "capitalAllocatedUsd": 0
+    },
+    {
+      "projectId": "EU-GY-STELLANTIS-CHARLEVILLE",
+      "projectName": "Stellantis Charleville",
+      "country": "France",
+      "capacityMw": 8,
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "economicsStatus": "READY_FOR_ECONOMICS",
+      "commercialStatus": "INDETERMINATE",
+      "creditStatus": "MODEL_REVIEW",
+      "riskStatus": "TESTED",
+      "evidenceStatus": "OPEN",
+      "nextActions": [
+        "TRANSACTION_EVIDENCE"
+      ],
+      "diligencePriority": "LOW",
+      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
+      "capitalAllocatedUsd": 0
+    },
+    {
+      "projectId": "EU-GY-STELLANTIS-VALENCIENNES",
+      "projectName": "Stellantis Valenciennes",
+      "country": "France",
+      "capacityMw": 6,
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "economicsStatus": "READY_FOR_ECONOMICS",
+      "commercialStatus": "INDETERMINATE",
+      "creditStatus": "MODEL_REVIEW",
+      "riskStatus": "TESTED",
+      "evidenceStatus": "OPEN",
+      "nextActions": [
+        "TRANSACTION_EVIDENCE"
+      ],
+      "diligencePriority": "LOW",
+      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
+      "capitalAllocatedUsd": 0
+    },
+    {
+      "projectId": "EU-GY-GIVA-CELLA",
+      "projectName": "GIVA Cella Dati",
+      "country": "Italy",
+      "capacityMw": 3,
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "economicsStatus": "READY_FOR_ECONOMICS",
+      "commercialStatus": "INDETERMINATE",
+      "creditStatus": "MODEL_REVIEW",
+      "riskStatus": "TESTED",
+      "evidenceStatus": "OPEN",
+      "nextActions": [
+        "TRANSACTION_EVIDENCE"
+      ],
+      "diligencePriority": "LOW",
+      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
+      "capitalAllocatedUsd": 0
+    },
+    {
+      "projectId": "EU-GY-GIVA-VISANO",
+      "projectName": "GIVA Visano",
+      "country": "Italy",
+      "capacityMw": 8,
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "economicsStatus": "READY_FOR_ECONOMICS",
+      "commercialStatus": "INDETERMINATE",
+      "creditStatus": "MODEL_REVIEW",
+      "riskStatus": "TESTED",
+      "evidenceStatus": "OPEN",
+      "nextActions": [
+        "TRANSACTION_EVIDENCE"
+      ],
+      "diligencePriority": "LOW",
+      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
+      "capitalAllocatedUsd": 0
+    },
+    {
+      "projectId": "EU-GY-SASOL-ITALY",
+      "projectName": "Sasol Terranova",
+      "country": "Italy",
+      "capacityMw": 5.1,
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "economicsStatus": "READY_FOR_ECONOMICS",
+      "commercialStatus": "INDETERMINATE",
+      "creditStatus": "MODEL_REVIEW",
+      "riskStatus": "TESTED",
+      "evidenceStatus": "OPEN",
+      "nextActions": [
+        "TRANSACTION_EVIDENCE"
+      ],
+      "diligencePriority": "LOW",
+      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
+      "capitalAllocatedUsd": 0
+    },
+    {
+      "projectId": "EU-GY-STELLANTIS-SLOVAKIA",
+      "projectName": "Stellantis Slovakia",
+      "country": "Slovakia",
+      "capacityMw": 13,
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "economicsStatus": "READY_FOR_ECONOMICS",
+      "commercialStatus": "INDETERMINATE",
+      "creditStatus": "MODEL_REVIEW",
+      "riskStatus": "TESTED",
+      "evidenceStatus": "OPEN",
+      "nextActions": [
+        "TRANSACTION_EVIDENCE"
+      ],
+      "diligencePriority": "LOW",
+      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
+      "capitalAllocatedUsd": 0
+    },
+    {
+      "projectId": "IN-AZURE-GANDHINAGAR",
+      "projectName": "Azure Sun Gandhinagar rooftop",
+      "country": "India",
+      "capacityMw": 2.5,
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "economicsStatus": "READY_FOR_ECONOMICS",
+      "commercialStatus": "INDETERMINATE",
+      "creditStatus": "MODEL_REVIEW",
+      "riskStatus": "TESTED",
+      "evidenceStatus": "OPEN",
+      "nextActions": [
+        "TRANSACTION_EVIDENCE"
+      ],
+      "diligencePriority": "MEDIUM",
+      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
+      "capitalAllocatedUsd": 0
+    },
+    {
+      "projectId": "IN-CLEANMAX-TN-30MW",
+      "projectName": "Clean Max Tamil Nadu",
+      "country": "India",
+      "capacityMw": 30,
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "economicsStatus": "READY_FOR_ECONOMICS",
+      "commercialStatus": "INDETERMINATE",
+      "creditStatus": "MODEL_REVIEW",
+      "riskStatus": "TESTED",
+      "evidenceStatus": "OPEN",
+      "nextActions": [
+        "TRANSACTION_EVIDENCE"
+      ],
+      "diligencePriority": "MEDIUM",
+      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
+      "capitalAllocatedUsd": 0
+    },
+    {
+      "projectId": "IN-FPEL-ARISUDHANA",
+      "projectName": "FPEL Arisudhana rooftop",
+      "country": "India",
+      "capacityMw": 2.09,
+      "physicalStatus": "EXTREME_OUTLIER_BLOCK_BASE",
+      "economicsStatus": "TECHNICAL_DATA_BLOCKED",
+      "commercialStatus": "NOT ASSESSED",
+      "creditStatus": "NOT ASSESSED",
+      "riskStatus": "TECHNICAL_BLOCK",
+      "evidenceStatus": "OPEN",
+      "nextActions": [
+        "ENGINEERING_VALIDATION"
+      ],
+      "diligencePriority": "TECHNICAL",
+      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
+      "capitalAllocatedUsd": 0
+    },
+    {
+      "projectId": "IN-CLEANTECH-EXIDE-HALDIA",
+      "projectName": "Exide Haldia rooftop",
+      "country": "India",
+      "capacityMw": 2.6,
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "economicsStatus": "READY_FOR_ECONOMICS",
+      "commercialStatus": "INDETERMINATE",
+      "creditStatus": "MODEL_REVIEW",
+      "riskStatus": "TESTED",
+      "evidenceStatus": "OPEN",
+      "nextActions": [
+        "TRANSACTION_EVIDENCE"
+      ],
+      "diligencePriority": "MEDIUM",
+      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
+      "capitalAllocatedUsd": 0
+    },
+    {
+      "projectId": "VN-GY-GOMALL",
+      "projectName": "GO Mall Vietnam portfolio",
+      "country": "Vietnam",
+      "capacityMw": 9,
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "economicsStatus": "READY_FOR_ECONOMICS",
+      "commercialStatus": "INDETERMINATE",
+      "creditStatus": "MODEL_OK",
+      "riskStatus": "TESTED",
+      "evidenceStatus": "OPEN",
+      "nextActions": [
+        "SPONSOR_FLOOR_EVIDENCE",
+        "PPA_TERM_SHEET"
+      ],
+      "diligencePriority": "HIGH",
+      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
+      "capitalAllocatedUsd": 0
+    },
+    {
+      "projectId": "VN-GY-LOTTEMART",
+      "projectName": "LOTTE Mart Vietnam portfolio",
+      "country": "Vietnam",
+      "capacityMw": 2.66,
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "economicsStatus": "READY_FOR_ECONOMICS",
+      "commercialStatus": "INDETERMINATE",
+      "creditStatus": "MODEL_REVIEW",
+      "riskStatus": "TESTED",
+      "evidenceStatus": "OPEN",
+      "nextActions": [
+        "TRANSACTION_EVIDENCE"
+      ],
+      "diligencePriority": "MEDIUM",
+      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
+      "capitalAllocatedUsd": 0
+    },
+    {
+      "projectId": "EU-GY-PTP-CADIZ",
+      "projectName": "PTP Iberica Cadiz",
+      "country": "Spain",
+      "capacityMw": 1.84,
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "economicsStatus": "READY_FOR_ECONOMICS",
+      "commercialStatus": "INDETERMINATE",
+      "creditStatus": "MODEL_REVIEW",
+      "riskStatus": "TESTED",
+      "evidenceStatus": "OPEN",
+      "nextActions": [
+        "TRANSACTION_EVIDENCE"
+      ],
+      "diligencePriority": "LOW",
+      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
+      "capitalAllocatedUsd": 0
+    },
+    {
+      "projectId": "EU-GY-CMC-ANDRYCHOW",
+      "projectName": "CMC Andrychow rooftop",
+      "country": "Poland",
+      "capacityMw": 0.653,
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "economicsStatus": "READY_FOR_ECONOMICS",
+      "commercialStatus": "INDETERMINATE",
+      "creditStatus": "MODEL_REVIEW",
+      "riskStatus": "TESTED",
+      "evidenceStatus": "OPEN",
+      "nextActions": [
+        "TRANSACTION_EVIDENCE"
+      ],
+      "diligencePriority": "LOW",
+      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
+      "capitalAllocatedUsd": 0
+    }
+  ],
+  "technicalValidationTrack": [
+    {
+      "projectId": "IN-FPEL-ARISUDHANA",
+      "projectName": "FPEL Arisudhana rooftop",
+      "country": "India",
+      "capacityMw": 2.09,
+      "physicalStatus": "EXTREME_OUTLIER_BLOCK_BASE",
+      "economicsStatus": "TECHNICAL_DATA_BLOCKED",
+      "commercialStatus": "NOT ASSESSED",
+      "creditStatus": "NOT ASSESSED",
+      "riskStatus": "TECHNICAL_BLOCK",
+      "evidenceStatus": "OPEN",
+      "nextActions": [
+        "ENGINEERING_VALIDATION"
+      ],
+      "diligencePriority": "TECHNICAL",
+      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
+      "capitalAllocatedUsd": 0
+    }
+  ]
+}
+
+
+
+

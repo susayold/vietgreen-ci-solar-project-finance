@@ -1,7 +1,5 @@
 'use client';
 
-export const dynamic = 'force-static';
-
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -22,9 +20,7 @@ import {
   Zap,
 } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
-
-const SHA = 'ff69e15d211ff1abc88200574242ed2f1db49074';
-const RAW = `https://raw.githubusercontent.com/susayold/vietgreen-ci-solar-project-finance/${SHA}`;
+import { loadWebsiteData } from '@/lib/data';
 const GO_MALL = 'VN-GY-GOMALL';
 
 type Project = {
@@ -32,6 +28,7 @@ type Project = {
   project_name: string;
   country: string;
   technicalDataBlocked?: boolean;
+  capacityMw?: number;
 };
 
 type Scenario = {
@@ -53,6 +50,19 @@ type Metric = {
   debt: string;
   additionalDebt: string;
   capex: string;
+};
+type RiskRow = {
+  projectId: string;
+  scenarioId: string;
+  debtMode: string;
+  minimumDscr: number | null;
+  llcr: number | null;
+  plcr: number | null;
+  openingDebtUsd: number | null;
+  additionalDebtUsd: number;
+  incrementalCapexUsd: number;
+  principalPreserved: boolean;
+  interestRepriced: boolean;
 };
 
 const SCENARIOS: Scenario[] = [
@@ -157,85 +167,8 @@ const SCENARIOS: Scenario[] = [
   },
 ];
 
-// The frozen website payload exposes scenario semantics but not the scenario
-// metric rows. These values are kept in an adapter-shaped object so the JSX
-// remains source-agnostic and can be replaced by the generated payload when it
-// is published, without cloning the featured project into the portfolio.
-const GO_MALL_METRICS: Record<string, Metric> = {
-  BASE: {
-    dscr: 2.38,
-    llcr: 2.232,
-    plcr: 1.336,
-    debt: '$0.529m',
-    additionalDebt: '$0',
-    capex: 'Base CAPEX',
-  },
-  P90_ENERGY: {
-    dscr: 2.134,
-    llcr: 1.998,
-    plcr: 1.206,
-    debt: 'Preserved',
-    additionalDebt: '$0',
-    capex: 'Base CAPEX',
-  },
-  CAPEX_OVERRUN: {
-    dscr: 2.369,
-    llcr: 2.22,
-    plcr: 1.311,
-    debt: 'Preserved',
-    additionalDebt: '$0',
-    capex: '+$1.688m sponsor equity',
-  },
-  INTEREST_RATE_SHOCK: {
-    dscr: 2.337,
-    llcr: 2.19,
-    plcr: 1.306,
-    debt: 'Preserved',
-    additionalDebt: '$0',
-    capex: 'Base CAPEX',
-  },
-  COD_DELAY: {
-    dscr: 0,
-    llcr: 0,
-    plcr: 0,
-    debt: 'Preserved',
-    additionalDebt: '$0',
-    capex: 'Base CAPEX',
-  },
-  OPEX_INFLATION: {
-    dscr: 2.345,
-    llcr: 2.201,
-    plcr: 1.312,
-    debt: 'Preserved',
-    additionalDebt: '$0',
-    capex: 'Base CAPEX',
-  },
-  OFFTAKER_NONPAYMENT: {
-    dscr: 1.766,
-    llcr: 1.651,
-    plcr: 0.984,
-    debt: 'Preserved',
-    additionalDebt: '$0',
-    capex: 'Base CAPEX',
-  },
-  OFFTAKER_TERMINATION: {
-    dscr: 2.38,
-    llcr: 2.232,
-    plcr: 1.336,
-    debt: 'Preserved',
-    additionalDebt: '$0',
-    capex: 'Base CAPEX',
-  },
-  COMBINED_DOWNSIDE: {
-    dscr: 0,
-    llcr: 0,
-    plcr: 0,
-    debt: 'Preserved',
-    additionalDebt: '$0',
-    capex: '+$1.688m sponsor equity',
-  },
-};
-
+// Scenario metrics are loaded from the CI-generated risk payload. The page
+// only filters, formats and visualizes those rows.
 function formatCoverage(value: number | null | undefined) {
   if (value === null || value === undefined) return 'N/A';
   return `${value.toFixed(3)}x`;
@@ -285,7 +218,7 @@ function DscrBars({ metrics }: { metrics: Record<string, Metric> | null }) {
   return (
     <div
       className="dscr-chart"
-      aria-label="GO Mall minimum DSCR by governed scenario"
+      aria-label="Selected project minimum DSCR by governed scenario"
     >
       <div className="dscr-reference target">
         <span>1.35x standardized target</span>
@@ -329,6 +262,7 @@ function DscrBars({ metrics }: { metrics: Record<string, Metric> | null }) {
 
 export default function RiskPage() {
   const [projects, setProjects] = useState<Project[]>([]);
+  const [riskRows, setRiskRows] = useState<RiskRow[]>([]);
   const [selectedId, setSelectedId] = useState(() =>
     typeof window === 'undefined'
       ? GO_MALL
@@ -338,18 +272,15 @@ export default function RiskPage() {
 
   useEffect(() => {
     void Promise.all([
-      fetch(`${RAW}/website/data/projects.json`).then((response) =>
-        response.json(),
-      ),
-      fetch(`${RAW}/website/data/scenarios.json`).then((response) =>
-        response.json(),
-      ),
+      loadWebsiteData<{ projects?: Project[] }>('projects'),
+      loadWebsiteData<{ rows?: RiskRow[] }>('risk'),
     ])
-      .then(([projectRaw]) => {
-        const available = (
-          (projectRaw as { projects?: Project[] }).projects ?? []
-        ).filter((project) => !project.technicalDataBlocked);
+      .then(([projectRaw, riskRaw]) => {
+        const available = (projectRaw.projects ?? []).filter(
+          (project) => !project.technicalDataBlocked,
+        );
         setProjects(available);
+        setRiskRows(riskRaw.rows ?? []);
         if (!available.some((project) => project.project_id === selectedId))
           setSelectedId(GO_MALL);
       })
@@ -363,8 +294,41 @@ export default function RiskPage() {
       projects.find((project) => project.project_id === GO_MALL),
     [projects, selectedId],
   );
-  const isGoMall = selected?.project_id === GO_MALL;
-  const metrics = isGoMall ? GO_MALL_METRICS : null;
+  const metrics = useMemo<Record<string, Metric> | null>(() => {
+    if (!selected) return null;
+    return Object.fromEntries(
+      riskRows
+        .filter((row) => row.projectId === selected.project_id)
+        .map((row) => [
+          row.scenarioId,
+          {
+            dscr: row.minimumDscr,
+            llcr: row.llcr,
+            plcr: row.plcr,
+            debt:
+              row.openingDebtUsd == null
+                ? 'NOT AVAILABLE'
+                : `$${(row.openingDebtUsd / 1e6).toFixed(3)}m`,
+            additionalDebt: `$${(row.additionalDebtUsd / 1e6).toFixed(3)}m`,
+            capex:
+              row.incrementalCapexUsd > 0
+                ? `+$${(row.incrementalCapexUsd / 1e6).toFixed(3)}m sponsor equity`
+                : 'Base CAPEX',
+          },
+        ]),
+    );
+  }, [riskRows, selected]);
+  const baseDscr = metrics?.BASE?.dscr;
+  const baseDebt = riskRows.find(
+    (row) => row.projectId === selected?.project_id && row.scenarioId === 'BASE',
+  )?.openingDebtUsd;
+  const worstDscr = metrics
+    ? Math.min(
+        ...Object.values(metrics)
+          .map((metric) => metric.dscr)
+          .filter((value): value is number => value != null),
+      )
+    : null;
   const zeroCount = metrics
     ? Object.values(metrics).filter((metric) => metric.dscr === 0).length
     : 0;
@@ -399,7 +363,7 @@ export default function RiskPage() {
             Risk &amp; Scenarios
           </Link>
           <Link href="/diligence">Diligence</Link>
-          <Link href="/model">Model &amp; Evidence</Link>
+          <Link href="/model-evidence">Model &amp; Evidence</Link>
         </nav>
         <span className="risk-release">V5.1.3 · Frozen Model</span>
       </header>
@@ -481,10 +445,13 @@ export default function RiskPage() {
               </select>
               <ChevronDown size={15} />
             </div>
-            <span>🇻🇳 Vietnam</span>
+            <span>◉ {selected?.country ?? 'NOT AVAILABLE'}</span>
             <span>♨ GreenYellow</span>
-            <span>◉ 9.000 MW</span>
-            <span>Base Debt ~ $0.529m</span>
+            <span>◉ {selected?.capacityMw?.toFixed(3) ?? 'NOT AVAILABLE'} MW</span>
+            <span>
+              Base Debt ~{' '}
+              {baseDebt == null ? 'NOT AVAILABLE' : `$${(baseDebt / 1e6).toFixed(3)}m`}
+            </span>
             <b className="risk-badge green">STANDARDIZED_CREDIT_CASE</b>
             <b className="risk-badge gold">SCENARIO_GOVERNED</b>
           </div>
@@ -492,19 +459,23 @@ export default function RiskPage() {
             <RiskKpi icon={Gauge} value="9" label="Governed Scenarios" />
             <RiskKpi
               icon={BarChart3}
-              value="171"
+              value={String(riskRows.length)}
               label="Portfolio Scenario Rows"
             />
-            <RiskKpi icon={Gauge} value="2.380x" label="Base Min DSCR" />
+            <RiskKpi
+              icon={Gauge}
+              value={formatCoverage(baseDscr)}
+              label="Base Min DSCR"
+            />
             <RiskKpi
               icon={TrendingDown}
-              value={isGoMall ? '0.000x' : 'N/A'}
+              value={formatCoverage(worstDscr)}
               label="Worst GO Mall Min DSCR"
               tone="red"
             />
             <RiskKpi
               icon={CircleAlert}
-              value={isGoMall ? String(zeroCount) : 'N/A'}
+              value={metrics ? String(zeroCount) : 'N/A'}
               label="GO Mall Zero-DSCR Scenarios"
               tone="amber"
             />
@@ -533,7 +504,7 @@ export default function RiskPage() {
               Year 2<small>Offtaker Termination</small>
             </span>
           </div>
-          {!isGoMall && (
+          {!metrics && (
             <div className="risk-unavailable">
               <AlertTriangle size={17} /> This project has no published scenario
               metric payload in the frozen website release. Risk values are
@@ -835,9 +806,11 @@ export default function RiskPage() {
                     </strong>
                     {SCENARIOS.map((scenario) => {
                       const value =
-                        project.project_id === GO_MALL
-                          ? GO_MALL_METRICS[scenario.id].dscr
-                          : null;
+                        riskRows.find(
+                          (row) =>
+                            row.projectId === project.project_id &&
+                            row.scenarioId === scenario.id,
+                        )?.minimumDscr ?? null;
                       const className =
                         value === null
                           ? 'nd'
@@ -1083,3 +1056,5 @@ export default function RiskPage() {
     </main>
   );
 }
+
+

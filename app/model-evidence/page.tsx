@@ -40,11 +40,11 @@ import {
   Zap,
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { loadWebsiteData } from '@/lib/data';
 
 const MODEL_SHA = 'ff69e15d211ff1abc88200574242ed2f1db49074';
 const MODEL_TAG = 'v5.1.3-recruiter-final';
-const RAW = `https://raw.githubusercontent.com/susayold/vietgreen-ci-solar-project-finance/${MODEL_SHA}`;
 const REPO = 'https://github.com/susayold/vietgreen-ci-solar-project-finance';
 const DRIVE =
   'https://docs.google.com/document/d/1koSgbc1Akic6cVDFD1svmuVN9gSq8qSGUw2obfHYN80/edit';
@@ -454,6 +454,7 @@ function LinkButton({
 
 export default function ModelEvidencePage() {
   const [projects, setProjects] = useState<RemoteProject[] | null>(null);
+  const [reconciliation, setReconciliation] = useState<Reconciliation[] | null>(null);
   const [error, setError] = useState(false);
   const [workbookGroup, setWorkbookGroup] =
     useState<keyof typeof workbookGroups>('Governance');
@@ -462,13 +463,16 @@ export default function ModelEvidencePage() {
 
   useEffect(() => {
     let alive = true;
-    fetch(`${RAW}/website/data/projects.json`)
-      .then((response) => {
-        if (!response.ok) throw new Error('model evidence unavailable');
-        return response.json() as Promise<{ projects: RemoteProject[] }>;
-      })
-      .then((payload) => {
-        if (alive) setProjects(payload.projects);
+    Promise.all([
+      loadWebsiteData<{ projects: RemoteProject[] }>('projects'),
+      loadWebsiteData<{ rows: Reconciliation[] }>('reconciliation'),
+    ])
+      .then(([projectPayload, reconciliationPayload]) => {
+        if (!projectPayload || !reconciliationPayload) throw new Error('model evidence unavailable');
+        if (alive) {
+          setProjects(projectPayload.projects);
+          setReconciliation(reconciliationPayload.rows);
+        }
       })
       .catch(() => {
         if (alive) setError(true);
@@ -477,58 +481,6 @@ export default function ModelEvidencePage() {
       alive = false;
     };
   }, []);
-
-  const reconciliation = useMemo<Reconciliation[] | null>(() => {
-    if (!projects) return null;
-    const blocked = projects.filter(
-      (project) => project.technicalDataBlocked,
-    ).length;
-    const ready = projects.length - blocked;
-    const selected = projects.length;
-    const ppaMode = projects.every(
-      (project) => project.ppa_mode === 'FRONTIER_ONLY',
-    )
-      ? 'FRONTIER_ONLY'
-      : 'RECONCILIATION ERROR';
-    return [
-      {
-        label: 'Selected records',
-        expected: '20',
-        actual: String(selected),
-        ok: selected === 20,
-      },
-      {
-        label: 'Economics ready',
-        expected: '19',
-        actual: String(ready),
-        ok: ready === 19,
-      },
-      {
-        label: 'Technical block',
-        expected: '1',
-        actual: String(blocked),
-        ok: blocked === 1,
-      },
-      {
-        label: 'Hourly rows',
-        expected: '166,440',
-        actual: formatNumber(ready * 8760),
-        ok: ready * 8760 === 166440,
-      },
-      {
-        label: 'Scenario rows',
-        expected: '171',
-        actual: formatNumber(ready * 9),
-        ok: ready * 9 === 171,
-      },
-      {
-        label: 'PPA mode',
-        expected: 'FRONTIER_ONLY',
-        actual: ppaMode,
-        ok: ppaMode === 'FRONTIER_ONLY',
-      },
-    ];
-  }, [projects]);
 
   const reconciliationPass = reconciliation?.every((row) => row.ok) ?? false;
   const filteredAudit = auditRows.filter(
@@ -1207,7 +1159,7 @@ export default function ModelEvidencePage() {
                 <code>{path}</code>
                 <span>{purpose}</span>
                 <a
-                  href={`${RAW}/${path}`}
+                  href={`${REPO}/blob/${MODEL_SHA}/${path}`}
                   target="_blank"
                   rel="noreferrer"
                   aria-label={`Open ${path}`}
@@ -1459,10 +1411,6 @@ export default function ModelEvidencePage() {
       </footer>
     </main>
   );
-}
-
-function formatNumber(value: number) {
-  return value.toLocaleString('en-US');
 }
 
 

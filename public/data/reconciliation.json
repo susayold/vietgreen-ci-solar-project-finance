@@ -1,0 +1,46 @@
+{
+  "version": "V5.1.3",
+  "rows": [
+    {
+      "label": "Selected records",
+      "expected": "20",
+      "actual": "20",
+      "ok": true
+    },
+    {
+      "label": "Economics ready",
+      "expected": "19",
+      "actual": "19",
+      "ok": true
+    },
+    {
+      "label": "Technical block",
+      "expected": "1",
+      "actual": "1",
+      "ok": true
+    },
+    {
+      "label": "Hourly rows",
+      "expected": "166,440",
+      "actual": "166,440",
+      "ok": true
+    },
+    {
+      "label": "Scenario rows",
+      "expected": "171",
+      "actual": "171",
+      "ok": true
+    },
+    {
+      "label": "PPA mode",
+      "expected": "FRONTIER_ONLY",
+      "actual": "FRONTIER_ONLY",
+      "ok": true
+    }
+  ]
+}
+
+
+
+
+

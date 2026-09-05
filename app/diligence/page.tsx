@@ -30,9 +30,7 @@ import {
   Zap,
 } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
-
-const SHA = 'ff69e15d211ff1abc88200574242ed2f1db49074';
-const RAW = `https://raw.githubusercontent.com/susayold/vietgreen-ci-solar-project-finance/${SHA}`;
+import { loadWebsiteData } from '@/lib/data';
 const GO_MALL = 'VN-GY-GOMALL';
 const ARISUDHANA = 'IN-FPEL-ARISUDHANA';
 
@@ -47,6 +45,13 @@ type RemoteProject = {
   technicalDataBlocked?: boolean;
   ppa_mode?: string;
   decision?: string;
+  diligencePriority?: string;
+  commercialStatus?: string;
+  creditStatus?: string;
+  riskStatus?: string;
+  evidenceStatus?: string;
+  nextActions?: string[];
+  capitalAllocatedUsd?: number;
 };
 
 type DiligenceRecord = RemoteProject & {
@@ -251,25 +256,28 @@ function deriveRecord(project: RemoteProject): DiligenceRecord {
   const capacityMw = Number(project.capacity_kwp_observed) / 1000;
   const generationGwh = Number(project.generation_kwh_observed) / 1_000_000;
   const specificYield = capacityMw ? (generationGwh * 1000) / capacityMw : 0;
-  const isGoMall = project.project_id === GO_MALL;
-  const lowYield = project.physicalStatus === 'LOW_YIELD_REVIEW';
-  const high = isGoMall || lowYield;
   return {
     ...project,
     capacityMw,
     generationGwh,
     yield: specificYield,
-    technicalLabel: lowYield ? 'UNDER_REVIEW' : 'MODEL_OK',
-    commercialLabel: 'INSUFFICIENT_DATA',
-    creditLabel: isGoMall ? 'MODEL_OK' : 'NO_POSITIVE_DEBT',
-    riskLabel: isGoMall ? 'CRITICAL_STRESS' : 'BASE_DEBT_NOT_SUPPORTABLE',
-    evidenceLabel: 'OPEN',
-    nextAction: lowYield
-      ? 'ENGINEERING_VALIDATION'
-      : isGoMall
-        ? 'COD_TIMING_REVIEW'
-        : 'TRANSACTION_EVIDENCE',
-    priority: high ? 'HIGH' : project.country === 'Vietnam' ? 'MEDIUM' : 'LOW',
+    technicalLabel:
+      project.physicalStatus === 'EXTREME_OUTLIER_BLOCK_BASE'
+        ? 'TECHNICAL_DATA_BLOCKED'
+        : 'MODEL_OK',
+    commercialLabel: project.commercialStatus ?? 'NOT AVAILABLE',
+    creditLabel: project.creditStatus ?? 'NOT AVAILABLE',
+    riskLabel: project.riskStatus ?? 'NOT AVAILABLE',
+    evidenceLabel: project.evidenceStatus ?? 'NOT AVAILABLE',
+    nextAction: project.nextActions?.[0] ?? 'NOT AVAILABLE',
+    priority:
+      project.diligencePriority === 'TECHNICAL'
+        ? 'HIGH'
+        : project.diligencePriority === 'HIGH'
+          ? 'HIGH'
+          : project.diligencePriority === 'MEDIUM'
+            ? 'MEDIUM'
+            : 'LOW',
   };
 }
 
@@ -285,20 +293,59 @@ export default function DiligencePage() {
 
   useEffect(() => {
     let active = true;
-    fetch(`${RAW}/website/data/projects.json`)
-      .then((response) => {
-        if (!response.ok) throw new Error('payload unavailable');
-        return response.json() as Promise<{ projects: RemoteProject[] }>;
-      })
-      .then((payload) => {
+    Promise.all([
+      loadWebsiteData<{
+        rows?: Array<{
+        projectId: string;
+        projectName: string;
+        country: string;
+        capacityMw: number;
+        physicalStatus: string;
+        economicsStatus: string;
+        commercialStatus: string;
+        creditStatus: string;
+        riskStatus: string;
+        evidenceStatus: string;
+        nextActions: string[];
+        diligencePriority: string;
+        decision: string;
+        capitalAllocatedUsd: number;
+        }>;
+      }>('diligence'),
+      loadWebsiteData<{ projects?: RemoteProject[] }>('projects'),
+    ]).then(([payload, projectPayload]) => {
         if (!active) return;
-        setProjects(payload.projects ?? []);
+        const rows = (payload.rows ?? []).map((row) => ({
+          ...projectPayload.projects?.find(
+            (project) => project.project_id === row.projectId,
+          ),
+          project_id: row.projectId,
+          project_name: row.projectName,
+          country: row.country,
+          capacity_kwp_observed: String(row.capacityMw * 1000),
+          generation_kwh_observed:
+            projectPayload.projects?.find(
+              (project) => project.project_id === row.projectId,
+            )?.generation_kwh_observed ?? '0',
+          physicalStatus: row.physicalStatus,
+          technicalDataBlocked: row.economicsStatus === 'TECHNICAL_DATA_BLOCKED',
+          ppa_mode: 'FRONTIER_ONLY',
+          decision: row.decision,
+          diligencePriority: row.diligencePriority,
+          commercialStatus: row.commercialStatus,
+          creditStatus: row.creditStatus,
+          riskStatus: row.riskStatus,
+          evidenceStatus: row.evidenceStatus,
+          nextActions: row.nextActions,
+          capitalAllocatedUsd: row.capitalAllocatedUsd,
+        }));
+        setProjects(rows);
         const queryProject = new URLSearchParams(window.location.search).get(
           'project',
         );
         if (
           queryProject &&
-          payload.projects.some(
+          rows.some(
             (project) => project.project_id === queryProject,
           )
         ) {

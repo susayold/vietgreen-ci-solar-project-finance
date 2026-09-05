@@ -1,7 +1,5 @@
 'use client';
 
-export const dynamic = 'force-static';
-
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -23,28 +21,8 @@ import {
   X,
 } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
-
-const SHA = 'ff69e15d211ff1abc88200574242ed2f1db49074';
-const RAW = `https://raw.githubusercontent.com/susayold/vietgreen-ci-solar-project-finance/${SHA}`;
+import { loadWebsiteData } from '@/lib/data';
 const GO_MALL = 'VN-GY-GOMALL';
-const REFERENCE = {
-  capexLocal: 288_112_500_000,
-  capexUsd: 11_250_000,
-  capacityMwp: 9,
-  generationGwh: 13,
-  tariff: 3460,
-  projectNpv: -10_362_000,
-  equityNpv: -10_036_000,
-  rawIrr: -0.99,
-  year1: {
-    revenue: 44_980_000_000,
-    opex: 4_322_000_000,
-    tax: 5_827_000_000,
-    cfads: 34_832_000_000,
-  },
-  lenderFloor: 16_159.04,
-};
-
 type Project = {
   project_id: string;
   project_name: string;
@@ -53,14 +31,41 @@ type Project = {
 };
 type EconRow = {
   project_id: string;
+  projectId?: string;
+  projectName?: string;
+  country?: string;
   decision?: string;
   ppa_mode?: string;
   reference_case?: string;
+  referenceCase?: string;
+  ppaMode?: string;
+  customerCeilingVndKwh?: number | null;
+  sponsorFloorVndKwh?: number | null;
+  lenderFloorVndKwh?: number | null;
+  negotiationGapVndKwh?: number | null;
+  capexUsd?: number | null;
+  projectNpvUsd?: number | null;
+  projectIrr?: number | null;
+  equityNpvUsd?: number | null;
+  equityIrr?: number | null;
+  year1?: {
+    revenue: number;
+    opex: number;
+    tax: number;
+    cfads: number;
+    debtService: number;
+    equityCashFlow: number;
+  } | null;
+  ppaStatus?: string;
 };
-const usdM = (value: number) => `$${(value / 1_000_000).toFixed(3)}m`;
-const bn = (value: number) => `${(value / 1_000_000_000).toFixed(3)}bn`;
-const vnd = (value: number) =>
-  `VND ${value.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}`;
+const usdM = (value?: number | null) =>
+  value == null ? 'NOT AVAILABLE' : `$${(value / 1_000_000).toFixed(3)}m`;
+const bn = (value?: number | null) =>
+  value == null ? 'NOT AVAILABLE' : `${(value / 1_000_000_000).toFixed(3)}bn`;
+const vnd = (value?: number | null) =>
+  value == null
+    ? 'NOT RESOLVED'
+    : `VND ${value.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}`;
 function Heading({
   n,
   title,
@@ -104,12 +109,15 @@ function KPI({
   );
 }
 
-function Waterfall() {
+function Waterfall({ data }: { data?: EconRow }) {
+  if (!data?.year1) {
+    return <div className="waterfall-empty">DATA UNAVAILABLE</div>;
+  }
   const bars = [
-    { label: 'Revenue', value: 5.362, color: 'green' },
-    { label: 'OPEX', value: -1.761, color: 'amber' },
-    { label: 'Tax', value: -0.451, color: 'red' },
-    { label: 'CFADS', value: 3.15, color: 'green' },
+    { label: 'Revenue', value: data.year1.revenue / 1_000_000_000, color: 'green' },
+    { label: 'OPEX', value: -data.year1.opex / 1_000_000_000, color: 'amber' },
+    { label: 'Tax', value: -data.year1.tax / 1_000_000_000, color: 'red' },
+    { label: 'CFADS', value: data.year1.cfads / 1_000_000_000, color: 'green' },
   ];
   const max = 6;
   return (
@@ -150,7 +158,7 @@ function Waterfall() {
   );
 }
 
-function Frontier({ complete }: { complete: boolean }) {
+function Frontier({ data }: { data?: EconRow }) {
   const min = 3000;
   const max = 17000;
   const position = (value: number) => `${((value - min) / (max - min)) * 100}%`;
@@ -160,32 +168,32 @@ function Frontier({ complete }: { complete: boolean }) {
         <span className="frontier-track" />
         <span
           className="frontier-marker customer"
-          style={{ left: position(REFERENCE.tariff) }}
+          style={{ left: position(data?.customerCeilingVndKwh ?? min) }}
         >
           <i />
           <b>Customer</b>
-          <strong>VND 3,460</strong>
+          <strong>{vnd(data?.customerCeilingVndKwh)}</strong>
         </span>
-        {complete && (
+        {data?.sponsorFloorVndKwh != null && (
           <span
             className="frontier-marker sponsor"
-            style={{ left: position(9000) }}
+            style={{ left: position(data.sponsorFloorVndKwh) }}
           >
             <i />
             <b>Sponsor</b>
-            <strong>VND 9,000</strong>
+            <strong>{vnd(data.sponsorFloorVndKwh)}</strong>
           </span>
         )}
         <span
           className="frontier-marker lender"
-          style={{ left: position(REFERENCE.lenderFloor) }}
+          style={{ left: position(data?.lenderFloorVndKwh ?? min) }}
         >
           <i />
           <b>Lender</b>
-          <strong>VND 16,159.04</strong>
+          <strong>{vnd(data?.lenderFloorVndKwh)}</strong>
         </span>
       </div>
-      {!complete && (
+      {data?.sponsorFloorVndKwh == null && (
         <div className="frontier-missing">
           <CircleHelp size={18} />
           <span>
@@ -223,19 +231,20 @@ export default function EconomicsPage() {
   useEffect(() => {
     const queryId = new URLSearchParams(window.location.search).get('project');
     void Promise.all([
-      fetch(`${RAW}/website/data/projects.json`).then((response) =>
-        response.json(),
-      ),
-      fetch(`${RAW}/website/data/economics.json`).then((response) =>
-        response.json(),
-      ),
+      loadWebsiteData<{ projects?: Project[] }>('projects'),
+      loadWebsiteData<{ rows?: EconRow[] }>('economics'),
     ])
       .then(([projectRaw, econRaw]) => {
         const available = (
           (projectRaw as { projects?: Project[] }).projects ?? []
         ).filter((project) => !project.technicalDataBlocked);
         setProjects(available);
-        setEconRows((econRaw as { rows?: EconRow[] }).rows ?? []);
+        setEconRows(
+          (econRaw.rows ?? []).map((row) => ({
+            ...row,
+            project_id: row.project_id ?? row.projectId ?? '',
+          })),
+        );
         if (
           !available.some(
             (project: Project) => project.project_id === (queryId ?? GO_MALL),
@@ -253,8 +262,12 @@ export default function EconomicsPage() {
     [projects, selectedId],
   );
   const isGoMall = selected?.project_id === GO_MALL;
+  const reference = econRows.find(
+    (row) =>
+      (row.project_id ?? row.projectId) === selected?.project_id,
+  );
   const decision =
-    econRows.find((row) => row.project_id === selected?.project_id)?.decision ??
+    reference?.decision ??
     'INDETERMINATE_MISSING_COMMERCIAL_DATA';
   const changeProject = (value: string) => {
     setSelectedId(value);
@@ -284,7 +297,7 @@ export default function EconomicsPage() {
             Finance <ChevronDown size={13} />
           </Link>
           <Link href="/diligence">Diligence</Link>
-          <Link href="/model">Model &amp; Evidence</Link>
+          <Link href="/model-evidence">Model &amp; Evidence</Link>
         </nav>
         <span className="economics-release">V5.1.3 · Frozen Model</span>
       </header>
@@ -322,14 +335,14 @@ export default function EconomicsPage() {
           </div>
           <aside className="economics-hero-card">
             <small>REFERENCE CASE</small>
-            <h2>{vnd(REFERENCE.tariff)} / kWh</h2>
+            <h2>{vnd(reference?.customerCeilingVndKwh)} / kWh</h2>
             <div>
               <span>CAPEX</span>
-              <b>{usdM(REFERENCE.capexUsd)}</b>
+              <b>{usdM(reference?.capexUsd)}</b>
             </div>
             <div>
               <span>PROJECT NPV</span>
-              <b className="bad">{usdM(REFERENCE.projectNpv)}</b>
+              <b className="bad">{usdM(reference?.projectNpvUsd)}</b>
             </div>
             <div>
               <span>PPA STATUS</span>
@@ -379,7 +392,7 @@ export default function EconomicsPage() {
           <div className="economics-kpi-grid">
             <KPI
               icon={WalletCards}
-              value={isGoMall ? usdM(REFERENCE.capexUsd) : 'NOT AVAILABLE'}
+              value={isGoMall ? usdM(reference?.capexUsd) : 'NOT AVAILABLE'}
               label="CAPEX"
               sub={isGoMall ? '$883 / kWp' : 'Frozen economics payload'}
             />
@@ -393,7 +406,7 @@ export default function EconomicsPage() {
             />
             <KPI
               icon={BarChart3}
-              value={isGoMall ? usdM(REFERENCE.projectNpv) : 'NOT AVAILABLE'}
+              value={isGoMall ? usdM(reference?.projectNpvUsd) : 'NOT AVAILABLE'}
               label="Project NPV"
               sub={isGoMall ? 'After-tax · 10%' : 'Frozen output unavailable'}
               tone="negative"
@@ -411,7 +424,7 @@ export default function EconomicsPage() {
             />
             <KPI
               icon={UserRound}
-              value={isGoMall ? usdM(REFERENCE.equityNpv) : 'NOT AVAILABLE'}
+              value={isGoMall ? usdM(reference?.equityNpvUsd) : 'NOT AVAILABLE'}
               label="Equity NPV"
               sub={isGoMall ? 'After-tax · 14%' : 'Frozen output unavailable'}
               tone="negative"
@@ -481,22 +494,22 @@ export default function EconomicsPage() {
                   ))}
                 </select>
               </div>
-              <Waterfall />
+              <Waterfall data={reference} />
               <div className="cashflow-totals">
                 <span>
-                  <b>{bn(REFERENCE.year1.revenue)}</b>
+                  <b>{bn(reference?.year1?.revenue)}</b>
                   <small>Revenue</small>
                 </span>
                 <span>
-                  <b className="negative">−{bn(REFERENCE.year1.opex)}</b>
+                  <b className="negative">−{bn(reference?.year1?.opex)}</b>
                   <small>OPEX</small>
                 </span>
                 <span>
-                  <b className="negative">−{bn(REFERENCE.year1.tax)}</b>
+                  <b className="negative">−{bn(reference?.year1?.tax)}</b>
                   <small>Tax</small>
                 </span>
                 <span>
-                  <b>{bn(REFERENCE.year1.cfads)}</b>
+                  <b>{bn(reference?.year1?.cfads)}</b>
                   <small>CFADS · After-Tax</small>
                 </span>
                 <span>
@@ -514,7 +527,7 @@ export default function EconomicsPage() {
                 <div>
                   <b>PROJECT ECONOMICS (After-Tax)</b>
                   <span>
-                    NPV (USD)<strong>{usdM(REFERENCE.projectNpv)}</strong>
+                    NPV (USD)<strong>{usdM(reference?.projectNpvUsd)}</strong>
                   </span>
                   <span>
                     IRR<strong>NO POSITIVE IRR</strong>
@@ -529,7 +542,7 @@ export default function EconomicsPage() {
                 <div>
                   <b>EQUITY ECONOMICS (After-Tax)</b>
                   <span>
-                    NPV (USD)<strong>{usdM(REFERENCE.equityNpv)}</strong>
+                    NPV (USD)<strong>{usdM(reference?.equityNpvUsd)}</strong>
                   </span>
                   <span>
                     IRR<strong>NO POSITIVE IRR</strong>
@@ -563,7 +576,7 @@ export default function EconomicsPage() {
               </div>
               <div className="return-grid">
                 <span>
-                  Project NPV<strong>{usdM(REFERENCE.projectNpv)}</strong>
+                  Project NPV<strong>{usdM(reference?.projectNpvUsd)}</strong>
                 </span>
                 <span>
                   Project IRR<strong>NO POSITIVE IRR</strong>
@@ -573,15 +586,15 @@ export default function EconomicsPage() {
                   Discount Rate<strong>10%</strong>
                 </span>
                 <span>
-                  Initial CAPEX<strong>{usdM(REFERENCE.capexUsd)}</strong>
+                  Initial CAPEX<strong>{usdM(reference?.capexUsd)}</strong>
                 </span>
                 <span>
                   Operating CFADS
-                  <strong>{bn(REFERENCE.year1.cfads)} VND</strong>
+                  <strong>{bn(reference?.year1?.cfads)} VND</strong>
                 </span>
               </div>
               <p className="return-status">
-                PROJECT VALUE CREATION · <b>NEGATIVE AT REFERENCE CASE</b>
+                PROJECT VALUE CREATION · <b>DATA-BOUND REFERENCE CASE</b>
               </p>
               <div className="formula-card">
                 Project NPV = PV(Project CFADS) − Initial CAPEX
@@ -593,7 +606,7 @@ export default function EconomicsPage() {
               </div>
               <div className="return-grid">
                 <span>
-                  Equity NPV<strong>{usdM(REFERENCE.equityNpv)}</strong>
+                  Equity NPV<strong>{usdM(reference?.equityNpvUsd)}</strong>
                 </span>
                 <span>
                   Equity IRR<strong>NO POSITIVE IRR</strong>
@@ -657,7 +670,7 @@ export default function EconomicsPage() {
                   </span>
                 </div>
               </div>
-              <Frontier complete={false} />
+              <Frontier data={reference} />
               <div className="frontier-conclusion">
                 <Scale size={19} />
                 <span>
@@ -918,3 +931,5 @@ export default function EconomicsPage() {
     </main>
   );
 }
+
+

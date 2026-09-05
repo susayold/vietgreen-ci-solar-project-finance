@@ -1,7 +1,5 @@
 'use client';
 
-export const dynamic = 'force-static';
-
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -25,9 +23,7 @@ import {
   Zap,
 } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
-
-const SHA = 'ff69e15d211ff1abc88200574242ed2f1db49074';
-const RAW = `https://raw.githubusercontent.com/susayold/vietgreen-ci-solar-project-finance/${SHA}`;
+import { loadWebsiteData } from '@/lib/data';
 
 type Project = {
   project_id: string;
@@ -38,29 +34,28 @@ type Project = {
   observedGenerationKwh?: string;
   baseGenerationP50Kwh?: string;
   technicalDataBlocked?: boolean;
+  capacityMw?: number;
 };
-type EnergyRow = {
-  project_id: string;
-  p50_y1_kwh: string;
-  p90_y1_kwh: string;
-  p99_y1_kwh: string;
+type EnergyProject = {
+  projectId: string;
+  capacityMw: number;
+  p50Gwh: number;
+  p90Gwh: number;
+  p99Gwh: number;
+  annualLoadGwh: number;
+  selfConsumedGwh: number;
+  exportedGwh: number;
+  gridPurchaseGwh: number;
+  selfConsumptionShare: number;
+  solarCoverageShare: number;
+  representativeDay: Array<{
+    loadKw: number;
+    solarKw: number;
+    selfConsumedKw: number;
+    exportKw: number;
+    gridPurchaseKw: number;
+  }>;
 };
-type Overlay = {
-  project_id: string;
-  parameter: string;
-  value: string;
-  load_evidence_level?: string;
-};
-
-const profileLoad = [
-  498.5, 498.5, 498.5, 498.5, 498.5, 498.5, 1657.7, 1657.7, 2762.9, 2762.9,
-  2762.9, 2762.9, 2762.9, 2762.9, 2762.9, 2762.9, 2762.9, 2762.9, 1160.4,
-  1160.4, 1160.4, 1160.4, 498.5, 498.5,
-];
-const profileSolar = [
-  0, 0, 0, 0, 0, 0, 0, 1213.6, 2344.5, 3315.6, 4060.8, 4529.2, 4689, 4529.2,
-  4060.8, 3315.6, 2344.5, 1213.6, 0, 0, 0, 0, 0, 0,
-];
 
 const fmt = (value: number, digits = 3) =>
   value.toLocaleString('en-US', {
@@ -70,16 +65,6 @@ const fmt = (value: number, digits = 3) =>
 const gwh = (value: number) => fmt(value / 1_000_000, 3);
 const kwpYield = (generationKwh: number, capacityKwp: number) =>
   capacityKwp ? generationKwh / capacityKwp : 0;
-const csv = (text: string) => {
-  const [head, ...rows] = text.trim().split(/\r?\n/);
-  const keys = head.split(',');
-  return rows.map((row) => {
-    const values = row.split(',');
-    return Object.fromEntries(
-      keys.map((key, index) => [key, values[index] ?? '']),
-    ) as Record<string, string>;
-  });
-};
 
 function SectionHeading({
   n,
@@ -187,35 +172,30 @@ function LineChart({
 
 export default function EnergyPage() {
   const [projects, setProjects] = useState<Project[]>([]);
-  const [energyRows, setEnergyRows] = useState<EnergyRow[]>([]);
-  const [overlay, setOverlay] = useState<Overlay[]>([]);
-  const [selectedId, setSelectedId] = useState('VN-GY-GOMALL');
+  const [energyRows, setEnergyRows] = useState<EnergyProject[]>([]);
+  const [selectedId, setSelectedId] = useState(() =>
+    typeof window === 'undefined'
+      ? 'VN-GY-GOMALL'
+      : new URLSearchParams(window.location.search).get('project') ??
+        'VN-GY-GOMALL',
+  );
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
   useEffect(() => {
     Promise.all([
-      fetch(`${RAW}/website/data/projects.json`).then((response) =>
-        response.json(),
-      ),
-      fetch(`${RAW}/outputs/energy_p50_p90_p99.csv`).then((response) =>
-        response.text(),
-      ),
-      fetch(`${RAW}/data/public/project_assumption_overlay.csv`).then(
-        (response) => response.text(),
-      ),
+      loadWebsiteData<{ projects?: Project[] }>('projects'),
+      loadWebsiteData<{ projects?: EnergyProject[] }>('energy'),
     ])
-      .then(([projectJsonRaw, energyText, overlayText]) => {
-        const projectJson = projectJsonRaw as { projects?: Project[] };
+      .then(([projectJson, energyJson]) => {
         setProjects(
           (projectJson.projects ?? []).filter(
             (project) => !project.technicalDataBlocked,
           ),
         );
-        setEnergyRows(csv(energyText) as unknown as EnergyRow[]);
-        setOverlay(csv(overlayText) as unknown as Overlay[]);
+        setEnergyRows(energyJson.projects ?? []);
       })
-      .catch(() => setError('Frozen energy source is temporarily unavailable.'))
+      .catch(() => setError('Energy data unavailable for this release.'))
       .finally(() => setLoading(false));
   }, []);
 
@@ -225,50 +205,24 @@ export default function EnergyPage() {
       projects.find((project) => project.project_id === 'VN-GY-GOMALL'),
     [projects, selectedId],
   );
-  const selectedOverlay = useMemo(
-    () => overlay.filter((row) => row.project_id === selected?.project_id),
-    [overlay, selected],
+  const selectedEnergy = energyRows.find(
+    (row) => row.projectId === selected?.project_id,
   );
-  const value = (parameter: string, fallback: number) =>
-    Number(
-      selectedOverlay.find((row) => row.parameter === parameter)?.value ??
-        fallback,
-    );
-  const capacityKwp = value(
-    'capacity_kwp',
-    Number(selected?.capacity_kwp ?? selected?.capacity_kwp_observed ?? 9000),
-  );
-  const p50 = value(
-    'annual_generation_kwh',
-    Number(
-      selected?.baseGenerationP50Kwh ??
-        selected?.observedGenerationKwh ??
-        13_000_000,
-    ),
-  );
-  const energyRow = energyRows.find(
-    (row) => row.project_id === selected?.project_id,
-  );
-  const p90 =
-    selected?.project_id === 'VN-GY-GOMALL'
-      ? 11_700_000
-      : Number(energyRow?.p90_y1_kwh ?? p50 * 0.9);
-  const p99 =
-    selected?.project_id === 'VN-GY-GOMALL'
-      ? 10_400_000
-      : Number(energyRow?.p99_y1_kwh ?? p50 * 0.8);
-  const annualLoad = value('annual_customer_load_kwh', 14_444_444.44);
-  const inputSelfConsumption = value('self_consumption_ratio', 0.9);
-  const scale = p50 / 13_000_000;
-  const solar = profileSolar.map((point) => point * scale);
-  const load = profileLoad.map((point) => point * (annualLoad / 14_444_444.44));
-  const self = solar.map((point, index) => Math.min(point, load[index]));
-  const exportPower = solar.map((point, index) =>
-    Math.max(point - load[index], 0),
-  );
-  const selfConsumed = p50 * 0.716044;
-  const exported = Math.max(p50 - selfConsumed, 0);
-  const gridPurchase = Math.max(annualLoad - selfConsumed, 0);
+  const capacityKwp =
+    (selectedEnergy?.capacityMw ?? selected?.capacityMw ?? 0) * 1000;
+  const p50 = (selectedEnergy?.p50Gwh ?? 0) * 1_000_000;
+  const p90 = (selectedEnergy?.p90Gwh ?? 0) * 1_000_000;
+  const p99 = (selectedEnergy?.p99Gwh ?? 0) * 1_000_000;
+  const annualLoad = (selectedEnergy?.annualLoadGwh ?? 0) * 1_000_000;
+  const inputSelfConsumption = selectedEnergy?.selfConsumptionShare ?? 0;
+  const profile = selectedEnergy?.representativeDay ?? [];
+  const solar = profile.map((point) => point.solarKw);
+  const load = profile.map((point) => point.loadKw);
+  const self = profile.map((point) => point.selfConsumedKw);
+  const exportPower = profile.map((point) => point.exportKw);
+  const selfConsumed = (selectedEnergy?.selfConsumedGwh ?? 0) * 1_000_000;
+  const exported = (selectedEnergy?.exportedGwh ?? 0) * 1_000_000;
+  const gridPurchase = (selectedEnergy?.gridPurchaseGwh ?? 0) * 1_000_000;
   const yieldValue = kwpYield(p50, capacityKwp);
 
   return (
@@ -293,7 +247,7 @@ export default function EnergyPage() {
             Finance <ChevronDown size={13} />
           </Link>
           <Link href="/diligence">Diligence</Link>
-          <Link href="/model">Model &amp; Evidence</Link>
+          <Link href="/model-evidence">Model &amp; Evidence</Link>
         </nav>
         <span className="energy-release">V5.1.3 · Frozen Model</span>
       </header>
@@ -339,7 +293,8 @@ export default function EnergyPage() {
                 Load Proxy <b>{gwh(annualLoad)} GWh</b>
               </span>
               <span>
-                Self-Consumption (modeled) <b>71.6%</b>
+                Self-Consumption (modeled){' '}
+                <b>{fmt((selectedEnergy?.selfConsumptionShare ?? 0) * 100, 1)}%</b>
               </span>
               <span>
                 QA Status <b>LEVEL_3_ANNUAL_ONLY ⓘ</b>
@@ -361,7 +316,7 @@ export default function EnergyPage() {
           />
           <MiniMetric
             icon={Activity}
-            value="71.6%"
+            value={`${fmt((selectedEnergy?.selfConsumptionShare ?? 0) * 100, 1)}%`}
             label="Self-consumption (modeled)"
             tone="gold"
           />
@@ -374,7 +329,15 @@ export default function EnergyPage() {
             <select
               id="energy-project"
               value={selectedId}
-              onChange={(event) => setSelectedId(event.target.value)}
+              onChange={(event) => {
+                const value = event.target.value;
+                setSelectedId(value);
+                window.history.replaceState(
+                  null,
+                  '',
+                  `/energy?project=${encodeURIComponent(value)}`,
+                );
+              }}
               disabled={loading}
             >
               {projects.map((project) => (
@@ -593,7 +556,8 @@ export default function EnergyPage() {
                   </b>
                 </span>
                 <strong>
-                  71.6%<small>of generation</small>
+                  {fmt((selectedEnergy?.selfConsumptionShare ?? 0) * 100, 1)}%
+                  <small>of generation</small>
                 </strong>
               </div>
               <div className="balance-split">
@@ -605,7 +569,8 @@ export default function EnergyPage() {
                   </b>
                 </span>
                 <strong>
-                  28.4%<small>of generation</small>
+                  {fmt((p50 ? exported / p50 : 0) * 100, 1)}%
+                  <small>of generation</small>
                 </strong>
               </div>
               <div className="balance-split blue">
@@ -617,19 +582,20 @@ export default function EnergyPage() {
                   </b>
                 </span>
                 <strong>
-                  35.6%<small>of load</small>
+                  {fmt((annualLoad ? gridPurchase / annualLoad : 0) * 100, 1)}%
+                  <small>of load</small>
                 </strong>
               </div>
             </div>
             <div className="donut-row">
               <div>
                 <i className="donut green" />
-                <b>71.6%</b>
+                <b>{fmt((selectedEnergy?.selfConsumptionShare ?? 0) * 100, 1)}%</b>
                 <span>Solar self-consumption</span>
               </div>
               <div>
                 <i className="donut teal" />
-                <b>64.4%</b>
+                <b>{fmt((selectedEnergy?.solarCoverageShare ?? 0) * 100, 1)}%</b>
                 <span>Load covered by solar</span>
               </div>
             </div>
@@ -656,7 +622,7 @@ export default function EnergyPage() {
               <strong>≠</strong>
               <div>
                 <span>MODELED RESULT</span>
-                <b>71.6%</b>
+                  <b>{fmt((selectedEnergy?.selfConsumptionShare ?? 0) * 100, 1)}%</b>
                 <small>
                   SELF-CONSUMPTION
                   <br />
@@ -665,8 +631,8 @@ export default function EnergyPage() {
               </div>
               <p>
                 <CircleHelp size={14} />
-                They are not the same. 90% is not achieved in reality; 71.6% is
-                the modeled outcome.
+                The displayed ratio is generated from the selected project data;
+                it is not a transaction or production guarantee.
               </p>
             </div>
             <div className="energy-panel portfolio-context">
@@ -890,3 +856,5 @@ export default function EnergyPage() {
     </main>
   );
 }
+
+

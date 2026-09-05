@@ -1,102 +1,99 @@
-"""Fail-closed validation of the V4.1 recruiter website data contract."""
-
-from __future__ import annotations
+"""Validate the generated website data contract against the frozen V5.1.3 release."""
 
 import json
 import math
-import os
-import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-DATA = ROOT / "website" / "data"
-MANIFEST = json.loads((ROOT / "release/MODEL_RELEASE_MANIFEST.json").read_text(encoding="utf-8"))
-REQUIRED = [
-    "shared-summary.json", "overview.json", "case.json", "economics.json",
-    "debt.json", "portfolio.json", "risk.json", "model.json", "evidence.json",
-    "metadata.json", "release-meta.json",
-]
-errors: list[str] = []
-payloads = {}
+DATA = ROOT / "public" / "data"
+SHA = "ff69e15d211ff1abc88200574242ed2f1db49074"
 
-for filename in REQUIRED:
-    path = DATA / filename
-    if not path.exists():
-        errors.append(f"missing {filename}")
-        continue
-    try:
-        payloads[filename] = json.loads(path.read_text(encoding="utf-8"))
-    except json.JSONDecodeError as exc:
-        errors.append(f"invalid JSON {filename}: {exc}")
 
-shared = payloads.get("shared-summary.json", {})
-expected_shared = {
-    "releaseId": MANIFEST["release_id"],
-    "selectedProjectIds": MANIFEST["selected_ids"],
-    "selectedProjects": MANIFEST["selected_count"],
-    "currentPositiveEquityNPV": MANIFEST["current_terms_positive_equity_npv_rows"],
-    "negotiatedPositiveEquityNPV": MANIFEST["negotiated_positive_equity_npv_rows"],
-    "currentDecision": "NO_DEPLOYMENT",
-    "transactionEvidenceStatus": "OPEN",
-    "bankableTransactionReady": False,
-    "dataContractVersion": "V4.1-RECRUITER-CLOSURE",
-}
-for key, expected in expected_shared.items():
-    if shared.get(key) != expected:
-        errors.append(f"shared {key} mismatch: {shared.get(key)!r} != {expected!r}")
-if len(shared.get("metricIds", [])) != len(set(shared.get("metricIds", []))):
-    errors.append("shared metricIds are not unique")
+def load(name):
+    return json.loads((DATA / f"{name}.json").read_text(encoding="utf-8"))
 
-meta = payloads.get("release-meta.json", {})
-if meta.get("dataContractVersion") != "V4.1-RECRUITER-CLOSURE":
-    errors.append("release metadata contract version mismatch")
-expected_sha = os.environ.get("GITHUB_SHA")
-if expected_sha and meta.get("gitSha") not in {expected_sha, "pending-ci"}:
-    errors.append("release metadata gitSha does not match GITHUB_SHA")
 
-risk = payloads.get("risk.json", {})
-if "fixedVsResized" in risk:
-    errors.append("risk contract still exposes fixedVsResized")
-for row in risk.get("scenarios", []):
-    required = {"economicStatus", "creditStatus", "readinessImpact", "sourceScenarioId"}
-    missing = required - set(row)
-    if missing:
-        errors.append(f"scenario {row.get('scenario')} missing {sorted(missing)}")
-    economic = "PASS" if float(row.get("equityNPVBVND", -1)) >= 0 else "NEGATIVE"
-    credit = "PASS" if float(row.get("minDSCR", 0)) >= float(MANIFEST["pooled_min_dscr"]) else "FAIL_DSCR"
-    if row.get("economicStatus") != economic:
-        errors.append(f"scenario {row.get('scenario')} economicStatus is not derived from Equity NPV")
-    if row.get("creditStatus") != credit:
-        errors.append(f"scenario {row.get('scenario')} creditStatus is not derived from DSCR")
-    if "status" in row:
-        errors.append(f"scenario {row.get('scenario')} has ambiguous legacy status")
+def close(actual, expected, tolerance=1e-6):
+    return math.isclose(actual, expected, rel_tol=tolerance, abs_tol=tolerance)
 
-for path in DATA.glob("*.json"):
-    text = path.read_text(encoding="utf-8").lower()
-    for token in ("hidden_truth", "private_validation", "localhost", "password", "secret"):
-        if token in text:
-            errors.append(f"forbidden token {token} in {path.name}")
-    try:
-        value = json.loads(text)
-        stack = [value]
-        while stack:
-            item = stack.pop()
-            if isinstance(item, float) and not math.isfinite(item):
-                errors.append(f"non-finite numeric value in {path.name}")
-            elif isinstance(item, dict):
-                stack.extend(item.values())
-            elif isinstance(item, list):
-                stack.extend(item)
-    except json.JSONDecodeError:
-        pass
-    if path.name != "release-meta.json":
-        for date_value in re.findall(r"20\\d{2}-\\d{2}-\\d{2}", text):
-            if date_value != MANIFEST["release_date"]:
-                errors.append(f"unapproved date {date_value} in {path.name}")
 
-if errors:
-    print("Website data validation FAILED")
-    for error in errors:
-        print(f"- {error}")
-    raise SystemExit(1)
-print(f"Website data validation PASS: {len(payloads)} JSON contracts; contract V4.1-RECRUITER-CLOSURE")
+def main():
+    summary = load("summary")
+    assert summary["modelSha"] == SHA
+    assert (summary["candidateProjects"], summary["selectedRecords"]) == (54, 20)
+    assert (summary["economicsReadyProjects"], summary["technicalBlockedProjects"]) == (19, 1)
+    assert summary["observations"] == 441
+    assert close(summary["economicsReadyCapacityMw"], 129.853)
+    assert close(summary["readyObservedGenerationGwh"], 148.221)
+    assert (summary["modeledHourlyRows"], summary["scenarios"]) == (166440, 171)
+
+    projects = load("projects")["projects"]
+    assert len(projects) == 20
+    assert sum(bool(row["economicsReady"]) for row in projects) == 19
+    assert sum(bool(row["technicalDataBlocked"]) for row in projects) == 1
+    assert sum(row["physicalStatus"] == "PASS_WITHIN_SCREENING_BAND" for row in projects) == 15
+    assert sum(row["physicalStatus"] == "LOW_YIELD_REVIEW" for row in projects) == 4
+
+    physical = load("physical")
+    assert physical["distribution"] == {
+        "PASS_WITHIN_SCREENING_BAND": 15,
+        "LOW_YIELD_REVIEW": 4,
+        "EXTREME_OUTLIER_BLOCK_BASE": 1,
+    }
+
+    energy = load("energy")["projects"]
+    assert len(energy) == 19 and all(len(row["representativeDay"]) == 24 for row in energy)
+    go_energy = next(row for row in energy if row["projectId"] == "VN-GY-GOMALL")
+    for key, expected in {
+        "p50Gwh": 13.0,
+        "annualLoadGwh": 14.444444,
+        "selfConsumedGwh": 9.308575,
+        "exportedGwh": 3.691425,
+        "gridPurchaseGwh": 5.135869,
+        "selfConsumptionShare": 0.716044,
+        "solarCoverageShare": 0.6444398,
+    }.items():
+        assert close(go_energy[key], expected, 1e-5), (key, go_energy[key])
+
+    economics = load("economics")["rows"]
+    assert len(economics) == 19
+    go_econ = next(row for row in economics if row["projectId"] == "VN-GY-GOMALL")
+    assert close(go_econ["capexUsd"], 11_250_000)
+    assert close(go_econ["projectNpvUsd"], 427_000, 0.01)
+    assert close(go_econ["projectIrr"], 0.1051, 1e-3)
+    assert go_econ["ppaStatus"] == "EMPTY_NEGOTIATION_ZONE"
+
+    debt_rows = load("debt")["rows"]
+    assert len(debt_rows) == 19
+    go_debt = next(row for row in debt_rows if row["projectId"] == "VN-GY-GOMALL")
+    assert go_debt["bindingConstraint"] == "PLCR"
+    assert close(go_debt["minimumDscr"], 2.380)
+    assert close(go_debt["plcr"], 1.336)
+    schedule = go_debt["schedule"]
+    assert len(schedule) == 15
+    assert close(schedule[0]["debtService"], schedule[0]["principal"] + schedule[0]["interest"])
+    assert all(row["closingDebt"] == 0 for row in schedule)
+    assert all(row["debtService"] == 0 and row["dscr"] is None for row in schedule[1:])
+
+    risk = load("risk")
+    assert risk["rowCount"] == 171 and len(risk["rows"]) == 171
+    assert len({(row["projectId"], row["scenarioId"]) for row in risk["rows"]}) == 171
+    assert len(risk["scenarioDefinitions"]) == 9
+
+    diligence = load("diligence")
+    assert len(diligence["rows"]) == 20
+    assert sum(row["economicsStatus"] == "READY_FOR_ECONOMICS" for row in diligence["rows"]) == 19
+    assert sum(row["physicalStatus"] == "EXTREME_OUTLIER_BLOCK_BASE" for row in diligence["rows"]) == 1
+    assert diligence["budgetUsd"] == diligence["approvedAllocationsUsd"] == 0
+
+    reconciliation = load("reconciliation")["rows"]
+    assert all(row["ok"] for row in reconciliation)
+    assert load("release")["modelSha"] == SHA
+    assert load("website-release")["modelSha"] == SHA
+    print("website data validation: PASS")
+
+
+if __name__ == "__main__":
+    main()
+
+

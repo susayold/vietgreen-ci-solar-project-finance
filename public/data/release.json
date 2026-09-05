@@ -1,0 +1,17 @@
+{
+  "modelVersion": "V5.1.3",
+  "modelTag": "v5.1.3-recruiter-final",
+  "modelSha": "ff69e15d211ff1abc88200574242ed2f1db49074",
+  "modelFrozen": true,
+  "regressionTests": 26,
+  "semanticControls": 26,
+  "deterministicBuild": "PASS",
+  "modelRunId": 33629919973,
+  "modelJobId": 100246555216,
+  "workbookSheets": 28
+}
+
+
+
+
+

@@ -1,7 +1,5 @@
 'use client';
 
-export const dynamic = 'force-static';
-
 import {
   AlertTriangle,
   ArrowDown,
@@ -28,11 +26,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
 
+const PROJECTS_URL = '/data/projects.json';
+const SUMMARY_URL = '/data/summary.json';
 const FROZEN_SHA = 'ff69e15d211ff1abc88200574242ed2f1db49074';
-const RAW_BASE = `https://raw.githubusercontent.com/susayold/vietgreen-ci-solar-project-finance/${FROZEN_SHA}`;
-const PROJECTS_URL = `${RAW_BASE}/website/data/projects.json`;
-const MASTER_URL = `${RAW_BASE}/data/public/project_master_real.csv`;
-const SUMMARY_URL = `${RAW_BASE}/website/data/shared-summary.json`;
 
 type PhysicalStatus =
   | 'PASS_WITHIN_SCREENING_BAND'
@@ -63,6 +59,16 @@ type RemoteProject = {
   country: string;
   capacity_kwp_observed: string;
   generation_kwh_observed: string;
+  observedGenerationGwh?: number;
+  capacityMw?: number;
+  specificYieldKwhKwp?: number;
+  developer?: string;
+  offtaker?: string;
+  city?: string;
+  subnational_region?: string;
+  business_model?: string;
+  evidence_grade?: string;
+  source_quality_grade?: string;
   physicalStatus: PhysicalStatus;
   technicalDataBlocked: boolean;
   source_id: string;
@@ -76,7 +82,6 @@ type Summary = {
   technicalBlockedRecords: number;
 };
 
-type MasterRow = Record<string, string>;
 type ProjectPayload = { projects: RemoteProject[] };
 
 const EMPTY_SUMMARY: Summary = {
@@ -117,76 +122,29 @@ const formatNumber = (value: number, digits = 0) =>
     maximumFractionDigits: digits,
   });
 
-function parseCsv(text: string): MasterRow[] {
-  const rows: string[][] = [];
-  let row: string[] = [];
-  let field = '';
-  let quoted = false;
-  for (let index = 0; index < text.length; index += 1) {
-    const char = text[index];
-    const next = text[index + 1];
-    if (char === '"' && quoted && next === '"') {
-      field += '"';
-      index += 1;
-    } else if (char === '"') quoted = !quoted;
-    else if (char === ',' && !quoted) {
-      row.push(field);
-      field = '';
-    } else if ((char === '\n' || char === '\r') && !quoted) {
-      if (char === '\r' && next === '\n') index += 1;
-      row.push(field);
-      if (row.some((cell) => cell.trim())) rows.push(row);
-      row = [];
-      field = '';
-    } else field += char;
-  }
-  if (field || row.length) {
-    row.push(field);
-    rows.push(row);
-  }
-  const headers = rows.shift()?.map((value) => value.trim()) ?? [];
-  return rows.map((values) =>
-    Object.fromEntries(
-      headers.map((header, index) => [header, values[index]?.trim() ?? '']),
-    ),
-  );
-}
-
-function mergeRecords(
-  projects: RemoteProject[],
-  masterRows: MasterRow[],
-): ProjectRecord[] {
-  const masterById = new Map(masterRows.map((row) => [row.project_id, row]));
+function normalizeRecords(projects: RemoteProject[]): ProjectRecord[] {
   return projects.map((project) => {
-    const master = masterById.get(project.project_id) ?? {};
-    const capacity = Number(project.capacity_kwp_observed) / 1000;
-    const generation = Number(project.generation_kwh_observed) / 1_000_000;
+    const capacity = Number(project.capacityMw ?? Number(project.capacity_kwp_observed) / 1000);
+    const generation = Number(project.observedGenerationGwh ?? Number(project.generation_kwh_observed) / 1_000_000);
     const specificYield = capacity ? (generation * 1000) / capacity : 0;
-    const physicalStatus: PhysicalStatus =
-      project.physicalStatus === 'EXTREME_OUTLIER_BLOCK_BASE' ||
-      specificYield > 3200
-        ? 'EXTREME_OUTLIER_BLOCK_BASE'
-        : specificYield < 900
-          ? 'LOW_YIELD_REVIEW'
-          : 'PASS_WITHIN_SCREENING_BAND';
     return {
       projectId: project.project_id,
       projectName: project.project_name,
       country: project.country,
-      developer: master.developer || 'Not disclosed',
-      offtaker: master.offtaker || 'Not disclosed',
-      city: master.city || master.subnational_region || '—',
-      businessModel: master.business_model || '—',
+      developer: project.developer || 'Not disclosed',
+      offtaker: project.offtaker || 'Not disclosed',
+      city: project.city || project.subnational_region || '—',
+      businessModel: project.business_model || '—',
       capacityMw: capacity,
       generationGwh: generation,
-      yield: specificYield,
-      physicalStatus,
+      yield: Number(project.specificYieldKwhKwp ?? specificYield),
+      physicalStatus: project.physicalStatus || 'PASS_WITHIN_SCREENING_BAND',
       economicsStatus: project.technicalDataBlocked
         ? 'TECHNICAL_DATA_BLOCKED'
         : 'READY_FOR_ECONOMICS',
-      evidenceGrade: master.evidence_grade || '—',
-      sourceQualityGrade: master.source_quality_grade || '—',
-      sourceId: project.source_id || master.primary_source_id || '—',
+      evidenceGrade: project.evidence_grade || '—',
+      sourceQualityGrade: project.source_quality_grade || '—',
+      sourceId: project.source_id || '—',
     };
   });
 }
@@ -219,12 +177,12 @@ function Header() {
   const items = [
     ['Overview', '/'],
     ['Projects', '/projects'],
-    ['Energy', '#'],
-    ['Economics', '#'],
-    ['Debt', '#'],
-    ['Risk', '#'],
-    ['Diligence', '#'],
-    ['Model', '#'],
+    ['Energy', '/energy'],
+    ['Economics', '/economics'],
+    ['Debt', '/debt'],
+    ['Risk', '/risk'],
+    ['Diligence', '/diligence'],
+    ['Model', '/model-evidence'],
   ];
   return (
     <header className="projects-header">
@@ -565,14 +523,10 @@ export default function ProjectsPage() {
     let active = true;
     Promise.all([
       fetchJson<ProjectPayload>(PROJECTS_URL),
-      fetch(MASTER_URL).then((response) => response.text()),
       fetchJson<Partial<Summary>>(SUMMARY_URL),
     ])
-      .then(([projectPayload, csv, summaryPayload]) => {
-        const nextRecords = mergeRecords(
-          projectPayload.projects,
-          parseCsv(csv),
-        );
+      .then(([projectPayload, summaryPayload]) => {
+        const nextRecords = normalizeRecords(projectPayload.projects);
         if (!nextRecords.length || nextRecords.length !== 20)
           throw new Error(
             'DATA RECONCILIATION ERROR — authoritative project count is not 20.',
@@ -1392,3 +1346,5 @@ function MetricLine({
     </div>
   );
 }
+
+
