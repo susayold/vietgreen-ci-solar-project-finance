@@ -357,11 +357,7 @@ export default function RiskPage() {
           <Link href="/">Overview</Link>
           <Link href="/projects">Projects &amp; Data</Link>
           <Link href="/energy">Energy &amp; Physical</Link>
-          <Link href="/economics">Finance⌄</Link>
-          <Link href="/debt">Debt</Link>
-          <Link href="/risk" className="active">
-            Risk &amp; Scenarios
-          </Link>
+          <Link href="/economics" className="active">Finance</Link>
           <Link href="/diligence">Diligence</Link>
           <Link href="/model-evidence">Model &amp; Evidence</Link>
         </nav>
@@ -1056,5 +1052,4 @@ export default function RiskPage() {
     </main>
   );
 }
-
 

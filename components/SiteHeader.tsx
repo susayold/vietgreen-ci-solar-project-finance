@@ -8,9 +8,7 @@ export const NAV = [
   { label: 'Overview', href: '/' },
   { label: 'Projects & Data', href: '/projects' },
   { label: 'Energy & Physical', href: '/energy' },
-  { label: 'Economics & PPA', href: '/economics' },
-  { label: 'Debt & Credit', href: '/debt' },
-  { label: 'Risk & Scenarios', href: '/risk' },
+  { label: 'Finance', href: '/economics' },
   { label: 'Diligence', href: '/diligence' },
   { label: 'Model & Evidence', href: '/model-evidence' },
 ] as const;
@@ -63,6 +61,5 @@ const PROJECT_LINKS = new Set([
   '/risk',
   '/diligence',
 ]);
-
 
 

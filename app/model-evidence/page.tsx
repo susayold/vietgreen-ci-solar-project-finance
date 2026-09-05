@@ -372,9 +372,7 @@ function Header() {
         <Link href="/">Overview</Link>
         <Link href="/projects">Projects &amp; Data</Link>
         <Link href="/energy">Energy &amp; Physical</Link>
-        <Link href="/economics">Economics &amp; PPA</Link>
-        <Link href="/debt">Debt &amp; Credit</Link>
-        <Link href="/risk">Risk &amp; Scenarios</Link>
+        <Link href="/economics">Finance</Link>
         <Link href="/diligence">Diligence</Link>
         <Link className="active" href="/model-evidence">
           Model &amp; Evidence
@@ -1362,4 +1360,3 @@ export default function ModelEvidencePage() {
     </main>
   );
 }
-

@@ -297,13 +297,9 @@ export default function DebtPage() {
         </Link>
         <nav>
           <Link href="/">Overview</Link>
-          <Link href="/projects">Projects</Link>
-          <Link href="/energy">Energy</Link>
-          <Link href="/economics">Economics</Link>
-          <Link href="/debt" className="active">
-            Debt
-          </Link>
-          <Link href="/risk">Risk</Link>
+          <Link href="/projects">Projects &amp; Data</Link>
+          <Link href="/energy">Energy &amp; Physical</Link>
+          <Link href="/economics" className="active">Finance</Link>
           <Link href="/diligence">Diligence</Link>
           <Link href="/model-evidence">Model &amp; Evidence</Link>
         </nav>
@@ -853,5 +849,4 @@ export default function DebtPage() {
     </main>
   );
 }
-
 

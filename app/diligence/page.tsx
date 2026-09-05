@@ -217,9 +217,9 @@ function Header() {
     ['Overview', '/'],
     ['Projects & Data', '/projects'],
     ['Energy & Physical', '/energy'],
-    ['Finance⌄', '/economics'],
+    ['Finance', '/economics'],
     ['Diligence', '/diligence'],
-    ['Model & Evidence', '#'],
+    ['Model & Evidence', '/model-evidence'],
   ];
   return (
     <header className="diligence-header">
@@ -1389,5 +1389,4 @@ export default function DiligencePage() {
     </main>
   );
 }
-
 

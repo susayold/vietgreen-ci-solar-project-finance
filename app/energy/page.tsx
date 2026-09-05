@@ -241,7 +241,7 @@ export default function EnergyPage() {
           <Link href="/">Overview</Link>
           <Link href="/projects">Projects &amp; Data</Link>
           <Link className="active" href="/energy">
-            Energy &amp; Physical Model
+            Energy &amp; Physical
           </Link>
           <Link href="/economics">
             Finance <ChevronDown size={13} />
@@ -856,5 +856,4 @@ export default function EnergyPage() {
     </main>
   );
 }
-
 

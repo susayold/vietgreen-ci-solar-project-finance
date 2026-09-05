@@ -176,21 +176,19 @@ function Brand() {
 function Header() {
   const items = [
     ['Overview', '/'],
-    ['Projects', '/projects'],
-    ['Energy', '/energy'],
-    ['Economics', '/economics'],
-    ['Debt', '/debt'],
-    ['Risk', '/risk'],
+    ['Projects & Data', '/projects'],
+    ['Energy & Physical', '/energy'],
+    ['Finance', '/economics'],
     ['Diligence', '/diligence'],
-    ['Model', '/model-evidence'],
+    ['Model & Evidence', '/model-evidence'],
   ];
   return (
     <header className="projects-header">
       <Brand />
-      <nav aria-label="Primary navigation">
+      <nav className="projects-nav" aria-label="Primary navigation">
         {items.map(([label, href]) => (
           <a
-            className={label === 'Projects' ? 'active' : ''}
+            className={label === 'Projects & Data' ? 'active' : ''}
             href={href}
             key={label}
           >
@@ -1346,5 +1344,4 @@ function MetricLine({
     </div>
   );
 }
-
 
