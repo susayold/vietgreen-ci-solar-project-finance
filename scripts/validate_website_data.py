@@ -62,38 +62,68 @@ def main():
     assert close(go_econ["projectNpvUsd"], 427_000, 0.01)
     assert close(go_econ["projectIrr"], 0.1051, 1e-3)
     assert go_econ["ppaStatus"] == "EMPTY_NEGOTIATION_ZONE"
+    assert close(go_econ["equityNpvUsd"], -242_000, 0.01)
+    assert close(go_econ["equityIrr"], 0.1316, 1e-3)
+    assert close(go_econ["customerCeilingVndKwh"], 3460)
+    assert close(go_econ["sponsorFloorVndKwh"], 3575.84)
+    assert close(go_econ["lenderFloorVndKwh"], 3300.14)
+    assert close(go_econ["negotiationGapVndKwh"], 115.84)
 
     debt_rows = load("debt")["rows"]
     assert len(debt_rows) == 19
     go_debt = next(row for row in debt_rows if row["projectId"] == "VN-GY-GOMALL")
-    assert go_debt["bindingConstraint"] == "PLCR"
-    assert close(go_debt["minimumDscr"], 2.380)
-    assert close(go_debt["plcr"], 1.336)
+    assert go_debt["bindingConstraint"] == "LEVERAGE"
+    assert close(go_debt["debtCapacityUsd"], 7_875_000)
+    assert close(go_debt["equityRequirementUsd"], 3_375_000)
+    assert close(go_debt["leverage"], 0.70)
+    assert close(go_debt["minimumDscr"], 1.35)
+    assert close(go_debt["llcr"], 1.3772)
+    assert close(go_debt["plcr"], 1.6645)
     schedule = go_debt["schedule"]
     assert len(schedule) == 15
     assert close(schedule[0]["debtService"], schedule[0]["principal"] + schedule[0]["interest"])
-    assert all(row["closingDebt"] == 0 for row in schedule)
-    assert all(row["debtService"] == 0 and row["dscr"] is None for row in schedule[1:])
+    assert schedule[0]["openingDebt"] > schedule[-1]["closingDebt"]
+    assert all(row["debtService"] > 0 for row in schedule)
+    assert schedule[-1]["closingDebt"] == 0
 
     risk = load("risk")
     assert risk["rowCount"] == 171 and len(risk["rows"]) == 171
     assert len({(row["projectId"], row["scenarioId"]) for row in risk["rows"]}) == 171
+    assert all(row["sourceStatus"] == "MODEL_OUTPUT" for row in risk["rows"])
     assert len(risk["scenarioDefinitions"]) == 9
+    go_risk = {row["scenarioId"]: row for row in risk["rows"] if row["projectId"] == "VN-GY-GOMALL"}
+    for scenario, expected in {
+        "BASE": (1.35, 1.3772, 1.6645),
+        "P90_ENERGY": (1.2062, 1.2330, 1.4890),
+        "CAPEX_OVERRUN": (1.3368, 1.3675, 1.6509),
+        "INTEREST_RATE_SHOCK": (1.1675, 1.3772, 1.6645),
+        "COD_DELAY": (0.0, 1.2272, 1.5341),
+        "OPEX_INFLATION": (1.3221, 1.3533, 1.6333),
+        "OFFTAKER_NONPAYMENT": (0.9904, 1.0168, 1.2257),
+        "OFFTAKER_TERMINATION": (0.0, 0.1592, 0.1592),
+        "COMBINED_DOWNSIDE": (0.0, 1.0904, 1.3598),
+    }.items():
+        assert scenario in go_risk
+        assert all(close(go_risk[scenario][key], value) for key, value in zip(("minimumDscr", "llcr", "plcr"), expected))
 
     diligence = load("diligence")
-    assert len(diligence["rows"]) == 20
+    assert len(diligence["rows"]) == 19
     assert sum(row["economicsStatus"] == "READY_FOR_ECONOMICS" for row in diligence["rows"]) == 19
-    assert sum(row["physicalStatus"] == "EXTREME_OUTLIER_BLOCK_BASE" for row in diligence["rows"]) == 1
+    assert sum(row["physicalStatus"] == "EXTREME_OUTLIER_BLOCK_BASE" for row in diligence["rows"]) == 0
+    assert len(diligence["technicalValidationTrack"]) == 1
+    assert diligence["technicalValidationTrack"][0]["projectId"] == "IN-FPEL-ARISUDHANA"
     assert diligence["budgetUsd"] == diligence["approvedAllocationsUsd"] == 0
 
     reconciliation = load("reconciliation")["rows"]
     assert all(row["ok"] for row in reconciliation)
     assert load("release")["modelSha"] == SHA
-    assert load("website-release")["modelSha"] == SHA
+    website_release = load("website-release")
+    assert website_release["modelSha"] == SHA
+    assert website_release["websiteSha"] not in {"pending-build-sha", "WEBSITE_SOURCE_PENDING"}
+    assert website_release["websiteRunId"] not in {"pending-run-id", "CI_PENDING"}
     print("website data validation: PASS")
 
 
 if __name__ == "__main__":
     main()
-
 

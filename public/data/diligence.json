@@ -257,24 +257,6 @@
       "capitalAllocatedUsd": 0
     },
     {
-      "projectId": "IN-FPEL-ARISUDHANA",
-      "projectName": "FPEL Arisudhana rooftop",
-      "country": "India",
-      "capacityMw": 2.09,
-      "physicalStatus": "EXTREME_OUTLIER_BLOCK_BASE",
-      "economicsStatus": "TECHNICAL_DATA_BLOCKED",
-      "commercialStatus": "NOT ASSESSED",
-      "creditStatus": "NOT ASSESSED",
-      "riskStatus": "TECHNICAL_BLOCK",
-      "evidenceStatus": "OPEN",
-      "nextActions": [
-        "ENGINEERING_VALIDATION"
-      ],
-      "diligencePriority": "TECHNICAL",
-      "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
-      "capitalAllocatedUsd": 0
-    },
-    {
       "projectId": "IN-CLEANTECH-EXIDE-HALDIA",
       "projectName": "Exide Haldia rooftop",
       "country": "India",
@@ -387,7 +369,3 @@
     }
   ]
 }
-
-
-
-

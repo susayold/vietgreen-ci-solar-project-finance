@@ -18,7 +18,15 @@ export type WebsiteDataFile =
 export async function loadWebsiteData<T>(
   file: WebsiteDataFile,
 ): Promise<T> {
-  const response = await fetch(`/data/${file}.json`, {
+  // GitHub Pages serves the app below /vietgreen-ci-solar-project-finance,
+  // while the Sites preview serves it from /. Resolve the payload relative to
+  // the current host so both deployments use the same data contract.
+  const basePath =
+    typeof window !== 'undefined' &&
+    window.location.pathname.startsWith('/vietgreen-ci-solar-project-finance')
+      ? '/vietgreen-ci-solar-project-finance'
+      : '';
+  const response = await fetch(`${basePath}/data/${file}.json`, {
     cache: 'no-store',
   });
   if (!response.ok) {
@@ -30,6 +38,5 @@ export async function loadWebsiteData<T>(
 export function unavailable(value: unknown): value is null | undefined {
   return value === null || value === undefined || value === '';
 }
-
 
 

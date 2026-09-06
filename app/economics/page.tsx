@@ -66,6 +66,8 @@ const vnd = (value?: number | null) =>
   value == null
     ? 'NOT RESOLVED'
     : `VND ${value.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}`;
+const percent = (value?: number | null) =>
+  value == null ? 'NOT DISCLOSED' : `${(value * 100).toFixed(2)}%`;
 function Heading({
   n,
   title,
@@ -269,6 +271,12 @@ export default function EconomicsPage() {
   const decision =
     reference?.decision ??
     'INDETERMINATE_MISSING_COMMERCIAL_DATA';
+  const emptyZoneCount = econRows.filter(
+    (row) => row.ppaStatus === 'EMPTY_NEGOTIATION_ZONE',
+  ).length;
+  const unresolvedCount = econRows.filter(
+    (row) => row.ppaStatus === 'NOT_RESOLVED',
+  ).length;
   const changeProject = (value: string) => {
     setSelectedId(value);
     window.history.replaceState(
@@ -346,7 +354,7 @@ export default function EconomicsPage() {
             </div>
             <div>
               <span>PPA STATUS</span>
-              <b className="warn">INSUFFICIENT_DATA</b>
+              <b className="warn">{reference?.ppaStatus ?? 'NOT RESOLVED'}</b>
             </div>
             <footer>FRONTIER_ONLY · NOT ACTUAL PPA</footer>
           </aside>
@@ -398,7 +406,7 @@ export default function EconomicsPage() {
             />
             <KPI
               icon={Percent}
-              value={isGoMall ? 'VND 3,460/kWh' : 'NOT DISCLOSED'}
+              value={isGoMall ? vnd(reference?.customerCeilingVndKwh) + '/kWh' : 'NOT DISCLOSED'}
               label="Reference Tariff"
               sub={
                 isGoMall ? 'Customer ceiling benchmark' : 'No project tariff'
@@ -413,11 +421,11 @@ export default function EconomicsPage() {
             />
             <KPI
               icon={LineChart}
-              value={isGoMall ? 'NO POSITIVE IRR' : 'NOT AVAILABLE'}
+              value={isGoMall ? percent(reference?.projectIrr) : 'NOT AVAILABLE'}
               label="Project IRR"
               sub={
                 isGoMall
-                  ? 'Raw frozen value: -0.99'
+                  ? 'Frozen model output'
                   : 'Frozen output unavailable'
               }
               tone="negative"
@@ -431,11 +439,11 @@ export default function EconomicsPage() {
             />
             <KPI
               icon={Scale}
-              value={isGoMall ? 'NO POSITIVE IRR' : 'NOT AVAILABLE'}
+              value={isGoMall ? percent(reference?.equityIrr) : 'NOT AVAILABLE'}
               label="Equity IRR"
               sub={
                 isGoMall
-                  ? 'Raw frozen value: -0.99'
+                  ? 'Frozen model output'
                   : 'Frozen output unavailable'
               }
               tone="negative"
@@ -530,7 +538,7 @@ export default function EconomicsPage() {
                     NPV (USD)<strong>{usdM(reference?.projectNpvUsd)}</strong>
                   </span>
                   <span>
-                    IRR<strong>NO POSITIVE IRR</strong>
+                    IRR<strong>{percent(reference?.projectIrr)}</strong>
                   </span>
                   <span>
                     Payback<strong>No payback</strong>
@@ -545,7 +553,7 @@ export default function EconomicsPage() {
                     NPV (USD)<strong>{usdM(reference?.equityNpvUsd)}</strong>
                   </span>
                   <span>
-                    IRR<strong>NO POSITIVE IRR</strong>
+                    IRR<strong>{percent(reference?.equityIrr)}</strong>
                   </span>
                   <span>
                     Payback<strong>No payback</strong>
@@ -579,8 +587,8 @@ export default function EconomicsPage() {
                   Project NPV<strong>{usdM(reference?.projectNpvUsd)}</strong>
                 </span>
                 <span>
-                  Project IRR<strong>NO POSITIVE IRR</strong>
-                  <small>Raw: -0.99</small>
+                  Project IRR<strong>{percent(reference?.projectIrr)}</strong>
+                  <small>Frozen model output</small>
                 </span>
                 <span>
                   Discount Rate<strong>10%</strong>
@@ -609,8 +617,8 @@ export default function EconomicsPage() {
                   Equity NPV<strong>{usdM(reference?.equityNpvUsd)}</strong>
                 </span>
                 <span>
-                  Equity IRR<strong>NO POSITIVE IRR</strong>
-                  <small>Raw: -0.99</small>
+                  Equity IRR<strong>{percent(reference?.equityIrr)}</strong>
+                  <small>Frozen model output</small>
                 </span>
                 <span>
                   Equity Hurdle<strong>14%</strong>
@@ -676,25 +684,24 @@ export default function EconomicsPage() {
                 <span>
                   <b>FULL THREE-SIDED FRONTIER CANNOT BE CONCLUDED</b>
                   <small>
-                    The sponsor floor is unresolved. No numeric zone width is
-                    calculated.
+                    The frozen model resolves the sponsor floor at VND 3,575.84/kWh;
+                    the 115.84/kWh gap leaves the negotiation zone empty.
                   </small>
                 </span>
               </div>
             </div>
             <div className="commercial-status">
               <h3>COMMERCIAL FEASIBILITY STATUS</h3>
-              <strong>INSUFFICIENT_DATA</strong>
+              <strong>{reference?.ppaStatus ?? 'NOT RESOLVED'}</strong>
               <small className="status-decision">{decision}</small>
               <p>
-                Customer and lender constraints are available/model-resolved,
-                but sponsor floor is not supportable from the current
-                public-data reference case.
+                Customer, sponsor and lender thresholds are model-resolved, but
+                the reference case does not establish an executable PPA.
               </p>
               <ul>
-                <li>Customer ceiling: VND 3,460/kWh</li>
-                <li>Sponsor floor: not resolved</li>
-                <li>Lender floor: ~VND 16,159.04/kWh</li>
+                <li>Customer ceiling: {vnd(reference?.customerCeilingVndKwh)}/kWh</li>
+                <li>Sponsor floor: {vnd(reference?.sponsorFloorVndKwh)}/kWh</li>
+                <li>Lender floor: {vnd(reference?.lenderFloorVndKwh)}/kWh</li>
               </ul>
               <div className="status-chip">
                 No viable negotiated PPA conclusion is claimed.
@@ -711,7 +718,7 @@ export default function EconomicsPage() {
             <div className="stakeholder-card customer">
               <UserRound />
               <h3>Customer Ceiling</h3>
-              <strong>VND 3,460 / kWh</strong>
+              <strong>{vnd(reference?.customerCeilingVndKwh)} / kWh</strong>
               <small>BENCHMARK_ASSUMPTION</small>
               <p>
                 Market/reference customer-side ceiling, not a confidential
@@ -721,22 +728,21 @@ export default function EconomicsPage() {
             <div className="stakeholder-card sponsor">
               <Building2 />
               <h3>Sponsor Floor</h3>
-              <strong>NOT RESOLVED</strong>
-              <small>INSUFFICIENT PUBLIC-DATA SUPPORT</small>
+              <strong>{vnd(reference?.sponsorFloorVndKwh)}</strong>
+              <small>MODEL-RESOLVED SPONSOR HURDLE</small>
               <p>
-                The solver does not produce a supportable sponsor floor within
-                the reference framework. The website preserves that missing
-                result.
+                The frozen reference case requires this tariff to meet the 14%
+                sponsor hurdle; it is not an executed commercial term.
               </p>
             </div>
             <div className="stakeholder-card lender">
               <Landmark />
               <h3>Lender Floor</h3>
-              <strong>~VND 16,159.04 / kWh</strong>
+              <strong>{vnd(reference?.lenderFloorVndKwh)} / kWh</strong>
               <small>STANDARDIZED UNDERWRITING OUTPUT</small>
               <p>
-                Required for model-supported debt capacity to reach the
-                standardized leverage target. It is not a lender quote.
+                Required by the model frontier for the standardized credit case;
+                it is not a lender quote or commitment.
               </p>
             </div>
           </div>
@@ -810,18 +816,18 @@ export default function EconomicsPage() {
             <div className="portfolio-status">
               <div>
                 <i className="dot amber" />
-                <b>{Math.max(19, econRows.length || 19)}</b>
+                <b>{unresolvedCount}</b>
                 <span>INSUFFICIENT_DATA</span>
               </div>
               <div>
                 <i className="dot green" />
-                <b>0</b>
+                <b>{econRows.filter((row) => row.ppaStatus === 'FEASIBLE_ZONE').length}</b>
                 <span>FEASIBLE_ZONE</span>
               </div>
               <div>
                 <i className="dot red" />
-                <b>0</b>
-                <span>EMPTY_ZONE</span>
+                <b>{emptyZoneCount}</b>
+                <span>EMPTY_NEGOTIATION_ZONE</span>
               </div>
             </div>
             <div className="currency-panel">
@@ -931,5 +937,3 @@ export default function EconomicsPage() {
     </main>
   );
 }
-
-

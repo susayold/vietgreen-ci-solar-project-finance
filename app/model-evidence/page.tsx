@@ -41,23 +41,16 @@ import {
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { useState } from 'react';
-import projectsSource from '../../public/data/projects.json';
 import reconciliationSource from '../../public/data/reconciliation.json';
+import websiteReleaseSource from '../../public/data/website-release.json';
 
 const MODEL_SHA = 'ff69e15d211ff1abc88200574242ed2f1db49074';
 const MODEL_TAG = 'v5.1.3-recruiter-final';
 const REPO = 'https://github.com/susayold/vietgreen-ci-solar-project-finance';
 const DRIVE =
   'https://docs.google.com/document/d/1koSgbc1Akic6cVDFD1svmuVN9gSq8qSGUw2obfHYN80/edit';
-
-type RemoteProject = {
-  project_id: string;
-  project_name: string;
-  country: string;
-  technicalDataBlocked?: boolean;
-  physicalStatus?: string;
-  ppa_mode?: string;
-};
+const WEBSITE_SHA = websiteReleaseSource.websiteSha;
+const WEBSITE_RUN = websiteReleaseSource.websiteRunId;
 
 type Reconciliation = {
   label: string;
@@ -454,7 +447,6 @@ function LinkButton({
 export default function ModelEvidencePage() {
   // Keep the evidence page fully rendered during the build. GitHub Pages has
   // no Vinext server runtime to hydrate a loading shell after deployment.
-  const projects = projectsSource.projects as RemoteProject[];
   const reconciliation = reconciliationSource.rows as Reconciliation[];
   const [workbookGroup, setWorkbookGroup] =
     useState<keyof typeof workbookGroups>('Governance');
@@ -1220,8 +1212,8 @@ export default function ModelEvidencePage() {
                 </div>
                 <div>
                   <span>WEBSITE IDENTITY</span>
-                  <b>Current deployment</b>
-                  <small>Dynamic · website-only update</small>
+                  <b>{WEBSITE_SHA.slice(0, 12)}…</b>
+                  <small>CI-sealed website source identity · run {WEBSITE_RUN}</small>
                 </div>
               </div>
               <p className="immutable-note">

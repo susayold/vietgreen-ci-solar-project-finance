@@ -429,6 +429,7 @@ export default function RiskPage() {
             </div>
             <div className="risk-select">
               <select
+                id="risk-project"
                 value={selectedId}
                 onChange={(event) => changeProject(event.target.value)}
                 disabled={loading}
@@ -660,8 +661,8 @@ export default function RiskPage() {
                 <span>
                   <strong>Offtaker Nonpayment</strong>
                   <small>
-                    DSCR compresses to 1.766x, closest to the standardized
-                    target.
+                    DSCR compresses to 0.990x, the closest downside case to
+                    the 1.00x debt-service breakeven.
                   </small>
                 </span>
               </div>
@@ -670,8 +671,8 @@ export default function RiskPage() {
                 <span>
                   <strong>Termination is a lifetime-risk exception.</strong>
                   <small>
-                    Year 1 debt is already repaid in this case, so DSCR can
-                    remain 2.380x even while later project cash flows disappear.
+                    Termination removes operating cash flows after year 2;
+                    DSCR is 0.000x and lifetime coverage is 0.159x.
                   </small>
                 </span>
               </div>
@@ -726,9 +727,9 @@ export default function RiskPage() {
           <div className="coverage-boundary">
             <AlertTriangle size={17} />
             <span>
-              LLCR and PLCR are shown only where the frozen scenario adapter
-              exposes exact fields. No frontend reconstruction is substituted
-              for missing source metrics.
+              LLCR and PLCR are read directly from the frozen V5.1.3 scenario
+              rows. No frontend reconstruction is substituted for source
+              metrics.
             </span>
           </div>
         </section>
@@ -1052,4 +1053,3 @@ export default function RiskPage() {
     </main>
   );
 }
-

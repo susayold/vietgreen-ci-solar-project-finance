@@ -9,7 +9,7 @@
     "dev": "vinext dev",
     "build": "vinext build",
     "start": "wrangler dev --config dist/server/wrangler.json",
-    "lint": "oxlint",
+    "lint": "oxlint app lib --config .oxlintrc.json",
     "test:data": "python scripts/validate_website_data.py",
     "test:claims": "python scripts/validate_website_claims.py",
     "format": "oxfmt"
@@ -55,5 +55,4 @@
   },
   "type": "module"
 }
-
 

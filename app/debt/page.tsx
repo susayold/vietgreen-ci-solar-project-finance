@@ -102,7 +102,7 @@ function KPI({
   );
 }
 
-function CreditFlow() {
+function CreditFlow({ bindingConstraint }: { bindingConstraint?: string | null }) {
   const items = [
     ['CFADS', 'Vector'],
     ['DSCR', 'Capacity'],
@@ -116,7 +116,7 @@ function CreditFlow() {
   return (
     <div className="credit-flow">
       {items.map(([top, bottom], index) => (
-        <div key={top} className={top === 'PLCR' ? 'selected' : ''}>
+        <div key={top} className={top === bindingConstraint ? 'selected' : ''}>
           <b>{top}</b>
           <span>{bottom}</span>
           {index < items.length - 1 && <ArrowRight size={13} />}
@@ -365,6 +365,7 @@ export default function DebtPage() {
             </div>
             <div className="debt-select">
               <select
+                id="debt-project"
                 value={selectedId}
                 onChange={(event) => changeProject(event.target.value)}
                 disabled={loading}
@@ -451,7 +452,7 @@ export default function DebtPage() {
           />
           <div className="capacity-grid">
             <div className="capacity-card">
-              <CreditFlow />
+              <CreditFlow bindingConstraint={debt?.bindingConstraint} />
               <div className="leverage-callout">
                 <Scale size={24} />
                 <span>
@@ -473,18 +474,18 @@ export default function DebtPage() {
             </div>
             <div className="binding-card">
               <div className="plcr-box">
-                <b>PLCR</b>
+                <b>{debt?.bindingConstraint ?? 'NOT RESOLVED'}</b>
                 <strong>{ratio(debt?.plcr)}</strong>
                 <small>Minimum requirement {ratio(debt?.plcrMin)}</small>
                 <span>BINDING CONSTRAINT</span>
               </div>
               <div>
-                <h3>Why PLCR Binds the GO Mall Reference Case</h3>
+                <h3>Why {debt?.bindingConstraint ?? 'the selected constraint'} Binds the Reference Case</h3>
                 <p>
-                  Project-Life Coverage Ratio is the binding constraint for the
-                  frozen GO Mall reference case. Although leverage could go much
-                  higher, the life-cycle cash flows only support this level of
-                  debt while meeting all credit metrics.
+                  The frozen credit payload selects the minimum supportable
+                  capacity across DSCR, LLCR, PLCR and leverage. For this
+                  reference case, {debt?.bindingConstraint ?? 'the selected constraint'}
+                  is binding; this is standardized underwriting, not lender approval.
                 </p>
               </div>
             </div>
@@ -625,10 +626,10 @@ export default function DebtPage() {
               <div>
                 <ShieldAlert />
                 <span>
-                  <b>PLCR Is the Binding Constraint</b>
+                  <b>{debt?.bindingConstraint ?? 'Selected Constraint'} Is the Binding Constraint</b>
                   <small>
-                    Project-life coverage sets the final debt capacity in this
-                    case.
+                    The selected constraint sets the final debt capacity in this
+                    case; the full metric set remains visible above.
                   </small>
                 </span>
               </div>
@@ -849,4 +850,3 @@ export default function DebtPage() {
     </main>
   );
 }
-

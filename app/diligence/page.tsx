@@ -311,11 +311,30 @@ export default function DiligencePage() {
         decision: string;
         capitalAllocatedUsd: number;
         }>;
+        technicalValidationTrack?: Array<{
+          projectId: string;
+          projectName: string;
+          country: string;
+          capacityMw: number;
+          physicalStatus: string;
+          economicsStatus: string;
+          commercialStatus: string;
+          creditStatus: string;
+          riskStatus: string;
+          evidenceStatus: string;
+          nextActions: string[];
+          diligencePriority: string;
+          decision: string;
+          capitalAllocatedUsd: number;
+        }>;
       }>('diligence'),
       loadWebsiteData<{ projects?: RemoteProject[] }>('projects'),
     ]).then(([payload, projectPayload]) => {
         if (!active) return;
-        const rows = (payload.rows ?? []).map((row) => ({
+        const rows = [
+          ...(payload.rows ?? []),
+          ...(payload.technicalValidationTrack ?? []),
+        ].map((row) => ({
           ...projectPayload.projects?.find(
             (project) => project.project_id === row.projectId,
           ),
@@ -1389,4 +1408,3 @@ export default function DiligencePage() {
     </main>
   );
 }
-

@@ -97,7 +97,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": false,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-ALTAREA-BOLLENE-ROOF",
@@ -111,7 +111,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-ALTAREA-BOLLENE-ROOF",
@@ -125,7 +125,7 @@
       "incrementalCapexUsd": 1687500,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-ALTAREA-BOLLENE-ROOF",
@@ -139,7 +139,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": true,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-ALTAREA-BOLLENE-ROOF",
@@ -153,7 +153,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-ALTAREA-BOLLENE-ROOF",
@@ -167,7 +167,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-ALTAREA-BOLLENE-ROOF",
@@ -181,7 +181,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-ALTAREA-BOLLENE-ROOF",
@@ -195,7 +195,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-ALTAREA-BOLLENE-ROOF",
@@ -209,7 +209,7 @@
       "incrementalCapexUsd": 1687500,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-ALTAREA-PUCEUL",
@@ -223,7 +223,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": false,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-ALTAREA-PUCEUL",
@@ -237,7 +237,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-ALTAREA-PUCEUL",
@@ -251,7 +251,7 @@
       "incrementalCapexUsd": 1687500,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-ALTAREA-PUCEUL",
@@ -265,7 +265,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": true,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-ALTAREA-PUCEUL",
@@ -279,7 +279,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-ALTAREA-PUCEUL",
@@ -293,7 +293,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-ALTAREA-PUCEUL",
@@ -307,7 +307,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-ALTAREA-PUCEUL",
@@ -321,7 +321,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-ALTAREA-PUCEUL",
@@ -335,7 +335,7 @@
       "incrementalCapexUsd": 1687500,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-FRUEHAUF-AUXERRE",
@@ -349,7 +349,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": false,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-FRUEHAUF-AUXERRE",
@@ -363,7 +363,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-FRUEHAUF-AUXERRE",
@@ -377,7 +377,7 @@
       "incrementalCapexUsd": 1687500,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-FRUEHAUF-AUXERRE",
@@ -391,7 +391,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": true,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-FRUEHAUF-AUXERRE",
@@ -405,7 +405,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-FRUEHAUF-AUXERRE",
@@ -419,7 +419,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-FRUEHAUF-AUXERRE",
@@ -433,7 +433,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-FRUEHAUF-AUXERRE",
@@ -447,7 +447,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-FRUEHAUF-AUXERRE",
@@ -461,7 +461,7 @@
       "incrementalCapexUsd": 1687500,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-PANATTONI-MOISSY",
@@ -475,7 +475,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": false,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-PANATTONI-MOISSY",
@@ -489,7 +489,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-PANATTONI-MOISSY",
@@ -503,7 +503,7 @@
       "incrementalCapexUsd": 1687500,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-PANATTONI-MOISSY",
@@ -517,7 +517,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": true,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-PANATTONI-MOISSY",
@@ -531,7 +531,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-PANATTONI-MOISSY",
@@ -545,7 +545,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-PANATTONI-MOISSY",
@@ -559,7 +559,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-PANATTONI-MOISSY",
@@ -573,7 +573,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-PANATTONI-MOISSY",
@@ -587,7 +587,7 @@
       "incrementalCapexUsd": 1687500,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-SAFRAN-EVRY",
@@ -601,7 +601,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": false,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-SAFRAN-EVRY",
@@ -615,7 +615,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-SAFRAN-EVRY",
@@ -629,7 +629,7 @@
       "incrementalCapexUsd": 1687500,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-SAFRAN-EVRY",
@@ -643,7 +643,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": true,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-SAFRAN-EVRY",
@@ -657,7 +657,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-SAFRAN-EVRY",
@@ -671,7 +671,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-SAFRAN-EVRY",
@@ -685,7 +685,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-SAFRAN-EVRY",
@@ -699,7 +699,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-SAFRAN-EVRY",
@@ -713,7 +713,7 @@
       "incrementalCapexUsd": 1687500,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-STELLANTIS-CAEN",
@@ -727,7 +727,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": false,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-STELLANTIS-CAEN",
@@ -741,7 +741,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-STELLANTIS-CAEN",
@@ -755,7 +755,7 @@
       "incrementalCapexUsd": 1687500,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-STELLANTIS-CAEN",
@@ -769,7 +769,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": true,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-STELLANTIS-CAEN",
@@ -783,7 +783,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-STELLANTIS-CAEN",
@@ -797,7 +797,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-STELLANTIS-CAEN",
@@ -811,7 +811,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-STELLANTIS-CAEN",
@@ -825,7 +825,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-STELLANTIS-CAEN",
@@ -839,7 +839,7 @@
       "incrementalCapexUsd": 1687500,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-STELLANTIS-CHARLEVILLE",
@@ -853,7 +853,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": false,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-STELLANTIS-CHARLEVILLE",
@@ -867,7 +867,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-STELLANTIS-CHARLEVILLE",
@@ -881,7 +881,7 @@
       "incrementalCapexUsd": 1687500,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-STELLANTIS-CHARLEVILLE",
@@ -895,7 +895,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": true,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-STELLANTIS-CHARLEVILLE",
@@ -909,7 +909,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-STELLANTIS-CHARLEVILLE",
@@ -923,7 +923,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-STELLANTIS-CHARLEVILLE",
@@ -937,7 +937,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-STELLANTIS-CHARLEVILLE",
@@ -951,7 +951,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-STELLANTIS-CHARLEVILLE",
@@ -965,7 +965,7 @@
       "incrementalCapexUsd": 1687500,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-STELLANTIS-VALENCIENNES",
@@ -979,7 +979,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": false,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-STELLANTIS-VALENCIENNES",
@@ -993,7 +993,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-STELLANTIS-VALENCIENNES",
@@ -1007,7 +1007,7 @@
       "incrementalCapexUsd": 1687500,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-STELLANTIS-VALENCIENNES",
@@ -1021,7 +1021,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": true,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-STELLANTIS-VALENCIENNES",
@@ -1035,7 +1035,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-STELLANTIS-VALENCIENNES",
@@ -1049,7 +1049,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-STELLANTIS-VALENCIENNES",
@@ -1063,7 +1063,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-STELLANTIS-VALENCIENNES",
@@ -1077,7 +1077,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-STELLANTIS-VALENCIENNES",
@@ -1091,7 +1091,7 @@
       "incrementalCapexUsd": 1687500,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-GIVA-CELLA",
@@ -1105,7 +1105,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": false,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-GIVA-CELLA",
@@ -1119,7 +1119,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-GIVA-CELLA",
@@ -1133,7 +1133,7 @@
       "incrementalCapexUsd": 1687500,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-GIVA-CELLA",
@@ -1147,7 +1147,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": true,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-GIVA-CELLA",
@@ -1161,7 +1161,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-GIVA-CELLA",
@@ -1175,7 +1175,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-GIVA-CELLA",
@@ -1189,7 +1189,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-GIVA-CELLA",
@@ -1203,7 +1203,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-GIVA-CELLA",
@@ -1217,7 +1217,7 @@
       "incrementalCapexUsd": 1687500,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-GIVA-VISANO",
@@ -1231,7 +1231,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": false,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-GIVA-VISANO",
@@ -1245,7 +1245,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-GIVA-VISANO",
@@ -1259,7 +1259,7 @@
       "incrementalCapexUsd": 1687500,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-GIVA-VISANO",
@@ -1273,7 +1273,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": true,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-GIVA-VISANO",
@@ -1287,7 +1287,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-GIVA-VISANO",
@@ -1301,7 +1301,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-GIVA-VISANO",
@@ -1315,7 +1315,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-GIVA-VISANO",
@@ -1329,7 +1329,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-GIVA-VISANO",
@@ -1343,7 +1343,7 @@
       "incrementalCapexUsd": 1687500,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-SASOL-ITALY",
@@ -1357,7 +1357,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": false,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-SASOL-ITALY",
@@ -1371,7 +1371,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-SASOL-ITALY",
@@ -1385,7 +1385,7 @@
       "incrementalCapexUsd": 1687500,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-SASOL-ITALY",
@@ -1399,7 +1399,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": true,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-SASOL-ITALY",
@@ -1413,7 +1413,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-SASOL-ITALY",
@@ -1427,7 +1427,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-SASOL-ITALY",
@@ -1441,7 +1441,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-SASOL-ITALY",
@@ -1455,7 +1455,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-SASOL-ITALY",
@@ -1469,7 +1469,7 @@
       "incrementalCapexUsd": 1687500,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-STELLANTIS-SLOVAKIA",
@@ -1483,7 +1483,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": false,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-STELLANTIS-SLOVAKIA",
@@ -1497,7 +1497,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-STELLANTIS-SLOVAKIA",
@@ -1511,7 +1511,7 @@
       "incrementalCapexUsd": 1687500,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-STELLANTIS-SLOVAKIA",
@@ -1525,7 +1525,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": true,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-STELLANTIS-SLOVAKIA",
@@ -1539,7 +1539,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-STELLANTIS-SLOVAKIA",
@@ -1553,7 +1553,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-STELLANTIS-SLOVAKIA",
@@ -1567,7 +1567,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-STELLANTIS-SLOVAKIA",
@@ -1581,7 +1581,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-STELLANTIS-SLOVAKIA",
@@ -1595,7 +1595,7 @@
       "incrementalCapexUsd": 1687500,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "IN-AZURE-GANDHINAGAR",
@@ -1609,7 +1609,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": false,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "IN-AZURE-GANDHINAGAR",
@@ -1623,7 +1623,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "IN-AZURE-GANDHINAGAR",
@@ -1637,7 +1637,7 @@
       "incrementalCapexUsd": 1687500,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "IN-AZURE-GANDHINAGAR",
@@ -1651,7 +1651,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": true,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "IN-AZURE-GANDHINAGAR",
@@ -1665,7 +1665,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "IN-AZURE-GANDHINAGAR",
@@ -1679,7 +1679,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "IN-AZURE-GANDHINAGAR",
@@ -1693,7 +1693,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "IN-AZURE-GANDHINAGAR",
@@ -1707,7 +1707,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "IN-AZURE-GANDHINAGAR",
@@ -1721,7 +1721,7 @@
       "incrementalCapexUsd": 1687500,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "IN-CLEANMAX-TN-30MW",
@@ -1735,7 +1735,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": false,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "IN-CLEANMAX-TN-30MW",
@@ -1749,7 +1749,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "IN-CLEANMAX-TN-30MW",
@@ -1763,7 +1763,7 @@
       "incrementalCapexUsd": 1687500,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "IN-CLEANMAX-TN-30MW",
@@ -1777,7 +1777,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": true,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "IN-CLEANMAX-TN-30MW",
@@ -1791,7 +1791,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "IN-CLEANMAX-TN-30MW",
@@ -1805,7 +1805,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "IN-CLEANMAX-TN-30MW",
@@ -1819,7 +1819,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "IN-CLEANMAX-TN-30MW",
@@ -1833,7 +1833,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "IN-CLEANMAX-TN-30MW",
@@ -1847,7 +1847,7 @@
       "incrementalCapexUsd": 1687500,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "IN-CLEANTECH-EXIDE-HALDIA",
@@ -1861,7 +1861,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": false,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "IN-CLEANTECH-EXIDE-HALDIA",
@@ -1875,7 +1875,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "IN-CLEANTECH-EXIDE-HALDIA",
@@ -1889,7 +1889,7 @@
       "incrementalCapexUsd": 1687500,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "IN-CLEANTECH-EXIDE-HALDIA",
@@ -1903,7 +1903,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": true,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "IN-CLEANTECH-EXIDE-HALDIA",
@@ -1917,7 +1917,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "IN-CLEANTECH-EXIDE-HALDIA",
@@ -1931,7 +1931,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "IN-CLEANTECH-EXIDE-HALDIA",
@@ -1945,7 +1945,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "IN-CLEANTECH-EXIDE-HALDIA",
@@ -1959,7 +1959,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "IN-CLEANTECH-EXIDE-HALDIA",
@@ -1973,7 +1973,7 @@
       "incrementalCapexUsd": 1687500,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "VN-GY-GOMALL",
@@ -2113,7 +2113,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": false,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "VN-GY-LOTTEMART",
@@ -2127,7 +2127,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "VN-GY-LOTTEMART",
@@ -2141,7 +2141,7 @@
       "incrementalCapexUsd": 1687500,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "VN-GY-LOTTEMART",
@@ -2155,7 +2155,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": true,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "VN-GY-LOTTEMART",
@@ -2169,7 +2169,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "VN-GY-LOTTEMART",
@@ -2183,7 +2183,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "VN-GY-LOTTEMART",
@@ -2197,7 +2197,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "VN-GY-LOTTEMART",
@@ -2211,7 +2211,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "VN-GY-LOTTEMART",
@@ -2225,7 +2225,7 @@
       "incrementalCapexUsd": 1687500,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-PTP-CADIZ",
@@ -2239,7 +2239,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": false,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-PTP-CADIZ",
@@ -2253,7 +2253,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-PTP-CADIZ",
@@ -2267,7 +2267,7 @@
       "incrementalCapexUsd": 1687500,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-PTP-CADIZ",
@@ -2281,7 +2281,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": true,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-PTP-CADIZ",
@@ -2295,7 +2295,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-PTP-CADIZ",
@@ -2309,7 +2309,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-PTP-CADIZ",
@@ -2323,7 +2323,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-PTP-CADIZ",
@@ -2337,7 +2337,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-PTP-CADIZ",
@@ -2351,7 +2351,7 @@
       "incrementalCapexUsd": 1687500,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-CMC-ANDRYCHOW",
@@ -2365,7 +2365,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": false,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-CMC-ANDRYCHOW",
@@ -2379,7 +2379,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-CMC-ANDRYCHOW",
@@ -2393,7 +2393,7 @@
       "incrementalCapexUsd": 1687500,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-CMC-ANDRYCHOW",
@@ -2407,7 +2407,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": true,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-CMC-ANDRYCHOW",
@@ -2421,7 +2421,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-CMC-ANDRYCHOW",
@@ -2435,7 +2435,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-CMC-ANDRYCHOW",
@@ -2449,7 +2449,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-CMC-ANDRYCHOW",
@@ -2463,7 +2463,7 @@
       "incrementalCapexUsd": 0,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     },
     {
       "projectId": "EU-GY-CMC-ANDRYCHOW",
@@ -2477,15 +2477,10 @@
       "incrementalCapexUsd": 1687500,
       "principalPreserved": true,
       "interestRepriced": false,
-      "sourceStatus": "SCREENING_ADAPTER"
+      "sourceStatus": "MODEL_OUTPUT"
     }
   ],
   "scenarioCount": 9,
   "rowCount": 171,
   "claimBoundary": "Deterministic sensitivity, not a forecast or commitment."
 }
-
-
-
-
-

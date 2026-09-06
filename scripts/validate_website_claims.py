@@ -10,6 +10,11 @@ FORBIDDEN = (
     "BANKABLE: YES",
     "LENDER APPROVED: YES",
     "IC APPROVED: YES",
+    "SCREENING_ADAPTER",
+    "NO POSITIVE IRR",
+    "Raw frozen value: -0.99",
+    "pending-build-sha",
+    "pending-run-id",
 )
 
 
@@ -27,5 +32,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-
 

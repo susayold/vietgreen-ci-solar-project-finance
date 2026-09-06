@@ -30,6 +30,22 @@ jobs:
       - name: Install dependencies
         run: npm ci --no-audit --no-fund
 
+      - name: Seal website release identity
+        env:
+          WEBSITE_SOURCE_SHA: ${{ github.sha }}
+          WEBSITE_WORKFLOW_RUN_ID: ${{ github.run_id }}
+          WEBSITE_BUILD_TIME_UTC: ${{ github.run_started_at }}
+        run: python scripts/normalize_v5_1_3_snapshot.py
+
+      - name: Validate website data contract
+        run: npm run test:data
+
+      - name: Validate website claims
+        run: npm run test:claims
+
+      - name: Lint website source
+        run: npm run lint
+
       - name: Build static export
         run: npm run build
 
@@ -58,15 +74,9 @@ jobs:
                   text = pattern.sub(rf"\1{prefix}/", text)
                   path.write_text(text, encoding="utf-8")
 
-          # GitHub Pages is a static host and does not provide the Vinext
-          # server runtime needed to hydrate the client shells. Every route
-          # now has its content rendered into the build HTML, so remove the
-          # runtime bundles from all route documents to prevent a post-load
-          # blank screen while keeping the static pages readable.
-          for route_html in Path("_site").rglob("*.html"):
-              text = route_html.read_text(encoding="utf-8")
-              text = re.sub(r"<script\b[^>]*>.*?</script>", "", text, flags=re.S)
-              route_html.write_text(text, encoding="utf-8")
+          # Keep runtime bundles in the exported HTML. The app resolves its
+          # data base path at runtime, so stripping scripts would replace the
+          # rendered route with a blank, non-interactive shell.
           PY
 
       - name: Configure Pages
