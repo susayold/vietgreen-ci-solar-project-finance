@@ -1,4 +1,5 @@
 'use client';
+import SiteHeader from '@/lib/site-header';
 
 import {
   AlertTriangle,
@@ -23,7 +24,6 @@ import {
   X,
 } from 'lucide-react';
 import Image from '@/lib/site-image';
-import Link from '@/lib/site-link';
 import { useEffect, useMemo, useState } from 'react';
 
 const PROJECTS_URL = '/data/projects.json';
@@ -159,45 +159,9 @@ async function fetchJson<T>(url: string): Promise<T> {
   return response.json() as Promise<T>;
 }
 
-function Brand() {
-  return (
-    <Link className="projects-brand" href="/" aria-label="VietGreen Overview">
-      <span className="projects-brand-mark">
-        <BarChart3 size={19} />
-      </span>
-      <span>
-        <strong>VietGreen</strong>
-        <small>C&amp;I Solar Project Finance</small>
-      </span>
-    </Link>
-  );
-}
-
 function Header() {
-  const items = [
-    ['Overview', '/'],
-    ['Projects & Data', '/projects'],
-    ['Energy & Physical', '/energy'],
-    ['Finance', '/economics'],
-    ['Diligence', '/diligence'],
-    ['Model & Evidence', '/model-evidence'],
-  ];
   return (
-    <header className="projects-header">
-      <Brand />
-      <nav className="projects-nav" aria-label="Primary navigation">
-        {items.map(([label, href]) => (
-          <a
-            className={label === 'Projects & Data' ? 'active' : ''}
-            href={href}
-            key={label}
-          >
-            {label}
-          </a>
-        ))}
-      </nav>
-      <span className="projects-release">V5.1.3 · Frozen Model</span>
-    </header>
+    <SiteHeader active="/projects" />
   );
 }
 
@@ -637,7 +601,7 @@ export default function ProjectsPage() {
     <div className="projects-page">
       <Header />
       <div className="projects-status-strip">
-        <span>●</span> V5.1.3 · Frozen model · Public-data reconstruction ·
+        <span>●</span> Public-data reconstruction ·
         Projects &amp; Data
       </div>
       <section className="projects-hero">

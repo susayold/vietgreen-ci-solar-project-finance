@@ -1,4 +1,5 @@
 'use client';
+import SiteHeader from '@/lib/site-header';
 
 import Link from '@/lib/site-link';
 import {
@@ -354,26 +355,7 @@ const auditRows = [
 
 function Header() {
   return (
-    <header className="model-header">
-      <Link className="model-brand" href="/">
-        <span className="model-brand-mark">▥</span>
-        <span>
-          <strong>VietGreen</strong>
-          <small>C&amp;I Solar Project Finance</small>
-        </span>
-      </Link>
-      <nav aria-label="Primary navigation">
-        <Link href="/">Overview</Link>
-        <Link href="/projects">Projects &amp; Data</Link>
-        <Link href="/energy">Energy &amp; Physical</Link>
-        <Link href="/economics">Finance</Link>
-        <Link href="/diligence">Diligence</Link>
-        <Link className="active" href="/model-evidence">
-          Model &amp; Evidence
-        </Link>
-      </nav>
-      <span className="model-release">V5.1.3 · Frozen Model</span>
-    </header>
+    <SiteHeader active="/model-evidence" />
   );
 }
 
@@ -462,12 +444,6 @@ export default function ModelEvidencePage() {
 
   return (
     <main className="model-page">
-      <details style={{maxWidth:1420, margin:'16px auto', padding:16, border:'1px solid #c59527'}}>
-        <summary>Source reconciliation &amp; known model limitations</summary>
-        <p>Authoritative release: V5.1.3. Financial data is imported from the frozen CI artifact after checking all 15 output hashes. This verifies transcription, not commercial truth.</p>
-        <ul>{sourceAudit.findings.map(item => <li key={item}>{item}</li>)}</ul>
-        <a href={REPO + '/actions/runs/33629919973'}>Inspect source release and artifacts</a>
-      </details>
       <Header />
 
       <section className="model-hero">
@@ -526,6 +502,12 @@ export default function ModelEvidencePage() {
       </section>
 
       <div className="model-shell">
+        <details className="source-methodology-details">
+          <summary>Source checks and model limitations</summary>
+          <p>Financial results are traceable to the source model. Open assumptions and data limitations are documented below.</p>
+          <ul>{sourceAudit.findings.map(item => <li key={item}>{item}</li>)}</ul>
+          <a href={REPO + '/actions/runs/33629919973'}>Inspect supporting source files</a>
+        </details>
         <div className="model-notice">
           <Info size={17} />
           <span>
@@ -812,8 +794,7 @@ export default function ModelEvidencePage() {
             <div>
               <strong>LEGACY WORKBOOK BLOCKED</strong>
               <span>
-                Do not present the older 22-sheet workbook as current V5.1.3
-                evidence. Current frozen release: <b>28 sheets</b>.
+                The current analytical workbook contains <b>28 sheets</b>, covering inputs, calculations, outputs and quality checks.
               </span>
             </div>
           </div>
@@ -1348,7 +1329,7 @@ export default function ModelEvidencePage() {
         </section>
       </div>
       <footer className="model-footer">
-        <span>Model: V5.1.3 (Frozen)</span>
+        <span>Solar Project Finance</span>
         <span>Data as of: 31 Dec 2024</span>
         <span>Evidence: OPEN</span>
         <span>

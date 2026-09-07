@@ -1,4 +1,5 @@
 'use client';
+import SiteHeader from '@/lib/site-header';
 
 import Image from '@/lib/site-image';
 import Link from '@/lib/site-link';
@@ -70,7 +71,7 @@ const vnd = (value?: number | null) =>
     ? 'NOT RESOLVED'
     : `VND ${value.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}`;
 const percent = (value?: number | null) =>
-  value == null ? 'NO VIABLE IRR / NOT RESOLVED' : `${(value * 100).toFixed(2)}%`;
+  value == null ? 'No viable IRR' : `${(value * 100).toFixed(2)}%`;
 function Heading({
   n,
   title,
@@ -254,27 +255,7 @@ export default function EconomicsPage() {
 
   return (
     <main className="economics-page">
-      <header className="economics-header">
-        <Link href="/" className="economics-brand">
-          <span>
-            <Landmark size={22} />
-          </span>
-          <strong>
-            VietGreen<small>C&amp;I Solar Project Finance</small>
-          </strong>
-        </Link>
-        <nav>
-          <Link href="/">Overview</Link>
-          <Link href="/projects">Projects &amp; Data</Link>
-          <Link href="/energy">Energy &amp; Physical</Link>
-          <Link href="/economics" className="active">
-            Finance <ChevronDown size={13} />
-          </Link>
-          <Link href="/diligence">Diligence</Link>
-          <Link href="/model-evidence">Model &amp; Evidence</Link>
-        </nav>
-        <span className="economics-release">V5.1.3 · Frozen Model</span>
-      </header>
+      <SiteHeader active="/economics" />
       <section className="economics-hero">
         <Image
           src="/assets/projects/projects-hero.webp"
@@ -519,8 +500,7 @@ export default function EconomicsPage() {
               </div>
               <p className="small-note">
                 <Check size={14} /> CFADS = Gross Revenue − OPEX − Cash Tax. Tax
-                is modeled under frozen benchmark/statutory inputs; this is not
-                tax advice.
+                uses the assumptions documented in Model & Evidence.
               </p>
             </div>
           </div>
@@ -882,7 +862,7 @@ export default function EconomicsPage() {
         </section>
       </div>
       <footer className="economics-footer">
-        <span>Model: V5.1.3 (Frozen)</span>
+        <span>Solar Project Finance</span>
         <span>Data as of: 31 Dec 2024</span>
         <span>
           <FileCheck2 size={14} /> Evidence: OPEN

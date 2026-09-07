@@ -1,28 +1,28 @@
 /* Final detail-page tuning: keep the hero compact and the 20-row data room scannable. */
-.projects-hero {
+.projects-page .projects-hero {
   min-height: 340px;
 }
-.projects-main {
+.projects-page .projects-main {
   width: 100%;
   max-width: 1420px;
   padding-left: 3.2%;
   padding-right: 3.2%;
 }
-.project-table-wrap th {
+.projects-page .project-table-wrap th {
   position: sticky;
   top: 0;
   z-index: 1;
 }
-.projects-analysis-grid {
+.projects-page .projects-analysis-grid {
   display: grid;
   grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
   gap: 18px;
   align-items: start;
 }
-.projects-analysis-grid > .projects-section {
+.projects-page .projects-analysis-grid > .projects-section {
   min-width: 0;
 }
-.project-drawer-backdrop {
+.projects-page .project-drawer-backdrop {
   border: 0;
   max-width: none;
   max-height: none;
@@ -31,73 +31,73 @@
   margin: 0;
   padding: 0;
 }
-.drawer-backdrop-close {
+.projects-page .drawer-backdrop-close {
   position: absolute;
   inset: 0;
   border: 0;
   background: transparent;
   cursor: default;
 }
-.project-drawer {
+.projects-page .project-drawer {
   z-index: 1;
 }
-.footprint-section {
+.projects-page .footprint-section {
   border: 1px solid var(--line);
   border-radius: 7px;
   background: #fff;
   padding: 17px;
 }
-.footprint-section .projects-section-title {
+.projects-page .footprint-section .projects-section-title {
   display: block;
 }
-.footprint-section .projects-section-title > div {
+.projects-page .footprint-section .projects-section-title > div {
   align-items: flex-start;
 }
-.footprint-section .projects-section-title h2 {
+.projects-page .footprint-section .projects-section-title h2 {
   font-size: 19px;
   line-height: 1.12;
   max-width: 390px;
 }
-.footprint-section .projects-section-title p {
+.projects-page .footprint-section .projects-section-title p {
   margin: 8px 0 0;
   max-width: none;
   font-size: 11px;
   line-height: 1.35;
 }
-.footprint-layout {
+.projects-page .footprint-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 190px;
   gap: 14px;
   align-items: start;
 }
-.footprint-layout .lineage-side-metrics b {
+.projects-page .footprint-layout .lineage-side-metrics b {
   white-space: nowrap;
 }
-.footprint-layout > *, .country-chart, .country-row { min-width: 0; max-width: 100%; }
-.country-row { grid-template-columns: 54px minmax(0, 1fr) 50px; }
-.projects-nav { max-width: 100%; overflow-x: auto; }
-.footprint-section .developer-strip {
+.projects-page .footprint-layout > *, .projects-page .country-chart, .projects-page .country-row { min-width: 0; max-width: 100%; }
+.projects-page .country-row { grid-template-columns: 54px minmax(0, 1fr) 50px; }
+.projects-page .projects-nav { max-width: 100%; overflow-x: auto; }
+.projects-page .footprint-section .developer-strip {
   margin-top: 14px;
 }
 @media (max-width: 1000px) {
-  .projects-hero {
+  .projects-page .projects-hero {
     min-height: 340px;
   }
-  .projects-analysis-grid {
+  .projects-page .projects-analysis-grid {
     grid-template-columns: 1fr;
   }
-  .footprint-layout {
+  .projects-page .footprint-layout {
     grid-template-columns: minmax(0, 1fr) 185px;
   }
 }
 @media (max-width: 680px) {
-  .projects-main {
+  .projects-page .projects-main {
     padding: 20px 5% 30px;
   }
-  .projects-hero {
+  .projects-page .projects-hero {
     min-height: 520px;
   }
-  .footprint-layout {
+  .projects-page .footprint-layout {
     grid-template-columns: 1fr;
   }
 }

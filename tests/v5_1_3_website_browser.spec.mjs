@@ -12,6 +12,24 @@ const routes = [
   '/model-evidence',
 ];
 
+test('shared menu connects all eight pages and Projects onward', async ({page}) => {
+ test.setTimeout(120000);
+ await page.setViewportSize({width:1440,height:900});
+ await page.goto(base+'/');
+ for(const route of [...routes.slice(1),'/',...routes.slice(2)]){
+  const nav=page.getByRole('navigation',{name:'Primary navigation'});
+  await expect(nav.getByRole('link')).toHaveCount(8);
+  const target=base+route;
+  await nav.locator(`a[href="${new URL(target).pathname}"]`).click();
+  await expect(page).toHaveURL(new RegExp(new URL(target).pathname.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'/?(?:\\?.*)?$'));
+  await expect(page.locator('h1')).toBeVisible();
+  await expect(page.locator('.vg-header')).not.toContainText('Frozen Model');
+  if(route!=='/') await page.screenshot({path:`test-results/recruiter-${route.slice(1)}.png`,fullPage:true});
+ }
+ await page.goto(base+'/');
+ await page.screenshot({path:'test-results/recruiter-overview.png',fullPage:true});
+});
+
 for (const width of [390, 768, 1440]) {
   for (const route of routes) {
     test(`current route ${route} at ${width}px`, async ({ page }) => {

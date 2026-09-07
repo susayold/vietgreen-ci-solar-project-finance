@@ -1,4 +1,5 @@
 'use client';
+import SiteHeader from '@/lib/site-header';
 
 import Image from '@/lib/site-image';
 import Link from '@/lib/site-link';
@@ -208,42 +209,8 @@ function EmptyState() {
 }
 
 function Header() {
-  const items = [
-    ['Overview', '/'],
-    ['Projects & Data', '/projects'],
-    ['Energy & Physical', '/energy'],
-    ['Finance', '/economics'],
-    ['Diligence', '/diligence'],
-    ['Model & Evidence', '/model-evidence'],
-  ];
   return (
-    <header className="diligence-header">
-      <Link
-        className="diligence-brand"
-        href="/"
-        aria-label="VietGreen Overview"
-      >
-        <span className="diligence-brand-mark">
-          <BarChart3 size={20} />
-        </span>
-        <span>
-          <strong>VietGreen</strong>
-          <small>C&amp;I Solar Project Finance</small>
-        </span>
-      </Link>
-      <nav aria-label="Primary navigation">
-        {items.map(([label, href]) => (
-          <Link
-            className={label === 'Diligence' ? 'active' : ''}
-            href={href}
-            key={label}
-          >
-            {label}
-          </Link>
-        ))}
-      </nav>
-      <span className="diligence-release">V5.1.3 · Frozen Model</span>
-    </header>
+    <SiteHeader active="/diligence" />
   );
 }
 
@@ -1274,7 +1241,7 @@ export default function DiligencePage() {
           <SectionHeading
             number="12"
             title="Diligence → Model / Evidence Handoff"
-            note="Carry the issue register forward; do not carry an invented investment conclusion."
+            note="Review the evidence behind the analysis and the remaining diligence priorities."
           />
           <div className="handoff-flow">
             <div>
@@ -1299,7 +1266,7 @@ export default function DiligencePage() {
                 <Check size={15} /> Technical validation exception
               </p>
             </div>
-            <Link href="#top">
+            <Link href="/model-evidence">
               Review traceability <ArrowRight size={15} />
             </Link>
           </div>
@@ -1391,7 +1358,7 @@ export default function DiligencePage() {
       ) : null}
 
       <footer className="diligence-footer">
-        <span>Model: V5.1.3 (Frozen)</span>
+        <span>Solar Project Finance</span>
         <span>Data as of: 31 Dec 2024</span>
         <span>Evidence: OPEN</span>
         <span>THIS PAGE: DILIGENCE · SHORTLIST ONLY</span>

@@ -1,4 +1,5 @@
 'use client';
+import SiteHeader from '@/lib/site-header';
 
 import Image from '@/lib/site-image';
 import Link from '@/lib/site-link';
@@ -342,25 +343,7 @@ export default function RiskPage() {
 
   return (
     <main className="risk-page">
-      <header className="risk-header">
-        <Link href="/" className="risk-brand">
-          <span>
-            <Landmark size={22} />
-          </span>
-          <strong>
-            VietGreen<small>C&amp;I Solar Project Finance</small>
-          </strong>
-        </Link>
-        <nav>
-          <Link href="/">Overview</Link>
-          <Link href="/projects">Projects &amp; Data</Link>
-          <Link href="/energy">Energy &amp; Physical</Link>
-          <Link href="/economics" className="active">Finance</Link>
-          <Link href="/diligence">Diligence</Link>
-          <Link href="/model-evidence">Model &amp; Evidence</Link>
-        </nav>
-        <span className="risk-release">V5.1.3 · Frozen Model</span>
-      </header>
+      <SiteHeader active="/risk" />
 
       <section className="risk-hero">
         <Image
@@ -1040,7 +1023,7 @@ export default function RiskPage() {
         </section>
       </div>
       <footer className="risk-footer">
-        <span>Model: V5.1.3 (Frozen)</span>
+        <span>Solar Project Finance</span>
         <span>Data as of: 31 Dec 2024</span>
         <span>
           <FileCheck2 size={14} /> Evidence: OPEN

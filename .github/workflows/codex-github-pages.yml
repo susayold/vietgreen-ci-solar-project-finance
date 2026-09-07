@@ -80,6 +80,23 @@ jobs:
           # Paths are emitted by the framework basePath; never rewrite JS runtime strings.
 
       - name: Configure Pages
+        # Publish a separate, complete recruiter presentation at /showcase/.
+        run: echo "Preparing recruiter presentation"
+
+      - name: Build recruiter presentation
+        env:
+          GITHUB_PAGES: "true"
+          SITE_BASE_PATH: /vietgreen-ci-solar-project-finance/showcase
+        run: |
+          npm run build
+          mkdir -p _site/showcase
+          cp -R dist/client/. _site/showcase/
+          for route in projects energy economics debt risk diligence model-evidence; do
+            mkdir -p "_site/showcase/$route"
+            cp "_site/showcase/$route.html" "_site/showcase/$route/index.html"
+          done
+
+      - name: Configure Pages hosting
         uses: actions/configure-pages@v5
 
       - name: Upload Pages artifact

@@ -1,4 +1,5 @@
 'use client';
+import SiteHeader from '@/lib/site-header';
 
 import Image from '@/lib/site-image';
 import Link from '@/lib/site-link';
@@ -133,7 +134,9 @@ function DebtChart({ data }: { data?: DebtRow }) {
   const values = data?.schedule.map((row) => row.cfads / 1e9) ?? [];
   const bars = data?.schedule.map((row) => row.debtService / 1e9) ?? [];
   const ceiling = Math.max(1, ...values, ...bars);
-  const scale = 164 / ceiling;
+  const floor = Math.min(0, ...values, ...bars);
+  const scale = 164 / (ceiling - floor);
+  const y = (value: number) => 220 - (value - floor) * scale;
   return (
     <svg
       className="debt-line-chart"
@@ -141,16 +144,16 @@ function DebtChart({ data }: { data?: DebtRow }) {
       aria-label="CFADS versus debt service by year"
     >
       <line x1="42" y1="220" x2="700" y2="220" className="chart-axis" />
-      {[0, .25, .5, .75, 1].map(f => f*ceiling).map((tick) => (
+      {[0, .25, .5, .75, 1].map(f => floor+f*(ceiling-floor)).map((tick) => (
         <g key={tick}>
           <line
             x1="42"
             x2="700"
-            y1={220 - tick * scale}
-            y2={220 - tick * scale}
+            y1={y(tick)}
+            y2={y(tick)}
             className="chart-grid"
           />
-          <text x="0" y={224 - tick * scale}>
+          <text x="0" y={y(tick)+4}>
             {tick.toFixed(1)}
           </text>
         </g>
@@ -159,15 +162,15 @@ function DebtChart({ data }: { data?: DebtRow }) {
         <rect
           key={index}
           x={54 + index * 43}
-          y={220 - value * scale}
+          y={Math.min(y(value),y(0))}
           width="22"
-          height={Math.max(0, value * scale)}
+          height={Math.abs(value * scale)}
           className="debt-bar"
         />
       ))}
       <polyline
         points={values
-          .map((value, index) => `${65 + index * 43},${220 - value * scale}`)
+          .map((value, index) => `${65 + index * 43},${y(value)}`)
           .join(' ')}
         className="debt-polyline"
       />
@@ -175,7 +178,7 @@ function DebtChart({ data }: { data?: DebtRow }) {
         <circle
           key={index}
           cx={65 + index * 43}
-          cy={220 - value * scale}
+          cy={y(value)}
           r="3"
           className="debt-point"
         />
@@ -240,8 +243,8 @@ function RatioCard({
         </span>
       </div>
       <div className="ratio-track">
-        <i />
-        <em />
+        {Number.isFinite(parseFloat(actual)) && <i style={{left:`${Math.min(98,parseFloat(actual)/Math.max(3,parseFloat(actual),parseFloat(threshold))*100)}%`}} />}
+        <em style={{left:`${parseFloat(threshold)/Math.max(3,parseFloat(actual)||0,parseFloat(threshold))*100}%`}} />
       </div>
     </div>
   );
@@ -286,25 +289,7 @@ export default function DebtPage() {
   };
   return (
     <main className="debt-page">
-      <header className="debt-header">
-        <Link href="/" className="debt-brand">
-          <span>
-            <Landmark size={22} />
-          </span>
-          <strong>
-            VietGreen<small>C&amp;I Solar Project Finance</small>
-          </strong>
-        </Link>
-        <nav>
-          <Link href="/">Overview</Link>
-          <Link href="/projects">Projects &amp; Data</Link>
-          <Link href="/energy">Energy &amp; Physical</Link>
-          <Link href="/economics" className="active">Finance</Link>
-          <Link href="/diligence">Diligence</Link>
-          <Link href="/model-evidence">Model &amp; Evidence</Link>
-        </nav>
-        <span className="debt-release">V5.1.3 · Frozen Model</span>
-      </header>
+      <SiteHeader active="/debt" />
       <section className="debt-hero">
         <Image
           src="/assets/projects/projects-hero.webp"
@@ -534,8 +519,8 @@ export default function DebtPage() {
               <div>
                 <b>B. Principal vs Interest</b>
                 <div className="principal-visual">
-                  <span className="principal-bar" />
-                  <span className="interest-bar" />
+                  <span className="principal-bar" style={{height:`${(debt?.schedule[0]?.principal??0)/Math.max(1,debt?.schedule[0]?.principal??0,debt?.schedule[0]?.interest??0)*100}px`}} />
+                  <span className="interest-bar" style={{height:`${(debt?.schedule[0]?.interest??0)/Math.max(1,debt?.schedule[0]?.principal??0,debt?.schedule[0]?.interest??0)*100}px`}} />
                   <b>{debt?.schedule[0]?.principal == null ? 'NOT AVAILABLE' : (debt.schedule[0].principal / 1e9).toFixed(3)}</b>
                   <small>Principal · Interest</small>
                 </div>
@@ -656,7 +641,7 @@ export default function DebtPage() {
           />
           <div className="portfolio-credit-grid">
             <div className="credit-donut">
-              <div className="donut-ring">
+              <div className="donut-ring" style={{background:`conic-gradient(#19825b 0 ${debtRows.filter(r=>(r.debtCapacityUsd??0)>0).length/Math.max(1,debtRows.length)*100}%, #dfa32b 0)`}}>
                 <strong>{debtRows.length}</strong>
                 <small>Projects</small>
               </div>
@@ -822,7 +807,7 @@ export default function DebtPage() {
         </section>
       </div>
       <footer className="debt-footer">
-        <span>Model: V5.1.3 (Frozen)</span>
+        <span>Solar Project Finance</span>
         <span>Data as of: 31 Dec 2024</span>
         <span>
           <FileCheck2 size={14} /> Evidence: OPEN

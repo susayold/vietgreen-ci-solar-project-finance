@@ -1,4 +1,5 @@
 'use client';
+import SiteHeader from '@/lib/site-header';
 
 import Image from '@/lib/site-image';
 import Link from '@/lib/site-link';
@@ -227,30 +228,7 @@ export default function EnergyPage() {
 
   return (
     <main className="energy-page">
-      <header className="energy-header">
-        <Link href="/" className="energy-brand">
-          <span className="energy-brand-mark">
-            <Building2 size={20} />
-          </span>
-          <span>
-            <strong>VietGreen</strong>
-            <small>C&amp;I Solar Project Finance</small>
-          </span>
-        </Link>
-        <nav>
-          <Link href="/">Overview</Link>
-          <Link href="/projects">Projects &amp; Data</Link>
-          <Link className="active" href="/energy">
-            Energy &amp; Physical
-          </Link>
-          <Link href="/economics">
-            Finance <ChevronDown size={13} />
-          </Link>
-          <Link href="/diligence">Diligence</Link>
-          <Link href="/model-evidence">Model &amp; Evidence</Link>
-        </nav>
-        <span className="energy-release">V5.1.3 · Frozen Model</span>
-      </header>
+      <SiteHeader active="/energy" />
       <section className="energy-hero">
         <Image
           src="/assets/projects/projects-hero.webp"
@@ -844,10 +822,10 @@ export default function EnergyPage() {
         </section>
       </div>
       <footer className="energy-footer">
-        <span>Model: V5.1.3</span>
+        <span>Solar Project Finance</span>
         <span>Data as of: 31 Dec 2024</span>
         <span>
-          <Database size={14} /> Frozen Model
+          <Database size={14} /> Methodology &amp; Evidence
         </span>
         <span>
           <FileCheck2 size={14} /> Evidence: OPEN
