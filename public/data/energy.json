@@ -1,0 +1,4150 @@
+{
+  "version": "5.1.3",
+  "sourceSha": "ff69e15d211ff1abc88200574242ed2f1db49074",
+  "projects": [
+    {
+      "projectId": "EU-GY-ALTAREA-BOLLENE-ROOF",
+      "projectName": "Altarea Bollene rooftop",
+      "country": "France",
+      "capacityMw": 9.6,
+      "p50Gwh": 12.0,
+      "p90Gwh": 10.8,
+      "p99Gwh": 9.6,
+      "specificYieldKwhKwp": 1250.0,
+      "annualLoadGwh": 14.117647058823529,
+      "selfConsumedGwh": 8.911360645184141,
+      "exportedGwh": 3.08863935481586,
+      "gridPurchaseGwh": 5.206286413639388,
+      "selfConsumptionShare": 0.7426133870986784,
+      "solarCoverageShare": 0.6312213790338767,
+      "loadEvidenceLevel": "LEVEL_3_ANNUAL_ONLY",
+      "profileHours": 8760,
+      "representativeDay": [
+        {
+          "hour": 0,
+          "loadKw": 487.1866056162383,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 487.1866056162383
+        },
+        {
+          "hour": 1,
+          "loadKw": 487.1866056162383,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 487.1866056162383
+        },
+        {
+          "hour": 2,
+          "loadKw": 487.1866056162383,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 487.1866056162383
+        },
+        {
+          "hour": 3,
+          "loadKw": 487.1866056162383,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 487.1866056162383
+        },
+        {
+          "hour": 4,
+          "loadKw": 487.1866056162383,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 487.1866056162383
+        },
+        {
+          "hour": 5,
+          "loadKw": 487.1866056162383,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 487.1866056162383
+        },
+        {
+          "hour": 6,
+          "loadKw": 1988.5167576172994,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 1988.5167576172994
+        },
+        {
+          "hour": 7,
+          "loadKw": 1988.5167576172994,
+          "solarKw": 1121.2617125805368,
+          "selfConsumedKw": 1121.2617125805368,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 867.2550450367626
+        },
+        {
+          "hour": 8,
+          "loadKw": 3314.1945960288326,
+          "solarKw": 2166.111292421301,
+          "selfConsumedKw": 2166.111292421301,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 1148.0833036075314
+        },
+        {
+          "hour": 9,
+          "loadKw": 3314.1945960288326,
+          "solarKw": 3063.3439673517178,
+          "selfConsumedKw": 3063.3439673517178,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 250.85062867711486
+        },
+        {
+          "hour": 10,
+          "loadKw": 3314.1945960288326,
+          "solarKw": 3751.8148133223795,
+          "selfConsumedKw": 3314.1945960288326,
+          "exportKw": 437.62021729354683,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 11,
+          "loadKw": 3314.1945960288326,
+          "solarKw": 4184.605679932255,
+          "selfConsumedKw": 3314.1945960288326,
+          "exportKw": 870.4110839034224,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 12,
+          "loadKw": 3314.1945960288326,
+          "solarKw": 4332.222584842603,
+          "selfConsumedKw": 3314.1945960288326,
+          "exportKw": 1018.0279888137707,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 13,
+          "loadKw": 3314.1945960288326,
+          "solarKw": 4184.605679932255,
+          "selfConsumedKw": 3314.1945960288326,
+          "exportKw": 870.4110839034224,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 14,
+          "loadKw": 3314.1945960288326,
+          "solarKw": 3751.81481332238,
+          "selfConsumedKw": 3314.1945960288326,
+          "exportKw": 437.6202172935473,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 15,
+          "loadKw": 3314.1945960288326,
+          "solarKw": 3063.343967351718,
+          "selfConsumedKw": 3063.343967351718,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 250.8506286771144
+        },
+        {
+          "hour": 16,
+          "loadKw": 3314.1945960288326,
+          "solarKw": 2166.111292421301,
+          "selfConsumedKw": 2166.111292421301,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 1148.0833036075314
+        },
+        {
+          "hour": 17,
+          "loadKw": 3314.1945960288326,
+          "solarKw": 1121.261712580538,
+          "selfConsumedKw": 1121.261712580538,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 2192.932883448295
+        },
+        {
+          "hour": 18,
+          "loadKw": 1391.9617303321095,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 1391.9617303321095
+        },
+        {
+          "hour": 19,
+          "loadKw": 1391.9617303321095,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 1391.9617303321095
+        },
+        {
+          "hour": 20,
+          "loadKw": 1391.9617303321095,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 1391.9617303321095
+        },
+        {
+          "hour": 21,
+          "loadKw": 1391.9617303321095,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 1391.9617303321095
+        },
+        {
+          "hour": 22,
+          "loadKw": 487.1866056162383,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 487.1866056162383
+        },
+        {
+          "hour": 23,
+          "loadKw": 487.1866056162383,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 487.1866056162383
+        }
+      ],
+      "sourceFiles": [
+        "frozen V5.1.3 energy output",
+        "load matching summary",
+        "physical QA"
+      ],
+      "profileSource": "Frozen model: first 24 hours of profile year 2027; not measured telemetry"
+    },
+    {
+      "projectId": "EU-GY-ALTAREA-PUCEUL",
+      "projectName": "Altarea Puceul rooftop",
+      "country": "France",
+      "capacityMw": 3,
+      "p50Gwh": 3.0,
+      "p90Gwh": 2.7,
+      "p99Gwh": 2.4,
+      "specificYieldKwhKwp": 1000.0,
+      "annualLoadGwh": 3.52941176470588,
+      "selfConsumedGwh": 2.22784016129603,
+      "exportedGwh": 0.77215983870396,
+      "gridPurchaseGwh": 1.3015716034098501,
+      "selfConsumptionShare": 0.7426133870986766,
+      "solarCoverageShare": 0.6312213790338755,
+      "loadEvidenceLevel": "LEVEL_3_ANNUAL_ONLY",
+      "profileHours": 8760,
+      "representativeDay": [
+        {
+          "hour": 0,
+          "loadKw": 121.79665140405957,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 121.79665140405957
+        },
+        {
+          "hour": 1,
+          "loadKw": 121.79665140405957,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 121.79665140405957
+        },
+        {
+          "hour": 2,
+          "loadKw": 121.79665140405957,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 121.79665140405957
+        },
+        {
+          "hour": 3,
+          "loadKw": 121.79665140405957,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 121.79665140405957
+        },
+        {
+          "hour": 4,
+          "loadKw": 121.79665140405957,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 121.79665140405957
+        },
+        {
+          "hour": 5,
+          "loadKw": 121.79665140405957,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 121.79665140405957
+        },
+        {
+          "hour": 6,
+          "loadKw": 497.12918940432485,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 497.12918940432485
+        },
+        {
+          "hour": 7,
+          "loadKw": 497.12918940432485,
+          "solarKw": 280.3154281451342,
+          "selfConsumedKw": 280.3154281451342,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 216.81376125919064
+        },
+        {
+          "hour": 8,
+          "loadKw": 828.5486490072082,
+          "solarKw": 541.5278231053253,
+          "selfConsumedKw": 541.5278231053253,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 287.02082590188286
+        },
+        {
+          "hour": 9,
+          "loadKw": 828.5486490072082,
+          "solarKw": 765.8359918379294,
+          "selfConsumedKw": 765.8359918379294,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 62.712657169278714
+        },
+        {
+          "hour": 10,
+          "loadKw": 828.5486490072082,
+          "solarKw": 937.9537033305949,
+          "selfConsumedKw": 828.5486490072082,
+          "exportKw": 109.40505432338671,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 11,
+          "loadKw": 828.5486490072082,
+          "solarKw": 1046.1514199830638,
+          "selfConsumedKw": 828.5486490072082,
+          "exportKw": 217.6027709758556,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 12,
+          "loadKw": 828.5486490072082,
+          "solarKw": 1083.0556462106508,
+          "selfConsumedKw": 828.5486490072082,
+          "exportKw": 254.50699720344267,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 13,
+          "loadKw": 828.5486490072082,
+          "solarKw": 1046.1514199830638,
+          "selfConsumedKw": 828.5486490072082,
+          "exportKw": 217.6027709758556,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 14,
+          "loadKw": 828.5486490072082,
+          "solarKw": 937.953703330595,
+          "selfConsumedKw": 828.5486490072082,
+          "exportKw": 109.40505432338682,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 15,
+          "loadKw": 828.5486490072082,
+          "solarKw": 765.8359918379296,
+          "selfConsumedKw": 765.8359918379296,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 62.7126571692786
+        },
+        {
+          "hour": 16,
+          "loadKw": 828.5486490072082,
+          "solarKw": 541.5278231053253,
+          "selfConsumedKw": 541.5278231053253,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 287.02082590188286
+        },
+        {
+          "hour": 17,
+          "loadKw": 828.5486490072082,
+          "solarKw": 280.3154281451345,
+          "selfConsumedKw": 280.3154281451345,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 548.2332208620737
+        },
+        {
+          "hour": 18,
+          "loadKw": 347.99043258302737,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 347.99043258302737
+        },
+        {
+          "hour": 19,
+          "loadKw": 347.99043258302737,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 347.99043258302737
+        },
+        {
+          "hour": 20,
+          "loadKw": 347.99043258302737,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 347.99043258302737
+        },
+        {
+          "hour": 21,
+          "loadKw": 347.99043258302737,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 347.99043258302737
+        },
+        {
+          "hour": 22,
+          "loadKw": 121.79665140405957,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 121.79665140405957
+        },
+        {
+          "hour": 23,
+          "loadKw": 121.79665140405957,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 121.79665140405957
+        }
+      ],
+      "sourceFiles": [
+        "frozen V5.1.3 energy output",
+        "load matching summary",
+        "physical QA"
+      ],
+      "profileSource": "Frozen model: first 24 hours of profile year 2027; not measured telemetry"
+    },
+    {
+      "projectId": "EU-GY-FRUEHAUF-AUXERRE",
+      "projectName": "Fruehauf Auxerre carports",
+      "country": "France",
+      "capacityMw": 11,
+      "p50Gwh": 12.7,
+      "p90Gwh": 11.43,
+      "p99Gwh": 10.16,
+      "specificYieldKwhKwp": 1154.54545455,
+      "annualLoadGwh": 14.94117647058824,
+      "selfConsumedGwh": 9.431190016153149,
+      "exportedGwh": 3.2688099838467903,
+      "gridPurchaseGwh": 5.509986454435092,
+      "selfConsumptionShare": 0.7426133870986732,
+      "solarCoverageShare": 0.631221379033872,
+      "loadEvidenceLevel": "LEVEL_3_ANNUAL_ONLY",
+      "profileHours": 8760,
+      "representativeDay": [
+        {
+          "hour": 0,
+          "loadKw": 515.6058242771855,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 515.6058242771855
+        },
+        {
+          "hour": 1,
+          "loadKw": 515.6058242771855,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 515.6058242771855
+        },
+        {
+          "hour": 2,
+          "loadKw": 515.6058242771855,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 515.6058242771855
+        },
+        {
+          "hour": 3,
+          "loadKw": 515.6058242771855,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 515.6058242771855
+        },
+        {
+          "hour": 4,
+          "loadKw": 515.6058242771855,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 515.6058242771855
+        },
+        {
+          "hour": 5,
+          "loadKw": 515.6058242771855,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 515.6058242771855
+        },
+        {
+          "hour": 6,
+          "loadKw": 2104.5135684783086,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 2104.5135684783086
+        },
+        {
+          "hour": 7,
+          "loadKw": 2104.5135684783086,
+          "solarKw": 1186.6686458144015,
+          "selfConsumedKw": 1186.6686458144015,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 917.844922663907
+        },
+        {
+          "hour": 8,
+          "loadKw": 3507.5226141305143,
+          "solarKw": 2292.467784479211,
+          "selfConsumedKw": 2292.467784479211,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 1215.0548296513034
+        },
+        {
+          "hour": 9,
+          "loadKw": 3507.5226141305143,
+          "solarKw": 3242.0390321139016,
+          "selfConsumedKw": 3242.0390321139016,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 265.4835820166127
+        },
+        {
+          "hour": 10,
+          "loadKw": 3507.5226141305143,
+          "solarKw": 3970.670677432852,
+          "selfConsumedKw": 3507.5226141305143,
+          "exportKw": 463.1480633023375,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 11,
+          "loadKw": 3507.5226141305143,
+          "solarKw": 4428.707677928303,
+          "selfConsumedKw": 3507.5226141305143,
+          "exportKw": 921.1850637977891,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 12,
+          "loadKw": 3507.5226141305143,
+          "solarKw": 4584.935568958422,
+          "selfConsumedKw": 3507.5226141305143,
+          "exportKw": 1077.4129548279075,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 13,
+          "loadKw": 3507.5226141305143,
+          "solarKw": 4428.707677928303,
+          "selfConsumedKw": 3507.5226141305143,
+          "exportKw": 921.1850637977891,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 14,
+          "loadKw": 3507.5226141305143,
+          "solarKw": 3970.6706774328527,
+          "selfConsumedKw": 3507.5226141305143,
+          "exportKw": 463.1480633023384,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 15,
+          "loadKw": 3507.5226141305143,
+          "solarKw": 3242.039032113902,
+          "selfConsumedKw": 3242.039032113902,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 265.4835820166122
+        },
+        {
+          "hour": 16,
+          "loadKw": 3507.5226141305143,
+          "solarKw": 2292.467784479211,
+          "selfConsumedKw": 2292.467784479211,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 1215.0548296513034
+        },
+        {
+          "hour": 17,
+          "loadKw": 3507.5226141305143,
+          "solarKw": 1186.6686458144027,
+          "selfConsumedKw": 1186.6686458144027,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 2320.8539683161116
+        },
+        {
+          "hour": 18,
+          "loadKw": 1473.1594979348158,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 1473.1594979348158
+        },
+        {
+          "hour": 19,
+          "loadKw": 1473.1594979348158,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 1473.1594979348158
+        },
+        {
+          "hour": 20,
+          "loadKw": 1473.1594979348158,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 1473.1594979348158
+        },
+        {
+          "hour": 21,
+          "loadKw": 1473.1594979348158,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 1473.1594979348158
+        },
+        {
+          "hour": 22,
+          "loadKw": 515.6058242771855,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 515.6058242771855
+        },
+        {
+          "hour": 23,
+          "loadKw": 515.6058242771855,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 515.6058242771855
+        }
+      ],
+      "sourceFiles": [
+        "frozen V5.1.3 energy output",
+        "load matching summary",
+        "physical QA"
+      ],
+      "profileSource": "Frozen model: first 24 hours of profile year 2027; not measured telemetry"
+    },
+    {
+      "projectId": "EU-GY-PANATTONI-MOISSY",
+      "projectName": "Panattoni Moissy Cramayel",
+      "country": "France",
+      "capacityMw": 1.3,
+      "p50Gwh": 1.321,
+      "p90Gwh": 1.1889,
+      "p99Gwh": 1.0568,
+      "specificYieldKwhKwp": 1016.15384615,
+      "annualLoadGwh": 1.5541176470588198,
+      "selfConsumedGwh": 0.98099228435735,
+      "exportedGwh": 0.34000771564265,
+      "gridPurchaseGwh": 0.5731253627014699,
+      "selfConsumptionShare": 0.7426133870986753,
+      "solarCoverageShare": 0.6312213790338754,
+      "loadEvidenceLevel": "LEVEL_3_ANNUAL_ONLY",
+      "profileHours": 8760,
+      "representativeDay": [
+        {
+          "hour": 0,
+          "loadKw": 53.63112550158757,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 53.63112550158757
+        },
+        {
+          "hour": 1,
+          "loadKw": 53.63112550158757,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 53.63112550158757
+        },
+        {
+          "hour": 2,
+          "loadKw": 53.63112550158757,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 53.63112550158757
+        },
+        {
+          "hour": 3,
+          "loadKw": 53.63112550158757,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 53.63112550158757
+        },
+        {
+          "hour": 4,
+          "loadKw": 53.63112550158757,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 53.63112550158757
+        },
+        {
+          "hour": 5,
+          "loadKw": 53.63112550158757,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 53.63112550158757
+        },
+        {
+          "hour": 6,
+          "loadKw": 218.9025530677044,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 218.9025530677044
+        },
+        {
+          "hour": 7,
+          "loadKw": 218.9025530677044,
+          "solarKw": 123.43222685990743,
+          "selfConsumedKw": 123.43222685990743,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 95.47032620779696
+        },
+        {
+          "hour": 8,
+          "loadKw": 364.837588446174,
+          "solarKw": 238.4527514407116,
+          "selfConsumedKw": 238.4527514407116,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 126.38483700546237
+        },
+        {
+          "hour": 9,
+          "loadKw": 364.837588446174,
+          "solarKw": 337.2231150726349,
+          "selfConsumedKw": 337.2231150726349,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 27.614473373539056
+        },
+        {
+          "hour": 10,
+          "loadKw": 364.837588446174,
+          "solarKw": 413.0122806999053,
+          "selfConsumedKw": 364.837588446174,
+          "exportKw": 48.17469225373134,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 11,
+          "loadKw": 364.837588446174,
+          "solarKw": 460.6553419325424,
+          "selfConsumedKw": 364.837588446174,
+          "exportKw": 95.81775348636842,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 12,
+          "loadKw": 364.837588446174,
+          "solarKw": 476.9055028814233,
+          "selfConsumedKw": 364.837588446174,
+          "exportKw": 112.06791443524929,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 13,
+          "loadKw": 364.837588446174,
+          "solarKw": 460.6553419325424,
+          "selfConsumedKw": 364.837588446174,
+          "exportKw": 95.81775348636842,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 14,
+          "loadKw": 364.837588446174,
+          "solarKw": 413.0122806999054,
+          "selfConsumedKw": 364.837588446174,
+          "exportKw": 48.17469225373139,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 15,
+          "loadKw": 364.837588446174,
+          "solarKw": 337.223115072635,
+          "selfConsumedKw": 337.223115072635,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 27.614473373539
+        },
+        {
+          "hour": 16,
+          "loadKw": 364.837588446174,
+          "solarKw": 238.4527514407116,
+          "selfConsumedKw": 238.4527514407116,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 126.38483700546237
+        },
+        {
+          "hour": 17,
+          "loadKw": 364.837588446174,
+          "solarKw": 123.43222685990756,
+          "selfConsumedKw": 123.43222685990756,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 241.40536158626642
+        },
+        {
+          "hour": 18,
+          "loadKw": 153.23178714739305,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 153.23178714739305
+        },
+        {
+          "hour": 19,
+          "loadKw": 153.23178714739305,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 153.23178714739305
+        },
+        {
+          "hour": 20,
+          "loadKw": 153.23178714739305,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 153.23178714739305
+        },
+        {
+          "hour": 21,
+          "loadKw": 153.23178714739305,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 153.23178714739305
+        },
+        {
+          "hour": 22,
+          "loadKw": 53.63112550158757,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 53.63112550158757
+        },
+        {
+          "hour": 23,
+          "loadKw": 53.63112550158757,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 53.63112550158757
+        }
+      ],
+      "sourceFiles": [
+        "frozen V5.1.3 energy output",
+        "load matching summary",
+        "physical QA"
+      ],
+      "profileSource": "Frozen model: first 24 hours of profile year 2027; not measured telemetry"
+    },
+    {
+      "projectId": "EU-GY-SAFRAN-EVRY",
+      "projectName": "Safran Evry Corbeil",
+      "country": "France",
+      "capacityMw": 8.6,
+      "p50Gwh": 8.3,
+      "p90Gwh": 7.47,
+      "p99Gwh": 6.64,
+      "specificYieldKwhKwp": 965.11627907,
+      "annualLoadGwh": 9.76470588235294,
+      "selfConsumedGwh": 6.163691112918751,
+      "exportedGwh": 2.13630888708098,
+      "gridPurchaseGwh": 3.6010147694341894,
+      "selfConsumptionShare": 0.7426133870986447,
+      "solarCoverageShare": 0.631221379033848,
+      "loadEvidenceLevel": "LEVEL_3_ANNUAL_ONLY",
+      "profileHours": 8760,
+      "representativeDay": [
+        {
+          "hour": 0,
+          "loadKw": 336.9707355512315,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 336.9707355512315
+        },
+        {
+          "hour": 1,
+          "loadKw": 336.9707355512315,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 336.9707355512315
+        },
+        {
+          "hour": 2,
+          "loadKw": 336.9707355512315,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 336.9707355512315
+        },
+        {
+          "hour": 3,
+          "loadKw": 336.9707355512315,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 336.9707355512315
+        },
+        {
+          "hour": 4,
+          "loadKw": 336.9707355512315,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 336.9707355512315
+        },
+        {
+          "hour": 5,
+          "loadKw": 336.9707355512315,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 336.9707355512315
+        },
+        {
+          "hour": 6,
+          "loadKw": 1375.3907573519655,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 1375.3907573519655
+        },
+        {
+          "hour": 7,
+          "loadKw": 1375.3907573519655,
+          "solarKw": 775.539351201538,
+          "selfConsumedKw": 775.539351201538,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 599.8514061504275
+        },
+        {
+          "hour": 8,
+          "loadKw": 2292.3179289199425,
+          "solarKw": 1498.2269772580669,
+          "selfConsumedKw": 1498.2269772580669,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 794.0909516618756
+        },
+        {
+          "hour": 9,
+          "loadKw": 2292.3179289199425,
+          "solarKw": 2118.8129107516047,
+          "selfConsumedKw": 2118.8129107516047,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 173.50501816833776
+        },
+        {
+          "hour": 10,
+          "loadKw": 2292.3179289199425,
+          "solarKw": 2595.0052458813125,
+          "selfConsumedKw": 2292.3179289199425,
+          "exportKw": 302.68731696137,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 11,
+          "loadKw": 2292.3179289199425,
+          "solarKw": 2894.352261953143,
+          "selfConsumedKw": 2292.3179289199425,
+          "exportKw": 602.0343330332007,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 12,
+          "loadKw": 2292.3179289199425,
+          "solarKw": 2996.453954516134,
+          "selfConsumedKw": 2292.3179289199425,
+          "exportKw": 704.1360255961918,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 13,
+          "loadKw": 2292.3179289199425,
+          "solarKw": 2894.352261953143,
+          "selfConsumedKw": 2292.3179289199425,
+          "exportKw": 602.0343330332007,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 14,
+          "loadKw": 2292.3179289199425,
+          "solarKw": 2595.005245881313,
+          "selfConsumedKw": 2292.3179289199425,
+          "exportKw": 302.68731696137047,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 15,
+          "loadKw": 2292.3179289199425,
+          "solarKw": 2118.812910751605,
+          "selfConsumedKw": 2118.812910751605,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 173.5050181683373
+        },
+        {
+          "hour": 16,
+          "loadKw": 2292.3179289199425,
+          "solarKw": 1498.2269772580669,
+          "selfConsumedKw": 1498.2269772580669,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 794.0909516618756
+        },
+        {
+          "hour": 17,
+          "loadKw": 2292.3179289199425,
+          "solarKw": 775.5393512015387,
+          "selfConsumedKw": 775.5393512015387,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 1516.7785777184038
+        },
+        {
+          "hour": 18,
+          "loadKw": 962.7735301463757,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 962.7735301463757
+        },
+        {
+          "hour": 19,
+          "loadKw": 962.7735301463757,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 962.7735301463757
+        },
+        {
+          "hour": 20,
+          "loadKw": 962.7735301463757,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 962.7735301463757
+        },
+        {
+          "hour": 21,
+          "loadKw": 962.7735301463757,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 962.7735301463757
+        },
+        {
+          "hour": 22,
+          "loadKw": 336.9707355512315,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 336.9707355512315
+        },
+        {
+          "hour": 23,
+          "loadKw": 336.9707355512315,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 336.9707355512315
+        }
+      ],
+      "sourceFiles": [
+        "frozen V5.1.3 energy output",
+        "load matching summary",
+        "physical QA"
+      ],
+      "profileSource": "Frozen model: first 24 hours of profile year 2027; not measured telemetry"
+    },
+    {
+      "projectId": "EU-GY-STELLANTIS-CAEN",
+      "projectName": "Stellantis Caen",
+      "country": "France",
+      "capacityMw": 4,
+      "p50Gwh": 2.3,
+      "p90Gwh": 2.07,
+      "p99Gwh": 1.84,
+      "specificYieldKwhKwp": 575.0,
+      "annualLoadGwh": 2.70588235294118,
+      "selfConsumedGwh": 1.70801079032695,
+      "exportedGwh": 0.5919892096730399,
+      "gridPurchaseGwh": 0.9978715626142303,
+      "selfConsumptionShare": 0.742613387098674,
+      "solarCoverageShare": 0.6312213790338719,
+      "loadEvidenceLevel": "LEVEL_3_ANNUAL_ONLY",
+      "profileHours": 8760,
+      "representativeDay": [
+        {
+          "hour": 0,
+          "loadKw": 93.37743274311235,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 93.37743274311235
+        },
+        {
+          "hour": 1,
+          "loadKw": 93.37743274311235,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 93.37743274311235
+        },
+        {
+          "hour": 2,
+          "loadKw": 93.37743274311235,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 93.37743274311235
+        },
+        {
+          "hour": 3,
+          "loadKw": 93.37743274311235,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 93.37743274311235
+        },
+        {
+          "hour": 4,
+          "loadKw": 93.37743274311235,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 93.37743274311235
+        },
+        {
+          "hour": 5,
+          "loadKw": 93.37743274311235,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 93.37743274311235
+        },
+        {
+          "hour": 6,
+          "loadKw": 381.1323785433158,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 381.1323785433158
+        },
+        {
+          "hour": 7,
+          "loadKw": 381.1323785433158,
+          "solarKw": 214.90849491126954,
+          "selfConsumedKw": 214.90849491126954,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 166.22388363204624
+        },
+        {
+          "hour": 8,
+          "loadKw": 635.2206309055263,
+          "solarKw": 415.1713310474161,
+          "selfConsumedKw": 415.1713310474161,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 220.04929985811015
+        },
+        {
+          "hour": 9,
+          "loadKw": 635.2206309055263,
+          "solarKw": 587.1409270757459,
+          "selfConsumedKw": 587.1409270757459,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 48.07970382978033
+        },
+        {
+          "hour": 10,
+          "loadKw": 635.2206309055263,
+          "solarKw": 719.0978392201228,
+          "selfConsumedKw": 635.2206309055263,
+          "exportKw": 83.87720831459649,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 11,
+          "loadKw": 635.2206309055263,
+          "solarKw": 802.0494219870155,
+          "selfConsumedKw": 635.2206309055263,
+          "exportKw": 166.82879108148927,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 12,
+          "loadKw": 635.2206309055263,
+          "solarKw": 830.3426620948323,
+          "selfConsumedKw": 635.2206309055263,
+          "exportKw": 195.12203118930609,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 13,
+          "loadKw": 635.2206309055263,
+          "solarKw": 802.0494219870155,
+          "selfConsumedKw": 635.2206309055263,
+          "exportKw": 166.82879108148927,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 14,
+          "loadKw": 635.2206309055263,
+          "solarKw": 719.0978392201229,
+          "selfConsumedKw": 635.2206309055263,
+          "exportKw": 83.8772083145966,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 15,
+          "loadKw": 635.2206309055263,
+          "solarKw": 587.140927075746,
+          "selfConsumedKw": 587.140927075746,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 48.079703829780215
+        },
+        {
+          "hour": 16,
+          "loadKw": 635.2206309055263,
+          "solarKw": 415.1713310474161,
+          "selfConsumedKw": 415.1713310474161,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 220.04929985811015
+        },
+        {
+          "hour": 17,
+          "loadKw": 635.2206309055263,
+          "solarKw": 214.90849491126977,
+          "selfConsumedKw": 214.90849491126977,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 420.3121359942565
+        },
+        {
+          "hour": 18,
+          "loadKw": 266.792664980321,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 266.792664980321
+        },
+        {
+          "hour": 19,
+          "loadKw": 266.792664980321,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 266.792664980321
+        },
+        {
+          "hour": 20,
+          "loadKw": 266.792664980321,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 266.792664980321
+        },
+        {
+          "hour": 21,
+          "loadKw": 266.792664980321,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 266.792664980321
+        },
+        {
+          "hour": 22,
+          "loadKw": 93.37743274311235,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 93.37743274311235
+        },
+        {
+          "hour": 23,
+          "loadKw": 93.37743274311235,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 93.37743274311235
+        }
+      ],
+      "sourceFiles": [
+        "frozen V5.1.3 energy output",
+        "load matching summary",
+        "physical QA"
+      ],
+      "profileSource": "Frozen model: first 24 hours of profile year 2027; not measured telemetry"
+    },
+    {
+      "projectId": "EU-GY-STELLANTIS-CHARLEVILLE",
+      "projectName": "Stellantis Charleville",
+      "country": "France",
+      "capacityMw": 8,
+      "p50Gwh": 4.5,
+      "p90Gwh": 4.05,
+      "p99Gwh": 3.6,
+      "specificYieldKwhKwp": 562.5,
+      "annualLoadGwh": 5.294117647058821,
+      "selfConsumedGwh": 3.3417602419439802,
+      "exportedGwh": 1.15823975805595,
+      "gridPurchaseGwh": 1.9523574051148405,
+      "selfConsumptionShare": 0.7426133870986623,
+      "solarCoverageShare": 0.6312213790338632,
+      "loadEvidenceLevel": "LEVEL_3_ANNUAL_ONLY",
+      "profileHours": 8760,
+      "representativeDay": [
+        {
+          "hour": 0,
+          "loadKw": 182.6949771060894,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 182.6949771060894
+        },
+        {
+          "hour": 1,
+          "loadKw": 182.6949771060894,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 182.6949771060894
+        },
+        {
+          "hour": 2,
+          "loadKw": 182.6949771060894,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 182.6949771060894
+        },
+        {
+          "hour": 3,
+          "loadKw": 182.6949771060894,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 182.6949771060894
+        },
+        {
+          "hour": 4,
+          "loadKw": 182.6949771060894,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 182.6949771060894
+        },
+        {
+          "hour": 5,
+          "loadKw": 182.6949771060894,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 182.6949771060894
+        },
+        {
+          "hour": 6,
+          "loadKw": 745.6937841064874,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 745.6937841064874
+        },
+        {
+          "hour": 7,
+          "loadKw": 745.6937841064874,
+          "solarKw": 420.4731422177013,
+          "selfConsumedKw": 420.4731422177013,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 325.22064188878613
+        },
+        {
+          "hour": 8,
+          "loadKw": 1242.8229735108125,
+          "solarKw": 812.2917346579881,
+          "selfConsumedKw": 812.2917346579881,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 430.53123885282446
+        },
+        {
+          "hour": 9,
+          "loadKw": 1242.8229735108125,
+          "solarKw": 1148.753987756894,
+          "selfConsumedKw": 1148.753987756894,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 94.06898575391847
+        },
+        {
+          "hour": 10,
+          "loadKw": 1242.8229735108125,
+          "solarKw": 1406.9305549958924,
+          "selfConsumedKw": 1242.8229735108125,
+          "exportKw": 164.1075814850799,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 11,
+          "loadKw": 1242.8229735108125,
+          "solarKw": 1569.2271299745955,
+          "selfConsumedKw": 1242.8229735108125,
+          "exportKw": 326.404156463783,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 12,
+          "loadKw": 1242.8229735108125,
+          "solarKw": 1624.5834693159761,
+          "selfConsumedKw": 1242.8229735108125,
+          "exportKw": 381.7604958051636,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 13,
+          "loadKw": 1242.8229735108125,
+          "solarKw": 1569.2271299745955,
+          "selfConsumedKw": 1242.8229735108125,
+          "exportKw": 326.404156463783,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 14,
+          "loadKw": 1242.8229735108125,
+          "solarKw": 1406.9305549958926,
+          "selfConsumedKw": 1242.8229735108125,
+          "exportKw": 164.10758148508012,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 15,
+          "loadKw": 1242.8229735108125,
+          "solarKw": 1148.7539877568943,
+          "selfConsumedKw": 1148.7539877568943,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 94.06898575391824
+        },
+        {
+          "hour": 16,
+          "loadKw": 1242.8229735108125,
+          "solarKw": 812.2917346579881,
+          "selfConsumedKw": 812.2917346579881,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 430.53123885282446
+        },
+        {
+          "hour": 17,
+          "loadKw": 1242.8229735108125,
+          "solarKw": 420.4731422177017,
+          "selfConsumedKw": 420.4731422177017,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 822.3498312931108
+        },
+        {
+          "hour": 18,
+          "loadKw": 521.9856488745411,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 521.9856488745411
+        },
+        {
+          "hour": 19,
+          "loadKw": 521.9856488745411,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 521.9856488745411
+        },
+        {
+          "hour": 20,
+          "loadKw": 521.9856488745411,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 521.9856488745411
+        },
+        {
+          "hour": 21,
+          "loadKw": 521.9856488745411,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 521.9856488745411
+        },
+        {
+          "hour": 22,
+          "loadKw": 182.6949771060894,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 182.6949771060894
+        },
+        {
+          "hour": 23,
+          "loadKw": 182.6949771060894,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 182.6949771060894
+        }
+      ],
+      "sourceFiles": [
+        "frozen V5.1.3 energy output",
+        "load matching summary",
+        "physical QA"
+      ],
+      "profileSource": "Frozen model: first 24 hours of profile year 2027; not measured telemetry"
+    },
+    {
+      "projectId": "EU-GY-STELLANTIS-VALENCIENNES",
+      "projectName": "Stellantis Valenciennes",
+      "country": "France",
+      "capacityMw": 6,
+      "p50Gwh": 4.6,
+      "p90Gwh": 4.14,
+      "p99Gwh": 3.68,
+      "specificYieldKwhKwp": 766.66666667,
+      "annualLoadGwh": 5.41176470588235,
+      "selfConsumedGwh": 3.4160215806539,
+      "exportedGwh": 1.1839784193460798,
+      "gridPurchaseGwh": 1.9957431252284499,
+      "selfConsumptionShare": 0.742613387098674,
+      "solarCoverageShare": 0.6312213790338732,
+      "loadEvidenceLevel": "LEVEL_3_ANNUAL_ONLY",
+      "profileHours": 8760,
+      "representativeDay": [
+        {
+          "hour": 0,
+          "loadKw": 186.7548654862247,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 186.7548654862247
+        },
+        {
+          "hour": 1,
+          "loadKw": 186.7548654862247,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 186.7548654862247
+        },
+        {
+          "hour": 2,
+          "loadKw": 186.7548654862247,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 186.7548654862247
+        },
+        {
+          "hour": 3,
+          "loadKw": 186.7548654862247,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 186.7548654862247
+        },
+        {
+          "hour": 4,
+          "loadKw": 186.7548654862247,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 186.7548654862247
+        },
+        {
+          "hour": 5,
+          "loadKw": 186.7548654862247,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 186.7548654862247
+        },
+        {
+          "hour": 6,
+          "loadKw": 762.2647570866316,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 762.2647570866316
+        },
+        {
+          "hour": 7,
+          "loadKw": 762.2647570866316,
+          "solarKw": 429.8169898225391,
+          "selfConsumedKw": 429.8169898225391,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 332.4477672640925
+        },
+        {
+          "hour": 8,
+          "loadKw": 1270.4412618110525,
+          "solarKw": 830.3426620948322,
+          "selfConsumedKw": 830.3426620948322,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 440.0985997162203
+        },
+        {
+          "hour": 9,
+          "loadKw": 1270.4412618110525,
+          "solarKw": 1174.2818541514919,
+          "selfConsumedKw": 1174.2818541514919,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 96.15940765956066
+        },
+        {
+          "hour": 10,
+          "loadKw": 1270.4412618110525,
+          "solarKw": 1438.1956784402455,
+          "selfConsumedKw": 1270.4412618110525,
+          "exportKw": 167.75441662919297,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 11,
+          "loadKw": 1270.4412618110525,
+          "solarKw": 1604.098843974031,
+          "selfConsumedKw": 1270.4412618110525,
+          "exportKw": 333.65758216297854,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 12,
+          "loadKw": 1270.4412618110525,
+          "solarKw": 1660.6853241896647,
+          "selfConsumedKw": 1270.4412618110525,
+          "exportKw": 390.24406237861217,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 13,
+          "loadKw": 1270.4412618110525,
+          "solarKw": 1604.098843974031,
+          "selfConsumedKw": 1270.4412618110525,
+          "exportKw": 333.65758216297854,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 14,
+          "loadKw": 1270.4412618110525,
+          "solarKw": 1438.1956784402457,
+          "selfConsumedKw": 1270.4412618110525,
+          "exportKw": 167.7544166291932,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 15,
+          "loadKw": 1270.4412618110525,
+          "solarKw": 1174.281854151492,
+          "selfConsumedKw": 1174.281854151492,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 96.15940765956043
+        },
+        {
+          "hour": 16,
+          "loadKw": 1270.4412618110525,
+          "solarKw": 830.3426620948322,
+          "selfConsumedKw": 830.3426620948322,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 440.0985997162203
+        },
+        {
+          "hour": 17,
+          "loadKw": 1270.4412618110525,
+          "solarKw": 429.81698982253954,
+          "selfConsumedKw": 429.81698982253954,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 840.624271988513
+        },
+        {
+          "hour": 18,
+          "loadKw": 533.585329960642,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 533.585329960642
+        },
+        {
+          "hour": 19,
+          "loadKw": 533.585329960642,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 533.585329960642
+        },
+        {
+          "hour": 20,
+          "loadKw": 533.585329960642,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 533.585329960642
+        },
+        {
+          "hour": 21,
+          "loadKw": 533.585329960642,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 533.585329960642
+        },
+        {
+          "hour": 22,
+          "loadKw": 186.7548654862247,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 186.7548654862247
+        },
+        {
+          "hour": 23,
+          "loadKw": 186.7548654862247,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 186.7548654862247
+        }
+      ],
+      "sourceFiles": [
+        "frozen V5.1.3 energy output",
+        "load matching summary",
+        "physical QA"
+      ],
+      "profileSource": "Frozen model: first 24 hours of profile year 2027; not measured telemetry"
+    },
+    {
+      "projectId": "EU-GY-GIVA-CELLA",
+      "projectName": "GIVA Cella Dati",
+      "country": "Italy",
+      "capacityMw": 3,
+      "p50Gwh": 4.05,
+      "p90Gwh": 3.645,
+      "p99Gwh": 3.24,
+      "specificYieldKwhKwp": 1350.0,
+      "annualLoadGwh": 4.76470588235294,
+      "selfConsumedGwh": 3.0075842177497303,
+      "exportedGwh": 1.04241578225035,
+      "gridPurchaseGwh": 1.75712166460321,
+      "selfConsumptionShare": 0.7426133870986988,
+      "solarCoverageShare": 0.6312213790338941,
+      "loadEvidenceLevel": "LEVEL_3_ANNUAL_ONLY",
+      "profileHours": 8760,
+      "representativeDay": [
+        {
+          "hour": 0,
+          "loadKw": 164.42547939548044,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 164.42547939548044
+        },
+        {
+          "hour": 1,
+          "loadKw": 164.42547939548044,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 164.42547939548044
+        },
+        {
+          "hour": 2,
+          "loadKw": 164.42547939548044,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 164.42547939548044
+        },
+        {
+          "hour": 3,
+          "loadKw": 164.42547939548044,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 164.42547939548044
+        },
+        {
+          "hour": 4,
+          "loadKw": 164.42547939548044,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 164.42547939548044
+        },
+        {
+          "hour": 5,
+          "loadKw": 164.42547939548044,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 164.42547939548044
+        },
+        {
+          "hour": 6,
+          "loadKw": 671.1244056958386,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 671.1244056958386
+        },
+        {
+          "hour": 7,
+          "loadKw": 671.1244056958386,
+          "solarKw": 378.4258279959312,
+          "selfConsumedKw": 378.4258279959312,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 292.69857769990745
+        },
+        {
+          "hour": 8,
+          "loadKw": 1118.540676159731,
+          "solarKw": 731.0625611921893,
+          "selfConsumedKw": 731.0625611921893,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 387.4781149675417
+        },
+        {
+          "hour": 9,
+          "loadKw": 1118.540676159731,
+          "solarKw": 1033.8785889812048,
+          "selfConsumedKw": 1033.8785889812048,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 84.66208717852624
+        },
+        {
+          "hour": 10,
+          "loadKw": 1118.540676159731,
+          "solarKw": 1266.2374994963031,
+          "selfConsumedKw": 1118.540676159731,
+          "exportKw": 147.69682333657215,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 11,
+          "loadKw": 1118.540676159731,
+          "solarKw": 1412.304416977136,
+          "selfConsumedKw": 1118.540676159731,
+          "exportKw": 293.76374081740505,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 12,
+          "loadKw": 1118.540676159731,
+          "solarKw": 1462.1251223843788,
+          "selfConsumedKw": 1118.540676159731,
+          "exportKw": 343.58444622464776,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 13,
+          "loadKw": 1118.540676159731,
+          "solarKw": 1412.304416977136,
+          "selfConsumedKw": 1118.540676159731,
+          "exportKw": 293.76374081740505,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 14,
+          "loadKw": 1118.540676159731,
+          "solarKw": 1266.2374994963034,
+          "selfConsumedKw": 1118.540676159731,
+          "exportKw": 147.69682333657238,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 15,
+          "loadKw": 1118.540676159731,
+          "solarKw": 1033.878588981205,
+          "selfConsumedKw": 1033.878588981205,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 84.66208717852601
+        },
+        {
+          "hour": 16,
+          "loadKw": 1118.540676159731,
+          "solarKw": 731.0625611921893,
+          "selfConsumedKw": 731.0625611921893,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 387.4781149675417
+        },
+        {
+          "hour": 17,
+          "loadKw": 1118.540676159731,
+          "solarKw": 378.42582799593157,
+          "selfConsumedKw": 378.42582799593157,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 740.1148481637995
+        },
+        {
+          "hour": 18,
+          "loadKw": 469.787083987087,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 469.787083987087
+        },
+        {
+          "hour": 19,
+          "loadKw": 469.787083987087,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 469.787083987087
+        },
+        {
+          "hour": 20,
+          "loadKw": 469.787083987087,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 469.787083987087
+        },
+        {
+          "hour": 21,
+          "loadKw": 469.787083987087,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 469.787083987087
+        },
+        {
+          "hour": 22,
+          "loadKw": 164.42547939548044,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 164.42547939548044
+        },
+        {
+          "hour": 23,
+          "loadKw": 164.42547939548044,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 164.42547939548044
+        }
+      ],
+      "sourceFiles": [
+        "frozen V5.1.3 energy output",
+        "load matching summary",
+        "physical QA"
+      ],
+      "profileSource": "Frozen model: first 24 hours of profile year 2027; not measured telemetry"
+    },
+    {
+      "projectId": "EU-GY-GIVA-VISANO",
+      "projectName": "GIVA Visano",
+      "country": "Italy",
+      "capacityMw": 8,
+      "p50Gwh": 10.8,
+      "p90Gwh": 9.72,
+      "p99Gwh": 8.64,
+      "specificYieldKwhKwp": 1350.0,
+      "annualLoadGwh": 12.70588235294118,
+      "selfConsumedGwh": 8.02022458066585,
+      "exportedGwh": 2.7797754193342796,
+      "gridPurchaseGwh": 4.685657772275329,
+      "selfConsumptionShare": 0.7426133870986898,
+      "solarCoverageShare": 0.6312213790338862,
+      "loadEvidenceLevel": "LEVEL_3_ANNUAL_ONLY",
+      "profileHours": 8760,
+      "representativeDay": [
+        {
+          "hour": 0,
+          "loadKw": 438.4679450546145,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 438.4679450546145
+        },
+        {
+          "hour": 1,
+          "loadKw": 438.4679450546145,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 438.4679450546145
+        },
+        {
+          "hour": 2,
+          "loadKw": 438.4679450546145,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 438.4679450546145
+        },
+        {
+          "hour": 3,
+          "loadKw": 438.4679450546145,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 438.4679450546145
+        },
+        {
+          "hour": 4,
+          "loadKw": 438.4679450546145,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 438.4679450546145
+        },
+        {
+          "hour": 5,
+          "loadKw": 438.4679450546145,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 438.4679450546145
+        },
+        {
+          "hour": 6,
+          "loadKw": 1789.6650818555697,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 1789.6650818555697
+        },
+        {
+          "hour": 7,
+          "loadKw": 1789.6650818555697,
+          "solarKw": 1009.135541322483,
+          "selfConsumedKw": 1009.135541322483,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 780.5295405330867
+        },
+        {
+          "hour": 8,
+          "loadKw": 2982.7751364259493,
+          "solarKw": 1949.500163179171,
+          "selfConsumedKw": 1949.500163179171,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 1033.2749732467782
+        },
+        {
+          "hour": 9,
+          "loadKw": 2982.7751364259493,
+          "solarKw": 2757.0095706165457,
+          "selfConsumedKw": 2757.0095706165457,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 225.7655658094036
+        },
+        {
+          "hour": 10,
+          "loadKw": 2982.7751364259493,
+          "solarKw": 3376.6333319901414,
+          "selfConsumedKw": 2982.7751364259493,
+          "exportKw": 393.8581955641921,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 11,
+          "loadKw": 2982.7751364259493,
+          "solarKw": 3766.145111939029,
+          "selfConsumedKw": 2982.7751364259493,
+          "exportKw": 783.3699755130797,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 12,
+          "loadKw": 2982.7751364259493,
+          "solarKw": 3899.0003263583426,
+          "selfConsumedKw": 2982.7751364259493,
+          "exportKw": 916.2251899323933,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 13,
+          "loadKw": 2982.7751364259493,
+          "solarKw": 3766.145111939029,
+          "selfConsumedKw": 2982.7751364259493,
+          "exportKw": 783.3699755130797,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 14,
+          "loadKw": 2982.7751364259493,
+          "solarKw": 3376.633331990142,
+          "selfConsumedKw": 2982.7751364259493,
+          "exportKw": 393.85819556419256,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 15,
+          "loadKw": 2982.7751364259493,
+          "solarKw": 2757.009570616546,
+          "selfConsumedKw": 2757.009570616546,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 225.76556580940314
+        },
+        {
+          "hour": 16,
+          "loadKw": 2982.7751364259493,
+          "solarKw": 1949.500163179171,
+          "selfConsumedKw": 1949.500163179171,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 1033.2749732467782
+        },
+        {
+          "hour": 17,
+          "loadKw": 2982.7751364259493,
+          "solarKw": 1009.1355413224841,
+          "selfConsumedKw": 1009.1355413224841,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 1973.6395951034651
+        },
+        {
+          "hour": 18,
+          "loadKw": 1252.7655572988986,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 1252.7655572988986
+        },
+        {
+          "hour": 19,
+          "loadKw": 1252.7655572988986,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 1252.7655572988986
+        },
+        {
+          "hour": 20,
+          "loadKw": 1252.7655572988986,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 1252.7655572988986
+        },
+        {
+          "hour": 21,
+          "loadKw": 1252.7655572988986,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 1252.7655572988986
+        },
+        {
+          "hour": 22,
+          "loadKw": 438.4679450546145,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 438.4679450546145
+        },
+        {
+          "hour": 23,
+          "loadKw": 438.4679450546145,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 438.4679450546145
+        }
+      ],
+      "sourceFiles": [
+        "frozen V5.1.3 energy output",
+        "load matching summary",
+        "physical QA"
+      ],
+      "profileSource": "Frozen model: first 24 hours of profile year 2027; not measured telemetry"
+    },
+    {
+      "projectId": "EU-GY-SASOL-ITALY",
+      "projectName": "Sasol Terranova",
+      "country": "Italy",
+      "capacityMw": 5.1,
+      "p50Gwh": 7.61,
+      "p90Gwh": 6.849,
+      "p99Gwh": 6.088,
+      "specificYieldKwhKwp": 1492.15686275,
+      "annualLoadGwh": 8.95294117647059,
+      "selfConsumedGwh": 5.65128787582088,
+      "exportedGwh": 1.9587121241790602,
+      "gridPurchaseGwh": 3.3016533006497104,
+      "selfConsumptionShare": 0.7426133870986701,
+      "solarCoverageShare": 0.6312213790338694,
+      "loadEvidenceLevel": "LEVEL_3_ANNUAL_ONLY",
+      "profileHours": 8760,
+      "representativeDay": [
+        {
+          "hour": 0,
+          "loadKw": 308.9575057282978,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 308.9575057282978
+        },
+        {
+          "hour": 1,
+          "loadKw": 308.9575057282978,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 308.9575057282978
+        },
+        {
+          "hour": 2,
+          "loadKw": 308.9575057282978,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 308.9575057282978
+        },
+        {
+          "hour": 3,
+          "loadKw": 308.9575057282978,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 308.9575057282978
+        },
+        {
+          "hour": 4,
+          "loadKw": 308.9575057282978,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 308.9575057282978
+        },
+        {
+          "hour": 5,
+          "loadKw": 308.9575057282978,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 308.9575057282978
+        },
+        {
+          "hour": 6,
+          "loadKw": 1261.051043788971,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 1261.051043788971
+        },
+        {
+          "hour": 7,
+          "loadKw": 1261.051043788971,
+          "solarKw": 711.0668027281571,
+          "selfConsumedKw": 711.0668027281571,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 549.9842410608138
+        },
+        {
+          "hour": 8,
+          "loadKw": 2101.751739648285,
+          "solarKw": 1373.675577943842,
+          "selfConsumedKw": 1373.675577943842,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 728.0761617044429
+        },
+        {
+          "hour": 9,
+          "loadKw": 2101.751739648285,
+          "solarKw": 1942.6706326288809,
+          "selfConsumedKw": 1942.6706326288809,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 159.08110701940404
+        },
+        {
+          "hour": 10,
+          "loadKw": 2101.751739648285,
+          "solarKw": 2379.2758941152756,
+          "selfConsumedKw": 2101.751739648285,
+          "exportKw": 277.5241544669907,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 11,
+          "loadKw": 2101.751739648285,
+          "solarKw": 2653.737435357038,
+          "selfConsumedKw": 2101.751739648285,
+          "exportKw": 551.9856957087532,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 12,
+          "loadKw": 2101.751739648285,
+          "solarKw": 2747.3511558876844,
+          "selfConsumedKw": 2101.751739648285,
+          "exportKw": 645.5994162393995,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 13,
+          "loadKw": 2101.751739648285,
+          "solarKw": 2653.737435357038,
+          "selfConsumedKw": 2101.751739648285,
+          "exportKw": 551.9856957087532,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 14,
+          "loadKw": 2101.751739648285,
+          "solarKw": 2379.275894115276,
+          "selfConsumedKw": 2101.751739648285,
+          "exportKw": 277.52415446699115,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 15,
+          "loadKw": 2101.751739648285,
+          "solarKw": 1942.6706326288813,
+          "selfConsumedKw": 1942.6706326288813,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 159.0811070194036
+        },
+        {
+          "hour": 16,
+          "loadKw": 2101.751739648285,
+          "solarKw": 1373.675577943842,
+          "selfConsumedKw": 1373.675577943842,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 728.0761617044429
+        },
+        {
+          "hour": 17,
+          "loadKw": 2101.751739648285,
+          "solarKw": 711.0668027281578,
+          "selfConsumedKw": 711.0668027281578,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 1390.6849369201273
+        },
+        {
+          "hour": 18,
+          "loadKw": 882.7357306522795,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 882.7357306522795
+        },
+        {
+          "hour": 19,
+          "loadKw": 882.7357306522795,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 882.7357306522795
+        },
+        {
+          "hour": 20,
+          "loadKw": 882.7357306522795,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 882.7357306522795
+        },
+        {
+          "hour": 21,
+          "loadKw": 882.7357306522795,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 882.7357306522795
+        },
+        {
+          "hour": 22,
+          "loadKw": 308.9575057282978,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 308.9575057282978
+        },
+        {
+          "hour": 23,
+          "loadKw": 308.9575057282978,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 308.9575057282978
+        }
+      ],
+      "sourceFiles": [
+        "frozen V5.1.3 energy output",
+        "load matching summary",
+        "physical QA"
+      ],
+      "profileSource": "Frozen model: first 24 hours of profile year 2027; not measured telemetry"
+    },
+    {
+      "projectId": "EU-GY-STELLANTIS-SLOVAKIA",
+      "projectName": "Stellantis Slovakia",
+      "country": "Slovakia",
+      "capacityMw": 13,
+      "p50Gwh": 7.0,
+      "p90Gwh": 6.3,
+      "p99Gwh": 5.6,
+      "specificYieldKwhKwp": 538.46153846,
+      "annualLoadGwh": 8.23529411764706,
+      "selfConsumedGwh": 5.19829370969076,
+      "exportedGwh": 1.80170629030926,
+      "gridPurchaseGwh": 3.0370004079562998,
+      "selfConsumptionShare": 0.74261338709868,
+      "solarCoverageShare": 0.6312213790338779,
+      "loadEvidenceLevel": "LEVEL_3_ANNUAL_ONLY",
+      "profileHours": 8760,
+      "representativeDay": [
+        {
+          "hour": 0,
+          "loadKw": 284.1921866094724,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 284.1921866094724
+        },
+        {
+          "hour": 1,
+          "loadKw": 284.1921866094724,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 284.1921866094724
+        },
+        {
+          "hour": 2,
+          "loadKw": 284.1921866094724,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 284.1921866094724
+        },
+        {
+          "hour": 3,
+          "loadKw": 284.1921866094724,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 284.1921866094724
+        },
+        {
+          "hour": 4,
+          "loadKw": 284.1921866094724,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 284.1921866094724
+        },
+        {
+          "hour": 5,
+          "loadKw": 284.1921866094724,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 284.1921866094724
+        },
+        {
+          "hour": 6,
+          "loadKw": 1159.9681086100916,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 1159.9681086100916
+        },
+        {
+          "hour": 7,
+          "loadKw": 1159.9681086100916,
+          "solarKw": 654.0693323386465,
+          "selfConsumedKw": 654.0693323386465,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 505.89877627144506
+        },
+        {
+          "hour": 8,
+          "loadKw": 1933.2801810168191,
+          "solarKw": 1263.5649205790926,
+          "selfConsumedKw": 1263.5649205790926,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 669.7152604377266
+        },
+        {
+          "hour": 9,
+          "loadKw": 1933.2801810168191,
+          "solarKw": 1786.9506476218355,
+          "selfConsumedKw": 1786.9506476218355,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 146.32953339498363
+        },
+        {
+          "hour": 10,
+          "loadKw": 1933.2801810168191,
+          "solarKw": 2188.5586411047216,
+          "selfConsumedKw": 1933.2801810168191,
+          "exportKw": 255.27846008790243,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 11,
+          "loadKw": 1933.2801810168191,
+          "solarKw": 2441.019979960482,
+          "selfConsumedKw": 1933.2801810168191,
+          "exportKw": 507.7397989436629,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 12,
+          "loadKw": 1933.2801810168191,
+          "solarKw": 2527.129841158185,
+          "selfConsumedKw": 1933.2801810168191,
+          "exportKw": 593.849660141366,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 13,
+          "loadKw": 1933.2801810168191,
+          "solarKw": 2441.019979960482,
+          "selfConsumedKw": 1933.2801810168191,
+          "exportKw": 507.7397989436629,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 14,
+          "loadKw": 1933.2801810168191,
+          "solarKw": 2188.558641104722,
+          "selfConsumedKw": 1933.2801810168191,
+          "exportKw": 255.27846008790289,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 15,
+          "loadKw": 1933.2801810168191,
+          "solarKw": 1786.9506476218357,
+          "selfConsumedKw": 1786.9506476218357,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 146.3295333949834
+        },
+        {
+          "hour": 16,
+          "loadKw": 1933.2801810168191,
+          "solarKw": 1263.5649205790926,
+          "selfConsumedKw": 1263.5649205790926,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 669.7152604377266
+        },
+        {
+          "hour": 17,
+          "loadKw": 1933.2801810168191,
+          "solarKw": 654.0693323386472,
+          "selfConsumedKw": 654.0693323386472,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 1279.210848678172
+        },
+        {
+          "hour": 18,
+          "loadKw": 811.9776760270639,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 811.9776760270639
+        },
+        {
+          "hour": 19,
+          "loadKw": 811.9776760270639,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 811.9776760270639
+        },
+        {
+          "hour": 20,
+          "loadKw": 811.9776760270639,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 811.9776760270639
+        },
+        {
+          "hour": 21,
+          "loadKw": 811.9776760270639,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 811.9776760270639
+        },
+        {
+          "hour": 22,
+          "loadKw": 284.1921866094724,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 284.1921866094724
+        },
+        {
+          "hour": 23,
+          "loadKw": 284.1921866094724,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 284.1921866094724
+        }
+      ],
+      "sourceFiles": [
+        "frozen V5.1.3 energy output",
+        "load matching summary",
+        "physical QA"
+      ],
+      "profileSource": "Frozen model: first 24 hours of profile year 2027; not measured telemetry"
+    },
+    {
+      "projectId": "IN-AZURE-GANDHINAGAR",
+      "projectName": "Azure Sun Gandhinagar rooftop",
+      "country": "India",
+      "capacityMw": 2.5,
+      "p50Gwh": 3.625,
+      "p90Gwh": 3.2625,
+      "p99Gwh": 2.9,
+      "specificYieldKwhKwp": 1450.0,
+      "annualLoadGwh": 4.26470588235294,
+      "selfConsumedGwh": 2.6919735282326003,
+      "exportedGwh": 0.93302647176729,
+      "gridPurchaseGwh": 1.57273235412034,
+      "selfConsumptionShare": 0.7426133870986483,
+      "solarCoverageShare": 0.6312213790338512,
+      "loadEvidenceLevel": "LEVEL_3_ANNUAL_ONLY",
+      "profileHours": 8760,
+      "representativeDay": [
+        {
+          "hour": 0,
+          "loadKw": 147.17095377990535,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 147.17095377990535
+        },
+        {
+          "hour": 1,
+          "loadKw": 147.17095377990535,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 147.17095377990535
+        },
+        {
+          "hour": 2,
+          "loadKw": 147.17095377990535,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 147.17095377990535
+        },
+        {
+          "hour": 3,
+          "loadKw": 147.17095377990535,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 147.17095377990535
+        },
+        {
+          "hour": 4,
+          "loadKw": 147.17095377990535,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 147.17095377990535
+        },
+        {
+          "hour": 5,
+          "loadKw": 147.17095377990535,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 147.17095377990535
+        },
+        {
+          "hour": 6,
+          "loadKw": 600.6977705302261,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 600.6977705302261
+        },
+        {
+          "hour": 7,
+          "loadKw": 600.6977705302261,
+          "solarKw": 338.71447567537047,
+          "selfConsumedKw": 338.71447567537047,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 261.9832948548556
+        },
+        {
+          "hour": 8,
+          "loadKw": 1001.16295088371,
+          "solarKw": 654.3461195856015,
+          "selfConsumedKw": 654.3461195856015,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 346.81683129810847
+        },
+        {
+          "hour": 9,
+          "loadKw": 1001.16295088371,
+          "solarKw": 925.3851568041648,
+          "selfConsumedKw": 925.3851568041648,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 75.77779407954517
+        },
+        {
+          "hour": 10,
+          "loadKw": 1001.16295088371,
+          "solarKw": 1133.360724857802,
+          "selfConsumedKw": 1001.16295088371,
+          "exportKw": 132.19777397409212,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 11,
+          "loadKw": 1001.16295088371,
+          "solarKw": 1264.0996324795353,
+          "selfConsumedKw": 1001.16295088371,
+          "exportKw": 262.93668159582535,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 12,
+          "loadKw": 1001.16295088371,
+          "solarKw": 1308.692239171203,
+          "selfConsumedKw": 1001.16295088371,
+          "exportKw": 307.52928828749305,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 13,
+          "loadKw": 1001.16295088371,
+          "solarKw": 1264.0996324795353,
+          "selfConsumedKw": 1001.16295088371,
+          "exportKw": 262.93668159582535,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 14,
+          "loadKw": 1001.16295088371,
+          "solarKw": 1133.3607248578023,
+          "selfConsumedKw": 1001.16295088371,
+          "exportKw": 132.19777397409234,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 15,
+          "loadKw": 1001.16295088371,
+          "solarKw": 925.3851568041649,
+          "selfConsumedKw": 925.3851568041649,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 75.77779407954506
+        },
+        {
+          "hour": 16,
+          "loadKw": 1001.16295088371,
+          "solarKw": 654.3461195856015,
+          "selfConsumedKw": 654.3461195856015,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 346.81683129810847
+        },
+        {
+          "hour": 17,
+          "loadKw": 1001.16295088371,
+          "solarKw": 338.7144756753708,
+          "selfConsumedKw": 338.7144756753708,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 662.4484752083392
+        },
+        {
+          "hour": 18,
+          "loadKw": 420.48843937115817,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 420.48843937115817
+        },
+        {
+          "hour": 19,
+          "loadKw": 420.48843937115817,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 420.48843937115817
+        },
+        {
+          "hour": 20,
+          "loadKw": 420.48843937115817,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 420.48843937115817
+        },
+        {
+          "hour": 21,
+          "loadKw": 420.48843937115817,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 420.48843937115817
+        },
+        {
+          "hour": 22,
+          "loadKw": 147.17095377990535,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 147.17095377990535
+        },
+        {
+          "hour": 23,
+          "loadKw": 147.17095377990535,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 147.17095377990535
+        }
+      ],
+      "sourceFiles": [
+        "frozen V5.1.3 energy output",
+        "load matching summary",
+        "physical QA"
+      ],
+      "profileSource": "Frozen model: first 24 hours of profile year 2027; not measured telemetry"
+    },
+    {
+      "projectId": "IN-CLEANMAX-TN-30MW",
+      "projectName": "Clean Max Tamil Nadu",
+      "country": "India",
+      "capacityMw": 30,
+      "p50Gwh": 43.5,
+      "p90Gwh": 39.15,
+      "p99Gwh": 34.8,
+      "specificYieldKwhKwp": 1450.0,
+      "annualLoadGwh": 51.1764705882353,
+      "selfConsumedGwh": 32.30368233879174,
+      "exportedGwh": 11.19631766120754,
+      "gridPurchaseGwh": 18.87278824944356,
+      "selfConsumptionShare": 0.7426133870986606,
+      "solarCoverageShare": 0.6312213790338616,
+      "loadEvidenceLevel": "LEVEL_3_ANNUAL_ONLY",
+      "profileHours": 8760,
+      "representativeDay": [
+        {
+          "hour": 0,
+          "loadKw": 1766.051445358864,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 1766.051445358864
+        },
+        {
+          "hour": 1,
+          "loadKw": 1766.051445358864,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 1766.051445358864
+        },
+        {
+          "hour": 2,
+          "loadKw": 1766.051445358864,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 1766.051445358864
+        },
+        {
+          "hour": 3,
+          "loadKw": 1766.051445358864,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 1766.051445358864
+        },
+        {
+          "hour": 4,
+          "loadKw": 1766.051445358864,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 1766.051445358864
+        },
+        {
+          "hour": 5,
+          "loadKw": 1766.051445358864,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 1766.051445358864
+        },
+        {
+          "hour": 6,
+          "loadKw": 7208.373246362711,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 7208.373246362711
+        },
+        {
+          "hour": 7,
+          "loadKw": 7208.373246362711,
+          "solarKw": 4064.573708104446,
+          "selfConsumedKw": 4064.573708104446,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 3143.7995382582653
+        },
+        {
+          "hour": 8,
+          "loadKw": 12013.95541060452,
+          "solarKw": 7852.153435027218,
+          "selfConsumedKw": 7852.153435027218,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 4161.801975577302
+        },
+        {
+          "hour": 9,
+          "loadKw": 12013.95541060452,
+          "solarKw": 11104.621881649977,
+          "selfConsumedKw": 11104.621881649977,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 909.333528954543
+        },
+        {
+          "hour": 10,
+          "loadKw": 12013.95541060452,
+          "solarKw": 13600.328698293626,
+          "selfConsumedKw": 12013.95541060452,
+          "exportKw": 1586.3732876891063,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 11,
+          "loadKw": 12013.95541060452,
+          "solarKw": 15169.195589754423,
+          "selfConsumedKw": 12013.95541060452,
+          "exportKw": 3155.2401791499033,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 12,
+          "loadKw": 12013.95541060452,
+          "solarKw": 15704.306870054437,
+          "selfConsumedKw": 12013.95541060452,
+          "exportKw": 3690.3514594499175,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 13,
+          "loadKw": 12013.95541060452,
+          "solarKw": 15169.195589754423,
+          "selfConsumedKw": 12013.95541060452,
+          "exportKw": 3155.2401791499033,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 14,
+          "loadKw": 12013.95541060452,
+          "solarKw": 13600.328698293628,
+          "selfConsumedKw": 12013.95541060452,
+          "exportKw": 1586.373287689108,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 15,
+          "loadKw": 12013.95541060452,
+          "solarKw": 11104.621881649979,
+          "selfConsumedKw": 11104.621881649979,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 909.3335289545412
+        },
+        {
+          "hour": 16,
+          "loadKw": 12013.95541060452,
+          "solarKw": 7852.153435027218,
+          "selfConsumedKw": 7852.153435027218,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 4161.801975577302
+        },
+        {
+          "hour": 17,
+          "loadKw": 12013.95541060452,
+          "solarKw": 4064.57370810445,
+          "selfConsumedKw": 4064.57370810445,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 7949.38170250007
+        },
+        {
+          "hour": 18,
+          "loadKw": 5045.861272453897,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 5045.861272453897
+        },
+        {
+          "hour": 19,
+          "loadKw": 5045.861272453897,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 5045.861272453897
+        },
+        {
+          "hour": 20,
+          "loadKw": 5045.861272453897,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 5045.861272453897
+        },
+        {
+          "hour": 21,
+          "loadKw": 5045.861272453897,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 5045.861272453897
+        },
+        {
+          "hour": 22,
+          "loadKw": 1766.051445358864,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 1766.051445358864
+        },
+        {
+          "hour": 23,
+          "loadKw": 1766.051445358864,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 1766.051445358864
+        }
+      ],
+      "sourceFiles": [
+        "frozen V5.1.3 energy output",
+        "load matching summary",
+        "physical QA"
+      ],
+      "profileSource": "Frozen model: first 24 hours of profile year 2027; not measured telemetry"
+    },
+    {
+      "projectId": "IN-CLEANTECH-EXIDE-HALDIA",
+      "projectName": "Exide Haldia rooftop",
+      "country": "India",
+      "capacityMw": 2.6,
+      "p50Gwh": 3.77,
+      "p90Gwh": 3.393,
+      "p99Gwh": 3.016,
+      "specificYieldKwhKwp": 1450.0,
+      "annualLoadGwh": 4.43529411764706,
+      "selfConsumedGwh": 2.79965246936197,
+      "exportedGwh": 0.97034753063799,
+      "gridPurchaseGwh": 1.6356416482850897,
+      "selfConsumptionShare": 0.7426133870986659,
+      "solarCoverageShare": 0.6312213790338658,
+      "loadEvidenceLevel": "LEVEL_3_ANNUAL_ONLY",
+      "profileHours": 8760,
+      "representativeDay": [
+        {
+          "hour": 0,
+          "loadKw": 153.05779193110155,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 153.05779193110155
+        },
+        {
+          "hour": 1,
+          "loadKw": 153.05779193110155,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 153.05779193110155
+        },
+        {
+          "hour": 2,
+          "loadKw": 153.05779193110155,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 153.05779193110155
+        },
+        {
+          "hour": 3,
+          "loadKw": 153.05779193110155,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 153.05779193110155
+        },
+        {
+          "hour": 4,
+          "loadKw": 153.05779193110155,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 153.05779193110155
+        },
+        {
+          "hour": 5,
+          "loadKw": 153.05779193110155,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 153.05779193110155
+        },
+        {
+          "hour": 6,
+          "loadKw": 624.725681351435,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 624.725681351435
+        },
+        {
+          "hour": 7,
+          "loadKw": 624.725681351435,
+          "solarKw": 352.2630547023853,
+          "selfConsumedKw": 352.2630547023853,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 272.4626266490497
+        },
+        {
+          "hour": 8,
+          "loadKw": 1041.2094689190583,
+          "solarKw": 680.5199643690256,
+          "selfConsumedKw": 680.5199643690256,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 360.68950455003267
+        },
+        {
+          "hour": 9,
+          "loadKw": 1041.2094689190583,
+          "solarKw": 962.4005630763314,
+          "selfConsumedKw": 962.4005630763314,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 78.80890584272686
+        },
+        {
+          "hour": 10,
+          "loadKw": 1041.2094689190583,
+          "solarKw": 1178.6951538521143,
+          "selfConsumedKw": 1041.2094689190583,
+          "exportKw": 137.48568493305606,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 11,
+          "loadKw": 1041.2094689190583,
+          "solarKw": 1314.6636177787168,
+          "selfConsumedKw": 1041.2094689190583,
+          "exportKw": 273.4541488596585,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 12,
+          "loadKw": 1041.2094689190583,
+          "solarKw": 1361.0399287380512,
+          "selfConsumedKw": 1041.2094689190583,
+          "exportKw": 319.83045981899295,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 13,
+          "loadKw": 1041.2094689190583,
+          "solarKw": 1314.6636177787168,
+          "selfConsumedKw": 1041.2094689190583,
+          "exportKw": 273.4541488596585,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 14,
+          "loadKw": 1041.2094689190583,
+          "solarKw": 1178.6951538521146,
+          "selfConsumedKw": 1041.2094689190583,
+          "exportKw": 137.4856849330563,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 15,
+          "loadKw": 1041.2094689190583,
+          "solarKw": 962.4005630763315,
+          "selfConsumedKw": 962.4005630763315,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 78.80890584272674
+        },
+        {
+          "hour": 16,
+          "loadKw": 1041.2094689190583,
+          "solarKw": 680.5199643690256,
+          "selfConsumedKw": 680.5199643690256,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 360.68950455003267
+        },
+        {
+          "hour": 17,
+          "loadKw": 1041.2094689190583,
+          "solarKw": 352.26305470238566,
+          "selfConsumedKw": 352.26305470238566,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 688.9464142166726
+        },
+        {
+          "hour": 18,
+          "loadKw": 437.30797694600443,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 437.30797694600443
+        },
+        {
+          "hour": 19,
+          "loadKw": 437.30797694600443,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 437.30797694600443
+        },
+        {
+          "hour": 20,
+          "loadKw": 437.30797694600443,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 437.30797694600443
+        },
+        {
+          "hour": 21,
+          "loadKw": 437.30797694600443,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 437.30797694600443
+        },
+        {
+          "hour": 22,
+          "loadKw": 153.05779193110155,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 153.05779193110155
+        },
+        {
+          "hour": 23,
+          "loadKw": 153.05779193110155,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 153.05779193110155
+        }
+      ],
+      "sourceFiles": [
+        "frozen V5.1.3 energy output",
+        "load matching summary",
+        "physical QA"
+      ],
+      "profileSource": "Frozen model: first 24 hours of profile year 2027; not measured telemetry"
+    },
+    {
+      "projectId": "VN-GY-GOMALL",
+      "projectName": "GO Mall Vietnam portfolio",
+      "country": "Vietnam",
+      "capacityMw": 9,
+      "p50Gwh": 13.0,
+      "p90Gwh": 11.7,
+      "p99Gwh": 10.4,
+      "specificYieldKwhKwp": 1444.44444444,
+      "annualLoadGwh": 14.444444444444441,
+      "selfConsumedGwh": 9.308575013288541,
+      "exportedGwh": 3.6914249867115903,
+      "gridPurchaseGwh": 5.1358694311559,
+      "selfConsumptionShare": 0.7160442317914263,
+      "solarCoverageShare": 0.6444398086122838,
+      "loadEvidenceLevel": "LEVEL_3_ANNUAL_ONLY",
+      "profileHours": 8760,
+      "representativeDay": [
+        {
+          "hour": 0,
+          "loadKw": 498.4640733388364,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 498.4640733388364
+        },
+        {
+          "hour": 1,
+          "loadKw": 498.4640733388364,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 498.4640733388364
+        },
+        {
+          "hour": 2,
+          "loadKw": 498.4640733388364,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 498.4640733388364
+        },
+        {
+          "hour": 3,
+          "loadKw": 498.4640733388364,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 498.4640733388364
+        },
+        {
+          "hour": 4,
+          "loadKw": 498.4640733388364,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 498.4640733388364
+        },
+        {
+          "hour": 5,
+          "loadKw": 498.4640733388364,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 498.4640733388364
+        },
+        {
+          "hour": 6,
+          "loadKw": 2034.5472381177,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 2034.5472381177
+        },
+        {
+          "hour": 7,
+          "loadKw": 2034.5472381177,
+          "solarKw": 1214.7001886289147,
+          "selfConsumedKw": 1214.7001886289147,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 819.8470494887854
+        },
+        {
+          "hour": 8,
+          "loadKw": 3390.9120635295,
+          "solarKw": 2346.620566789743,
+          "selfConsumedKw": 2346.620566789743,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 1044.291496739757
+        },
+        {
+          "hour": 9,
+          "loadKw": 3390.9120635295,
+          "solarKw": 3318.622631297694,
+          "selfConsumedKw": 3318.622631297694,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 72.28943223180568
+        },
+        {
+          "hour": 10,
+          "loadKw": 3390.9120635295,
+          "solarKw": 4064.466047765911,
+          "selfConsumedKw": 3390.9120635295,
+          "exportKw": 673.553984236411,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 11,
+          "loadKw": 3390.9120635295,
+          "solarKw": 4533.322819926609,
+          "selfConsumedKw": 3390.9120635295,
+          "exportKw": 1142.4107563971088,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 12,
+          "loadKw": 3390.9120635295,
+          "solarKw": 4693.241133579487,
+          "selfConsumedKw": 3390.9120635295,
+          "exportKw": 1302.329070049987,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 13,
+          "loadKw": 3390.9120635295,
+          "solarKw": 4533.322819926609,
+          "selfConsumedKw": 3390.9120635295,
+          "exportKw": 1142.4107563971088,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 14,
+          "loadKw": 3390.9120635295,
+          "solarKw": 4064.4660477659118,
+          "selfConsumedKw": 3390.9120635295,
+          "exportKw": 673.5539842364119,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 15,
+          "loadKw": 3390.9120635295,
+          "solarKw": 3318.6226312976946,
+          "selfConsumedKw": 3318.6226312976946,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 72.28943223180522
+        },
+        {
+          "hour": 16,
+          "loadKw": 3390.9120635295,
+          "solarKw": 2346.620566789743,
+          "selfConsumedKw": 2346.620566789743,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 1044.291496739757
+        },
+        {
+          "hour": 17,
+          "loadKw": 3390.9120635295,
+          "solarKw": 1214.700188628916,
+          "selfConsumedKw": 1214.700188628916,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 2176.211874900584
+        },
+        {
+          "hour": 18,
+          "loadKw": 1424.1830666823898,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 1424.1830666823898
+        },
+        {
+          "hour": 19,
+          "loadKw": 1424.1830666823898,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 1424.1830666823898
+        },
+        {
+          "hour": 20,
+          "loadKw": 1424.1830666823898,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 1424.1830666823898
+        },
+        {
+          "hour": 21,
+          "loadKw": 1424.1830666823898,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 1424.1830666823898
+        },
+        {
+          "hour": 22,
+          "loadKw": 498.4640733388364,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 498.4640733388364
+        },
+        {
+          "hour": 23,
+          "loadKw": 498.4640733388364,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 498.4640733388364
+        }
+      ],
+      "sourceFiles": [
+        "frozen V5.1.3 energy output",
+        "load matching summary",
+        "physical QA"
+      ],
+      "profileSource": "Frozen model: first 24 hours of profile year 2027; not measured telemetry"
+    },
+    {
+      "projectId": "VN-GY-LOTTEMART",
+      "projectName": "LOTTE Mart Vietnam portfolio",
+      "country": "Vietnam",
+      "capacityMw": 2.66,
+      "p50Gwh": 3.059,
+      "p90Gwh": 2.7531,
+      "p99Gwh": 2.4472,
+      "specificYieldKwhKwp": 1150.0,
+      "annualLoadGwh": 3.39888888888889,
+      "selfConsumedGwh": 2.19037930504988,
+      "exportedGwh": 0.86862069495006,
+      "gridPurchaseGwh": 1.2085095838390099,
+      "selfConsumptionShare": 0.7160442317913959,
+      "solarCoverageShare": 0.6444398086122561,
+      "loadEvidenceLevel": "LEVEL_3_ANNUAL_ONLY",
+      "profileHours": 8760,
+      "representativeDay": [
+        {
+          "hour": 0,
+          "loadKw": 117.29243079565391,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 117.29243079565391
+        },
+        {
+          "hour": 1,
+          "loadKw": 117.29243079565391,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 117.29243079565391
+        },
+        {
+          "hour": 2,
+          "loadKw": 117.29243079565391,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 117.29243079565391
+        },
+        {
+          "hour": 3,
+          "loadKw": 117.29243079565391,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 117.29243079565391
+        },
+        {
+          "hour": 4,
+          "loadKw": 117.29243079565391,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 117.29243079565391
+        },
+        {
+          "hour": 5,
+          "loadKw": 117.29243079565391,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 117.29243079565391
+        },
+        {
+          "hour": 6,
+          "loadKw": 478.744615492465,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 478.744615492465
+        },
+        {
+          "hour": 7,
+          "loadKw": 478.744615492465,
+          "solarKw": 285.8282982319885,
+          "selfConsumedKw": 285.8282982319885,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 192.9163172604765
+        },
+        {
+          "hour": 8,
+          "loadKw": 797.9076924874416,
+          "solarKw": 552.1778702930634,
+          "selfConsumedKw": 552.1778702930634,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 245.72982219437824
+        },
+        {
+          "hour": 9,
+          "loadKw": 797.9076924874416,
+          "solarKw": 780.897433010742,
+          "selfConsumedKw": 780.897433010742,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 17.010259476699616
+        },
+        {
+          "hour": 10,
+          "loadKw": 797.9076924874416,
+          "solarKw": 956.4001261627633,
+          "selfConsumedKw": 797.9076924874416,
+          "exportKw": 158.49243367532165,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 11,
+          "loadKw": 797.9076924874416,
+          "solarKw": 1066.7257312427307,
+          "selfConsumedKw": 797.9076924874416,
+          "exportKw": 268.8180387552891,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 12,
+          "loadKw": 797.9076924874416,
+          "solarKw": 1104.355740586127,
+          "selfConsumedKw": 797.9076924874416,
+          "exportKw": 306.4480480986854,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 13,
+          "loadKw": 797.9076924874416,
+          "solarKw": 1066.7257312427307,
+          "selfConsumedKw": 797.9076924874416,
+          "exportKw": 268.8180387552891,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 14,
+          "loadKw": 797.9076924874416,
+          "solarKw": 956.4001261627634,
+          "selfConsumedKw": 797.9076924874416,
+          "exportKw": 158.49243367532176,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 15,
+          "loadKw": 797.9076924874416,
+          "solarKw": 780.8974330107422,
+          "selfConsumedKw": 780.8974330107422,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 17.01025947669939
+        },
+        {
+          "hour": 16,
+          "loadKw": 797.9076924874416,
+          "solarKw": 552.1778702930634,
+          "selfConsumedKw": 552.1778702930634,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 245.72982219437824
+        },
+        {
+          "hour": 17,
+          "loadKw": 797.9076924874416,
+          "solarKw": 285.8282982319888,
+          "selfConsumedKw": 285.8282982319888,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 512.0793942554528
+        },
+        {
+          "hour": 18,
+          "loadKw": 335.12123084472546,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 335.12123084472546
+        },
+        {
+          "hour": 19,
+          "loadKw": 335.12123084472546,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 335.12123084472546
+        },
+        {
+          "hour": 20,
+          "loadKw": 335.12123084472546,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 335.12123084472546
+        },
+        {
+          "hour": 21,
+          "loadKw": 335.12123084472546,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 335.12123084472546
+        },
+        {
+          "hour": 22,
+          "loadKw": 117.29243079565391,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 117.29243079565391
+        },
+        {
+          "hour": 23,
+          "loadKw": 117.29243079565391,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 117.29243079565391
+        }
+      ],
+      "sourceFiles": [
+        "frozen V5.1.3 energy output",
+        "load matching summary",
+        "physical QA"
+      ],
+      "profileSource": "Frozen model: first 24 hours of profile year 2027; not measured telemetry"
+    },
+    {
+      "projectId": "EU-GY-PTP-CADIZ",
+      "projectName": "PTP Iberica Cadiz",
+      "country": "Spain",
+      "capacityMw": 1.84,
+      "p50Gwh": 2.4,
+      "p90Gwh": 2.16,
+      "p99Gwh": 1.92,
+      "specificYieldKwhKwp": 1304.34782609,
+      "annualLoadGwh": 2.82352941176471,
+      "selfConsumedGwh": 1.7822721290368901,
+      "exportedGwh": 0.61772787096317,
+      "gridPurchaseGwh": 1.04125728272782,
+      "selfConsumptionShare": 0.7426133870987043,
+      "solarCoverageShare": 0.6312213790338976,
+      "loadEvidenceLevel": "LEVEL_3_ANNUAL_ONLY",
+      "profileHours": 8760,
+      "representativeDay": [
+        {
+          "hour": 0,
+          "loadKw": 97.43732112324766,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 97.43732112324766
+        },
+        {
+          "hour": 1,
+          "loadKw": 97.43732112324766,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 97.43732112324766
+        },
+        {
+          "hour": 2,
+          "loadKw": 97.43732112324766,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 97.43732112324766
+        },
+        {
+          "hour": 3,
+          "loadKw": 97.43732112324766,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 97.43732112324766
+        },
+        {
+          "hour": 4,
+          "loadKw": 97.43732112324766,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 97.43732112324766
+        },
+        {
+          "hour": 5,
+          "loadKw": 97.43732112324766,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 97.43732112324766
+        },
+        {
+          "hour": 6,
+          "loadKw": 397.7033515234599,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 397.7033515234599
+        },
+        {
+          "hour": 7,
+          "loadKw": 397.7033515234599,
+          "solarKw": 224.25234251610735,
+          "selfConsumedKw": 224.25234251610735,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 173.45100900735255
+        },
+        {
+          "hour": 8,
+          "loadKw": 662.8389192057665,
+          "solarKw": 433.2222584842603,
+          "selfConsumedKw": 433.2222584842603,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 229.6166607215062
+        },
+        {
+          "hour": 9,
+          "loadKw": 662.8389192057665,
+          "solarKw": 612.6687934703435,
+          "selfConsumedKw": 612.6687934703435,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 50.17012573542297
+        },
+        {
+          "hour": 10,
+          "loadKw": 662.8389192057665,
+          "solarKw": 750.362962664476,
+          "selfConsumedKw": 662.8389192057665,
+          "exportKw": 87.52404345870946,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 11,
+          "loadKw": 662.8389192057665,
+          "solarKw": 836.921135986451,
+          "selfConsumedKw": 662.8389192057665,
+          "exportKw": 174.08221678068446,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 12,
+          "loadKw": 662.8389192057665,
+          "solarKw": 866.4445169685207,
+          "selfConsumedKw": 662.8389192057665,
+          "exportKw": 203.6055977627542,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 13,
+          "loadKw": 662.8389192057665,
+          "solarKw": 836.921135986451,
+          "selfConsumedKw": 662.8389192057665,
+          "exportKw": 174.08221678068446,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 14,
+          "loadKw": 662.8389192057665,
+          "solarKw": 750.3629626644761,
+          "selfConsumedKw": 662.8389192057665,
+          "exportKw": 87.52404345870957,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 15,
+          "loadKw": 662.8389192057665,
+          "solarKw": 612.6687934703436,
+          "selfConsumedKw": 612.6687934703436,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 50.17012573542286
+        },
+        {
+          "hour": 16,
+          "loadKw": 662.8389192057665,
+          "solarKw": 433.2222584842603,
+          "selfConsumedKw": 433.2222584842603,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 229.6166607215062
+        },
+        {
+          "hour": 17,
+          "loadKw": 662.8389192057665,
+          "solarKw": 224.25234251610757,
+          "selfConsumedKw": 224.25234251610757,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 438.58657668965895
+        },
+        {
+          "hour": 18,
+          "loadKw": 278.3923460664219,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 278.3923460664219
+        },
+        {
+          "hour": 19,
+          "loadKw": 278.3923460664219,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 278.3923460664219
+        },
+        {
+          "hour": 20,
+          "loadKw": 278.3923460664219,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 278.3923460664219
+        },
+        {
+          "hour": 21,
+          "loadKw": 278.3923460664219,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 278.3923460664219
+        },
+        {
+          "hour": 22,
+          "loadKw": 97.43732112324766,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 97.43732112324766
+        },
+        {
+          "hour": 23,
+          "loadKw": 97.43732112324766,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 97.43732112324766
+        }
+      ],
+      "sourceFiles": [
+        "frozen V5.1.3 energy output",
+        "load matching summary",
+        "physical QA"
+      ],
+      "profileSource": "Frozen model: first 24 hours of profile year 2027; not measured telemetry"
+    },
+    {
+      "projectId": "EU-GY-CMC-ANDRYCHOW",
+      "projectName": "CMC Andrychow rooftop",
+      "country": "Poland",
+      "capacityMw": 0.653,
+      "p50Gwh": 0.68565,
+      "p90Gwh": 0.617085,
+      "p99Gwh": 0.54852,
+      "specificYieldKwhKwp": 1050.0,
+      "annualLoadGwh": 0.8066470588235299,
+      "selfConsumedGwh": 0.50917286886421,
+      "exportedGwh": 0.17647713113579,
+      "gridPurchaseGwh": 0.29747418995931996,
+      "selfConsumptionShare": 0.7426133870986801,
+      "solarCoverageShare": 0.6312213790338776,
+      "loadEvidenceLevel": "LEVEL_3_ANNUAL_ONLY",
+      "profileHours": 8760,
+      "representativeDay": [
+        {
+          "hour": 0,
+          "loadKw": 27.83662467839782,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 27.83662467839782
+        },
+        {
+          "hour": 1,
+          "loadKw": 27.83662467839782,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 27.83662467839782
+        },
+        {
+          "hour": 2,
+          "loadKw": 27.83662467839782,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 27.83662467839782
+        },
+        {
+          "hour": 3,
+          "loadKw": 27.83662467839782,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 27.83662467839782
+        },
+        {
+          "hour": 4,
+          "loadKw": 27.83662467839782,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 27.83662467839782
+        },
+        {
+          "hour": 5,
+          "loadKw": 27.83662467839782,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 27.83662467839782
+        },
+        {
+          "hour": 6,
+          "loadKw": 113.61887623835847,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 113.61887623835847
+        },
+        {
+          "hour": 7,
+          "loadKw": 113.61887623835847,
+          "solarKw": 64.06609110257041,
+          "selfConsumedKw": 64.06609110257041,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 49.552785135788056
+        },
+        {
+          "hour": 8,
+          "loadKw": 189.36479373059743,
+          "solarKw": 123.7661839707221,
+          "selfConsumedKw": 123.7661839707221,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 65.59860975987533
+        },
+        {
+          "hour": 9,
+          "loadKw": 189.36479373059743,
+          "solarKw": 175.03181593455878,
+          "selfConsumedKw": 175.03181593455878,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 14.332977796038648
+        },
+        {
+          "hour": 10,
+          "loadKw": 189.36479373059743,
+          "solarKw": 214.36931889620746,
+          "selfConsumedKw": 189.36479373059743,
+          "exportKw": 25.004525165610033,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 11,
+          "loadKw": 189.36479373059743,
+          "solarKw": 239.0979070371292,
+          "selfConsumedKw": 189.36479373059743,
+          "exportKw": 49.73311330653178,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 12,
+          "loadKw": 189.36479373059743,
+          "solarKw": 247.53236794144422,
+          "selfConsumedKw": 189.36479373059743,
+          "exportKw": 58.167574210846794,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 13,
+          "loadKw": 189.36479373059743,
+          "solarKw": 239.0979070371292,
+          "selfConsumedKw": 189.36479373059743,
+          "exportKw": 49.73311330653178,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 14,
+          "loadKw": 189.36479373059743,
+          "solarKw": 214.3693188962075,
+          "selfConsumedKw": 189.36479373059743,
+          "exportKw": 25.004525165610062,
+          "gridPurchaseKw": 0.0
+        },
+        {
+          "hour": 15,
+          "loadKw": 189.36479373059743,
+          "solarKw": 175.0318159345588,
+          "selfConsumedKw": 175.0318159345588,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 14.33297779603862
+        },
+        {
+          "hour": 16,
+          "loadKw": 189.36479373059743,
+          "solarKw": 123.7661839707221,
+          "selfConsumedKw": 123.7661839707221,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 65.59860975987533
+        },
+        {
+          "hour": 17,
+          "loadKw": 189.36479373059743,
+          "solarKw": 64.06609110257048,
+          "selfConsumedKw": 64.06609110257048,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 125.29870262802694
+        },
+        {
+          "hour": 18,
+          "loadKw": 79.53321336685092,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 79.53321336685092
+        },
+        {
+          "hour": 19,
+          "loadKw": 79.53321336685092,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 79.53321336685092
+        },
+        {
+          "hour": 20,
+          "loadKw": 79.53321336685092,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 79.53321336685092
+        },
+        {
+          "hour": 21,
+          "loadKw": 79.53321336685092,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 79.53321336685092
+        },
+        {
+          "hour": 22,
+          "loadKw": 27.83662467839782,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 27.83662467839782
+        },
+        {
+          "hour": 23,
+          "loadKw": 27.83662467839782,
+          "solarKw": 0.0,
+          "selfConsumedKw": 0.0,
+          "exportKw": 0.0,
+          "gridPurchaseKw": 27.83662467839782
+        }
+      ],
+      "sourceFiles": [
+        "frozen V5.1.3 energy output",
+        "load matching summary",
+        "physical QA"
+      ],
+      "profileSource": "Frozen model: first 24 hours of profile year 2027; not measured telemetry"
+    }
+  ],
+  "blockedProjectId": "IN-FPEL-ARISUDHANA",
+  "disclosure": "P90/P99 are screening bands, not bankable quantiles."
+}

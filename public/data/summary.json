@@ -1,0 +1,30 @@
+{
+  "version": "V5.1.3",
+  "modelTag": "v5.1.3-recruiter-final",
+  "modelSha": "ff69e15d211ff1abc88200574242ed2f1db49074",
+  "candidateProjects": 54,
+  "selectedRecords": 20,
+  "economicsReadyProjects": 19,
+  "technicalBlockedProjects": 1,
+  "observations": 441,
+  "countries": 7,
+  "economicsReadyCapacityMw": 129.853,
+  "readyObservedGenerationGwh": 148.221,
+  "modeledHourlyRows": 166440,
+  "scenarios": 171,
+  "workbookSheets": 28,
+  "regressionTests": 26,
+  "semanticControls": 26,
+  "ppaMode": "FRONTIER_ONLY",
+  "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
+  "transactionEvidence": "OPEN",
+  "bankableTransactionReady": false,
+  "lenderApproved": false,
+  "icApproved": false,
+  "capitalAllocation": "DISABLED_FRONTIER_ONLY"
+}
+
+
+
+
+

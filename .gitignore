@@ -5,3 +5,11 @@ __pycache__/
 private_validation/*
 !private_validation/.gitkeep
 .env
+node_modules/
+.next/
+.wrangler/
+dist/
+test-results/
+playwright-report/
+*.tsbuildinfo
+next-env.d.ts

@@ -31,6 +31,8 @@ concurrency:
 
 jobs:
   build:
+    # The eight-page app is published by codex-github-pages.yml.
+    if: ${{ false }}
     runs-on: ubuntu-latest
     permissions:
       contents: read

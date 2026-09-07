@@ -1,0 +1,42 @@
+{
+  "version": "V5.1.3",
+  "events": [
+    {
+      "metric": "selected_records",
+      "value": 20
+    },
+    {
+      "metric": "economics_ready",
+      "value": 19
+    },
+    {
+      "metric": "technical_blocked",
+      "value": 1
+    },
+    {
+      "metric": "hourly_rows",
+      "value": 166440
+    },
+    {
+      "metric": "scenario_rows",
+      "value": 171
+    },
+    {
+      "metric": "ppa_mode",
+      "value": "FRONTIER_ONLY"
+    },
+    {
+      "metric": "technical_block",
+      "value": "FPEL Arisudhana"
+    },
+    {
+      "metric": "capital_allocated_usd",
+      "value": 0
+    }
+  ]
+}
+
+
+
+
+

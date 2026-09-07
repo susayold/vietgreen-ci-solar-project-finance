@@ -1,0 +1,164 @@
+{
+  "version": "V5.1.3",
+  "claimBoundary": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
+  "release": {
+    "modelVersion": "V5.1.3",
+    "modelTag": "v5.1.3-recruiter-final",
+    "modelSha": "ff69e15d211ff1abc88200574242ed2f1db49074",
+    "modelFrozen": true,
+    "regressionTests": 26,
+    "semanticControls": 26,
+    "deterministicBuild": "PASS",
+    "modelRunId": 33629919973,
+    "modelJobId": 100246555216,
+    "workbookSheets": 28
+  },
+  "workbookSheets": 28,
+  "rows": [
+    {
+      "projectId": "EU-GY-ALTAREA-BOLLENE-ROOF",
+      "projectName": "Altarea Bollene rooftop",
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "economicsReady": true,
+      "ppaMode": "FRONTIER_ONLY"
+    },
+    {
+      "projectId": "EU-GY-ALTAREA-PUCEUL",
+      "projectName": "Altarea Puceul rooftop",
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "economicsReady": true,
+      "ppaMode": "FRONTIER_ONLY"
+    },
+    {
+      "projectId": "EU-GY-FRUEHAUF-AUXERRE",
+      "projectName": "Fruehauf Auxerre carports",
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "economicsReady": true,
+      "ppaMode": "FRONTIER_ONLY"
+    },
+    {
+      "projectId": "EU-GY-PANATTONI-MOISSY",
+      "projectName": "Panattoni Moissy Cramayel",
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "economicsReady": true,
+      "ppaMode": "FRONTIER_ONLY"
+    },
+    {
+      "projectId": "EU-GY-SAFRAN-EVRY",
+      "projectName": "Safran Evry Corbeil",
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "economicsReady": true,
+      "ppaMode": "FRONTIER_ONLY"
+    },
+    {
+      "projectId": "EU-GY-STELLANTIS-CAEN",
+      "projectName": "Stellantis Caen",
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "economicsReady": true,
+      "ppaMode": "FRONTIER_ONLY"
+    },
+    {
+      "projectId": "EU-GY-STELLANTIS-CHARLEVILLE",
+      "projectName": "Stellantis Charleville",
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "economicsReady": true,
+      "ppaMode": "FRONTIER_ONLY"
+    },
+    {
+      "projectId": "EU-GY-STELLANTIS-VALENCIENNES",
+      "projectName": "Stellantis Valenciennes",
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "economicsReady": true,
+      "ppaMode": "FRONTIER_ONLY"
+    },
+    {
+      "projectId": "EU-GY-GIVA-CELLA",
+      "projectName": "GIVA Cella Dati",
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "economicsReady": true,
+      "ppaMode": "FRONTIER_ONLY"
+    },
+    {
+      "projectId": "EU-GY-GIVA-VISANO",
+      "projectName": "GIVA Visano",
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "economicsReady": true,
+      "ppaMode": "FRONTIER_ONLY"
+    },
+    {
+      "projectId": "EU-GY-SASOL-ITALY",
+      "projectName": "Sasol Terranova",
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "economicsReady": true,
+      "ppaMode": "FRONTIER_ONLY"
+    },
+    {
+      "projectId": "EU-GY-STELLANTIS-SLOVAKIA",
+      "projectName": "Stellantis Slovakia",
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "economicsReady": true,
+      "ppaMode": "FRONTIER_ONLY"
+    },
+    {
+      "projectId": "IN-AZURE-GANDHINAGAR",
+      "projectName": "Azure Sun Gandhinagar rooftop",
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "economicsReady": true,
+      "ppaMode": "FRONTIER_ONLY"
+    },
+    {
+      "projectId": "IN-CLEANMAX-TN-30MW",
+      "projectName": "Clean Max Tamil Nadu",
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "economicsReady": true,
+      "ppaMode": "FRONTIER_ONLY"
+    },
+    {
+      "projectId": "IN-FPEL-ARISUDHANA",
+      "projectName": "FPEL Arisudhana rooftop",
+      "physicalStatus": "EXTREME_OUTLIER_BLOCK_BASE",
+      "economicsReady": false,
+      "ppaMode": "FRONTIER_ONLY"
+    },
+    {
+      "projectId": "IN-CLEANTECH-EXIDE-HALDIA",
+      "projectName": "Exide Haldia rooftop",
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "economicsReady": true,
+      "ppaMode": "FRONTIER_ONLY"
+    },
+    {
+      "projectId": "VN-GY-GOMALL",
+      "projectName": "GO Mall Vietnam portfolio",
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "economicsReady": true,
+      "ppaMode": "FRONTIER_ONLY"
+    },
+    {
+      "projectId": "VN-GY-LOTTEMART",
+      "projectName": "LOTTE Mart Vietnam portfolio",
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "economicsReady": true,
+      "ppaMode": "FRONTIER_ONLY"
+    },
+    {
+      "projectId": "EU-GY-PTP-CADIZ",
+      "projectName": "PTP Iberica Cadiz",
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "economicsReady": true,
+      "ppaMode": "FRONTIER_ONLY"
+    },
+    {
+      "projectId": "EU-GY-CMC-ANDRYCHOW",
+      "projectName": "CMC Andrychow rooftop",
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+      "economicsReady": true,
+      "ppaMode": "FRONTIER_ONLY"
+    }
+  ]
+}
+
+
+
+
+

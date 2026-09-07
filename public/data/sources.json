@@ -1,0 +1,68 @@
+{
+  "version": "V5.1.3",
+  "sources": [
+    {
+      "layer": "Frozen model",
+      "path": "release/V5_1_3_STATIC_RELEASE_CONTRACT.json",
+      "purpose": "Model identity and release contract",
+      "authority": "PRIMARY",
+      "usedBy": [
+        "all pages"
+      ]
+    },
+    {
+      "layer": "Project registry",
+      "path": "website/data/projects.json",
+      "purpose": "Normalized project and physical QA rows",
+      "authority": "CI GENERATED",
+      "usedBy": [
+        "overview",
+        "projects",
+        "energy",
+        "diligence"
+      ]
+    },
+    {
+      "layer": "Energy",
+      "path": "website/data/energy.json",
+      "purpose": "Project-specific energy flow and representative day",
+      "authority": "CI GENERATED",
+      "usedBy": [
+        "energy"
+      ]
+    },
+    {
+      "layer": "Economics",
+      "path": "website/data/economics.json",
+      "purpose": "Reference case and PPA frontier",
+      "authority": "CI GENERATED",
+      "usedBy": [
+        "economics"
+      ]
+    },
+    {
+      "layer": "Credit",
+      "path": "website/data/debt.json",
+      "purpose": "Debt sizing and schedule",
+      "authority": "CI GENERATED",
+      "usedBy": [
+        "debt",
+        "risk"
+      ]
+    },
+    {
+      "layer": "Governance",
+      "path": "website/data/reconciliation.json",
+      "purpose": "Release reconciliation and audit evidence",
+      "authority": "CI GENERATED",
+      "usedBy": [
+        "model-evidence"
+      ]
+    }
+  ]
+}
+
+
+
+
+

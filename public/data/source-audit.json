@@ -1,0 +1,28 @@
+{
+  "modelSha": "ff69e15d211ff1abc88200574242ed2f1db49074",
+  "artifactId": 9846347737,
+  "outputHashes": {
+    "outputs/v5_1_3_8760.csv": "87ebe241625117c4f48058787ea9a40f9283afffa1f296596264067b7a1e36f8",
+    "outputs/v5_1_3_cash_flow.csv": "6d55562bfcf0caeb2df5babd2d1becf82c0ac6ed340f6b22b3a5eb276a0de329",
+    "outputs/v5_1_3_coverage.csv": "b83cd5a0ccf776f477973fad84e89286867d82235cdd1a2b3f8c2ef4a08ceb38",
+    "outputs/v5_1_3_debt_schedule.csv": "3c20bf4825ad1b86a80cd814c47ecfbb0c30bf7a2d48d51d5132b934e5ca2ade",
+    "outputs/v5_1_3_debt_sizing.csv": "6f1f5b12741a8022f5a87160787a0ec53b1c70411e7ffbeb4e6372e23fce4048",
+    "outputs/v5_1_3_diligence_shortlist.csv": "2638645d1cafee6a288ea3ac5a1c4e8725c7ef8eeb0bd8d063e37b42e525ce48",
+    "outputs/v5_1_3_energy.csv": "83e23666bf2f4157576246c1f89dbbaff7c8e30a900b8a7cc1da7e9baa2c36bc",
+    "outputs/v5_1_3_load_summary.csv": "4f5c80502e4a02343a22bcbd0b657d4a42ab582e20a7c2e77659b45c693bd3fb",
+    "outputs/v5_1_3_model_input_view.csv": "826f703526f23863941904cb361b63d00d7df68628bd211faf978be4a0cd26eb",
+    "outputs/v5_1_3_portfolio_control.csv": "e793d8914968daf4b4e76fe8a32a058acea3bd271afc12343f533e916e29ff1b",
+    "outputs/v5_1_3_ppa_frontier.csv": "7c50bbdff02259daa23a32cd0474661a7495bc5f7fa35cd992dc9ae5b8544f67",
+    "outputs/v5_1_3_project_economics.csv": "7d8c3bfec5759c6d364388d5bab3416c72b4771097df50a97f3e4beceecfd1f7",
+    "outputs/v5_1_3_reconciliation.csv": "89e74139a4d31faa40a7a58314216da924c44f7cd12cdd55bd548381e48dff50",
+    "outputs/v5_1_3_returns.csv": "0713fea5e8b94f7bb18d85f19fb5f19619f5d9d0a3a96d15ce09364910d02e51",
+    "outputs/v5_1_3_scenarios.csv": "f4fcf9b9f39b4c24ef1218330943ec8ce26074a0b0d1483473f2960b1a584f1b"
+  },
+  "findings": [
+    "Latest remediation-plan financial targets do not match the authoritative frozen CI artifact. Website uses the artifact, not unverified plan targets.",
+    "Negative raw model debt capacities are retained as source issues; usable debt is floored at zero and coverage is N/A where no debt service exists.",
+    "The model IRR sentinel -0.99 is not displayed as a genuine -99% return.",
+    "The frozen GO Mall schedule repays in year 1; later-year CFADS remains present. No replacement amortization was invented.",
+    "Model reconciliation does not establish accuracy of underlying commercial assumptions or transaction readiness."
+  ]
+}

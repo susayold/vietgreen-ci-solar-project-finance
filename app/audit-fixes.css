@@ -1,0 +1,10 @@
+/* Scoped rules prevent generic card selectors from other pages overriding grids. */
+.debt-page .portfolio-credit-grid, .debt-page .claim-grid { min-width: 0; }
+.debt-page .portfolio-credit-grid > *, .debt-page .claim-grid > * { min-width: 0; max-width: 100%; }
+.debt-page .portfolio-credit-table { overflow-x: auto; }
+@media(max-width:800px) {
+ .debt-page .claim-grid, .debt-page .portfolio-credit-grid { grid-template-columns: minmax(0,1fr); }
+ .debt-page .claim-grid p { white-space: normal; overflow-wrap: anywhere; }
+ .projects-page .lineage-side-metrics { grid-template-columns: minmax(0,1fr); }
+ .projects-page .lineage-side-metrics span { grid-row: auto; }
+}
