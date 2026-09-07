@@ -1,7 +1,7 @@
 'use client';
 
-import Image from 'next/image';
-import Link from 'next/link';
+import Image from '@/lib/site-image';
+import Link from '@/lib/site-link';
 import {
   AlertTriangle,
   ArrowDown,
@@ -52,6 +52,7 @@ type Metric = {
   capex: string;
 };
 type RiskRow = {
+  metricStatus?: string;
   projectId: string;
   scenarioId: string;
   debtMode: string;
@@ -263,11 +264,8 @@ function DscrBars({ metrics }: { metrics: Record<string, Metric> | null }) {
 export default function RiskPage() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [riskRows, setRiskRows] = useState<RiskRow[]>([]);
-  const [selectedId, setSelectedId] = useState(() =>
-    typeof window === 'undefined'
-      ? GO_MALL
-      : (new URLSearchParams(window.location.search).get('project') ?? GO_MALL),
-  );
+  const [selectedId, setSelectedId] = useState(GO_MALL);
+  useEffect(() => { const id = new URLSearchParams(window.location.search).get('project'); if(id) queueMicrotask(() => setSelectedId(id)); }, []);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -302,13 +300,13 @@ export default function RiskPage() {
         .map((row) => [
           row.scenarioId,
           {
-            dscr: row.minimumDscr,
-            llcr: row.llcr,
-            plcr: row.plcr,
+            dscr: row.metricStatus === 'NO_POSITIVE_BASE_DEBT' ? null : row.minimumDscr,
+            llcr: row.metricStatus === 'NO_POSITIVE_BASE_DEBT' ? null : row.llcr,
+            plcr: row.metricStatus === 'NO_POSITIVE_BASE_DEBT' ? null : row.plcr,
             debt:
               row.openingDebtUsd == null
                 ? 'NOT AVAILABLE'
-                : `$${(row.openingDebtUsd / 1e6).toFixed(3)}m`,
+                : `${(Math.max(0,row.openingDebtUsd) / 1e6).toFixed(3)}m`,
             additionalDebt: `$${(row.additionalDebtUsd / 1e6).toFixed(3)}m`,
             capex:
               row.incrementalCapexUsd > 0
@@ -322,7 +320,7 @@ export default function RiskPage() {
   const baseDebt = riskRows.find(
     (row) => row.projectId === selected?.project_id && row.scenarioId === 'BASE',
   )?.openingDebtUsd;
-  const worstDscr = metrics
+  const worstDscr = metrics && Object.values(metrics).some(m => m.dscr != null)
     ? Math.min(
         ...Object.values(metrics)
           .map((metric) => metric.dscr)
@@ -338,7 +336,7 @@ export default function RiskPage() {
     window.history.replaceState(
       null,
       '',
-      `/risk?project=${encodeURIComponent(value)}`,
+      `${window.location.pathname}?project=${encodeURIComponent(value)}`,
     );
   };
 
@@ -661,8 +659,7 @@ export default function RiskPage() {
                 <span>
                   <strong>Offtaker Nonpayment</strong>
                   <small>
-                    DSCR compresses to 0.990x, the closest downside case to
-                    the 1.00x debt-service breakeven.
+                    A collection shortfall reduces cash available for debt service. Compare the selected scenario ratios with both coverage thresholds.
                   </small>
                 </span>
               </div>
@@ -671,8 +668,7 @@ export default function RiskPage() {
                 <span>
                   <strong>Termination is a lifetime-risk exception.</strong>
                   <small>
-                    Termination removes operating cash flows after year 2;
-                    DSCR is 0.000x and lifetime coverage is 0.159x.
+                    Termination truncates future operating cash flows. Read DSCR together with loan-life and project-life coverage; a preserved year-1 ratio does not imply lifetime resilience.
                   </small>
                 </span>
               </div>
@@ -802,12 +798,13 @@ export default function RiskPage() {
                       {project.project_name}
                     </strong>
                     {SCENARIOS.map((scenario) => {
-                      const value =
+                      const cell =
                         riskRows.find(
                           (row) =>
                             row.projectId === project.project_id &&
                             row.scenarioId === scenario.id,
-                        )?.minimumDscr ?? null;
+                        );
+                      const value = cell?.metricStatus === 'NO_POSITIVE_BASE_DEBT' ? null : cell?.minimumDscr ?? null;
                       const className =
                         value === null
                           ? 'nd'
@@ -868,14 +865,14 @@ export default function RiskPage() {
           <div className="segmentation-grid">
             <div className="segmentation-card">
               <div className="seg-ring">
-                <strong>14</strong>
+                <strong>{riskRows.filter(r=>r.scenarioId === 'BASE' && (r.openingDebtUsd ?? 0)>0).length}</strong>
                 <small>
                   Positive
                   <br />
                   base debt
                 </small>
               </div>
-              <b>74%</b>
+              <b>Verified base cases</b>
               <span>
                 economics-ready cases with positive standardized supportable
                 debt
@@ -883,14 +880,14 @@ export default function RiskPage() {
             </div>
             <div className="segmentation-card amber">
               <div className="seg-ring">
-                <strong>5</strong>
+                <strong>{riskRows.filter(r=>r.scenarioId === 'BASE' && (r.openingDebtUsd ?? 0)<=0).length}</strong>
                 <small>
                   No positive
                   <br />
                   base debt
                 </small>
               </div>
-              <b>26%</b>
+              <b>Source caution</b>
               <span>
                 show N/D in the scenario matrix; not conventional debt-service
                 cases
@@ -1006,7 +1003,7 @@ export default function RiskPage() {
             </div>
             <Link
               className="handoff-cta"
-              href={`/diligence?project=${GO_MALL}`}
+              href={`/diligence?project=${selectedId}`}
             >
               Continue to Diligence <ArrowRight size={15} />
             </Link>

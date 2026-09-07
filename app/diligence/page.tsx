@@ -1,7 +1,7 @@
 'use client';
 
-import Image from 'next/image';
-import Link from 'next/link';
+import Image from '@/lib/site-image';
+import Link from '@/lib/site-link';
 import {
   AlertTriangle,
   ArrowRight,
@@ -143,14 +143,12 @@ function Lens({
   status,
   tone,
   items,
-  value,
 }: {
   icon: typeof Gauge;
   title: string;
   status: string;
   tone: string;
   items: string[];
-  value: number;
 }) {
   return (
     <article className={`diligence-lens ${tone}`}>
@@ -164,10 +162,7 @@ function Lens({
           <li key={item}>{item}</li>
         ))}
       </ul>
-      <div className="lens-meter">
-        <i style={{ width: `${value}%` }} />
-        <span>{value}%</span>
-      </div>
+      <small>No verified percentage-completion score is available.</small>
     </article>
   );
 }
@@ -264,7 +259,7 @@ function deriveRecord(project: RemoteProject): DiligenceRecord {
     technicalLabel:
       project.physicalStatus === 'EXTREME_OUTLIER_BLOCK_BASE'
         ? 'TECHNICAL_DATA_BLOCKED'
-        : 'MODEL_OK',
+        : project.physicalStatus === 'LOW_YIELD_REVIEW' ? 'UNDER_REVIEW' : 'MODEL_OK',
     commercialLabel: project.commercialStatus ?? 'NOT AVAILABLE',
     creditLabel: project.creditStatus ?? 'NOT AVAILABLE',
     riskLabel: project.riskStatus ?? 'NOT AVAILABLE',
@@ -458,7 +453,7 @@ export default function DiligencePage() {
   const openRecord = (id: string) => {
     setSelectedId(id);
     setDrawerOpen(true);
-    window.history.replaceState(null, '', `/diligence?project=${id}`);
+    window.history.replaceState(null, '', `${window.location.pathname}?project=${encodeURIComponent(id)}`);
   };
 
   return (
@@ -642,25 +637,23 @@ export default function DiligencePage() {
             <Lens
               icon={Zap}
               title="Technical"
-              status="UNDER_REVIEW"
+              status={selected?.technicalLabel ?? 'NOT AVAILABLE'}
               tone="technical"
-              value={70}
               items={[
-                'Resource: Good',
-                'Design: Adequate',
-                'Site: Verified',
-                'Constraints: Pending',
+                'Source-reported physical inputs retained',
+                'Yield screening is not engineering certification',
+                'Site diligence: no sign-off claimed',
+                'Independent engineering evidence remains open',
               ]}
             />
             <Lens
               icon={Handshake}
               title="Commercial"
-              status="INDETERMINATE"
+              status={selected?.commercialLabel ?? 'NOT AVAILABLE'}
               tone="commercial"
-              value={40}
               items={[
                 'PPA Status: Open',
-                'Sponsor Floor: Missing',
+                'Sponsor floor: inspect selected economics output',
                 'Tariff Frontier: Known',
                 'Negotiation: Pending',
               ]}
@@ -668,14 +661,13 @@ export default function DiligencePage() {
             <Lens
               icon={Landmark}
               title="Credit"
-              status="MODEL_OK"
+              status={selected?.creditLabel ?? 'NOT AVAILABLE'}
               tone="credit"
-              value={85}
               items={[
-                'DSCR: Model OK',
-                'LLCR: Model OK',
-                'PLCR: Model OK',
-                'Leverage: OK',
+                'DSCR: annual cash-flow coverage',
+                'LLCR: loan-life coverage',
+                'PLCR: project-life coverage',
+                'Model capacity is not lender approval',
               ]}
             />
             <Lens
@@ -683,12 +675,11 @@ export default function DiligencePage() {
               title="Evidence"
               status="OPEN"
               tone="evidence"
-              value={35}
               items={[
-                'Missing Docs: 6',
-                'Outstanding RFI: 8',
-                'Third-party Verify: 0',
-                'Data Quality: Good',
+                'Transaction evidence: open',
+                'Requests are diligence requirements, not confirmed correspondence',
+                'No third-party approval claimed',
+                'See the source and evidence register',
               ]}
             />
           </div>
@@ -892,28 +883,28 @@ export default function DiligencePage() {
               <div className="file-grid">
                 <div>
                   <span>Identity</span>
-                  <b>GO Mall Vietnam</b>
-                  <small>Ho Chi Minh City, Vietnam</small>
+                  <b>{selected?.project_name ?? 'Not available'}</b>
+                  <small>{selected?.country ?? 'Location not available'}</small>
                 </div>
                 <div>
                   <span>Technical</span>
-                  <b>PASS_WITHIN_SCREENING_BAND</b>
-                  <small>9.000 MW · 13.000 GWh · 1,444.44 kWh/kWp</small>
+                  <b>{selected?.physicalStatus ?? 'Not available'}</b>
+                  <small>{selected?.capacityMw?.toFixed(3)} MW · {selected?.generationGwh?.toFixed(3)} GWh · {selected?.yield?.toFixed(2)} kWh/kWp</small>
                 </div>
                 <div>
                   <span>Commercial</span>
-                  <b>INSUFFICIENT_DATA</b>
-                  <small>FRONTIER_ONLY · Customer ceiling VND 3,460/kWh</small>
+                  <b>{selected?.commercialLabel ?? 'Not available'}</b>
+                  <small>FRONTIER_ONLY · See selected project economics for solved tariff thresholds</small>
                 </div>
                 <div>
                   <span>Credit</span>
-                  <b>POSITIVE_STANDARDIZED_DEBT</b>
-                  <small>Supportable debt ≈ $0.529m · Binding PLCR</small>
+                  <b>{selected?.creditLabel ?? 'Not available'}</b>
+                  <small>Standardized screening only · See Debt for the selected schedule</small>
                 </div>
                 <div>
                   <span>Risk</span>
-                  <b>CRITICAL_STRESS</b>
-                  <small>COD Delay = 0x · Combined Downside = 0x</small>
+                  <b>{selected?.riskLabel ?? 'Not available'}</b>
+                  <small>Inspect all nine scenarios in Risk; no probabilities are assigned</small>
                 </div>
                 <div>
                   <span>Evidence</span>

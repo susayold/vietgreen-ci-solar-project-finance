@@ -8,6 +8,7 @@ import './debt/debt.css';
 import './risk/risk.css';
 import './diligence/diligence.css';
 import './model-evidence/model-evidence.css';
+import './audit-fixes.css';
 
 export const metadata: Metadata = {
   title: 'VietGreen · C&I Solar Project Finance',

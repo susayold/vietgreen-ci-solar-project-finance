@@ -1,7 +1,7 @@
 'use client';
 
-import Image from 'next/image';
-import Link from 'next/link';
+import Image from '@/lib/site-image';
+import Link from '@/lib/site-link';
 import {
   ArrowDown,
   ArrowRight,
@@ -27,6 +27,9 @@ type Project = {
   project_id: string;
   project_name: string;
   country: string;
+  developer?: string;
+  capacityMw?: number;
+  baseGenerationP50Kwh?: string;
   technicalDataBlocked?: boolean;
 };
 type EconRow = {
@@ -67,7 +70,7 @@ const vnd = (value?: number | null) =>
     ? 'NOT RESOLVED'
     : `VND ${value.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}`;
 const percent = (value?: number | null) =>
-  value == null ? 'NOT DISCLOSED' : `${(value * 100).toFixed(2)}%`;
+  value == null ? 'NO VIABLE IRR / NOT RESOLVED' : `${(value * 100).toFixed(2)}%`;
 function Heading({
   n,
   title,
@@ -121,7 +124,7 @@ function Waterfall({ data }: { data?: EconRow }) {
     { label: 'Tax', value: -data.year1.tax / 1_000_000_000, color: 'red' },
     { label: 'CFADS', value: data.year1.cfads / 1_000_000_000, color: 'green' },
   ];
-  const max = 6;
+  const max = Math.max(1, ...bars.map(bar => Math.abs(bar.value)));
   return (
     <div
       className="waterfall"
@@ -129,22 +132,21 @@ function Waterfall({ data }: { data?: EconRow }) {
     >
       <div className="waterfall-y">
         <span>
-          USD
+          VND bn
           <br />
-          8.0m
+          {max.toFixed(1)}
         </span>
-        <span>6.0m</span>
-        <span>4.0m</span>
-        <span>2.0m</span>
+        <span>{(max*.75).toFixed(1)}</span>
+        <span>{(max*.5).toFixed(1)}</span>
+        <span>{(max*.25).toFixed(1)}</span>
         <span>0</span>
-        <span>-2.0m</span>
       </div>
       <div className="waterfall-bars">
         {bars.map((bar) => (
           <div className="waterfall-item" key={bar.label}>
             <strong className={bar.value < 0 ? 'negative' : ''}>
               {bar.value > 0 ? '' : '−'}
-              {Math.abs(bar.value).toFixed(3)}M
+              {Math.abs(bar.value).toFixed(3)}bn
             </strong>
             <i
               className={bar.color}
@@ -161,73 +163,37 @@ function Waterfall({ data }: { data?: EconRow }) {
 }
 
 function Frontier({ data }: { data?: EconRow }) {
-  const min = 3000;
-  const max = 17000;
-  const position = (value: number) => `${((value - min) / (max - min)) * 100}%`;
-  return (
-    <div className="frontier-visual">
-      <div className="frontier-scale">
-        <span className="frontier-track" />
-        <span
-          className="frontier-marker customer"
-          style={{ left: position(data?.customerCeilingVndKwh ?? min) }}
-        >
-          <i />
-          <b>Customer</b>
-          <strong>{vnd(data?.customerCeilingVndKwh)}</strong>
-        </span>
-        {data?.sponsorFloorVndKwh != null && (
-          <span
-            className="frontier-marker sponsor"
-            style={{ left: position(data.sponsorFloorVndKwh) }}
-          >
-            <i />
-            <b>Sponsor</b>
-            <strong>{vnd(data.sponsorFloorVndKwh)}</strong>
-          </span>
-        )}
-        <span
-          className="frontier-marker lender"
-          style={{ left: position(data?.lenderFloorVndKwh ?? min) }}
-        >
-          <i />
-          <b>Lender</b>
-          <strong>{vnd(data?.lenderFloorVndKwh)}</strong>
-        </span>
-      </div>
-      {data?.sponsorFloorVndKwh == null && (
-        <div className="frontier-missing">
-          <CircleHelp size={18} />
-          <span>
-            <b>SPONSOR FLOOR</b>
-            <strong>NOT RESOLVED</strong>
-            <small>
-              No numeric marker is created from missing public-data support.
-            </small>
-          </span>
-        </div>
-      )}
-      <div className="frontier-axis">
-        <span>3,000</span>
-        <span>6,000</span>
-        <span>9,000</span>
-        <span>12,000</span>
-        <span>15,000</span>
-        <span>17,000 VND/kWh</span>
-      </div>
-    </div>
-  );
+  const entries = [
+    { label: 'Customer ceiling', value: data?.customerCeilingVndKwh, color: '#197350' },
+    { label: 'Sponsor floor', value: data?.sponsorFloorVndKwh, color: '#d89521' },
+    { label: 'Lender floor', value: data?.lenderFloorVndKwh, color: '#c93030' },
+  ];
+  const values = entries.flatMap(e => e.value == null ? [] : [e.value]);
+  if (!values.length) return <p>No resolved tariff outputs for this project.</p>;
+  const low = Math.min(...values), high = Math.max(...values);
+  const padding = Math.max((high-low)*.12, high*.05,1);
+  const min = Math.max(0,low-padding), max = high+padding;
+  const x = (n:number) => 90+(n-min)/(max-min)*540;
+  return <div className="frontier-visual">
+    <svg viewBox="0 0 720 170" aria-label="Resolved tariff thresholds, VND equivalents per kWh" style={{width:'100%',height:'auto'}}>
+      {entries.map((e,i)=><g key={e.label}>
+        <text x="4" y={25+i*42} fontSize="11">{e.label}</text>
+        <line x1="90" x2="630" y1={30+i*42} y2={30+i*42} stroke="#d7dfd9"/>
+        {e.value != null && <circle cx={x(e.value)} cy={30+i*42} r="5" fill={e.color}/>}
+        <text x="638" y={34+i*42} fontSize="10">{e.value == null ? 'Unresolved' : e.value.toFixed(2)}</text>
+      </g>)}
+      <text x="90" y="150" fontSize="10">{min.toFixed(0)}</text>
+      <text x="500" y="150" fontSize="10">{max.toFixed(0)} VND/kWh</text>
+    </svg>
+    <p>Local-currency model thresholds converted using frozen FX. Missing solver outputs are not plotted as zero.</p>
+  </div>;
 }
 
 export default function EconomicsPage() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [econRows, setEconRows] = useState<EconRow[]>([]);
-  const [selectedId, setSelectedId] = useState(() =>
-    typeof window === 'undefined'
-      ? GO_MALL
-      : (new URLSearchParams(window.location.search).get('project') ?? GO_MALL),
-  );
-  const [year, setYear] = useState('1');
+  const [selectedId, setSelectedId] = useState(GO_MALL);
+  useEffect(() => { const id = new URLSearchParams(window.location.search).get('project'); if(id) queueMicrotask(() => setSelectedId(id)); }, []);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -263,11 +229,11 @@ export default function EconomicsPage() {
       projects.find((project) => project.project_id === GO_MALL),
     [projects, selectedId],
   );
-  const isGoMall = selected?.project_id === GO_MALL;
   const reference = econRows.find(
     (row) =>
       (row.project_id ?? row.projectId) === selected?.project_id,
   );
+  const isGoMall = reference != null;
   const decision =
     reference?.decision ??
     'INDETERMINATE_MISSING_COMMERCIAL_DATA';
@@ -275,14 +241,14 @@ export default function EconomicsPage() {
     (row) => row.ppaStatus === 'EMPTY_NEGOTIATION_ZONE',
   ).length;
   const unresolvedCount = econRows.filter(
-    (row) => row.ppaStatus === 'NOT_RESOLVED',
+    (row) => row.ppaStatus === 'NOT_RESOLVED' || row.ppaStatus === 'INSUFFICIENT_DATA',
   ).length;
   const changeProject = (value: string) => {
     setSelectedId(value);
     window.history.replaceState(
       null,
       '',
-      `/economics?project=${encodeURIComponent(value)}`,
+      `${window.location.pathname}?project=${encodeURIComponent(value)}`,
     );
   };
 
@@ -388,10 +354,8 @@ export default function EconomicsPage() {
               <b>{selected?.project_name ?? 'GO Mall Vietnam portfolio'}</b>
               <small>
                 {selected?.project_id ?? GO_MALL} ·{' '}
-                {selected?.country ?? 'Vietnam'} · GreenYellow ·{' '}
-                {isGoMall
-                  ? '9.000 MW · 13.000 GWh P50'
-                  : 'Economics-ready record'}
+                {selected?.country ?? 'Not available'} · {selected?.developer ?? 'Not available'} ·{' '}
+                {selected?.capacityMw?.toFixed(3)} MW · {selected?.baseGenerationP50Kwh ? (Number(selected.baseGenerationP50Kwh)/1e6).toFixed(3) : 'N/A'} GWh P50
               </small>
             </span>
             <span className="badge ready">READY_FOR_ECONOMICS</span>
@@ -402,7 +366,7 @@ export default function EconomicsPage() {
               icon={WalletCards}
               value={isGoMall ? usdM(reference?.capexUsd) : 'NOT AVAILABLE'}
               label="CAPEX"
-              sub={isGoMall ? '$883 / kWp' : 'Frozen economics payload'}
+              sub="Frozen model CAPEX · USD"
             />
             <KPI
               icon={Percent}
@@ -490,17 +454,7 @@ export default function EconomicsPage() {
           <div className="cashflow-grid">
             <div className="cashflow-card">
               <div className="cashflow-head">
-                <h3>CFADS BRIDGE · YEAR {year}</h3>
-                <select
-                  value={year}
-                  onChange={(event) => setYear(event.target.value)}
-                >
-                  {Array.from({ length: 10 }, (_, index) => (
-                    <option key={index + 1} value={index + 1}>
-                      Year {index + 1}
-                    </option>
-                  ))}
-                </select>
+                <h3>CFADS COMPONENTS · YEAR 1 · VND bn</h3>
               </div>
               <Waterfall data={reference} />
               <div className="cashflow-totals">
@@ -524,7 +478,7 @@ export default function EconomicsPage() {
                   <b>
                     Margin
                     <br />
-                    58.8%
+                    {reference?.year1?.revenue ? `${(reference.year1.cfads/reference.year1.revenue*100).toFixed(1)}%` : 'N/A'}
                   </b>
                 </span>
               </div>
@@ -682,10 +636,11 @@ export default function EconomicsPage() {
               <div className="frontier-conclusion">
                 <Scale size={19} />
                 <span>
-                  <b>FULL THREE-SIDED FRONTIER CANNOT BE CONCLUDED</b>
+                  <b>{reference?.ppaStatus ?? 'NOT RESOLVED'}</b>
                   <small>
-                    The frozen model resolves the sponsor floor at VND 3,575.84/kWh;
-                    the 115.84/kWh gap leaves the negotiation zone empty.
+                    {reference?.sponsorFloorVndKwh == null
+                      ? 'Sponsor solver has no resolved output. A full three-party zone cannot be established.'
+                      : `Required tariff less customer ceiling: ${vnd(reference?.negotiationGapVndKwh)}/kWh. A positive gap means no overlapping zone.`}
                   </small>
                 </span>
               </div>
@@ -897,7 +852,7 @@ export default function EconomicsPage() {
                   &amp; Credit
                 </span>
               </div>
-              <Link href={`/debt?project=${GO_MALL}`}>
+              <Link href={`/debt?project=${selectedId}`}>
                 Continue to Debt &amp; Credit <ArrowRight size={14} />
               </Link>
             </div>

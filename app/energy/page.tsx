@@ -1,7 +1,7 @@
 'use client';
 
-import Image from 'next/image';
-import Link from 'next/link';
+import Image from '@/lib/site-image';
+import Link from '@/lib/site-link';
 import {
   Activity,
   ArrowDown,
@@ -117,7 +117,7 @@ function LineChart({
   self: number[];
   exportPower: number[];
 }) {
-  const max = 10500;
+  const max = Math.max(1, ...load, ...solar, ...self, ...exportPower)*1.05;
   const width = 760;
   const height = 245;
   const points = (values: number[]) =>
@@ -134,7 +134,7 @@ function LineChart({
       viewBox={`0 0 ${width} ${height}`}
       aria-label="Representative 24-hour deterministic operating profile"
     >
-      {[0, 2500, 5000, 7500, 10000].map((tick) => (
+      {[0, .25, .5, .75, 1].map(f => Math.round(f*max)).map((tick) => (
         <g key={tick}>
           <line
             x1="0"
@@ -335,7 +335,7 @@ export default function EnergyPage() {
                 window.history.replaceState(
                   null,
                   '',
-                  `/energy?project=${encodeURIComponent(value)}`,
+                  `${window.location.pathname}?project=${encodeURIComponent(value)}`,
                 );
               }}
               disabled={loading}
@@ -486,7 +486,7 @@ export default function EnergyPage() {
         <section className="energy-section profile-section">
           <div className="energy-chart-panel">
             <h3>
-              24-HOUR REPRESENTATIVE PROFILE <small>(TYPICAL SUNNY DAY)</small>
+              24-HOUR MODEL PROFILE <small>(1 JAN 2027 · kW · NOT MEASURED TELEMETRY)</small>
             </h3>
             <div className="chart-legend">
               <span className="load">Customer Load (proxy)</span>
@@ -856,4 +856,3 @@ export default function EnergyPage() {
     </main>
   );
 }
-

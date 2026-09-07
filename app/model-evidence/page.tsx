@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link';
+import Link from '@/lib/site-link';
 import {
   Archive,
   ArrowDown,
@@ -43,6 +43,7 @@ import type { LucideIcon } from 'lucide-react';
 import { useState } from 'react';
 import reconciliationSource from '../../public/data/reconciliation.json';
 import websiteReleaseSource from '../../public/data/website-release.json';
+import sourceAudit from '../../public/data/source-audit.json';
 
 const MODEL_SHA = 'ff69e15d211ff1abc88200574242ed2f1db49074';
 const MODEL_TAG = 'v5.1.3-recruiter-final';
@@ -461,6 +462,12 @@ export default function ModelEvidencePage() {
 
   return (
     <main className="model-page">
+      <details style={{maxWidth:1420, margin:'16px auto', padding:16, border:'1px solid #c59527'}}>
+        <summary>Source reconciliation &amp; known model limitations</summary>
+        <p>Authoritative release: V5.1.3. Financial data is imported from the frozen CI artifact after checking all 15 output hashes. This verifies transcription, not commercial truth.</p>
+        <ul>{sourceAudit.findings.map(item => <li key={item}>{item}</li>)}</ul>
+        <a href={REPO + '/actions/runs/33629919973'}>Inspect source release and artifacts</a>
+      </details>
       <Header />
 
       <section className="model-hero">

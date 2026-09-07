@@ -587,7 +587,12 @@
   color: #5f6c64;
   font: 9px var(--heading);
 }
+.schedule-columns > * { min-width: 0; max-width: 100%; }
+.schedule-visual { min-width: 0; max-width: 100%; }
+.chart-card { min-width: 0; overflow-x: auto; }
 .schedule-columns {
+  min-width: 0;
+  max-width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 13px;
@@ -595,6 +600,8 @@
   font-size: 9px;
 }
 .schedule-bars {
+  max-width: 100%;
+  overflow-x: auto;
   height: 120px;
   display: flex;
   align-items: flex-end;

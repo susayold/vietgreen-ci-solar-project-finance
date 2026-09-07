@@ -73,6 +73,9 @@
 .footprint-layout .lineage-side-metrics b {
   white-space: nowrap;
 }
+.footprint-layout > *, .country-chart, .country-row { min-width: 0; max-width: 100%; }
+.country-row { grid-template-columns: 54px minmax(0, 1fr) 50px; }
+.projects-nav { max-width: 100%; overflow-x: auto; }
 .footprint-section .developer-strip {
   margin-top: 14px;
 }

@@ -22,11 +22,6 @@ def write(name: str, value) -> None:
 
 
 def main() -> None:
-    risk = read("risk.json")
-    for row in risk["rows"]:
-        row["sourceStatus"] = "MODEL_OUTPUT"
-    write("risk.json", risk)
-
     diligence = read("diligence.json")
     technical_id = "IN-FPEL-ARISUDHANA"
     technical = [row for row in diligence["rows"] if row["projectId"] == technical_id]

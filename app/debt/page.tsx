@@ -1,7 +1,7 @@
 'use client';
 
-import Image from 'next/image';
-import Link from 'next/link';
+import Image from '@/lib/site-image';
+import Link from '@/lib/site-link';
 import {
   ArrowDown,
   ArrowRight,
@@ -26,6 +26,7 @@ type Project = {
   project_id: string;
   project_name: string;
   country: string;
+  developer?: string;
   technicalDataBlocked?: boolean;
   capacityMw?: number;
 };
@@ -55,6 +56,8 @@ type DebtRow = {
     cfads: number;
     dscr: number | null;
   }>;
+  sourceIssue?: string | null;
+  rawDebtCapacityUsd?: number;
 };
 const ratio = (value?: number | null) =>
   value == null ? 'NOT AVAILABLE' : `${value.toFixed(3)}x`;
@@ -116,7 +119,7 @@ function CreditFlow({ bindingConstraint }: { bindingConstraint?: string | null }
   return (
     <div className="credit-flow">
       {items.map(([top, bottom], index) => (
-        <div key={top} className={top === bindingConstraint ? 'selected' : ''}>
+        <div key={top} className={top.toUpperCase() === bindingConstraint ? 'selected' : ''}>
           <b>{top}</b>
           <span>{bottom}</span>
           {index < items.length - 1 && <ArrowRight size={13} />}
@@ -129,6 +132,8 @@ function CreditFlow({ bindingConstraint }: { bindingConstraint?: string | null }
 function DebtChart({ data }: { data?: DebtRow }) {
   const values = data?.schedule.map((row) => row.cfads / 1e9) ?? [];
   const bars = data?.schedule.map((row) => row.debtService / 1e9) ?? [];
+  const ceiling = Math.max(1, ...values, ...bars);
+  const scale = 164 / ceiling;
   return (
     <svg
       className="debt-line-chart"
@@ -136,17 +141,17 @@ function DebtChart({ data }: { data?: DebtRow }) {
       aria-label="CFADS versus debt service by year"
     >
       <line x1="42" y1="220" x2="700" y2="220" className="chart-axis" />
-      {[0, 10, 20, 30, 40].map((tick) => (
+      {[0, .25, .5, .75, 1].map(f => f*ceiling).map((tick) => (
         <g key={tick}>
           <line
             x1="42"
             x2="700"
-            y1={220 - tick * 4.1}
-            y2={220 - tick * 4.1}
+            y1={220 - tick * scale}
+            y2={220 - tick * scale}
             className="chart-grid"
           />
-          <text x="0" y={224 - tick * 4.1}>
-            {tick}
+          <text x="0" y={224 - tick * scale}>
+            {tick.toFixed(1)}
           </text>
         </g>
       ))}
@@ -154,15 +159,15 @@ function DebtChart({ data }: { data?: DebtRow }) {
         <rect
           key={index}
           x={54 + index * 43}
-          y={220 - value * 4.1}
+          y={220 - value * scale}
           width="22"
-          height={value * 4.1}
+          height={Math.max(0, value * scale)}
           className="debt-bar"
         />
       ))}
       <polyline
         points={values
-          .map((value, index) => `${65 + index * 43},${220 - value * 4.1}`)
+          .map((value, index) => `${65 + index * 43},${220 - value * scale}`)
           .join(' ')}
         className="debt-polyline"
       />
@@ -170,7 +175,7 @@ function DebtChart({ data }: { data?: DebtRow }) {
         <circle
           key={index}
           cx={65 + index * 43}
-          cy={220 - value * 4.1}
+          cy={220 - value * scale}
           r="3"
           className="debt-point"
         />
@@ -192,14 +197,13 @@ function ScheduleChart({ data }: { data?: DebtRow }) {
         {opening.map((value, index) => (
           <div key={index} className="schedule-year">
             <strong>{value ? value.toFixed(3) : '0'}</strong>
-            <i style={{ height: `${Math.max(4, value * 8)}px` }} />
+            <i style={{ height: `${value / Math.max(1,...opening) * 120}px` }} />
             <span>{index + 1}</span>
           </div>
         ))}
       </div>
       <div className="schedule-legend">
         <span className="opening">Opening Debt</span>
-        <span className="closing">Closing Debt</span>
       </div>
     </div>
   );
@@ -239,7 +243,6 @@ function RatioCard({
         <i />
         <em />
       </div>
-      {name === 'PLCR' && <span className="ratio-binding">BINDING</span>}
     </div>
   );
 }
@@ -247,11 +250,8 @@ function RatioCard({
 export default function DebtPage() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [debtRows, setDebtRows] = useState<DebtRow[]>([]);
-  const [selectedId, setSelectedId] = useState(() =>
-    typeof window === 'undefined'
-      ? GO_MALL
-      : (new URLSearchParams(window.location.search).get('project') ?? GO_MALL),
-  );
+  const [selectedId, setSelectedId] = useState(GO_MALL);
+  useEffect(() => { const id = new URLSearchParams(window.location.search).get('project'); if(id) queueMicrotask(() => setSelectedId(id)); }, []);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     void Promise.all([
@@ -281,7 +281,7 @@ export default function DebtPage() {
     window.history.replaceState(
       null,
       '',
-      `/debt?project=${encodeURIComponent(value)}`,
+      `${window.location.pathname}?project=${encodeURIComponent(value)}`,
     );
   };
   return (
@@ -341,7 +341,7 @@ export default function DebtPage() {
             </div>
             <div>
               <span>BINDING</span>
-              <b>PLCR</b>
+              <b>{debt?.bindingConstraint ?? 'NOT AVAILABLE'}</b>
             </div>
             <div>
               <span>MIN DSCR</span>
@@ -379,7 +379,7 @@ export default function DebtPage() {
               <ChevronDown size={15} />
             </div>
             <span>◉ {selected?.country ?? 'NOT AVAILABLE'}</span>
-            <span>♨ GreenYellow</span>
+            <span>{selected?.developer ?? 'Developer not available'}</span>
             <span>◉ {selected?.capacityMw?.toFixed(3) ?? 'NOT AVAILABLE'} MW</span>
             <span>▣ {usdM(debt?.debtCapacityUsd)}</span>
             <b className="green-badge">
@@ -439,6 +439,7 @@ export default function DebtPage() {
               {debt ? (debt.maxLeverage * 100).toFixed(0) : 'NOT AVAILABLE'}%<small>Maximum Leverage</small>
             </span>
           </div>
+          {debt?.sourceIssue && <p role="note">Source anomaly: frozen model raw capacity is {usdM(debt.rawDebtCapacityUsd)}. Usable debt is shown as zero; coverage with no debt service is N/A. This is not a validated financing case.</p>}
           <div className="debt-warning">
             <ShieldAlert size={18} />
             STANDARDIZED UNDERWRITING — NOT ACTUAL LENDER TERMS
@@ -458,14 +459,14 @@ export default function DebtPage() {
                 <span>
                   <b>
                     {(debt ? debt.maxLeverage * 100 : 0).toFixed(0)}% MAXIMUM
-                    LEVERAGE ≠{' '}
+                    LEVERAGE CAP ·{' '}
                     {debt?.leverage == null
                       ? 'NOT AVAILABLE'
                       : `${(debt.leverage * 100).toFixed(1)}% SUPPORTABLE LEVERAGE`}
                   </b>
                   <small>
                     The leverage cap is only an upper limit. Cash-flow coverage
-                    constraints (DSCR, LLCR, PLCR) limit debt capacity far below
+                    constraints (DSCR, LLCR, PLCR) can reduce debt below
                     that ceiling. The model selects the minimum supportable
                     capacity.
                   </small>
@@ -475,7 +476,7 @@ export default function DebtPage() {
             <div className="binding-card">
               <div className="plcr-box">
                 <b>{debt?.bindingConstraint ?? 'NOT RESOLVED'}</b>
-                <strong>{ratio(debt?.plcr)}</strong>
+                <strong>{debt?.bindingConstraint === 'LEVERAGE' ? `${((debt.leverage ?? 0)*100).toFixed(1)}%` : ratio(debt?.bindingConstraint === 'DSCR' ? debt.minimumDscr : debt?.bindingConstraint === 'LLCR' ? debt.llcr : debt?.plcr)}</strong>
                 <small>Minimum requirement {ratio(debt?.plcrMin)}</small>
                 <span>BINDING CONSTRAINT</span>
               </div>
@@ -515,8 +516,8 @@ export default function DebtPage() {
               </span>
             </div>
             <p className="chart-footnote">
-              After Year 1 debt payoff, debt service is zero for the remainder
-              of the term. DSCR is N/A, not 0x.
+              Amounts are VND equivalents using frozen project FX. CFADS continues
+              after debt payoff. DSCR is N/A whenever debt service is zero.
             </p>
           </div>
           <div id="schedule" className="chart-card">
@@ -527,7 +528,7 @@ export default function DebtPage() {
             />
             <div className="schedule-columns">
               <div>
-                <b>A. Opening vs Closing Debt</b>
+                <b>A. Opening Debt · VND bn</b>
                 <ScheduleChart data={debt} />
               </div>
               <div>
@@ -606,7 +607,7 @@ export default function DebtPage() {
               <div>
                 <CalendarDays />
                 <span>
-                  <b>Strong Near-Term Coverage</b>
+                  <b>Near-Term Coverage</b>
                   <small>
                     Generated Year 1 DSCR is compared with the standardized
                     target from the selected debt payload.
@@ -616,7 +617,7 @@ export default function DebtPage() {
               <div>
                 <BarChart3 />
                 <span>
-                  <b>Low Supportable Leverage</b>
+                  <b>Supportable Leverage</b>
                   <small>
                     Supportable leverage is compared with the policy maximum;
                     policy is not lender approval.
@@ -656,39 +657,20 @@ export default function DebtPage() {
           <div className="portfolio-credit-grid">
             <div className="credit-donut">
               <div className="donut-ring">
-                <strong>19</strong>
+                <strong>{debtRows.length}</strong>
                 <small>Projects</small>
               </div>
               <span>
                 <i className="dot green" />
-                14 Positive Debt Capacity (74%)
+                {debtRows.filter(r => (r.debtCapacityUsd ?? 0) > 0).length} Positive Debt Capacity
               </span>
               <span>
-                <i className="dot amber" />5 No Positive Debt Capacity (26%)
+                <i className="dot amber" />{debtRows.filter(r => r.debtCapacityUsd === 0).length} No Positive Debt Capacity
               </span>
             </div>
             <div className="binding-distribution">
               <h3>Binding Constraint Distribution</h3>
-              <span>
-                <b>PLCR</b>
-                <i style={{ width: '92%' }} />
-                <strong>11 (58%)</strong>
-              </span>
-              <span>
-                <b>LLCR</b>
-                <i style={{ width: '34%' }} />
-                <strong>4 (21%)</strong>
-              </span>
-              <span>
-                <b>DSCR</b>
-                <i style={{ width: '18%' }} />
-                <strong>2 (11%)</strong>
-              </span>
-              <span>
-                <b>Leverage</b>
-                <i style={{ width: '18%' }} />
-                <strong>2 (10%)</strong>
-              </span>
+              {['PLCR','LLCR','DSCR','LEVERAGE'].map(label => { const count = debtRows.filter(r => r.bindingConstraint === label).length; return <span key={label}><b>{label}</b><i style={{width: `${count / Math.max(1,debtRows.length)*100}%`}}/><strong>{count}</strong></span>; })}
             </div>
             <div className="portfolio-credit-table">
               <table>
@@ -808,7 +790,7 @@ export default function DebtPage() {
                   Coverage
                 </span>
               </div>
-              <Link href={`/risk?project=${GO_MALL}`}>
+              <Link href={`/risk?project=${selectedId}`}>
                 Continue to Risk &amp; Scenarios <ArrowRight size={14} />
               </Link>
             </div>

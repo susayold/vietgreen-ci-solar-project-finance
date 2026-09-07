@@ -22,8 +22,8 @@ import {
   Target,
   X,
 } from 'lucide-react';
-import Image from 'next/image';
-import Link from 'next/link';
+import Image from '@/lib/site-image';
+import Link from '@/lib/site-link';
 import { useEffect, useMemo, useState } from 'react';
 
 const PROJECTS_URL = '/data/projects.json';
@@ -150,7 +150,7 @@ function normalizeRecords(projects: RemoteProject[]): ProjectRecord[] {
 }
 
 async function fetchJson<T>(url: string): Promise<T> {
-  const response = await fetch(url);
+  const response = await fetch((process.env.NEXT_PUBLIC_SITE_BASE_PATH || '') + url);
   if (!response.ok) {
     throw new Error(
       `Project master unavailable (${response.status}). See Model & Evidence for release status.`,
@@ -1344,4 +1344,3 @@ function MetricLine({
     </div>
   );
 }
-
