@@ -3,6 +3,7 @@
   background: #f8f6f0;
   color: #132b26;
   font-family: Arial, sans-serif;
+  overflow-x: clip;
 }
 .model-page * {
   box-sizing: border-box;
@@ -1917,6 +1918,14 @@
   }
 }
 @media (max-width: 480px) {
+  .model-header {
+    padding-inline: 12px;
+  }
+  .model-release {
+    max-width: 145px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
   .model-hero h1 {
     font-size: 38px;
   }
@@ -1977,5 +1986,4 @@
     font-size: 8px;
   }
 }
-
 
