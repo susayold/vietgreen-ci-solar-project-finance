@@ -3,39 +3,21 @@ name: recruiter-pages
 on:
   push:
     branches: [main]
-    paths:
-      - "website/**"
-      - "scripts/build_website_data.py"
-      - "scripts/write_release_meta.py"
-      - "scripts/validate_website_data.py"
-      - "scripts/check_stale_v3_claims.py"
-      - "scripts/validate_recruiter_surfaces.py"
-      - "scripts/validate_metric_lineage.py"
-      - "scripts/validate_public_claims.py"
-      - "scripts/validate_website_assets.py"
-      - "scripts/validate_website_ux.py"
-      - "tests/test_ppa_zone_math.py"
-      - "outputs/**"
-      - "release/MODEL_RELEASE_MANIFEST.json"
-      - "reports/**"
-      - "validation/**"
-      - "README.md"
-      - "EXECUTIVE_SUMMARY.md"
-      - "BUSINESS_CASE.md"
-      - ".github/workflows/recruiter-pages.yml"
   workflow_dispatch:
 
 concurrency:
-  group: pages
+  group: recruiter-pages-compat
   cancel-in-progress: false
+
+permissions:
+  contents: read
+  actions: read
 
 jobs:
   build:
-    # The eight-page app is published by codex-github-pages.yml.
-    if: ${{ false }}
+    # Compatibility required check for main branch protection.
+    # The actual GitHub Pages deployment remains owned by codex-github-pages.yml.
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
     steps:
       - name: Checkout candidate SHA
         uses: actions/checkout@v4
@@ -45,139 +27,32 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Build website data contract
-        run: python scripts/build_website_data.py
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
 
-      - name: Write release metadata from GITHUB_SHA
-        run: python scripts/write_release_meta.py
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Recalculate current website data from verified baseline
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh run download 33629919973 --repo susayold/vietgreen-ci-solar-project-finance --name vietgreen-v5-1-3-full-data-model-release --dir /tmp/vietgreen-frozen
+          python scripts/build_corrected_model.py /tmp/vietgreen-frozen
 
       - name: Validate website data contract
-        run: python scripts/validate_website_data.py
+        run: npm run test:data
 
-      - name: Reconcile recruiter surfaces
-        run: python scripts/validate_recruiter_surfaces.py
+      - name: Validate website claims
+        run: npm run test:claims
 
-      - name: Validate metric lineage
-        run: python scripts/validate_metric_lineage.py
+      - name: Lint current website source
+        run: npm run lint
 
-      - name: Validate public claims
-        run: python scripts/validate_public_claims.py
-
-      - name: Block stale V3 claims
-        run: python scripts/check_stale_v3_claims.py
-
-      - name: Validate website links and assets
-        run: python scripts/validate_website_assets.py
-
-      - name: Validate responsive and accessibility critical contract
-        run: python scripts/validate_website_ux.py
-
-      - name: Run PPA geometry tests
-        run: python -m unittest tests.test_ppa_zone_math -v
-
-      - name: JavaScript syntax
-        run: node --check website/app.js
-
-      - name: Verify aggregate-only website boundary
-        shell: bash
-        run: |
-          set -euo pipefail
-          test -f website/index.html
-          if rg -n -i 'private_validation|hidden_truth|password|secret|token|localhost|[A-Z]:\\\\|/Users/' website; then
-            echo "Website boundary check failed"
-            exit 1
-          fi
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Stage website
-        shell: bash
-        run: |
-          set -euo pipefail
-          mkdir -p _site
-          cp -R website/. _site/
-          touch _site/.nojekyll
-
-      - name: HTTP smoke test
-        shell: bash
-        run: |
-          set -euo pipefail
-          python -m http.server 8765 --directory website >/tmp/vietgreen-site-http.log 2>&1 &
-          server_pid=$!
-          trap 'kill "$server_pid"' EXIT
-          for attempt in {1..10}; do
-            if curl --fail --silent --show-error http://127.0.0.1:8765/ >/dev/null; then break; fi
-            sleep 1
-          done
-          for route in / /data/shared-summary.json /data/release-meta.json /data/overview.json /data/case.json /data/economics.json /data/debt.json /data/portfolio.json /data/risk.json /data/model.json /data/evidence.json /data/metadata.json /model_preview/index.html; do
-            curl --fail --silent --show-error "http://127.0.0.1:8765${route}" >/dev/null
-          done
-
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v4
-        with:
-          path: _site
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v5
-
-      - name: Verify live release SHA
+      - name: Build current eight-page website
         env:
-          SITE_URL: ${{ steps.deployment.outputs.page_url }}
-          CANDIDATE_SHA: ${{ github.sha }}
-          WORKFLOW_RUN_ID: ${{ github.run_id }}
-        shell: bash
-        run: |
-          set -euo pipefail
-          python - <<'PY'
-          import json
-          import os
-          from urllib.request import urlopen
-
-          base = os.environ["SITE_URL"].rstrip("/") + "/"
-          with urlopen(base + "data/release-meta.json", timeout=30) as response:
-              meta = json.load(response)
-          if meta.get("gitSha") != os.environ["CANDIDATE_SHA"]:
-              raise SystemExit(f"live SHA mismatch: {meta.get('gitSha')} != {os.environ['CANDIDATE_SHA']}")
-          if meta.get("workflowRunId") != os.environ["WORKFLOW_RUN_ID"]:
-              raise SystemExit(f"live workflow mismatch: {meta.get('workflowRunId')} != {os.environ['WORKFLOW_RUN_ID']}")
-          for route in ("", "data/shared-summary.json", "data/release-meta.json", "data/risk.json"):
-              target = base + route
-              with urlopen(target, timeout=30) as response:
-                  if response.status != 200:
-                      raise SystemExit(f"HTTP {response.status}: {target}")
-          evidence = {
-              "status": "PASS",
-              "gitSha": meta["gitSha"],
-              "workflowRunId": meta["workflowRunId"],
-              "deploymentUrl": base,
-              "releaseMetaUrl": base + "data/release-meta.json",
-              "liveReleaseMeta": meta,
-              "httpChecks": ["/", "/data/shared-summary.json", "/data/release-meta.json", "/data/risk.json"],
-          }
-          with open("deployment-evidence.json", "w", encoding="utf-8") as handle:
-              json.dump(evidence, handle, indent=2)
-          with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as handle:
-              handle.write("## VietGreen deployment evidence\n\n")
-              handle.write(f"- Candidate SHA: {meta['gitSha']}\n")
-              handle.write(f"- Workflow run: {meta['workflowRunId']}\n")
-              handle.write(f"- Live URL: {base}\n")
-              handle.write("- Live release-meta check: PASS\n")
-
-      - name: Upload deployment evidence
-        uses: actions/upload-artifact@v4
-        with:
-          name: vietgreen-deployment-evidence
-          path: deployment-evidence.json
+          GITHUB_PAGES: "true"
+        run: npm run build
