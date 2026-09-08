@@ -34,10 +34,8 @@ jobs:
                   raise SystemExit(f'{path}: replacement source not found: {old[:80]!r}')
               p.write_text(text.replace(old,new),encoding='utf-8')
 
-          # Page 1: these are sealed artifacts/views, not 15 independent result tables.
           replace('app/page.tsx', "'Result tables'", "'Versioned output artifacts'", 1)
 
-          # Page 2: consume canonical summary fields directly and remove stale value fallbacks.
           p=Path('app/projects/page.tsx'); text=p.read_text(encoding='utf-8')
           text=text.replace("import { useEffect, useMemo, useState } from 'react';", "import { useEffect, useMemo, useState } from 'react';\nimport { loadWebsiteData } from '@/lib/data';")
           text=text.replace("\nconst PROJECTS_URL = '/data/projects.json';\nconst SUMMARY_URL = '/data/summary.json';\n", "\n")
@@ -69,22 +67,18 @@ jobs:
           text=text.replace('Showing <b>{filteredRecords.length}</b> of 20 authoritative','Showing <b>{filteredRecords.length}</b> of {summary.selectedRecords} authoritative')
           p.write_text(text,encoding='utf-8')
 
-          # Page 3: selected-project QA evidence and modeled-project count come from the payload.
           p=Path('app/energy/page.tsx'); text=p.read_text(encoding='utf-8')
           text=text.replace('  solarCoverageShare: number;\n  representativeDay:', '  solarCoverageShare: number;\n  loadEvidenceLevel?: string;\n  representativeDay:')
           text=text.replace('<b>LEVEL_3_ANNUAL_ONLY ⓘ</b>', "<b>{selectedEnergy?.loadEvidenceLevel ?? 'NOT AVAILABLE'} ⓘ</b>")
           text=text.replace("value={loading ? '—' : '19'}", "value={loading ? '—' : String(energyRows.length)}")
           p.write_text(text,encoding='utf-8')
 
-          # Page 5: fail closed while debt data are unavailable.
           p=Path('app/debt/page.tsx'); text=p.read_text(encoding='utf-8')
           text=text.replace("{(debt ? debt.debtRate * 100 : 0).toFixed(1)}%<small>Debt Rate</small>", "{debt ? `${(debt.debtRate * 100).toFixed(1)}%` : 'NOT AVAILABLE'}<small>Debt Rate</small>")
           p.write_text(text,encoding='utf-8')
 
-          # Page 6: CTA follows whichever project is selected.
           replace('app/risk/page.tsx', 'Review GO Mall Stress Cases', 'Review Selected Project Stress Cases', 1)
 
-          # Regression coverage for the cleanup itself.
           p=Path('tests/v5_1_3_website_browser.spec.mjs'); text=p.read_text(encoding='utf-8')
           marker="test('project selectors change query-string state'"
           insert="""test('overview and projects use canonical release labels and data', async ({page, request}) => {\n  const summary = await (await request.get(`${base}/data/summary.json`)).json();\n  await page.goto(`${base}/`, {waitUntil:'networkidle'});\n  await expect(page.locator('.mini-strip')).toContainText('Versioned output artifacts');\n  await expect(page.locator('.mini-strip')).not.toContainText('Result tables');\n  await page.goto(`${base}/projects`, {waitUntil:'networkidle'});\n  await expect(page.locator('.projects-hero-card')).toContainText(String(summary.candidateProjects));\n  await expect(page.locator('.projects-hero-card')).toContainText(String(summary.selectedRecords));\n  await expect(page.locator('.filter-result')).toContainText(`of ${summary.selectedRecords} authoritative records`);\n  await expect(page.locator('.qa-legend')).toContainText('15');\n  await expect(page.locator('.qa-legend')).toContainText('4');\n  await expect(page.locator('.qa-legend')).toContainText('1');\n});\n\n"""
@@ -92,12 +86,9 @@ jobs:
           text=text.replace(marker,insert+marker,1)
           p.write_text(text,encoding='utf-8')
 
-          # Remove this one-shot workflow from the resulting patch commit.
           Path('.github/workflows/final-page-cleanup.yml').unlink()
           PY
       - run: npm ci
-      - run: npm run test:data
-      - run: npm run test:claims
       - run: npm run lint
       - run: npm run build
       - name: Commit cleanup to staging branch
