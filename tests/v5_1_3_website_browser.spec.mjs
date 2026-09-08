@@ -118,3 +118,31 @@ test('all economic selections render without missing source data', async ({page}
     await expect(page.locator('h1')).toBeVisible();
   }
 });
+
+test('Page 2 uses generated summary aliases and exact physical QA project mapping', async ({page, request}) => {
+  const summary = await (await request.get(`${base}/data/summary.json`)).json();
+  expect(summary.candidateHistory).toBe(summary.candidateProjects);
+  expect(summary.rawObservations).toBe(summary.observations);
+  expect(summary.selectedProjects).toBe(summary.selectedRecords);
+  expect(summary.economicsReadyRecords).toBe(summary.economicsReadyProjects);
+  expect(summary.technicalBlockedRecords).toBe(summary.technicalBlockedProjects);
+
+  const payload = await (await request.get(`${base}/data/projects.json`)).json();
+  const byId = Object.fromEntries(payload.projects.map(row => [row.project_id, row]));
+  expect(byId['EU-GY-GIVA-CELLA'].physicalStatus).toBe('PASS_WITHIN_SCREENING_BAND');
+  expect(byId['EU-GY-STELLANTIS-SLOVAKIA'].physicalStatus).toBe('LOW_YIELD_REVIEW');
+  const lowIds = payload.projects.filter(row => row.physicalStatus === 'LOW_YIELD_REVIEW').map(row => row.project_id).sort();
+  expect(lowIds).toEqual([
+    'EU-GY-STELLANTIS-CAEN',
+    'EU-GY-STELLANTIS-CHARLEVILLE',
+    'EU-GY-STELLANTIS-SLOVAKIA',
+    'EU-GY-STELLANTIS-VALENCIENNES',
+  ]);
+
+  await page.goto(`${base}/projects`, {waitUntil:'networkidle'});
+  await expect(page.locator('.projects-hero-card')).toContainText(String(summary.candidateProjects));
+  await expect(page.locator('.projects-hero-card')).toContainText(String(summary.selectedRecords));
+  await expect(page.locator('.projects-hero-card')).toContainText(String(summary.economicsReadyProjects));
+  await expect(page.locator('main')).toContainText('GIVA Cella Dati');
+  await expect(page.locator('main')).toContainText('Stellantis Slovakia');
+});
