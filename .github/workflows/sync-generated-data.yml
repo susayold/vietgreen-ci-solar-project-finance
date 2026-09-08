@@ -1,0 +1,57 @@
+name: sync-generated-data
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/sync-generated-data.yml'
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.13.0'
+          cache: npm
+      - name: Recalculate authoritative website data from the verified baseline
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh run download 33629919973 --repo susayold/vietgreen-ci-solar-project-finance --name vietgreen-v5-1-3-full-data-model-release --dir /tmp/vietgreen-frozen
+          python scripts/build_corrected_model.py /tmp/vietgreen-frozen
+      - run: npm ci --no-audit --no-fund
+      - run: npm run test:data
+      - run: npm run test:claims
+      - run: npm run lint
+      - run: npm run build
+      - name: Confirm corrected physical mapping before commit
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=json.loads(Path('public/data/projects.json').read_text())['projects']
+          by={r['project_id']:r for r in p}
+          low={r['project_id'] for r in p if r['physicalStatus']=='LOW_YIELD_REVIEW'}
+          expected={'EU-GY-STELLANTIS-CAEN','EU-GY-STELLANTIS-CHARLEVILLE','EU-GY-STELLANTIS-VALENCIENNES','EU-GY-STELLANTIS-SLOVAKIA'}
+          assert low == expected, (low, expected)
+          assert by['EU-GY-GIVA-CELLA']['physicalStatus']=='PASS_WITHIN_SCREENING_BAND'
+          d=json.loads(Path('public/data/diligence.json').read_text())
+          assert len(d['rows'])==19 and len(d['technicalValidationTrack'])==1
+          assert {r['projectId'] for r in d['rows']} == {r['project_id'] for r in p if not r.get('technicalDataBlocked')}
+          PY
+      - name: Commit generated public data to staging branch
+        shell: bash
+        run: |
+          rm .github/workflows/sync-generated-data.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add public/data .github/workflows/sync-generated-data.yml
+          git commit -m 'Align committed website data with corrected revision'
+          git push --force origin HEAD:refs/heads/codex/sync-generated-data
