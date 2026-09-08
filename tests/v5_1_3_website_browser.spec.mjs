@@ -97,6 +97,20 @@ test('overview and projects use canonical release labels and data', async ({page
   await expect(page.locator('.qa-legend')).toContainText('1');
 });
 
+test('selected-project labels do not retain GO Mall-only or misclassified QA wording', async ({page}) => {
+  await page.goto(`${base}/energy`, {waitUntil:'networkidle'});
+  await expect(page.locator('.energy-feature-card')).toContainText('Load Evidence');
+  await expect(page.locator('.energy-feature-card')).not.toContainText('QA Status');
+  await page.goto(`${base}/risk`, {waitUntil:'networkidle'});
+  await page.locator('#risk-project').selectOption({index:1});
+  await expect(page.locator('.risk-kpi-grid')).toContainText('Worst Selected-Project Min DSCR');
+  await expect(page.locator('.risk-kpi-grid')).toContainText('Selected-Project Zero-DSCR Scenarios');
+  await expect(page.locator('.risk-kpi-grid')).not.toContainText('Worst GO Mall Min DSCR');
+  await page.goto(`${base}/diligence`, {waitUntil:'networkidle'});
+  await expect(page.locator('.diligence-filters')).toContainText('Primary next action');
+  await expect(page.locator('.diligence-filters')).toContainText('All primary actions');
+});
+
 test('project selectors change query-string state', async ({ page }) => {
   await page.goto(`${base}/economics`, { waitUntil: 'networkidle' });
   await page.locator('#economics-project').selectOption({ index: 1 });

@@ -251,7 +251,7 @@ export default function DiligencePage() {
   const [error, setError] = useState(false);
   const [country, setCountry] = useState('All countries');
   const [commercial, setCommercial] = useState('All commercial statuses');
-  const [action, setAction] = useState('All next actions');
+  const [action, setAction] = useState('All primary actions');
   const [selectedId, setSelectedId] = useState(GO_MALL);
   const [drawerOpen, setDrawerOpen] = useState(false);
 
@@ -371,7 +371,7 @@ export default function DiligencePage() {
           (country === 'All countries' || record.country === country) &&
           (commercial === 'All commercial statuses' ||
             record.commercialLabel === commercial) &&
-          (action === 'All next actions' || record.nextAction === action),
+          (action === 'All primary actions' || record.nextAction === action),
       ),
     [action, commercial, country, financeRecords],
   );
@@ -685,12 +685,12 @@ export default function DiligencePage() {
               </select>
             </label>
             <label>
-              <Target size={15} /> Next action
+              <Target size={15} /> Primary next action
               <select
                 value={action}
                 onChange={(event) => setAction(event.target.value)}
               >
-                <option>All next actions</option>
+                <option>All primary actions</option>
                 {ACTIONS.map((item) => (
                   <option key={item}>{item}</option>
                 ))}

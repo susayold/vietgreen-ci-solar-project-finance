@@ -282,7 +282,7 @@ export default function EnergyPage() {
                 <b>{fmt((selectedEnergy?.selfConsumptionShare ?? 0) * 100, 1)}%</b>
               </span>
               <span>
-                QA Status <b>{selectedEnergy?.loadEvidenceLevel ?? 'NOT AVAILABLE'} ⓘ</b>
+                Load Evidence <b>{selectedEnergy?.loadEvidenceLevel ?? 'NOT AVAILABLE'} ⓘ</b>
               </span>
             </div>
           </aside>

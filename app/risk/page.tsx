@@ -447,13 +447,13 @@ export default function RiskPage() {
             <RiskKpi
               icon={TrendingDown}
               value={formatCoverage(worstDscr)}
-              label="Worst GO Mall Min DSCR"
+              label="Worst Selected-Project Min DSCR"
               tone="red"
             />
             <RiskKpi
               icon={CircleAlert}
               value={metrics ? String(zeroCount) : 'N/A'}
-              label="GO Mall Zero-DSCR Scenarios"
+              label="Selected-Project Zero-DSCR Scenarios"
               tone="amber"
             />
             <RiskKpi icon={Landmark} value="3" label="Debt Modes" />
