@@ -25,9 +25,8 @@ import {
 } from 'lucide-react';
 import Image from '@/lib/site-image';
 import { useEffect, useMemo, useState } from 'react';
+import { loadWebsiteData } from '@/lib/data';
 
-const PROJECTS_URL = '/data/projects.json';
-const SUMMARY_URL = '/data/summary.json';
 
 type PhysicalStatus =
   | 'PASS_WITHIN_SCREENING_BAND'
@@ -74,21 +73,23 @@ type RemoteProject = {
 };
 
 type Summary = {
-  candidateHistory: number;
-  rawObservations: number;
-  selectedProjects: number;
-  economicsReadyRecords: number;
-  technicalBlockedRecords: number;
+  candidateProjects: number;
+  observations: number;
+  selectedRecords: number;
+  economicsReadyProjects: number;
+  technicalBlockedProjects: number;
+  countries: number;
 };
 
 type ProjectPayload = { projects: RemoteProject[] };
 
 const EMPTY_SUMMARY: Summary = {
-  candidateHistory: 54,
-  rawObservations: 441,
-  selectedProjects: 20,
-  economicsReadyRecords: 19,
-  technicalBlockedRecords: 1,
+  candidateProjects: 0,
+  observations: 0,
+  selectedRecords: 0,
+  economicsReadyProjects: 0,
+  technicalBlockedProjects: 0,
+  countries: 0,
 };
 
 const STATUS_LABEL: Record<PhysicalStatus, string> = {
@@ -146,16 +147,6 @@ function normalizeRecords(projects: RemoteProject[]): ProjectRecord[] {
       sourceId: project.source_id || '—',
     };
   });
-}
-
-async function fetchJson<T>(url: string): Promise<T> {
-  const response = await fetch((process.env.NEXT_PUBLIC_SITE_BASE_PATH || '') + url);
-  if (!response.ok) {
-    throw new Error(
-      `Project master unavailable (${response.status}). See Model & Evidence for release status.`,
-    );
-  }
-  return response.json() as Promise<T>;
 }
 
 function Header() {
@@ -298,7 +289,7 @@ function QADonut({ records }: { records: ProjectRecord[] }) {
           (record) => record.physicalStatus === 'EXTREME_OUTLIER_BLOCK_BASE',
         ).length,
       ]
-    : [15, 4, 1];
+    : [0, 0, 0];
   const total = Math.max(records.length, 1);
   const circumference = 2 * Math.PI * 43;
   let offset = 0;
@@ -337,7 +328,7 @@ function QADonut({ records }: { records: ProjectRecord[] }) {
           return circle;
         })}
         <text x="60" y="58" textAnchor="middle" className="donut-total">
-          {records.length || 20}
+          {records.length}
         </text>
         <text x="60" y="73" textAnchor="middle" className="donut-label">
           records
@@ -346,13 +337,13 @@ function QADonut({ records }: { records: ProjectRecord[] }) {
       <div className="qa-legend">
         <span>
           <i className="dot-pass" />
-          15 <small>Pass</small>
+          {counts[0]} <small>Pass</small>
         </span>
         <span>
-          <i className="dot-review" />4 <small>Review</small>
+          <i className="dot-review" />{counts[1]} <small>Review</small>
         </span>
         <span>
-          <i className="dot-block" />1 <small>Block</small>
+          <i className="dot-block" />{counts[2]} <small>Block</small>
         </span>
       </div>
     </div>
@@ -483,8 +474,8 @@ export default function ProjectsPage() {
   useEffect(() => {
     let active = true;
     Promise.all([
-      fetchJson<ProjectPayload>(PROJECTS_URL),
-      fetchJson<Partial<Summary>>(SUMMARY_URL),
+      loadWebsiteData<ProjectPayload>('projects'),
+      loadWebsiteData<Summary>('summary'),
     ])
       .then(([projectPayload, summaryPayload]) => {
         const nextRecords = normalizeRecords(projectPayload.projects);
@@ -579,22 +570,22 @@ export default function ProjectsPage() {
                 record.physicalStatus === 'EXTREME_OUTLIER_BLOCK_BASE',
             ).length,
           }
-        : { pass: 15, review: 4, block: 1 },
+        : { pass: 0, review: 0, block: 0 },
     [records],
   );
   const selectedCapacity = records.length
     ? records.reduce((sum, record) => sum + record.capacityMw, 0)
-    : 131.943;
+    : 0;
   const readyCapacity = records.length
     ? records
         .filter((record) => record.economicsStatus === 'READY_FOR_ECONOMICS')
         .reduce((sum, record) => sum + record.capacityMw, 0)
-    : 129.853;
+    : 0;
   const readyGeneration = records.length
     ? records
         .filter((record) => record.economicsStatus === 'READY_FOR_ECONOMICS')
         .reduce((sum, record) => sum + record.generationGwh, 0)
-    : 148.221;
+    : 0;
 
   return (
     <div className="projects-page">
@@ -640,26 +631,26 @@ export default function ProjectsPage() {
           <aside className="projects-hero-card">
             <MetricLine
               icon={Search}
-              value={summary.candidateHistory}
+              value={summary.candidateProjects}
               label="CANDIDATES RESEARCHED"
             />
             <MetricLine
               icon={FileSearch}
-              value={summary.selectedProjects}
+              value={summary.selectedRecords}
               label="SELECTED RECORDS"
             />
             <MetricLine
               icon={BarChart3}
-              value={summary.economicsReadyRecords}
+              value={summary.economicsReadyProjects}
               label="ECONOMICS-READY"
             />
             <MetricLine
               icon={ShieldX}
-              value={summary.technicalBlockedRecords}
+              value={summary.technicalBlockedProjects}
               label="TECHNICAL BLOCK"
             />
             <strong className="hero-card-foot">
-              <Database size={18} /> {summary.rawObservations} PRESERVED
+              <Database size={18} /> {summary.observations} PRESERVED
               OBSERVATIONS
             </strong>
           </aside>
@@ -675,26 +666,26 @@ export default function ProjectsPage() {
           <div className="projects-kpi-grid">
             <Kpi
               icon={Search}
-              value={String(summary.candidateHistory)}
+              value={String(summary.candidateProjects)}
               label="Candidate projects"
             />
             <Kpi
               icon={Database}
-              value={String(summary.rawObservations)}
+              value={String(summary.observations)}
               label="Preserved observations"
             />
             <Kpi
               icon={FileCheck2}
-              value={String(summary.selectedProjects)}
+              value={String(summary.selectedRecords)}
               label="Selected records"
             />
             <Kpi
               icon={BadgeCheck}
-              value={String(summary.economicsReadyRecords)}
+              value={String(summary.economicsReadyProjects)}
               label="Economics-ready"
             />
-            <Kpi icon={Globe2} value="7" label="Countries" />
-            <Kpi icon={Building2} value="5" label="Developers" />
+            <Kpi icon={Globe2} value={String(summary.countries)} label="Countries" />
+            <Kpi icon={Building2} value={String(Math.max(0, developers.length - 1))} label="Developers" />
           </div>
           <div className="projects-secondary-strip">
             <span>
@@ -929,7 +920,7 @@ export default function ProjectsPage() {
           </div>
           <div className="filter-result">
             <span>
-              Showing <b>{filteredRecords.length}</b> of 20 authoritative
+              Showing <b>{filteredRecords.length}</b> of {summary.selectedRecords} authoritative
               records
             </span>
             <span>Country → capacity descending</span>

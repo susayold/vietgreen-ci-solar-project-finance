@@ -371,7 +371,7 @@ export default function RiskPage() {
             </p>
             <div className="risk-buttons">
               <a className="risk-button primary" href="#scenario-dscr">
-                Review GO Mall Stress Cases <ArrowDown size={14} />
+                Review Selected Project Stress Cases <ArrowDown size={14} />
               </a>
               <a className="risk-button" href="#heatmap">
                 Inspect Portfolio Risk Matrix <ArrowDown size={14} />

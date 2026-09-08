@@ -83,6 +83,20 @@ test('source-backed energy totals, diligence status and compact debt schedule', 
   await expect(page.locator('#schedule')).toContainText(`${go.schedule.length-active.length} years`);
 });
 
+test('overview and projects use canonical release labels and data', async ({page, request}) => {
+  const summary = await (await request.get(`${base}/data/summary.json`)).json();
+  await page.goto(`${base}/`, {waitUntil:'networkidle'});
+  await expect(page.locator('.mini-strip')).toContainText('Versioned output artifacts');
+  await expect(page.locator('.mini-strip')).not.toContainText('Result tables');
+  await page.goto(`${base}/projects`, {waitUntil:'networkidle'});
+  await expect(page.locator('.projects-hero-card')).toContainText(String(summary.candidateProjects));
+  await expect(page.locator('.projects-hero-card')).toContainText(String(summary.selectedRecords));
+  await expect(page.locator('.filter-result')).toContainText(`of ${summary.selectedRecords} authoritative records`);
+  await expect(page.locator('.qa-legend')).toContainText('15');
+  await expect(page.locator('.qa-legend')).toContainText('4');
+  await expect(page.locator('.qa-legend')).toContainText('1');
+});
+
 test('project selectors change query-string state', async ({ page }) => {
   await page.goto(`${base}/economics`, { waitUntil: 'networkidle' });
   await page.locator('#economics-project').selectOption({ index: 1 });

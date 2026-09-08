@@ -49,6 +49,7 @@ type EnergyProject = {
   gridPurchaseGwh: number;
   selfConsumptionShare: number;
   solarCoverageShare: number;
+  loadEvidenceLevel?: string;
   representativeDay: Array<{
     loadKw: number;
     solarKw: number;
@@ -281,7 +282,7 @@ export default function EnergyPage() {
                 <b>{fmt((selectedEnergy?.selfConsumptionShare ?? 0) * 100, 1)}%</b>
               </span>
               <span>
-                QA Status <b>LEVEL_3_ANNUAL_ONLY ⓘ</b>
+                QA Status <b>{selectedEnergy?.loadEvidenceLevel ?? 'NOT AVAILABLE'} ⓘ</b>
               </span>
             </div>
           </aside>
@@ -289,7 +290,7 @@ export default function EnergyPage() {
         <div className="energy-hero-metrics">
           <MiniMetric
             icon={Gauge}
-            value={loading ? '—' : '19'}
+            value={loading ? '—' : String(energyRows.length)}
             label="Projects modeled"
           />
           <MiniMetric icon={Sun} value={gwh(p50)} label="Annual generation" />

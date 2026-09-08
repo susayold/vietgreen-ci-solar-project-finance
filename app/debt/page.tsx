@@ -407,7 +407,7 @@ export default function DebtPage() {
           </div>
           <div className="debt-strip">
             <span>
-              {(debt ? debt.debtRate * 100 : 0).toFixed(1)}%<small>Debt Rate</small>
+              {debt ? `${(debt.debtRate * 100).toFixed(1)}%` : 'NOT AVAILABLE'}<small>Debt Rate</small>
             </span>
             <span>
               {debt?.debtTenorYears ?? 'NOT AVAILABLE'} years<small>Debt Tenor Policy</small>
