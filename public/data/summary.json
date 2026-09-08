@@ -7,6 +7,11 @@
   "economicsReadyProjects": 19,
   "technicalBlockedProjects": 1,
   "observations": 441,
+  "candidateHistory": 54,
+  "rawObservations": 441,
+  "selectedProjects": 20,
+  "economicsReadyRecords": 19,
+  "technicalBlockedRecords": 1,
   "countries": 7,
   "economicsReadyCapacityMw": 129.853,
   "readyObservedGenerationGwh": 148.221,
@@ -19,5 +24,5 @@
   "lenderApproved": false,
   "icApproved": false,
   "capitalAllocation": "DISABLED_FRONTIER_ONLY",
-  "calculationChecks": 24
+  "calculationChecks": 26
 }
