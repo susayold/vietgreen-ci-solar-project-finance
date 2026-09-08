@@ -3,7 +3,7 @@
   "screeningBand": {
     "minKwhKwp": 900,
     "maxKwhKwp": 1600,
-    "extremeUpperKwhKwp": 2000
+    "extremeUpperKwhKwp": 3200
   },
   "distribution": {
     "PASS_WITHIN_SCREENING_BAND": 15,

@@ -78,6 +78,8 @@ const ACTIONS = [
   'SPONSOR_SUPPORT_REVIEW',
   'TRANSACTION_EVIDENCE',
   'READY_FOR_NEXT_DILIGENCE_STAGE',
+  'SPONSOR_FLOOR_EVIDENCE',
+  'PPA_TERM_SHEET',
 ] as const;
 
 const FUNNEL_STEPS: [string, string, typeof Gauge][] = [
@@ -396,14 +398,14 @@ export default function DiligencePage() {
         ).length,
         tone: 'amber',
       },
-      { label: 'FEASIBLE_NEGOTIATION_ZONE', value: 0, tone: 'green' },
-      { label: 'EMPTY_NEGOTIATION_ZONE', value: 0, tone: 'red' },
+      { label: 'FEASIBLE_NEGOTIATION_ZONE', value: financeRecords.filter(record => record.commercialLabel === 'FEASIBLE_NEGOTIATION_ZONE').length, tone: 'green' },
+      { label: 'EMPTY_NEGOTIATION_ZONE', value: financeRecords.filter(record => record.commercialLabel === 'EMPTY_NEGOTIATION_ZONE').length, tone: 'red' },
     ],
     [financeRecords],
   );
   const actionCounts = useMemo(
     () =>
-      ACTIONS.map((label) => ({
+      [...new Set(financeRecords.map(record => record.nextAction))].map((label) => ({
         label,
         value: financeRecords.filter((record) => record.nextAction === label)
           .length,
@@ -458,27 +460,27 @@ export default function DiligencePage() {
           </div>
           <aside className="diligence-hero-card">
             <span>SELECTED PROJECT</span>
-            <h2>GO Mall Vietnam</h2>
-            <p>Ho Chi Minh City, Vietnam</p>
+            <h2>{selected?.project_name ?? 'Loading project'}</h2>
+            <p>{selected?.country ?? 'Not available'}</p>
             <div>
               <b>Technical Status</b>
-              <strong className="amber-text">△ UNDER_REVIEW</strong>
+              <strong>{selected?.physicalStatus ?? 'Not available'}</strong>
             </div>
             <div>
               <b>Commercial Status</b>
-              <strong className="amber-text">△ INDETERMINATE</strong>
+              <strong className="amber-text">{selected?.commercialLabel ?? 'Not available'}</strong>
             </div>
             <div>
               <b>Credit Status</b>
-              <strong className="green-text">● MODEL_OK</strong>
+              <strong>{selected?.creditLabel ?? 'Not available'}</strong>
             </div>
             <div>
               <b>Risk Status</b>
-              <strong className="green-text">● TESTED</strong>
+              <strong>{selected?.riskLabel ?? 'Not available'}</strong>
             </div>
             <div>
               <b>Evidence Status</b>
-              <strong className="amber-text">△ OPEN</strong>
+              <strong className="amber-text">{selected?.evidenceLabel ?? 'Not available'}</strong>
             </div>
             <div className="hero-card-total">
               <b>Overall Diligence</b>
@@ -884,23 +886,22 @@ export default function DiligencePage() {
                   <Target size={18} />
                   <span>Next Action (Primary)</span>
                 </div>
-                <strong>COD_TIMING_REVIEW</strong>
+                <strong>{selected?.nextAction ?? 'Not available'}</strong>
                 <small>
-                  Validate operating date, interim debt service and sponsor
-                  support before any commitment.
+                  Required evidence: {selected?.nextActions?.join(' · ') ?? 'Not available'}.
                 </small>
               </div>
               <div className="file-links">
-                <Link href="/energy">
+                <Link href={`/energy?project=${selected?.project_id ?? GO_MALL}`}>
                   Energy &amp; Physical <ArrowRight size={14} />
                 </Link>
-                <Link href="/economics?project=VN-GY-GOMALL">
+                <Link href={`/economics?project=${selected?.project_id ?? GO_MALL}`}>
                   Economics &amp; PPA <ArrowRight size={14} />
                 </Link>
-                <Link href="/debt?project=VN-GY-GOMALL">
+                <Link href={`/debt?project=${selected?.project_id ?? GO_MALL}`}>
                   Debt &amp; Credit <ArrowRight size={14} />
                 </Link>
-                <Link href="/risk?project=VN-GY-GOMALL">
+                <Link href={`/risk?project=${selected?.project_id ?? GO_MALL}`}>
                   Risk &amp; Scenarios <ArrowRight size={14} />
                 </Link>
               </div>
@@ -1165,8 +1166,8 @@ export default function DiligencePage() {
               ],
               ['Economics modelable?', 'YES · 19 records', 'green'],
               ['Commercial resolved?', 'NO · sponsor floor missing', 'amber'],
-              ['Debt supportable?', 'GO Mall standardized case only', 'amber'],
-              ['Downside breakpoints?', 'COD + combined stress = 0x', 'red'],
+              ['Debt supportable?', 'Review selected project debt capacity; no lender approval', 'amber'],
+              ['Downside breakpoints?', 'Review selected project scenarios and coverage', 'amber'],
               ['Transaction evidence complete?', 'NO · OPEN', 'red'],
               ['Capital approval?', 'NO · $0 allocated', 'neutral'],
             ].map(([question, answer, tone], index) => (
@@ -1287,7 +1288,7 @@ export default function DiligencePage() {
             <li>Focus capital only when ready</li>
           </ul>
         </div>
-        <Link href="/risk?project=VN-GY-GOMALL">
+        <Link href={`/model-evidence?project=${selected?.project_id ?? GO_MALL}`}>
           Continue to Model &amp; Evidence <ArrowRight size={17} />
         </Link>
       </section>
@@ -1311,11 +1312,11 @@ export default function DiligencePage() {
             <div className="drawer-status-grid">
               <div>
                 <span>Technical</span>
-                <b>PASS_WITHIN_SCREENING_BAND</b>
+                <b>{selected.physicalStatus}</b>
               </div>
               <div>
                 <span>Commercial</span>
-                <b>INSUFFICIENT_DATA</b>
+                <b>{selected.commercialLabel}</b>
               </div>
               <div>
                 <span>Credit</span>
@@ -1340,7 +1341,7 @@ export default function DiligencePage() {
               third-party validation are the next controlled inputs.
             </p>
             <div className="drawer-nav">
-              <Link href="/energy">
+              <Link href={`/energy?project=${selected.project_id}`}>
                 Energy <ArrowRight size={14} />
               </Link>
               <Link href={`/economics?project=${selected.project_id}`}>

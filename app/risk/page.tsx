@@ -579,7 +579,7 @@ export default function RiskPage() {
                     <td>{scenario.id === 'BASE' ? 'Sized' : 'PRESERVED'}</td>
                     <td>{scenario.id === 'BASE' ? 'Sized' : 'PRESERVED'}</td>
                     <td>{scenario.interest}</td>
-                    <td>{scenario.id === 'BASE' ? 'Allowed' : '0'}</td>
+                    <td>{scenario.id === 'BASE' ? 'Base sizing only' : 'No additional borrowing'}</td>
                     <td>
                       {scenario.id === 'CAPEX_OVERRUN' ||
                       scenario.id === 'COMBINED_DOWNSIDE'

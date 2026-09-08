@@ -215,7 +215,13 @@ export default function EnergyPage() {
   const p90 = (selectedEnergy?.p90Gwh ?? 0) * 1_000_000;
   const p99 = (selectedEnergy?.p99Gwh ?? 0) * 1_000_000;
   const annualLoad = (selectedEnergy?.annualLoadGwh ?? 0) * 1_000_000;
-  const inputSelfConsumption = selectedEnergy?.selfConsumptionShare ?? 0;
+  const portfolio = energyRows.filter(row => row.capacityMw > 0).map(row => ({
+    ...row, yield: row.p50Gwh * 1000 / row.capacityMw,
+    country: projects.find(project => project.project_id === row.projectId)?.country ?? 'Not available',
+  })).sort((a, b) => a.yield - b.yield);
+  const totalCapacity = portfolio.reduce((sum, row) => sum + row.capacityMw, 0);
+  const totalGeneration = portfolio.reduce((sum, row) => sum + row.p50Gwh, 0);
+  const medianYield = portfolio.length ? (portfolio[Math.floor((portfolio.length - 1) / 2)].yield + portfolio[Math.floor(portfolio.length / 2)].yield) / 2 : 0;
   const profile = selectedEnergy?.representativeDay ?? [];
   const solar = profile.map((point) => point.solarKw);
   const load = profile.map((point) => point.loadKw);
@@ -259,7 +265,7 @@ export default function EnergyPage() {
           <aside className="energy-feature-card">
             <small>FEATURED PROJECT</small>
             <h2>{selected?.project_name ?? 'GO Mall Vietnam portfolio'}</h2>
-            <p>Ho Chi Minh City, Vietnam</p>
+            <p>{selected?.country ?? 'Loading project'}</p>
             <div className="energy-feature-lines">
               <span>
                 Capacity DC <b>{fmt(capacityKwp / 1000)} MWp</b>
@@ -582,19 +588,19 @@ export default function EnergyPage() {
         <section className="energy-section context-section">
           <SectionHeading
             n="2"
-            title="The model separates assumptions from modeled results."
-            note="The input ratio is a screening assumption; the hourly model produces the operating outcome."
+            title="Two different measures of solar use"
+            note="Both are modeled results: one uses generation as its denominator, the other uses annual load."
           />
           <div className="context-grid">
             <div className="energy-panel distinction">
               <h3>IMPORTANT DISTINCTION</h3>
               <div>
-                <span>INPUT ASSUMPTION</span>
-                <b>{Math.round(inputSelfConsumption * 100)}%</b>
+                <span>LOAD COVERED BY SOLAR</span>
+                <b>{fmt((selectedEnergy?.solarCoverageShare ?? 0) * 100, 1)}%</b>
                 <small>
-                  SELF-CONSUMPTION
+                  SELF-CONSUMED ENERGY
                   <br />
-                  RATIO (PROXY)
+                  DIVIDED BY ANNUAL LOAD
                 </small>
               </div>
               <strong>≠</strong>
@@ -614,28 +620,28 @@ export default function EnergyPage() {
               </p>
             </div>
             <div className="energy-panel portfolio-context">
-              <h3>PORTFOLIO PHYSICAL CONTEXT (19 PROJECTS)</h3>
+              <h3>PORTFOLIO PHYSICAL CONTEXT ({portfolio.length} PROJECTS)</h3>
               <div className="context-stats">
                 <span>
                   Capacity DC
                   <b>
-                    101.182 <small>MWp</small>
+                    {fmt(totalCapacity)} <small>MWp</small>
                   </b>
                 </span>
                 <span>
-                  Capacity-weighted P50
+                  Total P50 Generation
                   <b>
-                    101.182 <small>GWh/year</small>
+                    {fmt(totalGeneration)} <small>GWh/year</small>
                   </b>
                 </span>
                 <span>
                   Median Yield
                   <b>
-                    1,012 <small>kWh/kWp</small>
+                    {fmt(medianYield, 0)} <small>kWh/kWp</small>
                   </b>
                 </span>
                 <span>
-                  Yield Range<b>800 – 1,200</b>
+                  Yield Range<b>{fmt(portfolio[0]?.yield ?? 0, 0)} – {fmt(portfolio.at(-1)?.yield ?? 0, 0)}</b>
                   <small>kWh/kWp</small>
                 </span>
               </div>
@@ -650,30 +656,10 @@ export default function EnergyPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>P19-0057</td>
-                    <td>India</td>
-                    <td>1.414</td>
-                    <td>800</td>
-                  </tr>
-                  <tr>
-                    <td>P19-0155</td>
-                    <td>Italy</td>
-                    <td>12.000</td>
-                    <td>850</td>
-                  </tr>
-                  <tr>
-                    <td>P19-0118</td>
-                    <td>Poland</td>
-                    <td>15.000</td>
-                    <td>900</td>
-                  </tr>
-                  <tr>
-                    <td>P19-0176</td>
-                    <td>Spain</td>
-                    <td>12.000</td>
-                    <td>900</td>
-                  </tr>
+                  {portfolio.slice(0, 4).map(row => <tr key={row.projectId}>
+                    <td>{row.projectId}</td><td>{row.country}</td>
+                    <td>{fmt(row.capacityMw)}</td><td>{fmt(row.yield, 0)}</td>
+                  </tr>)}
                 </tbody>
               </table>
             </div>

@@ -193,7 +193,8 @@ function DebtChart({ data }: { data?: DebtRow }) {
 }
 
 function ScheduleChart({ data }: { data?: DebtRow }) {
-  const opening = data?.schedule.map((row) => row.openingDebt / 1e9) ?? [];
+  const active = data?.schedule.filter(row => row.openingDebt !== 0 || row.debtService !== 0 || row.closingDebt !== 0) ?? [];
+  const opening = active.map((row) => row.openingDebt / 1e9);
   return (
     <div className="schedule-visual">
       <div className="schedule-bars">
@@ -201,7 +202,7 @@ function ScheduleChart({ data }: { data?: DebtRow }) {
           <div key={index} className="schedule-year">
             <strong>{value ? value.toFixed(3) : '0'}</strong>
             <i style={{ height: `${value / Math.max(1,...opening) * 120}px` }} />
-            <span>{index + 1}</span>
+            <span>{active[index].year}</span>
           </div>
         ))}
       </div>
@@ -539,7 +540,7 @@ export default function DebtPage() {
                 </tr>
               </thead>
               <tbody>
-                {(debt?.schedule ?? []).map((row) => (
+                {(debt?.schedule ?? []).filter(row => row.openingDebt !== 0 || row.debtService !== 0 || row.closingDebt !== 0).map((row) => (
                   <tr key={row.year}>
                     <td>{row.year}</td>
                     <td>{(row.openingDebt / 1e9).toFixed(3)}</td>
@@ -553,6 +554,7 @@ export default function DebtPage() {
               </tbody>
             </table>
             <p className="chart-footnote">
+              {(debt?.schedule ?? []).filter(row => row.openingDebt === 0 && row.debtService === 0 && row.closingDebt === 0).length} years with no outstanding debt or debt service are omitted from this table. The source schedule remains unchanged.{' '}
               N/A ≠ 0.00x. N/A means there is no debt service to cover after
               payoff.
             </p>

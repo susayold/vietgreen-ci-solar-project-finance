@@ -54,6 +54,31 @@ for (const width of [390, 768, 1440]) {
   }
 }
 
+test('source-backed energy totals, diligence status and compact debt schedule', async ({page, request}) => {
+  const energy = await (await request.get(`${base}/data/energy.json`)).json();
+  const rows = energy.projects;
+  const capacity = rows.reduce((sum,row) => sum + row.capacityMw, 0).toFixed(3);
+  const generation = rows.reduce((sum,row) => sum + row.p50Gwh, 0).toFixed(3);
+  await page.goto(`${base}/energy`, {waitUntil:'networkidle'});
+  await expect(page.locator('.portfolio-context')).toContainText(capacity);
+  await expect(page.locator('.portfolio-context')).toContainText(generation);
+  const lowest = [...rows].sort((a,b) => a.p50Gwh/a.capacityMw - b.p50Gwh/b.capacityMw).slice(0,4);
+  for (const row of lowest) await expect(page.locator('.portfolio-context tbody')).toContainText(row.projectId);
+  await expect(page.locator('.distinction')).not.toContainText('INPUT ASSUMPTION');
+  const diligence = await (await request.get(`${base}/data/diligence.json`)).json();
+  for (const row of diligence.rows.filter(row => ['VN-GY-GOMALL','EU-GY-ALTAREA-BOLLENE-ROOF'].includes(row.projectId))) {
+    await page.goto(`${base}/diligence?project=${row.projectId}`, {waitUntil:'networkidle'});
+    await expect(page.locator('.diligence-hero-card')).toContainText(row.projectName);
+    await expect(page.locator('.diligence-hero-card')).toContainText(row.physicalStatus);
+    await expect(page.locator('.diligence-hero-card')).toContainText(row.commercialStatus);
+    await expect(page.locator('.next-action-box')).toContainText(row.nextActions[0]);
+    await expect(page.locator('.file-links a').first()).toHaveAttribute('href',new RegExp(row.projectId));
+  }
+  await page.goto(`${base}/debt?project=VN-GY-GOMALL`, {waitUntil:'networkidle'});
+  await expect(page.locator('#schedule tbody tr')).toHaveCount(1);
+  await expect(page.locator('#schedule')).toContainText('14 years');
+});
+
 test('project selectors change query-string state', async ({ page }) => {
   await page.goto(`${base}/economics`, { waitUntil: 'networkidle' });
   await page.locator('#economics-project').selectOption({ index: 1 });
