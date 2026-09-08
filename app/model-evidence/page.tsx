@@ -43,7 +43,7 @@ export default function ModelEvidencePage(){
       <div className="evidence-review-kpis">
         <article><Database/><strong>19</strong><span>Modeled projects</span></article>
         <article><Code2/><strong>171</strong><span>Scenario results</span></article>
-        <article><FileCheck2/><strong>{Object.keys(revision.output_hashes).length}</strong><span>Result tables</span></article>
+        <article><FileCheck2/><strong>{Object.keys(revision.output_hashes).length}</strong><span>Versioned output artifacts</span></article>
         <article><ShieldCheck/><strong>{revision.checks.length}</strong><span>Automated checks passed</span></article>
       </div>
       <section className="evidence-review-panel"><h2>1. Analytical workflow</h2>
@@ -79,12 +79,13 @@ export default function ModelEvidencePage(){
         <div className="evidence-review-links">
           <a href={`${REPO}/tree/main/model/recruiter_revision`} target="_blank" rel="noreferrer">Inputs and calculation code <ArrowRight size={16}/></a>
           <a href={`${REPO}/blob/main/scripts/build_corrected_model.py`} target="_blank" rel="noreferrer">Recalculation and validation <ArrowRight size={16}/></a>
-          <a href={`${REPO}/tree/main/public/data`} target="_blank" rel="noreferrer">Website result tables <ArrowRight size={16}/></a>
-          <a href={`${REPO}/actions/workflows/codex-github-pages.yml`} target="_blank" rel="noreferrer">Published calculation runs and full output files <ArrowRight size={16}/></a>
+          <a href={`${REPO}/tree/main/public/data`} target="_blank" rel="noreferrer">Website output artifacts <ArrowRight size={16}/></a>
+          <a href={`${REPO}/actions/workflows/codex-github-pages.yml`} target="_blank" rel="noreferrer">Published calculation runs and full output artifacts <ArrowRight size={16}/></a>
           <a href={`${REPO}/blob/${revision.baselineInputSha}/evidence/GLOBAL_SOURCE_REGISTER.csv`} target="_blank" rel="noreferrer">Public source register <ArrowRight size={16}/></a>
         </div>
         <details><summary>Calculation revision and change history</summary>
           <p>Current revision: {revision.revision}. Historical financial outputs are superseded by this recalculation; original public inputs are retained.</p>
+          <p>{Object.keys(revision.output_hashes).length} versioned output artifacts are sealed for the revision. Some artifacts are alternate views of the same underlying calculation layer and should not be read as independent models.</p>
           <ul>{audit.corrections.map(item=><li key={item}>{item}</li>)}</ul>
           <p className="evidence-digest">Calculation fingerprint: {revision.source_sha}</p>
           <a href={`${REPO}/tree/${revision.baselineInputSha}`} target="_blank" rel="noreferrer">Historical source archive</a>
