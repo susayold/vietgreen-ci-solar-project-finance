@@ -1,1 +1,110 @@
-placeholder
+name: final-page-cleanup
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/final-page-cleanup.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.13.0'
+          cache: npm
+      - name: Patch final cross-page presentation and data binding issues
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          def replace(path, old, new, count=None):
+              p=Path(path); text=p.read_text(encoding='utf-8')
+              n=text.count(old)
+              if count is not None and n != count:
+                  raise SystemExit(f'{path}: expected {count} occurrences, found {n}: {old[:80]!r}')
+              if n == 0:
+                  raise SystemExit(f'{path}: replacement source not found: {old[:80]!r}')
+              p.write_text(text.replace(old,new),encoding='utf-8')
+
+          # Page 1: these are sealed artifacts/views, not 15 independent result tables.
+          replace('app/page.tsx', "'Result tables'", "'Versioned output artifacts'", 1)
+
+          # Page 2: consume canonical summary fields directly and remove stale value fallbacks.
+          p=Path('app/projects/page.tsx'); text=p.read_text(encoding='utf-8')
+          text=text.replace("import { useEffect, useMemo, useState } from 'react';", "import { useEffect, useMemo, useState } from 'react';\nimport { loadWebsiteData } from '@/lib/data';")
+          text=text.replace("\nconst PROJECTS_URL = '/data/projects.json';\nconst SUMMARY_URL = '/data/summary.json';\n", "\n")
+          old_summary="""type Summary = {\n  candidateHistory: number;\n  rawObservations: number;\n  selectedProjects: number;\n  economicsReadyRecords: number;\n  technicalBlockedRecords: number;\n};\n\ntype ProjectPayload = { projects: RemoteProject[] };\n\nconst EMPTY_SUMMARY: Summary = {\n  candidateHistory: 54,\n  rawObservations: 441,\n  selectedProjects: 20,\n  economicsReadyRecords: 19,\n  technicalBlockedRecords: 1,\n};\n"""
+          new_summary="""type Summary = {\n  candidateProjects: number;\n  observations: number;\n  selectedRecords: number;\n  economicsReadyProjects: number;\n  technicalBlockedProjects: number;\n  countries: number;\n};\n\ntype ProjectPayload = { projects: RemoteProject[] };\n\nconst EMPTY_SUMMARY: Summary = {\n  candidateProjects: 0,\n  observations: 0,\n  selectedRecords: 0,\n  economicsReadyProjects: 0,\n  technicalBlockedProjects: 0,\n  countries: 0,\n};\n"""
+          if old_summary not in text: raise SystemExit('Page 2 canonical Summary block not found')
+          text=text.replace(old_summary,new_summary)
+          text=re.sub(r"\nasync function fetchJson<T>\(url: string\): Promise<T> \{.*?\n\}\n\nfunction Header", "\nfunction Header", text, count=1, flags=re.S)
+          old_fetch="""    Promise.all([\n      fetchJson<ProjectPayload>(PROJECTS_URL),\n      fetchJson<Partial<Summary>>(SUMMARY_URL),\n    ])"""
+          new_fetch="""    Promise.all([\n      loadWebsiteData<ProjectPayload>('projects'),\n      loadWebsiteData<Summary>('summary'),\n    ])"""
+          if old_fetch not in text: raise SystemExit('Page 2 fetch block not found')
+          text=text.replace(old_fetch,new_fetch)
+          for old,new in {
+              'candidateHistory':'candidateProjects',
+              'rawObservations':'observations',
+              'selectedProjects':'selectedRecords',
+              'economicsReadyRecords':'economicsReadyProjects',
+              'technicalBlockedRecords':'technicalBlockedProjects',
+          }.items(): text=text.replace(old,new)
+          text=text.replace('    : [15, 4, 1];','    : [0, 0, 0];')
+          text=text.replace('{records.length || 20}','{records.length}')
+          text=text.replace('          15 <small>Pass</small>','          {counts[0]} <small>Pass</small>')
+          text=text.replace('          <i className="dot-review" />4 <small>Review</small>','          <i className="dot-review" />{counts[1]} <small>Review</small>')
+          text=text.replace('          <i className="dot-block" />1 <small>Block</small>','          <i className="dot-block" />{counts[2]} <small>Block</small>')
+          text=text.replace('        : { pass: 15, review: 4, block: 1 },','        : { pass: 0, review: 0, block: 0 },')
+          text=text.replace('    : 131.943;','    : 0;').replace('    : 129.853;','    : 0;').replace('    : 148.221;','    : 0;')
+          text=text.replace('<Kpi icon={Globe2} value="7" label="Countries" />','<Kpi icon={Globe2} value={String(summary.countries)} label="Countries" />')
+          text=text.replace('<Kpi icon={Building2} value="5" label="Developers" />','<Kpi icon={Building2} value={String(Math.max(0, developers.length - 1))} label="Developers" />')
+          text=text.replace('Showing <b>{filteredRecords.length}</b> of 20 authoritative','Showing <b>{filteredRecords.length}</b> of {summary.selectedRecords} authoritative')
+          p.write_text(text,encoding='utf-8')
+
+          # Page 3: selected-project QA evidence and modeled-project count come from the payload.
+          p=Path('app/energy/page.tsx'); text=p.read_text(encoding='utf-8')
+          text=text.replace('  solarCoverageShare: number;\n  representativeDay:', '  solarCoverageShare: number;\n  loadEvidenceLevel?: string;\n  representativeDay:')
+          text=text.replace('<b>LEVEL_3_ANNUAL_ONLY ⓘ</b>', "<b>{selectedEnergy?.loadEvidenceLevel ?? 'NOT AVAILABLE'} ⓘ</b>")
+          text=text.replace("value={loading ? '—' : '19'}", "value={loading ? '—' : String(energyRows.length)}")
+          p.write_text(text,encoding='utf-8')
+
+          # Page 5: fail closed while debt data are unavailable.
+          p=Path('app/debt/page.tsx'); text=p.read_text(encoding='utf-8')
+          text=text.replace("{(debt ? debt.debtRate * 100 : 0).toFixed(1)}%<small>Debt Rate</small>", "{debt ? `${(debt.debtRate * 100).toFixed(1)}%` : 'NOT AVAILABLE'}<small>Debt Rate</small>")
+          p.write_text(text,encoding='utf-8')
+
+          # Page 6: CTA follows whichever project is selected.
+          replace('app/risk/page.tsx', 'Review GO Mall Stress Cases', 'Review Selected Project Stress Cases', 1)
+
+          # Regression coverage for the cleanup itself.
+          p=Path('tests/v5_1_3_website_browser.spec.mjs'); text=p.read_text(encoding='utf-8')
+          marker="test('project selectors change query-string state'"
+          insert="""test('overview and projects use canonical release labels and data', async ({page, request}) => {\n  const summary = await (await request.get(`${base}/data/summary.json`)).json();\n  await page.goto(`${base}/`, {waitUntil:'networkidle'});\n  await expect(page.locator('.mini-strip')).toContainText('Versioned output artifacts');\n  await expect(page.locator('.mini-strip')).not.toContainText('Result tables');\n  await page.goto(`${base}/projects`, {waitUntil:'networkidle'});\n  await expect(page.locator('.projects-hero-card')).toContainText(String(summary.candidateProjects));\n  await expect(page.locator('.projects-hero-card')).toContainText(String(summary.selectedRecords));\n  await expect(page.locator('.filter-result')).toContainText(`of ${summary.selectedRecords} authoritative records`);\n  await expect(page.locator('.qa-legend')).toContainText('15');\n  await expect(page.locator('.qa-legend')).toContainText('4');\n  await expect(page.locator('.qa-legend')).toContainText('1');\n});\n\n"""
+          if marker not in text: raise SystemExit('Browser test insertion marker missing')
+          text=text.replace(marker,insert+marker,1)
+          p.write_text(text,encoding='utf-8')
+
+          # Remove this one-shot workflow from the resulting patch commit.
+          Path('.github/workflows/final-page-cleanup.yml').unlink()
+          PY
+      - run: npm ci
+      - run: npm run test:data
+      - run: npm run test:claims
+      - run: npm run lint
+      - run: npm run build
+      - name: Commit cleanup to staging branch
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Finalize cross-page data binding and labels'
+          git push --force origin HEAD:refs/heads/codex/final-page-cleanup
