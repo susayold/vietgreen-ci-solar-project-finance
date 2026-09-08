@@ -1,6 +1,6 @@
 {
   "version": "2026-09-08-r1",
-  "sourceSha": "1119987c54f8b201e521452ca45b63abc2da814bde79853d78d17c9bcc011006",
+  "sourceSha": "bd16821acbcfc5ba45fefed356ae4de2a5c3e960ac209c47ceb2979718ee6f8e",
   "projects": [
     {
       "projectId": "EU-GY-ALTAREA-BOLLENE-ROOF",
@@ -95,10 +95,10 @@
         {
           "hour": 9,
           "loadKw": 3314.194596028954,
-          "solarKw": 3063.343967351731,
-          "selfConsumedKw": 3063.343967351731,
+          "solarKw": 3063.3439673517305,
+          "selfConsumedKw": 3063.3439673517305,
           "exportKw": 0.0,
-          "gridPurchaseKw": 250.85062867722309
+          "gridPurchaseKw": 250.85062867722354
         },
         {
           "hour": 10,
@@ -230,11 +230,11 @@
       "p99Gwh": 2.4,
       "specificYieldKwhKwp": 1000.0,
       "annualLoadGwh": 3.52941176470588,
-      "selfConsumedGwh": 2.2278401612960796,
+      "selfConsumedGwh": 2.22784016129607,
       "exportedGwh": 0.77215983870393,
-      "gridPurchaseGwh": 1.3015716034098004,
-      "selfConsumptionShare": 0.7426133870986932,
-      "solarCoverageShare": 0.6312213790338896,
+      "gridPurchaseGwh": 1.3015716034098102,
+      "selfConsumptionShare": 0.74261338709869,
+      "solarCoverageShare": 0.6312213790338869,
       "loadEvidenceLevel": "LEVEL_3_ANNUAL_ONLY",
       "profileHours": 8760,
       "representativeDay": [
@@ -313,10 +313,10 @@
         {
           "hour": 9,
           "loadKw": 828.5486490072385,
-          "solarKw": 765.8359918379327,
-          "selfConsumedKw": 765.8359918379327,
+          "solarKw": 765.8359918379326,
+          "selfConsumedKw": 765.8359918379326,
           "exportKw": 0.0,
-          "gridPurchaseKw": 62.71265716930577
+          "gridPurchaseKw": 62.712657169305885
         },
         {
           "hour": 10,
@@ -531,10 +531,10 @@
         {
           "hour": 9,
           "loadKw": 3507.5226141306434,
-          "solarKw": 3242.0390321139157,
-          "selfConsumedKw": 3242.0390321139157,
+          "solarKw": 3242.039032113915,
+          "selfConsumedKw": 3242.039032113915,
           "exportKw": 0.0,
-          "gridPurchaseKw": 265.4835820167277
+          "gridPurchaseKw": 265.48358201672863
         },
         {
           "hour": 10,
@@ -967,10 +967,10 @@
         {
           "hour": 9,
           "loadKw": 2292.3179289200266,
-          "solarKw": 2118.812910751614,
-          "selfConsumedKw": 2118.812910751614,
+          "solarKw": 2118.8129107516133,
+          "selfConsumedKw": 2118.8129107516133,
           "exportKw": 0.0,
-          "gridPurchaseKw": 173.5050181684128
+          "gridPurchaseKw": 173.50501816841324
         },
         {
           "hour": 10,
@@ -1185,10 +1185,10 @@
         {
           "hour": 9,
           "loadKw": 635.2206309055496,
-          "solarKw": 587.1409270757484,
-          "selfConsumedKw": 587.1409270757484,
+          "solarKw": 587.1409270757483,
+          "selfConsumedKw": 587.1409270757483,
           "exportKw": 0.0,
-          "gridPurchaseKw": 48.07970382980113
+          "gridPurchaseKw": 48.07970382980125
         },
         {
           "hour": 10,
@@ -1403,10 +1403,10 @@
         {
           "hour": 9,
           "loadKw": 1242.822973510858,
-          "solarKw": 1148.753987756899,
-          "selfConsumedKw": 1148.753987756899,
+          "solarKw": 1148.7539877568988,
+          "selfConsumedKw": 1148.7539877568988,
           "exportKw": 0.0,
-          "gridPurchaseKw": 94.06898575395894
+          "gridPurchaseKw": 94.06898575395917
         },
         {
           "hour": 10,
@@ -1621,10 +1621,10 @@
         {
           "hour": 9,
           "loadKw": 1270.4412618110991,
-          "solarKw": 1174.2818541514969,
-          "selfConsumedKw": 1174.2818541514969,
+          "solarKw": 1174.2818541514966,
+          "selfConsumedKw": 1174.2818541514966,
           "exportKw": 0.0,
-          "gridPurchaseKw": 96.15940765960227
+          "gridPurchaseKw": 96.1594076596025
         },
         {
           "hour": 10,
@@ -1839,10 +1839,10 @@
         {
           "hour": 9,
           "loadKw": 1118.5406761597724,
-          "solarKw": 1033.8785889812093,
-          "selfConsumedKw": 1033.8785889812093,
+          "solarKw": 1033.878588981209,
+          "selfConsumedKw": 1033.878588981209,
           "exportKw": 0.0,
-          "gridPurchaseKw": 84.66208717856307
+          "gridPurchaseKw": 84.6620871785633
         },
         {
           "hour": 10,
@@ -2057,10 +2057,10 @@
         {
           "hour": 9,
           "loadKw": 2982.7751364260585,
-          "solarKw": 2757.009570616558,
-          "selfConsumedKw": 2757.009570616558,
+          "solarKw": 2757.0095706165575,
+          "selfConsumedKw": 2757.0095706165575,
           "exportKw": 0.0,
-          "gridPurchaseKw": 225.76556580950046
+          "gridPurchaseKw": 225.7655658095009
         },
         {
           "hour": 10,
@@ -2275,10 +2275,10 @@
         {
           "hour": 9,
           "loadKw": 2101.751739648362,
-          "solarKw": 1942.6706326288893,
-          "selfConsumedKw": 1942.6706326288893,
+          "solarKw": 1942.6706326288888,
+          "selfConsumedKw": 1942.6706326288888,
           "exportKw": 0.0,
-          "gridPurchaseKw": 159.08110701947294
+          "gridPurchaseKw": 159.0811070194734
         },
         {
           "hour": 10,
@@ -2493,10 +2493,10 @@
         {
           "hour": 9,
           "loadKw": 1933.2801810168903,
-          "solarKw": 1786.950647621843,
-          "selfConsumedKw": 1786.950647621843,
+          "solarKw": 1786.9506476218428,
+          "selfConsumedKw": 1786.9506476218428,
           "exportKw": 0.0,
-          "gridPurchaseKw": 146.3295333950473
+          "gridPurchaseKw": 146.32953339504752
         },
         {
           "hour": 10,
@@ -2711,10 +2711,10 @@
         {
           "hour": 9,
           "loadKw": 1001.1629508837467,
-          "solarKw": 925.3851568041688,
-          "selfConsumedKw": 925.3851568041688,
+          "solarKw": 925.3851568041686,
+          "selfConsumedKw": 925.3851568041686,
           "exportKw": 0.0,
-          "gridPurchaseKw": 75.77779407957792
+          "gridPurchaseKw": 75.77779407957814
         },
         {
           "hour": 10,
@@ -2929,10 +2929,10 @@
         {
           "hour": 9,
           "loadKw": 12013.95541060496,
-          "solarKw": 11104.621881650024,
-          "selfConsumedKw": 11104.621881650024,
+          "solarKw": 11104.621881650022,
+          "selfConsumedKw": 11104.621881650022,
           "exportKw": 0.0,
-          "gridPurchaseKw": 909.3335289549359
+          "gridPurchaseKw": 909.3335289549377
         },
         {
           "hour": 10,
@@ -3147,10 +3147,10 @@
         {
           "hour": 9,
           "loadKw": 1041.2094689190965,
-          "solarKw": 962.4005630763355,
-          "selfConsumedKw": 962.4005630763355,
+          "solarKw": 962.4005630763354,
+          "selfConsumedKw": 962.4005630763354,
           "exportKw": 0.0,
-          "gridPurchaseKw": 78.80890584276096
+          "gridPurchaseKw": 78.80890584276108
         },
         {
           "hour": 10,
@@ -3365,10 +3365,10 @@
         {
           "hour": 9,
           "loadKw": 3390.9120635296244,
-          "solarKw": 3318.6226312977087,
-          "selfConsumedKw": 3318.6226312977087,
+          "solarKw": 3318.6226312977083,
+          "selfConsumedKw": 3318.6226312977083,
           "exportKw": 0.0,
-          "gridPurchaseKw": 72.28943223191573
+          "gridPurchaseKw": 72.28943223191618
         },
         {
           "hour": 10,
@@ -3583,10 +3583,10 @@
         {
           "hour": 9,
           "loadKw": 797.907692487471,
-          "solarKw": 780.8974330107454,
-          "selfConsumedKw": 780.8974330107454,
+          "solarKw": 780.8974330107453,
+          "selfConsumedKw": 780.8974330107453,
           "exportKw": 0.0,
-          "gridPurchaseKw": 17.010259476725537
+          "gridPurchaseKw": 17.01025947672565
         },
         {
           "hour": 10,
@@ -3801,10 +3801,10 @@
         {
           "hour": 9,
           "loadKw": 662.838919205791,
-          "solarKw": 612.6687934703461,
-          "selfConsumedKw": 612.6687934703461,
+          "solarKw": 612.668793470346,
+          "selfConsumedKw": 612.668793470346,
           "exportKw": 0.0,
-          "gridPurchaseKw": 50.1701257354448
+          "gridPurchaseKw": 50.17012573544491
         },
         {
           "hour": 10,
@@ -4019,10 +4019,10 @@
         {
           "hour": 9,
           "loadKw": 189.36479373060436,
-          "solarKw": 175.03181593455952,
-          "selfConsumedKw": 175.03181593455952,
+          "solarKw": 175.0318159345595,
+          "selfConsumedKw": 175.0318159345595,
           "exportKw": 0.0,
-          "gridPurchaseKw": 14.332977796044844
+          "gridPurchaseKw": 14.332977796044872
         },
         {
           "hour": 10,

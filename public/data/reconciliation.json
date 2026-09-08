@@ -96,6 +96,14 @@
     {
       "check": "Repeat calculation: identical outputs",
       "status": "PASS"
+    },
+    {
+      "check": "Physical QA: exact 15 pass / 4 low-yield / 1 extreme project mapping",
+      "status": "PASS"
+    },
+    {
+      "check": "Diligence: 19 + 1 split, project-level physical reconciliation and multi-factor next actions",
+      "status": "PASS"
     }
   ]
 }

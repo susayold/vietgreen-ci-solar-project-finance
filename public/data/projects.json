@@ -19,7 +19,7 @@
       "engineeringReviewRequired": "FALSE",
       "technicalDataBlocked": false,
       "capacityMw": 9.6,
-      "observedGenerationGwh": 12,
+      "observedGenerationGwh": 12.0,
       "economicsReady": true,
       "developer": "GreenYellow",
       "countries": 1,
@@ -32,16 +32,20 @@
         "economicsStatus": "READY_FOR_ECONOMICS",
         "commercialStatus": "EMPTY_NEGOTIATION_ZONE",
         "creditStatus": "MODEL_OK",
-        "riskStatus": "TESTED",
+        "riskStatus": "COUNTERPARTY_COVERAGE_BREACH",
         "evidenceStatus": "OPEN",
         "nextActions": [
-          "PPA_TERM_SHEET",
+          "PPA_RESTRUCTURING",
+          "COUNTERPARTY_DILIGENCE",
+          "COD_TIMING_REVIEW",
+          "SPONSOR_SUPPORT_REVIEW",
           "TRANSACTION_EVIDENCE"
         ],
-        "diligencePriority": "LOW",
+        "diligencePriority": "HIGH",
         "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
         "capitalAllocatedUsd": 0
-      }
+      },
+      "specificYieldKwhKwp": 1250.0
     },
     {
       "project_id": "EU-GY-ALTAREA-PUCEUL",
@@ -59,8 +63,8 @@
       "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
       "engineeringReviewRequired": "FALSE",
       "technicalDataBlocked": false,
-      "capacityMw": 3,
-      "observedGenerationGwh": 3,
+      "capacityMw": 3.0,
+      "observedGenerationGwh": 3.0,
       "economicsReady": true,
       "developer": "GreenYellow",
       "countries": 1,
@@ -68,21 +72,25 @@
         "projectId": "EU-GY-ALTAREA-PUCEUL",
         "projectName": "Altarea Puceul rooftop",
         "country": "France",
-        "capacityMw": 3,
+        "capacityMw": 3.0,
         "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
         "economicsStatus": "READY_FOR_ECONOMICS",
         "commercialStatus": "EMPTY_NEGOTIATION_ZONE",
         "creditStatus": "MODEL_OK",
-        "riskStatus": "TESTED",
+        "riskStatus": "COUNTERPARTY_COVERAGE_BREACH",
         "evidenceStatus": "OPEN",
         "nextActions": [
-          "PPA_TERM_SHEET",
+          "PPA_RESTRUCTURING",
+          "COUNTERPARTY_DILIGENCE",
+          "COD_TIMING_REVIEW",
+          "SPONSOR_SUPPORT_REVIEW",
           "TRANSACTION_EVIDENCE"
         ],
-        "diligencePriority": "LOW",
+        "diligencePriority": "HIGH",
         "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
         "capitalAllocatedUsd": 0
-      }
+      },
+      "specificYieldKwhKwp": 1000.0
     },
     {
       "project_id": "EU-GY-FRUEHAUF-AUXERRE",
@@ -100,7 +108,7 @@
       "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
       "engineeringReviewRequired": "FALSE",
       "technicalDataBlocked": false,
-      "capacityMw": 11,
+      "capacityMw": 11.0,
       "observedGenerationGwh": 12.7,
       "economicsReady": true,
       "developer": "GreenYellow",
@@ -109,21 +117,25 @@
         "projectId": "EU-GY-FRUEHAUF-AUXERRE",
         "projectName": "Fruehauf Auxerre carports",
         "country": "France",
-        "capacityMw": 11,
+        "capacityMw": 11.0,
         "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
         "economicsStatus": "READY_FOR_ECONOMICS",
         "commercialStatus": "EMPTY_NEGOTIATION_ZONE",
         "creditStatus": "MODEL_OK",
-        "riskStatus": "TESTED",
+        "riskStatus": "COUNTERPARTY_COVERAGE_BREACH",
         "evidenceStatus": "OPEN",
         "nextActions": [
-          "PPA_TERM_SHEET",
+          "PPA_RESTRUCTURING",
+          "COUNTERPARTY_DILIGENCE",
+          "COD_TIMING_REVIEW",
+          "SPONSOR_SUPPORT_REVIEW",
           "TRANSACTION_EVIDENCE"
         ],
-        "diligencePriority": "LOW",
+        "diligencePriority": "HIGH",
         "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
         "capitalAllocatedUsd": 0
-      }
+      },
+      "specificYieldKwhKwp": 1154.5454545454545
     },
     {
       "project_id": "EU-GY-PANATTONI-MOISSY",
@@ -155,16 +167,20 @@
         "economicsStatus": "READY_FOR_ECONOMICS",
         "commercialStatus": "EMPTY_NEGOTIATION_ZONE",
         "creditStatus": "MODEL_OK",
-        "riskStatus": "TESTED",
+        "riskStatus": "COUNTERPARTY_COVERAGE_BREACH",
         "evidenceStatus": "OPEN",
         "nextActions": [
-          "PPA_TERM_SHEET",
+          "PPA_RESTRUCTURING",
+          "COUNTERPARTY_DILIGENCE",
+          "COD_TIMING_REVIEW",
+          "SPONSOR_SUPPORT_REVIEW",
           "TRANSACTION_EVIDENCE"
         ],
-        "diligencePriority": "LOW",
+        "diligencePriority": "HIGH",
         "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
         "capitalAllocatedUsd": 0
-      }
+      },
+      "specificYieldKwhKwp": 1016.1538461538461
     },
     {
       "project_id": "EU-GY-SAFRAN-EVRY",
@@ -196,16 +212,20 @@
         "economicsStatus": "READY_FOR_ECONOMICS",
         "commercialStatus": "EMPTY_NEGOTIATION_ZONE",
         "creditStatus": "MODEL_OK",
-        "riskStatus": "TESTED",
+        "riskStatus": "COUNTERPARTY_COVERAGE_BREACH",
         "evidenceStatus": "OPEN",
         "nextActions": [
-          "PPA_TERM_SHEET",
+          "PPA_RESTRUCTURING",
+          "COUNTERPARTY_DILIGENCE",
+          "COD_TIMING_REVIEW",
+          "SPONSOR_SUPPORT_REVIEW",
           "TRANSACTION_EVIDENCE"
         ],
-        "diligencePriority": "LOW",
+        "diligencePriority": "HIGH",
         "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
         "capitalAllocatedUsd": 0
-      }
+      },
+      "specificYieldKwhKwp": 965.1162790697675
     },
     {
       "project_id": "EU-GY-STELLANTIS-CAEN",
@@ -221,9 +241,9 @@
       "observedGenerationKwh": "2300000",
       "baseGenerationP50Kwh": "2300000",
       "physicalStatus": "LOW_YIELD_REVIEW",
-      "engineeringReviewRequired": "FALSE",
+      "engineeringReviewRequired": "TRUE",
       "technicalDataBlocked": false,
-      "capacityMw": 4,
+      "capacityMw": 4.0,
       "observedGenerationGwh": 2.3,
       "economicsReady": true,
       "developer": "GreenYellow",
@@ -232,21 +252,26 @@
         "projectId": "EU-GY-STELLANTIS-CAEN",
         "projectName": "Stellantis Caen",
         "country": "France",
-        "capacityMw": 4,
+        "capacityMw": 4.0,
         "physicalStatus": "LOW_YIELD_REVIEW",
         "economicsStatus": "READY_FOR_ECONOMICS",
         "commercialStatus": "EMPTY_NEGOTIATION_ZONE",
         "creditStatus": "MODEL_OK",
-        "riskStatus": "TESTED",
+        "riskStatus": "COUNTERPARTY_COVERAGE_BREACH",
         "evidenceStatus": "OPEN",
         "nextActions": [
-          "PPA_TERM_SHEET",
+          "ENGINEERING_VALIDATION",
+          "PPA_RESTRUCTURING",
+          "COUNTERPARTY_DILIGENCE",
+          "COD_TIMING_REVIEW",
+          "SPONSOR_SUPPORT_REVIEW",
           "TRANSACTION_EVIDENCE"
         ],
-        "diligencePriority": "LOW",
+        "diligencePriority": "HIGH",
         "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
         "capitalAllocatedUsd": 0
-      }
+      },
+      "specificYieldKwhKwp": 575.0
     },
     {
       "project_id": "EU-GY-STELLANTIS-CHARLEVILLE",
@@ -262,9 +287,9 @@
       "observedGenerationKwh": "4500000",
       "baseGenerationP50Kwh": "4500000",
       "physicalStatus": "LOW_YIELD_REVIEW",
-      "engineeringReviewRequired": "FALSE",
+      "engineeringReviewRequired": "TRUE",
       "technicalDataBlocked": false,
-      "capacityMw": 8,
+      "capacityMw": 8.0,
       "observedGenerationGwh": 4.5,
       "economicsReady": true,
       "developer": "GreenYellow",
@@ -273,21 +298,26 @@
         "projectId": "EU-GY-STELLANTIS-CHARLEVILLE",
         "projectName": "Stellantis Charleville",
         "country": "France",
-        "capacityMw": 8,
+        "capacityMw": 8.0,
         "physicalStatus": "LOW_YIELD_REVIEW",
         "economicsStatus": "READY_FOR_ECONOMICS",
         "commercialStatus": "EMPTY_NEGOTIATION_ZONE",
         "creditStatus": "MODEL_OK",
-        "riskStatus": "TESTED",
+        "riskStatus": "COUNTERPARTY_COVERAGE_BREACH",
         "evidenceStatus": "OPEN",
         "nextActions": [
-          "PPA_TERM_SHEET",
+          "ENGINEERING_VALIDATION",
+          "PPA_RESTRUCTURING",
+          "COUNTERPARTY_DILIGENCE",
+          "COD_TIMING_REVIEW",
+          "SPONSOR_SUPPORT_REVIEW",
           "TRANSACTION_EVIDENCE"
         ],
-        "diligencePriority": "LOW",
+        "diligencePriority": "HIGH",
         "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
         "capitalAllocatedUsd": 0
-      }
+      },
+      "specificYieldKwhKwp": 562.5
     },
     {
       "project_id": "EU-GY-STELLANTIS-VALENCIENNES",
@@ -303,9 +333,9 @@
       "observedGenerationKwh": "4600000",
       "baseGenerationP50Kwh": "4600000",
       "physicalStatus": "LOW_YIELD_REVIEW",
-      "engineeringReviewRequired": "FALSE",
+      "engineeringReviewRequired": "TRUE",
       "technicalDataBlocked": false,
-      "capacityMw": 6,
+      "capacityMw": 6.0,
       "observedGenerationGwh": 4.6,
       "economicsReady": true,
       "developer": "GreenYellow",
@@ -314,21 +344,26 @@
         "projectId": "EU-GY-STELLANTIS-VALENCIENNES",
         "projectName": "Stellantis Valenciennes",
         "country": "France",
-        "capacityMw": 6,
+        "capacityMw": 6.0,
         "physicalStatus": "LOW_YIELD_REVIEW",
         "economicsStatus": "READY_FOR_ECONOMICS",
         "commercialStatus": "EMPTY_NEGOTIATION_ZONE",
         "creditStatus": "MODEL_OK",
-        "riskStatus": "TESTED",
+        "riskStatus": "COUNTERPARTY_COVERAGE_BREACH",
         "evidenceStatus": "OPEN",
         "nextActions": [
-          "PPA_TERM_SHEET",
+          "ENGINEERING_VALIDATION",
+          "PPA_RESTRUCTURING",
+          "COUNTERPARTY_DILIGENCE",
+          "COD_TIMING_REVIEW",
+          "SPONSOR_SUPPORT_REVIEW",
           "TRANSACTION_EVIDENCE"
         ],
-        "diligencePriority": "LOW",
+        "diligencePriority": "HIGH",
         "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
         "capitalAllocatedUsd": 0
-      }
+      },
+      "specificYieldKwhKwp": 766.6666666666666
     },
     {
       "project_id": "EU-GY-GIVA-CELLA",
@@ -343,10 +378,10 @@
       "capacity_kwp": "3000",
       "observedGenerationKwh": "4050000",
       "baseGenerationP50Kwh": "4050000",
-      "physicalStatus": "LOW_YIELD_REVIEW",
+      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
       "engineeringReviewRequired": "FALSE",
       "technicalDataBlocked": false,
-      "capacityMw": 3,
+      "capacityMw": 3.0,
       "observedGenerationGwh": 4.05,
       "economicsReady": true,
       "developer": "GreenYellow",
@@ -355,21 +390,25 @@
         "projectId": "EU-GY-GIVA-CELLA",
         "projectName": "GIVA Cella Dati",
         "country": "Italy",
-        "capacityMw": 3,
-        "physicalStatus": "LOW_YIELD_REVIEW",
+        "capacityMw": 3.0,
+        "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
         "economicsStatus": "READY_FOR_ECONOMICS",
         "commercialStatus": "EMPTY_NEGOTIATION_ZONE",
         "creditStatus": "MODEL_OK",
-        "riskStatus": "TESTED",
+        "riskStatus": "COUNTERPARTY_COVERAGE_BREACH",
         "evidenceStatus": "OPEN",
         "nextActions": [
-          "PPA_TERM_SHEET",
+          "PPA_RESTRUCTURING",
+          "COUNTERPARTY_DILIGENCE",
+          "COD_TIMING_REVIEW",
+          "SPONSOR_SUPPORT_REVIEW",
           "TRANSACTION_EVIDENCE"
         ],
-        "diligencePriority": "LOW",
+        "diligencePriority": "HIGH",
         "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
         "capitalAllocatedUsd": 0
-      }
+      },
+      "specificYieldKwhKwp": 1350.0
     },
     {
       "project_id": "EU-GY-GIVA-VISANO",
@@ -387,7 +426,7 @@
       "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
       "engineeringReviewRequired": "FALSE",
       "technicalDataBlocked": false,
-      "capacityMw": 8,
+      "capacityMw": 8.0,
       "observedGenerationGwh": 10.8,
       "economicsReady": true,
       "developer": "GreenYellow",
@@ -396,21 +435,25 @@
         "projectId": "EU-GY-GIVA-VISANO",
         "projectName": "GIVA Visano",
         "country": "Italy",
-        "capacityMw": 8,
+        "capacityMw": 8.0,
         "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
         "economicsStatus": "READY_FOR_ECONOMICS",
         "commercialStatus": "EMPTY_NEGOTIATION_ZONE",
         "creditStatus": "MODEL_OK",
-        "riskStatus": "TESTED",
+        "riskStatus": "COUNTERPARTY_COVERAGE_BREACH",
         "evidenceStatus": "OPEN",
         "nextActions": [
-          "PPA_TERM_SHEET",
+          "PPA_RESTRUCTURING",
+          "COUNTERPARTY_DILIGENCE",
+          "COD_TIMING_REVIEW",
+          "SPONSOR_SUPPORT_REVIEW",
           "TRANSACTION_EVIDENCE"
         ],
-        "diligencePriority": "LOW",
+        "diligencePriority": "HIGH",
         "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
         "capitalAllocatedUsd": 0
-      }
+      },
+      "specificYieldKwhKwp": 1350.0
     },
     {
       "project_id": "EU-GY-SASOL-ITALY",
@@ -442,16 +485,20 @@
         "economicsStatus": "READY_FOR_ECONOMICS",
         "commercialStatus": "EMPTY_NEGOTIATION_ZONE",
         "creditStatus": "MODEL_OK",
-        "riskStatus": "TESTED",
+        "riskStatus": "COUNTERPARTY_COVERAGE_BREACH",
         "evidenceStatus": "OPEN",
         "nextActions": [
-          "PPA_TERM_SHEET",
+          "PPA_RESTRUCTURING",
+          "COUNTERPARTY_DILIGENCE",
+          "COD_TIMING_REVIEW",
+          "SPONSOR_SUPPORT_REVIEW",
           "TRANSACTION_EVIDENCE"
         ],
-        "diligencePriority": "LOW",
+        "diligencePriority": "HIGH",
         "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
         "capitalAllocatedUsd": 0
-      }
+      },
+      "specificYieldKwhKwp": 1492.1568627450981
     },
     {
       "project_id": "EU-GY-STELLANTIS-SLOVAKIA",
@@ -466,11 +513,11 @@
       "capacity_kwp": "13000",
       "observedGenerationKwh": "7000000",
       "baseGenerationP50Kwh": "7000000",
-      "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
-      "engineeringReviewRequired": "FALSE",
+      "physicalStatus": "LOW_YIELD_REVIEW",
+      "engineeringReviewRequired": "TRUE",
       "technicalDataBlocked": false,
-      "capacityMw": 13,
-      "observedGenerationGwh": 7,
+      "capacityMw": 13.0,
+      "observedGenerationGwh": 7.0,
       "economicsReady": true,
       "developer": "GreenYellow",
       "countries": 4,
@@ -478,21 +525,26 @@
         "projectId": "EU-GY-STELLANTIS-SLOVAKIA",
         "projectName": "Stellantis Slovakia",
         "country": "Slovakia",
-        "capacityMw": 13,
-        "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
+        "capacityMw": 13.0,
+        "physicalStatus": "LOW_YIELD_REVIEW",
         "economicsStatus": "READY_FOR_ECONOMICS",
         "commercialStatus": "EMPTY_NEGOTIATION_ZONE",
         "creditStatus": "MODEL_OK",
-        "riskStatus": "TESTED",
+        "riskStatus": "COUNTERPARTY_COVERAGE_BREACH",
         "evidenceStatus": "OPEN",
         "nextActions": [
-          "PPA_TERM_SHEET",
+          "ENGINEERING_VALIDATION",
+          "PPA_RESTRUCTURING",
+          "COUNTERPARTY_DILIGENCE",
+          "COD_TIMING_REVIEW",
+          "SPONSOR_SUPPORT_REVIEW",
           "TRANSACTION_EVIDENCE"
         ],
-        "diligencePriority": "LOW",
+        "diligencePriority": "HIGH",
         "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
         "capitalAllocatedUsd": 0
-      }
+      },
+      "specificYieldKwhKwp": 538.4615384615385
     },
     {
       "project_id": "IN-AZURE-GANDHINAGAR",
@@ -524,16 +576,20 @@
         "economicsStatus": "READY_FOR_ECONOMICS",
         "commercialStatus": "EMPTY_NEGOTIATION_ZONE",
         "creditStatus": "MODEL_OK",
-        "riskStatus": "TESTED",
+        "riskStatus": "COUNTERPARTY_COVERAGE_BREACH",
         "evidenceStatus": "OPEN",
         "nextActions": [
-          "PPA_TERM_SHEET",
+          "PPA_RESTRUCTURING",
+          "COUNTERPARTY_DILIGENCE",
+          "COD_TIMING_REVIEW",
+          "SPONSOR_SUPPORT_REVIEW",
           "TRANSACTION_EVIDENCE"
         ],
-        "diligencePriority": "MEDIUM",
+        "diligencePriority": "HIGH",
         "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
         "capitalAllocatedUsd": 0
-      }
+      },
+      "specificYieldKwhKwp": 1450.0
     },
     {
       "project_id": "IN-CLEANMAX-TN-30MW",
@@ -551,7 +607,7 @@
       "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
       "engineeringReviewRequired": "FALSE",
       "technicalDataBlocked": false,
-      "capacityMw": 30,
+      "capacityMw": 30.0,
       "observedGenerationGwh": 43.5,
       "economicsReady": true,
       "developer": "Clean Max",
@@ -560,21 +616,25 @@
         "projectId": "IN-CLEANMAX-TN-30MW",
         "projectName": "Clean Max Tamil Nadu",
         "country": "India",
-        "capacityMw": 30,
+        "capacityMw": 30.0,
         "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
         "economicsStatus": "READY_FOR_ECONOMICS",
         "commercialStatus": "EMPTY_NEGOTIATION_ZONE",
         "creditStatus": "MODEL_OK",
-        "riskStatus": "TESTED",
+        "riskStatus": "COUNTERPARTY_COVERAGE_BREACH",
         "evidenceStatus": "OPEN",
         "nextActions": [
-          "PPA_TERM_SHEET",
+          "PPA_RESTRUCTURING",
+          "COUNTERPARTY_DILIGENCE",
+          "COD_TIMING_REVIEW",
+          "SPONSOR_SUPPORT_REVIEW",
           "TRANSACTION_EVIDENCE"
         ],
-        "diligencePriority": "MEDIUM",
+        "diligencePriority": "HIGH",
         "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
         "capitalAllocatedUsd": 0
-      }
+      },
+      "specificYieldKwhKwp": 1450.0
     },
     {
       "project_id": "IN-FPEL-ARISUDHANA",
@@ -609,12 +669,14 @@
         "riskStatus": "TECHNICAL_BLOCK",
         "evidenceStatus": "OPEN",
         "nextActions": [
-          "ENGINEERING_VALIDATION"
+          "ENGINEERING_VALIDATION",
+          "TRANSACTION_EVIDENCE"
         ],
         "diligencePriority": "TECHNICAL",
         "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
         "capitalAllocatedUsd": 0
-      }
+      },
+      "specificYieldKwhKwp": 14593.3014354067
     },
     {
       "project_id": "IN-CLEANTECH-EXIDE-HALDIA",
@@ -646,16 +708,20 @@
         "economicsStatus": "READY_FOR_ECONOMICS",
         "commercialStatus": "EMPTY_NEGOTIATION_ZONE",
         "creditStatus": "MODEL_OK",
-        "riskStatus": "TESTED",
+        "riskStatus": "COUNTERPARTY_COVERAGE_BREACH",
         "evidenceStatus": "OPEN",
         "nextActions": [
-          "PPA_TERM_SHEET",
+          "PPA_RESTRUCTURING",
+          "COUNTERPARTY_DILIGENCE",
+          "COD_TIMING_REVIEW",
+          "SPONSOR_SUPPORT_REVIEW",
           "TRANSACTION_EVIDENCE"
         ],
-        "diligencePriority": "MEDIUM",
+        "diligencePriority": "HIGH",
         "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
         "capitalAllocatedUsd": 0
-      }
+      },
+      "specificYieldKwhKwp": 1450.0
     },
     {
       "project_id": "VN-GY-GOMALL",
@@ -673,8 +739,8 @@
       "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
       "engineeringReviewRequired": "FALSE",
       "technicalDataBlocked": false,
-      "capacityMw": 9,
-      "observedGenerationGwh": 13,
+      "capacityMw": 9.0,
+      "observedGenerationGwh": 13.0,
       "economicsReady": true,
       "developer": "GreenYellow",
       "countries": 5,
@@ -682,21 +748,25 @@
         "projectId": "VN-GY-GOMALL",
         "projectName": "GO Mall Vietnam portfolio",
         "country": "Vietnam",
-        "capacityMw": 9,
+        "capacityMw": 9.0,
         "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
         "economicsStatus": "READY_FOR_ECONOMICS",
         "commercialStatus": "EMPTY_NEGOTIATION_ZONE",
         "creditStatus": "MODEL_OK",
-        "riskStatus": "TESTED",
+        "riskStatus": "COUNTERPARTY_COVERAGE_BREACH",
         "evidenceStatus": "OPEN",
         "nextActions": [
-          "PPA_TERM_SHEET",
+          "PPA_RESTRUCTURING",
+          "COUNTERPARTY_DILIGENCE",
+          "COD_TIMING_REVIEW",
+          "SPONSOR_SUPPORT_REVIEW",
           "TRANSACTION_EVIDENCE"
         ],
         "diligencePriority": "HIGH",
         "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
         "capitalAllocatedUsd": 0
-      }
+      },
+      "specificYieldKwhKwp": 1444.4444444444443
     },
     {
       "project_id": "VN-GY-LOTTEMART",
@@ -728,16 +798,20 @@
         "economicsStatus": "READY_FOR_ECONOMICS",
         "commercialStatus": "EMPTY_NEGOTIATION_ZONE",
         "creditStatus": "MODEL_OK",
-        "riskStatus": "TESTED",
+        "riskStatus": "COUNTERPARTY_COVERAGE_BREACH",
         "evidenceStatus": "OPEN",
         "nextActions": [
-          "PPA_TERM_SHEET",
+          "PPA_RESTRUCTURING",
+          "COUNTERPARTY_DILIGENCE",
+          "COD_TIMING_REVIEW",
+          "SPONSOR_SUPPORT_REVIEW",
           "TRANSACTION_EVIDENCE"
         ],
-        "diligencePriority": "MEDIUM",
+        "diligencePriority": "HIGH",
         "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
         "capitalAllocatedUsd": 0
-      }
+      },
+      "specificYieldKwhKwp": 1150.0
     },
     {
       "project_id": "EU-GY-PTP-CADIZ",
@@ -769,16 +843,20 @@
         "economicsStatus": "READY_FOR_ECONOMICS",
         "commercialStatus": "EMPTY_NEGOTIATION_ZONE",
         "creditStatus": "MODEL_OK",
-        "riskStatus": "TESTED",
+        "riskStatus": "COUNTERPARTY_COVERAGE_BREACH",
         "evidenceStatus": "OPEN",
         "nextActions": [
-          "PPA_TERM_SHEET",
+          "PPA_RESTRUCTURING",
+          "COUNTERPARTY_DILIGENCE",
+          "COD_TIMING_REVIEW",
+          "SPONSOR_SUPPORT_REVIEW",
           "TRANSACTION_EVIDENCE"
         ],
-        "diligencePriority": "LOW",
+        "diligencePriority": "HIGH",
         "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
         "capitalAllocatedUsd": 0
-      }
+      },
+      "specificYieldKwhKwp": 1304.3478260869565
     },
     {
       "project_id": "EU-GY-CMC-ANDRYCHOW",
@@ -810,16 +888,20 @@
         "economicsStatus": "READY_FOR_ECONOMICS",
         "commercialStatus": "EMPTY_NEGOTIATION_ZONE",
         "creditStatus": "MODEL_OK",
-        "riskStatus": "TESTED",
+        "riskStatus": "COUNTERPARTY_COVERAGE_BREACH",
         "evidenceStatus": "OPEN",
         "nextActions": [
-          "PPA_TERM_SHEET",
+          "PPA_RESTRUCTURING",
+          "COUNTERPARTY_DILIGENCE",
+          "COD_TIMING_REVIEW",
+          "SPONSOR_SUPPORT_REVIEW",
           "TRANSACTION_EVIDENCE"
         ],
-        "diligencePriority": "LOW",
+        "diligencePriority": "HIGH",
         "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
         "capitalAllocatedUsd": 0
-      }
+      },
+      "specificYieldKwhKwp": 1050.0
     }
   ]
 }

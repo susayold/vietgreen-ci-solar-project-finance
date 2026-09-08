@@ -1,22 +1,22 @@
 {
   "modelRevision": "2026-09-08-r1",
-  "modelDigest": "1119987c54f8b201e521452ca45b63abc2da814bde79853d78d17c9bcc011006",
+  "modelDigest": "bd16821acbcfc5ba45fefed356ae4de2a5c3e960ac209c47ceb2979718ee6f8e",
   "baselineInputSha": "ff69e15d211ff1abc88200574242ed2f1db49074",
   "outputHashes": {
-    "outputs/v5_1_3_8760.csv": "f93dbc266109affca900997b4736a930f574d1d16f273a9ca4dc9e4fabdaa4c7",
+    "outputs/v5_1_3_8760.csv": "8a2e5b8398d8d71c920b836d9accb85e8797a4faea6cf33b3ef996d749ac598f",
     "outputs/v5_1_3_cash_flow.csv": "368616a6d7bd3e01f4353b016b28e1f255c4a02dc07c92202ea4eb98e3cde88e",
-    "outputs/v5_1_3_coverage.csv": "c7d4f6bb120d414dbc18ccd8c6ebac41f3596a5318b0508dc3223f7df8d36f92",
+    "outputs/v5_1_3_coverage.csv": "f2318228777656f515113424bd6939c17650c7819ec01764e4765e5a9d697b48",
     "outputs/v5_1_3_debt_schedule.csv": "fe35f4cccf8bbf5f9abb3597ba2ddec0e87715aae1efabe6dfb4d2e10165d9d9",
-    "outputs/v5_1_3_debt_sizing.csv": "c7d4f6bb120d414dbc18ccd8c6ebac41f3596a5318b0508dc3223f7df8d36f92",
-    "outputs/v5_1_3_diligence_shortlist.csv": "3fd678a50cb47ea3fb2946d7e1ab42a7d29783926665800471bb833823ea5dae",
-    "outputs/v5_1_3_energy.csv": "c7d4f6bb120d414dbc18ccd8c6ebac41f3596a5318b0508dc3223f7df8d36f92",
-    "outputs/v5_1_3_load_summary.csv": "c7d4f6bb120d414dbc18ccd8c6ebac41f3596a5318b0508dc3223f7df8d36f92",
+    "outputs/v5_1_3_debt_sizing.csv": "f2318228777656f515113424bd6939c17650c7819ec01764e4765e5a9d697b48",
+    "outputs/v5_1_3_diligence_shortlist.csv": "007327e9f8ed6b7c0406086c07daa60a3f9061e8e038a66e7b571e482a63a48d",
+    "outputs/v5_1_3_energy.csv": "f2318228777656f515113424bd6939c17650c7819ec01764e4765e5a9d697b48",
+    "outputs/v5_1_3_load_summary.csv": "f2318228777656f515113424bd6939c17650c7819ec01764e4765e5a9d697b48",
     "outputs/v5_1_3_model_input_view.csv": "826f703526f23863941904cb361b63d00d7df68628bd211faf978be4a0cd26eb",
     "outputs/v5_1_3_portfolio_control.csv": "e793d8914968daf4b4e76fe8a32a058acea3bd271afc12343f533e916e29ff1b",
-    "outputs/v5_1_3_ppa_frontier.csv": "c7d4f6bb120d414dbc18ccd8c6ebac41f3596a5318b0508dc3223f7df8d36f92",
-    "outputs/v5_1_3_project_economics.csv": "c7d4f6bb120d414dbc18ccd8c6ebac41f3596a5318b0508dc3223f7df8d36f92",
-    "outputs/v5_1_3_reconciliation.csv": "ae66e52f8c087b8a1123dc939998ae0cec64c53ef4aa9366454afa0aae1e8837",
-    "outputs/v5_1_3_returns.csv": "c7d4f6bb120d414dbc18ccd8c6ebac41f3596a5318b0508dc3223f7df8d36f92",
+    "outputs/v5_1_3_ppa_frontier.csv": "f2318228777656f515113424bd6939c17650c7819ec01764e4765e5a9d697b48",
+    "outputs/v5_1_3_project_economics.csv": "f2318228777656f515113424bd6939c17650c7819ec01764e4765e5a9d697b48",
+    "outputs/v5_1_3_reconciliation.csv": "dceaffdd35a206b56bf7507b5846a21fb76c9c0b772bba3cf5445e98516c73b6",
+    "outputs/v5_1_3_returns.csv": "f2318228777656f515113424bd6939c17650c7819ec01764e4765e5a9d697b48",
     "outputs/v5_1_3_scenarios.csv": "9513ce40582acd25a1824c390ba23fd7fa5ea4c4eda38f665a8c001c3f5addcf"
   },
   "beforeAfter": [
@@ -158,7 +158,9 @@
     "Percentage-point conversion: degradation 0.5% per year, not 50%.",
     "Debt is nonnegative; coverage sizing uses documented discount rates.",
     "Sponsor tariff sensitivity preserves base contractual debt service.",
-    "IRR is returned only for a bracketed conventional cash-flow root."
+    "IRR is returned only for a bracketed conventional cash-flow root.",
+    "Website physical QA is keyed to calculated project yield, preventing status carry-over between projects.",
+    "Diligence priorities and next actions are regenerated from corrected physical, commercial, credit and stress outputs."
   ],
   "limitations": [
     "Reference tariff applied to all generation; not an executed PPA or export entitlement.",
@@ -260,6 +262,14 @@
     },
     {
       "check": "Repeat calculation: identical outputs",
+      "status": "PASS"
+    },
+    {
+      "check": "Physical QA: exact 15 pass / 4 low-yield / 1 extreme project mapping",
+      "status": "PASS"
+    },
+    {
+      "check": "Diligence: 19 + 1 split, project-level physical reconciliation and multi-factor next actions",
       "status": "PASS"
     }
   ]

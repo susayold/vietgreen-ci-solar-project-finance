@@ -4,7 +4,9 @@
     "Percentage-point conversion: degradation 0.5% per year, not 50%.",
     "Debt is nonnegative; coverage sizing uses documented discount rates.",
     "Sponsor tariff sensitivity preserves base contractual debt service.",
-    "IRR is returned only for a bracketed conventional cash-flow root."
+    "IRR is returned only for a bracketed conventional cash-flow root.",
+    "Website physical QA is keyed to calculated project yield, preventing status carry-over between projects.",
+    "Diligence priorities and next actions are regenerated from corrected physical, commercial, credit and stress outputs."
   ],
   "baselineInputSha": "ff69e15d211ff1abc88200574242ed2f1db49074"
 }
