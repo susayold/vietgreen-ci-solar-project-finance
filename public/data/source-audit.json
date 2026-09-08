@@ -1,28 +1,266 @@
 {
-  "modelSha": "ff69e15d211ff1abc88200574242ed2f1db49074",
-  "artifactId": 9846347737,
+  "modelRevision": "2026-09-08-r1",
+  "modelDigest": "1119987c54f8b201e521452ca45b63abc2da814bde79853d78d17c9bcc011006",
+  "baselineInputSha": "ff69e15d211ff1abc88200574242ed2f1db49074",
   "outputHashes": {
-    "outputs/v5_1_3_8760.csv": "87ebe241625117c4f48058787ea9a40f9283afffa1f296596264067b7a1e36f8",
-    "outputs/v5_1_3_cash_flow.csv": "6d55562bfcf0caeb2df5babd2d1becf82c0ac6ed340f6b22b3a5eb276a0de329",
-    "outputs/v5_1_3_coverage.csv": "b83cd5a0ccf776f477973fad84e89286867d82235cdd1a2b3f8c2ef4a08ceb38",
-    "outputs/v5_1_3_debt_schedule.csv": "3c20bf4825ad1b86a80cd814c47ecfbb0c30bf7a2d48d51d5132b934e5ca2ade",
-    "outputs/v5_1_3_debt_sizing.csv": "6f1f5b12741a8022f5a87160787a0ec53b1c70411e7ffbeb4e6372e23fce4048",
-    "outputs/v5_1_3_diligence_shortlist.csv": "2638645d1cafee6a288ea3ac5a1c4e8725c7ef8eeb0bd8d063e37b42e525ce48",
-    "outputs/v5_1_3_energy.csv": "83e23666bf2f4157576246c1f89dbbaff7c8e30a900b8a7cc1da7e9baa2c36bc",
-    "outputs/v5_1_3_load_summary.csv": "4f5c80502e4a02343a22bcbd0b657d4a42ab582e20a7c2e77659b45c693bd3fb",
+    "outputs/v5_1_3_8760.csv": "f93dbc266109affca900997b4736a930f574d1d16f273a9ca4dc9e4fabdaa4c7",
+    "outputs/v5_1_3_cash_flow.csv": "368616a6d7bd3e01f4353b016b28e1f255c4a02dc07c92202ea4eb98e3cde88e",
+    "outputs/v5_1_3_coverage.csv": "c7d4f6bb120d414dbc18ccd8c6ebac41f3596a5318b0508dc3223f7df8d36f92",
+    "outputs/v5_1_3_debt_schedule.csv": "fe35f4cccf8bbf5f9abb3597ba2ddec0e87715aae1efabe6dfb4d2e10165d9d9",
+    "outputs/v5_1_3_debt_sizing.csv": "c7d4f6bb120d414dbc18ccd8c6ebac41f3596a5318b0508dc3223f7df8d36f92",
+    "outputs/v5_1_3_diligence_shortlist.csv": "3fd678a50cb47ea3fb2946d7e1ab42a7d29783926665800471bb833823ea5dae",
+    "outputs/v5_1_3_energy.csv": "c7d4f6bb120d414dbc18ccd8c6ebac41f3596a5318b0508dc3223f7df8d36f92",
+    "outputs/v5_1_3_load_summary.csv": "c7d4f6bb120d414dbc18ccd8c6ebac41f3596a5318b0508dc3223f7df8d36f92",
     "outputs/v5_1_3_model_input_view.csv": "826f703526f23863941904cb361b63d00d7df68628bd211faf978be4a0cd26eb",
     "outputs/v5_1_3_portfolio_control.csv": "e793d8914968daf4b4e76fe8a32a058acea3bd271afc12343f533e916e29ff1b",
-    "outputs/v5_1_3_ppa_frontier.csv": "7c50bbdff02259daa23a32cd0474661a7495bc5f7fa35cd992dc9ae5b8544f67",
-    "outputs/v5_1_3_project_economics.csv": "7d8c3bfec5759c6d364388d5bab3416c72b4771097df50a97f3e4beceecfd1f7",
-    "outputs/v5_1_3_reconciliation.csv": "89e74139a4d31faa40a7a58314216da924c44f7cd12cdd55bd548381e48dff50",
-    "outputs/v5_1_3_returns.csv": "0713fea5e8b94f7bb18d85f19fb5f19619f5d9d0a3a96d15ce09364910d02e51",
-    "outputs/v5_1_3_scenarios.csv": "f4fcf9b9f39b4c24ef1218330943ec8ce26074a0b0d1483473f2960b1a584f1b"
+    "outputs/v5_1_3_ppa_frontier.csv": "c7d4f6bb120d414dbc18ccd8c6ebac41f3596a5318b0508dc3223f7df8d36f92",
+    "outputs/v5_1_3_project_economics.csv": "c7d4f6bb120d414dbc18ccd8c6ebac41f3596a5318b0508dc3223f7df8d36f92",
+    "outputs/v5_1_3_reconciliation.csv": "ae66e52f8c087b8a1123dc939998ae0cec64c53ef4aa9366454afa0aae1e8837",
+    "outputs/v5_1_3_returns.csv": "c7d4f6bb120d414dbc18ccd8c6ebac41f3596a5318b0508dc3223f7df8d36f92",
+    "outputs/v5_1_3_scenarios.csv": "9513ce40582acd25a1824c390ba23fd7fa5ea4c4eda38f665a8c001c3f5addcf"
   },
-  "findings": [
-    "Latest remediation-plan financial targets do not match the authoritative frozen CI artifact. Website uses the artifact, not unverified plan targets.",
-    "Negative raw model debt capacities are retained as source issues; usable debt is floored at zero and coverage is N/A where no debt service exists.",
-    "The model IRR sentinel -0.99 is not displayed as a genuine -99% return.",
-    "The frozen GO Mall schedule repays in year 1; later-year CFADS remains present. No replacement amortization was invented.",
-    "Model reconciliation does not establish accuracy of underlying commercial assumptions or transaction readiness."
+  "beforeAfter": [
+    {
+      "projectId": "EU-GY-ALTAREA-BOLLENE-ROOF",
+      "previousDebtUsd": -796499.77998617,
+      "debtUsd": 7399973.65223709,
+      "previousProjectNpvUsd": -13854945.90458574,
+      "projectNpvUsd": -3588426.59948012
+    },
+    {
+      "projectId": "EU-GY-ALTAREA-PUCEUL",
+      "previousDebtUsd": -382035.40920723,
+      "debtUsd": 1826262.91979349,
+      "previousProjectNpvUsd": -4477470.98637601,
+      "projectNpvUsd": -1805797.1326721
+    },
+    {
+      "projectId": "EU-GY-FRUEHAUF-AUXERRE",
+      "previousDebtUsd": -1094248.79103275,
+      "debtUsd": 7798416.09137882,
+      "previousProjectNpvUsd": -16077064.0354636,
+      "projectNpvUsd": -5069918.16037269
+    },
+    {
+      "projectId": "EU-GY-PANATTONI-MOISSY",
+      "previousDebtUsd": -161761.91150121,
+      "debtUsd": 804995.00628004,
+      "previousProjectNpvUsd": -1936033.35613183,
+      "projectNpvUsd": -763348.50385521
+    },
+    {
+      "projectId": "EU-GY-SAFRAN-EVRY",
+      "previousDebtUsd": -1149264.82765963,
+      "debtUsd": 5040795.49812909,
+      "previousProjectNpvUsd": -12895474.98900801,
+      "projectNpvUsd": -5450383.97512718
+    },
+    {
+      "projectId": "EU-GY-STELLANTIS-CAEN",
+      "previousDebtUsd": -818037.43617203,
+      "debtUsd": 1283202.3984299,
+      "previousProjectNpvUsd": -6312725.27497252,
+      "projectNpvUsd": -4047381.09872682
+    },
+    {
+      "projectId": "EU-GY-STELLANTIS-CHARLEVILLE",
+      "previousDebtUsd": -1656845.78892141,
+      "debtUsd": 2479964.11303214,
+      "previousProjectNpvUsd": -12648630.89295035,
+      "projectNpvUsd": -8216435.76551311
+    },
+    {
+      "projectId": "EU-GY-STELLANTIS-VALENCIENNES",
+      "previousDebtUsd": -1016521.87320933,
+      "debtUsd": 2744898.65939652,
+      "previousProjectNpvUsd": -9235213.39260367,
+      "projectNpvUsd": -4889981.14027779
+    },
+    {
+      "projectId": "EU-GY-GIVA-CELLA",
+      "previousDebtUsd": -121902.78003993,
+      "debtUsd": 2747310.23466946,
+      "previousProjectNpvUsd": -4207453.01959439,
+      "projectNpvUsd": -509885.38542949
+    },
+    {
+      "projectId": "EU-GY-GIVA-VISANO",
+      "previousDebtUsd": -325074.08010649,
+      "debtUsd": 7326160.62578522,
+      "previousProjectNpvUsd": -11219874.71891837,
+      "projectNpvUsd": -1359694.36114532
+    },
+    {
+      "projectId": "EU-GY-SASOL-ITALY",
+      "previousDebtUsd": -75012.03262617,
+      "debtUsd": 5176500.0,
+      "previousProjectNpvUsd": -7005274.92109489,
+      "projectNpvUsd": -140515.34855511
+    },
+    {
+      "projectId": "EU-GY-STELLANTIS-SLOVAKIA",
+      "previousDebtUsd": -3084660.00997859,
+      "debtUsd": 3289280.94417779,
+      "previousProjectNpvUsd": -21668124.07184441,
+      "projectNpvUsd": -15060870.22446111
+    },
+    {
+      "projectId": "IN-AZURE-GANDHINAGAR",
+      "previousDebtUsd": -57559.47057217,
+      "debtUsd": 1031085.69728742,
+      "previousProjectNpvUsd": -2768508.08952428,
+      "projectNpvUsd": -1075107.53537878
+    },
+    {
+      "projectId": "IN-CLEANMAX-TN-30MW",
+      "previousDebtUsd": -690713.64686601,
+      "debtUsd": 12373028.36744905,
+      "previousProjectNpvUsd": -33222097.0742914,
+      "projectNpvUsd": -12901290.42454535
+    },
+    {
+      "projectId": "IN-CLEANTECH-EXIDE-HALDIA",
+      "previousDebtUsd": -59861.84939505,
+      "debtUsd": 1072329.12517892,
+      "previousProjectNpvUsd": -2879248.41310526,
+      "projectNpvUsd": -1118111.83679393
+    },
+    {
+      "projectId": "VN-GY-GOMALL",
+      "previousDebtUsd": 529056.74986376,
+      "debtUsd": 7875000.0,
+      "previousProjectNpvUsd": -10361885.99977444,
+      "projectNpvUsd": 427026.28497581
+    },
+    {
+      "projectId": "VN-GY-LOTTEMART",
+      "previousDebtUsd": 28220.76949486,
+      "debtUsd": 1923814.23513122,
+      "previousProjectNpvUsd": -3210888.6378965,
+      "projectNpvUsd": -614360.90878627
+    },
+    {
+      "projectId": "EU-GY-PTP-CADIZ",
+      "previousDebtUsd": -150861.25665779,
+      "debtUsd": 1356007.20194648,
+      "previousProjectNpvUsd": -2567805.92719514,
+      "projectNpvUsd": -682945.53356819
+    },
+    {
+      "projectId": "EU-GY-CMC-ANDRYCHOW",
+      "previousDebtUsd": -84574.52671458,
+      "debtUsd": 380218.17183761,
+      "previousProjectNpvUsd": -1014238.84377786,
+      "projectNpvUsd": -387665.35484539
+    }
+  ],
+  "corrections": [
+    "Percentage-point conversion: degradation 0.5% per year, not 50%.",
+    "Debt is nonnegative; coverage sizing uses documented discount rates.",
+    "Sponsor tariff sensitivity preserves base contractual debt service.",
+    "IRR is returned only for a bracketed conventional cash-flow root."
+  ],
+  "limitations": [
+    "Reference tariff applied to all generation; not an executed PPA or export entitlement.",
+    "Public inputs and analyst assumptions; no independent engineering or lender approval.",
+    "Cash-sweep sculpting can repay before the maximum tenor; no maturity is forced."
+  ],
+  "checks": [
+    {
+      "check": "Percentage units: 0.5% = 0.005; 1% = 0.01",
+      "status": "PASS"
+    },
+    {
+      "check": "IRR: known root, no-return and non-conventional cash flows",
+      "status": "PASS"
+    },
+    {
+      "check": "Negative cash flow cannot create negative borrowing capacity",
+      "status": "PASS"
+    },
+    {
+      "check": "EU-GY-ALTAREA-BOLLENE-ROOF: generation decay, nonnegative capacity, debt roll-forward, maturity and coverage",
+      "status": "PASS"
+    },
+    {
+      "check": "EU-GY-ALTAREA-PUCEUL: generation decay, nonnegative capacity, debt roll-forward, maturity and coverage",
+      "status": "PASS"
+    },
+    {
+      "check": "EU-GY-FRUEHAUF-AUXERRE: generation decay, nonnegative capacity, debt roll-forward, maturity and coverage",
+      "status": "PASS"
+    },
+    {
+      "check": "EU-GY-PANATTONI-MOISSY: generation decay, nonnegative capacity, debt roll-forward, maturity and coverage",
+      "status": "PASS"
+    },
+    {
+      "check": "EU-GY-SAFRAN-EVRY: generation decay, nonnegative capacity, debt roll-forward, maturity and coverage",
+      "status": "PASS"
+    },
+    {
+      "check": "EU-GY-STELLANTIS-CAEN: generation decay, nonnegative capacity, debt roll-forward, maturity and coverage",
+      "status": "PASS"
+    },
+    {
+      "check": "EU-GY-STELLANTIS-CHARLEVILLE: generation decay, nonnegative capacity, debt roll-forward, maturity and coverage",
+      "status": "PASS"
+    },
+    {
+      "check": "EU-GY-STELLANTIS-VALENCIENNES: generation decay, nonnegative capacity, debt roll-forward, maturity and coverage",
+      "status": "PASS"
+    },
+    {
+      "check": "EU-GY-GIVA-CELLA: generation decay, nonnegative capacity, debt roll-forward, maturity and coverage",
+      "status": "PASS"
+    },
+    {
+      "check": "EU-GY-GIVA-VISANO: generation decay, nonnegative capacity, debt roll-forward, maturity and coverage",
+      "status": "PASS"
+    },
+    {
+      "check": "EU-GY-SASOL-ITALY: generation decay, nonnegative capacity, debt roll-forward, maturity and coverage",
+      "status": "PASS"
+    },
+    {
+      "check": "EU-GY-STELLANTIS-SLOVAKIA: generation decay, nonnegative capacity, debt roll-forward, maturity and coverage",
+      "status": "PASS"
+    },
+    {
+      "check": "IN-AZURE-GANDHINAGAR: generation decay, nonnegative capacity, debt roll-forward, maturity and coverage",
+      "status": "PASS"
+    },
+    {
+      "check": "IN-CLEANMAX-TN-30MW: generation decay, nonnegative capacity, debt roll-forward, maturity and coverage",
+      "status": "PASS"
+    },
+    {
+      "check": "IN-CLEANTECH-EXIDE-HALDIA: generation decay, nonnegative capacity, debt roll-forward, maturity and coverage",
+      "status": "PASS"
+    },
+    {
+      "check": "VN-GY-GOMALL: generation decay, nonnegative capacity, debt roll-forward, maturity and coverage",
+      "status": "PASS"
+    },
+    {
+      "check": "VN-GY-LOTTEMART: generation decay, nonnegative capacity, debt roll-forward, maturity and coverage",
+      "status": "PASS"
+    },
+    {
+      "check": "EU-GY-PTP-CADIZ: generation decay, nonnegative capacity, debt roll-forward, maturity and coverage",
+      "status": "PASS"
+    },
+    {
+      "check": "EU-GY-CMC-ANDRYCHOW: generation decay, nonnegative capacity, debt roll-forward, maturity and coverage",
+      "status": "PASS"
+    },
+    {
+      "check": "171 scenarios: contractual preservation, no new debt and termination downside",
+      "status": "PASS"
+    },
+    {
+      "check": "Repeat calculation: identical outputs",
+      "status": "PASS"
+    }
   ]
 }

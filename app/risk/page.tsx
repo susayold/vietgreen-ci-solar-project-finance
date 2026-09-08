@@ -424,7 +424,6 @@ export default function RiskPage() {
               <ChevronDown size={15} />
             </div>
             <span>◉ {selected?.country ?? 'NOT AVAILABLE'}</span>
-            <span>♨ GreenYellow</span>
             <span>◉ {selected?.capacityMw?.toFixed(3) ?? 'NOT AVAILABLE'} MW</span>
             <span>
               Base Debt ~{' '}
@@ -485,7 +484,7 @@ export default function RiskPage() {
           {!metrics && (
             <div className="risk-unavailable">
               <AlertTriangle size={17} /> This project has no published scenario
-              metric payload in the frozen website release. Risk values are
+              results available. Risk values are
               shown as N/A/N/D rather than cloned from GO Mall.
             </div>
           )}
@@ -538,7 +537,7 @@ export default function RiskPage() {
         <section className="risk-section">
           <Heading
             n="3"
-            title="The Debt Contract Does Not Self-Heal"
+            title="Contractual Debt Under Stress"
             note="Downside coverage is tested against the base contractual schedule."
           />
           <div className="semantic-banner">
@@ -706,9 +705,7 @@ export default function RiskPage() {
           <div className="coverage-boundary">
             <AlertTriangle size={17} />
             <span>
-              LLCR and PLCR are read directly from the frozen V5.1.3 scenario
-              rows. No frontend reconstruction is substituted for source
-              metrics.
+              DSCR measures annual debt-service coverage; LLCR covers the loan life and PLCR the project life. All use the selected scenario cash flows.
             </span>
           </div>
         </section>
@@ -729,8 +726,7 @@ export default function RiskPage() {
               <BarChart3 />
               <h3>CAPEX</h3>
               <p>
-                +15% CAPEX does not create new debt; the incremental ~$1.688m is
-                sponsor-funded.
+                +15% CAPEX does not create new debt. {metrics?.CAPEX_OVERRUN?.capex ?? 'Incremental cost is funded by sponsor equity.'}
               </p>
               <b>→ Contingency / sponsor support</b>
             </article>
@@ -1002,7 +998,7 @@ export default function RiskPage() {
           />
           <div>
             <span className="risk-index gold">11</span>
-            <p>RECRUITER TAKEAWAY</p>
+            <p>KEY TAKEAWAY</p>
             <h2>
               A downside model is credible only when the debt contract stays
               visible.
@@ -1024,7 +1020,7 @@ export default function RiskPage() {
       </div>
       <footer className="risk-footer">
         <span>Solar Project Finance</span>
-        <span>Data as of: 31 Dec 2024</span>
+        <span>Public sources and documented assumptions</span>
         <span>
           <FileCheck2 size={14} /> Evidence: OPEN
         </span>

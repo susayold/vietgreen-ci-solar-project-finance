@@ -36,7 +36,15 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh run download 33629919973 --repo susayold/vietgreen-ci-solar-project-finance --name vietgreen-v5-1-3-full-data-model-release --dir /tmp/vietgreen-frozen
-          python scripts/import_verified_release.py /tmp/vietgreen-frozen
+          python scripts/build_corrected_model.py /tmp/vietgreen-frozen
+
+      - name: Preserve corrected model results and verification
+        uses: actions/upload-artifact@v4
+        with:
+          name: vietgreen-corrected-model
+          path: |
+            artifacts/recruiter_revision/outputs
+            artifacts/recruiter_revision/release
 
       - name: Seal website release identity
         env:

@@ -22,6 +22,12 @@ FORBIDDEN = (
     "P19-0118",
     "P19-0176",
     "INPUT ASSUMPTION</span>",
+    "REMOTE ONLY",
+    "REMOTE-ONLY POLICY",
+    "Frozen Release",
+    "recruiter-final",
+    "26 / 26",
+    "26/26",
 )
 
 

@@ -463,13 +463,13 @@ export default function DebtPage() {
               <div className="plcr-box">
                 <b>{debt?.bindingConstraint ?? 'NOT RESOLVED'}</b>
                 <strong>{debt?.bindingConstraint === 'LEVERAGE' ? `${((debt.leverage ?? 0)*100).toFixed(1)}%` : ratio(debt?.bindingConstraint === 'DSCR' ? debt.minimumDscr : debt?.bindingConstraint === 'LLCR' ? debt.llcr : debt?.plcr)}</strong>
-                <small>Minimum requirement {ratio(debt?.plcrMin)}</small>
+                <small>{debt?.bindingConstraint === 'LEVERAGE' ? `Maximum leverage ${((debt.maxLeverage ?? 0)*100).toFixed(0)}%` : `Minimum ${ratio(debt?.bindingConstraint === 'DSCR' ? debt.dscrTarget : debt?.bindingConstraint === 'LLCR' ? debt.llcrMin : debt?.plcrMin)}`}</small>
                 <span>BINDING CONSTRAINT</span>
               </div>
               <div>
                 <h3>Why {debt?.bindingConstraint ?? 'the selected constraint'} Binds the Reference Case</h3>
                 <p>
-                  The frozen credit payload selects the minimum supportable
+                  The model selects the minimum supportable
                   capacity across DSCR, LLCR, PLCR and leverage. For this
                   reference case, {debt?.bindingConstraint ?? 'the selected constraint'}
                   is binding; this is standardized underwriting, not lender approval.
@@ -502,7 +502,7 @@ export default function DebtPage() {
               </span>
             </div>
             <p className="chart-footnote">
-              Amounts are VND equivalents using frozen project FX. CFADS continues
+              Amounts are VND equivalents at the stated exchange rates. CFADS continues
               after debt payoff. DSCR is N/A whenever debt service is zero.
             </p>
           </div>
@@ -596,8 +596,8 @@ export default function DebtPage() {
                 <span>
                   <b>Near-Term Coverage</b>
                   <small>
-                    Generated Year 1 DSCR is compared with the standardized
-                    target from the selected debt payload.
+                    Year 1 DSCR is compared with the
+                    selected coverage target.
                   </small>
                 </span>
               </div>
@@ -716,7 +716,7 @@ export default function DebtPage() {
               </p>
               <p>
                 <Check />
-                Frozen base schedule
+                Base debt schedule
               </p>
               <p>
                 <Check />
@@ -792,13 +792,13 @@ export default function DebtPage() {
           />
           <div>
             <span className="debt-index gold">9</span>
-            <p>RECRUITER TAKEAWAY</p>
+            <p>KEY TAKEAWAY</p>
             <h2>
               Debt capacity is an output of cash-flow coverage — not a financing
               assumption.
             </h2>
             <p>
-              The generated credit payload shows standardized debt capacity and
+              The credit analysis shows supportable debt capacity and
               coverage for the selected project. It is not lender approval.
             </p>
             <div>
@@ -810,7 +810,7 @@ export default function DebtPage() {
       </div>
       <footer className="debt-footer">
         <span>Solar Project Finance</span>
-        <span>Data as of: 31 Dec 2024</span>
+        <span>Public sources and documented assumptions</span>
         <span>
           <FileCheck2 size={14} /> Evidence: OPEN
         </span>

@@ -34,6 +34,14 @@ type Project = {
   technicalDataBlocked?: boolean;
 };
 type EconRow = {
+  projectPaybackYears?: number | null;
+  equityPaybackYears?: number | null;
+  projectDiscountRate?: number;
+  equityHurdleRate?: number;
+  operatingHorizonYears?: number;
+  ppaTenorYears?: number;
+  equityShare?: number;
+  dscrAverage?: number;
   project_id: string;
   projectId?: string;
   projectName?: string;
@@ -186,7 +194,7 @@ function Frontier({ data }: { data?: EconRow }) {
       <text x="90" y="150" fontSize="10">{min.toFixed(0)}</text>
       <text x="500" y="150" fontSize="10">{max.toFixed(0)} VND/kWh</text>
     </svg>
-    <p>Local-currency model thresholds converted using frozen FX. Missing solver outputs are not plotted as zero.</p>
+    <p>Thresholds converted at the stated exchange rates. Missing solver outputs are not plotted as zero.</p>
   </div>;
 }
 
@@ -347,7 +355,7 @@ export default function EconomicsPage() {
               icon={WalletCards}
               value={isGoMall ? usdM(reference?.capexUsd) : 'NOT AVAILABLE'}
               label="CAPEX"
-              sub="Frozen model CAPEX · USD"
+              sub="CAPEX assumption · USD"
             />
             <KPI
               icon={Percent}
@@ -361,8 +369,8 @@ export default function EconomicsPage() {
               icon={BarChart3}
               value={isGoMall ? usdM(reference?.projectNpvUsd) : 'NOT AVAILABLE'}
               label="Project NPV"
-              sub={isGoMall ? 'After-tax · 10%' : 'Frozen output unavailable'}
-              tone="negative"
+              sub={`After-tax · ${percent(reference?.projectDiscountRate)} discount rate`}
+              tone={(reference?.projectNpvUsd ?? 0) < 0 ? 'negative' : ''}
             />
             <KPI
               icon={LineChart}
@@ -370,17 +378,17 @@ export default function EconomicsPage() {
               label="Project IRR"
               sub={
                 isGoMall
-                  ? 'Frozen model output'
-                  : 'Frozen output unavailable'
+                  ? 'Calculated reference case'
+                  : 'Data unavailable'
               }
-              tone="negative"
+              tone={(reference?.projectIrr ?? 0) < 0 ? 'negative' : ''}
             />
             <KPI
               icon={UserRound}
               value={isGoMall ? usdM(reference?.equityNpvUsd) : 'NOT AVAILABLE'}
               label="Equity NPV"
-              sub={isGoMall ? 'After-tax · 14%' : 'Frozen output unavailable'}
-              tone="negative"
+              sub={`After-tax · ${percent(reference?.equityHurdleRate)} hurdle`}
+              tone={(reference?.equityNpvUsd ?? 0) < 0 ? 'negative' : ''}
             />
             <KPI
               icon={Scale}
@@ -388,24 +396,24 @@ export default function EconomicsPage() {
               label="Equity IRR"
               sub={
                 isGoMall
-                  ? 'Frozen model output'
-                  : 'Frozen output unavailable'
+                  ? 'Calculated reference case'
+                  : 'Data unavailable'
               }
-              tone="negative"
+              tone={(reference?.equityIrr ?? 0) < 0 ? 'negative' : ''}
             />
           </div>
           <div className="economics-strip">
             <span>
-              10%<small>Project Discount Rate</small>
+              {percent(reference?.projectDiscountRate)}<small>Project Discount Rate</small>
             </span>
             <span>
-              14%<small>Equity Hurdle</small>
+              {percent(reference?.equityHurdleRate)}<small>Equity Hurdle</small>
             </span>
             <span>
-              25 years<small>Operating Horizon</small>
+              {reference?.operatingHorizonYears} years<small>Analytical Horizon</small>
             </span>
             <span>
-              20 years<small>Standardized PPA Tenor</small>
+              {reference?.ppaTenorYears} years<small>PPA Tenor Assumption</small>
             </span>
             <span>
               FRONTIER_ONLY<small>PPA Mode</small>
@@ -415,6 +423,7 @@ export default function EconomicsPage() {
             </span>
           </div>
           <div className="tariff-warning">
+            <span>Reference revenue applies the same tariff to all generation over the analytical horizon. This does not establish an export sale right or a contracted post-PPA tariff.</span>
             <ShieldAlert size={18} />
             <span>
               <b>REFERENCE TARIFF ≠ EXECUTED PPA</b>
@@ -476,10 +485,10 @@ export default function EconomicsPage() {
                     IRR<strong>{percent(reference?.projectIrr)}</strong>
                   </span>
                   <span>
-                    Payback<strong>No payback</strong>
+                    Simple payback<strong>{reference?.projectPaybackYears == null ? 'Not reached' : `${reference.projectPaybackYears.toFixed(1)} years`}</strong>
                   </span>
                   <span>
-                    DSCR (avg)<strong>Reference only</strong>
+                    DSCR (avg)<strong>{reference?.dscrAverage?.toFixed(2) ?? 'N/A'}x</strong>
                   </span>
                 </div>
                 <div>
@@ -491,10 +500,10 @@ export default function EconomicsPage() {
                     IRR<strong>{percent(reference?.equityIrr)}</strong>
                   </span>
                   <span>
-                    Payback<strong>No payback</strong>
+                    Simple payback<strong>{reference?.equityPaybackYears == null ? 'Not reached' : `${reference.equityPaybackYears.toFixed(1)} years`}</strong>
                   </span>
                   <span>
-                    Equity Share<strong>Not disclosed</strong>
+                    Modeled equity share<strong>{percent(reference?.equityShare)}</strong>
                   </span>
                 </div>
               </div>
@@ -522,10 +531,10 @@ export default function EconomicsPage() {
                 </span>
                 <span>
                   Project IRR<strong>{percent(reference?.projectIrr)}</strong>
-                  <small>Frozen model output</small>
+                  <small>Calculated reference case</small>
                 </span>
                 <span>
-                  Discount Rate<strong>10%</strong>
+                  Discount Rate<strong>{percent(reference?.projectDiscountRate)}</strong>
                 </span>
                 <span>
                   Initial CAPEX<strong>{usdM(reference?.capexUsd)}</strong>
@@ -552,20 +561,20 @@ export default function EconomicsPage() {
                 </span>
                 <span>
                   Equity IRR<strong>{percent(reference?.equityIrr)}</strong>
-                  <small>Frozen model output</small>
+                  <small>Calculated reference case</small>
                 </span>
                 <span>
-                  Equity Hurdle<strong>14%</strong>
+                  Equity Hurdle<strong>{percent(reference?.equityHurdleRate)}</strong>
                 </span>
                 <span>
-                  Initial Equity<strong>Not disclosed</strong>
+                  Modeled Initial Equity<strong>{reference?.capexUsd == null || reference?.equityShare == null ? 'Not available' : usdM(reference.capexUsd*reference.equityShare)}</strong>
                 </span>
                 <span>
                   Debt Service Handoff<strong>To Debt page</strong>
                 </span>
               </div>
               <p className="return-status">
-                EQUITY HURDLE · <b>NOT MET AT REFERENCE CASE</b>
+                EQUITY HURDLE · <b>{reference?.equityNpvUsd == null ? 'Not available' : reference.equityNpvUsd >= 0 ? 'MET IN REFERENCE CASE' : 'NOT MET IN REFERENCE CASE'}</b>
               </p>
               <div className="formula-card">
                 Equity NPV = PV(CFADS − Debt Service) − Initial Equity
@@ -666,8 +675,7 @@ export default function EconomicsPage() {
               <strong>{vnd(reference?.sponsorFloorVndKwh)}</strong>
               <small>MODEL-RESOLVED SPONSOR HURDLE</small>
               <p>
-                The frozen reference case requires this tariff to meet the 14%
-                sponsor hurdle; it is not an executed commercial term.
+                Tariff required to meet the {percent(reference?.equityHurdleRate)} assumed equity hurdle with the base debt schedule. Not a sponsor quote.
               </p>
             </div>
             <div className="stakeholder-card lender">
@@ -745,7 +753,7 @@ export default function EconomicsPage() {
           <Heading
             n="7"
             title="Commercial Status Across the Economics-Ready Universe"
-            note="Counts are derived from the frozen economics payload; local tariffs are never ranked across currencies."
+            note="Counts are derived from the calculated project results; local tariffs are never ranked across currencies."
           />
           <div className="portfolio-grid">
             <div className="portfolio-status">
@@ -774,7 +782,7 @@ export default function EconomicsPage() {
                 Base Currency in Model <b>USD</b>
               </span>
               <span>
-                FX Rate (Frozen) <b>25,610 VND/USD</b>
+                Reference Exchange Rate <b>25,610 VND/USD</b>
               </span>
               <small>
                 Local tariffs are shown with currency and are not used as
@@ -799,7 +807,7 @@ export default function EconomicsPage() {
               </p>
               <p>
                 <Check />
-                Commercial feasibility status is INSUFFICIENT_DATA
+                Reference tariff range and commercial constraints
               </p>
             </div>
             <div className="cannot">
@@ -847,7 +855,7 @@ export default function EconomicsPage() {
           />
           <div>
             <span className="economics-index gold">9</span>
-            <p>RECRUITER TAKEAWAY</p>
+            <p>KEY TAKEAWAY</p>
             <h2>
               Converts energy to cash with transparent assumptions and clear
               boundaries.
@@ -863,7 +871,7 @@ export default function EconomicsPage() {
       </div>
       <footer className="economics-footer">
         <span>Solar Project Finance</span>
-        <span>Data as of: 31 Dec 2024</span>
+        <span>Public sources and documented assumptions</span>
         <span>
           <FileCheck2 size={14} /> Evidence: OPEN
         </span>

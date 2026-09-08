@@ -1,56 +1,58 @@
-# VietGreen CI Solar Project Finance — V4.1.3 Recruiter Final
+# VietGreen — C&I Solar Project Finance
 
-Release ID: V4.1.3-RECRUITER-FINAL
-Date: 2026-09-01
-GitHub source of truth: https://github.com/susayold/vietgreen-ci-solar-project-finance
-Google Drive control index: https://docs.google.com/document/d/1koSgbc1Akic6cVDFD1svmuVN9gSq8qSGUw2obfHYN80/edit
+[Open the eight-page case study](https://susayold.github.io/vietgreen-ci-solar-project-finance/showcase/)
 
-This is a recruiter-ready synthetic Vietnam C&I rooftop-solar project-finance case. The attached V4.1.3 governance closure plan is the implementation specification; the user request controls the remote-only boundary. The plan source is tracked by SHA-256 (ebf18083c631a023b804a391e096b8593fea02607128d1e16c85513c710fe8c7); no raw plan copy, private transaction file or local project-data copy is stored.
+A public-data project-finance case study connecting project research, physical
+screening, hourly energy modeling, economics, debt, scenarios and diligence.
 
-## V4.1.3 governance status
+## Current analytical scope
 
-CURRENT_TERMS_DECISION=NO_DEPLOYMENT
-SELECTED_COUNT=4
-SELECTED_IDS=VG-005|VG-010|VG-011|VG-012
-RECRUITER_READY=TRUE
-TRANSACTION_EVIDENCE_STATUS=OPEN
-BANKABLE_TRANSACTION_READY=FALSE
-EXTERNAL_GATE_COUNT_OPEN=8
-SELECTED_EQUITY_BVND=30.124825
+- 54 candidates researched, 441 observations, 20 selected records across 7 countries.
+- 19 modeled projects: 129.853 MW and approximately 148.221 GWh annual generation.
+- 1 generation outlier is excluded from financial analysis pending technical validation.
+- 9 scenarios per project; 171 scenario results.
+- Commercial assumptions are disclosed. No actual PPA, lender commitment or investment approval is claimed.
 
-## Decision in one line
+## Current calculation revision
 
-Current Terms = NO_DEPLOYMENT because all 20 Current Terms rows have negative Equity NPV. Negotiated Terms are a hypothetical remediation sensitivity. Under explicit exposure constraints, 4 projects are selected: VG-005, VG-010, VG-011, VG-012.
+The 8 September 2026 revision corrects a percentage conversion error: the original
+0.5% annual degradation assumption was interpreted as 50%. It also enforces
+nonnegative debt capacity, uses the stated coverage discount rates, preserves
+contractual debt in sponsor sensitivities and validates IRR roots.
 
-## Headline economics
+The public-input baseline is preserved from
+`ff69e15d211ff1abc88200574242ed2f1db49074`. Current financial results supersede
+the historical V4 and V5.1.3 outputs; those historical files and releases are not
+the current website results. In particular, the old one-year GO Mall repayment
+and negative debt-capacity results should not be cited.
 
-- Selected equity: 30.124825 BVND; selected debt: 55.946104 BVND; selected Year-1 CFADS: 12.003384 BVND; pooled Min DSCR: 1.300x.
-- Base Project NPV: 5.262393 BVND; Base Equity NPV: 5.942277 BVND; Base Project IRR: 12.732%; Base Equity IRR: 15.929%.
-- P90 Equity NPV: -1.177896 BVND; CAPEX-overrun Equity NPV: -3.179160 BVND; COD-delay Min DSCR: 0.000x.
-- Combined-downside Equity NPV: -38.814456 BVND; Combined-downside Min DSCR: 0.000x.
+## Reproduce and inspect
 
-## What V4 fixed
+- [Current model and public inputs](model/recruiter_revision/)
+- [Calculation, provenance and checks](scripts/build_corrected_model.py)
+- [Current website data](public/data/)
+- [Current calculation fingerprint](public/data/model-revision.json)
+- [Build and model output artifacts](https://github.com/susayold/vietgreen-ci-solar-project-finance/actions/workflows/codex-github-pages.yml)
 
-Formula-driven Excel workbook; independent Python reconciliation; customer/sponsor/lender PPA solver; Project/Equity IRR; P50/P90/P99 uncertainty budget; realistic load archetypes and self-consumption; debt/FX/exposure optimizer/pooling/scenarios; IC/lender decision materials; red-team and claim governance.
+The publication workflow downloads the baseline artifact, verifies its hashes,
+recalculates the corrected model twice, checks consistency, validates the website
+and publishes all eight pages. Full recalculated CSVs are retained in the
+`vietgreen-corrected-model` workflow artifact.
 
-## Gate status
+For a local rebuild, extract the baseline artifact and run:
 
-V4-G0 through V4-G6: PASS for synthetic/recruiter package. Formula QA: 5/5; Excel/Python reconciliation: 240/240; final DoD: 35/35 PASS. RECRUITER_READY=TRUE is intentionally separate from TRANSACTION_EVIDENCE=OPEN and BANKABLE_TRANSACTION_READY=FALSE. Eight external gates remain open.
+```text
+python scripts/build_corrected_model.py <baseline-artifact-directory>
+npm run test:data
+npm run test:claims
+npm run build
+```
 
-## Remote-only storage
+## Important assumptions
 
-All project code, synthetic inputs, aggregate outputs, validation evidence, manifests and workflow activity are on GitHub; Google Drive is the control/audit index. Hourly arrays exist only ephemerally on GitHub Actions and raw project data is not stored in this local workspace.
-
-## Traceability
-
-- Formula workbook: model/vietgreen_v4_formula_model.xlsx
-- IC decision table: outputs/IC_DECISION_TABLE.csv
-- IC memo: reports/INVESTMENT_COMMITTEE_MEMO.md
-- Lender memo: reports/LENDER_CREDIT_MEMO.md
-- Recruiter package: reports/RECRUITER_PACKAGE.md
-- Final DoD: validation/V4_FINAL_DOD_MATRIX.csv
-- Final red-team: validation/V4_RED_TEAM_REPORT.md
-- V4 release manifest: release/MODEL_RELEASE_MANIFEST.json
-- G4/G5 validation run: https://github.com/susayold/vietgreen-ci-solar-project-finance/actions/runs/33415906096
-- Phase 2 validation run: https://github.com/susayold/vietgreen-ci-solar-project-finance/actions/runs/33416323104
-- Drive control document: https://docs.google.com/document/d/1koSgbc1Akic6cVDFD1svmuVN9gSq8qSGUw2obfHYN80/edit
+Revenue applies the reference tariff to all modeled generation. This is an
+illustrative comparison, not an export entitlement or a contracted tariff over
+the full analytical horizon. Load profiles, CAPEX, operating costs and financing
+terms include analyst/benchmark assumptions. Cash-sweep debt sculpting may repay
+before the maximum tenor. Automatic checks support reproducibility but are not
+an independent engineering, tax, legal or financial audit.

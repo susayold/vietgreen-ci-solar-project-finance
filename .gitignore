@@ -13,3 +13,6 @@ test-results/
 playwright-report/
 *.tsbuildinfo
 next-env.d.ts
+model/recruiter_revision/source.tar
+model/recruiter_revision/validation/
+artifacts/recruiter_revision/

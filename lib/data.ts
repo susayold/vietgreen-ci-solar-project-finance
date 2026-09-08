@@ -24,7 +24,7 @@ export async function loadWebsiteData<T>(
   const basePath =
     typeof window !== 'undefined' &&
     window.location.pathname.startsWith('/vietgreen-ci-solar-project-finance')
-      ? '/vietgreen-ci-solar-project-finance'
+      ? window.location.pathname.startsWith('/vietgreen-ci-solar-project-finance/showcase') ? '/vietgreen-ci-solar-project-finance/showcase' : '/vietgreen-ci-solar-project-finance'
       : '';
   const response = await fetch(`${basePath}/data/${file}.json`, {
     cache: 'no-store',

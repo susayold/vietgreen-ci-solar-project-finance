@@ -21,3 +21,18 @@
 .diligence-page .diligence-hero-card strong { flex: 1; text-align: right; white-space: normal; }
 .diligence-page .next-action-box { grid-template-columns: minmax(0,1fr) minmax(0,1fr); }
 .diligence-page .distribution-row { grid-template-columns: minmax(0,1fr) 75px 20px; overflow-wrap: anywhere; }
+.evidence-review-shell{max-width:1420px;margin:auto;padding:24px 20px 48px;display:grid;gap:20px}
+.evidence-review-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.evidence-review-kpis article{display:grid;justify-items:start;gap:8px;background:white;padding:20px;border:1px solid #d8dfda;border-radius:8px}
+.evidence-review-kpis strong{font-size:28px}.evidence-review-kpis span{font-size:14px}
+.evidence-review-panel{background:white;border:1px solid #d8dfda;border-radius:8px;padding:24px;min-width:0}
+.evidence-review-panel h2{font:600 23px/1.4 Georgia,serif;margin:0 0 16px}.evidence-review-panel h3{font-size:16px}
+.evidence-review-panel p,.evidence-review-panel li{font-size:16px;line-height:1.65}.evidence-review-panel p{margin:12px 0}
+.evidence-review-panel a{color:#086149;text-decoration:underline;text-underline-offset:4px}
+.evidence-review-panel select{font:14px Arial;max-width:100%;padding:10px;border:1px solid #c4d2c8;border-radius:4px;margin:0 10px 16px}
+.evidence-review-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.evidence-review-grid article{padding:14px;background:#f4f7f4;border-radius:6px}
+.evidence-review-table{overflow-x:auto}.evidence-review-table table{width:100%;border-collapse:collapse;font-size:14px}.evidence-review-table th,.evidence-review-table td{padding:12px;text-align:left;border-bottom:1px solid #d8dfda}.evidence-review-table th{background:#f4f7f4}
+.evidence-review-links{display:grid;gap:16px}.evidence-review-panel details{margin-top:20px;padding:16px;background:#f4f7f4;border-radius:5px}.evidence-review-panel summary{cursor:pointer;font-size:15px}.evidence-digest{overflow-wrap:anywhere}
+@media(max-width:700px){.evidence-review-kpis,.evidence-review-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.evidence-review-panel{padding:16px}.evidence-review-shell{padding:16px 12px}}
+@media(max-width:430px){.evidence-review-grid{grid-template-columns:1fr}}
+.model-page .model-hero-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,39,31,.96),rgba(0,39,31,.78) 52%,rgba(0,39,31,.12))}

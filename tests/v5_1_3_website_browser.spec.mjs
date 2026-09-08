@@ -75,8 +75,12 @@ test('source-backed energy totals, diligence status and compact debt schedule', 
     await expect(page.locator('.file-links a').first()).toHaveAttribute('href',new RegExp(row.projectId));
   }
   await page.goto(`${base}/debt?project=VN-GY-GOMALL`, {waitUntil:'networkidle'});
-  await expect(page.locator('#schedule tbody tr')).toHaveCount(1);
-  await expect(page.locator('#schedule')).toContainText('14 years');
+  const debt = await (await request.get(`${base}/data/debt.json`)).json();
+  const go = debt.rows.find(row=>row.projectId==='VN-GY-GOMALL');
+  const active = go.schedule.filter(row=>row.openingDebt!==0 || row.debtService!==0 || row.closingDebt!==0);
+  expect(active.length).toBeGreaterThan(1);
+  await expect(page.locator('#schedule tbody tr')).toHaveCount(active.length);
+  await expect(page.locator('#schedule')).toContainText(`${go.schedule.length-active.length} years`);
 });
 
 test('project selectors change query-string state', async ({ page }) => {

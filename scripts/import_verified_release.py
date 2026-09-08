@@ -14,8 +14,13 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / 'public/data'
 SOURCE = Path(sys.argv[1])
 SHA = 'ff69e15d211ff1abc88200574242ed2f1db49074'
+REVISED = '--revision' in sys.argv
 manifest = json.loads((SOURCE / 'release/V5_1_3_RUNTIME_RELEASE_MANIFEST.json').read_text())
-assert manifest['source_sha'] == SHA
+if REVISED:
+    assert manifest['revision'] == '2026-09-08-r1'
+    SHA = manifest['source_sha']
+else:
+    assert manifest['source_sha'] == SHA
 for path, expected in manifest['output_hashes'].items():
     assert hashlib.sha256((SOURCE / path).read_bytes()).hexdigest() == expected, path
 
@@ -30,7 +35,7 @@ def num(row, key):
 def yes(row, key):
     return row.get(key, '').upper() == 'TRUE'
 def pack(rows):
-    return dict(version='5.1.3', sourceSha=SHA, sourceArtifactId=9846347737, rows=rows)
+    return dict(version='2026-09-08-r1' if REVISED else '5.1.3', sourceSha=SHA, sourceArtifactId=None if REVISED else 9846347737, rows=rows)
 
 econ = read('project_economics')
 assert len(econ) == 19 and len({r['project_id'] for r in econ}) == 19

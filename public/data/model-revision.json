@@ -1,6 +1,35 @@
 {
-  "version": "2026-09-08-r1",
-  "rows": [
+  "revision": "2026-09-08-r1",
+  "source_sha": "1119987c54f8b201e521452ca45b63abc2da814bde79853d78d17c9bcc011006",
+  "baselineInputSha": "ff69e15d211ff1abc88200574242ed2f1db49074",
+  "source_hashes": {
+    "model/recruiter_revision/analytics/build_v5_1_3_economics.py": "66a26a5c9de82cc78010966b7d876510c17946b0468363f290882fb1b1934917",
+    "model/recruiter_revision/analytics/debt_sculpting.py": "f7ce4e321e930ce60550c453acfa56637e987db69bef4857a19c72dc2525f6c9",
+    "model/recruiter_revision/analytics/load_match_8760.py": "18344b84602252df015ee70d5dfdf3f5b0da85e29f93ce90df4eb9e0aff077df",
+    "model/recruiter_revision/analytics/scenario_engine_v5.py": "be64acfb625a9175279200047dbb02eb28698be1a81b1e99fc393703a3425e10",
+    "model/recruiter_revision/analytics/tax_engine_v5.py": "1c995a3e831d87f58a54da04a577c257349025f7490722b77a489e16204abc02",
+    "model/recruiter_revision/data/public/project_assumption_overlay.csv": "baef59ae6b1c5cc96df45f62ac3c3b67f1ea1be91897f6cf2efe2af0f8873806",
+    "model/recruiter_revision/data/public/project_master_real.csv": "859c478f4a8991b19ddbfb98003d783653f9f9e32cc4d58c08a2b4a5aceca82e",
+    "scripts/build_corrected_model.py": "33bbf09949c2328bff01ddc98ec078afb7f708fac77869657870d00b782a6ab5"
+  },
+  "output_hashes": {
+    "outputs/v5_1_3_8760.csv": "f93dbc266109affca900997b4736a930f574d1d16f273a9ca4dc9e4fabdaa4c7",
+    "outputs/v5_1_3_cash_flow.csv": "368616a6d7bd3e01f4353b016b28e1f255c4a02dc07c92202ea4eb98e3cde88e",
+    "outputs/v5_1_3_coverage.csv": "c7d4f6bb120d414dbc18ccd8c6ebac41f3596a5318b0508dc3223f7df8d36f92",
+    "outputs/v5_1_3_debt_schedule.csv": "fe35f4cccf8bbf5f9abb3597ba2ddec0e87715aae1efabe6dfb4d2e10165d9d9",
+    "outputs/v5_1_3_debt_sizing.csv": "c7d4f6bb120d414dbc18ccd8c6ebac41f3596a5318b0508dc3223f7df8d36f92",
+    "outputs/v5_1_3_diligence_shortlist.csv": "3fd678a50cb47ea3fb2946d7e1ab42a7d29783926665800471bb833823ea5dae",
+    "outputs/v5_1_3_energy.csv": "c7d4f6bb120d414dbc18ccd8c6ebac41f3596a5318b0508dc3223f7df8d36f92",
+    "outputs/v5_1_3_load_summary.csv": "c7d4f6bb120d414dbc18ccd8c6ebac41f3596a5318b0508dc3223f7df8d36f92",
+    "outputs/v5_1_3_model_input_view.csv": "826f703526f23863941904cb361b63d00d7df68628bd211faf978be4a0cd26eb",
+    "outputs/v5_1_3_portfolio_control.csv": "e793d8914968daf4b4e76fe8a32a058acea3bd271afc12343f533e916e29ff1b",
+    "outputs/v5_1_3_ppa_frontier.csv": "c7d4f6bb120d414dbc18ccd8c6ebac41f3596a5318b0508dc3223f7df8d36f92",
+    "outputs/v5_1_3_project_economics.csv": "c7d4f6bb120d414dbc18ccd8c6ebac41f3596a5318b0508dc3223f7df8d36f92",
+    "outputs/v5_1_3_reconciliation.csv": "ae66e52f8c087b8a1123dc939998ae0cec64c53ef4aa9366454afa0aae1e8837",
+    "outputs/v5_1_3_returns.csv": "c7d4f6bb120d414dbc18ccd8c6ebac41f3596a5318b0508dc3223f7df8d36f92",
+    "outputs/v5_1_3_scenarios.csv": "9513ce40582acd25a1824c390ba23fd7fa5ea4c4eda38f665a8c001c3f5addcf"
+  },
+  "checks": [
     {
       "check": "Percentage units: 0.5% = 0.005; 1% = 0.01",
       "status": "PASS"

@@ -512,7 +512,7 @@ export default function DiligencePage() {
           <div className="diligence-decision-grid">
             <article className="decision-boundary-card ready">
               <CircleCheck size={22} />
-              <h3>RECRUITER-READY</h3>
+              <h3>ANALYSIS-READY</h3>
               <p>
                 Structured, auditable analysis across physical, commercial,
                 credit and downside lenses.
@@ -702,7 +702,7 @@ export default function DiligencePage() {
           </div>
           {loading ? (
             <div className="diligence-loading">
-              Loading frozen diligence payload…
+              Loading project evidence…
             </div>
           ) : error ? (
             <EmptyState />
@@ -1165,7 +1165,7 @@ export default function DiligencePage() {
                 'green',
               ],
               ['Economics modelable?', 'YES · 19 records', 'green'],
-              ['Commercial resolved?', 'NO · sponsor floor missing', 'amber'],
+              ['Commercial resolved?', 'No executed PPA or counterparty acceptance', 'amber'],
               ['Debt supportable?', 'Review selected project debt capacity; no lender approval', 'amber'],
               ['Downside breakpoints?', 'Review selected project scenarios and coverage', 'amber'],
               ['Transaction evidence complete?', 'NO · OPEN', 'red'],
@@ -1217,7 +1217,7 @@ export default function DiligencePage() {
                 <Database size={18} /> Can every decision be traced?
               </h3>
               <p>
-                <b>Project identity</b> → frozen project master
+                <b>Project identity</b> → project source register
               </p>
               <p>
                 <b>Technical</b> → physical QA status
@@ -1276,7 +1276,7 @@ export default function DiligencePage() {
 
       <section className="diligence-takeaway">
         <div>
-          <SectionHeading number="13" title="Recruiter Takeaway" />
+          <SectionHeading number="13" title="Key Takeaway" />
           <h2>
             Professional diligence means knowing what the model can say — and
             what evidence must come next.
@@ -1360,9 +1360,9 @@ export default function DiligencePage() {
 
       <footer className="diligence-footer">
         <span>Solar Project Finance</span>
-        <span>Data as of: 31 Dec 2024</span>
+        <span>Public sources and documented assumptions</span>
         <span>Evidence: OPEN</span>
-        <span>THIS PAGE: DILIGENCE · SHORTLIST ONLY</span>
+        <span>Diligence workplan</span>
       </footer>
     </main>
   );

@@ -12,6 +12,7 @@ debt = {r['projectId']:r for r in load('debt')['rows']}
 assert len(econ) == len(debt) == 19 and econ.keys() == debt.keys()
 assert len(load('source-audit')['outputHashes']) == 15
 for pid, d in debt.items():
+    assert d['debtCapacityUsd'] >= 0
     e = econ[pid]
     close(d['capexUsd'],e['capexUsd'])
     close(d['debtCapacityUsd']+d['equityRequirementUsd'],d['capexUsd'])
@@ -25,12 +26,16 @@ for pid, d in debt.items():
             close(s['cfads']/s['debtService'],s['dscr'])
             ratios.append(s['dscr'])
         else: assert s['dscr'] is None
+    close(d['schedule'][-1]['closingDebt'], 0)
     if ratios: close(d['minimumDscr'],min(ratios))
     else: assert d['minimumDscr'] is None
     y = e['year1']
     close(y['revenue']-y['opex']-y['tax'],y['cfads'])
     close(y['cfads'],d['schedule'][0]['cfads'])
     assert e['projectIrr'] != -.99 and e['equityIrr'] != -.99
+    if d['debtCapacityUsd'] > 0:
+        assert d['minimumDscr'] >= d['dscrTarget']-1e-6
+        assert d['llcr'] >= d['llcrMin']-1e-6 and d['plcr'] >= d['plcrMin']-1e-6
 risk = load('risk')['rows']
 assert len(risk) == len({(r['projectId'],r['scenarioId']) for r in risk}) == 171
 for r in risk:

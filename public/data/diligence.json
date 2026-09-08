@@ -1,6 +1,6 @@
 {
-  "version": "5.1.3",
-  "sourceSha": "ff69e15d211ff1abc88200574242ed2f1db49074",
+  "version": "2026-09-08-r1",
+  "sourceSha": "1119987c54f8b201e521452ca45b63abc2da814bde79853d78d17c9bcc011006",
   "budgetUsd": 0,
   "approvedAllocationsUsd": 0,
   "rows": [
@@ -12,10 +12,11 @@
       "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
       "economicsStatus": "READY_FOR_ECONOMICS",
       "commercialStatus": "EMPTY_NEGOTIATION_ZONE",
-      "creditStatus": "MODEL_REVIEW",
+      "creditStatus": "MODEL_OK",
       "riskStatus": "TESTED",
       "evidenceStatus": "OPEN",
       "nextActions": [
+        "PPA_TERM_SHEET",
         "TRANSACTION_EVIDENCE"
       ],
       "diligencePriority": "LOW",
@@ -29,11 +30,12 @@
       "capacityMw": 3,
       "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
       "economicsStatus": "READY_FOR_ECONOMICS",
-      "commercialStatus": "INSUFFICIENT_DATA",
-      "creditStatus": "MODEL_REVIEW",
+      "commercialStatus": "EMPTY_NEGOTIATION_ZONE",
+      "creditStatus": "MODEL_OK",
       "riskStatus": "TESTED",
       "evidenceStatus": "OPEN",
       "nextActions": [
+        "PPA_TERM_SHEET",
         "TRANSACTION_EVIDENCE"
       ],
       "diligencePriority": "LOW",
@@ -47,11 +49,12 @@
       "capacityMw": 11,
       "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
       "economicsStatus": "READY_FOR_ECONOMICS",
-      "commercialStatus": "INSUFFICIENT_DATA",
-      "creditStatus": "MODEL_REVIEW",
+      "commercialStatus": "EMPTY_NEGOTIATION_ZONE",
+      "creditStatus": "MODEL_OK",
       "riskStatus": "TESTED",
       "evidenceStatus": "OPEN",
       "nextActions": [
+        "PPA_TERM_SHEET",
         "TRANSACTION_EVIDENCE"
       ],
       "diligencePriority": "LOW",
@@ -65,11 +68,12 @@
       "capacityMw": 1.3,
       "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
       "economicsStatus": "READY_FOR_ECONOMICS",
-      "commercialStatus": "INSUFFICIENT_DATA",
-      "creditStatus": "MODEL_REVIEW",
+      "commercialStatus": "EMPTY_NEGOTIATION_ZONE",
+      "creditStatus": "MODEL_OK",
       "riskStatus": "TESTED",
       "evidenceStatus": "OPEN",
       "nextActions": [
+        "PPA_TERM_SHEET",
         "TRANSACTION_EVIDENCE"
       ],
       "diligencePriority": "LOW",
@@ -83,11 +87,12 @@
       "capacityMw": 8.6,
       "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
       "economicsStatus": "READY_FOR_ECONOMICS",
-      "commercialStatus": "INSUFFICIENT_DATA",
-      "creditStatus": "MODEL_REVIEW",
+      "commercialStatus": "EMPTY_NEGOTIATION_ZONE",
+      "creditStatus": "MODEL_OK",
       "riskStatus": "TESTED",
       "evidenceStatus": "OPEN",
       "nextActions": [
+        "PPA_TERM_SHEET",
         "TRANSACTION_EVIDENCE"
       ],
       "diligencePriority": "LOW",
@@ -101,11 +106,12 @@
       "capacityMw": 4,
       "physicalStatus": "LOW_YIELD_REVIEW",
       "economicsStatus": "READY_FOR_ECONOMICS",
-      "commercialStatus": "INSUFFICIENT_DATA",
-      "creditStatus": "MODEL_REVIEW",
+      "commercialStatus": "EMPTY_NEGOTIATION_ZONE",
+      "creditStatus": "MODEL_OK",
       "riskStatus": "TESTED",
       "evidenceStatus": "OPEN",
       "nextActions": [
+        "PPA_TERM_SHEET",
         "TRANSACTION_EVIDENCE"
       ],
       "diligencePriority": "LOW",
@@ -119,11 +125,12 @@
       "capacityMw": 8,
       "physicalStatus": "LOW_YIELD_REVIEW",
       "economicsStatus": "READY_FOR_ECONOMICS",
-      "commercialStatus": "INSUFFICIENT_DATA",
-      "creditStatus": "MODEL_REVIEW",
+      "commercialStatus": "EMPTY_NEGOTIATION_ZONE",
+      "creditStatus": "MODEL_OK",
       "riskStatus": "TESTED",
       "evidenceStatus": "OPEN",
       "nextActions": [
+        "PPA_TERM_SHEET",
         "TRANSACTION_EVIDENCE"
       ],
       "diligencePriority": "LOW",
@@ -137,11 +144,12 @@
       "capacityMw": 6,
       "physicalStatus": "LOW_YIELD_REVIEW",
       "economicsStatus": "READY_FOR_ECONOMICS",
-      "commercialStatus": "INSUFFICIENT_DATA",
-      "creditStatus": "MODEL_REVIEW",
+      "commercialStatus": "EMPTY_NEGOTIATION_ZONE",
+      "creditStatus": "MODEL_OK",
       "riskStatus": "TESTED",
       "evidenceStatus": "OPEN",
       "nextActions": [
+        "PPA_TERM_SHEET",
         "TRANSACTION_EVIDENCE"
       ],
       "diligencePriority": "LOW",
@@ -156,10 +164,11 @@
       "physicalStatus": "LOW_YIELD_REVIEW",
       "economicsStatus": "READY_FOR_ECONOMICS",
       "commercialStatus": "EMPTY_NEGOTIATION_ZONE",
-      "creditStatus": "MODEL_REVIEW",
+      "creditStatus": "MODEL_OK",
       "riskStatus": "TESTED",
       "evidenceStatus": "OPEN",
       "nextActions": [
+        "PPA_TERM_SHEET",
         "TRANSACTION_EVIDENCE"
       ],
       "diligencePriority": "LOW",
@@ -174,10 +183,11 @@
       "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
       "economicsStatus": "READY_FOR_ECONOMICS",
       "commercialStatus": "EMPTY_NEGOTIATION_ZONE",
-      "creditStatus": "MODEL_REVIEW",
+      "creditStatus": "MODEL_OK",
       "riskStatus": "TESTED",
       "evidenceStatus": "OPEN",
       "nextActions": [
+        "PPA_TERM_SHEET",
         "TRANSACTION_EVIDENCE"
       ],
       "diligencePriority": "LOW",
@@ -192,10 +202,11 @@
       "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
       "economicsStatus": "READY_FOR_ECONOMICS",
       "commercialStatus": "EMPTY_NEGOTIATION_ZONE",
-      "creditStatus": "MODEL_REVIEW",
+      "creditStatus": "MODEL_OK",
       "riskStatus": "TESTED",
       "evidenceStatus": "OPEN",
       "nextActions": [
+        "PPA_TERM_SHEET",
         "TRANSACTION_EVIDENCE"
       ],
       "diligencePriority": "LOW",
@@ -209,11 +220,12 @@
       "capacityMw": 13,
       "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
       "economicsStatus": "READY_FOR_ECONOMICS",
-      "commercialStatus": "INSUFFICIENT_DATA",
-      "creditStatus": "MODEL_REVIEW",
+      "commercialStatus": "EMPTY_NEGOTIATION_ZONE",
+      "creditStatus": "MODEL_OK",
       "riskStatus": "TESTED",
       "evidenceStatus": "OPEN",
       "nextActions": [
+        "PPA_TERM_SHEET",
         "TRANSACTION_EVIDENCE"
       ],
       "diligencePriority": "LOW",
@@ -227,11 +239,12 @@
       "capacityMw": 2.5,
       "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
       "economicsStatus": "READY_FOR_ECONOMICS",
-      "commercialStatus": "INSUFFICIENT_DATA",
-      "creditStatus": "MODEL_REVIEW",
+      "commercialStatus": "EMPTY_NEGOTIATION_ZONE",
+      "creditStatus": "MODEL_OK",
       "riskStatus": "TESTED",
       "evidenceStatus": "OPEN",
       "nextActions": [
+        "PPA_TERM_SHEET",
         "TRANSACTION_EVIDENCE"
       ],
       "diligencePriority": "MEDIUM",
@@ -245,11 +258,12 @@
       "capacityMw": 30,
       "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
       "economicsStatus": "READY_FOR_ECONOMICS",
-      "commercialStatus": "INSUFFICIENT_DATA",
-      "creditStatus": "MODEL_REVIEW",
+      "commercialStatus": "EMPTY_NEGOTIATION_ZONE",
+      "creditStatus": "MODEL_OK",
       "riskStatus": "TESTED",
       "evidenceStatus": "OPEN",
       "nextActions": [
+        "PPA_TERM_SHEET",
         "TRANSACTION_EVIDENCE"
       ],
       "diligencePriority": "MEDIUM",
@@ -263,11 +277,12 @@
       "capacityMw": 2.6,
       "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
       "economicsStatus": "READY_FOR_ECONOMICS",
-      "commercialStatus": "INSUFFICIENT_DATA",
-      "creditStatus": "MODEL_REVIEW",
+      "commercialStatus": "EMPTY_NEGOTIATION_ZONE",
+      "creditStatus": "MODEL_OK",
       "riskStatus": "TESTED",
       "evidenceStatus": "OPEN",
       "nextActions": [
+        "PPA_TERM_SHEET",
         "TRANSACTION_EVIDENCE"
       ],
       "diligencePriority": "MEDIUM",
@@ -281,13 +296,13 @@
       "capacityMw": 9,
       "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
       "economicsStatus": "READY_FOR_ECONOMICS",
-      "commercialStatus": "INSUFFICIENT_DATA",
+      "commercialStatus": "EMPTY_NEGOTIATION_ZONE",
       "creditStatus": "MODEL_OK",
       "riskStatus": "TESTED",
       "evidenceStatus": "OPEN",
       "nextActions": [
-        "SPONSOR_FLOOR_EVIDENCE",
-        "PPA_TERM_SHEET"
+        "PPA_TERM_SHEET",
+        "TRANSACTION_EVIDENCE"
       ],
       "diligencePriority": "HIGH",
       "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
@@ -300,11 +315,12 @@
       "capacityMw": 2.66,
       "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
       "economicsStatus": "READY_FOR_ECONOMICS",
-      "commercialStatus": "INSUFFICIENT_DATA",
+      "commercialStatus": "EMPTY_NEGOTIATION_ZONE",
       "creditStatus": "MODEL_OK",
       "riskStatus": "TESTED",
       "evidenceStatus": "OPEN",
       "nextActions": [
+        "PPA_TERM_SHEET",
         "TRANSACTION_EVIDENCE"
       ],
       "diligencePriority": "MEDIUM",
@@ -319,10 +335,11 @@
       "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
       "economicsStatus": "READY_FOR_ECONOMICS",
       "commercialStatus": "EMPTY_NEGOTIATION_ZONE",
-      "creditStatus": "MODEL_REVIEW",
+      "creditStatus": "MODEL_OK",
       "riskStatus": "TESTED",
       "evidenceStatus": "OPEN",
       "nextActions": [
+        "PPA_TERM_SHEET",
         "TRANSACTION_EVIDENCE"
       ],
       "diligencePriority": "LOW",
@@ -336,11 +353,12 @@
       "capacityMw": 0.653,
       "physicalStatus": "PASS_WITHIN_SCREENING_BAND",
       "economicsStatus": "READY_FOR_ECONOMICS",
-      "commercialStatus": "INSUFFICIENT_DATA",
-      "creditStatus": "MODEL_REVIEW",
+      "commercialStatus": "EMPTY_NEGOTIATION_ZONE",
+      "creditStatus": "MODEL_OK",
       "riskStatus": "TESTED",
       "evidenceStatus": "OPEN",
       "nextActions": [
+        "PPA_TERM_SHEET",
         "TRANSACTION_EVIDENCE"
       ],
       "diligencePriority": "LOW",
@@ -367,5 +385,7 @@
       "decision": "INDETERMINATE_MISSING_COMMERCIAL_DATA",
       "capitalAllocatedUsd": 0
     }
-  ]
+  ],
+  "sourceArtifactId": null,
+  "baselineInputSha": "ff69e15d211ff1abc88200574242ed2f1db49074"
 }

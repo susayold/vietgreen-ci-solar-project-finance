@@ -247,7 +247,7 @@ export default function EnergyPage() {
         <div className="energy-hero-inner">
           <div className="energy-hero-copy">
             <p className="energy-eyebrow">ENERGY &amp; PHYSICAL MODEL</p>
-            <h1>From Solar Resource to 8,760 Hourly Reality</h1>
+            <h1>From Annual Solar Evidence to 8,760 Hourly Flows</h1>
             <p>
               We translate annual solar evidence, system design and load
               patterns into hourly energy flows: self-consumption, export and
@@ -400,7 +400,7 @@ export default function EnergyPage() {
             <div className="energy-panel method-panel">
               <h3>8,760 HOURLY MODELING METHODOLOGY</h3>
               <ul>
-                <li>Solar resource (P50) × system efficiency × losses</li>
+                <li>Annual P50 generation distributed across a normalized solar profile</li>
                 <li>Matched with a deterministic weekday load profile</li>
                 <li>
                   Hourly self-consumption priority: Onsite → Export → Grid
@@ -408,26 +408,16 @@ export default function EnergyPage() {
                 <li>Deterministic model; no stochastic simulation</li>
               </ul>
               <div className="formula">
-                G<sub>t</sub> = R<sub>t</sub> × η<sub>sys</sub> × (1 − L
-                <sub>t</sub>)
+                G<sub>t</sub> = E<sub>P50</sub> × w<sub>t</sub> / Σw
               </div>
               <p>
                 <i>
                   G<sub>t</sub>
                 </i>
                 : solar generation at hour t<br />
-                <i>
-                  R<sub>t</sub>
-                </i>
-                : solar resource at hour t<br />
-                <i>
-                  η<sub>sys</sub>
-                </i>
-                : system efficiency ·{' '}
-                <i>
-                  L<sub>t</sub>
-                </i>
-                : total loss factor
+                E<sub>P50</sub>: annual source-based generation<br />
+                w<sub>t</sub>: deterministic hourly solar weight<br />
+                Annual load is distributed using weekday and daytime weights; the profile is not measured telemetry.
               </p>
             </div>
             <div className="energy-panel definitions">
@@ -727,7 +717,7 @@ export default function EnergyPage() {
                 </li>
                 <li>
                   <X />
-                  Long-term degradation modeling
+                  Verified long-term degradation performance
                 </li>
                 <li>
                   <X />
@@ -786,7 +776,7 @@ export default function EnergyPage() {
         <section className="energy-takeaway">
           <div>
             <span className="energy-index gold">4</span>
-            <p>RECRUITER TAKEAWAY</p>
+            <p>KEY TAKEAWAY</p>
             <h2>
               This page proves we understand solar physics, load behavior, and
               how to convert them into bankable energy metrics that drive
@@ -794,7 +784,7 @@ export default function EnergyPage() {
             </h2>
             <ul>
               <li>Deterministic &amp; transparent</li>
-              <li>8,760-hour real-world modeling</li>
+              <li>8,760-hour modeled profiles</li>
               <li>Clear separation of input vs. output</li>
               <li>Audit-ready and reproducible</li>
             </ul>
@@ -809,7 +799,7 @@ export default function EnergyPage() {
       </div>
       <footer className="energy-footer">
         <span>Solar Project Finance</span>
-        <span>Data as of: 31 Dec 2024</span>
+        <span>Public sources and documented assumptions</span>
         <span>
           <Database size={14} /> Methodology &amp; Evidence
         </span>

@@ -28,7 +28,6 @@ import { useEffect, useMemo, useState } from 'react';
 
 const PROJECTS_URL = '/data/projects.json';
 const SUMMARY_URL = '/data/summary.json';
-const FROZEN_SHA = 'ff69e15d211ff1abc88200574242ed2f1db49074';
 
 type PhysicalStatus =
   | 'PASS_WITHIN_SCREENING_BAND'
@@ -1168,8 +1167,8 @@ export default function ProjectsPage() {
                 LockKeyhole,
               ],
               [
-                'Frozen Release',
-                'The selected universe and evidence boundary are frozen under V5.1.3 before presentation.',
+                'Traceable Inputs',
+                'Source facts are retained separately from modeling assumptions and calculated results.',
                 BadgeCheck,
               ],
             ].map(([title, copy, Icon]) => (
@@ -1177,13 +1176,6 @@ export default function ProjectsPage() {
                 <Icon size={24} />
                 <strong>{String(title)}</strong>
                 <p>{String(copy)}</p>
-                {title === 'Frozen Release' && (
-                  <small>
-                    v5.1.3-recruiter-final
-                    <br />
-                    {FROZEN_SHA.slice(0, 12)}...
-                  </small>
-                )}
               </article>
             ))}
           </div>
@@ -1196,7 +1188,7 @@ export default function ProjectsPage() {
       </main>
       <section className="projects-takeaway">
         <div className="projects-takeaway-inner">
-          <p>RECRUITER TAKEAWAY</p>
+          <p>KEY TAKEAWAY</p>
           <h2>
             The financial model starts only after the project universe, source
             evidence and physical plausibility have been controlled.
@@ -1273,7 +1265,7 @@ export default function ProjectsPage() {
               <strong>Evidence boundary</strong>
               <p>
                 Project identity and operating observations are shown from the
-                frozen public-data master. Finance outputs are intentionally
+                public-data register. Finance outputs are intentionally
                 kept on the Economics, Debt and Risk pages.
               </p>
             </div>

@@ -36,8 +36,8 @@ def main() -> None:
             "websiteSha": os.getenv("WEBSITE_SOURCE_SHA") or os.getenv("GITHUB_SHA") or "local-source",
             "websiteRunId": os.getenv("WEBSITE_WORKFLOW_RUN_ID") or os.getenv("GITHUB_RUN_ID") or "local-build",
             "builtAtUtc": os.getenv("WEBSITE_BUILD_TIME_UTC") or "local-build",
-            "modelSha": MODEL_SHA,
-            "modelTag": MODEL_TAG,
+            "modelSha": read("model-revision.json")["source_sha"],
+            "modelTag": read("model-revision.json")["revision"],
         }
     )
     write("website-release.json", release)
