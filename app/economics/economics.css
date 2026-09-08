@@ -1348,3 +1348,27 @@
     display: none;
   }
 }
+
+
+/* Final content-audit responsive guards. */
+.economics-page .currency-panel span,
+.economics-page .currency-panel b,
+.economics-page .portfolio-status span,
+.economics-page .decision-ladder strong,
+.economics-page .commercial-status > strong {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+.economics-page .currency-panel span {
+  gap: 10px;
+}
+@media (max-width: 760px) {
+  .economics-page .portfolio-status {
+    grid-template-columns: 1fr;
+  }
+  .economics-page .currency-panel span {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+}

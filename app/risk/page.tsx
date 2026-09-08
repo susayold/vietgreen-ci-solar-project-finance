@@ -131,7 +131,7 @@ const SCENARIOS: Scenario[] = [
     principal: 'Preserved',
     interest: 'Base interest',
     newDebt: '0',
-    detail: 'Operating cost is stressed while debt stays contractual.',
+    detail: 'Operating cost is stressed while the model-defined debt schedule stays fixed.',
     driver: 'OPEX',
   },
   {
@@ -174,6 +174,11 @@ const SCENARIOS: Scenario[] = [
 function formatCoverage(value: number | null | undefined) {
   if (value === null || value === undefined) return 'N/A';
   return `${value.toFixed(3)}x`;
+}
+
+function displayDebtMode(mode: string) {
+  if (mode === 'FIXED_CONTRACTUAL_SCHEDULE') return 'MODEL-DEFINED FIXED SCHEDULE';
+  return mode.replaceAll('_', ' ');
 }
 
 function Heading({
@@ -331,7 +336,7 @@ export default function RiskPage() {
   const zeroCount = metrics
     ? Object.values(metrics).filter((metric) => metric.dscr === 0).length
     : 0;
-  const availableProjects = projects.slice(0, 19);
+  const availableProjects = projects;
   const changeProject = (value: string) => {
     setSelectedId(value);
     window.history.replaceState(
@@ -357,15 +362,15 @@ export default function RiskPage() {
         <div className="risk-hero-inner">
           <div className="risk-hero-copy">
             <p className="risk-eyebrow">
-              DOWNSIDE RISK · CONTRACTUAL DEBT · COVERAGE STRESS
+              DOWNSIDE RISK · MODEL-DEFINED DEBT SCHEDULE · COVERAGE STRESS
             </p>
             <h1>
               Stress the Cash Flow —<br />
-              Not the Contract Away.
+              Not the Debt Schedule Away.
             </h1>
             <p>
               Nine governed scenarios stress energy, CAPEX, rates, COD timing,
-              operating costs and offtaker performance while contractual debt
+              operating costs and offtaker performance while model-defined fixed-schedule
               semantics prevent downside from being hidden by automatic
               principal re-sculpting.
             </p>
@@ -381,21 +386,21 @@ export default function RiskPage() {
           <aside className="risk-hero-card">
             <div>
               <span>SCENARIOS / PROJECT</span>
-              <b>9</b>
+              <b>{SCENARIOS.length}</b>
             </div>
             <div>
               <span>GOVERNED ROWS</span>
-              <b>171</b>
+              <b>{riskRows.length}</b>
             </div>
             <div>
               <span>DEBT MODES</span>
-              <b>3</b>
+              <b>{new Set(SCENARIOS.map((scenario) => scenario.mode)).size}</b>
             </div>
             <div>
               <span>DOWNSIDE SELF-HEALING</span>
               <b>NO</b>
             </div>
-            <footer>CONTRACTUAL SCHEDULE SEMANTICS</footer>
+            <footer>MODEL-DEFINED FIXED-SCHEDULE SEMANTICS</footer>
           </aside>
         </div>
       </section>
@@ -433,7 +438,7 @@ export default function RiskPage() {
             <b className="risk-badge gold">SCENARIO_GOVERNED</b>
           </div>
           <div className="risk-kpi-grid">
-            <RiskKpi icon={Gauge} value="9" label="Governed Scenarios" />
+            <RiskKpi icon={Gauge} value={String(SCENARIOS.length)} label="Governed Scenarios" />
             <RiskKpi
               icon={BarChart3}
               value={String(riskRows.length)}
@@ -456,7 +461,7 @@ export default function RiskPage() {
               label="Selected-Project Zero-DSCR Scenarios"
               tone="amber"
             />
-            <RiskKpi icon={Landmark} value="3" label="Debt Modes" />
+            <RiskKpi icon={Landmark} value={String(new Set(SCENARIOS.map((scenario) => scenario.mode)).size)} label="Debt Modes" />
           </div>
           <div className="risk-strip">
             <span>
@@ -511,7 +516,7 @@ export default function RiskPage() {
                 <dl>
                   <div>
                     <dt>Debt mode</dt>
-                    <dd>{scenario.mode.replaceAll('_', ' ')}</dd>
+                    <dd>{displayDebtMode(scenario.mode)}</dd>
                   </div>
                   <div>
                     <dt>Principal</dt>
@@ -537,15 +542,15 @@ export default function RiskPage() {
         <section className="risk-section">
           <Heading
             n="3"
-            title="Contractual Debt Under Stress"
-            note="Downside coverage is tested against the base contractual schedule."
+            title="Model-Defined Debt Schedule Under Stress"
+            note="Downside coverage is tested against the base model-defined schedule."
           />
           <div className="semantic-banner">
             <ShieldAlert size={22} />
             <div>
               <b>DOWNSIDE DOES NOT RE-SCULPT PRINCIPAL TO RESTORE DSCR</b>
               <span>
-                For fixed-contractual and no-new-debt cases, opening, principal
+                For model-defined fixed-schedule and no-new-debt cases, opening, principal
                 and closing debt remain preserved. Floating interest may
                 reprice; principal does not.
               </span>
@@ -571,7 +576,7 @@ export default function RiskPage() {
                     <td>{scenario.label}</td>
                     <td>
                       <b className="mode-tag">
-                        {scenario.mode.replaceAll('_', ' ')}
+                        {displayDebtMode(scenario.mode)}
                       </b>
                     </td>
                     <td>{scenario.id === 'BASE' ? 'Sized' : 'PRESERVED'}</td>
@@ -595,13 +600,13 @@ export default function RiskPage() {
         <section id="scenario-dscr" className="risk-section">
           <Heading
             n="4"
-            title="How GO Mall Coverage Responds to Downside"
+            title={`How ${selected?.project_name ?? 'Selected Project'} Coverage Responds to Downside`}
             note="Minimum DSCR is recalculated against stressed cash flow and the governed debt treatment."
           />
           <div className="risk-two-column">
             <div className="panel dscr-panel">
               <div className="panel-title">
-                <b>GO MALL — SCENARIO DSCR</b>
+                <b>{(selected?.project_name ?? 'Selected Project').toUpperCase()} — SCENARIO DSCR</b>
                 <span>
                   <i className="legend-safe" /> ≥1.35x{' '}
                   <i className="legend-amber" /> 1.00–1.35x{' '}
@@ -610,38 +615,37 @@ export default function RiskPage() {
               </div>
               <DscrBars metrics={metrics} />
               <p className="panel-note">
-                <CircleAlert size={15} /> 0.000x means contractual debt service
+                <CircleAlert size={15} /> 0.000x means modeled debt service
                 exists but stressed CFADS is zero. N/A means no debt service
                 exists.
               </p>
             </div>
             <div className="panel insight-panel">
-              <h3>What breaks first?</h3>
+              <h3>Key governed stress mechanisms</h3>
               <div>
-                <b className="number red">1</b>
+                <b className="number red">A</b>
                 <span>
                   <strong>COD Delay</strong>
                   <small>
-                    Immediate coverage break: DSCR falls to 0.000x before
-                    operating CFADS begins.
+                    Selected minimum DSCR: {formatCoverage(metrics?.COD_DELAY?.dscr)}. A one-year delay can place modeled debt service before operating CFADS.
                   </small>
                 </span>
               </div>
               <div>
-                <b className="number red">2</b>
+                <b className="number red">B</b>
                 <span>
                   <strong>Combined Downside</strong>
                   <small>
-                    Multiple stresses compound while no new debt is added.
+                    Selected minimum DSCR: {formatCoverage(metrics?.COMBINED_DOWNSIDE?.dscr)}. Energy, CAPEX, rate and COD stresses compound while no new debt is added.
                   </small>
                 </span>
               </div>
               <div>
-                <b className="number amber">3</b>
+                <b className="number amber">C</b>
                 <span>
                   <strong>Offtaker Nonpayment</strong>
                   <small>
-                    A collection shortfall reduces cash available for debt service. Compare the selected scenario ratios with both coverage thresholds.
+                    Selected minimum DSCR: {formatCoverage(metrics?.OFFTAKER_NONPAYMENT?.dscr)}. A collection shortfall reduces cash available for modeled debt service.
                   </small>
                 </span>
               </div>
@@ -687,7 +691,7 @@ export default function RiskPage() {
                       key={scenario.id}
                     >
                       <td>{scenario.label}</td>
-                      <td>{scenario.mode.replaceAll('_', ' ')}</td>
+                      <td>{displayDebtMode(scenario.mode)}</td>
                       <td>
                         <b>{formatCoverage(metric?.dscr)}</b>
                       </td>
@@ -734,7 +738,7 @@ export default function RiskPage() {
               <Timer />
               <h3>Timing</h3>
               <p>
-                A one-year COD delay can leave contractual debt service before
+                A one-year COD delay can leave modeled debt service before
                 operating CFADS.
               </p>
               <b>→ Construction / debt-start review</b>
@@ -755,7 +759,7 @@ export default function RiskPage() {
           <Heading
             n="7"
             title="Portfolio Risk Matrix"
-            note="19 economics-ready projects × 9 governed scenarios = 171 unique rows."
+            note={`${availableProjects.length} economics-ready projects × ${SCENARIOS.length} governed scenarios = ${riskRows.length} unique rows.`}
           />
           <div className="heatmap-panel">
             <div className="heatmap-scroll">
@@ -801,7 +805,7 @@ export default function RiskPage() {
                           title={
                             value === null
                               ? `${project.project_name}, ${scenario.label}: N/D — No Positive Standardized Base Debt or metric payload unavailable.`
-                              : `${project.project_name}, ${scenario.label}, minimum DSCR ${formatCoverage(value)}, ${SCENARIOS.find((item) => item.id === scenario.id)?.mode}`
+                              : `${project.project_name}, ${scenario.label}, minimum DSCR ${formatCoverage(value)}, ${displayDebtMode(SCENARIOS.find((item) => item.id === scenario.id)?.mode ?? 'NOT AVAILABLE')}`
                           }
                           key={`${project.project_id}-${scenario.id}`}
                           aria-label={`${project.project_name}, ${scenario.label}, ${value === null ? 'N/D' : formatCoverage(value)}`}
@@ -851,7 +855,7 @@ export default function RiskPage() {
                   base debt
                 </small>
               </div>
-              <b>Verified base cases</b>
+              <b>Model-supported base cases</b>
               <span>
                 economics-ready cases with positive standardized supportable
                 debt
@@ -866,7 +870,7 @@ export default function RiskPage() {
                   base debt
                 </small>
               </div>
-              <b>Source caution</b>
+              <b>No positive standardized base debt</b>
               <span>
                 show N/D in the scenario matrix; not conventional debt-service
                 cases
@@ -898,10 +902,10 @@ export default function RiskPage() {
                 <Check /> Deterministic governed scenarios
               </p>
               <p>
-                <Check /> Contractual debt treatment
+                <Check /> Model-defined fixed-schedule debt treatment
               </p>
               <p>
-                <Check /> Stressed DSCR / LLCR / PLCR where source-backed
+                <Check /> Stressed DSCR / LLCR / PLCR where model-supported
               </p>
               <p>
                 <Check /> Scenario semantics and diligence actions
@@ -934,7 +938,7 @@ export default function RiskPage() {
               <span>
                 DEBT
                 <br />
-                <b>CONTRACTUAL</b>
+                <b>MODEL-DEFINED SCHEDULE</b>
               </span>
               <span>
                 P90
@@ -1000,7 +1004,7 @@ export default function RiskPage() {
             <span className="risk-index gold">11</span>
             <p>KEY TAKEAWAY</p>
             <h2>
-              A downside model is credible only when the debt contract stays
+              A downside model is credible only when the model-defined debt schedule stays
               visible.
             </h2>
             <p>
@@ -1011,7 +1015,7 @@ export default function RiskPage() {
             </p>
             <ul>
               <li>9 explicit scenario definitions</li>
-              <li>Contractual schedule preservation</li>
+              <li>Model-defined schedule preservation</li>
               <li>True 0x separated from N/A and N/D</li>
               <li>Stress results translated into diligence actions</li>
             </ul>

@@ -69,6 +69,10 @@ type EconRow = {
     equityCashFlow: number;
   } | null;
   ppaStatus?: string;
+  displayCurrency?: string;
+  originalCurrency?: string;
+  fxLocalPerUsd?: number;
+  fxVndPerUsd?: number;
 };
 const usdM = (value?: number | null) =>
   value == null ? 'NOT AVAILABLE' : `$${(value / 1_000_000).toFixed(3)}m`;
@@ -428,9 +432,9 @@ export default function EconomicsPage() {
             <span>
               <b>REFERENCE TARIFF ≠ EXECUTED PPA</b>
               <small>
-                VND 3,460/kWh is the customer-ceiling benchmark used by the
-                reference case. The exact GO Mall project PPA is not publicly
-                disclosed.
+                {reference?.customerCeilingVndKwh == null
+                  ? 'The selected project customer-ceiling benchmark is unresolved.'
+                  : `${vnd(reference.customerCeilingVndKwh)}/kWh is the selected project customer-ceiling benchmark. The exact executed PPA is not publicly disclosed.`}
               </small>
             </span>
           </div>
@@ -635,12 +639,12 @@ export default function EconomicsPage() {
               </div>
             </div>
             <div className="commercial-status">
-              <h3>COMMERCIAL FEASIBILITY STATUS</h3>
+              <h3>MODELED COMMERCIAL STATUS</h3>
               <strong>{reference?.ppaStatus ?? 'NOT RESOLVED'}</strong>
               <small className="status-decision">{decision}</small>
               <p>
-                Customer, sponsor and lender thresholds are model-resolved, but
-                the reference case does not establish an executable PPA.
+                Resolved model thresholds are shown above; any missing solver output remains explicitly unresolved.
+                The reference case does not establish an executable PPA.
               </p>
               <ul>
                 <li>Customer ceiling: {vnd(reference?.customerCeilingVndKwh)}/kWh</li>
@@ -699,16 +703,15 @@ export default function EconomicsPage() {
         <section className="economics-section decision-section">
           <Heading n="6" title="What Can the Model Conclude?" />
           <div className="decision-ladder">
-            {[
-              'PHYSICAL MODEL|READY',
-              'ECONOMICS|MODELED',
-              'CUSTOMER CEILING|AVAILABLE',
-              'SPONSOR FLOOR|UNRESOLVED',
-              'LENDER FLOOR|AVAILABLE',
-              'NEGOTIATION ZONE|NOT CONCLUSIVE',
-              'DECISION|INDETERMINATE',
-            ].map((item, index) => {
-              const [top, bottom] = item.split('|');
+            {([
+              ['PHYSICAL MODEL', 'READY'],
+              ['ECONOMICS', reference ? 'MODELED' : 'UNRESOLVED'],
+              ['CUSTOMER CEILING', reference?.customerCeilingVndKwh == null ? 'UNRESOLVED' : 'AVAILABLE'],
+              ['SPONSOR FLOOR', reference?.sponsorFloorVndKwh == null ? 'UNRESOLVED' : 'AVAILABLE'],
+              ['LENDER FLOOR', reference?.lenderFloorVndKwh == null ? 'UNRESOLVED' : 'AVAILABLE'],
+              ['NEGOTIATION ZONE', reference?.ppaStatus ?? 'NOT RESOLVED'],
+              ['DECISION', decision === 'INDETERMINATE_MISSING_COMMERCIAL_DATA' ? 'INDETERMINATE' : decision],
+            ] as const).map(([top, bottom], index) => {
               return (
                 <div
                   key={top}
@@ -764,8 +767,8 @@ export default function EconomicsPage() {
               </div>
               <div>
                 <i className="dot green" />
-                <b>{econRows.filter((row) => row.ppaStatus === 'FEASIBLE_ZONE').length}</b>
-                <span>FEASIBLE_ZONE</span>
+                <b>{econRows.filter((row) => row.ppaStatus === 'FEASIBLE_NEGOTIATION_ZONE').length}</b>
+                <span>FEASIBLE_NEGOTIATION_ZONE</span>
               </div>
               <div>
                 <i className="dot red" />
@@ -776,17 +779,19 @@ export default function EconomicsPage() {
             <div className="currency-panel">
               <h3>CURRENCY &amp; FX ASSUMPTION</h3>
               <span>
-                Reporting Currency <b>VND</b>
+                Website Display Currency <b>{reference?.displayCurrency ?? 'VND'}</b>
               </span>
               <span>
-                Base Currency in Model <b>USD</b>
+                Project Input Currency <b>{reference?.originalCurrency ?? 'NOT AVAILABLE'}</b>
               </span>
               <span>
-                Reference Exchange Rate <b>25,610 VND/USD</b>
+                Project Local / USD <b>{reference?.fxLocalPerUsd == null ? 'NOT AVAILABLE' : reference.fxLocalPerUsd.toLocaleString('en-US', {maximumFractionDigits: 4})}</b>
+              </span>
+              <span>
+                VND / USD Display FX <b>{reference?.fxVndPerUsd == null ? 'NOT AVAILABLE' : reference.fxVndPerUsd.toLocaleString('en-US', {maximumFractionDigits: 0})}</b>
               </span>
               <small>
-                Local tariffs are shown with currency and are not used as
-                cross-country rankings.
+                Tariff thresholds are displayed as VND equivalents for comparison; project-local currencies remain explicit and are not ranked across countries.
               </small>
             </div>
           </div>
@@ -807,7 +812,7 @@ export default function EconomicsPage() {
               </p>
               <p>
                 <Check />
-                Reference tariff range and commercial constraints
+                Resolved reference tariff thresholds and commercial constraints
               </p>
             </div>
             <div className="cannot">

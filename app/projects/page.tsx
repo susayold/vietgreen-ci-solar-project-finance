@@ -24,6 +24,7 @@ import {
   X,
 } from 'lucide-react';
 import Image from '@/lib/site-image';
+import Link from '@/lib/site-link';
 import { useEffect, useMemo, useState } from 'react';
 import { loadWebsiteData } from '@/lib/data';
 
@@ -712,7 +713,7 @@ export default function ProjectsPage() {
             <SectionTitle
               number="2"
               title="From Research History to Model-Ready Inputs"
-              note="Every reduction in the dataset is explicit and auditable."
+              note="Every reduction in the dataset is explicit and traceable."
             />
             <div className="lineage-funnel">
               {[
@@ -1190,9 +1191,9 @@ export default function ProjectsPage() {
             from base finance.
           </span>
           <div>
-            <a className="projects-button primary" href="#physical-qa">
+            <Link className="projects-button primary" href="/energy">
               Continue to Energy &amp; Physical Model <ArrowRight size={15} />
-            </a>
+            </Link>
             <a className="projects-button secondary" href="#project-master">
               View Project Master <ArrowRight size={15} />
             </a>

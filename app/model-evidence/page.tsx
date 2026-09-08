@@ -8,6 +8,7 @@ import revision from '../../public/data/model-revision.json';
 import audit from '../../public/data/source-audit.json';
 import economics from '../../public/data/economics.json';
 import debts from '../../public/data/debt.json';
+import summary from '../../public/data/summary.json';
 
 const REPO='https://github.com/susayold/vietgreen-ci-solar-project-finance';
 const subscribeLocation=(notify:()=>void)=>{window.addEventListener('popstate',notify);return ()=>window.removeEventListener('popstate',notify);};
@@ -41,8 +42,8 @@ export default function ModelEvidencePage(){
     </section>
     <div className="evidence-review-shell">
       <div className="evidence-review-kpis">
-        <article><Database/><strong>19</strong><span>Modeled projects</span></article>
-        <article><Code2/><strong>171</strong><span>Scenario results</span></article>
+        <article><Database/><strong>{summary.economicsReadyProjects}</strong><span>Modeled projects</span></article>
+        <article><Code2/><strong>{summary.scenarios}</strong><span>Scenario results</span></article>
         <article><FileCheck2/><strong>{Object.keys(revision.output_hashes).length}</strong><span>Versioned output artifacts</span></article>
         <article><ShieldCheck/><strong>{revision.checks.length}</strong><span>Automated checks passed</span></article>
       </div>

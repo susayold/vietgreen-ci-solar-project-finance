@@ -250,8 +250,8 @@ export default function EnergyPage() {
             <p className="energy-eyebrow">ENERGY &amp; PHYSICAL MODEL</p>
             <h1>From Annual Solar Evidence to 8,760 Hourly Flows</h1>
             <p>
-              We translate annual solar evidence, system design and load
-              patterns into hourly energy flows: self-consumption, export and
+              We translate annual solar evidence, installed capacity and modeled load
+              patterns into hourly energy flows: self-consumption, modeled surplus and
               grid purchases across an entire year.
             </p>
             <div className="energy-button-row">
@@ -404,7 +404,7 @@ export default function EnergyPage() {
                 <li>Annual P50 generation distributed across a normalized solar profile</li>
                 <li>Matched with a deterministic weekday load profile</li>
                 <li>
-                  Hourly self-consumption priority: Onsite → Export → Grid
+                  Hourly flow logic: onsite use first; modeled surplus and grid purchase follow from residuals
                 </li>
                 <li>Deterministic model; no stochastic simulation</li>
               </ul>
@@ -438,8 +438,8 @@ export default function EnergyPage() {
               <div>
                 <PanelTop />
                 <p>
-                  <b>Export to Grid</b>
-                  <span>Excess solar generation exported to the grid.</span>
+                  <b>Modeled Surplus / Export</b>
+                  <span>Excess modeled solar after onsite load; grid-export entitlement is not evidenced.</span>
                 </p>
                 <em>
                   EX<sub>t</sub> = max(G<sub>t</sub> − L<sub>t</sub>, 0)
@@ -467,7 +467,7 @@ export default function EnergyPage() {
               <span className="load">Customer Load (proxy)</span>
               <span className="solar">Solar Generation</span>
               <span className="self">Self-Consumption</span>
-              <span className="export">Export</span>
+              <span className="export">Modeled Surplus</span>
             </div>
             <LineChart
               load={load}
@@ -486,7 +486,7 @@ export default function EnergyPage() {
               </div>
               <div>
                 <Leaf />
-                09:00 – 15:00<b>Solar &gt; load, self-consumption + export</b>
+                09:00 – 15:00<b>Solar &gt; load, self-consumption + modeled surplus</b>
               </div>
               <div>
                 <ArrowDown />
@@ -538,7 +538,7 @@ export default function EnergyPage() {
               <div className="balance-split">
                 <span>
                   <Network />
-                  Export to Grid
+                  Modeled Surplus / Export
                   <b>
                     {gwh(exported)} <small>GWh</small>
                   </b>
@@ -697,11 +697,11 @@ export default function EnergyPage() {
                 </li>
                 <li>
                   <Check />
-                  Self-consumption, export, grid purchase
+                  Self-consumption, modeled surplus and grid purchase
                 </li>
                 <li>
                   <Check />
-                  Capacity-weighted portfolio context
+                  Portfolio capacity, generation and yield context
                 </li>
                 <li>
                   <Check />
@@ -740,19 +740,19 @@ export default function EnergyPage() {
               <ul>
                 <li>
                   <Check />
-                  Hourly energy flows → CFADS calculation
+                  Annual P50 generation → reference-case revenue / CFADS
                 </li>
                 <li>
                   <Check />
-                  P50 / P90 / P99 → scenario definitions
+                  P50 → base case; P90 screening factor → energy downside scenario
                 </li>
                 <li>
                   <Check />
-                  Load coverage → PPA structuring
+                  Load and self-consumption → commercial diligence context
                 </li>
                 <li>
                   <Check />
-                  Export profile → merchant revenue (if any)
+                  Modeled surplus → unmonetized unless separate export evidence exists
                 </li>
               </ul>
               <div className="handoff-flow">
@@ -779,15 +779,15 @@ export default function EnergyPage() {
             <span className="energy-index gold">4</span>
             <p>KEY TAKEAWAY</p>
             <h2>
-              This page proves we understand solar physics, load behavior, and
-              how to convert them into bankable energy metrics that drive
-              financial outcomes.
+              This page demonstrates a transparent screening model for solar generation,
+              load matching and finance-relevant energy metrics — without claiming
+              bankable production evidence.
             </h2>
             <ul>
               <li>Deterministic &amp; transparent</li>
               <li>8,760-hour modeled profiles</li>
               <li>Clear separation of input vs. output</li>
-              <li>Audit-ready and reproducible</li>
+              <li>Traceable and reproducible</li>
             </ul>
           </div>
           <Image

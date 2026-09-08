@@ -174,3 +174,88 @@ test('Page 2 uses generated summary aliases and exact physical QA project mappin
   await expect(page.locator('main')).toContainText('GIVA Cella Dati');
   await expect(page.locator('main')).toContainText('Stellantis Slovakia');
 });
+
+
+test('final content audit is project-specific and release-aligned', async ({page, request}) => {
+  const summary = await (await request.get(`${base}/data/summary.json`)).json();
+  const projects = await (await request.get(`${base}/data/projects.json`)).json();
+  const physical = await (await request.get(`${base}/data/physical.json`)).json();
+  expect(projects.version).toBe(summary.version);
+  expect(projects.sourceSha).toBe(summary.modelSha);
+  expect(physical.version).toBe(summary.version);
+  expect(physical.sourceSha).toBe(summary.modelSha);
+
+  await page.goto(`${base}/projects`, {waitUntil:'networkidle'});
+  const energyCta = page.getByRole('link',{name:/Continue to Energy & Physical Model/});
+  await expect(energyCta).toHaveAttribute('href', /\/energy$/);
+
+  await page.goto(`${base}/energy`, {waitUntil:'networkidle'});
+  await expect(page.locator('main')).not.toContainText('bankable energy metrics');
+  await expect(page.locator('main')).not.toContainText('merchant revenue');
+  await expect(page.locator('main')).toContainText('unmonetized unless separate export evidence exists');
+
+  const econ = await (await request.get(`${base}/data/economics.json`)).json();
+  await page.goto(`${base}/economics`, {waitUntil:'networkidle'});
+  const econSelector = page.locator('#economics-project');
+  await econSelector.selectOption({index:1});
+  const selectedId = await econSelector.inputValue();
+  const selectedRow = econ.rows.find(row => row.projectId === selectedId);
+  await expect(page.locator('.tariff-warning')).not.toContainText('GO Mall project PPA');
+  if (selectedRow.sponsorFloorVndKwh == null) {
+    await expect(page.locator('.decision-ladder')).toContainText('UNRESOLVED');
+  } else {
+    await expect(page.locator('.decision-ladder')).toContainText('SPONSOR FLOOR');
+    await expect(page.locator('.decision-ladder')).toContainText('AVAILABLE');
+  }
+
+  await page.goto(`${base}/risk`, {waitUntil:'networkidle'});
+  const riskSelector = page.locator('#risk-project');
+  await riskSelector.selectOption({index:1});
+  const selectedName = await riskSelector.locator('option:checked').textContent();
+  await expect(page.locator('#scenario-dscr')).toContainText(selectedName.trim());
+  await expect(page.locator('#scenario-dscr')).not.toContainText('GO MALL — SCENARIO DSCR');
+
+  await page.goto(`${base}/diligence`, {waitUntil:'networkidle'});
+  await expect(page.locator('.context-kpis')).not.toContainText('NaN');
+});
+
+
+test('final claim-boundary wording avoids unsupported transaction implications', async ({page, request}) => {
+  await page.goto(`${base}/`, {waitUntil:'networkidle'});
+  await expect(page.locator('main')).toContainText('traceable analytical framework');
+  await expect(page.locator('main')).not.toContainText('auditable analytical framework');
+
+  await page.goto(`${base}/projects`, {waitUntil:'networkidle'});
+  await expect(page.locator('main')).toContainText('explicit and traceable');
+
+  await page.goto(`${base}/energy`, {waitUntil:'networkidle'});
+  await expect(page.locator('#boundaries')).toContainText('Self-consumption, modeled surplus and grid purchase');
+  await expect(page.locator('.energy-takeaway')).toContainText('Traceable and reproducible');
+  await expect(page.locator('main')).not.toContainText('self-consumption + export');
+  await expect(page.locator('main')).not.toContainText('Audit-ready and reproducible');
+
+  await page.goto(`${base}/economics`, {waitUntil:'networkidle'});
+  await expect(page.locator('main')).toContainText('Resolved reference tariff thresholds and commercial constraints');
+  await expect(page.locator('main')).toContainText('MODELED COMMERCIAL STATUS');
+
+  await page.goto(`${base}/debt`, {waitUntil:'networkidle'});
+  await expect(page.locator('main')).toContainText('Four standardized constraints compete');
+  await expect(page.locator('#schedule')).toContainText('Modeled Debt Schedule');
+
+  const risk = await (await request.get(`${base}/data/risk.json`)).json();
+  await page.goto(`${base}/risk`, {waitUntil:'networkidle'});
+  await expect(page.locator('.risk-hero-card')).toContainText(String(risk.rows.length));
+  await expect(page.locator('main')).toContainText('MODEL-DEFINED FIXED-SCHEDULE SEMANTICS');
+  await expect(page.locator('main')).not.toContainText('CONTRACTUAL SCHEDULE SEMANTICS');
+  await expect(page.locator('main')).not.toContainText('Not the Contract Away');
+  await expect(page.locator('main')).not.toContainText('debt stays contractual');
+  await expect(page.locator('main')).not.toContainText('FIXED CONTRACTUAL SCHEDULE');
+  await expect(page.locator('main')).toContainText('MODEL-DEFINED FIXED SCHEDULE');
+
+  const diligence = await (await request.get(`${base}/data/diligence.json`)).json();
+  await page.goto(`${base}/diligence`, {waitUntil:'networkidle'});
+  await expect(page.locator('.diligence-hero-kpis')).toContainText(String(diligence.rows.length));
+  await expect(page.locator('main')).toContainText('Structured, traceable analysis');
+  await expect(page.locator('main')).not.toContainText('Structured, auditable analysis');
+  await expect(page.locator('main')).not.toContainText('explicit and auditable');
+});

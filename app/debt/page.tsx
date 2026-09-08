@@ -308,8 +308,8 @@ export default function DebtPage() {
             <h1>Debt Sized From CFADS — Not From an Assumed Leverage Ratio.</h1>
             <p>
               The credit layer tests DSCR, LLCR, PLCR and leverage constraints,
-              selects the binding debt capacity, then rebuilds the contractual
-              debt schedule from the cash flow the project can actually support.
+              selects the binding debt capacity, then rebuilds a modeled debt
+              schedule under standardized credit assumptions.
             </p>
             <div className="debt-buttons">
               <a className="debt-button primary" href="#capacity">
@@ -435,7 +435,7 @@ export default function DebtPage() {
           <Heading
             n="2"
             title="How the Model Sizes Debt"
-            note="Four independent constraints compete to determine supportable opening debt."
+            note="Four standardized constraints compete to determine supportable opening debt."
           />
           <div className="capacity-grid">
             <div className="capacity-card">
@@ -483,7 +483,7 @@ export default function DebtPage() {
             <Heading
               n="3"
               title="CFADS vs Debt Service"
-              note="CFADS must cover contractual debt service."
+              note="CFADS is tested against modeled debt service."
             />
             <div className="chart-key">
               <span className="cfads-key">CFADS (VND bn)</span>
@@ -509,8 +509,8 @@ export default function DebtPage() {
           <div id="schedule" className="chart-card">
             <Heading
               n="4"
-              title="Contractual Debt Schedule"
-              note="The schedule is rebuilt from supportable opening debt."
+              title="Modeled Debt Schedule"
+              note="The schedule is rebuilt from supportable opening debt under standardized credit assumptions."
             />
             <div className="schedule-columns">
               <div>
@@ -518,12 +518,12 @@ export default function DebtPage() {
                 <ScheduleChart data={debt} />
               </div>
               <div>
-                <b>B. Principal vs Interest</b>
+                <b>B. Year 1 Principal vs Interest</b>
                 <div className="principal-visual">
                   <span className="principal-bar" style={{height:`${(debt?.schedule[0]?.principal??0)/Math.max(1,debt?.schedule[0]?.principal??0,debt?.schedule[0]?.interest??0)*100}px`}} />
                   <span className="interest-bar" style={{height:`${(debt?.schedule[0]?.interest??0)/Math.max(1,debt?.schedule[0]?.principal??0,debt?.schedule[0]?.interest??0)*100}px`}} />
-                  <b>{debt?.schedule[0]?.principal == null ? 'NOT AVAILABLE' : (debt.schedule[0].principal / 1e9).toFixed(3)}</b>
-                  <small>Principal · Interest</small>
+                  <b>{debt?.schedule[0]?.principal == null ? 'NOT AVAILABLE' : `${(debt.schedule[0].principal / 1e9).toFixed(3)} · ${(debt.schedule[0].interest / 1e9).toFixed(3)}`}</b>
+                  <small>Principal · Interest (VND bn)</small>
                 </div>
               </div>
             </div>

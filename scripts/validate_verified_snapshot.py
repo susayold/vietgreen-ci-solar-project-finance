@@ -21,8 +21,13 @@ assert summary['selectedProjects'] == summary['selectedRecords']
 assert summary['economicsReadyRecords'] == summary['economicsReadyProjects']
 assert summary['technicalBlockedRecords'] == summary['technicalBlockedProjects']
 
-projects = load('projects')['projects']
+projects_payload = load('projects')
+projects = projects_payload['projects']
 physical = load('physical')
+for payload in (projects_payload, physical):
+    assert payload['version'] == summary['version']
+    assert payload['sourceSha'] == summary['modelSha']
+    assert payload['baselineInputSha'] == 'ff69e15d211ff1abc88200574242ed2f1db49074'
 band = physical['screeningBand']
 assert len(projects) == 20
 expected_low = {

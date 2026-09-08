@@ -452,8 +452,8 @@ export default function DiligencePage() {
               legal dimensions. Focus every next step on what is truly ready.
             </p>
             <div className="diligence-hero-kpis">
-              <Kpi icon={ClipboardCheck} value="19" label="Diligence Records" />
-              <Kpi icon={Zap} value="1" label="Technical Validation Track" />
+              <Kpi icon={ClipboardCheck} value={String(financeRecords.length)} label="Diligence Records" />
+              <Kpi icon={Zap} value={String(technicalRecord ? 1 : 0)} label="Technical Validation Track" />
               <Kpi icon={WalletCards} value="$0" label="Equity Budget (USD)" />
               <Kpi icon={LockKeyhole} value="0" label="Approved Allocations" />
             </div>
@@ -514,7 +514,7 @@ export default function DiligencePage() {
               <CircleCheck size={22} />
               <h3>ANALYSIS-READY</h3>
               <p>
-                Structured, auditable analysis across physical, commercial,
+                Structured, traceable analysis across physical, commercial,
                 credit and downside lenses.
               </p>
               <b>YES · DILIGENCE WORKPLAN</b>
@@ -549,10 +549,10 @@ export default function DiligencePage() {
           </div>
           <div className="diligence-claim-strip">
             <span>
-              <Check size={15} /> 20 selected = 19 diligence + 1 technical track
+              <Check size={15} /> {projects.length} selected = {financeRecords.length} diligence + {technicalRecord ? 1 : 0} technical track
             </span>
             <span>
-              <Check size={15} /> 19 economics-ready records
+              <Check size={15} /> {financeRecords.length} economics-ready records
             </span>
             <span>
               <X size={15} /> NOT AN INVESTMENT RANKING
@@ -567,7 +567,7 @@ export default function DiligencePage() {
           <SectionHeading
             number="2"
             title="From 20 Selected Records to the Next Diligence Step"
-            note="Every reduction in the universe is explicit and auditable."
+            note="Every reduction in the universe is explicit and traceable."
           />
           <div className="diligence-funnel-layout">
             <div className="diligence-funnel">
@@ -623,7 +623,7 @@ export default function DiligencePage() {
               items={[
                 'PPA Status: Open',
                 'Sponsor floor: inspect selected economics output',
-                'Tariff Frontier: Known',
+                'Tariff frontier: inspect selected project output',
                 'Negotiation: Pending',
               ]}
             />
@@ -697,7 +697,7 @@ export default function DiligencePage() {
               </select>
             </label>
             <span className="filter-result">
-              {filteredRecords.length} of 19 records
+              {filteredRecords.length} of {financeRecords.length} records
             </span>
           </div>
           {loading ? (
@@ -735,7 +735,7 @@ export default function DiligencePage() {
                     <tr
                       key={record.project_id}
                       className={
-                        record.project_id === GO_MALL ? 'selected-row' : ''
+                        record.project_id === selected?.project_id ? 'selected-row' : ''
                       }
                     >
                       <td>{index + 1}</td>
@@ -781,9 +781,11 @@ export default function DiligencePage() {
                         <StatusPill
                           value={record.riskLabel}
                           tone={
-                            record.riskLabel === 'CRITICAL_STRESS'
+                            record.riskLabel === 'COUNTERPARTY_COVERAGE_BREACH'
                               ? 'red'
-                              : 'neutral'
+                              : record.riskLabel === 'BELOW_STANDARDIZED_TARGET'
+                                ? 'amber'
+                                : 'neutral'
                           }
                         />
                       </td>
@@ -794,9 +796,9 @@ export default function DiligencePage() {
                         <StatusPill
                           value={record.nextAction}
                           tone={
-                            record.nextAction === 'COD_TIMING_REVIEW'
+                            ['ENGINEERING_VALIDATION', 'CREDIT_RESTRUCTURING', 'COUNTERPARTY_DILIGENCE', 'COD_TIMING_REVIEW'].includes(record.nextAction)
                               ? 'red'
-                              : record.nextAction === 'TRANSACTION_EVIDENCE'
+                              : ['PPA_RESTRUCTURING', 'COMMERCIAL_EVIDENCE', 'SPONSOR_SUPPORT_REVIEW', 'SPONSOR_FLOOR_EVIDENCE', 'TRANSACTION_EVIDENCE'].includes(record.nextAction)
                                 ? 'amber'
                                 : 'green'
                           }
@@ -818,7 +820,7 @@ export default function DiligencePage() {
                       )}
                     </td>
                     <td colSpan={6}>
-                      Total universe: 19 diligence records · Technical track
+                      Total universe: {financeRecords.length} diligence records · Technical track
                       excluded
                     </td>
                   </tr>
@@ -923,7 +925,7 @@ export default function DiligencePage() {
               <div>
                 <CircleCheck size={17} />
                 <span>Commercial gap</span>
-                <b>decision + ppa_mode</b>
+                <b>commercialStatus + PPA frontier</b>
               </div>
               <div>
                 <CircleCheck size={17} />
@@ -976,8 +978,8 @@ export default function DiligencePage() {
             </div>
           </div>
           <div className="technical-guardrail">
-            <Check size={16} /> 1 technical-validation record · not present in
-            the 19-row finance shortlist · no replacement benchmark invented.
+            <Check size={16} /> {technicalRecord ? 1 : 0} technical-validation record · not present in
+            the {financeRecords.length}-row finance shortlist · no replacement benchmark invented.
           </div>
         </section>
 
@@ -1021,7 +1023,7 @@ export default function DiligencePage() {
                 LockKeyhole,
                 'Legal',
                 'Grid, land and contract certificates',
-                'Could move evidence from OPEN to transaction-ready.',
+                'Could close legal diligence gaps; transaction readiness still requires the remaining evidence package.',
                 'Medium',
               ],
               [
@@ -1114,25 +1116,25 @@ export default function DiligencePage() {
             <div className="context-kpis">
               <Kpi
                 icon={ClipboardCheck}
-                value="19"
+                value={String(financeRecords.length)}
                 label="Ready diligence records"
               />
               <Kpi
                 icon={Globe2}
                 value={String(
                   new Set(financeRecords.map((record) => record.country))
-                    .size || 7,
+                    .size,
                 )}
                 label="Countries"
               />
               <Kpi
                 icon={Zap}
-                value={formatNumber(selectedCapacity || 129.853, 3) + ' MW'}
+                value={financeRecords.length ? formatNumber(selectedCapacity, 3) + ' MW' : '—'}
                 label="Selected capacity"
               />
               <Kpi
                 icon={BarChart3}
-                value={formatNumber(selectedGeneration || 148.221, 3) + ' GWh'}
+                value={financeRecords.length ? formatNumber(selectedGeneration, 3) + ' GWh' : '—'}
                 label="Observed generation"
               />
             </div>
@@ -1140,12 +1142,12 @@ export default function DiligencePage() {
               <Distribution
                 title="Commercial status"
                 rows={commercialCounts}
-                total={financeRecords.length || 19}
+                total={financeRecords.length}
               />
               <Distribution
                 title="Next actions"
                 rows={actionCounts}
-                total={financeRecords.length || 19}
+                total={financeRecords.length}
               />
             </div>
           </div>
@@ -1164,7 +1166,7 @@ export default function DiligencePage() {
                 'YES · except separate Arisudhana track',
                 'green',
               ],
-              ['Economics modelable?', 'YES · 19 records', 'green'],
+              ['Economics modelable?', `YES · ${financeRecords.length} records`, 'green'],
               ['Commercial resolved?', 'No executed PPA or counterparty acceptance', 'amber'],
               ['Debt supportable?', 'Review selected project debt capacity; no lender approval', 'amber'],
               ['Downside breakpoints?', 'Review selected project scenarios and coverage', 'amber'],
@@ -1337,8 +1339,9 @@ export default function DiligencePage() {
             </div>
             <h3>What would change this file?</h3>
             <p>
-              PPA term sheet, sponsor floor evidence, COD timing support and
-              third-party validation are the next controlled inputs.
+              {selected.nextActions?.length
+                ? `Current controlled actions: ${selected.nextActions.map((item) => item.replaceAll('_', ' ')).join(' · ')}.`
+                : 'No controlled next-action payload is available for this project.'}
             </p>
             <div className="drawer-nav">
               <Link href={`/energy?project=${selected.project_id}`}>

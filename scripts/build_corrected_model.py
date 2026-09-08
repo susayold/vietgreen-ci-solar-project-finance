@@ -447,8 +447,10 @@ for p in projects['projects']:
         p['diligence'] = diligence_by_id[p['project_id']]
     elif p['project_id'] in technical_by_id:
         p['diligence'] = technical_by_id[p['project_id']]
+projects.update(version=REVISION, sourceSha=model_digest, baselineInputSha=BASE_SHA)
 dump(DATA / 'projects.json', projects)
 
+physical.update(version=REVISION, sourceSha=model_digest, baselineInputSha=BASE_SHA)
 physical['distribution'] = {
     'PASS_WITHIN_SCREENING_BAND': sum(p['physicalStatus'] == 'PASS_WITHIN_SCREENING_BAND' for p in projects['projects']),
     'LOW_YIELD_REVIEW': sum(p['physicalStatus'] == 'LOW_YIELD_REVIEW' for p in projects['projects']),
