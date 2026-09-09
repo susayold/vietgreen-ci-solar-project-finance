@@ -1,14 +1,19 @@
-# VietGreen website content map
+# VietGreen recruiter website content map
 
-| Route | Recruiter question | Primary V4 source |
+| Route | Recruiter question | Primary current source |
 | --- | --- | --- |
-| Overview | What is the decision? | `release/MODEL_RELEASE_MANIFEST.json`, `outputs/scenario_summary_v4_phase2.csv` |
-| Case | How is the investment policy applied? | `outputs/portfolio_current_negotiated_v4.csv`, `outputs/IC_DECISION_TABLE.csv` |
-| Economics & PPA | How do energy, load and price become returns? | `outputs/load_matching_summary.csv`, `outputs/energy_p50_p90_p99.csv`, `outputs/ppa_frontier.csv`, `outputs/project_returns_v4.csv` |
-| Debt | How is leverage sized and protected? | `outputs/debt_sizing.csv`, `outputs/debt_schedule.csv`, `outputs/coverage_summary.csv`, `outputs/reserve_waterfall.csv` |
-| Portfolio | Why these four projects? | `outputs/portfolio_exposure_v4.csv`, `outputs/pooling_comparison_v4.csv` |
-| Risk | What breaks under downside? | `outputs/scenario_summary_v4_phase2.csv`, `validation/V4_PHASE2_RED_TEAM_REPORT.md` |
-| Model | Can a reviewer reproduce it? | `model/vietgreen_v4_formula_model.xlsx`, `validation/EXCEL_FORMULA_QA.csv`, `validation/EXCEL_PYTHON_RECONCILIATION.csv` |
-| Evidence | What is still open? | `validation/V4_READINESS_STATE.csv`, `validation/OPEN_EXTERNAL_GATES.csv` |
+| `/` Overview | What problem does the project solve and how is the analysis structured? | `public/data/summary.json`, `public/data/model-revision.json` |
+| `/projects` Projects & Data | Which public project records enter the model and why? | `public/data/projects.json`, `public/data/source-audit.json` |
+| `/energy` Energy & Physical | How are capacity, generation, load and modeled surplus handled? | `public/data/energy.json`, `public/data/physical.json` |
+| `/economics` Economics & PPA | How do energy and reference commercial assumptions become cash flow and returns? | `public/data/economics.json` |
+| `/debt` Debt & Credit | How much debt can cash flow support and what constraint binds? | `public/data/debt.json` |
+| `/risk` Risk & Scenarios | What happens to debt-service coverage under downside? | `public/data/risk.json` |
+| `/diligence` Diligence | What still needs to be verified before capital is committed? | `public/data/diligence.json`, `public/data/source-audit.json` |
+| `/excel-model` Excel Model | Can a recruiter inspect the workbook architecture, formulas and spreadsheet skills directly? | `model/vietgreen_core_model.xlsx`, `model/22_CORE_SHEETS.csv`, current V5.1.3 public data |
+| `/model-evidence` Model & Evidence | Can a reviewer trace assumptions, calculations, checks and evidence boundaries? | `public/data/model-revision.json`, `public/data/source-audit.json` |
 
-The website is a communication layer. It does not replace the workbook, source register, independent review or transaction evidence.
+## Excel model boundary
+
+The native 22-sheet Excel workbook is a separately versioned review artifact and demonstrates spreadsheet architecture, assumptions, cash-flow modeling, debt sizing/sculpting, coverage, returns, scenarios and QA controls. The current recruiter website remains governed by the frozen V5.1.3 calculation release. Historical workbook values must not be represented as the source of current website claims unless explicitly reconciled.
+
+The website is a communication and review layer. It does not replace an independent model audit, executed PPA, actual lender terms, technical/legal/tax diligence or investment approval.
