@@ -21,7 +21,8 @@ import { useEffect, useMemo, useState } from 'react';
 const GO_MALL = 'VN-GY-GOMALL';
 const REPO = 'https://github.com/susayold/vietgreen-ci-solar-project-finance';
 const WORKBOOK_BLOB = `${REPO}/blob/main/model/vietgreen_core_model.xlsx`;
-const WORKBOOK_FILENAME = 'vietgreen_core_model.xlsx';
+const WORKBOOK_URL = 'https://susayold.github.io/vietgreen-ci-solar-project-finance/downloads/vietgreen_core_model.xlsx';
+const OFFICE_VIEWER = `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(WORKBOOK_URL)}`;
 
 type Project = {
   project_id: string;
@@ -216,19 +217,9 @@ export default function ExcelModelPage() {
   const [selectedId, setSelectedId] = useState(GO_MALL);
   const [activeTab, setActiveTab] = useState<TabKey>('map');
   const [loading, setLoading] = useState(true);
-  const [workbookUrl, setWorkbookUrl] = useState(WORKBOOK_BLOB);
-  const [officeViewerUrl, setOfficeViewerUrl] = useState('');
 
   useEffect(() => {
     const queryId = new URLSearchParams(window.location.search).get('project');
-    const basePath = window.location.pathname.startsWith('/vietgreen-ci-solar-project-finance/showcase')
-      ? '/vietgreen-ci-solar-project-finance/showcase'
-      : window.location.pathname.startsWith('/vietgreen-ci-solar-project-finance')
-        ? '/vietgreen-ci-solar-project-finance'
-        : '';
-    const hostedWorkbookUrl = `${window.location.origin}${basePath}/downloads/${WORKBOOK_FILENAME}`;
-    setWorkbookUrl(hostedWorkbookUrl);
-    setOfficeViewerUrl(`https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(hostedWorkbookUrl)}`);
     void Promise.all([
       loadWebsiteData<{ projects?: Project[] }>('projects'),
       loadWebsiteData<{ projects?: EnergyRow[] }>('energy'),
@@ -289,7 +280,7 @@ export default function ExcelModelPage() {
           </p>
           <div className="excel-hero-actions">
             <a href="#workbook-viewer" className="excel-button primary"><FileSpreadsheet size={17} /> View Excel Workbook</a>
-            <a href={workbookUrl} className="excel-button" target="_blank" rel="noreferrer"><Download size={17} /> Download .xlsx</a>
+            <a href={WORKBOOK_URL} className="excel-button" target="_blank" rel="noreferrer"><Download size={17} /> Download .xlsx</a>
           </div>
         </div>
         <aside className="excel-hero-card">
@@ -311,12 +302,12 @@ export default function ExcelModelPage() {
             <div><FileSpreadsheet size={28} /><span><strong>vietgreen_core_model.xlsx</strong><small>Native 22-sheet Project Finance review workbook</small></span></div>
             <div className="excel-file-actions">
               <a href={WORKBOOK_BLOB} target="_blank" rel="noreferrer">Open on GitHub <ExternalLink size={14} /></a>
-              <a href={workbookUrl} target="_blank" rel="noreferrer">Download Excel <Download size={14} /></a>
+              <a href={WORKBOOK_URL} target="_blank" rel="noreferrer">Download Excel <Download size={14} /></a>
             </div>
           </div>
           <div className="excel-viewer-frame">
             <iframe
-              src={officeViewerUrl || undefined}
+              src={OFFICE_VIEWER}
               title="VietGreen native Excel workbook viewer"
               loading="lazy"
               allowFullScreen
