@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 const base = process.env.TEST_BASE_URL || 'http://127.0.0.1:8765/vietgreen-ci-solar-project-finance';
 
-test('Excel model shortcut opens the recruiter workbook showcase', async ({ page }) => {
+test('Excel model shortcut opens the recruiter workbook showcase', async ({ page, request }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto(`${base}/`, { waitUntil: 'domcontentloaded' });
   const shortcut = page.getByRole('link', { name: 'Excel Model' });
@@ -11,7 +11,11 @@ test('Excel model shortcut opens the recruiter workbook showcase', async ({ page
   await expect(page).toHaveURL(/\/excel-model\/?$/);
   await expect(page.locator('h1')).toContainText('Open the Workbook');
   await expect(page.locator('#workbook-viewer iframe')).toHaveAttribute('src', /view\.officeapps\.live\.com/);
-  await expect(page.getByRole('link', { name: /Download Excel/i })).toHaveAttribute('href', /vietgreen_core_model\.xlsx/);
+  await expect(page.getByRole('link', { name: /Download Excel/i })).toHaveAttribute('href', /\/downloads\/vietgreen_core_model\.xlsx$/);
+
+  const workbook = await request.get(`${base}/downloads/vietgreen_core_model.xlsx`);
+  expect(workbook.ok()).toBeTruthy();
+  expect((await workbook.body()).byteLength).toBeGreaterThan(100_000);
 });
 
 test('Excel model walkthrough reconciles to current V5.1.3 economics and debt data', async ({ page, request }) => {
