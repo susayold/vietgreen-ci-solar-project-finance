@@ -16,39 +16,6 @@ jobs:
       - name: Checkout branch
         uses: actions/checkout@v4
 
-      - name: Patch Excel viewer to same-site workbook
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          path = Path('app/excel-model/page.tsx')
-          text = path.read_text(encoding='utf-8')
-          replacements = [
-            ("const WORKBOOK_RAW = 'https://raw.' + 'githubusercontent.com/susayold/vietgreen-ci-solar-project-finance/main/model/vietgreen_core_model.xlsx';\nconst OFFICE_VIEWER = `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(WORKBOOK_RAW)}`;",
-             "const WORKBOOK_FILENAME = 'vietgreen_core_model.xlsx';"),
-            ("  const [loading, setLoading] = useState(true);",
-             "  const [loading, setLoading] = useState(true);\n  const [workbookUrl, setWorkbookUrl] = useState(WORKBOOK_BLOB);\n  const [officeViewerUrl, setOfficeViewerUrl] = useState('');"),
-            ("  useEffect(() => {\n    const queryId = new URLSearchParams(window.location.search).get('project');",
-             "  useEffect(() => {\n    const queryId = new URLSearchParams(window.location.search).get('project');\n    const basePath = window.location.pathname.startsWith('/vietgreen-ci-solar-project-finance/showcase')\n      ? '/vietgreen-ci-solar-project-finance/showcase'\n      : window.location.pathname.startsWith('/vietgreen-ci-solar-project-finance')\n        ? '/vietgreen-ci-solar-project-finance'\n        : '';\n    const hostedWorkbookUrl = `${window.location.origin}${basePath}/downloads/${WORKBOOK_FILENAME}`;\n    setWorkbookUrl(hostedWorkbookUrl);\n    setOfficeViewerUrl(`https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(hostedWorkbookUrl)}`);"),
-            ("<a href={WORKBOOK_RAW} className=\"excel-button\" target=\"_blank\" rel=\"noreferrer\"><Download size={17} /> Download .xlsx</a>",
-             "<a href={workbookUrl} className=\"excel-button\" target=\"_blank\" rel=\"noreferrer\"><Download size={17} /> Download .xlsx</a>"),
-            ("<a href={WORKBOOK_RAW} target=\"_blank\" rel=\"noreferrer\">Download Excel <Download size={14} /></a>",
-             "<a href={workbookUrl} target=\"_blank\" rel=\"noreferrer\">Download Excel <Download size={14} /></a>"),
-            ("              src={OFFICE_VIEWER}", "              src={officeViewerUrl || undefined}"),
-          ]
-          for old, new in replacements:
-              if old not in text:
-                  raise SystemExit(f'Patch guard failed for: {old[:80]}')
-              text = text.replace(old, new)
-          path.write_text(text, encoding='utf-8')
-          PY
-          if ! git diff --quiet; then
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add app/excel-model/page.tsx
-            git commit -m "Host Excel workbook with recruiter website"
-            git push
-          fi
-
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
@@ -62,6 +29,35 @@ jobs:
 
       - name: Install dependencies
         run: npm ci --no-audit --no-fund
+
+      - name: Rebuild and validate native Excel workbook
+        run: |
+          python -m analytics.build_native_workbook
+          python -m analytics.validate_workbook
+          python - <<'PY'
+          import zipfile
+          from xml.etree import ElementTree as ET
+          from pathlib import Path
+          path = Path('model/vietgreen_core_model.xlsx')
+          with zipfile.ZipFile(path) as zf:
+              bad = []
+              for name in zf.namelist():
+                  if name.endswith(('.xml', '.rels')):
+                      try:
+                          ET.fromstring(zf.read(name))
+                      except ET.ParseError as exc:
+                          bad.append((name, str(exc)))
+              if bad:
+                  raise SystemExit(f'Malformed OOXML: {bad}')
+          print('OOXML parse: PASS')
+          PY
+          if ! git diff --quiet -- model/vietgreen_core_model.xlsx validation/WORKBOOK_VALIDATION_RESULTS.csv validation/WORKBOOK_VALIDATION_REPORT.md; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add model/vietgreen_core_model.xlsx validation/WORKBOOK_VALIDATION_RESULTS.csv validation/WORKBOOK_VALIDATION_REPORT.md
+            git commit -m "Rebuild valid native Excel workbook"
+            git push
+          fi
 
       - name: Recalculate frozen recruiter data
         env:
@@ -87,6 +83,16 @@ jobs:
         run: |
           test -s dist/client/downloads/vietgreen_core_model.xlsx
           test "$(stat -c%s dist/client/downloads/vietgreen_core_model.xlsx)" -gt 100000
+          python - <<'PY'
+          import zipfile
+          from xml.etree import ElementTree as ET
+          path = 'dist/client/downloads/vietgreen_core_model.xlsx'
+          with zipfile.ZipFile(path) as zf:
+              for name in zf.namelist():
+                  if name.endswith(('.xml', '.rels')):
+                      ET.fromstring(zf.read(name))
+          print('Published workbook OOXML: PASS')
+          PY
 
       - name: Browser regression tests
         run: |
