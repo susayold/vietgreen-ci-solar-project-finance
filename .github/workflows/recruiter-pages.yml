@@ -52,7 +52,7 @@ jobs:
       - name: Lint current website source
         run: npm run lint
 
-      - name: Build current eight-page website
+      - name: Build current recruiter website
         env:
           GITHUB_PAGES: "true"
         run: npm run build
