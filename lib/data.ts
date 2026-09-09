@@ -13,6 +13,7 @@ export type WebsiteDataFile =
   | 'sources'
   | 'audit-trail'
   | 'website-release'
+  | 'model-revision'
   | 'model';
 
 export async function loadWebsiteData<T>(
