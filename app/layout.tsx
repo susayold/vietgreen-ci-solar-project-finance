@@ -8,6 +8,7 @@ import './debt/debt.css';
 import './risk/risk.css';
 import './diligence/diligence.css';
 import './model-evidence/model-evidence.css';
+import './excel-model/excel-model.css';
 import './audit-fixes.css';
 import './recruiter.css';
 
