@@ -78,7 +78,7 @@ jobs:
           set -euo pipefail
           rm -rf _site
           cp -R dist/client _site
-          for route in projects energy economics debt risk diligence model-evidence; do
+          for route in projects energy economics debt risk diligence excel-model model-evidence; do
             mkdir -p "_site/$route"
             cp "_site/$route.html" "_site/$route/index.html"
           done
@@ -99,7 +99,7 @@ jobs:
           npm run build
           mkdir -p _site/showcase
           cp -R dist/client/. _site/showcase/
-          for route in projects energy economics debt risk diligence model-evidence; do
+          for route in projects energy economics debt risk diligence excel-model model-evidence; do
             mkdir -p "_site/showcase/$route"
             cp "_site/showcase/$route.html" "_site/showcase/$route/index.html"
           done
@@ -129,7 +129,7 @@ jobs:
         run: |
           set -euo pipefail
           base="${SITE_URL%/}/"
-          for route in "" projects/ energy/ economics/ debt/ risk/ diligence/ model-evidence/; do
+          for route in "" projects/ energy/ economics/ debt/ risk/ diligence/ excel-model/ model-evidence/; do
             curl --fail --silent --show-error "${base}${route}" >/dev/null
           done
           echo "GitHub Pages live: ${base}"
