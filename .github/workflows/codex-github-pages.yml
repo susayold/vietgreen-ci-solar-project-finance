@@ -123,7 +123,7 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-      - name: Verify public routes
+      - name: Verify public routes and Excel workbook
         env:
           SITE_URL: ${{ steps.deployment.outputs.page_url }}
         run: |
@@ -132,4 +132,16 @@ jobs:
           for route in "" projects/ energy/ economics/ debt/ risk/ diligence/ excel-model/ model-evidence/; do
             curl --fail --silent --show-error "${base}${route}" >/dev/null
           done
+          curl --fail --silent --show-error "${base}downloads/vietgreen_core_model.xlsx" -o /tmp/vietgreen_core_model.xlsx
+          test "$(stat -c%s /tmp/vietgreen_core_model.xlsx)" -gt 100000
+          python - <<'PY'
+          import zipfile
+          from xml.etree import ElementTree as ET
+          path = '/tmp/vietgreen_core_model.xlsx'
+          with zipfile.ZipFile(path) as zf:
+              for name in zf.namelist():
+                  if name.endswith(('.xml', '.rels')):
+                      ET.fromstring(zf.read(name))
+          print('Live workbook OOXML: PASS')
+          PY
           echo "GitHub Pages live: ${base}"
