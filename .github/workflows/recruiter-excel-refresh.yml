@@ -1,0 +1,68 @@
+name: Recruiter Excel refresh
+
+on:
+  push:
+    branches: [update/recruiter-excel-model]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-excel:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Build recruiter Excel model
+        run: |
+          python -m analytics.build_native_workbook
+
+      - name: Validate workbook structure
+        run: |
+          python -m analytics.validate_workbook
+          python - <<'PY'
+          import zipfile
+          from pathlib import Path
+          from xml.etree import ElementTree as ET
+
+          path = Path('model/vietgreen_core_model.xlsx')
+          assert path.exists() and path.stat().st_size > 100000, path
+          with zipfile.ZipFile(path) as zf:
+              assert zf.testzip() is None
+              for name in zf.namelist():
+                  if name.endswith(('.xml', '.rels')):
+                      ET.fromstring(zf.read(name))
+              workbook = ET.fromstring(zf.read('xl/workbook.xml'))
+              ns = {'m': 'http://schemas.openxmlformats.org/spreadsheetml/2006/main'}
+              names = [node.attrib['name'] for node in workbook.findall('m:sheets/m:sheet', ns)]
+              assert len(names) == 22, names
+              debt_xml = zf.read('xl/worksheets/sheet13.xml').decode('utf-8')
+              assert '<f>C7*$B$4</f>' in debt_xml
+              assert '<f>MIN(B7/E7,C7+D7)</f>' in debt_xml
+              assert '<f>MAX(0,MIN(C7,F7-D7))</f>' in debt_xml
+              assert '<f>IF(F7=0,&quot;&quot;,B7/F7)</f>' in debt_xml
+              control_xml = zf.read('xl/worksheets/sheet1.xml').decode('utf-8')
+              assert 'EXCEL SKILLS DEMONSTRATED' in control_xml
+              assert 'INDEX + MATCH' in control_xml
+              assert 'SUMIFS' in control_xml
+          print('Recruiter workbook validation: PASS')
+          PY
+
+      - name: Commit workbook artifact
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add model/vietgreen_core_model.xlsx
+          if ! git diff --cached --quiet; then
+            git commit -m "Refresh recruiter-facing Excel model"
+            git push
+          else
+            echo "Workbook already up to date"
+          fi
