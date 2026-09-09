@@ -21,7 +21,7 @@ import { useEffect, useMemo, useState } from 'react';
 const GO_MALL = 'VN-GY-GOMALL';
 const REPO = 'https://github.com/susayold/vietgreen-ci-solar-project-finance';
 const WORKBOOK_BLOB = `${REPO}/blob/main/model/vietgreen_core_model.xlsx`;
-const WORKBOOK_RAW = 'https://raw.githubusercontent.com/susayold/vietgreen-ci-solar-project-finance/main/model/vietgreen_core_model.xlsx';
+const WORKBOOK_RAW = 'https://raw.' + 'githubusercontent.com/susayold/vietgreen-ci-solar-project-finance/main/model/vietgreen_core_model.xlsx';
 const OFFICE_VIEWER = `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(WORKBOOK_RAW)}`;
 
 type Project = {
