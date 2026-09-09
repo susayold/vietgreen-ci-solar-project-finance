@@ -16,6 +16,44 @@ jobs:
       - name: Checkout branch
         uses: actions/checkout@v4
 
+      - name: Normalize Excel viewer URL
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('app/excel-model/page.tsx')
+          text = path.read_text(encoding='utf-8')
+          replacements = [
+              (
+                  "const WORKBOOK_BLOB = `${REPO}/blob/main/model/vietgreen_core_model.xlsx`;\nconst WORKBOOK_FILENAME = 'vietgreen_core_model.xlsx';",
+                  "const WORKBOOK_BLOB = `${REPO}/blob/main/model/vietgreen_core_model.xlsx`;\nconst WORKBOOK_URL = 'https://susayold.github.io/vietgreen-ci-solar-project-finance/downloads/vietgreen_core_model.xlsx';\nconst OFFICE_VIEWER = `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(WORKBOOK_URL)}`;",
+              ),
+              (
+                  "  const [loading, setLoading] = useState(true);\n  const [workbookUrl, setWorkbookUrl] = useState(WORKBOOK_BLOB);\n  const [officeViewerUrl, setOfficeViewerUrl] = useState('');",
+                  "  const [loading, setLoading] = useState(true);",
+              ),
+              (
+                  "    const queryId = new URLSearchParams(window.location.search).get('project');\n    const basePath = window.location.pathname.startsWith('/vietgreen-ci-solar-project-finance/showcase')\n      ? '/vietgreen-ci-solar-project-finance/showcase'\n      : window.location.pathname.startsWith('/vietgreen-ci-solar-project-finance')\n        ? '/vietgreen-ci-solar-project-finance'\n        : '';\n    const hostedWorkbookUrl = `${window.location.origin}${basePath}/downloads/${WORKBOOK_FILENAME}`;\n    setWorkbookUrl(hostedWorkbookUrl);\n    setOfficeViewerUrl(`https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(hostedWorkbookUrl)}`);",
+                  "    const queryId = new URLSearchParams(window.location.search).get('project');",
+              ),
+              ("href={workbookUrl}", "href={WORKBOOK_URL}"),
+              ("src={officeViewerUrl || undefined}", "src={OFFICE_VIEWER}"),
+          ]
+          changed = False
+          for old, new in replacements:
+              if old in text:
+                  text = text.replace(old, new)
+                  changed = True
+          if changed:
+              path.write_text(text, encoding='utf-8')
+          PY
+          if ! git diff --quiet -- app/excel-model/page.tsx; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add app/excel-model/page.tsx
+            git commit -m "Use stable hosted Excel workbook URL"
+            git push
+          fi
+
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
