@@ -20,6 +20,21 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Normalize generator syntax
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('analytics/build_native_workbook.py')
+          text = path.read_text(encoding='utf-8')
+          bad = "f'<cellXfs count=\"{len(xfs)}'>{\"\".join(xfs)}</cellXfs>'"
+          good = "f'<cellXfs count=\"{len(xfs)}\">{\"\".join(xfs)}</cellXfs>'"
+          if bad in text:
+              text = text.replace(bad, good)
+              path.write_text(text, encoding='utf-8')
+          compile(text, str(path), 'exec')
+          print('Generator syntax: PASS')
+          PY
+
       - name: Build recruiter Excel model
         run: |
           python -m analytics.build_native_workbook
@@ -55,14 +70,14 @@ jobs:
           print('Recruiter workbook validation: PASS')
           PY
 
-      - name: Commit workbook artifact
+      - name: Commit modeling changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add model/vietgreen_core_model.xlsx
+          git add analytics/build_native_workbook.py model/vietgreen_core_model.xlsx
           if ! git diff --cached --quiet; then
             git commit -m "Refresh recruiter-facing Excel model"
             git push
           else
-            echo "Workbook already up to date"
+            echo "Modeling files already up to date"
           fi
