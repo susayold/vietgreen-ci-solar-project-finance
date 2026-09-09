@@ -55,20 +55,34 @@ def read_rows(relative_path, limit=600):
         return rows or [["status", "empty"]]
 
 
-def cell(value):
+def column_letter(index):
+    letters = ""
+    while index:
+        index, remainder = divmod(index - 1, 26)
+        letters = chr(65 + remainder) + letters
+    return letters
+
+
+def cell(value, ref):
     text = html.escape(str(value), quote=False)
-    return '<c t="inlineStr"><is><t xml:space="preserve">%s</t></is></c>' % text
+    return '<c r="%s" t="inlineStr"><is><t xml:space="preserve">%s</t></is></c>' % (ref, text)
 
 
 def worksheet_xml(rows):
     row_xml = []
     for row_number, row in enumerate(rows, start=1):
-        cells = "".join(cell(value) for value in row)
+        cells = "".join(
+            cell(value, "%s%d" % (column_letter(column_number), row_number))
+            for column_number, value in enumerate(row, start=1)
+        )
         row_xml.append('<row r="%d">%s</row>' % (row_number, cells))
     return (
         '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
         '<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">'
-        "<sheetData>%s</sheetData></worksheet>" % "".join(row_xml)
+        '<sheetFormatPr defaultRowHeight="15"/>'
+        '<sheetData>%s</sheetData>'
+        '<pageMargins left="0.7" right="0.7" top="0.75" bottom="0.75" header="0.3" footer="0.3"/>'
+        '</worksheet>' % "".join(row_xml)
     )
 
 
@@ -130,6 +144,7 @@ def build():
         '<Relationship Id="rIdStyles" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/>',
         "</Relationships>",
     ])
+    content_types.append("</Types>")
     root_rels = (
         '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
         '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'
@@ -143,7 +158,8 @@ def build():
         '<fills count="2"><fill><patternFill patternType="none"/></fill><fill><patternFill patternType="gray125"/></fill></fills>'
         '<borders count="1"><border><left/><right/><top/><bottom/><diagonal/></border></borders>'
         '<cellStyleXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0"/></cellStyleXfs>'
-        '<cellXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0"/></cellXfs>'
+        '<cellXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0"/></cellXfs>'
+        '<cellStyles count="1"><cellStyle name="Normal" xfId="0"/></cellStyles>'
         '</styleSheet>'
     )
     core = (
