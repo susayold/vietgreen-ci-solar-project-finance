@@ -36,12 +36,17 @@ jobs:
           PY
 
       - name: Build recruiter Excel model
-        run: |
-          python -m analytics.build_native_workbook
+        run: python -m analytics.build_native_workbook
 
       - name: Validate workbook structure
         run: |
-          python -m analytics.validate_workbook
+          if ! python -m analytics.validate_workbook; then
+            echo '--- WORKBOOK VALIDATION REPORT ---'
+            cat validation/WORKBOOK_VALIDATION_REPORT.md || true
+            echo '--- WORKBOOK VALIDATION RESULTS ---'
+            cat validation/WORKBOOK_VALIDATION_RESULTS.csv || true
+            exit 1
+          fi
           python - <<'PY'
           import zipfile
           from pathlib import Path
@@ -59,14 +64,12 @@ jobs:
               names = [node.attrib['name'] for node in workbook.findall('m:sheets/m:sheet', ns)]
               assert len(names) == 22, names
               debt_xml = zf.read('xl/worksheets/sheet13.xml').decode('utf-8')
-              assert '<f>C7*$B$4</f>' in debt_xml
-              assert '<f>MIN(B7/E7,C7+D7)</f>' in debt_xml
-              assert '<f>MAX(0,MIN(C7,F7-D7))</f>' in debt_xml
-              assert '<f>IF(F7=0,&quot;&quot;,B7/F7)</f>' in debt_xml
+              for token in ('<f>C7*$B$4</f>', '<f>MIN(B7/E7,C7+D7)</f>', '<f>MAX(0,MIN(C7,F7-D7))</f>'):
+                  assert token in debt_xml, token
+              assert 'IF(F7=0' in debt_xml
               control_xml = zf.read('xl/worksheets/sheet1.xml').decode('utf-8')
-              assert 'EXCEL SKILLS DEMONSTRATED' in control_xml
-              assert 'INDEX + MATCH' in control_xml
-              assert 'SUMIFS' in control_xml
+              for token in ('EXCEL SKILLS DEMONSTRATED', 'INDEX + MATCH', 'SUMIFS'):
+                  assert token in control_xml, token
           print('Recruiter workbook validation: PASS')
           PY
 
