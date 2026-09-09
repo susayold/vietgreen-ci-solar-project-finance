@@ -26,6 +26,15 @@ EXPECTED_SHEETS = [
     "20_External_Validation", "21_QA_Audit",
 ]
 NS = {"main": "http://schemas.openxmlformats.org/spreadsheetml/2006/main"}
+CORE_XML_PARTS = [
+    "[Content_Types].xml",
+    "_rels/.rels",
+    "docProps/core.xml",
+    "docProps/app.xml",
+    "xl/workbook.xml",
+    "xl/_rels/workbook.xml.rels",
+    "xl/styles.xml",
+]
 
 
 def run() -> dict[str, int]:
@@ -45,9 +54,27 @@ def run() -> dict[str, int]:
                 bad_member = zf.testzip()
                 add("WB-003", "zip_integrity", "None", str(bad_member), "PASS" if bad_member is None else "FAIL", impact="Detects corrupt ZIP members.")
                 members = set(zf.namelist())
-                required = {"[Content_Types].xml", "_rels/.rels", "docProps/core.xml", "docProps/app.xml", "xl/workbook.xml", "xl/_rels/workbook.xml.rels", "xl/styles.xml"}
+                required = set(CORE_XML_PARTS)
                 missing = sorted(required - members)
                 add("WB-004", "package_parts", "All required parts", "None missing" if not missing else ", ".join(missing), "PASS" if not missing else "FAIL", impact="Ensures the workbook has the core OOXML package topology.")
+
+                malformed = []
+                for member in CORE_XML_PARTS:
+                    if member not in members:
+                        continue
+                    try:
+                        ET.fromstring(zf.read(member))
+                    except ET.ParseError as exc:
+                        malformed.append("%s: %s" % (member, exc))
+                add(
+                    "WB-004A",
+                    "core_xml_parseability",
+                    "All core XML parts parseable",
+                    "All parseable" if not malformed else " | ".join(malformed),
+                    "PASS" if not malformed else "FAIL",
+                    impact="Catches malformed OOXML parts that ZIP-integrity checks alone cannot detect.",
+                )
+
                 workbook_root = ET.fromstring(zf.read("xl/workbook.xml"))
                 sheet_nodes = workbook_root.findall("main:sheets/main:sheet", NS)
                 sheet_names = [node.attrib.get("name", "") for node in sheet_nodes]
@@ -88,7 +115,7 @@ def run() -> dict[str, int]:
         "- Checks run: %s\n"
         "- Passed: %s\n"
         "- Failed: %s\n"
-        "- Scope: OOXML package integrity, 22-sheet contract, worksheet XML parsing and control metadata.\n"
+        "- Scope: OOXML ZIP integrity, core XML parsing, 22-sheet contract, worksheet XML parsing and control metadata.\n"
         "- Limitation: this does not replace desktop Excel rendering, independent engineering review, lender review or legal/tax/site diligence.\n"
         % (len(checks), len(checks) - failures, failures),
         encoding="utf-8",
