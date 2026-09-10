@@ -1,3 +1,4 @@
+import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -6,11 +7,17 @@ import path from 'node:path';
 const nested='dist/client'+(process.env.SITE_BASE_PATH || '/vietgreen-ci-solar-project-finance')+'/_next';
 if(fs.existsSync(nested)) fs.cpSync(nested,'dist/client/_next',{recursive:true});
 
-// Publish the native Excel review workbook as a first-class website artifact.
-// This keeps the recruiter viewer/download on the same static site while the
-// workbook remains separately versioned from the frozen V5.1.3 web dataset.
-const workbook='model/vietgreen_core_model.xlsx';
+// Keep the deterministic core workbook untouched, then generate a presentation
+// derivative specifically for the recruiter-facing viewer/download.
+const sourceWorkbook='model/vietgreen_core_model.xlsx';
+const generatedWorkbook='dist/recruiter-workbook/vietgreen_core_model.xlsx';
 const downloads='dist/client/downloads';
-if(!fs.existsSync(workbook)) throw new Error(`Missing native workbook: ${workbook}`);
+if(!fs.existsSync(sourceWorkbook)) throw new Error(`Missing native workbook: ${sourceWorkbook}`);
+fs.mkdirSync(path.dirname(generatedWorkbook),{recursive:true});
+execFileSync('python',[
+  'scripts/build_recruiter_company_workbook.py',
+  sourceWorkbook,
+  generatedWorkbook,
+],{stdio:'inherit'});
 fs.mkdirSync(downloads,{recursive:true});
-fs.copyFileSync(workbook,path.join(downloads,'vietgreen_core_model.xlsx'));
+fs.copyFileSync(generatedWorkbook,path.join(downloads,'vietgreen_core_model.xlsx'));
