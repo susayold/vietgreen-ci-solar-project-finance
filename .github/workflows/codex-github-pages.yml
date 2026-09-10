@@ -22,6 +22,14 @@ jobs:
       - name: Checkout current web source
         uses: actions/checkout@v4
 
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install recruiter workbook dependency
+        run: python -m pip install --disable-pip-version-check openpyxl==3.1.5
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -67,6 +75,19 @@ jobs:
         env:
           GITHUB_PAGES: "true"
         run: npm run build
+
+      - name: Verify company-style recruiter workbook
+        run: |
+          python - <<'PY'
+          from openpyxl import load_workbook
+          path = 'dist/client/downloads/vietgreen_core_model.xlsx'
+          wb = load_workbook(path, read_only=False, data_only=False)
+          assert wb.sheetnames[0] == '00_Control'
+          assert wb['00_Control']['A1'].value == 'VIETGREEN C&I SOLAR | PROJECT FINANCE INVESTMENT SUMMARY'
+          assert wb['12_Debt_Sculpting']['A19'].value == 'DEBT SCULPTING CONTROL CHECKS'
+          assert 'EXCEL SKILLS DEMONSTRATED' not in str(wb['00_Control']['A15'].value or '')
+          print('Recruiter workbook presentation: PASS')
+          PY
 
       - name: Browser regression tests
         run: |
