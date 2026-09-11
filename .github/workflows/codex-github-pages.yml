@@ -76,17 +76,23 @@ jobs:
           GITHUB_PAGES: "true"
         run: npm run build
 
-      - name: Verify company-style recruiter workbook
+      - name: Verify institutional-style recruiter workbook
         run: |
           python - <<'PY'
           from openpyxl import load_workbook
           path = 'dist/client/downloads/vietgreen_core_model.xlsx'
           wb = load_workbook(path, read_only=False, data_only=False)
           assert wb.sheetnames[0] == '00_Control'
-          assert wb['00_Control']['A1'].value == 'VIETGREEN C&I SOLAR | PROJECT FINANCE INVESTMENT SUMMARY'
-          assert wb['12_Debt_Sculpting']['A19'].value == 'DEBT SCULPTING CONTROL CHECKS'
-          assert 'EXCEL SKILLS DEMONSTRATED' not in str(wb['00_Control']['A15'].value or '')
-          print('Recruiter workbook presentation: PASS')
+          assert wb['00_Control']['A1'].value == 'VIETGREEN C&I SOLAR | PROJECT FINANCE MODEL'
+          assert wb['00_Control']['A20'].value == 'DOWNSIDE REVIEW'
+          assert wb['00_Control']['A46'].value == 'MODEL CONVENTIONS'
+          assert '22_Model_Log' in wb.sheetnames
+          assert wb['22_Model_Log']['A1'].value == 'MODEL LOG | VERSION CONTROL & REVIEW RECORD'
+          for ws in wb.worksheets:
+              for row in ws.iter_rows():
+                  for cell in row:
+                      assert 'EXCEL SKILLS DEMONSTRATED' not in str(cell.value or '')
+          print('Institutional recruiter workbook presentation: PASS')
           PY
 
       - name: Browser regression tests
