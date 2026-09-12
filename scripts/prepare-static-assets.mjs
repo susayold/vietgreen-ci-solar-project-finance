@@ -19,5 +19,18 @@ execFileSync('python',[
   sourceWorkbook,
   generatedWorkbook,
 ],{stdio:'inherit'});
+
+// The original native Control sheet remains only as a hidden formula-support
+// sheet. Remove legacy recruiter-skill-demo wording from the published file.
+execFileSync('python',['-c',[
+  'from openpyxl import load_workbook',
+  `p=${JSON.stringify(generatedWorkbook)}`,
+  'wb=load_workbook(p)',
+  "ws=wb['00_Control'] if '00_Control' in wb.sheetnames else None",
+  "ws.sheet_state='hidden' if ws else None",
+  "[(setattr(c,'value','MODEL REVIEW NOTES')) for row in ws.iter_rows() for c in row if isinstance(c.value,str) and 'SKILLS DEMONSTRATED' in c.value.upper()] if ws else None",
+  'wb.save(p)',
+].join(';')],{stdio:'inherit'});
+
 fs.mkdirSync(downloads,{recursive:true});
 fs.copyFileSync(generatedWorkbook,path.join(downloads,'vietgreen_core_model.xlsx'));
