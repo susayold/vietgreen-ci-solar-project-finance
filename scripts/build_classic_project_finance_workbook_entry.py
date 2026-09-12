@@ -1,12 +1,29 @@
 from openpyxl.cell.cell import MergedCell
+from openpyxl.formatting.formatting import ConditionalFormattingList
+from openpyxl.formatting.rule import ColorScaleRule
 from openpyxl.utils import get_column_letter
 
-# The classic builder uses worksheet cells to derive column letters. Banner rows
-# are merged across the model width, so openpyxl returns MergedCell objects for
-# those coordinates. Expose the same column_letter convenience property used by
-# normal Cell objects before importing the builder.
+# Compatibility shims for the classic workbook builder under openpyxl 3.1.5.
+# Merged banner rows return MergedCell objects, and ConditionalFormattingList
+# exposes add(rule) rather than an add_color_scale convenience method.
 if not hasattr(MergedCell, "column_letter"):
     MergedCell.column_letter = property(lambda self: get_column_letter(self.column))
+
+if not hasattr(ConditionalFormattingList, "add_color_scale"):
+    def _add_color_scale(self, sqref, *, start_type, start_color,
+                         mid_type=None, mid_value=None, mid_color=None,
+                         end_type, end_color):
+        rule = ColorScaleRule(
+            start_type=start_type,
+            start_color=start_color,
+            mid_type=mid_type,
+            mid_value=mid_value,
+            mid_color=mid_color,
+            end_type=end_type,
+            end_color=end_color,
+        )
+        self.add(sqref, rule)
+    ConditionalFormattingList.add_color_scale = _add_color_scale
 
 import build_classic_project_finance_workbook as model
 
