@@ -81,7 +81,8 @@ jobs:
           python scripts/inject_recruiter_workbook_cache.py \
             dist/client/downloads/vietgreen_core_model.xlsx \
             scripts/recruiter_workbook_cache_part1.json \
-            scripts/recruiter_workbook_cache_part2.json
+            scripts/recruiter_workbook_cache_part2.json \
+            scripts/recruiter_workbook_cache_overrides.json
 
       - name: Verify classic project-finance recruiter workbook
         run: |
@@ -117,10 +118,11 @@ jobs:
           assert isclose(values['03_Input_Scenarios']['B22'].value, 0.05, rel_tol=0, abs_tol=1e-12)
           assert values['03_Input_Scenarios']['B23'].value == 350
           assert isclose(values['04_Construction_Workings']['E19'].value, 29.75, rel_tol=0, abs_tol=1e-9)
-          assert values['04_Construction_Workings']['E23'].value is not None
+          assert isclose(values['04_Construction_Workings']['E23'].value, 31.056520833333327, rel_tol=0, abs_tol=1e-9)
           assert isclose(values['06_Financing_Workings']['E8'].value, 0.05, rel_tol=0, abs_tol=1e-12)
           assert isclose(values['06_Financing_Workings']['E10'].value, 0.085, rel_tol=0, abs_tol=1e-12)
           assert isclose(values['06_Financing_Workings']['H27'].value, 1.3, rel_tol=0, abs_tol=1e-12)
+          assert isclose(values['08_Coverage_Returns']['O25'].value, 0.7103846152506619, rel_tol=0, abs_tol=1e-12)
           assert values['09_Sensitivity']['B20'].value == 1
           assert values['09_Sensitivity']['F20'].value == 'PASS'
           assert values['11_Model_Checks']['B7'].value == 'PASS'
@@ -145,7 +147,6 @@ jobs:
           touch _site/.nojekyll
 
       - name: Configure Pages
-        # Publish a separate, complete recruiter presentation at /showcase/.
         run: echo "Preparing recruiter presentation"
 
       - name: Build recruiter presentation
@@ -157,7 +158,8 @@ jobs:
           python scripts/inject_recruiter_workbook_cache.py \
             dist/client/downloads/vietgreen_core_model.xlsx \
             scripts/recruiter_workbook_cache_part1.json \
-            scripts/recruiter_workbook_cache_part2.json
+            scripts/recruiter_workbook_cache_part2.json \
+            scripts/recruiter_workbook_cache_overrides.json
           mkdir -p _site/showcase
           cp -R dist/client/. _site/showcase/
           for route in projects energy economics debt risk diligence excel-model model-evidence; do
@@ -209,8 +211,11 @@ jobs:
           values = load_workbook(path, read_only=True, data_only=True)
           assert isclose(values['01_Dashboard']['B6'].value, 1.4, rel_tol=0, abs_tol=1e-9)
           assert isclose(values['03_Input_Scenarios']['B22'].value, 0.05, rel_tol=0, abs_tol=1e-12)
+          assert values['03_Input_Scenarios']['B23'].value == 350
           assert isclose(values['04_Construction_Workings']['E19'].value, 29.75, rel_tol=0, abs_tol=1e-9)
+          assert isclose(values['04_Construction_Workings']['E23'].value, 31.056520833333327, rel_tol=0, abs_tol=1e-9)
           assert isclose(values['06_Financing_Workings']['E8'].value, 0.05, rel_tol=0, abs_tol=1e-12)
+          assert isclose(values['08_Coverage_Returns']['O25'].value, 0.7103846152506619, rel_tol=0, abs_tol=1e-12)
           assert values['09_Sensitivity']['B20'].value == 1
           assert values['09_Sensitivity']['F20'].value == 'PASS'
           assert values['11_Model_Checks']['B7'].value == 'PASS'
