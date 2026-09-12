@@ -11,7 +11,10 @@ test('Excel model shortcut opens the recruiter workbook showcase', async ({ page
   await expect(page).toHaveURL(/\/excel-model\/?$/);
   await expect(page.locator('h1')).toContainText('Open the Workbook');
   await expect(page.locator('#workbook-viewer iframe')).toHaveAttribute('src', /view\.officeapps\.live\.com/);
-  await expect(page.getByRole('link', { name: /Download Excel/i })).toHaveAttribute('href', /\/downloads\/vietgreen_core_model\.xlsx$/);
+  await expect(page.getByRole('link', { name: /Download Excel/i })).toHaveAttribute(
+    'href',
+    /\/downloads\/vietgreen_core_model\.xlsx(?:\?v=[0-9a-f]{40})?$/,
+  );
 
   const workbook = await request.get(`${base}/downloads/vietgreen_core_model.xlsx`);
   expect(workbook.ok()).toBeTruthy();
