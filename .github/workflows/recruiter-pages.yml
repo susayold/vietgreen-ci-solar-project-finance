@@ -60,21 +60,28 @@ jobs:
           GITHUB_PAGES: "true"
         run: npm run build
 
-      - name: Verify institutional-style recruiter workbook
+      - name: Verify classic project-finance recruiter workbook
         run: |
           python - <<'PY'
           from openpyxl import load_workbook
           path = 'dist/client/downloads/vietgreen_core_model.xlsx'
           wb = load_workbook(path, read_only=False, data_only=False)
-          assert wb.sheetnames[0] == '00_Control'
-          assert wb['00_Control']['A1'].value == 'VIETGREEN C&I SOLAR | PROJECT FINANCE MODEL'
-          assert wb['00_Control']['A20'].value == 'DOWNSIDE REVIEW'
-          assert wb['00_Control']['A46'].value == 'MODEL CONVENTIONS'
-          assert '22_Model_Log' in wb.sheetnames
-          assert wb['22_Model_Log']['A1'].value == 'MODEL LOG | VERSION CONTROL & REVIEW RECORD'
+          expected = [
+              '00_Title_Page', '01_Dashboard', '02_Model_Log', '03_Input_Scenarios',
+              '04_Construction_Workings', '05_Project_Workings', '06_Financing_Workings',
+              '07_Cashflow_Waterfall', '08_Coverage_Returns', '09_Sensitivity',
+              '10_IC_Decision', '11_Model_Checks',
+          ]
+          assert wb.sheetnames[:len(expected)] == expected
+          assert wb['00_Title_Page']['B3'].value == 'VIETGREEN C&I SOLAR — PROJECT FINANCE MODEL'
+          assert wb['01_Dashboard']['A17'].value == 'DOWNSIDE REVIEW'
+          assert wb['06_Financing_Workings']['A18'].value == 'SENIOR DEBT REPAYMENT SCHEDULE'
+          assert wb['09_Sensitivity']['A18'].value == 'REGISTERED DOWNSIDE RESULTS'
+          assert '00_Control' in wb.sheetnames
+          assert wb['00_Control'].sheet_state == 'hidden'
           for ws in wb.worksheets:
               for row in ws.iter_rows():
                   for cell in row:
-                      assert 'EXCEL SKILLS DEMONSTRATED' not in str(cell.value or '')
-          print('Institutional recruiter workbook presentation: PASS')
+                      assert 'SKILLS DEMONSTRATED' not in str(cell.value or '').upper()
+          print('Classic project-finance recruiter workbook presentation: PASS')
           PY
