@@ -34,3 +34,36 @@ execFileSync('python',['-c',[
 
 fs.mkdirSync(downloads,{recursive:true});
 fs.copyFileSync(generatedWorkbook,path.join(downloads,'vietgreen_core_model.xlsx'));
+
+// Office Online caches workbook previews aggressively by source URL. The workbook
+// is rebuilt on every Pages deployment, so give both the embedded viewer and the
+// download link a release-specific URL. Also keep visible workbook copy aligned
+// with the current 12 review sheets + 22 support/data tabs (34 sheets total).
+const workbookUrl='https://susayold.github.io/vietgreen-ci-solar-project-finance/downloads/vietgreen_core_model.xlsx';
+const workbookVersion=process.env.GITHUB_SHA || 'local-build';
+const versionedWorkbookUrl=`${workbookUrl}?v=${workbookVersion}`;
+const replacements=[
+  [encodeURIComponent(workbookUrl),encodeURIComponent(versionedWorkbookUrl)],
+  [workbookUrl,versionedWorkbookUrl],
+  ['EXCEL MODEL · 22-SHEET ARCHITECTURE · FORMULA TRACEABILITY','EXCEL MODEL · 34-SHEET CLASSIC PROJECT FINANCE MODEL · FORMULA TRACEABILITY'],
+  ['Native 22-sheet Project Finance review workbook','12 review sheets + 22 support/data tabs'],
+  ['22 sheets','34 sheets'],
+];
+
+function patchBuiltText(dir){
+  if(!fs.existsSync(dir)) return;
+  for(const entry of fs.readdirSync(dir,{withFileTypes:true})){
+    const file=path.join(dir,entry.name);
+    if(entry.isDirectory()){
+      patchBuiltText(file);
+      continue;
+    }
+    if(!/\.(?:html|js)$/i.test(entry.name)) continue;
+    let text=fs.readFileSync(file,'utf8');
+    const before=text;
+    for(const [from,to] of replacements) text=text.split(from).join(to);
+    if(text!==before) fs.writeFileSync(file,text,'utf8');
+  }
+}
+
+patchBuiltText('dist/client');
