@@ -7,15 +7,15 @@ import path from 'node:path';
 const nested='dist/client'+(process.env.SITE_BASE_PATH || '/vietgreen-ci-solar-project-finance')+'/_next';
 if(fs.existsSync(nested)) fs.cpSync(nested,'dist/client/_next',{recursive:true});
 
-// Keep the deterministic core workbook untouched, then generate a presentation
-// derivative specifically for the recruiter-facing viewer/download.
+// Keep the deterministic native workbook untouched. Build the recruiter-facing
+// presentation derivative with classic project-finance workings and styling.
 const sourceWorkbook='model/vietgreen_core_model.xlsx';
 const generatedWorkbook='dist/recruiter-workbook/vietgreen_core_model.xlsx';
 const downloads='dist/client/downloads';
 if(!fs.existsSync(sourceWorkbook)) throw new Error(`Missing native workbook: ${sourceWorkbook}`);
 fs.mkdirSync(path.dirname(generatedWorkbook),{recursive:true});
 execFileSync('python',[
-  'scripts/build_recruiter_company_workbook.py',
+  'scripts/build_classic_project_finance_workbook.py',
   sourceWorkbook,
   generatedWorkbook,
 ],{stdio:'inherit'});
