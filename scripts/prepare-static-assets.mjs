@@ -15,7 +15,7 @@ const downloads='dist/client/downloads';
 if(!fs.existsSync(sourceWorkbook)) throw new Error(`Missing native workbook: ${sourceWorkbook}`);
 fs.mkdirSync(path.dirname(generatedWorkbook),{recursive:true});
 execFileSync('python',[
-  'scripts/build_classic_project_finance_workbook.py',
+  'scripts/build_classic_project_finance_workbook_entry.py',
   sourceWorkbook,
   generatedWorkbook,
 ],{stdio:'inherit'});
